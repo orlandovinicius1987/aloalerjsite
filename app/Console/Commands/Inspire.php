@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Mail;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 
@@ -28,6 +29,11 @@ class Inspire extends Command
      */
     public function handle()
     {
-        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
+//        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
+
+	    Mail::send('mail', [], function ($m)
+	    {
+		    $m->to('mac.vianna@gmail.com')->subject('Convite!!!!!!!!');
+	    });
     }
 }
