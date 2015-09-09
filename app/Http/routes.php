@@ -14,3 +14,42 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('qrcode', function () {
+	return QrCode::size(1000)->generate('goo.gl/mbE136');
+});
+
+Route::get('presidentes', function ()
+{
+	foreach (readCSV() as $person)
+	{
+		return sendMail($person);
+	}
+
+	return $file;
+});
+
+function readCSV()
+{
+	$file = file(database_path('presidentes2.txt'));
+
+	$result = [];
+
+	foreach ($file as $line)
+	{
+		$line = str_replace("\r\n", "", $line);
+
+		$line = explode("\t", $line);
+
+		$result[] = $line;
+	}
+
+	unset($result[0]);
+
+	return $result;
+}
+
+function sendMail($person)
+{
+	return view('mail');
+}
