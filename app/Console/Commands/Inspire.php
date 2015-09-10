@@ -43,6 +43,8 @@ class Inspire extends Command
 
 		foreach ($emails as $email)
 		{
+			echo $person[7] . " - " . $person[9] . "\r";
+
 			Mail::send('mail', ['person' => $person], function ($m) use ($person, $email)
 			{
 				$m->to($email)->subject('Convite - Modernização do Legislativo Fluminense');
