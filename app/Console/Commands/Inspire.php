@@ -47,7 +47,7 @@ class Inspire extends Command
 
 			Mail::send('mail', ['person' => $person], function ($m) use ($person, $email)
 			{
-				$m->to($email)->subject('Convite - Modernização do Legislativo Fluminense');
+				$m->to($email)->subject(utf8_encode( 'Convite - Modernização do Legislativo Fluminense' ));
 			});
 		}
 	}
