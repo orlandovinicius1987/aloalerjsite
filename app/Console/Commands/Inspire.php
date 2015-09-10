@@ -31,17 +31,17 @@ class Inspire extends Command
     {
 //        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
 
-	    foreach (readCSV() as $person)
+	    foreach (readCSV() as $key => $person)
 	    {
-		    $this->sendMail($person);
+		    $this->sendMail($person, $key);
 	    }
     }
 
-	private function sendMail($person)
+	private function sendMail($person, $key)
 	{
 		$emails = explode(";", $person[9]);
 
-		foreach ($emails as $key => $email)
+		foreach ($emails as $email)
 		{
 			$this->output->note($key + 1 . " - " . $email . " - " . $person[9]);
 
