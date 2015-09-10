@@ -31,9 +31,22 @@ class Inspire extends Command
     {
 //        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
 
-	    Mail::send('mail', [], function ($m)
+	    foreach (readCSV() as $person)
 	    {
-		    $m->to('mac.vianna@gmail.com')->subject('Convite!!!!!!!!');
-	    });
+		    $this->sendMail($person);
+	    }
     }
+
+	private function sendMail($person)
+	{
+		$emails = explode(";", $person[9]);
+
+		foreach ($emails as $email)
+		{
+			Mail::send('mail', ['person' => $person], function ($m) use ($person, $email)
+			{
+				$m->to($email)->subject('Convite - Modernização do Legislativo Fluminense');
+			});
+		}
+	}
 }

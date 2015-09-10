@@ -31,7 +31,7 @@ Route::get('presidentes', function ()
 
 function readCSV()
 {
-	$file = file(database_path('presidentes2.txt'));
+	$file = file(database_path(env('PERSONS_FILE')));
 
 	$result = [];
 
@@ -51,5 +51,6 @@ function readCSV()
 
 function sendMail($person)
 {
-	return view('mail');
+	return view('mail')
+			->with('person', $person);
 }

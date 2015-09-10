@@ -1,0 +1,4 @@
+Tratamento	Nome	Telefone	Cargo	Endereço	Bairro	CEP	Cidade	Estado	Email	Arquivo
+A Sua Excelência o Senhor Presidente	MARCO  AURÉLIO  VARGAS FRANCISCO	(24) 3365-4748 / 3365-5258 /7836-2010	Presidente da Câmara Municipal Angra dos Reis	Rua Dr. Bastos, 12 Centro	Centro	23.900-000	ANGRA DOS REIS	RJ	mac.vianna@alerj.rj.gov.br	convite-Angra-dos-Reis.jpg
+A Sua Excelência o Senhor Presidente	FLAVIO DINIZ  BERRIEL	(22) 3864-1900 / 3864-1222	Presidente da Câmara Municipal Aperibé	Rua Professor Honório Silvestre, 93 Centro	Centro	28.495-000	APERIBÉ	RJ	acr@antoniocarlosribeiro.com	convite-Aperibe.jpg
+A Sua Excelência o Senhor Presidente	CARLOS ABERTO SIQUEIRA DA SILVA	(22) 2665-9143 / 2665-9100	Presidente da Câmara Municipal Araruama	Av. Jonh Kennedy, 120 Centro	Centro	28.970-000	ARARUAMA	RJ	"acr@antoniocarlosribeiro.com;mac.vianna@alerj.rj.gov.br"	convite-Araruama.jpg
