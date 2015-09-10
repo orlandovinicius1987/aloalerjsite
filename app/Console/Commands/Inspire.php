@@ -41,9 +41,9 @@ class Inspire extends Command
 	{
 		$emails = explode(";", $person[9]);
 
-		foreach ($emails as $email)
+		foreach ($emails as $key => $email)
 		{
-			$this->output->error($email . " - " . $person[9]);
+			$this->output->note($key + 1 . " - " . $email . " - " . $person[9]);
 
 			Mail::send('mail', ['person' => $person], function ($m) use ($person, $email)
 			{
