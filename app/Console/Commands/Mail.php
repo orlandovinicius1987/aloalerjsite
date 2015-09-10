@@ -36,7 +36,7 @@ class Mail extends Command
 	{
 		$this->output->note($email);
 
-		$person[10] = $email;
+		$person[10] = 'convite-MLF.jpg';
 
 		Mailer::send('mail', ['person' => $person], function ($m) use ($person, $email)
 		{
