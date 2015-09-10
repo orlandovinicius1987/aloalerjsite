@@ -43,7 +43,7 @@ class Inspire extends Command
 
 		foreach ($emails as $email)
 		{
-			echo $person[7] . " - " . $person[9] . "\r";
+			$this->output->error($person[7] . " - " . $person[9]);
 
 			Mail::send('mail', ['person' => $person], function ($m) use ($person, $email)
 			{
