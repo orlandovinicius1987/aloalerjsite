@@ -13,7 +13,7 @@ class Mail extends Command
      *
      * @var string
      */
-    protected $signature = 'mail:send {email}';
+    protected $signature = 'mail:send {email} {--file=}';
 
     /**
      * The console command description.
@@ -29,14 +29,14 @@ class Mail extends Command
      */
     public function handle()
     {
-	    $this->sendMail($this->argument('email'));
+	    $this->sendMail($this->argument('email'), $this->option('file'));
     }
 
-	private function sendMail($email)
+	private function sendMail($email, $file = null)
 	{
 		$this->output->note($email);
 
-		$person[10] = 'convite-MLF.jpg';
+		$person[10] = $file ?: 'convite-MLF.jpg';
 
 		Mailer::send('mail', ['person' => $person], function ($m) use ($person, $email)
 		{
