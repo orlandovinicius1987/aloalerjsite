@@ -67,6 +67,8 @@ body {
   height: 247px;
   margin-top: 265px;
   background-color: rgb(23, 43, 83);
+  position: absolute;
+  top: 972px;
 }
 
 .image {
@@ -201,4 +203,40 @@ body {
   word-break: normal;
   word-wrap: normal;
   white-space: normal;
+}
+
+.elogios {
+position: relative;
+top: 600px;
+with: 100%;
+height: 354px;
+background-color: #C7CCD6;
+}
+
+.text-elogios {
+font-family: Maven Pro;
+text-align: center;
+color: #172B53;
+width: 750px;
+height: auto;
+margin-left: -375px; /* metade da largura */
+margin-top: auto; /* metade da altura */
+position: absolute;
+top: 50%;
+left: 50%;
+border: 1px solid red;
+}
+
+.aspas {
+	font-family: 'Sorts Mill Goudy', serif;
+	font-size:36px;
+		
+}
+
+.logo-alerj {
+	width: 214px;
+	height: 284px;
+	position: relative;
+	margin-bottom:0;
+	margin-left: 70%;
 }
