@@ -446,10 +446,21 @@ label {
 }
 
 
-/* iPads (portrait) ———– */
+/* monitor 01 ———– */
 @media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) {
-/* Styles */
+and (min-device-width : 1509px)
+and (max-device-width : 1920px)
+and (orientation : landscape) {
 
+}
+/* monitor 01 */
+
+
+/* monitor 02 ———– */
+@media only screen
+and (min-device-width : 1509px)
+and (max-device-width : 1920px)
+and (orientation : landscape) {
+
+}
+/* monitor 02 */
