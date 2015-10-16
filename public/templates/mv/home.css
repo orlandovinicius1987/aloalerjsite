@@ -179,7 +179,7 @@
 	font-size: 14px;
 	border: 0px;
 	position: absolute;
-	top: 80%;
+	top: 280px;
 	left: 7.5%;
 	border-radius: 5px;
 }
@@ -446,21 +446,3 @@ label {
 }
 
 
-/* monitor 01 ———– */
-@media only screen
-and (min-device-width : 1509px)
-and (max-device-width : 1920px)
-and (orientation : landscape) {
-
-}
-/* monitor 01 */
-
-
-/* monitor 02 ———– */
-@media only screen
-and (min-device-width : 1509px)
-and (max-device-width : 1920px)
-and (orientation : landscape) {
-
-}
-/* monitor 02 */
