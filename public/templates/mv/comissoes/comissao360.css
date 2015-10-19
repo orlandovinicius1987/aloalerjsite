@@ -1,43 +1,163 @@
-.barra-fundo-cabecalho {
-    width: 100%;
+body {
+    width: 360px;
+    font-size: 62.5%;
+}
+
+#cabecalho {
+    width: 360px;
     height: 176px;
     background-color: #C7CCD6;
     position: absolute;
     top: 0;
     left: 0;
+    padding: 0;
 
+}
+
+#comunicacao{
+    width: 360px;
+    height: 770px;
+    position: absolute;
+    left: 0%;
+    top: 176px;
+    background-color: #FFFFFF;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-style: solid;
+    border-color: #ECECEF;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 4em;
+    color: #172B53;
+    text-align: center;
+    position: absolute;
+    top:0;
+    left: 13.333333333333%;
+
+}
+
+.linha-azul{
+    width: 87.5%;
+    height: 2px;
+    background-color: #172B53;
+    position: absolute;
+    left:6.111111111111%;
+    top:88px;
+}
+
+.linha-azul2{
+    width: 87.5%;
+    height: 2px;
+    background-color: #172B53;
+    position: absolute;
+    left:6.111111111111%;
+    top:217px;
+}
+
+.tarja-tel{
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    top:107px;
+    background-color: #172B53;
+}
+
+.tel{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 5em;
+    color: #8FA143;
+    text-align: center;
+    position: absolute;
+    top:12.222222222222%;
+    left: 6.6666666666665%;
+
+}
+
+.atendimento{
+    font-family: 'Maven Pro', sans-serif, 'Bold 700';
+    font-size: 1.6em;
+    color: #602D24;
+    position: absolute;
+    top: 215px;
+    text-align: center;
+    left:8.0555555555555%;
+}
+
+.video-imagem {
+    width: 330px;
+    height: 185px;
+    background-color: #C7CCD6;
+    position: absolute;
+    top:269px;
+    left: 4.166666666667%;
+}
+
+.texto-app {
+    width: 91.666666666667%;
+    height: auto;
+    font-family: 'Maven Pro', sans-serif, 'Bold 700';
+    font-size: 1.6em;
+    color: #172B53;
+    position: absolute;
+    top: 450px;
+    text-align: justify;
+    left: 4.166666666667%;
+    line-height: 1.5em;
+}
+
+#rodape {
+    width: 360px;
+    height: 1015px;
+    position: absolute;
+    top:940px;
+    left:0;
+    background-color: #172B53;
+}
+
+.barra-cinza{
+    width: 100%;
+    height: 8px;
+    background-color: #C7CCD6;
+}
+
+.logo-alo-alerj {
+    width: 160px;
+    position: absolute;
+    left: 48.571388888889%;
+    top: 40px;
+    z-index: 20;
 }
 
 .logo-alerj-top {
     width: 132px;
     position: relative;
-    left: 9.504333333333%;
-}
-
-#logo-alo-alerj {
-    width: 56%;
-    position: relative;
-    left: 24%;
-    top: 40px;
+    left: 3.937777777778%;
     z-index: 10;
 }
 
+
 .fundo-form-cabecalho {
-    width: 353px;
+    width: 100%;
     height: 100%;
     background-color: #E7E8EC;
     position: absolute;
     top: 0;
-    left: 58.380666666667%;
-    border-right: 0.7rem;
-    border-left: 0.7rem;
+    left: 0;
+    border-right: 0;
+    border-left: 0;
     border-top: 0;
     border-bottom: 0;
     border-style: solid;
     border-color: #ECECEF;
-    z-index: 5;
-
+    z-index: 0;
 }
+
 
 .barra-azul-top {
     width: 100%;
@@ -45,9 +165,7 @@
     background-color: #172B53;
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 8;
-
 }
 
 .barra-dourada-top {
@@ -56,9 +174,7 @@
     background-color: #8FA143;
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 15;
-
 }
 
 .espaco-video {
@@ -67,40 +183,14 @@
     background-color: #FFFFFF;
     position: absolute;
     top: 177px;
-
 }
 
-.fundo-form-video {
-    width: 353px;
-    height: 588px;
-    background-color: #E7E8EC;
-    position: absolute;
-    top: 176px;
-    left: 58.380666666667%;
-    border-right: 0.7rem;
-    border-left: 0.7rem;
-    border-top: 0;
-    border-bottom: 0;
-    border-style: solid;
-    border-color: #ECECEF;
-    z-index: 10;
-}
-
-.fundo-historia {
-    width: 100%;
-    height: 680px;
-    background-color: #C7CCD6;
-    position: absolute;
-    top: 764px;
-    left: 0;
-}
 
 .position-aspas{
     width: 100%;
     height: 676px;
     position: absolute;
     top: 0;
-
 }
 
 .aspas-esquerda {
@@ -123,7 +213,7 @@
 
 .h2 {
     font-family: 'Maven Pro', sans-serif, 'Bold 700';
-    font-size: 20pt;
+    font-size: 1.25em;
     color: #172B53;
     position: absolute;
     top: 0px;
@@ -132,7 +222,7 @@
 
 .h3 {
     font-family: 'Maven Pro', sans-serif, 'Medium 500';
-    font-size: 12pt;
+    font-size: 0.75em;
     color: #172B53;
     position: absolute;
     top: 40px;
@@ -141,7 +231,7 @@
 
 .citacao-depoimento {
     font-family: 'Maven Pro', sans-serif, 'Normal 400';
-    font-size: 11pt;
+    font-size: 0.6875em;
     color: #172B53;
     position: absolute;
     top: 90px;
@@ -176,7 +266,7 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family:'Maven Pro', sans-serif, 'Normal 400';
-    font-size: 14px;
+    font-size: 0.875em;
     border: 0px;
     position: absolute;
     top: 330px;
@@ -194,16 +284,6 @@
     position: relative;
     top: 128px;
     z-index: 25;
-
-}
-
-.fundo-rodape {
-    width: 100%;
-    height: 247px;
-    background-color: #172B53;
-    position: absolute;
-    top: 1437px;
-    left: 0;
 }
 
 .linha-dourada {
@@ -214,166 +294,116 @@
     bottom: 0;
 }
 
-.area-rodape {
-    width: 100%;
-    height: 285px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
 
 .logo-alerj-rodape {
     width: 214px;
     height: 284px;
     position: absolute;
-    left: 67.290111111111%;
+    left: 20.25%;
     bottom: 0;
     z-index: 20;
 }
 
-.espaco-listas {
+.text-comissoes {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25em;
+    color: #172B53;
+    text-align: center;
+    position: absolute;
+    top:-8px;
+    left: 17.634%;
+}
+
+.corpo-comissoes {
+    width: 100px;
+    height: 26px;
+    background-color: #8FA143;
+    position: absolute;
+    left: 36.241111111111%;
+    top:-5px;
+    border-radius: 15px 15px 0 0;
+}
+
+.tabela{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    line-height: 3.45em;
+    font-size: 1.4em;
+    position: absolute;
+    list-style-type: none;
+    color: #FFFFFF;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 60;
     width: 100%;
-    height: 155px;
-    z-index: 30;
-    position: absolute;
-    top: 1480px;
-    left: 0;
-}
-
-.titulo-comissoes {
-    width: 73px;
-    height: 15px;
-    font-family: 'Oswald', sans-serif;
-    position: absolute;
-    top: 1443px;
-    left: 4.884111111111%;
-    color: #C7CC44;
-    z-index: 35;
-}
-
-.linha-comissoes {
-    width: 400px;
-    height: 1px;
-    position: absolute;
-    top: 1483px;
-    left: 4.884111111111%;
-    background-color: #C7CC44;
-    z-index: 35;
-}
-
-
-.lista-1 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 300;
-    position: absolute;
-    list-style-type: none;
-    color: #FFFFFF;
-    top: 0;
-    left: 0.5%;
-}
-
-.lista-2 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 300;
-    position: absolute;
-    color: #FFFFFF;
-    top: 0;
-    left: 28%;
-}
-
-li {
-    list-style-type: none;
-}
-
-label {
-    font-family: 'Maven Pro', sans-serif, 'Normal 400';
-    font-size: 12pt;
-    color: #172B53;
-    position: absolute;
-    left: 3%;
-}
-
-#label-nome {
-    position: absolute;
-    top: 0;
-}
-
-#input-nome {
-    position: absolute;
-    width: 92%;
-    height: 25px;
-    left: 3%;
-    top: 3.5%;
-}
-
-#label-email {
-    position: absolute;
-    top: 12%;
-
-}
-
-#input-email {
-    position: absolute;
-    width: 92%;
-    height: 25px;
-    left: 3%;
-    top: 15.5%;
-}
-
-#label-sua-pergunta {
-    position: absolute;
-    top: 24%;
-
-}
-
-#input-sua-pergunta {
-    position: absolute;
-    width: 92%;
-    height: 150px;
-    left: 3%;
-    top: 27.5%;
-}
-
-#label-destino {
-    position: absolute;
-    top: 58%;
-}
-
-#input-destino {
-    position: absolute;
-    width: 93.8%;
-    height: 25px;
-    left: 3%;
-    top: 61.5%;
-}
-
-.input {
-    border-radius: 5px;
-    border-color: #172B53;
-    border: 1px solid;
-}
-
-.iniciar-conversa {
-    position: absolute;
-    width: 93.8%;
     height: 50px;
-    left: 3%;
-    top: 70%;
-    border-radius: 5px;
-    border-color: #172B53;
-    border: 1px solid;
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    color: #172B53;
-    background-color: #4EC636;
+    top: 20px;
+    border-collapse:collapse;
 }
 
-.position-input-chat {
+.tabela2{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    line-height: 3.45em;
+    font-size: 1.4em;
     position: absolute;
-    width: 353px;
-    height: 588px;
-    top:9%;
+    list-style-type: none;
+    color: #FFFFFF;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 10;
+    width: 100%;
+    height: 50px;
+    top: 377px;
+    border-collapse:collapse;
 }
+
+tr, td {
+    border-bottom: 1px solid #8FA143;
+    border-top: 1px solid #8FA143;
+}
+
+#lista-tel-1, tr:active{
+    background-color: #00163F;
+}
+
+
+#lista-tel-1{
+    right: 20px;
+    z-index: 60;
+}
+
+#lista-2 {
+    top: 357px;
+    left: -20px;
+    z-index: 30;
+}
+
+#lista-tel-2{
+    top: 357px;
+    right: 20px;
+    z-index: 40;
+}
+
+.text-tab-d {
+    position: relative;
+    left: 4.722222222222%;
+}
+
+.text-tab-e {
+    position: relative;
+    right: 4.722222222222%;
+    text-align: right;
+}
+
 
 .durex-historia-de-vida {
     width: 276px;
@@ -413,6 +443,7 @@ label {
     position: absolute;
     right: 0;
     top: 0;
+    display: none;
 
 }
 
@@ -422,9 +453,10 @@ label {
     width: 59px;
     position: absolute;
     top:68px;
-    right: 48.450444444444%;
+    right: 10%;
     overflow: hidden;
     display: block;
+    display: none;
 
     /*Transition*/
     -webkit-transition: All 0.5s ease;
