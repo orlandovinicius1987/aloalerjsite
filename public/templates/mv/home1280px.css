@@ -1,6 +1,7 @@
 body {
     width: 100%;
     font-size: 62.5%;
+
 }
 
 #cabecalho {
@@ -15,11 +16,11 @@ body {
 }
 
 #comunicacao{
-    width: 360px;
+    width: 310px;
     height: 510px;
     position: absolute;
-    left: 0%;
-    top: 176px;
+    left: 60.441796875%;
+    top: 0;
     background-color: #E7E8EC;
     border-right: 0;
     border-left: 0;
@@ -29,13 +30,43 @@ body {
     border-color: #ECECEF;
 }
 
+#depoimentos {
+    width: 360px;
+    height: 680px;
+    background-color: #C7CCD6;
+    position: absolute;
+    top: 764px;
+    left: 0;
+    display: none;
+}
+
 #rodape {
     width: 100%;
-    height: 1015px;
+    height: 230px;
     position: absolute;
     top:686px;
     left:0;
+    background-color: #C7CCD6;
+}
+
+
+.fundo-azul{
+    width: 100%;
+    height: 100%;
     background-color: #172B53;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.botoes-rodape{
+    width: 50.390625%;
+    height: 150px;
+    position: absolute;
+    left: 15.298671875%;
+    top: 48px;
+
 }
 
 .barra-cinza{
@@ -47,26 +78,27 @@ body {
 .logo-alo-alerj {
     width: 160px;
     position: absolute;
-    left: 48.571388888889%;
+    left: 24.001612903226%;
     top: 40px;
     z-index: 20;
 }
 
 .logo-alerj-top {
-    width: 132px;
+    width: 130px;
+    height: auto;
     position: relative;
-    left: 3.937777777778%;
+    left: 15.298671875%;
     z-index: 10;
 }
 
 
 .fundo-form-cabecalho {
-    width: 100%;
+    width: 310px;
     height: 100%;
     background-color: #E7E8EC;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 60.441796875%;
     border-right: 0;
     border-left: 0;
     border-top: 0;
@@ -76,6 +108,19 @@ body {
     z-index: 0;
 }
 
+
+.teste-butao{
+    width: 200px;
+    height: 50px;
+    background-color: #8FA143;
+    position: absolute;
+    top: -100px;
+    left: 0;
+}
+
+.teste-butao:active{
+    background-color: #4EC636;
+}
 
 .barra-azul-top {
     width: 100%;
@@ -105,10 +150,83 @@ body {
 
 .fundo-form-video {
     width: 100%;
-    height: 100%;
+    height: 676px;
+    position: absolute;
+    left: 0;
+    top: 176px;
     z-index: 10;
 }
 
+
+.position-aspas{
+    width: 100%;
+    height: 676px;
+    position: absolute;
+    top: 0;
+}
+
+.aspas-esquerda {
+    width: 74px;
+    height: 70px;
+    position: absolute;
+    top: 110px;
+    left: 2%;
+    z-index: 1;
+}
+
+.aspas-direita {
+    width: 224px;
+    height: 215px;
+    position: absolute;
+    top:350px;
+    right: 2%;
+    z-index: 1;
+}
+
+.h2 {
+    font-family: 'Maven Pro', sans-serif, 'Bold 700';
+    font-size: 1.25em;
+    color: #172B53;
+    position: absolute;
+    top: 0px;
+    left: 4.884111111111%;
+}
+
+.h3 {
+    font-family: 'Maven Pro', sans-serif, 'Medium 500';
+    font-size: 0.75em;
+    color: #172B53;
+    position: absolute;
+    top: 40px;
+    left: 4.884111111111%;
+}
+
+.citacao-depoimento {
+    font-family: 'Maven Pro', sans-serif, 'Normal 400';
+    font-size: 0.6875em;
+    color: #172B53;
+    position: absolute;
+    top: 90px;
+    width: 40%;
+    height: 385px;
+    left: 4.884111111111%;
+    line-height: 200%;
+}
+
+.foto-depoimento {
+    width: 380px;
+    height: 290px;
+    position: absolute;
+    top: 40px;
+    left: 54.777888888889%;
+    z-index: 15;
+    border-right: 10px;
+    border-left: 10px;
+    border-top: 10px;
+    border-bottom: 10px;
+    border-style: solid;
+    border-color: #E2E3E8;
+}
 
 /* BOTÃO BÁSICO */
 
@@ -146,16 +264,26 @@ body {
     background-color: #8FA143;
     position: absolute;
     bottom: 0;
+    z-index: 20;
+}
+
+.linha-dourada-fina{
+    width: 100%;
+    height: 1px;
+    background-color: #8FA143;
+    position: absolute;
+    top: 20px;
+
 }
 
 
 .logo-alerj-rodape {
-    width: 214px;
-    height: 284px;
+    width: auto;
+    height: 234px;
     position: absolute;
-    left: 20.25%;
+    left: 66.03734375%;
     bottom: 0;
-    z-index: 20;
+    z-index: 40;
 }
 
 .text-comissoes {
@@ -173,113 +301,127 @@ body {
     height: 26px;
     background-color: #8FA143;
     position: absolute;
-    left: 36.241111111111%;
+    left: 15.298671875%;
     top:-5px;
     border-radius: 15px 15px 0 0;
+    z-index: 20;
 }
 
-#botoes-rodape {
-    width: 100%;
-    height: 360px;
-    position: absolute;
-    left: 0;
-
-}
-
-.botao-e {
+.tabela{
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
+    line-height: 3.45em;
     font-size: 1.4em;
+    position: absolute;
     list-style-type: none;
     color: #FFFFFF;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     z-index: 60;
     width: 100%;
     height: 50px;
-    background-color: #172B53;
-    border-top: 1px;
-    border-bottom: 1px;
-    border-right: 0;
-    border-left: 0;
-    border-style: solid;
-    border-color: #8FA143;
-}
-
-.botao-e:active{
-    background-color: #00163F;
+    top: 100px;
+    border-collapse:collapse;
 }
 
 #botao-criancas{
     position: absolute;
-    top: 20px;
+    top: 0px;
 }
 
 #defesa-do-consumidor{
     position: absolute;
-    top: 70px;
+    top: 30px;
 }
 
 #direitos-humanos{
     position: absolute;
-    top: 120px;
+    top: 60px;
 }
 
 #meio-ambiente{
     position: absolute;
-    top: 170px;
+    top: 90px;
 }
 
 #denuncia-trabalho{
     position: absolute;
-    top: 220px;
+    top: 120px;
 }
 
 #disque-educacao{
     position: absolute;
-    top: 270px;
+    top: 0px;
+    left: 34%;
 }
 
 #disque-idoso{
     position: absolute;
-    top: 320px;
+    top: 30px;
+    left: 34%;
 }
 
 #disque-preconceitos{
     position: absolute;
-    top: 370px;
+    top: 60px;
+    left: 34%;
 }
 
 #disque-pirataria{
     position: absolute;
-    top: 420px;
+    top: 90px;
+    left: 34%;
 }
 
 #disque-pessoa-deficiente{
     position: absolute;
-    top: 470px;
-
+    top: 120px;
+    left: 34%;
 }
 
 #disque-saneamento-ambiental{
     position: absolute;
-    top: 520px;
-
+    top: 30px;
+    left: 63%;
 }
 
 #disque-seguranca-alimentar{
     position: absolute;
-    top: 570px;
-
+    top: 60px;
+    left: 63%;
 }
 
 #sos-mulher{
     position: absolute;
-    top: 620px;
-
+    top: 90px;
+    left: 63%;
 }
 
 #seguranca-publica{
     position: absolute;
-    top: 670px;
+    top: 120px;
+    left: 63%;
+}
+
+
+.botao-e{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    list-style-type: none;
+    color: #FFFFFF;
+    z-index: 60;
+    width: 28%;
+    height: 20px;
+    background-color: #172B53;
+}
+
+.botao-e:active{
+    background-color: #172B53;
 
 }
 
@@ -287,25 +429,27 @@ body {
     position: absolute;
     vertical-align: middle;
     text-align: left;
-    right: 5%;
+    right: 10%;
     top:15px;
+    display: none;
 }
 
 .text-e{
     position: absolute;
     vertical-align: middle;
-    text-align: right;
-    left: 5%;
-    top:15px;
+    text-align: left;
+    left: 0%;
+    top:0px;
 
 }
+
 
 label {
     font-family: 'Maven Pro', sans-serif, 'Normal 400';
     font-size: 1.5em;
     color: #172B53;
     position: absolute;
-    left: 4.722222222222%;
+    left: 5.394838709677%;
     width: 100%;
 }
 
@@ -358,8 +502,8 @@ label {
     border-radius: 5px;
     border-color: #172B53;
     border: 1px solid;
-    left: 4.722222222222%;
-    width: 90.277777777778%;
+    left: 5.394838709677%;
+    width: 88.387096774194%;
     height: 25px;
 }
 
@@ -424,7 +568,7 @@ label {
     position: absolute;
     right: 0;
     top: 0;
-    display: none;
+
 
 }
 
@@ -434,10 +578,10 @@ label {
     width: 59px;
     position: absolute;
     top:68px;
-    right: 10%;
+    right: 42.5853125%;
     overflow: hidden;
     display: block;
-    display: none;
+
 
     /*Transition*/
     -webkit-transition: All 0.5s ease;

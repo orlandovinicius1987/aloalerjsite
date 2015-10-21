@@ -1,43 +1,104 @@
-.barra-fundo-cabecalho {
+body {
+	width: 100%;
+	font-size: 62.5%;
+
+}
+
+#cabecalho {
 	width: 100%;
 	height: 176px;
 	background-color: #C7CCD6;
 	position: absolute;
 	top: 0;
 	left: 0;
-	
+	padding: 0;
+
 }
 
-.logo-alerj-top {
-	width: 132px;
-	position: relative;
-	left: 16.6%;
-}
-
-#logo-alo-alerj {
-	width: 56%;
-	position: relative;
-	left: 24%;
-	top: 40px;
-	z-index: 10;
-}
-
-.fundo-form-cabecalho {
-	width: 353px;
-	height: 100%;
-	background-color: #E7E8EC;
+#comunicacao{
+	width: 310px;
+	height: 510px;
 	position: absolute;
+	left: 60.441796875%;
 	top: 0;
-	left: 61%;
-	border-right: 0.7rem;
-	border-left: 0.7rem;
+	background-color: #E7E8EC;
+	border-right: 0;
+	border-left: 0;
 	border-top: 0;
 	border-bottom: 0;
 	border-style: solid;
 	border-color: #ECECEF;
-	z-index: 5;
+}
+
+
+#rodape {
+	width: 100%;
+	height: 230px;
+	position: absolute;
+	top:686px;
+	left:0;
+	background-color: #C7CCD6;
+}
+
+
+.fundo-azul{
+	width: 100%;
+	height: 100%;
+	background-color: #172B53;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+
+.botoes-rodape{
+	width: 50.390625%;
+	height: 150px;
+	position: absolute;
+	left: 15.298671875%;
+	top: 48px;
 
 }
+
+.barra-cinza{
+	width: 100%;
+	height: 8px;
+	background-color: #C7CCD6;
+}
+
+.logo-alo-alerj {
+	width: 160px;
+	position: absolute;
+	left: 24.001612903226%;
+	top: 40px;
+	z-index: 20;
+}
+
+.logo-alerj-top {
+	width: 130px;
+	height: auto;
+	position: relative;
+	left: 15.298671875%;
+	z-index: 10;
+}
+
+
+.fundo-form-cabecalho {
+	width: 310px;
+	height: 100%;
+	background-color: #E7E8EC;
+	position: absolute;
+	top: 0;
+	left: 60.441796875%;
+	border-right: 0;
+	border-left: 0;
+	border-top: 0;
+	border-bottom: 0;
+	border-style: solid;
+	border-color: #ECECEF;
+	z-index: 0;
+}
+
 
 .barra-azul-top {
 	width: 100%;
@@ -45,9 +106,7 @@
 	background-color: #172B53;
 	position: absolute;
 	top: 0;
-	left: 0;
 	z-index: 8;
-
 }
 
 .barra-dourada-top {
@@ -56,9 +115,7 @@
 	background-color: #8FA143;
 	position: absolute;
 	top: 0;
-	left: 0;
 	z-index: 15;
-
 }
 
 .espaco-video {
@@ -67,107 +124,20 @@
 	background-color: #FFFFFF;
 	position: absolute;
 	top: 177px;
-
 }
 
 .fundo-form-video {
-	width: 353px;
-	height: 588px;
-	background-color: #E7E8EC;
+	width: 100%;
+	height: 676px;
 	position: absolute;
+	left: 0;
 	top: 176px;
-	left: 61%;
-	border-right: 0.7rem;
-	border-left: 0.7rem;
-	border-top: 0;
-	border-bottom: 0;
-	border-style: solid;
-	border-color: #ECECEF;
 	z-index: 10;
 }
 
-.fundo-historia {
-	width: 100%;
-	height: 680px;
-	background-color: #C7CCD6;
-	position: absolute;
-	top: 764px;
-	left: 0;
-}
-
-.position-aspas{
-	width: 68%;
-	height: 65%;
-	position: absolute;
-	top: 142px;
-	left: 15%;
-}
-
-.aspas-esquerda {
-	width: 114px;
-	height: 108px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-}
-
-.aspas-direita {
-	width: 224px;
-	height: 215px;
-	position: absolute;
-	bottom: 0;
-	right: -5%;
-	z-index: 1;
-}
-
-.h2 {
-	font-family: 'Maven Pro', sans-serif, 'Bold 700'; 
-	font-size: 20pt;
-	color: #172B53;
-	position: absolute;
-	top: 0px;
-	left: 8%;
-}
-
-.h3 {
-	font-family: 'Maven Pro', sans-serif, 'Medium 500'; 
-	font-size: 12pt;
-	color: #172B53;
-	position: absolute;
-	top: 40px;
-	left: 8%;
-}
-
-.citacao-depoimento {
-	font-family: 'Maven Pro', sans-serif, 'Normal 400'; 
-	font-size: 11pt;
-	color: #172B53;
-	position: absolute;
-	top: 90px;
-	width: 40%;
-	height: 385px;
-	left: 8%;
-	line-height: 200%;
-}
-
-.foto-depoimento {
-	width: 380px;
-	height: 290px;
-	position: absolute;
-	top: 40px;
-	left: 60%;
-	z-index: 15;
-	border-right: 10px;
-	border-left: 10px;
-	border-top: 10px;
-	border-bottom: 10px;
-	border-style: solid;
-	border-color: #E2E3E8;
-}
 
 /* BOTÃO BÁSICO */
- 
+
 .but {
 	display: inline-block;
 	background-color: #8FA143;
@@ -176,11 +146,11 @@
 	text-decoration: none;
 	box-sizing: border-box;
 	font-family:'Maven Pro', sans-serif, 'Normal 400';
-	font-size: 14px;
+	font-size: 0.875em;
 	border: 0px;
 	position: absolute;
-	top: 280px;
-	left: 7.5%;
+	top: 330px;
+	left: 4.884111111111%;
 	border-radius: 5px;
 }
 
@@ -189,24 +159,6 @@
 	cursor: pointer;
 }
 
-.box-depoimento {
-	width: 60%;
-	height: 380px;
-	position: relative;
-	top: 175px;
-	left: 44%;
-	z-index: 25;
-	margin-left: -25%;
-}
-
-.fundo-rodape {
-	width: 100%;
-	height: 247px;
-	background-color: #172B53;
-	position: absolute;
-	top: 1437px;
-	left: 0;
-}
 
 .linha-dourada {
 	width: 100%;
@@ -214,84 +166,174 @@
 	background-color: #8FA143;
 	position: absolute;
 	bottom: 0;
-}
-
-.area-rodape {
-	width: 56.6%;
-	height: 285px;
-	position: absolute;
-	bottom: 0;
-	left: 24%;
-}
-
-.logo-alerj-rodape {
-	width: 214px;
-	height: 284px;
-	position: absolute;
-	left: 74%;
-	bottom: 0;
 	z-index: 20;
 }
 
-.espaco-listas {
-	width: 740px;
-	height: 155px;
-	z-index: 30;
-	position: absolute;
-	top: 1480px;
-	left: 24%;
-}
-
-.titulo-comissoes {
-	width: 73px;
-	height: 15px;
-	font-family: 'Oswald', sans-serif;
-	position: absolute;
-	top: 1443px;
-	left: 24%;
-	color: #C7CC44;
-	z-index: 35;
-}
-
-.linha-comissoes {
-	width: 530px;
+.linha-dourada-fina{
+	width: 100%;
 	height: 1px;
+	background-color: #8FA143;
 	position: absolute;
-	top: 1483px;
-	left: 24%;
-	background-color: #C7CC44;
-	z-index: 35;
+	top: 20px;
+
 }
 
-.lista-1 {
-	font-family: 'Oswald', sans-serif;
-	font-weight: 300;
+
+.logo-alerj-rodape {
+	width: auto;
+	height: 234px;
 	position: absolute;
+	left: 66.03734375%;
+	bottom: 0;
+	z-index: 40;
+}
+
+.text-comissoes {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.25em;
+	color: #172B53;
+	text-align: center;
+	position: absolute;
+	top:-8px;
+	left: 17.634%;
+}
+
+
+#botao-criancas{
+	position: absolute;
+	top: 0px;
+}
+
+#defesa-do-consumidor{
+	position: absolute;
+	top: 30px;
+}
+
+#direitos-humanos{
+	position: absolute;
+	top: 60px;
+}
+
+#meio-ambiente{
+	position: absolute;
+	top: 90px;
+}
+
+#denuncia-trabalho{
+	position: absolute;
+	top: 120px;
+}
+
+#disque-educacao{
+	position: absolute;
+	top: 0px;
+	left: 34%;
+}
+
+#disque-idoso{
+	position: absolute;
+	top: 30px;
+	left: 34%;
+}
+
+#disque-preconceitos{
+	position: absolute;
+	top: 60px;
+	left: 34%;
+}
+
+#disque-pirataria{
+	position: absolute;
+	top: 90px;
+	left: 34%;
+}
+
+#disque-pessoa-deficiente{
+	position: absolute;
+	top: 120px;
+	left: 34%;
+}
+
+#disque-saneamento-ambiental{
+	position: absolute;
+	top: 30px;
+	left: 63%;
+}
+
+#disque-seguranca-alimentar{
+	position: absolute;
+	top: 60px;
+	left: 63%;
+}
+
+#sos-mulher{
+	position: absolute;
+	top: 90px;
+	left: 63%;
+}
+
+#seguranca-publica{
+	position: absolute;
+	top: 120px;
+	left: 63%;
+}
+
+
+.botao-e{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	font-size: 1.2em;
 	list-style-type: none;
 	color: #FFFFFF;
-	top: 0;
-	left: -5.5%;
+	z-index: 60;
+	width: 28%;
+	height: 20px;
+	background-color: #172B53;
 }
 
-.lista-2 {
-	font-family: 'Oswald', sans-serif;
-	font-weight: 300;
+.botao-e:active{
+	background-color: #172B53;
+
+}
+
+.corpo-comissoes {
+	width: 100px;
+	height: 26px;
+	background-color: #8FA143;
 	position: absolute;
-	color: #FFFFFF;
-	top: 0;
-	left: 39%;
+	left: 15.298671875%;
+	top:-5px;
+	border-radius: 15px 15px 0 0;
+	z-index: 20;
 }
 
-li {
-	list-style-type: none;
+
+.text-d{
+	position: absolute;
+	vertical-align: middle;
+	text-align: left;
+	right: 10%;
+	top:15px;
+	display: none;
 }
+
+.text-e{
+	position: absolute;
+	vertical-align: middle;
+	text-align: left;
+	left: 0%;
+	top:0px;
+
+}
+
 
 label {
-	font-family: 'Maven Pro', sans-serif, 'Normal 400'; 
-	font-size: 12pt;
+	font-family: 'Maven Pro', sans-serif, 'Normal 400';
+	font-size: 1.5em;
 	color: #172B53;
 	position: absolute;
-	left: 3%;
+	left: 5.394838709677%;
+	width: 100%;
 }
 
 #label-nome {
@@ -299,13 +341,6 @@ label {
 	top: 0;
 }
 
-#input-nome {
-	position: absolute;
-	width: 92%;
-	height: 25px;
-	left: 3%;
-	top: 3.5%;
-}
 
 #label-email {
 	position: absolute;
@@ -315,9 +350,6 @@ label {
 
 #input-email {
 	position: absolute;
-	width: 92%;
-	height: 25px;
-	left: 3%;
 	top: 15.5%;
 }
 
@@ -327,24 +359,25 @@ label {
 
 }
 
+#input-nome {
+	position: absolute;
+	top: 3.5%;
+}
+
 #input-sua-pergunta {
 	position: absolute;
-	width: 92%;
-	height: 150px;
-	left: 3%;
 	top: 27.5%;
+	height: 155px;
 }
 
 #label-destino {
 	position: absolute;
 	top: 58%;
+
 }
 
 #input-destino {
 	position: absolute;
-	width: 93.8%;
-	height: 25px;
-	left: 3%;
 	top: 61.5%;
 }
 
@@ -352,39 +385,39 @@ label {
 	border-radius: 5px;
 	border-color: #172B53;
 	border: 1px solid;
+	left: 5.394838709677%;
+	width: 88.387096774194%;
+	height: 25px;
 }
 
 .iniciar-conversa {
 	position: absolute;
-	width: 93.8%;
+	width: 92%;
 	height: 50px;
-	left: 3%;
+	left: 4.722222222222%;
 	top: 70%;
 	border-radius: 5px;
 	border-color: #172B53;
 	border: 1px solid;
 	font-family: 'Oswald', sans-serif;
-	font-size: 20px;
+	font-size: 2.2em;
 	color: #172B53;
 	background-color: #4EC636;
 }
 
+.iniciar-conversa:active{
+	background-color: #628618;
+}
+
 .position-input-chat {
 	position: absolute;
-	width: 353px;
+	width: 100%;
 	height: 588px;
-	top:9%;
+	top:5px;
+	left: 0;
 }
 
-.durex-historia-de-vida {
-	width: 276px;
-	height: 66px;
-	z-index: 40;
-	position: absolute;
-	top: -4.5%;
-	left: 68%;
 
-}
 
 .teste-animation {
 	position: absolute;
@@ -397,7 +430,7 @@ label {
 	-moz-transition: -moz-transform 2s;
 	-o-transition: -o-transform 2s;
 	transition: transform 2s;
-	}
+}
 
 .teste-animation:hover {
 	-webkit-transform: rotate(45deg);
@@ -408,41 +441,436 @@ label {
 }
 
 .buton-fundo-tel-uteis{
-  
-  height: 59px;
-  width: 197px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  
- }
+
+	height: 59px;
+	width: 197px;
+	position: absolute;
+	right: 0;
+	top: 0;
+
+
+}
 
 
 .buton-tel-uteis {
 	height: 59px;
-  	width: 59px;
-  	position: absolute;
-  	top:68px;
-  	right: 43%;
-  	overflow: hidden;
-  	display: block;
-  
-  /*Transition*/
-  -webkit-transition: All 0.5s ease;
-  -moz-transition: All 0.5s ease;
-  -o-transition: All 0.5s ease;
-  -ms-transition: All 0.5s ease;
-  transition: All 0.5s ease;
+	width: 59px;
+	position: absolute;
+	top:68px;
+	right: 42.5853125%;
+	overflow: hidden;
+	display: block;
 
-    /*Rounded Corners*/
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  border-radius: 30px;
-  	
+
+	/*Transition*/
+	-webkit-transition: All 0.5s ease;
+	-moz-transition: All 0.5s ease;
+	-o-transition: All 0.5s ease;
+	-ms-transition: All 0.5s ease;
+	transition: All 0.5s ease;
+
+	/*Rounded Corners*/
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+
 }
 
 .buton-tel-uteis:hover {
 	width:300px;
+}
+
+
+@media only screen
+and (min-device-width : 481px)
+and (max-device-width : 800px) {
+
+
+	#comunicacao{
+		left: 49.758%;
+		top: 0;
+
+	}
+
+	#rodape {
+		height: 576px;
+
+	}
+
+
+	.fundo-azul{
+		width: 83.75%;
+		left: 8.120875%;
+		top: 0;
+
+	}
+
+	.botoes-rodape{
+		width: 83.75%;
+		height: 450px;
+		left: 8.120875%;
+		top: 52px;
+	}
+
+
+
+	.logo-alerj-top {
+		left: 11.558%;
+
+	}
+
+
+	.fundo-form-cabecalho {
+		left: 49.758%;
+
+	}
+
+
+
+	.teste-butao:active{
+		background-color: #4EC636;
+	}
+
+
+	.logo-alerj-rodape {
+		left: 58.389375%;
+
+	}
+
+
+	.corpo-comissoes {
+		left: 9.414029850746%;
+
+	}
+
+	#botao-criancas{
+		top: 20px;
+	}
+
+	#defesa-do-consumidor{
+
+		top: 70px;
+	}
+
+	#direitos-humanos{
+
+		top: 120px;
+	}
+
+	#meio-ambiente{
+
+		top: 170px;
+	}
+
+	#denuncia-trabalho{
+
+		top: 220px;
+	}
+
+	#disque-educacao{
+
+		top: 270px;
+	}
+
+	#disque-idoso{
+
+		top: 320px;
+	}
+
+	#disque-preconceitos{
+
+		top: 370px;
+	}
+
+	#disque-pirataria{
+
+		top: 420px;
+	}
+
+	#disque-pessoa-deficiente{
+
+		top: 20px;
+		left: 50%;
+	}
+
+	#disque-saneamento-ambiental{
+
+		top: 70px;
+		left: 50%;
+	}
+
+	#disque-seguranca-alimentar{
+
+		top: 120px;
+		left: 50%;
+	}
+
+	#sos-mulher{
+
+		top: 170px;
+		left: 50%;
+	}
+
+	#seguranca-publica{
+
+		top: 220px;
+		left: 50%;
+	}
+
+
+	.botao-e{
+		font-size: 1.4em;
+		width: 50%;
+		height: 50px;
+	}
+
+
+	.botao-e:active{
+		background-color: #00163F;
+	}
+
+	.text-e{
+
+		text-align: right;
+		left: 18.86%;
+		top:15px;
+
+	}
+
+
+
+	.buton-fundo-tel-uteis{
+
+		display: none;
+
+	}
+
+
+	.buton-tel-uteis {
+
+		display: none;
+
+	}
+
+
+
+}
+
+
+
+@media only screen
+and (max-device-width : 360px) {
+
+
+	#comunicacao{
+		width: 100%;
+		left: 0%;
+		top: 176px;
+
+	}
+
+	#rodape {
+		height: 1015px;
+
+	}
+
+	.logo-alo-alerj {
+		left: 48.571388888889%;
+
+	}
+
+	.logo-alerj-top {
+		width: 132px;
+		left: 3.937777777778%;
+		top:0;
+	}
+
+
+	.fundo-form-cabecalho {
+		width: 100%;
+		left: 0;
+
+	}
+
+
+
+	.fundo-form-video {
+		height: 100%;
+
+	}
+
+
+	.logo-alerj-rodape {
+		width: 214px;
+		height: 284px;
+		left: 20.25%;
+		z-index: 20;
+	}
+
+
+	.corpo-comissoes {
+		left: 36.241111111111%;
+
+	}
+
+	#botoes-rodape {
+		width: 100%;
+		height: 360px;
+		position: absolute;
+		left: 0;
+
+	}
+
+	.botao-e {
+		font-size: 1.4em;
+		width: 100%;
+		height: 50px;
+		border-top: 1px;
+		border-bottom: 1px;
+		border-right: 0;
+		border-left: 0;
+		border-style: solid;
+		border-color: #8FA143;
+	}
+
+	.botao-e:active{
+		background-color: #00163F;
+	}
+
+	#botao-criancas{
+		top: 20px;
+	}
+
+	#defesa-do-consumidor{
+		top: 70px;
+	}
+
+	#direitos-humanos{
+		top: 120px;
+	}
+
+	#meio-ambiente{
+		top: 170px;
+	}
+
+	#denuncia-trabalho{
+		top: 220px;
+	}
+
+	#disque-educacao{
+		top: 270px;
+	}
+
+	#disque-idoso{
+		top: 320px;
+	}
+
+	#disque-preconceitos{
+		top: 370px;
+	}
+
+	#disque-pirataria{
+		top: 420px;
+	}
+
+	#disque-pessoa-deficiente{
+		top: 470px;
+
+	}
+
+	#disque-saneamento-ambiental{
+		top: 520px;
+
+	}
+
+	#disque-seguranca-alimentar{
+		top: 570px;
+
+	}
+
+	#sos-mulher{
+		top: 620px;
+
+	}
+
+	#seguranca-publica{
+		top: 670px;
+
+	}
+
+	.text-d{
+		right: 5%;
+
+	}
+
+	.text-e{
+		text-align: right;
+		left: 5%;
+		top:15px;
+
+	}
+
+
+	.input {
+		left: 4.722222222222%;
+		width: 90.277777777778%;
+
+	}
+
+
+}
+
+@media only screen
+and (min-device-width : 361px)
+and (max-device-width : 480px) {
+	body {
+		background-color: #C7CCD6;
+	}
+
+	#comunicacao{
+		left: 12.5%;
+	}
+
+	#rodape {
+
+		left: 4.39%;
+		z-index: 40;
+	}
+
+	.logo-alerj-top {
+		left: 15.625%;
+	}
+
+	.fundo-form-cabecalho {
+		width: 360px;
+		left: 12.5%;
+	}
+
+	.fundo-form-video {
+		position: absolute;
+		left: 0;
+		top:0;
+
+	}
+
+	.fundo-azul{
+		width: 100%;
+	}
+
+	.linha-dourada-fina{
+		width: 100%;
+	}
+
+	.botoes-rodape {
+		width: 360px;
+		height: 360px;
+		position: absolute;
+		left: 0;
+
+	}
+
+
+
 }
 
 
