@@ -1,5 +1,6 @@
 body {
     width: 100%;
+    height: auto;
     font-size: 62.5%;
 
 }
@@ -17,7 +18,7 @@ body {
 
 #comunicacao{
     width: 310px;
-    height: 100%;
+    height: 755px;
     position: absolute;
     left: 60.441796875%;
     top: 0;
@@ -32,7 +33,7 @@ body {
 
 .fundo-form-video {
     width: 100%;
-    height: 70%;
+    height: 600px;
     position: absolute;
     left: 0;
     top: 176px;
@@ -44,7 +45,7 @@ body {
     width: 100%;
     height: 230px;
     position: absolute;
-    bottom: 0;
+    top:930px;
     left:0;
     background-color: #C7CCD6;
 }
@@ -313,6 +314,12 @@ body {
     width: 28%;
     height: 20px;
     background-color: #172B53;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    border-style: solid;
+    border-color: #8FA143;
 }
 
 .botao-e:active{
@@ -476,6 +483,7 @@ label {
     right: 42.5853125%;
     overflow: hidden;
     display: block;
+    z-index: 100;
 
 
     /*Transition*/
@@ -497,3 +505,477 @@ label {
 }
 
 
+/* iphone 4 landscape, 3.5inch */
+@media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : landscape) and (orientation : portrait) {
+    body{
+        background-color: #4EC636;
+    }
+
+    body {
+        width: 100%;
+        font-size: 62.5%;
+        background-color: #C7CCD6;
+    }
+
+    #cabecalho {
+        width: 100%;
+        height: 176px;
+        background-color: #C7CCD6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+
+    }
+
+    .formato{
+        width: 100%;
+    }
+
+    #comunicacao{
+        width: 360px;
+        height: 510px;
+        position: absolute;
+        left: 12.5%;
+        top: 176px;
+        background-color: #E7E8EC;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+        border-style: solid;
+        border-color: #ECECEF;
+    }
+
+
+    #rodape {
+        width: 360px;
+        height: 1015px;
+        position: absolute;
+        top:686px;
+        left: 12.5%;
+        background-color: #172B53;
+        z-index: 40;
+    }
+
+    .barra-cinza{
+        width: 100%;
+        height: 8px;
+        background-color: #C7CCD6;
+    }
+
+    .logo-alo-alerj {
+        width: 160px;
+        position: absolute;
+        left: 48.571388888889%;
+        top: 40px;
+        z-index: 20;
+    }
+
+    .logo-alerj-top {
+        width: 132px;
+        position: relative;
+        left: 15.625%;
+        z-index: 10;
+    }
+
+
+    .fundo-form-cabecalho {
+        width: 360px;
+        height: 100%;
+        background-color: #E7E8EC;
+        position: absolute;
+        top: 0;
+        left: 12.5%;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+        border-style: solid;
+        border-color: #ECECEF;
+        z-index: 0;
+    }
+
+
+    .barra-azul-top {
+        width: 100%;
+        height: 14%;
+        background-color: #172B53;
+        position: absolute;
+        top: 0;
+        z-index: 8;
+    }
+
+    .barra-dourada-top {
+        width: 100%;
+        height: 2%;
+        background-color: #8FA143;
+        position: absolute;
+        top: 0;
+        z-index: 15;
+    }
+
+    .espaco-video {
+        width: 100%;
+        height: 588px;
+        background-color: #FFFFFF;
+        position: absolute;
+        top: 177px;
+    }
+
+    .fundo-form-video {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        position: absolute;
+        left: 0;
+        top:0;
+
+    }
+
+
+
+    /* BOTÃO BÁSICO */
+
+    .but {
+        display: inline-block;
+        background-color: #8FA143;
+        color: #172B53;
+        padding: 10px 20px;
+        text-decoration: none;
+        box-sizing: border-box;
+        font-family:'Maven Pro', sans-serif, 'Normal 400';
+        font-size: 0.875em;
+        border: 0px;
+        position: absolute;
+        top: 330px;
+        left: 4.884111111111%;
+        border-radius: 5px;
+    }
+
+    .but:hover {
+        background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.15));
+        cursor: pointer;
+    }
+
+
+    .linha-dourada {
+        width: 100%;
+        height: 4px;
+        background-color: #8FA143;
+        position: absolute;
+        bottom: 0;
+    }
+
+
+    .logo-alerj-rodape {
+        width: 214px;
+        height: 284px;
+        position: absolute;
+        left: 20.25%;
+        bottom: 0;
+        z-index: 20;
+    }
+
+    .text-comissoes {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.25em;
+        color: #172B53;
+        text-align: center;
+        position: absolute;
+        top:-8px;
+        left: 17.634%;
+    }
+
+    .corpo-comissoes {
+        width: 100px;
+        height: 26px;
+        background-color: #8FA143;
+        position: absolute;
+        left: 36.241111111111%;
+        top:-5px;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .fundo-azul{
+        width: 480px;
+    }
+
+    .linha-dourada-fina{
+        width: 100%;
+    }
+
+    .botoes-rodape {
+        width: 360px;
+        height: 360px;
+        position: absolute;
+        left: 0;
+
+    }
+
+    .botao-e {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 400;
+        font-size: 1.4em;
+        list-style-type: none;
+        color: #FFFFFF;
+        z-index: 60;
+        width: 100%;
+        height: 50px;
+        background-color: #172B53;
+        border-top: 1px;
+        border-bottom: 1px;
+        border-right: 0;
+        border-left: 0;
+        border-style: solid;
+        border-color: #8FA143;
+    }
+
+    .botao-e:active{
+        background-color: #00163F;
+    }
+
+    #botao-criancas{
+        position: absolute;
+        top: 20px;
+    }
+
+    #defesa-do-consumidor{
+        position: absolute;
+        top: 70px;
+    }
+
+    #direitos-humanos{
+        position: absolute;
+        top: 120px;
+    }
+
+    #meio-ambiente{
+        position: absolute;
+        top: 170px;
+    }
+
+    #denuncia-trabalho{
+        position: absolute;
+        top: 220px;
+    }
+
+    #disque-educacao{
+        position: absolute;
+        top: 270px;
+    }
+
+    #disque-idoso{
+        position: absolute;
+        top: 320px;
+    }
+
+    #disque-preconceitos{
+        position: absolute;
+        top: 370px;
+    }
+
+    #disque-pirataria{
+        position: absolute;
+        top: 420px;
+    }
+
+    #disque-pessoa-deficiente{
+        position: absolute;
+        top: 470px;
+
+    }
+
+    #disque-saneamento-ambiental{
+        position: absolute;
+        top: 520px;
+
+    }
+
+    #disque-seguranca-alimentar{
+        position: absolute;
+        top: 570px;
+
+    }
+
+    #sos-mulher{
+        position: absolute;
+        top: 620px;
+
+    }
+
+    #seguranca-publica{
+        position: absolute;
+        top: 670px;
+
+    }
+
+    .text-d{
+        position: absolute;
+        vertical-align: middle;
+        text-align: left;
+        right: 5%;
+        top:15px;
+    }
+
+    .text-e{
+        position: absolute;
+        vertical-align: middle;
+        text-align: right;
+        left: 5%;
+        top:15px;
+
+    }
+
+    label {
+        font-family: 'Maven Pro', sans-serif, 'Normal 400';
+        font-size: 1.5em;
+        color: #172B53;
+        position: absolute;
+        left: 4.722222222222%;
+        width: 100%;
+    }
+
+    #label-nome {
+        position: absolute;
+        top: 0;
+    }
+
+
+    #label-email {
+        position: absolute;
+        top: 12%;
+
+    }
+
+    #input-email {
+        position: absolute;
+        top: 15.5%;
+    }
+
+    #label-sua-pergunta {
+        position: absolute;
+        top: 24%;
+
+    }
+
+    #input-nome {
+        position: absolute;
+        top: 3.5%;
+    }
+
+    #input-sua-pergunta {
+        position: absolute;
+        top: 27.5%;
+        height: 155px;
+    }
+
+    #label-destino {
+        position: absolute;
+        top: 58%;
+
+    }
+
+    #input-destino {
+        position: absolute;
+        top: 61.5%;
+    }
+
+    .input {
+        border-radius: 5px;
+        border-color: #172B53;
+        border: 1px solid;
+        left: 4.722222222222%;
+        width: 90.277777777778%;
+        height: 25px;
+    }
+
+    .iniciar-conversa {
+        position: absolute;
+        width: 92%;
+        height: 50px;
+        left: 4.722222222222%;
+        top: 70%;
+        border-radius: 5px;
+        border-color: #172B53;
+        border: 1px solid;
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.2em;
+        color: #172B53;
+        background-color: #4EC636;
+    }
+
+    .position-input-chat {
+        position: absolute;
+        width: 100%;
+        height: 588px;
+        top:5px;
+        left: 0;
+    }
+
+
+
+    .teste-animation {
+        position: absolute;
+        top: 300px;
+        left: 100px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        -webkit-transition: -webkit-transform 2s;
+        -moz-transition: -moz-transform 2s;
+        -o-transition: -o-transform 2s;
+        transition: transform 2s;
+    }
+
+    .teste-animation:hover {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .buton-fundo-tel-uteis{
+
+        height: 59px;
+        width: 197px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+
+    }
+
+
+    .buton-tel-uteis {
+        height: 59px;
+        width: 59px;
+        position: absolute;
+        top:68px;
+        right: 10%;
+        overflow: hidden;
+        display: block;
+        display: none;
+
+        /*Transition*/
+        -webkit-transition: All 0.5s ease;
+        -moz-transition: All 0.5s ease;
+        -o-transition: All 0.5s ease;
+        -ms-transition: All 0.5s ease;
+        transition: All 0.5s ease;
+
+        /*Rounded Corners*/
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+
+    }
+
+    .buton-tel-uteis:hover {
+        width:300px;
+    }
+
+
+
+}

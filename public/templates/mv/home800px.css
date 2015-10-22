@@ -404,6 +404,12 @@ body {
     width: 50%;
     height: 50px;
     background-color: #172B53;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-style: solid;
+    border-color: #ECECEF;
 }
 
 .botao-e:active{
