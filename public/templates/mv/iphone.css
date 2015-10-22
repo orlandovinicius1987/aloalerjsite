@@ -8,7 +8,7 @@ and (max-device-width : 480px) {
 
     #cabecalho {
         width: 100%;
-        height: 20em;
+        height: 40em;
         background-color: #C7CCD6;
         position: absolute;
         top: 0;
