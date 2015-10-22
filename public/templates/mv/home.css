@@ -510,7 +510,7 @@
 
 	body {
 		width: 100%;
-		font-size: 62.5%;
+		font-size: 130%;
 		background-color: #C7CCD6;
 	}
 
@@ -530,11 +530,11 @@
 	}
 
 	#comunicacao{
-		width: 360px;
-		height: 510px;
+		width: 100%;
+		height: 1556px;
 		position: absolute;
 		left: 0;
-		top: 470px;
+		top: 468px;
 		background-color: #E7E8EC;
 		border-right: 0;
 		border-left: 0;
@@ -566,7 +566,7 @@
 		height: 261px;
 		position: absolute;
 		left: 48.229166666667%;
-		top: 40px;
+		top: 115px;
 		z-index: 20;
 	}
 
@@ -598,7 +598,7 @@
 
 	.barra-azul-top {
 		width: 100%;
-		height: 14%;
+		height: 5.117270788913%;
 		background-color: #172B53;
 		position: absolute;
 		top: 0;
@@ -607,7 +607,7 @@
 
 	.barra-dourada-top {
 		width: 100%;
-		height: 2%;
+		height: 1.5%;
 		background-color: #8FA143;
 		position: absolute;
 		top: 0;
@@ -840,44 +840,44 @@
 		top: 0;
 	}
 
+	#input-nome {
+		position: absolute;
+		top: 45px;
+	}
 
 	#label-email {
 		position: absolute;
-		top: 12%;
+		top: 145px;
 
 	}
 
 	#input-email {
 		position: absolute;
-		top: 15.5%;
+		top: 190px;
 	}
 
 	#label-sua-pergunta {
 		position: absolute;
-		top: 24%;
+		top: 290px;
 
 	}
 
-	#input-nome {
-		position: absolute;
-		top: 3.5%;
-	}
 
 	#input-sua-pergunta {
 		position: absolute;
-		top: 27.5%;
-		height: 155px;
+		top: 335px;
+		height: 270px;
 	}
 
 	#label-destino {
 		position: absolute;
-		top: 58%;
+		top: 675px;
 
 	}
 
 	#input-destino {
 		position: absolute;
-		top: 61.5%;
+		top: 720px;
 	}
 
 	.input {
@@ -886,7 +886,11 @@
 		border: 1px solid;
 		left: 4.722222222222%;
 		width: 90.277777777778%;
-		height: 25px;
+		height: 60px;
+	}
+
+	input{
+		font-size: 1.5em;
 	}
 
 	.iniciar-conversa {
@@ -908,7 +912,7 @@
 		position: absolute;
 		width: 100%;
 		height: 588px;
-		top:5px;
+		top:30px;
 		left: 0;
 	}
 
