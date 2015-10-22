@@ -533,8 +533,8 @@
 		width: 360px;
 		height: 510px;
 		position: absolute;
-		left: 12.5%;
-		top: 176px;
+		left: 0;
+		top: 470px;
 		background-color: #E7E8EC;
 		border-right: 0;
 		border-left: 0;
@@ -570,7 +570,8 @@
 	}
 
 	.logo-alerj-top {
-		width: 132px;
+		width: 344px;
+		height: 433px;
 		position: relative;
 		left: 15.625%;
 		z-index: 10;
