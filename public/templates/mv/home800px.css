@@ -592,7 +592,7 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
     body {
         width: 100%;
-        font-size: 62.5%;
+        font-size: 3000px;
     }
 
     #cabecalho {
