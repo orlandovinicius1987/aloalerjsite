@@ -592,7 +592,7 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
     body {
         width: 100%;
-        font-size: 3000px;
+        font-size: 62.5%;
     }
 
     #cabecalho {
@@ -803,75 +803,89 @@ and (max-device-width : 480px) {
     #botao-criancas{
         position: absolute;
         top: 20px;
+        left: 0;
     }
 
     #defesa-do-consumidor{
         position: absolute;
         top: 70px;
+        left: 0;
     }
 
     #direitos-humanos{
         position: absolute;
         top: 120px;
+        left: 0;
     }
 
     #meio-ambiente{
         position: absolute;
         top: 170px;
+        left: 0;
     }
 
     #denuncia-trabalho{
         position: absolute;
         top: 220px;
+        left: 0;
     }
 
     #disque-educacao{
         position: absolute;
         top: 270px;
+        left: 0;
     }
 
     #disque-idoso{
         position: absolute;
         top: 320px;
+        left: 0;
     }
 
     #disque-preconceitos{
         position: absolute;
         top: 370px;
+        left: 0;
     }
 
     #disque-pirataria{
         position: absolute;
         top: 420px;
+        left: 0;
     }
 
     #disque-pessoa-deficiente{
         position: absolute;
         top: 470px;
+        left: 0;
 
     }
 
     #disque-saneamento-ambiental{
         position: absolute;
         top: 520px;
+        left: 0;
 
     }
 
     #disque-seguranca-alimentar{
         position: absolute;
         top: 570px;
+        left: 0;
 
     }
 
     #sos-mulher{
         position: absolute;
         top: 620px;
+        left: 0;
 
     }
 
     #seguranca-publica{
         position: absolute;
         top: 670px;
+        left: 0;
 
     }
 
