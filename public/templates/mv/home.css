@@ -516,7 +516,7 @@ label {
 
 	#cabecalho {
 		width: 100%;
-		height: 176px;
+		height: 469px;
 		background-color: #C7CCD6;
 		position: absolute;
 		top: 0;
@@ -546,7 +546,7 @@ label {
 
 
 	#rodape {
-		width: 100%;
+		width: 100px;
 		height: 1015px;
 		position: absolute;
 		top:686px;
@@ -578,8 +578,8 @@ label {
 
 
 	.fundo-form-cabecalho {
-		width: 360px;
-		height: 100%;
+		width: 100%;
+		height: 469px;
 		background-color: #E7E8EC;
 		position: absolute;
 		top: 0;
