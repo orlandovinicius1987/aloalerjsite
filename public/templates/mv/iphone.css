@@ -10,3 +10,10 @@ body{
     }
 
 }
+
+
+/* iphone 4 portrait, 3.5inch */
+@media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : portrait) {
+    body{
+        background-color: #00163F;
+}
