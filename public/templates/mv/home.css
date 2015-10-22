@@ -562,9 +562,10 @@
 	}
 
 	.logo-alo-alerj {
-		width: 160px;
+		width: 429px;
+		height: 261px;
 		position: absolute;
-		left: 48.571388888889%;
+		left: 48.229166666667%;
 		top: 40px;
 		z-index: 20;
 	}
@@ -573,7 +574,7 @@
 		width: 344px;
 		height: 433px;
 		position: relative;
-		left: 15.625%;
+		left: 4.15%;
 		z-index: 10;
 	}
 
