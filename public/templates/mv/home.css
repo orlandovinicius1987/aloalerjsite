@@ -893,6 +893,10 @@
 		font-size: 1.5em;
 	}
 
+	select{
+		font-size: 1.5em;
+	}
+
 	.iniciar-conversa {
 		position: absolute;
 		width: 92%;
