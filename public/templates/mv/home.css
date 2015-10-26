@@ -531,7 +531,7 @@
 
 	#comunicacao{
 		width: 100%;
-		height: 1556px;
+		height: 1300px;
 		position: absolute;
 		left: 0;
 		top: 468px;
@@ -546,11 +546,11 @@
 
 
 	#rodape {
-		width: 100px;
+		width: 100%;
 		height: 1015px;
 		position: absolute;
-		top:686px;
-		left: 12.5%;
+		top:1750px;
+		left: 0;
 		background-color: #172B53;
 		z-index: 40;
 	}
@@ -705,8 +705,8 @@
 	}
 
 	.botoes-rodape {
-		width: 360px;
-		height: 360px;
+		width: 100%;
+		height: 600px;
 		position: absolute;
 		left: 0;
 
@@ -837,42 +837,45 @@
 
 	#input-nome {
 		position: absolute;
-		top: 45px;
+		top: 75px;
 	}
 
 	#label-email {
 		position: absolute;
-		top: 145px;
+		top: 175px;
 
 	}
 
 	#input-email {
 		position: absolute;
-		top: 190px;
+		top: 250px;
 	}
 
 	#label-sua-pergunta {
 		position: absolute;
-		top: 290px;
+		top: 350px;
 
 	}
 
 
 	#input-sua-pergunta {
 		position: absolute;
-		top: 335px;
+		top: 425px;
+		width: 90%;
 		height: 270px;
+		left: 4.722222222222%;
 	}
 
 	#label-destino {
 		position: absolute;
-		top: 675px;
+		top: 755px;
 
 	}
 
 	#input-destino {
 		position: absolute;
-		top: 720px;
+		top: 825px;
+		width: 90%;
 	}
 
 
@@ -882,7 +885,7 @@
 		border-color: #172B53;
 		border: 1px solid;
 		left: 4.722222222222%;
-		width: 80%;
+		width: 90%;
 		height: 60px;
 	}
 
@@ -899,25 +902,25 @@
 
 	label {
 		font-family: 'Maven Pro', sans-serif, 'Normal 400';
-		font-size: 1.5em;
+		font-size: 1.3em;
 		color: #172B53;
 		position: absolute;
 		left: 4.722222222222%;
-		width: 100%;
+		width: 500px;
 	}
 
 
 	.iniciar-conversa {
 		position: absolute;
-		width: 92%;
-		height: 50px;
+		width: 90%;
+		height: 150px;
 		left: 4.722222222222%;
-		top: 70%;
+		top: 1000px;
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
 		font-family: 'Oswald', sans-serif;
-		font-size: 2.2em;
+		font-size: 1.8em;
 		color: #172B53;
 		background-color: #4EC636;
 	}
@@ -925,7 +928,7 @@
 	.position-input-chat {
 		position: absolute;
 		width: 100%;
-		height: 588px;
+		height: 1180px;
 		top:30px;
 		left: 0;
 	}
