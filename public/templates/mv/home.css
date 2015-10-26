@@ -838,18 +838,22 @@
 	#input-nome {
 		position: absolute;
 		top: 75px;
+		width: 864px;
+		left: 5%;
 	}
 
 	#label-email {
 		position: absolute;
 		top: 175px;
-		width: 90%;
+
 
 	}
 
 	#input-email {
 		position: absolute;
 		top: 250px;
+		width: 864px;
+		left: 5%;
 	}
 
 	#label-sua-pergunta {
@@ -862,21 +866,24 @@
 	#input-sua-pergunta {
 		position: absolute;
 		top: 425px;
-		width: 90%;
 		height: 270px;
-		left: 4.722222222222%;
+		left: 5%;
+		width: 864px;
 	}
 
 	#label-destino {
 		position: absolute;
-		top: 755px;
+		top: 745px;
+
+
 
 	}
 
 	#input-destino {
 		position: absolute;
-		top: 825px;
-		width: 90%;
+		top: 815px;
+		left: 5%;
+		width: 864px;
 	}
 
 
@@ -885,8 +892,6 @@
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
-		left: 4.722222222222%;
-		width: 90%;
 		height: 60px;
 	}
 
@@ -895,7 +900,7 @@
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
-		left: 4.722222222222%;
+		left: 5%;
 		width: 80%;
 		height: 60px;
 
@@ -906,7 +911,7 @@
 		font-size: 1.3em;
 		color: #172B53;
 		position: absolute;
-		left: 4.722222222222%;
+		left: 5%;
 		width: 500px;
 	}
 
@@ -916,7 +921,7 @@
 		width: 90%;
 		height: 150px;
 		left: 4.722222222222%;
-		top: 1000px;
+		top: 970px;
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
