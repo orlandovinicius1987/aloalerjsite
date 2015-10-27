@@ -94,6 +94,14 @@
 
     }
 
+    a:link{
+        text-decoration: none;
+    }
+
+    a:visited{
+        text-decoration: none;
+    }
+
     .atendimento {
         font-family: 'Maven Pro', sans-serif, 'Bold 700';
         font-size: 1.15em;
