@@ -94,12 +94,12 @@
 
     }
 
-    a:link .tel{
+    a:link.tel{
         text-decoration: none;
         color: #8FA143;
     }
 
-    a:visited .tel{
+    a:visited.tel{
         text-decoration: none;
         color: #8FA143;
     }
