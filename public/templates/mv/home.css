@@ -531,7 +531,7 @@
 
 	#comunicacao{
 		width: 100%;
-		height: 1300px;
+		height: 550px;
 		position: absolute;
 		left: 0;
 		top: 468px;
@@ -624,7 +624,7 @@
 
 	.fundo-form-video {
 		width: 100%;
-		height: 100%;
+		height: 550px;
 		z-index: 5;
 		position: absolute;
 		left: 0;
@@ -878,7 +878,7 @@
 		width: 90%;
 		height: 150px;
 		left: 4.722222222222%;
-		top: 970px;
+		top: 400px;
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
@@ -891,7 +891,7 @@
 	.position-input-chat {
 		position: absolute;
 		width: 100%;
-		height: 1180px;
+		height: 750px;
 		top:30px;
 		left: 0;
 	}
@@ -989,7 +989,7 @@
 
 	#comunicacao{
 		width: 100%;
-		height: 1300px;
+		height: 750px;
 		position: absolute;
 		left: 0;
 		top: 468px;
@@ -1082,7 +1082,7 @@
 
 	.fundo-form-video {
 		width: 100%;
-		height: 100%;
+		height: 750px;
 		z-index: 5;
 		position: absolute;
 		left: 0;
@@ -1349,7 +1349,7 @@
 	.position-input-chat {
 		position: absolute;
 		width: 100%;
-		height: 1180px;
+		height: 600px;
 		top:30px;
 		left: 0;
 	}
