@@ -978,6 +978,50 @@
 
 	}
 
+	.whatsapp{
+		width: 280px;
+		height: 280px;
+		position: absolute;
+		top:2360px;
+		left: 15%;
+	}
+
+	.icone-whatsapp{
+		width: 220px;
+		height: 220px;
+		text-align: center;
+	}
+
+	.leg-whatsapp{
+		text-align: center;
+		position: absolute;
+		top:150px;
+		left: -4%;
+	}
+
+	.telegram{
+		width: 280px;
+		height: 280px;
+		position: absolute;
+		top:2360px;
+		right: 12%;
+	}
+
+	.icone-telegram{
+		width: 220px;
+		height: 220px;
+		text-align: center;
+	}
+
+	.leg-telegram{
+		text-align: center;
+		position: absolute;
+		top:150px;
+		left: -4%;
+	}
+
+
+
 
 
 }
