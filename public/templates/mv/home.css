@@ -509,13 +509,17 @@
 @media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : portrait) {
 
 	body {
-		width: 100%;
+		width: 960px;
 		font-size: 250%;
 		background-color: #C7CCD6;
 	}
 
+	div{
+		width: 960px;
+	}
+
 	#cabecalho {
-		width: 100%;
+		width: 960px;
 		height: 469px;
 		background-color: #C7CCD6;
 		position: absolute;
@@ -546,7 +550,7 @@
 
 
 	#rodape {
-		width: 100%;
+		width: 960px;
 		height: 1850px;
 		position: absolute;
 		top:1750px;
@@ -580,7 +584,7 @@
 
 
 	.fundo-form-cabecalho {
-		width: 100%;
+		width: 960px;
 		height: 469px;
 		background-color: #E7E8EC;
 		position: absolute;
@@ -597,7 +601,7 @@
 
 
 	.barra-azul-top {
-		width: 100%;
+		width: 960px;
 		height: 5.117270788913%;
 		background-color: #172B53;
 		position: absolute;
@@ -606,7 +610,7 @@
 	}
 
 	.barra-dourada-top {
-		width: 100%;
+		width: 960px;
 		height: 1.5%;
 		background-color: #8FA143;
 		position: absolute;
@@ -795,6 +799,7 @@
 	#input-nome {
 		position: absolute;
 		top: 75px;
+		width: 868px;
 		left: 5%;
 	}
 
@@ -808,6 +813,7 @@
 	#input-email {
 		position: absolute;
 		top: 250px;
+		width: 868px;
 		left: 5%;
 	}
 
@@ -817,7 +823,8 @@
 		border-color: #172B53;
 		border: 1px solid;
 		height: 60px;
-		width: 90%;
+		margin: 0;
+		width: 868px;
 	}
 
 	select{
