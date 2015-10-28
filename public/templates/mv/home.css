@@ -954,6 +954,28 @@
 		-moz-hyphens: auto;
 		-ms-hyphens: auto;
 		hyphens: auto;
+
+	}
+
+	#p1{
+		text-indent: 1.5em;
+	}
+
+	#p2{
+		font-family: 'Oswald', sans-serif;
+		font-size: 1.5em;
+		color: #172B53;
+		text-align: center;
+		line-height: 120%;
+
+	}
+
+	#p3{
+		text-indent: 1.5em;
+	}
+
+	#p1{
+
 	}
 
 
