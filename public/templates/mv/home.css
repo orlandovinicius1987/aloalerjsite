@@ -795,7 +795,6 @@
 	#input-nome {
 		position: absolute;
 		top: 75px;
-		width: 90%;
 		left: 5%;
 	}
 
@@ -809,7 +808,6 @@
 	#input-email {
 		position: absolute;
 		top: 250px;
-		width: 90%;
 		left: 5%;
 	}
 
@@ -819,6 +817,7 @@
 		border-color: #172B53;
 		border: 1px solid;
 		height: 60px;
+		width: 90%;
 	}
 
 	select{
