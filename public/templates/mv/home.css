@@ -948,6 +948,7 @@
 		position: absolute;
 		left: 5%;
 		width: 90%;
+		top:120px;
 		text-align: justify;
 		line-height: 150%;
 		-webkit-hyphens: auto;
@@ -959,7 +960,7 @@
 
 	#p1{
 		text-indent: 1.5em;
-		top:10px;
+
 	}
 
 	#p2{
