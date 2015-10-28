@@ -531,7 +531,7 @@
 
 	#comunicacao{
 		width: 100%;
-		height: 550px;
+		height: 750px;
 		position: absolute;
 		left: 0;
 		top: 468px;
@@ -877,8 +877,8 @@
 		position: absolute;
 		width: 90%;
 		height: 150px;
-		left: 4.722222222222%;
-		top: 400px;
+		left: 5%;
+		top: 420px;
 		border-radius: 5px;
 		border-color: #172B53;
 		border: 1px solid;
@@ -1267,39 +1267,10 @@
 	#input-email {
 		position: absolute;
 		top: 250px;
-		width: 800px;
+		width: 830px;
 		left: 5%;
 	}
 
-	#label-sua-pergunta {
-		position: absolute;
-		top: 350px;
-
-	}
-
-
-	#input-sua-pergunta {
-		position: absolute;
-		top: 425px;
-		height: 270px;
-		left: 5%;
-		width: 864px;
-	}
-
-	#label-destino {
-		position: absolute;
-		top: 745px;
-
-
-
-	}
-
-	#input-destino {
-		position: absolute;
-		top: 815px;
-		left: 5%;
-		width: 874px;
-	}
 
 
 	input{
