@@ -505,7 +505,7 @@
 /*}*/
 
 
-/* iphone 4 landscape, 3.5inch */
+/* iphone 4 */
 @media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : portrait) {
 
 	body {
@@ -1027,7 +1027,6 @@
 
 }
 
-
 @media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : landscape) {
 
 	body {
@@ -1545,7 +1544,7 @@
 
 }
 
-
+/*iPhone 5*/
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 568px) {
@@ -2065,7 +2064,6 @@ and (max-device-width : 568px) {
 
 
 /*iPhone 6*/
-
 @media only screen
 and (min-device-width : 414px)
 and (max-device-width : 736px) {
@@ -2584,9 +2582,12 @@ and (max-device-width : 736px) {
     }
 }
 
+
+/*iPad*/
 @media only screen
 and (min-device-width : 768px)
 and (max-device-width : 1024px)  {
+
     body {
         width: 100%;
         font-size: 62.5%;

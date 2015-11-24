@@ -1,0 +1,198 @@
+<html><head>
+        <title>Chat Alô Alerj</title>
+
+        <link rel="stylesheet" href="chat-aloalerj.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span> Jose das Couves
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-refresh"></span>Atualizar
+                                    </a>
+                                </li>
+                                <li><a href="#"><span class="glyphicon glyphicon-off"></span>
+                                    Sair</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="chat">
+                            <li class="left clearfix">
+                                <span class="chat-img pull-left">
+                                    <img alt="User Avatar" class="img-circle chat-avatar" src="//www.gravatar.com/avatar/642747c62b63e1d47d49a107e1db00d0?s=100&amp;d=identicon">
+                                </span>
+
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Jose das Couves</strong>
+                                        <small class="pull-right text-muted">
+                                            <span class="glyphicon glyphicon-time"></span>12 mins ago
+                                        </small>
+                                    </div>
+
+                                    <p>                                        O cara falando                                    </p>
+                                </div>
+
+
+                            </li><li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                    <img alt="User Avatar" class="img-circle chat-avatar" src="//www.gravatar.com/avatar/ce2a78842d9de0c9ab48e4ed3c473b3e?s=100&amp;d=identicon">
+                                </span>
+
+
+
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                        <strong class="pull-right primary-font">Antonio Ribeiro</strong>
+                                    </div>
+
+                                    <p>                                        Oie!!!                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Digite sua mensagem aqui...">
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    Enviar
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <script src="/assets/js/jquery-2.1.4.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/vue.js"></script>
+        <script src="/assets/js/vue-resource.min.js"></script>
+        <script src="/assets/js/socket.io.min.js"></script>
+
+            <script>
+    var socket = io('http://local.kallzenter.com:23172');
+
+    new Vue(
+    {
+        el: 'body',
+
+        data: {
+            messages: [],
+            connected: false,
+            listeningSockets: [],
+            talkerUsername: 'Jose das Couves',
+            talkerEmail: 'jose@dascouves.com',
+            talkerId: '768ecb88-ac8b-44bc-a82d-2e57ebc22fc4',
+            currentMessage: '',
+            chatId: 'f0ed6e73-d58c-4862-856e-c34c4864a683',
+            chatInfo: {},
+            connected: false,
+        },
+
+        methods:
+        {
+            __sendMessage: function(event)
+            {
+                this.$http.get('http://local.kallzenter.com/api/v1/chat/client/send/'+this.chatId+'/'+this.talkerId+'/'+this.currentMessage);
+
+                this.currentMessage = '';
+            },
+
+            __loadChats: function()
+            {
+                this.$http.get(
+                    'http://local.kallzenter.com/api/v1/chat/client/get/'+this.chatId,
+                    function(data, status, request)
+                    {
+                        this.$set('chatInfo', data);
+                    }
+                );
+            },
+
+            __playNewMessageSound: function()
+            {
+                var audio = new Audio('http://local.kallzenter.com/assets/sound/newmessage.mp3');
+                audio.play();
+            },
+
+            __socketOn: function(channel, callable)
+            {
+                if (this.listeningSockets.indexOf(channel) == -1)
+                {
+                    this.listeningSockets.push(channel);
+
+                    return socket.on(channel, callable);
+                }
+            },
+
+            __listenOnChatSockets: function()
+            {
+                socket.on('connect', function(data)
+                {
+                    this.connected = true;
+                }.bind(this));
+
+                socket.on('disconnect', function(data)
+                {
+                    this.connected = false;
+                }.bind(this));
+
+                socket.on('chat-channel:f0ed6e73-d58c-4862-856e-c34c4864a683', function(data)
+                {
+                    this.__loadChats();
+                }.bind(this));
+
+                socket.on('chat-channel:f0ed6e73-d58c-4862-856e-c34c4864a683:ChatTerminated', function(data)
+                {
+                    console.log('TERMINATED!');
+                    this.__terminateChat();
+                }.bind(this));
+            },
+
+            __chatLeftRight: function(message)
+            {
+                return message.talker.id == this.talkerId ? 'left' : 'right';
+            },
+
+            __terminateChat: function()
+            {
+                window.location.replace("http://local.kallzenter.com/chat/client/terminated");
+            }
+        },
+
+        ready: function()
+        {
+            this.__listenOnChatSockets();
+
+            this.__loadChats();
+        }
+    });
+</script>
+
+
+
+</body><object id="6a58dacb-380a-919d-6929-abaaf88d8f8b" width="0" height="0" type="application/gas-events-uni"></object></html>
