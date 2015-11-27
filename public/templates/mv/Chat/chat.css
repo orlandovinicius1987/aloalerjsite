@@ -81,7 +81,7 @@
 
     .atendente {
         font-family: 'Oswald', sans-serif;
-        font-size: 1em;
+        font-size: 1.1em;
         color: #172B53;
         display: -webkit-flex;
         display: flex;
@@ -93,7 +93,7 @@
 
     .tempo-de-atendimento {
         font-family: "Maven Pro";
-        font-size: 0.8em;
+        font-size: 0.9em;
         color: #49515B;
         display: -webkit-flex;
         display: flex;
