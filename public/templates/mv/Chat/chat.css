@@ -7,10 +7,11 @@ body {
 .header {
     width: 100%;
     height: 180px;
-    position: absolute;
+    position: fixed;
     top: 0%;
     left: 0;
     background-color: #EFEFF1;
+    z-index: 100;
 
 }
 
@@ -60,7 +61,7 @@ body {
 }
 
 .logo-chat {
-    width: 20.8%;
+    width: 215px;
     height: auto;
     position: absolute;
     top: 15.5px;
@@ -71,7 +72,7 @@ body {
     width: 54.166666666667%;
     height: 130px;
     position: absolute;
-    left: 22.916666666667%;
+    left: 20%;
     top: 50px;
     }
 
@@ -103,7 +104,7 @@ body {
     width: 100%;
     height: 126px;
     background-color: #EFEFF1;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
 }
@@ -134,11 +135,11 @@ body {
     color: #172B53;
     position: absolute;
     top:32px;
-    right: 1.2%;
+    right: 5%;
 }
 
 .container-chat {
-    width: 99%;
+    width: 100%;
     height: 1163px;
     position: absolute;
     top: 180px;
@@ -146,7 +147,8 @@ body {
     background-color: #D4D4D4;
     overflow-y: scroll;
     padding-left: 5px;
-    padding-right: 5px;
+    padding-right: 10px;
+
 
 }
 
@@ -156,7 +158,6 @@ body {
     color: #172B53;
     margin: 0;
     padding: 0;
-
 }
 
 .time {
@@ -182,6 +183,12 @@ body {
     background-color: #F2F2F2;
     float: left;
     text-align: left;
+}
+
+.right {
+    background-color: #E0E5CB;
+    float: right;
+    text-align: right;
 }
 
 .msn p {
