@@ -140,14 +140,15 @@ body {
 
 .container-chat {
     width: 100%;
-    height: 1163px;
+    height: auto;
     position: absolute;
     top: 180px;
     left: 0%;
-    background-color: #D4D4D4;
     overflow-y: scroll;
     padding-left: 5px;
     padding-right: 10px;
+    padding-bottom: 126px;
+    padding-top: 180px;
 
 
 }
@@ -173,7 +174,7 @@ body {
     border-color: #172B53;
     border: solid 0.035em;
     float: right;
-    border-radius: 50px;
+    border-radius: 1em;
     margin: 15px;
     text-align: right;
 
