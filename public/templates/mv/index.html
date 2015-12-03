@@ -8,8 +8,8 @@
    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' rel='stylesheet' type='text/css'>
    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
 </head>
+
 <body>
 
 <!--    <div class="teste-animation"></div>
@@ -19,13 +19,13 @@
 <!--Cabeçalho-->
 <div id="cabecalho">
 
-   <a class="buton-tel-uteis" href="#lista">
+   <a class="buton-tel-uteis" href="#lista" id="btn-telefones-uteis">
       <div>
          <img src="svg/fundo-button-tel.svg" class="buton-fundo-tel-uteis">
       </div>
    </a>
 
-   <div class="agenda-tel-uteis">
+   <div class="agenda-tel-uteis" id="agenda-tel-uteis">
 
       <div class="indice">
          <a class="letra-indice indice-top" href="#letra-a">A</a>
@@ -344,7 +344,33 @@
 
 </div>
 
+<script>
+    var isShowing = false;
 
+    jQuery(function()
+    {
+        jQuery('#btn-telefones-uteis').click(function()
+        {
+            if ( ! isShowing)
+            {
+                jQuery('#agenda-tel-uteis').show(function()
+                {
+                    isShowing = true;
+                });
+            }
+        });
+
+        jQuery(document).click(function()
+        {
+            if (isShowing)
+            {
+                jQuery('#agenda-tel-uteis').hide();
+
+                isShowing = false;
+            }
+        });
+    });
+</script>
 
 <!--<script>-->
    <!--jQuery(function() {-->
