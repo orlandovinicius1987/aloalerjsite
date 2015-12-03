@@ -1,0 +1,50 @@
+body{
+    background-color: #602D24;
+}
+
+
+
+
+
+
+    /* iphone 4 landscape, 3.5inch */
+    @media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : landscape) and (orientation : portrait) {
+        body{
+            background-color: #4EC636;
+        }
+
+    }
+
+
+    /* iphone 4 portrait, 3.5inch */
+    @media only screen and (-webkit-min-device-pixel-ratio : 1) and (device-aspect-ratio: 2/3) and (orientation : portrait) {
+        body{
+            background-color: #00163F;
+    }
+
+
+    /* iphone 4S retina landscape, 3.5inch */
+    @media only screen and (-webkit-min-device-pixel-ratio : 2) and (device-aspect-ratio: 2/3) and (orientation : landscape) {
+    }
+
+
+
+    /* iphone 4S retina portrait, 3.5inch */
+    @media only screen and (-webkit-min-device-pixel-ratio : 2) and (device-aspect-ratio: 2/3) and (orientation : portrait) {
+    }
+
+    /*iPhone < 5:*/
+    @media screen and (device-aspect-ratio: 2/3) {}
+
+    /*iPhone 5:*/
+    @media screen and (device-aspect-ratio: 40/71) {}
+
+    /*iPhone 6:*/
+    @media screen and (device-aspect-ratio: 375/667) {}
+
+    /*iPhone 6 Plus:*/
+    @media screen and (device-aspect-ratio: 16/9) {}
+
+    /*iPad:*/
+    @media screen and (device-aspect-ratio: 3/4) {}
+
