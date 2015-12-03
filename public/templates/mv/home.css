@@ -4,6 +4,14 @@
 		width: 100%;
 		height: auto;
 		font-size: 62.5%;
+		scrollbar-arrow-color:#737F91;
+		scrollbar-face-color:#384265;
+		scrollbar-track-color:#03173A;
+		scroll-snap-coordinate: ;
+		scroll-snap-destination: ;
+		scroll-snap-points-x: ;
+		scroll-snap-points-y: ;
+		scroll-snap-type: ;
 
 	}
 
@@ -376,16 +384,6 @@
 
 	}
 
-	.durex-historia-de-vida {
-		width: 276px;
-		height: 66px;
-		z-index: 40;
-		position: absolute;
-		top: -15px;
-		left: 62.609888888889%;
-
-	}
-
 	.teste-animation {
 		position: absolute;
 		top: 300px;
@@ -555,7 +553,14 @@
 		border: solid 2px;
 		border-color: #06193A;
 		border-radius: 15px;
+		display: none;
+
 	}
+
+	.buton-tel-uteis:hover > .agenda-tel-uteis {
+		display: block;
+	}
+
 
 	.indice {
 		width: 22px;
@@ -611,8 +616,27 @@
 		top: 11px;
 		left: 47px;
 		z-index: 60;
-		overflow-y: scroll;
+		overflow-y: auto;
 	}
+
+	.lista-de-telefones::-webkit-scrollbar {
+		width: 15px;
+	}
+
+	.lista-de-telefones::-webkit-scrollbar-button {
+
+	}
+
+	.lista-de-telefones::-webkit-scrollbar-track {
+		background-color: #03173A;
+		border-radius: 6px;
+	}
+
+	.lista-de-telefones::-webkit-scrollbar-thumb        {
+		background-color: #384265;
+		border-radius: 6px;
+	}
+
 
 	.contato {
 		width: 305px;
@@ -621,10 +645,12 @@
 	}
 
 	.linha-contato {
-		width: 305px;
+		width: 297px;
 		height: 1px;
 		background-color: #8FA143;
-		
+		display: table;
+
+
 	}
 
 	.label-contato {
@@ -648,15 +674,15 @@
 		font-family: 'Maven Pro', sans-serif, 'Bold 700';
 		font-size: 1.6em;
 		color: #172B53;
-		padding-left: 0.6em;
-		padding-right: 0.6em;
-		padding-bottom: 0.3em;
-		padding-top: 0.3em;
+		padding-left: 0.3em;
+		padding-right: 0.3em;
+		padding-bottom: 0.2em;
+		padding-top: 0.2em;
 		background-color: #FFFFFF;
 		float: left;
-		margin-top: 0.5em;
-		margin-bottom: 0.5em;
-		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		margin-right: 0.35em;
 		border-radius: 0.4em;
 		display: inline-flex;
 	}
