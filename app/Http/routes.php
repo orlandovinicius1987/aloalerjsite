@@ -4,8 +4,9 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-
-
+Route::post('postform', function () {
+	return \Input::all();
+});
 
 //Route::get('qrcode', function () {
 //	return QrCode::size(1000)->generate('goo.gl/mbE136');
