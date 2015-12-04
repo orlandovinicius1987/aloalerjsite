@@ -29,33 +29,32 @@
 
       <div class="indice">
          <a class="letra-indice indice-top" href="#letra-a">A</a>
-         <a class="letra-indice" href="#">B</a>
-         <a class="letra-indice" href="#">C</a>
-         <a class="letra-indice" href="#">D</a>
-         <a class="letra-indice" href="#">E</a>
-         <a class="letra-indice" href="#">F</a>
-         <a class="letra-indice" href="#">G</a>
-         <a class="letra-indice" href="#">H</a>
-         <a class="letra-indice" href="#">I</a>
-         <a class="letra-indice" href="#">J</a>
-         <a class="letra-indice" href="#">K</a>
-         <a class="letra-indice" href="#">L</a>
-         <a class="letra-indice" href="#">M</a>
-         <a class="letra-indice" href="#">N</a>
-         <a class="letra-indice" href="#">O</a>
-         <a class="letra-indice" href="#">P</a>
-         <a class="letra-indice" href="#">Q</a>
-         <a class="letra-indice" href="#">R</a>
-         <a class="letra-indice" href="#">S</a>
-         <a class="letra-indice" href="#">T</a>
-         <a class="letra-indice" href="#">U</a>
-         <a class="letra-indice" href="#">V</a>
-         <a class="letra-indice" href="#">W</a>
-         <a class="letra-indice" href="#">X</a>
-         <a class="letra-indice" href="#">Y</a>
-         <a class="letra-indice indice-bottom" href="#letra-z">Z</a>
+            <a class="letra-indice" href="#letra-b">B</a>
+            <a class="letra-indice" href="#letra-c">C</a>
+            <a class="letra-indice" href="#letra-d">D</a>
+            <a class="letra-indice" href="#letra-e">E</a>
+            <a class="letra-indice" href="#letra-f">F</a>
+            <a class="letra-indice" href="#letra-g">G</a>
+            <a class="letra-indice" href="#letra-h">H</a>
+            <a class="letra-indice" href="#letra-i">I</a>
+            <a class="letra-indice" href="#letra-j">J</a>
+            <a class="letra-indice" href="#letra-k">K</a>
+            <a class="letra-indice" href="#letra-l">L</a>
+            <a class="letra-indice" href="#letra-m">M</a>
+            <a class="letra-indice" href="#letra-n">N</a>
+            <a class="letra-indice" href="#letra-o">O</a>
+            <a class="letra-indice" href="#letra-p">P</a>
+            <a class="letra-indice" href="#letra-q">Q</a>
+            <a class="letra-indice" href="#letra-r">R</a>
+            <a class="letra-indice" href="#letra-s">S</a>
+            <a class="letra-indice" href="#letra-t">T</a>
+            <a class="letra-indice" href="#letra-u">U</a>
+            <a class="letra-indice" href="#letra-v">V</a>
+            <a class="letra-indice" href="#letra-w">W</a>
+            <a class="letra-indice" href="#letra-x">X</a>
+            <a class="letra-indice" href="#letra-y">Y</a>
+            <a class="letra-indice indice-bottom" href="#letra-z">Z</a>
       </div>
-
 
       <div class="lista-de-telefones" id="#lista">
 
@@ -382,22 +381,23 @@
     });
 </script>
 
-<!--<script>-->
-   <!--jQuery(function() {-->
-      <!--jQuery('a[href*=#]:not([href=#])').click(function() {-->
-         <!--if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {-->
-            <!--var target = jQuery(this.hash);-->
-            <!--target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');-->
-            <!--if (target.length) {-->
-               <!--jQuery('html,body').animate({-->
-                  <!--scrollTop: target.offset().top-->
-               <!--}, 1000);-->
-               <!--return false;-->
-            <!--}-->
-         <!--}-->
-      <!--});-->
-   <!--});-->
-<!--</script>-->
+<script>
+   jQuery(function() {
+      jQuery('a[href*=#]:not([href=#])').click(function() {
+         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = jQuery(this.hash);
+            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
+            console.log(target);
+            if (target.length) {
+               jQuery(jQuery(target).parent()).animate({
+                  scrollTop: target.offset().top
+               }, 1500);
+               return false;
+            }
+         }
+      });
+   });
+</script>
 
 </body>
 </html>
