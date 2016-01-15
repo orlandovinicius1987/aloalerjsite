@@ -33,7 +33,6 @@
 		border-style: solid;
 		border-color: #ECECEF;
 		border-radius: 0 0 10px 10px;
-
 	}
 
 	.fundo-form-video {
@@ -688,7 +687,35 @@
 		display: inline-flex;
 	}
 
+	.bg_video{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -1000;
+	background: url(images/torre.jpg) no-repeat;
+	background-size: cover;
+}
 
+.bg_video{
+	max-width: 867px;
+	max-height: 655px;
 
 }
 
+video{
+	max-width: 867px;
+	max-height: 655px;
+	position: absolute;
+	left: 15.298671875%;
+	top: 176px;
+	padding: 0;
+	margin: 0;
+
+}
+
+
+}

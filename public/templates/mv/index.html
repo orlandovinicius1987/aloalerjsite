@@ -29,6 +29,7 @@
 
       <div class="indice">
          <a class="letra-indice indice-top" href="#letra-a">A</a>
+
          <a class="letra-indice" href="#letra-b">B</a>
          <a class="letra-indice" href="#letra-c"">C</a>
          <a class="letra-indice" href="#letra-d">D</a>
@@ -54,8 +55,8 @@
          <a class="letra-indice" href="#">X</a>
          <a class="letra-indice" href="#">Y</a>
          <a class="letra-indice indice-bottom" href="#letra-z">Z</a>
-      </div>
 
+      </div>
 
       <div class="lista-de-telefones" id="#lista">
 
@@ -563,6 +564,7 @@
 <!--Chat-->
 <div class="chat">
    <div id="comunicacao">
+
       <div class="position-input-chat">
          <form method="POST" action="http://aloalerjsite.antoniocarlosribeiro.com/foo/bar" accept-charset="UTF-8">
             <input name="_token" type="hidden" value="LVdL3FFEKynmYdKKKlTdt7Ba0yMZezBrfXw0V3Fq">
@@ -579,7 +581,17 @@
             <button type="submit" class="iniciar-conversa">INICIAR CONVERSA</button>
          </form>
       </div>
+
+
    </div>
+</div>
+
+
+<div class="bg_video">
+      <video autoplay loop poster="">
+      	<source src="videos/operadores_1.webm" type="video/webm">
+      	   <source src="videos/operadores_1.mp4" type="video/mp4">
+      </video>
 </div>
 
 
@@ -722,10 +734,11 @@
          <!--if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {-->
             <!--var target = jQuery(this.hash);-->
             <!--target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');-->
+            <!--console.log(target);-->
             <!--if (target.length) {-->
-               <!--jQuery('html,body').animate({-->
+               <!--jQuery(jQuery(target).parent()).animate({-->
                   <!--scrollTop: target.offset().top-->
-               <!--}, 1000);-->
+               <!--}, 1500);-->
                <!--return false;-->
             <!--}-->
          <!--}-->
