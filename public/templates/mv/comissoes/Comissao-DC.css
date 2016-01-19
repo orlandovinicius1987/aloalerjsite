@@ -36,6 +36,77 @@
 
 	}
 
+	.infos{
+		position: relative;
+		top:22%;
+	}
+
+	.titulo-comissao{
+		width: 200px;
+		height: auto;
+		position: relative;
+		left: 18.75%;
+		top: 0;
+		font-family: 'Oswald', sans-serif;
+		font-size: 3.7em;
+		text-align: center;
+		color: #172B53;
+		margin-top: 0px;
+		margin-bottom: 5px;
+		line-height: 1.3em;
+
+	}
+
+	.link-site{
+		font-family: 'Maven Pro', sans-serif, 'Bold 700';
+		font-size: 1.5em;
+		text-align: center;
+		color: #172B53;
+		margin-top: 15px;
+		margin-bottom: 10px;
+		position: relative;
+		align-items: center;
+
+	}
+
+	.outras-info{
+		width: 200px;
+		height: auto;
+		position: relative;
+		left: 18.75%;
+		text-align: center;
+		font-family: 'Maven Pro', sans-serif, 'Bold 400';
+		font-size: 1.5em;
+		color: #4E5E70;
+	}
+
+	a:link{
+		text-decoration: none;
+	}
+
+	.linha-info{
+		width: 250px;
+		height: 2px;
+		background-color: #172B53;
+		position: relative;
+		left: 10.94%;
+	}
+
+	.tel-comissao{
+		width: 100%;
+		font-family: 'Oswald', sans-serif;
+		margin-top: 18px;
+		margin-bottom: 18px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 3.7em;
+		text-align: center;
+		color: #ffffff;
+		background-color: #172B53;
+		position: relative;
+
+	}
+
 	.fundo-form-video {
 		width: 100%;
 		height: 600px;
@@ -90,9 +161,9 @@
 	.logo-com-tel{
 		width: 150px;
 		height: auto;
-		position: absolute;
-		left: 120%;
-		top:48px;
+		position: relative;
+		left: -15%;
+		top:20px;
 	}
 
 	.logo-alerj-top {
@@ -374,16 +445,6 @@
 		background-color: #4EC636;
 	}
 
-	.position-input-chat {
-		position: relative;
-		width: 100%;
-		height: 240px;
-		top: 0;
-		left: 0;
-		margin-right: 20px;
-		margin-left: 20px;
-
-	}
 
 	.teste-animation {
 		position: absolute;
