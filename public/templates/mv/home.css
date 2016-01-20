@@ -152,8 +152,7 @@
 		top: 177px;
 	}
 
-//* BOTÃO BÁSICO */
-/
+ /*BOTÃO BÁSICO*/
 
 	.but {
 		display: inline-block;
@@ -584,7 +583,7 @@
 		display: inline-table;
 		text-decoration: none;
 		text-align: center;
-		vertical-align: ;
+		vertical-align: middle;
 
 	}
 
@@ -696,7 +695,7 @@
 	width: auto;
 	height: auto;
 	z-index: -1000;
-	background: url(images/torre.jpg) no-repeat;
+	/*background: url(images/torre.jpg) no-repeat;*/
 	background-size: cover;
 }
 
