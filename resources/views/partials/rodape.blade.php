@@ -1,41 +1,39 @@
 <div id="rodape">
     <div class="botoes-rodape">
-        <a href="comissoes/comissao-dc.html" id="defesa-do-consumidor" class="botao-e">
+        <a href="/comissoes/defesadoconsumidor" id="defesa-do-consumidor" class="botao-e">
             <div class="text-e">DISQUE DEFESA DO CONSUMIDOR</div>
             <div class="text-d">0800 023 0007</div>
         </a>
 
-        <a href="comissoes/comissao-ma.html" id="meio-ambiente" class="botao-e">
+        <a href="/comissoes/meioambiente" id="meio-ambiente" class="botao-e">
             <div class="text-e">DISQUE DENÚNCIA MEIO AMBIENTE</div>
             <div class="text-d">0800 282 7060</div>
         </a>
 
-        <a href="comissoes/comissao-dp.html" id="disque-preconceitos" class="botao-e">
+        <a href="/comissoes/preconceitos" id="disque-preconceitos" class="botao-e">
             <div class="text-e">DISQUE PRECONCEITOS</div>
             <div class="text-d">0800 025 5108</div>
         </a>
 
-        <a href="comissoes/comissao-pirataria.html" id="disque-pirataria" class="botao-e">
+        <a href="/comissoes/pirataria" id="disque-pirataria" class="botao-e">
             <div class="text-e">DISQUE PIRATARIA</div>
             <div class="text-d">0800 282 0230</div>
         </a>
 
-        <a href="comissoes/comissao-pd.html" id="disque-pessoa-deficiente" class="botao-e">
+        <a href="/comissoes/pessoadeficiente" id="disque-pessoa-deficiente" class="botao-e">
             <div class="text-e">DISQUE PESSOA PORTADORA DE DEFICIÊNCIA</div>
             <div class="text-d">0800 282 3596</div>
         </a>
 
-        <a href="comissoes/comissao-iphone.html" id="disque-saneamento-ambiental" class="botao-e">
+        <a href="/comissoes/saneamentoambiental" id="disque-saneamento-ambiental" class="botao-e">
             <div class="text-e">DISQUE SANEAMENTO AMBIENTAL</div>
             <div class="text-d">0800 282 1559</div>
         </a>
 
-        <a href="comissoes/comissao-iphone.html" id="seguranca-publica" class="botao-e">
+        <a href="/comissoes/segurancapublica" id="seguranca-publica" class="botao-e">
             <div class="text-e">DISQUE SEGURANÇA PUBLICA</div>
             <div class="text-d">0800 023 9191</div>
         </a>
-
-
     </div>
 
     <!--<div class="barra-cinza"></div>-->
@@ -49,5 +47,4 @@
             <p class="text-comissoes">COMISSÕES</p>
         </div>
     </div>
-
 </div>
