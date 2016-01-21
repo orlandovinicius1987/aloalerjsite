@@ -152,7 +152,11 @@
 		top: 177px;
 	}
 
+<<<<<<< HEAD
 /*/!* BOTÃO BÁSICO *!/*/
+=======
+ /*BOTÃO BÁSICO*/
+>>>>>>> alerj/master
 
 	.but {
 		display: inline-block;
@@ -559,7 +563,10 @@
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> alerj/master
 	.indice {
 		width: 22px;
 		height: 598px;
@@ -582,7 +589,11 @@
 		display: inline-table;
 		text-decoration: none;
 		text-align: center;
+<<<<<<< HEAD
 
+=======
+		vertical-align: middle;
+>>>>>>> alerj/master
 	}
 
 	.letra-indice:hover{
@@ -693,14 +704,17 @@
 	width: auto;
 	height: auto;
 	z-index: -1000;
+<<<<<<< HEAD
 	background: url(#) no-repeat;
+=======
+	background: no-repeat;
+>>>>>>> alerj/master
 	background-size: cover;
 }
 
 .bg_video{
 	max-width: 867px;
 	max-height: 655px;
-
 }
 
 video{
