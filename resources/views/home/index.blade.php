@@ -4,16 +4,18 @@
     <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel">
 @stop
 
-@section('sidebar-header')
-    <div class="fundo-form-cabecalho">
-        <div class="balao-chat">
-            <img src="/templates/mv/svg/balao-chat.svg">
+@section('contents')
+    <div id="cabecalho">
+        @include('partials.telefones-uteis')
+
+        @include('partials.topo')
+
+        <div class="fundo-form-cabecalho">
+            <div class="balao-chat">
+                <img src="/templates/mv/svg/balao-chat.svg">
+            </div>
         </div>
     </div>
-@stop
-
-@section('contents')
-    @include('partials.topo')
 
     @include('partials.chat')
 
