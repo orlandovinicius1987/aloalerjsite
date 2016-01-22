@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width:device-width, device-pixel-ratio: 2">
     <title>Alô Alerj</title>
-    <link rel="stylesheet" type="text/css" href="chat-home.css">
+    <link rel="stylesheet" type="text/css" href="../alo-alerj-site.css">
     <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -17,7 +17,15 @@
 
 
 <!--Cabeçalho-->
-<div id="cabecalho">
+<div class="cabecalho">
+
+    <div class="barra-azul-top"></div>
+    <div class="barra-dourada-top"></div>
+
+    <div class="logo-alerj-top">
+        <a href="../index.html"> <img src="../svg/logo-alerj-monocromatica.svg"></a>
+        <img src="../svg/logo-alo-alerj.svg" class="logo-com-tel">
+    </div>
 
     <a class="buton-tel-uteis" href="#lista" id="btn-telefones-uteis">
         <div>
@@ -538,30 +546,126 @@
 
         </div>
 
-        <img src="svg/sombra-lista-tel.svg" class="sombra-lista-tel">
+        <img src="../svg/sombra-lista-tel.svg" class="sombra-lista-tel">
 
     </div>
 
-
-
-    <div class="logo-alerj-top">
-        <a href="../index.html"> <img src="../svg/logo-alerj-monocromatica.svg"></a>
-        <img src="../svg/logo-alo-alerj.svg" class="logo-com-tel">
-    </div>
-    <div class="fundo-form-cabecalho">
-        <div class="balao-chat">
-            <img src="../svg/balao-chat.svg">
-        </div>
-    </div>
-
-
-
-    <div class="barra-azul-top"></div>
-    <div class="barra-dourada-top"></div>
 </div>
 
 
 <!--Chat-->
+
+<div class="formato-chat">
+    <div class="cabecalho-chat-home">
+        <div class="linha-dourada-chat-home"></div>
+        <div class="linha-azul-chat-home"></div>
+        <div class="linha-sombra-home"></div>
+        <div class="botao-voltar">
+            <img src="../svg/voltar.svg" class="icone-voltar"/>
+        </div>
+
+        <div class="info-chat-home">
+            <div class="atendente-home">Atendente Roberto Almeida</div>
+            <div class="tempo-de-atendimento-home">visto há 2 minutos</div>
+        </div>
+
+        <img src="../svg/balao-chat.svg" class="balao-chat-home"/>
+
+    </div>
+
+    <div class="container-chat-home">
+
+        <div class="conversa-home">
+
+        <div class="dialogo">
+            <div class="msn left">
+                <p>Maecenas non ac elit?</p>
+                <small class="time">11:35</small>
+            </div>
+        </div>
+
+        <div class="dialogo">
+            <div class="msn right">
+                <p>Donec ut tortor eu tellus ultricies scelerisque eu a arcu. Sed placerat id hendrerit neque.</p>
+                <small class="time">11:35</small>
+            </div>
+        </div>
+
+        <div class="dialogo">
+            <div class="row">
+                <div class="msn right">
+                    <p>Nuglla</p>
+                    <small class="time">11:35</small>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="dialogo">
+            <div class="msn left">
+                <p>Lorem ipsum dolor sit amet, adipiscing elit. Nulla ut non pretium.</p>
+                <small class="time">11:35</small>
+            </div>
+        </div>
+
+            <div class="dialogo">
+                <div class="msn left">
+                    <p>Maecenas non ac elit?</p>
+                    <small class="time">11:35</small>
+                </div>
+            </div>
+
+            <div class="dialogo">
+                <div class="msn right">
+                    <p>Donec ut tortor eu tellus ultricies scelerisque eu a arcu. Sed placerat id hendrerit neque.</p>
+                    <small class="time">11:35</small>
+                </div>
+            </div>
+
+            <div class="dialogo">
+                <div class="row">
+                    <div class="msn right">
+                        <p>Nuglla</p>
+                        <small class="time">11:35</small>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogo">
+                <div class="msn left">
+                    <p>Lorem ipsum dolor sit amet, adipiscing elit. Nulla ut non pretium.</p>
+                    <small class="time">11:35</small>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    <div class="input-chat">
+        <div class="linha-sombra-input"></div>
+        <input class="input-msn">
+        <div class="botao-enviar">Enviar</div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -572,33 +676,31 @@
     <div class="botoes-rodape">
 
 
-        <a href="../comissoes/comissao-dc.html" id="defesa-do-consumidor" class="botao-e">
+        <a href="comissoes/comissao-dc.html" id="defesa-do-consumidor" class="botao-e">
             <div class="text-e">DISQUE DEFESA DO CONSUMIDOR</div><div class="text-d">0800 023 0007</div>
         </a>
 
-
-        <a href="../comissoes/comissao-ma.html" id="meio-ambiente" class="botao-e">
+        <a href="comissoes/comissao-ma.html" id="meio-ambiente" class="botao-e">
             <div class="text-e">DISQUE DENÚNCIA MEIO AMBIENTE</div><div class="text-d">0800 282 7060</div>
         </a>
 
-        <a href="../comissoes/comissao-dp.html" id="disque-preconceitos" class="botao-e">
+        <a href="comissoes/comissao-dp.html" id="disque-preconceitos" class="botao-e">
             <div class="text-e">DISQUE PRECONCEITOS</div><div class="text-d">0800 025 5108</div>
         </a>
 
-        <a href="../comissoes/comissao-pirataria.html" id="disque-pirataria" class="botao-e">
+        <a href="comissoes/comissao-pirataria.html" id="disque-pirataria" class="botao-e">
             <div class="text-e">DISQUE PIRATARIA</div><div class="text-d">0800 282 0230</div>
         </a>
 
-        <a href="../comissoes/comissao-pd.html" id="disque-pessoa-deficiente" class="botao-e">
-
+        <a href="comissoes/comissao-pd.html" id="disque-pessoa-deficiente" class="botao-e">
             <div class="text-e">DISQUE PESSOA PORTADORA DE DEFICIÊNCIA</div><div class="text-d">0800 282 3596</div>
         </a>
 
-        <a href="../comissoes/comissao-iphone.html" id="disque-saneamento-ambiental" class="botao-e">
+        <a href="comissoes/comissao-iphone.html" id="disque-saneamento-ambiental" class="botao-e">
             <div class="text-e">DISQUE SANEAMENTO AMBIENTAL</div><div class="text-d">0800 282 1559</div>
         </a>
 
-        <a href="../comissoes/comissao-iphone.html" id="seguranca-publica" class="botao-e">
+        <a href="comissoes/comissao-iphone.html" id="seguranca-publica" class="botao-e">
             <div class="text-e">DISQUE SEGURANÇA PUBLICA</div><div class="text-d">0800 023 9191</div>
         </a>
 

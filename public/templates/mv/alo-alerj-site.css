@@ -121,9 +121,10 @@
 		border-color: #06193A;
 		border-radius: 15px;
 		display: none;
-		-webkit-box-shadow: 3px 4px 4px 0px rgba(128, 128, 128, 0.46);
-		-moz-box-shadow: 3px 4px 4px 0px rgba(128, 128, 128, 0.46);
-		box-shadow: 3px 4px 4px 0px rgba(128, 128, 128, 0.46);
+		-webkit-box-shadow: 3px 4px 4px 0 rgba(128, 128, 128, 0.46);
+		-moz-box-shadow: 3px 4px 4px 0 rgba(128, 128, 128, 0.46);
+		box-shadow: 3px 4px 4px 0 rgba(128, 128, 128, 0.46);
+		z-index: 120;
 	}
 
 	.indice {
@@ -309,6 +310,9 @@
 		width: 275px;
 		height: 25px;
 		position: relative;
+		font-family: 'Maven Pro', sans-serif, 'Normal 400';
+		font-size: 1.4em;
+		color: #4E5E70;
 
 	}
 
@@ -840,5 +844,237 @@
 	#ul-pirataria {
 		text-indent: 0;
 	}
+
+
+
+
+
+	/*Chat*/
+
+	.formato-chat{
+		width: 69.4%;
+		height: 645px;
+		position: absolute;
+		top:176px;
+		display: inline-table;
+		left: 15.3%;
+		border: solid #F2F2F2;
+		border-width: 2px;
+		border-top: 0;
+		border-bottom: 0;
+		border-right: 0;
+		background: url("svg/textura-chat.svg");
+
+	}
+
+	.fundo-form-cabecalho-chat {
+		width: 320px;
+		height: 176px;
+		background-color: #E7E8EC;
+		position: absolute;
+		top: 0;
+		right: 15.3%;
+		z-index: 0;
+
+	}
+
+	.cabecalho-chat-home {
+		width: 320px;
+		height: 130px;
+		position: relative;
+		top: -130px;
+		float: right;
+		background-color: #EFEFF1;
+		z-index: 100;
+		border-radius: 1.5em 1.5em 0 0;
+
+	}
+
+	.linha-dourada-chat-home {
+		width: 100%;
+		height: 3px;
+		position: absolute;
+		bottom: 0%;
+		left: 0%;
+		background-color: #8FA143;
+	}
+
+	.linha-azul-chat-home {
+		width: 100%;
+		height: 7px;
+		position: absolute;
+		bottom: 3px;
+		background-color: #172B53;
+	}
+
+	.linha-sombra-home {
+		width: 100%;
+		height: 3px;
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		background-color: #B6BCC7;
+	}
+
+	.botao-voltar {
+		width: 130px;
+		height: 130px;
+		position: absolute;
+		top: 34px;
+		left: 3%;
+		display: none;
+
+	}
+
+	.icone-voltar {
+		width: 40%;
+		height: auto;
+		position: absolute;
+		top: 14%;
+		left: 25%;
+	}
+
+	.info-chat-home {
+		width: 80%;
+		height: auto;
+		position: absolute;
+		left: 10%;
+		top: 45px;
+	}
+
+	.atendente-home {
+		font-family: 'Oswald', sans-serif;
+		font-size: 1.8em;
+		color: #172B53;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+
+	.tempo-de-atendimento-home {
+		font-family: 'Maven Pro', sans-serif, 'Bold 700';
+		font-size: 1.5em;
+		color: #172B53;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+
+	.balao-chat-home {
+		width: 70px;
+		height: auto;
+		position: absolute;
+		top: -15px;
+		right: -15px;
+	}
+
+	.container-chat-home {
+		width: 100%;
+		height: 545px;
+		position: absolute;
+		top: 0;
+		left: 0%;
+		overflow-y: scroll;
+		padding-top: 10px;
+
+	}
+
+	.conversa-home {
+		font-family: 'Maven Pro', sans-serif, 'Normal 400';
+		font-size: 1.2em;
+		color: #172B53;
+		margin: 0;
+		padding: 20px;
+		width: 96%;
+		height: auto;
+	}
+
+	.msn {
+		padding: 10px;
+		margin-bottom: 10px;
+		border-color: #172B53;
+		border: solid 0.035em;
+		float: right;
+		border-radius: 1em;
+		text-align: right;
+
+	}
+
+	.left {
+		background-color: #F2F2F2;
+		float: left;
+		text-align: left;
+		mix-blend-mode: multiply;
+
+	}
+
+	.right {
+		background-color: #E0E5CB;
+		float: right;
+		text-align: right;
+		mix-blend-mode: multiply;
+
+	}
+
+	.msn p {
+		margin-top: 2px;
+		margin-bottom: 10px;
+	}
+
+	.row {
+		width: 100%;
+		background-color: #2b542c;
+	}
+
+	.input-chat {
+		width: 100%;
+		height: 90px;
+		background-color: #EFEFF1;
+		display: inline-table;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+
+	.linha-sombra-input {
+		width: 100%;
+		height: 6px;
+		background-color: #B6BCC7;
+		position: absolute;
+		top: 0;
+		left: 0%;
+	}
+
+	.input-msn {
+		width: 80%;
+		height: 35px;
+		position: absolute;
+		top: 22px;
+		left: 20px;
+		border: solid 2px;
+		border-color: #172B53;
+		border-radius: 0.7em;
+	}
+
+	.botao-enviar {
+		font-family: 'Maven Pro', sans-serif, 'Normal 400';
+		font-size: 1.3em;
+		color: #172B53;
+		position: absolute;
+		top: 32px;
+		right: 5%;
+	}
+
+	.dialogo{
+		width: 100%;
+		display: inline-table;
+	}
+
 
 }
