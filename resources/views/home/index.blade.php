@@ -1,21 +1,18 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel">
+    <div class="logo-alerj-top">
+        <a href="index.html"> <img src="/templates/mv/svg/logo-alerj-monocromatica.svg"></a>
+        <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel">
+    </div>
+@stop
+
+@section('sidebar-name')
+    <img src="/templates/mv/svg/balao-chat.svg">
 @stop
 
 @section('contents')
-    <div id="cabecalho">
-        @include('partials.telefones-uteis')
-
-        @include('partials.topo')
-
-        <div class="fundo-form-cabecalho">
-            <div class="balao-chat">
-                <img src="/templates/mv/svg/balao-chat.svg">
-            </div>
-        </div>
-    </div>
+    @include('partials.header')
 
     @include('partials.chat')
 

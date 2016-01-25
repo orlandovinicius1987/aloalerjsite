@@ -4,7 +4,7 @@
     <div class="conteiner-logo">
         @include('partials.logo-alerj-comissoes')
 
-        <h1 class="nome-cmissao">COMISSÃO DE DEFESA <br/>DO CONSUMIDOR</h1>
+        <h1 class="nome-cmissao">SEGURANÇA PÚBLICA</h1>
     </div>
 @stop
 
@@ -16,7 +16,7 @@
     @include('partials.header')
 
     @include('partials.committee-telephone', [
-        'title' => 'DEFESA DO CONSUMIDOR',
+        'title' => 'DISQUE SEGURANÇA PÚBLICA',
         'telephone' => '0800 023 0007',
         'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
     ])
@@ -31,3 +31,4 @@
 
     @include('partials.scripts')
 @stop
+
