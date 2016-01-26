@@ -758,6 +758,16 @@
 		left: 15.298671875%;
 	}
 
+	.conteiner-conteudo-dc{
+		width: 44%;
+		height: 600px;
+		/*background-color: #1b6d85;*/
+		display: inline-table;
+		position: absolute;
+		top: 250px;
+		left: 15.298671875%;
+	}
+
 	.imagem-comissao{
 		width: 60%;
 		height: auto;
@@ -765,6 +775,15 @@
 		position: relative;
 		left: 20%;
 	}
+
+	.imagem-comissao-dc{
+		width: 90%;
+		height: auto;
+		align-items: center;
+		position: relative;
+		left: 5%;
+	}
+
 
 	.imagem-comissao-dp{
 		width: 100%;
