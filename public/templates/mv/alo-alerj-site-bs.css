@@ -1,0 +1,27 @@
+.cabecalho {
+    background-color: #C7CCD6;
+}
+
+.barra-dourada-top {
+    height: 5px;
+    background-color: #8FA143;
+}
+
+.barra-azul-top {
+    height: 20px;
+    background-color: #172B53;
+}
+
+.barra-logo-top {
+    height: 80px;
+    background-color: white;
+}
+
+.logo-alerj-top {
+    width: 130px;
+    top: -25px;
+}
+
+.logo-com-tel {
+    width: 150px;
+}
