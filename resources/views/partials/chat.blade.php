@@ -1,13 +1,14 @@
 <!--Chat-->
 <div class="chat">
     <div id="comunicacao">
-
         <div class="position-input-chat">
-            <form method="POST" action="http://aloalerjsite.antoniocarlosribeiro.com/foo/bar" accept-charset="UTF-8">
-                <input name="_token" type="hidden" value="LVdL3FFEKynmYdKKKlTdt7Ba0yMZezBrfXw0V3Fq">
+            <form method="POST" action="{{ env('CHAT_CLIENT_URL') }}" accept-charset="UTF-8">
+                <input name="clientId" type="hidden" value="{{ env('CHAT_CLIENT_ID') }}">
+                <input name="layout" type="hidden" value="{{ env('CHAT_LAYOUT') }}">
+
                 <div>
                     <label for="input-nome" id="label-nome">Nome</label>
-                    <input name="nome" type="text" id="input-nome">
+                    <input name="name" type="text" id="input-nome">
                 </div>
 
                 <div>
@@ -55,10 +56,5 @@
             <img src="/templates/mv/svg/telegram.svg" class="icone-telegram">
             <p class="leg-telegram">Telegram</p>
         </a>
-
     </div>
-
-
 </div>
-
-<!--Rodapé-->
