@@ -1,0 +1,231 @@
+bcssody {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+  }
+ .bg-4 { 
+      background-color: #172B53; /* AZUL RODAPE*/
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+
+  .cabecalho{
+      border-top: 10px solid #172B53;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+      background: #C7CCD6 !important;
+      height: 176px;
+  }
+
+.cabecalho:before {
+    background: none;
+    border-top: 4px solid #8fa143;
+}
+.barra-dourada-top {
+    width: 100%;
+    height: 3px;
+    background-color: #8FA143;
+}
+
+
+  .navbar-right {
+    background-color: #E7E8EC;
+    /*height: 100px;*/
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    text-align: center !important;
+    padding-bottom: 26px;
+    margin-right: 0px;
+  }
+
+
+  .navbar-content-right {
+      font-family: 'Maven Pro', sans-serif, 'Medium 500';
+    background-color: #E7E8EC;
+    height:100% !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+      color: #172B53;
+  }
+
+
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+
+
+.alerj-logo {
+    height: 152px !important;
+}
+  
+
+  .no-svg .alerj-logo {
+  background-image: url(images/logo-alerj.svg);
+  }
+
+
+.alolerj-logo {
+    height: 92px !important;
+    margin-top: 30px !important;
+}
+
+  .no-svg .aloalerj-logo {
+  background-image: url(images/logo-alo-alerj.svg);
+  }
+
+.balao-chat {
+    height: 120px;
+    margin-top: 20px;
+}
+
+  .no-svg .balao-chat {
+  background-image: url(images/balao-chat.svg);
+  }
+
+
+.buton-tel-uteis {
+    height: 59px;
+    width: 59px;
+    position: absolute;
+    top: 68px;
+    right: 40%;
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+
+  / /*Transition*/
+  / -webkit-transition: All 0.5 s ease;
+    -moz-transition: All 0.5s ease;
+    -o-transition: All 0.5s ease;
+    -ms-transition: All 0.5s ease;
+    transition: All 0.5s ease;
+
+  / /*Rounded Corners*/
+  / -webkit-border-radius: 30 px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+
+  }
+
+  .buton-tel-uteis:hover {
+    width: 300px;
+    height: 300px;
+  }
+
+
+
+
+  .bg_video {
+    margin-top: -70px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+
+
+
+#accordion {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.panel-default > .panel-heading{
+    background: #172b53;
+}
+
+.panel-heading {
+    padding: 0;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.panel-group .panel {
+    border-radius: 0;
+    margin-bottom: -22px;
+    background: #172b53;
+    border-bottom: solid 5px #8FA143;
+}
+
+.panel-title a {
+    color: #172B5;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    outline: none;
+    margin-top: -10px;
+}
+
+.panel-title a:hover, .panel-title a:focus, .panel-title a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+
+.corpo-comissoes {
+    /*width: 100px;
+    height: 26px;*/
+    background-color: #8FA143;
+    border-radius: 15px 15px 0 0;
+    text-transform: uppercase !important;
+}
+
+.panel-body{
+    background: #172b53;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    border-bottom: 5px solid #8FA143;
+    border-top: 1px solid #8FA143 !important;
+}
+
+.iniciar-conversa {
+    border-radius: 5px;
+    border-color: #172B53;
+    border: 1px solid;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    color: #172B53;
+    background-color: #4EC636;
+    text-transform: uppercase;
+}
+
+.icones-apps {
+    margin: 0 20px 0 20px  !important;
+}
+
+.form-horizontal{
+  margin: 60px 20px 0 20px ;
+}
+
+.texto-chat {
+    text-align: center;
+    margin: 50px 0  50px 0 ;
+    line-height: 140%;
+}
+
+.logo-alerj-rodape {
+    margin: -53px 25px -24px 25px;
+}
