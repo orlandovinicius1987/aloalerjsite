@@ -1,45 +1,27 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <div class="conteiner-logo">
-        @include('partials.logo-alerj-comissoes')
-
-        <h1 class="nome-cmissao">COMISSÃO PARA PREVENIR <br/>E COMBATER A PIRATARIA</h1>
-    </div>
+    <h1 class="nome-comissao">Comissão para previnir <br/>e Combater a Pirataria</h1>
 @stop
 
 @section('sidebar-name')
     <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel-dc">
 @stop
 
-@section('contents')
-    @include('partials.header')
+@section('content-main')
 
+    <img src="http://www.alerj.rj.gov.br/fotos/busconsumidor_04_fv_30_06_14.jpg" class="img-responsive img-comissoes">
+    <p class="texto-comissao">A Comissão de Defesa dos Direitos do Consumidor zela pelos seus direitos enquanto consumidor, seja de serviços ou produtos. Ela se manifesta aos assuntos referentes à economia popular; à composição, qualidade, apresentação, publicidade e distribuição de bens e serviços; às relações de consumo e medidas de defesa do consumidor; e ao acolhimento e investigação de denúncias relacionados aos direitos do consumidor.<br/>
+        Existem várias formas de entrar em contato com a comissão. Os atendimentos são feitos pelos canais do Alô Alerj ou presencialmente, na sala localizada no térreo do prédio da Alerj, na Rua da Alfândega, número 8. A comissão também vai até você por meio do Ônibus Itinerante, que faz rotas por todo o Estado. Para solicitar a presença do Ônibus da Defesa do Consumidor em seu bairro e conferir os itinerários já programados, <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>
+
+
+@stop
+
+@section('content-sidebar')
     @include('partials.committee-telephone', [
         'title' => 'DISQUE PIRATARIA',
         'telephone' => '0800 282 3596',
         'site' => '',
     ])
-
-    <!--Conteudo-->
-    <div class="conteiner-conteudo">
-        <img src="http://1.bp.blogspot.com/-0W62tYZer8k/UDUqHyVqi4I/AAAAAAAAAGw/0K6UGj02kuY/s1600/REVISTA+PAGINA+DUPLA.jpg" class="imagem-comissao-pirataria">
-        <div>
-            <p class="texto-comissao">A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
-                Cabe à comissão:</p>
-            <ul id="ul-pirataria">
-                <li>Manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria</li>
-                <li>Fiscalizar e acompanhar os programas, projetos e ações governamentais na área de combate à pirataria</li>
-                <li>Estimular ações da sociedade civil voltadas ao combate à pirataria no Estado</li>
-                <li>Realizar discussões sobre o tema</li>
-                <li>Promover campanhas de conscientização</li>
-                <li>Propor ações preventivas aos governos e estimular pesquisas sobre o assunto</li>
-            </ul>
-        </div>
-    </div>
-
-    @include('partials.footer')
-
-    @include('partials.scripts')
 @stop
 

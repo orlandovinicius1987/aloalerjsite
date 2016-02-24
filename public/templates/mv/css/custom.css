@@ -107,41 +107,6 @@ p {
     background-image: url(images/balao-chat.svg);
 }
 
-.buton-tel-uteis {
-    height: 59px;
-    width: 59px;
-    position: absolute;
-    top: 68px;
-    right: 40%;
-    overflow: hidden;
-    display: block;
-    z-index: 100;
-
-/ /*Transition*/
-/ -webkit-transition: All 0.5 s ease;
-    -moz-transition: All 0.5s ease;
-    -o-transition: All 0.5s ease;
-    -ms-transition: All 0.5s ease;
-    transition: All 0.5s ease;
-
-/ /*Rounded Corners*/
-/ -webkit-border-radius: 30 px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-}
-
-.buton-tel-uteis:hover {
-    width: 300px;
-    /*height: 300px;*/
-}
-
-.buton-fundo-tel-uteis{
-    height: 59px;
-    width: 197px;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
 
 .bg_video {
     margin-bottom: 0 !important;
@@ -312,6 +277,44 @@ img.logo-com-tel-dc {
 }
 
 
+/*Botão Agenda*/
+
+.buton-tel-uteis {
+    height: 59px;
+    width: 59px;
+    position: absolute;
+    top: 51px;
+    right: 10%;
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+
+/ /*Transition*/
+/ -webkit-transition: All 0.5 s ease;
+    -moz-transition: All 0.5s ease;
+    -o-transition: All 0.5s ease;
+    -ms-transition: All 0.5s ease;
+    transition: All 0.5s ease;
+
+/ /*Rounded Corners*/
+/ -webkit-border-radius: 30 px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.buton-tel-uteis:hover {
+    width: 300px;
+    /*height: 300px;*/
+}
+
+.buton-fundo-tel-uteis{
+    height: 59px;
+    width: 197px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/* END Botão Agenda*/
 /*AGENDA*/
 
 .agenda-tel-uteis {
@@ -319,8 +322,8 @@ img.logo-com-tel-dc {
     height: 620px;
     background-color: #172B53;
     position: absolute;
-    top: 133px;
-    right: 40%;
+    top: 115px;
+    right: 10%;
     border: solid 2px;
     border-color: #06193A;
     border-radius: 15px;
