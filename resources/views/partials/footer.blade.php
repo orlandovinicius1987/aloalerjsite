@@ -13,13 +13,13 @@
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body ">
                 <div class="container">
-                    <div class="col-md-4">
-                        <p>Disque Defesa do Consumidor</p>
+                    <div class="col-md-4 comissoes-footer">
+                        <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
                         <p>Disque Denúncia Meio Ambiente</p>
                         <p>Disque Preconceitos</p>
                         <p>Disque Pirataria</p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 comissoes-footer">
                         <p>Disque Pessoa Portadora de Deficiência</p>
                         <p>Disque Saneamento Ambiental</p>
                         <p>Disque Segurança Pública</p>

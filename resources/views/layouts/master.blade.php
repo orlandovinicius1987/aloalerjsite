@@ -23,9 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div class="container-fluid bg-3 text-center">
-                        @yield('content-main')
-                    </div>
+                    @yield('content-main')
                 </div>
 
                 <div class="navbar-content-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs col-centered">
