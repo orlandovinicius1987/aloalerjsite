@@ -13,16 +13,16 @@
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body ">
                 <div class="container">
-                    <div class="col-md-4">
-                        <p>Disque Defesa do Consumidor</p>
-                        <p>Disque Denúncia Meio Ambiente</p>
-                        <p>Disque Preconceitos</p>
-                        <p>Disque Pirataria</p>
+                    <div class="col-md-4 comissoes-footer">
+                        <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
+                        <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
+                        <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
+                        <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
                     </div>
-                    <div class="col-md-4">
-                        <p>Disque Pessoa Portadora de Deficiência</p>
-                        <p>Disque Saneamento Ambiental</p>
-                        <p>Disque Segurança Pública</p>
+                    <div class="col-md-4 comissoes-footer">
+                        <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
+                        <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
+                        <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-3">

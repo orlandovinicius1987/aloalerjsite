@@ -1,22 +1,9 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <div class="col-xs-6">
-            <a href="/">
-                <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
-                    Alerj Logo <!-- fallback image in CSS -->
-                </object>
-            </a>
-        </div>
-
-        <div class="col-xs-6">
-            <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo">
-                AloAlerj Logo <!-- fallback image in CSS -->
-            </object>
-        </div>
-    </div>
-
+    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo">
+        AloAlerj Logo
+    </object>
 @stop
 
 @section('sidebar-name')
