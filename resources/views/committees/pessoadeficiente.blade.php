@@ -27,7 +27,7 @@
         <p class="texto-comissao-pd">A Comissão da Pessoa com Deficiência tem como objetivo assegurar os direitos de todas as pessoas com algum tipo de deficiência. Ela recebe e investiga denúncias relacionas ao tema, por meio do Alô Alerj.  A comissão conta com a colaboração de entidades que estão relacionadas à causa. Compete a ela se manifestar sobre todas as proposições referentes à Pessoa com Deficiência, bem como à legislação pertinente.</p>
     </div>
 
-    @include('partials.rodape')
+    @include('partials.footer')
 
     @include('partials.scripts')
 @stop

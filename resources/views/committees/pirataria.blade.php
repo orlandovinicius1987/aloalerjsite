@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    @include('partials.rodape')
+    @include('partials.footer')
 
     @include('partials.scripts')
 @stop
