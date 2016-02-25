@@ -5,11 +5,24 @@
             <div class="panel-heading btn-group dropup">
                 <h4 class="panel-title corpo-comissoes">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Comissões
+                        Comissões <span class="caret"></span>
                     </a>
                 </h4>
             </div>
         </div>
+        {{--<!-- Single button -->--}}
+        {{--<div class="btn-group dropup">--}}
+            {{--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                {{--Comissões --}}
+            {{--</button>--}}
+            {{--<ul class="dropdown-menu">--}}
+                {{--<li><a href="#">Action</a></li>--}}
+                {{--<li><a href="#">Another action</a></li>--}}
+                {{--<li><a href="#">Something else here</a></li>--}}
+                {{--<li role="separator" class="divider"></li>--}}
+                {{--<li><a href="#">Separated link</a></li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body ">
                 <div class="container">

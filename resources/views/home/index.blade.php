@@ -36,7 +36,7 @@
             </button>
         </div>
     </form>
-    <div class="texto-chat ">
+    <div class="texto-chat">
         <p>
             Use outros meios para fazer contato com o Alô Alerj pelo aplicativos abaixo, usando o número
             <strong class="telefone">21 98890 4742.</strong>
@@ -54,5 +54,4 @@
                 <p class="leg-telegram">Telegram</p></a>
         </div>
     </div>
-
 @stop
