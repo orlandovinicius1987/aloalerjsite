@@ -27,7 +27,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-         'title' => 'DEFESA DO CONSUMIDOR',
+         'title' => 'DISQUE MEIO AMBIENTE',
          'telephone' => '0800 023 0007',
          'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
      ])
