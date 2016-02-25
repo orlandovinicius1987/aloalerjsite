@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo">
+    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive">
         AloAlerj Logo
     </object>
 @stop
