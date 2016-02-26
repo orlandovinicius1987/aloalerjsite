@@ -69,6 +69,10 @@ p {
     display:         flex;
 }
 
+.sidebar-right-top {
+    background-color: #E7E8EC;
+}
+
 .sidebar-right {
     background-color: #E7E8EC;
     /*height: 100px;
@@ -77,6 +81,8 @@ p {
     text-align: center !important;
     padding-bottom: 26px;
     margin-right: 0px;*/
+    min-height: calc(100vh - 172px);
+
 }
 
 .navbar-content-right {
