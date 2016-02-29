@@ -1,15 +1,11 @@
-
-
-
-
 <!-- Header -->
 <div class="barra-dourada-top"></div>
 <div class="cabecalho">
     <div class="container">
 
         <div class="row row-eq-height">
-            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+            <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-6 col-sm-2">
                     <a href="/">
                     <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
                     Alerj Logo <!-- fallback image in CSS -->
@@ -19,7 +15,7 @@
                 <div class="col-xs-6 col-lg-3">@yield('page-name')</div>
                 <div class="hidden-xs col-lg-7">@include('partials.telefones-uteis')</div>
             </div>
-            <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
+            <div class="sidebar-right-top hidden-xs col-sm-3 text-center">@yield('sidebar-name')</div>
         </div>
 
         {{--<div class="row">--}}
