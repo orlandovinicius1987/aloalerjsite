@@ -17,28 +17,20 @@
     <body>
         @include('partials.header')
 
-
         <!-- Content -->
-
         <div class="container">
-            <div class="row">
-                <div class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
+
+            <div class="row row-eq-height">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     @yield('content-main')
                 </div>
 
-                <div class="navbar-content-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs col-centered">
-                        @yield('content-sidebar')
+                <div class="sidebar-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs">
+                    @yield('content-sidebar')
                 </div>
             </div>
         </div>
         <!-- End Content -->
-
-
-        <div class="content">
-            <div class="container">
-
-            </div>
-        </div>
 
         @include('partials.footer')
         @include('partials.scripts')
