@@ -1,5 +1,27 @@
 <!-- Footer -->
-<div class="panel-group" id="accordion">
+
+
+<div class="visible-xs col-xs-12 text-center footer-mobile">
+    <div class="tit-comissoes"> Comissões </div>
+    <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
+    <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
+    <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
+    <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
+    <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
+    <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
+    <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
+
+
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+        <img src="/templates/mv/svg/logo-alerj-rodape.svg" class=" img-responsive">
+    </div>
+    <div class="col-xs-2"></div>
+</div>
+
+
+
+<div class="panel-group hidden-xs" id="accordion"  >
     <div class="panel panel-default">
         <div class="container">
             <div class="panel-heading btn-group dropup">

@@ -19,6 +19,29 @@
             <source src="/templates/mv/videos/operadores_1.mp4" type="video/mp4">
         </video>
     </div>
+
+    <div class="visible-xs">
+
+        <div class="col-xs-12 text-center icones-apps-mobile">
+            <div class="col-xs-6">
+                <img src="/templates/mv/svg/whatsapp.svg" class="img-responsive">
+                <P>WhatsApp</P>
+            </div>
+
+            <div class="col-xs-6">
+                <img src="/templates/mv/svg/telegram.svg" class="img-responsive">
+                <P>Telegram</P>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <p>
+                Use outros meios para fazer contato com o Alô Alerj pelo aplicativos WhatsApp ou Telegram, usando o número
+            </p>
+                <div class="telefone">21 98890 4742</div>
+        </div>
+
+    </div>
 @stop
 
 @section('content-sidebar')

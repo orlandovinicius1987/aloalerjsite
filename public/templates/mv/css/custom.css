@@ -479,3 +479,102 @@ img.logo-com-tel-dc {
     left: 315px;
 }
 /*END AGENDA*/
+
+
+.visible-xs .telefone {
+    font-size: 30px;
+    font-weight: 600;
+    background: #172B53;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.icones-apps-mobile {
+    margin-top: 30px;
+}
+
+.icones-apps-mobile img {
+    max-height: 75px;
+}
+.footer-mobile {
+    background: #182b53;
+    font-family: 'Oswald', sans-serif;
+    margin-top: 50px;
+}
+
+
+.footer-mobile .tit-comissoes {
+    background-color: #8FA143;
+    border-radius: 15px 15px 0 0;
+    text-transform: uppercase !important;
+    padding: 5px 0 5px 0;
+    font-size: 20px;
+    margin: -40px 30px 12px 30px;
+}
+
+.footer-mobile p{
+    color: #ffffff;
+    text-transform: uppercase;
+    border-bottom: solid #3d574c 1px;
+    padding: 0 0 8px 0;
+}
+
+.footer-mobile a {
+    color: #ffffff;
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+    .cabecalho .col-xs-12 {
+
+    }
+    .col-xs-12 .alerj-logo {
+        height: 80px !important;
+    }
+
+    .nome-comissao {
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    .texto-comissao {
+        -webkit-column-count: 1;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .alolerj-logo {
+        height: 57px !important;
+        margin-top: 10px !important;
+    }
+
+
+}
+
+
+/*
+.container .col-xs-12 {
+    max-height: 80px;
+}
+.container .col-xs-12 .alerj-logo {
+    height: 80px !important;
+}
+
+.nome-comissao {
+    margin-top: 15px;
+    font-size: 16px;
+
+}
+
+.col-xs-12 .texto-comissao {
+    -webkit-column-count: 1;
+    text-align: left;
+    font-size: 16px;
+}
+
+.col-xs-12 .col-xs-8 .alolerj-logo {
+    height: 57px !important;
+    margin-top: 10px !important;
+}
+*/
+
