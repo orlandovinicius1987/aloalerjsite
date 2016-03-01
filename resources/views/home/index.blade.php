@@ -13,11 +13,22 @@
 @stop
 
 @section('content-main')
-    <div id="owl-example" class="owl-carousel text-center">
-        <div><img src="http://kenwheeler.github.io/slick/img/fonz1.png"></div>
-        <div><img src="http://kenwheeler.github.io/slick/img/fonz2.png"></div>
-        <div><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></div>
+
+    <div id="slider">
+        <a href="#" class="control_next">>></a>
+        <a href="#" class="control_prev"><<</a>
+        <ul>
+            <li><img src="http://kenwheeler.github.io/slick/img/fonz1.png"></li>
+            <li><img src="http://kenwheeler.github.io/slick/img/fonz2.png"></li>
+            <li><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></li>
+        </ul>
     </div>
+
+    {{--<div id="owl-example" class="owl-carousel text-center">--}}
+        {{--<div></div>--}}
+        {{--<div></div>--}}
+        {{--<div></div>--}}
+    {{--</div>--}}
 
     {{--<div class="bg_video">--}}
         {{--<video autoplay="" loop="" poster="#" class="img-responsive">--}}
