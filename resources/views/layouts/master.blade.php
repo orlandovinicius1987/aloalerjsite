@@ -7,20 +7,8 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href="//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
-        <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-        <!-- Important Owl stylesheet -->
-        <link rel="stylesheet" href="/vendor/owl-carousel/owl.carousel.css">
-
-        <!-- Default Theme -->
-        <link rel="stylesheet" href="/vendor/owl-carousel/owl.theme.css">
-
-        <!-- Include js plugin -->
-        <script src="vendor/owl-carousel/owl.carousel.js"></script>
-
     </head>
 
     <body>
