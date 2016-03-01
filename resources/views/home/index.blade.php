@@ -13,13 +13,6 @@
 @stop
 
 @section('content-main')
-
-    <div class="your-class">
-        <div>your content</div>
-        <div>your content</div>
-        <div>your content</div>
-    </div>
-
     <div class="bg_video">
         <video autoplay="" loop="" poster="#" class="img-responsive">
             <source src="/templates/mv/videos/operadores_1.webm" type="video/webm">

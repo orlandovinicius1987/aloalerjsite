@@ -37,31 +37,15 @@
 </script>
 
 <script language="javascript">
-    jQuery('#collapseOne').on('show.bs.collapse', function () {
-        jQuery('.panel-heading').animate({}, 500);
-        jQuery('.panel-heading').addClass('dropdown');
-        jQuery('.panel-heading').removeClass('dropup');
+    $('#collapseOne').on('show.bs.collapse', function () {
+        $('.panel-heading').animate({}, 500);
+        $('.panel-heading').addClass('dropdown');
+        $('.panel-heading').removeClass('dropup');
     })
-    jQuery('#collapseOne').on('hide.bs.collapse', function () {
-        jQuery('.panel-heading').animate({}, 500);
-        jQuery('.panel-heading').addClass('dropup');
-        jQuery('.panel-heading').removeClass('dropdown');
+    $('#collapseOne').on('hide.bs.collapse', function () {
+        $('.panel-heading').animate({}, 500);
+        $('.panel-heading').addClass('dropup');
+        $('.panel-heading').removeClass('dropdown');
 
     })
-</script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function()
-    {
-        jQuery('.your-class').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            fade: true,
-            cssEase: 'linear',
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000
-        });
-    });
 </script>

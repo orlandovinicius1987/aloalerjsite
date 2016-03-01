@@ -1,3 +1,7 @@
+
+
+
+
 <!-- Header -->
 <div class="barra-dourada-top"></div>
 <div class="cabecalho">
@@ -15,7 +19,7 @@
                 <div class="col-xs-8 col-lg-3">@yield('page-name')</div>
                 <div class="hidden-xs col-lg-7">@include('partials.telefones-uteis')</div>
             </div>
-            <div class="sidebar-right-top hidden-xs col-sm-3 text-center">@yield('sidebar-name')</div>
+            <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
         </div>
 
         <div class="col-xs-12 visible-xs ">

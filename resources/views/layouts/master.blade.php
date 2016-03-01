@@ -7,12 +7,11 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href="//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
-
-        <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="/vendor/slick/slick-theme.css"/>
-
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -22,11 +21,11 @@
         <div class="container">
 
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     @yield('content-main')
                 </div>
 
-                <div class="sidebar-right hidden-xs col-sm-3">
+                <div class="sidebar-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs">
                     @yield('content-sidebar')
                 </div>
             </div>
@@ -34,12 +33,6 @@
         <!-- End Content -->
 
         @include('partials.footer')
-
-        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
-
         @include('partials.scripts')
     </body>
 </html>
