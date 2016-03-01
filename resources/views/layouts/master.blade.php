@@ -10,13 +10,18 @@
         <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
-
-        <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="/vendor/slick/slick-theme.css"/>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+
+        <!-- Important Owl stylesheet -->
+        <link rel="stylesheet" href="/vendor/owl-carousel/owl.carousel.css">
+
+        <!-- Default Theme -->
+        <link rel="stylesheet" href="/vendor/owl-carousel/owl.theme.css">
+
+        <!-- Include js plugin -->
+        <script src="vendor/owl-carousel/owl.carousel.js"></script>
+
     </head>
 
     <body>

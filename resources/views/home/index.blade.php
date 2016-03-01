@@ -13,7 +13,7 @@
 @stop
 
 @section('content-main')
-    <div class="slider">
+    <div id="owl-example" class="owl-carousel text-center">
         <div><img src="http://kenwheeler.github.io/slick/img/fonz1.png"></div>
         <div><img src="http://kenwheeler.github.io/slick/img/fonz2.png"></div>
         <div><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></div>
