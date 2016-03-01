@@ -3,6 +3,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script>
+    // Disable jQuery Mobile loading message
+    $.mobile.loading().hide();
+    $.mobile.loadingMessage = false;
+
     var isShowing = false;
 
     jQuery(function()
