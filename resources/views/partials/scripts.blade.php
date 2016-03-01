@@ -75,40 +75,89 @@
     {{--});--}}
 {{--</script>--}}
 
+{{--<script language="javascript">--}}
+{{--$(document).ready(function() {--}}
+
+{{--$("#owl-example").owlCarousel({--}}
+
+    {{--// Most important owl features--}}
+    {{--items : 1,--}}
+    {{--itemsCustom : false,--}}
+    {{--itemsDesktop : [1199,1],--}}
+    {{--itemsDesktopSmall : [980,1],--}}
+    {{--itemsTablet: [768,1],--}}
+    {{--itemsTabletSmall: false,--}}
+    {{--itemsMobile : [479,1],--}}
+    {{--singleItem : true,--}}
+    {{--itemsScaleUp : true,--}}
+    {{--//Basic Speeds--}}
+    {{--slideSpeed : 200,--}}
+    {{--paginationSpeed : 800,--}}
+    {{--rewindSpeed : 1000,--}}
+    {{--//Autoplay--}}
+    {{--autoPlay : true,--}}
+    {{--stopOnHover : false,--}}
+    {{--// Navigation--}}
+    {{--navigation : false,--}}
+    {{--rewindNav : true,--}}
+    {{--scrollPerPage : false,--}}
+    {{--// Responsive--}}
+    {{--responsive: true,--}}
+    {{--responsiveRefreshRate : 200,--}}
+    {{--responsiveBaseWidth: window,--}}
+    {{--//Auto height--}}
+    {{--autoHeight : true--}}
+    {{--}--}}
+{{--);--}}
+
+{{--});--}}
+{{--</script>--}}
+
 <script language="javascript">
-$(document).ready(function() {
+jQuery(document).ready(function ($) {
 
-$("#owl-example").owlCarousel({
+$('#checkbox').change(function(){
+setInterval(function () {
+moveRight();
+}, 3000);
+});
 
-    // Most important owl features
-    items : 1,
-    itemsCustom : false,
-    itemsDesktop : [1199,1],
-    itemsDesktopSmall : [980,1],
-    itemsTablet: [768,1],
-    itemsTabletSmall: false,
-    itemsMobile : [479,1],
-    singleItem : true,
-    itemsScaleUp : true,
-    //Basic Speeds
-    slideSpeed : 200,
-    paginationSpeed : 800,
-    rewindSpeed : 1000,
-    //Autoplay
-    autoPlay : true,
-    stopOnHover : false,
-    // Navigation
-    navigation : false,
-    rewindNav : true,
-    scrollPerPage : false,
-    // Responsive
-    responsive: true,
-    responsiveRefreshRate : 200,
-    responsiveBaseWidth: window,
-    //Auto height
-    autoHeight : true
-    }
-);
+var slideCount = $('#slider ul li').length;
+var slideWidth = $('#slider ul li').width();
+var slideHeight = $('#slider ul li').height();
+var sliderUlWidth = slideCount * slideWidth;
+
+$('#slider').css({ width: slideWidth, height: slideHeight });
+
+$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+$('#slider ul li:last-child').prependTo('#slider ul');
+
+function moveLeft() {
+$('#slider ul').animate({
+left: + slideWidth
+}, 200, function () {
+$('#slider ul li:last-child').prependTo('#slider ul');
+$('#slider ul').css('left', '');
+});
+};
+
+function moveRight() {
+$('#slider ul').animate({
+left: - slideWidth
+}, 200, function () {
+$('#slider ul li:first-child').appendTo('#slider ul');
+$('#slider ul').css('left', '');
+});
+};
+
+$('a.control_prev').click(function () {
+moveLeft();
+});
+
+$('a.control_next').click(function () {
+moveRight();
+});
 
 });
 </script>
