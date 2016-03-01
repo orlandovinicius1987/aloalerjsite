@@ -49,3 +49,24 @@
 
     })
 </script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function()
+    {
+        jQuery('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            //fade: true,
+            cssEase: 'linear',
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: true,
+            draggable:true,
+            mobileFirst:true,
+            pauseOnDotsHover:true,
+            swipe: true
+        });
+    });
+</script>
