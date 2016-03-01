@@ -551,6 +551,17 @@ img.logo-com-tel-dc {
 
 }
 
+/* Slider */
+/**********/
+
+.slick-slide img {
+    border: 5px solid #FFF;
+    display: block;
+    width: 100%;
+}
+
+
+
 
 /*
 .container .col-xs-12 {

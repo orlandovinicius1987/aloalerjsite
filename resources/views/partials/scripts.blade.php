@@ -53,15 +53,20 @@
 <script type="text/javascript">
     jQuery(document).ready(function()
     {
-        jQuery('.your-class').slick({
+        jQuery('.slider').slick({
             dots: true,
             infinite: true,
             speed: 500,
-            fade: true,
+            //fade: true,
             cssEase: 'linear',
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000
+            autoplaySpeed: 2000,
+            arrows: true,
+            draggable:true,
+            mobileFirst:true,
+            pauseOnDotsHover:true,
+            swipe: true
         });
     });
 </script>
