@@ -206,35 +206,57 @@
         <!--</script>-->
 
         <script>
-            jQuery('#search-button').click(function() {
-                scroll = jQuery(document).scrollTop();
+            jQuery(document).ready(function() {
+                var offsetY = window.pageYOffset;
+                var canScroll = true;
 
-                jQuery('#main-nav').hide(1, function() {
-                    jQuery(document).scrollTop(scroll);
+                jQuery('#search-button').click(function() {
+                    scroll = jQuery(document).scrollTop();
+
+                    jQuery('#main-nav').hide(1, function() {
+                        jQuery(document).scrollTop(scroll);
+                    });
+
+                    jQuery('#search-nav').show(1);
                 });
 
-                jQuery('#search-nav').show(1);
+                jQuery('#button-close-search').click(function() {
+                    jQuery('#main-nav').show();
+                    jQuery('#search-nav').hide();
+                });
+
+                jQuery( window ).scroll(function() {
+                    if (canScroll)
+                    {
+                        console.log('scroll');
+                        offsetY = window.pageYOffset;
+                    }
+                    else
+                    {
+                        console.log('scroll prevented');
+                        jQuery(document).scrollTop(scroll);
+                    }
+                });
+
+                /* apenas para aparelhos touch */
+//                if ('ontouchstart' in window) {
+                    /* cache dom references */
+                    var $body = jQuery('body');
+
+                    /* bind events */
+                    jQuery(document)
+                        .on('focus', 'input', function() {
+                            canScroll = false;
+                            console.log('stop scrolling!');
+                            $body.addClass('fixfixed');
+                        })
+                        .on('blur', 'input', function() {
+                            canScroll = true;
+                            console.log('can scroll!');
+                            $body.removeClass('fixfixed');
+                        });
+//                }
             });
-
-            jQuery('#button-close-search').click(function() {
-                jQuery('#main-nav').show();
-                jQuery('#search-nav').hide();
-            });
-
-            /* apenas para aparelhos touch */
-            if ('ontouchstart' in window) {
-                /* cache dom references */
-                var $body = jQuery('body');
-
-                /* bind events */
-                $(document)
-                    .on('focus', 'input', function() {
-                        $body.addClass('fixfixed');
-                    })
-                    .on('blur', 'input', function() {
-                        $body.removeClass('fixfixed');
-                    });
-            }
         </script>
     </body>
 </html>
