@@ -26,16 +26,6 @@
             .navbar-right {
                 float: right!important;
             }
-
-            .scroll {
-                white-space: nowrap;
-                background-color: white;
-                padding-top: 73px;
-                position: absolute;
-                left: 0px;
-                width: 100%;
-                overflow: auto;
-            }
         </style>
         <link href="main.css" rel="stylesheet">
     </head>
@@ -75,7 +65,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container" id="page-content">
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <h1>Lorem ipsum.</h1>
@@ -210,7 +200,16 @@
             jQuery('#search-button').click(function() {
                 console.log('search');
 
-                jQuery('#main-nav').hide();
+                scroll = jQuery(document).scrollTop();
+
+                console.log(scroll);
+
+                jQuery('#main-nav').hide('fast',function() {
+                    jQuery(document).scrollTop(scroll);
+
+                    console.log(jQuery(document).scrollTop());
+                });
+
                 jQuery('#search-nav').show();
             });
 
