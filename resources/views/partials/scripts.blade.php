@@ -1,5 +1,5 @@
 <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+{{--<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>--}}
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script>
