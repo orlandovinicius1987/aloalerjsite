@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <div class="form-group has-error has-feedback">
                                             <div class="input-group">
-                                                <input type="search" name="search" class="form-control" placeholder="digite sua busca">
+                                                <input type="search" name="search" class="form-control input-search" placeholder="digite sua busca">
                                                 <span id="button-close-search" class="input-group-addon">fechar</span>
                                             </div>
                                         </div>
@@ -218,14 +218,28 @@
                     jQuery('#search-nav').hide();
                 });
 
-                /* apenas para aparelhos touch */
-                if ('ontouchstart' in window) {
-                    $(document).on('focus', 'textarea,input,select', function() {
-                        $('.navbar.navbar-fixed-top').css('position', 'absolute');
-                    }).on('blur', 'textarea,input,select', function() {
-                        $('.navbar.navbar-fixed-top').css('position', '');
-                    });
-                }
+//                /* apenas para aparelhos touch */
+//                if ('ontouchstart' in window) {
+//                    $(document).on('focus', 'textarea,input,select', function() {
+//                        $('.navbar.navbar-fixed-top').css('position', 'absolute');
+//                    }).on('blur', 'textarea,input,select', function() {
+//                        $('.navbar.navbar-fixed-top').css('position', '');
+//                    });
+//                }
+
+                var focus = 0;
+                var yourInput = $(".input-search");
+                yourInput.focusin(function(){
+                    if(!focus) {
+                        yourInput.blur();
+                        $("html, body").scrollTop($(document).height());
+                        focus = 1;
+                    }
+                    if(focus) {
+                        yourInput.focus();
+                        focus = 0;
+                    }
+                });
             });
         </script>
     </body>
