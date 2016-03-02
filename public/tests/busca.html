@@ -26,10 +26,6 @@
             .navbar-right {
                 float: right!important;
             }
-
-            .fixfixed .navbar-fixed-top {
-                position: absolute;
-            }
         </style>
         <link href="main.css" rel="stylesheet">
     </head>
@@ -224,17 +220,11 @@
 
                 /* apenas para aparelhos touch */
                 if ('ontouchstart' in window) {
-                    /* cache dom references */
-                    var $body = jQuery('body');
-
-                    /* bind events */
-                    $(document)
-                        .on('focus', 'input', function() {
-                            $body.addClass('fixfixed');
-                        })
-                        .on('blur', 'input', function() {
-                            $body.removeClass('fixfixed');
-                        });
+                    $(document).on('focus', 'textarea,input,select', function() {
+                        $('.navbar.navbar-fixed-top').css('position', 'absolute');
+                    }).on('blur', 'textarea,input,select', function() {
+                        $('.navbar.navbar-fixed-top').css('position', '');
+                    });
                 }
             });
         </script>
