@@ -1,5 +1,12 @@
+<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+
 <script>
     var isShowing = false;
+
+    // Disable jQuery Mobile loading message
+    $.mobile.loading().hide();
+    $.mobile.loadingMessage = false;
+
 
     jQuery(function()
     {
@@ -54,7 +61,7 @@
     jQuery(document).ready(function ($) {
         setInterval(function () {
             moveRight();
-        }, 3000);
+        }, 6000);
         var slideCount = $('#slider ul li').length;
         var slideWidth = $('#slider ul li').width();
         var slideHeight = $('#slider ul li').height();
