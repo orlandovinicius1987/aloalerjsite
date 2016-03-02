@@ -16,7 +16,6 @@
 
         <!-- Content -->
         <div class="container hidden-xs">
-
             <div class="row row-eq-height">
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     @yield('content-main')
@@ -28,19 +27,9 @@
             </div>
         </div>
 
-
         <div class="container-fluid mobile-content visible-xs">
-            <div class="row">
-                @include('partials.slider')
-                <div class="col-xs-12 mobile-chat visible-xs ">
-                    @include('partials.form-chat')
-                </div>
-                <div class="col-xs-12 mobile-telegram visible-xs ">
-                    @include('partials.telegram')
-                </div>
-            </div>
+            @yield('content-main')
         </div>
-
 
         <!-- End Content -->
 
