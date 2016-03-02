@@ -26,6 +26,10 @@
             .navbar-right {
                 float: right!important;
             }
+
+            .fixfixed .navbar-fixed-top {
+                position: absolute;
+            }
         </style>
         <link href="main.css" rel="stylesheet">
     </head>
@@ -219,11 +223,13 @@
                 });
 
                 /* apenas para aparelhos touch */
-                $(document).on('blur', 'input, textarea', function () {
-                    setTimeout(function () {
-                        window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
-                    }, 0);
-                });
+                if ('ontouchstart' in window) {
+                    $(document).on('focus', 'textarea,input,select', function() {
+                        $('.navbar.navbar-fixed-top').css('position', 'absolute');
+                    }).on('blur', 'textarea,input,select', function() {
+                        $('.navbar.navbar-fixed-top').css('position', '');
+                    });
+                }
             });
         </script>
     </body>
