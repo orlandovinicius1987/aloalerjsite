@@ -22,23 +22,7 @@
             <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
         </div>
 
-        <div class="col-xs-12 visible-xs ">
-            <form class="form-vertical">
-                <div class="form-group">
-                    <label for="input-nome">Nome</label>
-                    <input type="name" class="form-control" id="input-nome" placeholder="Insira o seu nome">
-                </div>
-                <div class="form-group">
-                    <label for="input-email">Email</label>
-                    <input type="email" class="form-control" id="input-email" placeholder="Insira o seu email">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block iniciar-conversa">Iniciar Conversa
-                    </button>
-                </div>
-            </form>
 
-        </div>
 
         {{--<div class="row">--}}
             {{--<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">--}}
