@@ -228,7 +228,13 @@
                 /* bind events */
                 $(document)
                     .on('focus', 'input', function() {
+                        scroll = jQuery(document).scrollTop();
+
                         $body.addClass('fixfixed');
+
+                        setTimeout(function() {
+                            jQuery(document).scrollTop(scroll);
+                        }, 2000);
                     })
                     .on('blur', 'input', function() {
                         $body.removeClass('fixfixed');
