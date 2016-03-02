@@ -10,7 +10,7 @@
     <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
     <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
     <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-    <p><a href="https://aloalerjsite.antoniocarlosribeiro.com/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
+    <p><a href="/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
 
 
     <div class="col-xs-2"></div>
@@ -60,7 +60,7 @@
                             <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
                             <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
                             <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-                            <p><a href="https://aloalerjsite.antoniocarlosribeiro.com/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
+                            <p><a href="/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
