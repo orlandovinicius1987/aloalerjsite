@@ -32,10 +32,6 @@ p {
     color: #fff;
 }
 
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
 
 .cabecalho {
     border-top: 10px solid #172B53;
@@ -499,6 +495,7 @@ img.logo-com-tel-dc {
     background: #182b53;
     font-family: 'Oswald', sans-serif;
     margin-top: 50px;
+    border-top: 3px solid #8ea243 ;
 }
 
 
@@ -575,11 +572,11 @@ img.logo-com-tel-dc {
     float: left;
     margin: 0;
     padding: 0;
-    width: 500px;
-    height: 300px;
-    background: #ccc;
+    width: 320px;
+    height: 267px;
+    /*background: #ccc;*/
     text-align: center;
-    line-height: 300px;
+    line-height: 267px;
 }
 
 a.control_prev, a.control_next {
@@ -649,3 +646,37 @@ a.control_next {
 }
 */
 
+
+
+/*.container-fluid.mobile-content {*/
+    /*padding: 0;*/
+/*}*/
+
+.mobile-chat {
+    border-top: 1px solid #192a55 ;
+    border-bottom: 1px solid #b6bcc8 ;
+    background-image: url("/templates/mv/img/logo-alerj_pattern.jpg");
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.logo-chat-mobile{
+    background-image: url("/templates/mv/svg/balao-chat.svg") ;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 245px;
+    top:17px;
+}
+
+.form-control{
+    border: 2px solid #192a55;
+}
+.mobile-telegram{
+    margin-top: -70px;
+}
+
+.telegram-telefone {
+    margin-top: 15px;
+}
