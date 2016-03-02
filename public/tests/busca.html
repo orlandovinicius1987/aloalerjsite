@@ -51,9 +51,9 @@
                                 <form class="navbar-right">
                                     <div class="form-group">
                                         <div class="form-group has-error has-feedback">
-                                            <input type="text" class="form-control" id="inputError2" placeholder="busca">
-                                            <div>
-                                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                <span class="input-group-addon">fechar</span>
                                             </div>
                                         </div>
                                     </div>
@@ -198,24 +198,16 @@
 
         <script>
             jQuery('#search-button').click(function() {
-                console.log('search');
-
                 scroll = jQuery(document).scrollTop();
 
-                console.log(scroll);
-
-                jQuery('#main-nav').hide('fast',function() {
+                jQuery('#main-nav').hide(1, function() {
                     jQuery(document).scrollTop(scroll);
-
-                    console.log(jQuery(document).scrollTop());
                 });
 
-                jQuery('#search-nav').show();
+                jQuery('#search-nav').show(1);
             });
 
             jQuery('#button-close-search').click(function() {
-                console.log('close');
-
                 jQuery('#main-nav').show();
                 jQuery('#search-nav').hide();
             });
