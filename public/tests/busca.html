@@ -222,8 +222,10 @@
                     jQuery('#search-nav').hide();
                 });
 
+                var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
                 /* apenas para aparelhos touch */
-                if ('ontouchstart' in window) {
+                if (iOS && 'ontouchstart' in window) {
                     $(document).on('focus', 'textarea,input,select', function() {
                         $('.navbar.navbar-fixed-top').css('position', 'absolute');
                     }).on('blur', 'textarea,input,select', function() {
