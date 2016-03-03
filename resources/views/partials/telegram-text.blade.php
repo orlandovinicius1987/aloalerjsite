@@ -7,6 +7,6 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <div class="telegram-telefone"><strong class="telefone">21 98890 4742.</strong></div>
+        <div class="telegram-telefone"><strong class="telefone">21 9 8890 4742</strong></div>
     </div>
 </div>
