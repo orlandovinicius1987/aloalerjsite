@@ -1,4 +1,4 @@
-<div id="slider" class="visible-xs">
+<div id="slider" class="visible-xs visible-sm">
     <a href="#" class="control_next">>></a>
     <a href="#" class="control_prev"><<</a>
     <ul>

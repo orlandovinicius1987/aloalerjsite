@@ -767,7 +767,7 @@ img.icone-voltar {
     padding-bottom: 10px;
 }
 
-
+/* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
     .footer-chat .col-xs-9 input#btn-input {
         font-size: 16px;
@@ -799,6 +799,48 @@ img.icone-voltar {
 
 }
 
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .alolerj-logo-home {
+        height: 77px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px;
+        margin-left: 40px;
+    }
+
+    .cabecalho-home {
+        background: #172B53 !important;
+    }
+
+    .mobile-telegram {
+        margin-top: 0px;
+        border-top: solid;
+        border-bottom: solid;
+    }
+    .mobile-chat {
+        border-top: 3px solid #192a55;
+        border-bottom: 3px solid #192a55;
+        border-right: 3px solid #192a55;
+        background-image: url("/templates/mv/img/logo-alerj_pattern.jpg");
+        padding-top: 50px;
+        padding-bottom: 61px;
+    }
+
+    .visible-xs .telefone {
+        font-size: 30px;
+        font-weight: 600;
+        background: #fff;
+        color: #172B53;
+        margin-bottom: 20px;
+    }
+
+    .buton-tel-uteis{
+        top: 20px;
+    }
+
+}
 
 
 /* End Chat*/
