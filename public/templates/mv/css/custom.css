@@ -33,6 +33,13 @@ p {
 }
 
 
+.cabecalho-home {
+    border-top: 10px solid #172B53;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #C7CCD6 !important;
+ }
+
 .cabecalho {
     border-top: 10px solid #172B53;
     border-radius: 0;
@@ -783,7 +790,7 @@ img.icone-voltar {
     .alolerj-logo-home {
         height: 77px !important;
         margin-top: 10px !important;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .cabecalho-home {
