@@ -780,6 +780,16 @@ img.icone-voltar {
         margin-left: -15px;
     }
 
+    .alolerj-logo-home {
+        height: 77px !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px;
+    }
+
+    .cabecalho-home {
+        background: #172B53 !important;
+    }
+
 }
 
 
