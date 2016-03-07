@@ -13,7 +13,7 @@
 @stop
 
 @section('content-main')
-    <div class="container-fluid mobile-content hidden-xs">
+    <div class="container-fluid mobile-content hidden-xs hidden-sm">
         <div class="bg_video">
             <video autoplay="" loop="" poster="#" class="img-responsive">
                 <source src="/templates/mv/videos/operadores_1.webm" type="video/webm">
@@ -22,13 +22,13 @@
         </div>
     </div>
 
-    <div class="visible-xs">
+    <div class="visible-xs visible-sm">
         <div class="row">
             @include('partials.slider')
-            <div class="col-xs-12 mobile-chat visible-xs ">
+            <div class="col-xs-12 col-sm-6 mobile-chat visible-xs visible-sm">
                 @include('partials.form-chat')
             </div>
-            <div class="col-xs-12 mobile-telegram visible-xs ">
+            <div class="col-xs-12 col-sm-6 mobile-telegram visible-xs visible-sm">
                 @include('partials.telegram')
             </div>
         </div>
