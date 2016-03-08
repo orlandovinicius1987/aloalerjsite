@@ -1,3 +1,30 @@
+
+body {
+    font-family: 'Maven Pro', sans-serif, 'Medium 500';
+    line-height: 1.5;
+    color: #172B53;
+}
+p {
+    font-size: 16px;
+}
+
+.margin {
+    margin-bottom: 45px;
+}
+
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+
+.bg-4 {
+    background-color: #172B53; /* AZUL RODAPE*/
+    color: #fff;
+}
+
+
+
+
 /*==========  Mobile First Method  ==========*/
 
 /* Custom, iPhone Retina */
@@ -33,14 +60,29 @@
     }
 
     .mobile-telegram {
-        margin-top: -80px;
+        margin-top: -20px;
         border-top: 0px;
         border-bottom: 0px;
+        text-align: center;
     }
     .mobile-chat {
-        border-top: 1px solid #192a55;
-        border-bottom: 3px solid #b6bcc7;
+        border-top: 1px solid #192a55 ;
+        border-bottom: 1px solid #b6bcc8 ;
+        background-image: url("/templates/mv/img/logo-alerj_pattern.jpg");
+        padding-top: 50px;
+        padding-bottom: 40px;
     }
+
+    .logo-chat-mobile{
+        background-image: url("/templates/mv/svg/balao-chat.svg") ;
+        background-repeat: no-repeat;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 245px;
+        top:17px;
+    }
+
     .icones-apps {
         margin: 0 30px 0 30px !important;
     }
@@ -65,6 +107,14 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
+
+    .visible-xs .telefone {
+        font-size: 30px;
+        font-weight: 600;
+        background: #fff;
+        color: #172B53;
+        margin-bottom: 20px;
+    }
 
     .cabecalho-home {
         background: #172B53 !important;
@@ -117,10 +167,32 @@
         margin: 11px -15px 0 -15px;
         border-top: 1px solid #8ea243;
     }
+
+    .tit-comissoes {
+        background-color: #8FA143;
+        border-radius: 15px 15px 0 0;
+        text-transform: uppercase !important;
+        padding: 5px 0 5px 0;
+        font-size: 20px;
+        margin: -40px 30px 12px 30px;
+    }
+
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
     }
+    .footer-mobile p{
+        color: #ffffff;
+        text-transform: uppercase;
+        border-bottom: solid #3d574c 1px;
+        padding: 0 0 8px 0;
+    }
+    .footer-mobile a {
+        color: #ffffff;
+    }
+
+
+
 }
 
 /* Small Devices, Tablets */
