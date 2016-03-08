@@ -19,6 +19,7 @@
             <strong class="telefone">21 98890 4742.</strong>
         </p>
     </div>
+
     <div class="icones-apps text-center">
         <div class="col-sm-6">
             <a href="https://www.whatsapp.com/?l=pt_br" target="_blank" class="whatsapp">

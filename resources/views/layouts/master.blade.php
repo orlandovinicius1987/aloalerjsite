@@ -15,19 +15,19 @@
         @include('partials.header')
 
         <!-- Content -->
-        <div class="container hidden-xs">
+        <div class="container hidden-xs hidden-sm">
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     @yield('content-main')
                 </div>
 
-                <div class="sidebar-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs">
+                <div class="sidebar-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs hidden-sm">
                     @yield('content-sidebar')
                 </div>
             </div>
         </div>
 
-        <div class="container-fluid mobile-content visible-xs">
+        <div class="container-fluid mobile-content visible-xs visible-sm">
             @yield('content-main')
         </div>
 

@@ -33,6 +33,13 @@ p {
 }
 
 
+.cabecalho-home {
+    border-top: 10px solid #172B53;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #C7CCD6 !important;
+ }
+
 .cabecalho {
     border-top: 10px solid #172B53;
     border-radius: 0;
@@ -678,5 +685,227 @@ a.control_next {
 }
 
 .telegram-telefone {
-    margin-top: 15px;
+    margin-top: 20px;
 }
+
+strong.telefone {
+    padding: 10px;
+}
+
+
+
+
+
+/*Chat*/
+
+.footer-chat {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #EFEFF1;
+    border-top: 5px solid #B6BCC7;
+}
+
+.form-inline {
+    margin-top: 25px;
+}
+
+.form-group {
+    width: 100% !important;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+input#btn-input {
+    font-size: 20px;
+    padding: 22px;
+    font-weight: 600;
+}
+button.btn.btn-lg.btn-primary {
+    padding: 10px 46px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.chat img.balao-chat {
+    margin-top: 10px;
+    height: 55px;
+    margin-left: 206px;
+}
+
+.chat .atendente-home {
+    font-family: 'Oswald', sans-serif;
+    color: #172B53;
+    font-size: 22px;
+}
+.chat-mobile .atendente-home {
+    font-size: 15px;
+}
+
+
+.chat .container-fluid {
+    padding: 0;
+}
+
+img.icone-voltar {
+    height: 30px;
+}
+
+.chat img.logo-chat {
+    height: 35px;
+    margin-left: -26px;
+}
+
+.chat .info-chat-home {
+    text-align: center;
+    line-height: 1.3;
+    padding-bottom: 10px;
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+    .cabecalho-home {
+        background: #172B53 !important;
+        border-bottom: #c7ccd6 4px solid;
+    }
+
+    .alolerj-logo-home {
+        height: 67px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px;
+        margin-left: -6px !important;
+    }
+
+    .footer-chat .col-xs-9 input#btn-input {
+        font-size: 16px;
+        padding: 5px;
+        font-weight: 400;
+    }
+    .footer-chat {
+        bottom: -24px;
+    }
+
+    .cabecalho.chat {
+        padding-top: 10px;
+        border-top: 4px solid;
+    }
+
+    .col-xs-3.col-sm-2.button-send {
+        margin-left: -15px;
+    }
+
+    .mobile-telegram {
+        margin-top: -80px;
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+    .mobile-chat {
+        border-top: 1px solid #192a55;
+        border-bottom: 3px solid #b6bcc7;
+    }
+    .icones-apps {
+        margin: 0 30px 0 30px !important;
+    }
+    #slider {
+        margin: -2px auto 0 auto;
+    }
+
+
+    .footer-mobile {
+        background: #182b53;
+        font-family: 'Oswald', sans-serif;
+        margin: 11px -15px 0 -15px;
+        border-top: 1px solid #8ea243;
+    }
+    .footer-mobile-box{
+        border-top: solid 2px #b6bcc7;
+        background: #172b53 ;
+    }
+
+}
+
+
+
+/* iPad in portrait */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    .cabecalho-home {
+        background: #172B53 !important;
+        border-bottom: #c7ccd6 4px solid;
+    }
+
+    .alolerj-logo-home {
+        height: 77px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px;
+        margin-left: 40px;
+    }
+
+    .visible-xs .telefone {
+        font-size: 30px;
+        font-weight: 600;
+        background: #fff;
+        color: #172B53;
+        margin-bottom: 20px;
+    }
+
+    .buton-tel-uteis{
+        top: 20px;
+    }
+
+    .mobile-telegram {
+        margin-top: 0px;
+        border-top: solid 2px #172b53 ;
+        border-right: solid 1px #172b53 ;
+        border-bottom: solid 2px #b6bcc7;
+    }
+    .mobile-chat {
+        float: right;
+        border-top: solid 2px #172b53 ;
+        border-bottom: solid 2px #b6bcc7;
+        padding-bottom: 64px;
+    }
+    .footer-mobile .tit-comissoes {
+        margin: -40px 300px 12px 300px;
+    }
+    .footer-mobile {
+        background: #182b53;
+        font-family: 'Oswald', sans-serif;
+        margin: 11px -15px 0 -15px;
+        border-top: 1px solid #8ea243;
+    }
+    .footer-mobile-box{
+        border-top: solid 2px #b6bcc7;
+        background: #172b53 ;
+        border-bottom: 5px solid #8fa143;
+    }
+    .footer-logo-alerj {
+        right: 40px;
+        position: absolute;
+        bottom: -6px;
+    }
+    .footer-mobile p {
+        color: #dadde3;
+        border-bottom: none;
+        padding: 0 0 2px 0;
+        text-align: left;
+        margin-left: 30px;
+    }
+
+    .nomes-comissoes{
+        margin-top: 30px;
+        margin-bottom: 35px;
+    }
+
+}
+
+
+/* End Chat*/
