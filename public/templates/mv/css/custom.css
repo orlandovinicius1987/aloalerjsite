@@ -832,8 +832,11 @@ img.icone-voltar {
 
 
 
-/* Small Devices, Tablets */
-@media only screen and (min-width: 321px) and (max-width : 768px) {
+/* iPad in portrait */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
     .cabecalho-home {
         background: #172B53 !important;
         border-bottom: #c7ccd6 4px solid;
