@@ -74,6 +74,10 @@ p {
         padding-bottom: 40px;
     }
 
+    .telefone{
+        font-size: 25px;
+    }
+
     .logo-chat-mobile{
         background-image: url("/templates/mv/svg/balao-chat.svg") ;
         background-repeat: no-repeat;
@@ -97,7 +101,7 @@ p {
         text-transform: uppercase !important;
         padding: 5px 0 5px 0;
         font-size: 20px;
-        margin: -40px 30px 12px 30px;
+        margin: -40px 70px 12px 70px;
     }
 
 
@@ -115,7 +119,7 @@ p {
         color: #ffffff;
         text-transform: uppercase;
         border-bottom: solid #3d574c 1px;
-        padding: 0 0 8px 0;
+        padding: 3px 0 12px 0;
     }
     .footer-mobile a {
         color: #ffffff;
@@ -229,6 +233,7 @@ p {
         border-top: solid 2px #172b53 ;
         border-right: solid 1px #172b53 ;
         border-bottom: solid 2px #b6bcc7;
+        padding: 30px 10px 62px 10px;
     }
     .mobile-chat {
         float: right;
