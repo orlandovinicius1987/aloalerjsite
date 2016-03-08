@@ -14,12 +14,12 @@
 
 @section('content-main')
     <div class="container-fluid mobile-content hidden-xs hidden-sm">
-        <div class="bg_video">
-            <video autoplay="" loop="" poster="#" class="img-responsive">
-                <source src="/templates/mv/videos/operadores_1.webm" type="video/webm">
-                <source src="/templates/mv/videos/operadores_1.mp4" type="video/mp4">
-            </video>
-        </div>
+        {{--<div class="bg_video">--}}
+            {{--<video autoplay="" loop="" poster="#" class="img-responsive">--}}
+                {{--<source src="/templates/mv/videos/operadores_1.webm" type="video/webm">--}}
+                {{--<source src="/templates/mv/videos/operadores_1.mp4" type="video/mp4">--}}
+            {{--</video>--}}
+        {{--</div>--}}
     </div>
 
     <div class="visible-xs visible-sm">
