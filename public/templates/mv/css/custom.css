@@ -769,6 +769,19 @@ img.icone-voltar {
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
+
+    .cabecalho-home {
+        background: #172B53 !important;
+        border-bottom: #c7ccd6 4px solid;
+    }
+
+    .alolerj-logo-home {
+        height: 67px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px;
+        margin-left: -6px !important;
+    }
+
     .footer-chat .col-xs-9 input#btn-input {
         font-size: 16px;
         padding: 5px;
@@ -787,14 +800,32 @@ img.icone-voltar {
         margin-left: -15px;
     }
 
-    .alolerj-logo-home {
-        height: 77px !important;
-        margin-top: 10px !important;
-        margin-bottom: 15px;
+    .mobile-telegram {
+        margin-top: -80px;
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+    .mobile-chat {
+        border-top: 1px solid #192a55;
+        border-bottom: 3px solid #b6bcc7;
+    }
+    .icones-apps {
+        margin: 0 30px 0 30px !important;
+    }
+    #slider {
+        margin: -2px auto 0 auto;
     }
 
-    .cabecalho-home {
-        background: #172B53 !important;
+
+    .footer-mobile {
+        background: #182b53;
+        font-family: 'Oswald', sans-serif;
+        margin: 11px -15px 0 -15px;
+        border-top: 1px solid #8ea243;
+    }
+    .footer-mobile-box{
+        border-top: solid 2px #b6bcc7;
+        background: #172b53 ;
     }
 
 }
@@ -802,30 +833,17 @@ img.icone-voltar {
 
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
+@media only screen and (min-width: 321px) and (max-width : 768px) {
+    .cabecalho-home {
+        background: #172B53 !important;
+        border-bottom: #c7ccd6 4px solid;
+    }
+
     .alolerj-logo-home {
         height: 77px !important;
         margin-top: 10px !important;
         margin-bottom: 15px;
         margin-left: 40px;
-    }
-
-    .cabecalho-home {
-        background: #172B53 !important;
-    }
-
-    .mobile-telegram {
-        margin-top: 0px;
-        border-top: solid;
-        border-bottom: solid;
-    }
-    .mobile-chat {
-        border-top: 3px solid #192a55;
-        border-bottom: 3px solid #192a55;
-        border-right: 3px solid #192a55;
-        background-image: url("/templates/mv/img/logo-alerj_pattern.jpg");
-        padding-top: 50px;
-        padding-bottom: 61px;
     }
 
     .visible-xs .telefone {
@@ -838,6 +856,50 @@ img.icone-voltar {
 
     .buton-tel-uteis{
         top: 20px;
+    }
+
+    .mobile-telegram {
+        margin-top: 0px;
+        border-top: solid 2px #172b53 ;
+        border-right: solid 1px #172b53 ;
+        border-bottom: solid 2px #b6bcc7;
+    }
+    .mobile-chat {
+        float: right;
+        border-top: solid 2px #172b53 ;
+        border-bottom: solid 2px #b6bcc7;
+        padding-bottom: 64px;
+    }
+    .footer-mobile .tit-comissoes {
+        margin: -40px 300px 12px 300px;
+    }
+    .footer-mobile {
+        background: #182b53;
+        font-family: 'Oswald', sans-serif;
+        margin: 11px -15px 0 -15px;
+        border-top: 1px solid #8ea243;
+    }
+    .footer-mobile-box{
+        border-top: solid 2px #b6bcc7;
+        background: #172b53 ;
+        border-bottom: 5px solid #8fa143;
+    }
+    .footer-logo-alerj {
+        right: 40px;
+        position: absolute;
+        bottom: -6px;
+    }
+    .footer-mobile p {
+        color: #dadde3;
+        border-bottom: none;
+        padding: 0 0 2px 0;
+        text-align: left;
+        margin-left: 30px;
+    }
+
+    .nomes-comissoes{
+        margin-top: 30px;
+        margin-bottom: 35px;
     }
 
 }

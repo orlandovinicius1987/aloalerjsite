@@ -15,7 +15,7 @@
         @include('partials.header')
 
         <!-- Content -->
-        <div class="container hidden-xs">
+        <div class="container hidden-xs hidden-sm">
             <div class="row row-eq-height">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     @yield('content-main')
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="container-fluid mobile-content visible-xs">
+        <div class="container-fluid mobile-content visible-xs visible-sm">
             @yield('content-main')
         </div>
 

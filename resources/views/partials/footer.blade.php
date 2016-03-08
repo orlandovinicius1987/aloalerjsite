@@ -1,28 +1,30 @@
 <!-- Footer -->
 
 
-<div class="visible-xs col-xs-12 visible-sm col-sm-12 text-center footer-mobile">
-    <div class="tit-comissoes"> Comissões </div>
-    <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
-    <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
-    <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
-    <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
-    <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
-    <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
-    <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-    <p><a href="/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
-
-
-    <div class="col-xs-2"></div>
-    <div class="col-xs-8">
-        <img src="/templates/mv/svg/logo-alerj-rodape.svg" class=" img-responsive">
+<div class="visible-xs visible-sm col-xs-12 col-sm-12 text-center footer-mobile-box">
+    <div class="footer-mobile">
+        <div class="tit-comissoes"> Comissões </div>
+        <div class="col-xs-12 col-sm-6 nomes-comissoes">
+            <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
+            <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
+            <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
+            <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
+            <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
+            <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
+            <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
+            <p><a href="/tests/busca.html">Prova de Conceito Alô Alerj</a></p>
+        </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8 col-sm-4 footer-logo-alerj">
+            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class=" img-responsive">
+        </div>
+        <div class="col-xs-2"></div>
     </div>
-    <div class="col-xs-2"></div>
 </div>
 
 
 
-<div class="panel-group hidden-xs" id="accordion"  >
+<div class="panel-group hidden-xs hidden-sm" id="accordion"  >
     <div class="panel panel-default">
         <div class="container">
             <div class="panel-heading btn-group dropup">
