@@ -64,6 +64,7 @@ p {
         border-top: 0px;
         border-bottom: 0px;
         text-align: center;
+        margin-bottom: 50px;
     }
     .mobile-chat {
         border-top: 1px solid #192a55 ;
@@ -90,6 +91,15 @@ p {
         margin: -2px auto 0 auto;
     }
 
+    .tit-comissoes {
+        background-color: #8FA143;
+        border-radius: 15px 15px 0 0;
+        text-transform: uppercase !important;
+        padding: 5px 0 5px 0;
+        font-size: 20px;
+        margin: -40px 30px 12px 30px;
+    }
+
 
     .footer-mobile {
         background: #182b53;
@@ -100,6 +110,15 @@ p {
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
+    }
+    .footer-mobile p{
+        color: #ffffff;
+        text-transform: uppercase;
+        border-bottom: solid #3d574c 1px;
+        padding: 0 0 8px 0;
+    }
+    .footer-mobile a {
+        color: #ffffff;
     }
 
 
@@ -168,28 +187,12 @@ p {
         border-top: 1px solid #8ea243;
     }
 
-    .tit-comissoes {
-        background-color: #8FA143;
-        border-radius: 15px 15px 0 0;
-        text-transform: uppercase !important;
-        padding: 5px 0 5px 0;
-        font-size: 20px;
-        margin: -40px 30px 12px 30px;
-    }
 
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
     }
-    .footer-mobile p{
-        color: #ffffff;
-        text-transform: uppercase;
-        border-bottom: solid #3d574c 1px;
-        padding: 0 0 8px 0;
-    }
-    .footer-mobile a {
-        color: #ffffff;
-    }
+
 
 
 
