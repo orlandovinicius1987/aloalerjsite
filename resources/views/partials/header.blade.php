@@ -31,7 +31,7 @@
                     </div>
 
 
-                    <div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>
+                    {{--<div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>--}}
                 </div>
                 <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
