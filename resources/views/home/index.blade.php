@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive">
+    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo img-responsive">
         AloAlerj Logo
     </object>
 @stop
@@ -13,7 +13,7 @@
 @stop
 
 @section('content-main')
-    <div class="container-fluid mobile-content hidden-xs hidden-sm">
+    <div class="mobile-content hidden-xs hidden-sm">
         @include('partials.slider')
         {{--<div class="bg_video">--}}
             {{--<video autoplay="" loop="" poster="#" class="img-responsive">--}}

@@ -5,7 +5,7 @@
 @stop
 
 @section('sidebar-name')
-    <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel-dc">
+    <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="logo-com-tel-dc"></a>
 @stop
 
 @section('content-main')

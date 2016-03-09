@@ -38,15 +38,16 @@
         @else
             <div class="row row-eq-height">
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
                         <a href="/">
-                        <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
-                        Alerj Logo <!-- fallback image in CSS -->
-                        </object>
+                            <img src="/templates/mv/svg/logo-alerj-monocromatica.svg" alt="" class="alerj-logo">
+                            {{--<object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">--}}
+                        {{--Alerj Logo <!-- fallback image in CSS -->--}}
+                        {{--</object>--}}
                         </a>
                     </div>
                     <div class="col-xs-8 col-lg-3">@yield('page-name')</div>
-                    <div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>
+                    <div class="hidden-xs hidden-sm col-lg-6">@include('partials.telefones-uteis')</div>
                 </div>
                 <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
