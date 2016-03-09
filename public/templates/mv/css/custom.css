@@ -442,6 +442,7 @@ p {
     .alerj-logo {
         height: 152px !important;
         margin-bottom: 10px;
+        border:none;
     }
 
     .no-svg .alerj-logo {
