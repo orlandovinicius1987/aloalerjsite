@@ -8,7 +8,10 @@
         <link href="//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/templates/mv/css/carousel.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
+
     </head>
 
     <body>
