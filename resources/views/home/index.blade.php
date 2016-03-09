@@ -14,6 +14,7 @@
 
 @section('content-main')
     <div class="container-fluid mobile-content hidden-xs hidden-sm">
+        @include('partials.slider')
         {{--<div class="bg_video">--}}
             {{--<video autoplay="" loop="" poster="#" class="img-responsive">--}}
                 {{--<source src="/templates/mv/videos/operadores_1.webm" type="video/webm">--}}
