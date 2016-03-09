@@ -130,6 +130,13 @@ p {
     .carousel-inner > .item > img {
         height: 267px;
     }
+    .carousel-control.right{
+        display: none;
+    }
+    .carousel-control.left{
+        display: none;
+    }
+
 
 }
 
@@ -208,6 +215,24 @@ p {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+    .carousel {
+        height: 641px;
+    }
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        height: 641px;
+    }
+    .carousel-inner > .item > img {
+        height: 641px;
+    }
+    .carousel-control.right{
+        display: none;
+    }
+    .carousel-control.left{
+        display: none;
+    }
+
+
     .cabecalho-home {
         background: #172B53 !important;
         border-bottom: #c7ccd6 4px solid;
