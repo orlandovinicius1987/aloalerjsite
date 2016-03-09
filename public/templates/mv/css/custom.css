@@ -73,11 +73,9 @@ p {
         padding-top: 50px;
         padding-bottom: 40px;
     }
-
     .telefone{
         font-size: 25px;
     }
-
     .logo-chat-mobile{
         background-image: url("/templates/mv/svg/balao-chat.svg") ;
         background-repeat: no-repeat;
@@ -87,14 +85,12 @@ p {
         left: 245px;
         top:17px;
     }
-
     .icones-apps {
         margin: 0 30px 0 30px !important;
     }
     #slider {
         margin: -2px auto 0 auto;
     }
-
     .tit-comissoes {
         background-color: #8FA143;
         border-radius: 15px 15px 0 0;
@@ -103,8 +99,6 @@ p {
         font-size: 20px;
         margin: -40px 70px 12px 70px;
     }
-
-
     .footer-mobile {
         background: #182b53;
         font-family: 'Oswald', sans-serif;
@@ -125,6 +119,17 @@ p {
         color: #ffffff;
     }
 
+    /* Custom, iPhone Retina */
+    .carousel {
+        height: 267px;
+    }
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        height: 267px;
+    }
+    .carousel-inner > .item > img {
+        height: 267px;
+    }
 
 }
 
@@ -190,7 +195,6 @@ p {
         margin: 11px -15px 0 -15px;
         border-top: 1px solid #8ea243;
     }
-
 
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
@@ -276,6 +280,20 @@ p {
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
+
+
+    /* Custom, iPhone Retina */
+    .carousel {
+        height: 707px;
+    }
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        height: 707px;
+    }
+    .carousel-inner > .item > img {
+        height: 707px;
+    }
+
 
     .cabecalho-home {
         border-top: 10px solid #172B53;
