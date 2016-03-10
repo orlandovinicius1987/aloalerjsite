@@ -70,10 +70,7 @@ p {
         bottom: -24px;
     }
 
-    .cabecalho.chat {
-        padding-top: 10px;
-        border-top: 4px solid;
-    }
+
 
     .col-xs-3.col-sm-2.button-send {
         margin-left: -15px;
@@ -158,7 +155,50 @@ p {
     }
 
 
+    /* Chat */
+
+    .cabecalho.chat {
+        height: 75px;
+    }
+    .cabecalho.chat {
+        padding-top: 10px;
+        border-top: 4px solid;
+        background: #C7CCD6 !important;
+    }
+    .chat img.logo-chat {
+        height: 36px;
+        margin-left: -26px;
+        margin-top: 5px;
+    }
+    .chat-mobile .atendente-home {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1;
+    }
+    .chat .botao-voltar{
+        margin-top: 10px;
+    }
+
+    .footer-chat {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        background-color: #EFEFF1;
+        border-top: 5px solid #B6BCC7;
+    }
+
+    .col-xs-3.col-sm-2.button-send {
+        margin-left: -15px;
+    }
+
+
+
 }
+
+
+
+
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
@@ -183,23 +223,20 @@ p {
         margin-left: -6px !important;
     }
 
-    .footer-chat .col-xs-9 input#btn-input {
-        font-size: 16px;
-        padding: 5px;
-        font-weight: 400;
-    }
-    .footer-chat {
-        bottom: -24px;
-    }
+    /*.footer-chat .col-xs-9 input#btn-input {*/
+        /*font-size: 16px;*/
+        /*padding: 5px;*/
+        /*font-weight: 400;*/
+    /*}*/
+    /*.footer-chat {*/
+        /*bottom: -24px;*/
+    /*}*/
 
     .cabecalho.chat {
         padding-top: 10px;
         border-top: 4px solid;
     }
 
-    .col-xs-3.col-sm-2.button-send {
-        margin-left: -15px;
-    }
 
     .mobile-telegram {
         margin-top: -80px;
@@ -344,6 +381,56 @@ p {
         margin-top: 30px;
         margin-bottom: 35px;
     }
+
+    /* Footer /
+
+
+
+
+    /* Chat */
+    .cabecalho.chat{
+        height: 90px;
+    }
+    .chat img.logo-chat {
+        height: 66px;
+        margin-left: -13px;
+        margin-top: 0px;
+    }
+
+    .footer-chat {
+        padding-top: 10px;
+    }
+
+    .footer-chat .form-inline .form-control {
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .footer-chat .form-inline .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+        width: 100% !important;
+    }
+    .footer-chat .col-xs-9 input#btn-input {
+        font-size: 20px;
+        padding: 10px;
+        font-weight: 600;
+        height: 45px;
+    }
+    .botao-voltar img.icone-voltar {
+        height: 50px;
+    }
+    .chat-mobile .atendente-home {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    .chat-mobile .tempo-de-atendimento-home {
+        font-size: 20px;
+    }
+
 }
 
 
@@ -821,4 +908,152 @@ p {
         left: 315px;
     }
     /*END AGENDA*/
+
+
+
+    /*Chat DESKTOP*/
+
+    .cabecalho.chat{
+        height: 171px;
+    }
+
+    .cabecalho.chat .container-fluid {
+        margin-top: -10px;
+    }
+
+    .footer-chat {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #EFEFF1;
+        border-top: 5px solid #B6BCC7;
+    }
+
+    .form-inline {
+        margin-top: 25px;
+    }
+    .form-group {
+        width: 100% !important;
+    }
+    .form-inline .form-control {
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+    }
+    input#btn-input {
+        font-size: 20px;
+        padding: 22px;
+        font-weight: 600;
+    }
+    button.btn.btn-lg.btn-primary {
+        padding: 10px 46px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .chat img.balao-chat {
+        margin-top: 10px;
+        height: 55px;
+        margin-left: 206px;
+    }
+
+    .chat .atendente-home {
+        font-family: 'Oswald', sans-serif;
+        color: #172B53;
+        font-size: 22px;
+    }
+
+/*
+    .chat .container-fluid {
+        padding: 0;
+    }*/
+
+    img.icone-voltar {
+        height: 30px;
+    }
+
+    .chat img.logo-chat {
+        height: 35px;
+        margin-left: -26px;
+    }
+
+    .chat .info-chat-home {
+        text-align: center;
+        line-height: 1.3;
+        padding-bottom: 10px;
+    }
+
+    .chat-content {
+        width: 100%;
+        font-size: 250%;
+        background-color: #FFFFFF;
+    }
+
+    .container-chat {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 180px;
+        left: 0%;
+        overflow-y: scroll;
+        padding-left: 5px;
+        padding-right: 10px;
+        padding-bottom: 126px;
+        padding-top: 180px;
+
+    }
+
+    .conversa {
+        font-family: 'Maven Pro', sans-serif, 'Normal 400';
+        font-size: 1.4em;
+        color: #172B53;
+        margin: 0;
+        padding: 0;
+    }
+
+    .time {
+        font-size: 0.7em;
+        color: #8FA143;
+
+    }
+
+    .msn {
+        padding: 35px;
+        margin-bottom: 10px;
+        border-color: #172B53;
+        border: solid 0.035em;
+        float: right;
+        border-radius: 1em;
+        margin: 15px;
+        text-align: right;
+
+    }
+
+    .left {
+        background-color: #F2F2F2;
+        float: left;
+        text-align: left;
+    }
+
+    .right {
+        background-color: #E0E5CB;
+        float: right;
+        text-align: right;
+    }
+
+    .msn p {
+        margin-top: 2px;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        width: 100%;
+        /*background-color: #2b542c;*/
+    }
+
+
+
+
 }
