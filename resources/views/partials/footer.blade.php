@@ -14,6 +14,7 @@
             <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
             <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
             <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
+            <p><a href="/templates/mv/tv/index.html">TV Alerj Ao Vivo</a></p>
         </div>
         <div class="col-xs-2"></div>
         <div class="col-xs-8 col-sm-4 footer-logo-alerj">
@@ -65,6 +66,7 @@
                             <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
                             <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
                             <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
+                            <p><a href="/templates/mv/tv/index.html">TV Alerj Ao Vivo</a></p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
