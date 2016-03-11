@@ -1,6 +1,5 @@
 <!-- Footer -->
 
-
 <div class="visible-xs visible-sm col-xs-12 col-sm-12 text-center footer-mobile-box">
     <div class="footer-mobile">
         <div class="tit-comissoes"> Comissões </div>
@@ -15,8 +14,6 @@
         <div class="col-xs-2"></div>
     </div>
 </div>
-
-
 
 <div class="panel-group hidden-xs hidden-sm" id="accordion"  >
     <div class="panel panel-default">
