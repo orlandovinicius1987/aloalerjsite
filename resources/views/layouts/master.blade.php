@@ -62,7 +62,7 @@
         {{--</script>--}}
 
         <script>
-            jQuery(document).ready(function()
+            jQuery(document).load(function()
             {
                 alert('will scroll');
                 jQuery('html,body').scrollTop(0);
