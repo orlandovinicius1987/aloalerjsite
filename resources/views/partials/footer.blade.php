@@ -12,7 +12,8 @@
             <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
             <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
             <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-            <p><a href="/templates/mv/Chat/chat_novo_responsivo2.html">Prova de Conceito Alô Alerj</a></p>
+            <p><a href="/templates/mv/Chat/chat_novo_responsivo2.html">POC Breno</a></p>
+            <p><a href="/templates/mv/Chat/chat.html">POC Marcão</a></p>
         </div>
         <div class="col-xs-2"></div>
         <div class="col-xs-8 col-sm-4 footer-logo-alerj">
@@ -62,7 +63,8 @@
                             <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
                             <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
                             <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-                            <p><a href="/templates/mv/Chat/chat_novo_responsivo2.html">Prova de Conceito Alô Alerj</a></p>
+                            <p><a href="/templates/mv/Chat/chat_novo_responsivo2.html">POC Breno</a></p>
+                            <p><a href="/templates/mv/Chat/chat.html">POC Marcão</a></p>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
