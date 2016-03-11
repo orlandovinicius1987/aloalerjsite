@@ -62,12 +62,11 @@
         {{--</script>--}}
 
         <script>
-            jQuery(document).load(function()
+            setTimeout(function()
             {
-                alert('will scroll');
-                jQuery('html,body').scrollTop(0);
-                alert('scrolled');
-            });
+                window.parent.$("body").animate({scrollTop:0}, 'slow');
+                console.log('espada');
+            }, 2000);
         </script>
     </body>
 </html>
