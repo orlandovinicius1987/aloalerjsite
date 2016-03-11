@@ -66,13 +66,13 @@
             {
                 setTimeout(function()
                 {
-                    window.parent.$("body").animate({scrollTop:0}, 'slow');
+                    window.parent.$("body").animate({scrollTop:-200}, 'slow');
                     console.log('espada');
                 }, 2000);
 
                 jQuery("#scrollToTop").click(function()
                 {
-                    window.parent.$("body").animate({scrollTop:0}, 'slow');
+                    window.parent.$("body").animate({scrollTop:-200}, 'slow');
                 });
             })
         </script>
