@@ -4,7 +4,7 @@
 <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
 <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
 <p><a href="/tests/busca.html">POC ACR</a></p>
-<p><a href="//output.jsbin.com/xujofoze/4/quiet">POC Fabiano</a></p>
+<p><a href="http://output.jsbin.com/xujofoze/4/quiet">POC Fabiano</a></p>
 <p><a href="http://stevesanderson.github.io/fixed-height-layouts-demo/simple.html">Teste Fixed Header</a></p>
 <p><a href="/tv">TV Alerj Ao Vivo</a></p>
 {{--<p><a href="/templates/mv/radio/index.html"></a></p>--}}
