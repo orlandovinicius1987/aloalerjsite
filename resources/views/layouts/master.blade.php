@@ -62,17 +62,23 @@
         {{--</script>--}}
 
         <script>
+            function scroll()
+            {
+                window.parent.$("body").animate({scrollTop:-2000}, 'slow');
+                window.scrollTo(x-coord, y-coord);
+            }
+
             jQuery(document).ready(function()
             {
                 setTimeout(function()
                 {
-                    window.parent.$("body").animate({scrollTop:-200}, 'slow');
+                    scroll();
                     console.log('espada');
                 }, 2000);
 
                 jQuery("#scrollToTop").click(function()
                 {
-                    window.parent.$("body").animate({scrollTop:-200}, 'slow');
+                    scroll();
                 });
             })
         </script>
