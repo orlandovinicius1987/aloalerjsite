@@ -156,18 +156,18 @@
             moveLeft();
         });
 
-        $('a.control_next').click(function () {
-            moveRight();
-        });
-
-        $("#slider ul").swipeleft(function()
-        {
-            moveRight();
-        });
-
-        $("#slider ul").swiperight(function()
-        {
-            moveLeft();
-        });
+//        $('a.control_next').click(function () {
+//            moveRight();
+//        });
+//
+//        $("#slider ul").swipeleft(function()
+//        {
+//            moveRight();
+//        });
+//
+//        $("#slider ul").swiperight(function()
+//        {
+//            moveLeft();
+//        });
     });
 </script>
