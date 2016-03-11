@@ -64,7 +64,9 @@
         <script>
             jQuery(document).ready(function()
             {
+                alert('will scroll');
                 jQuery('html,body').scrollTop(0);
+                alert('scrolled');
             });
         </script>
     </body>
