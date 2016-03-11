@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <!--
+    Created using JS Bin
+    http://jsbin.com
+
+    Copyright (c) 2016 by anonymous (http://jsbin.com/xujofoze/4/edit)
+
+    Released under the MIT license: http://jsbin.mit-license.org
+    -->
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- need above because user scaling causes other problems with position:fixed -->
+    <title>iOS position fixed fix by robocat</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            resize: none;
+        }
+        .hed {
+            position: fixed;
+            top: 0;
+            height: 80px;
+            width: 100%;
+            margin: 0;
+            background-color: aqua;
+            overflow: hidden;
+            display: inline;
+        }
+        .bod {
+            padding: 80px 0;
+        }
+        .fut {
+            position: fixed;
+            bottom: 0;
+            height: 80px;
+            width: 100%;
+            margin: 0;
+            background-color: pink;
+            overflow: hidden;
+        }
+        .margin-contain {
+            border: 1px solid transparent;
+        }
+    </style>
+</head>
+<body onload="tryfix()">
+<div id="hed" class="hed">
+    <div class="margin-contain">
+        <h1>I am the head</h1>
+    </div>
+</div>
+<div class="bod">
+    <h1>I am the body</h1>
+    <p>
+        An input: <input>
+    </p>
+    <p>
+        Shu' thi gob. Ee by gum bloomin' 'eck wacken thi sen up be reet eeh. Nobbut a lad. Ah'll gi' thee a thick ear big girl's blouse any rooad tintintin nay lad. Ah'll gi' thi summat to rooer abaht face like a slapped arse. Eeh be reet bobbar tell thi summat for nowt where there's muck there's brass michael palin. Ey up. Tintintin soft southern pansy. Ah'll gi' thee a thick ear. That's champion be reet how much soft southern pansy be reet what's that when it's at ooam. What's that when it's at ooam t'foot o' our stairs face like a slapped arse will 'e 'eckerslike breadcake. Bloomin' 'eck. By 'eck by 'eck bloomin' 'eck. Bloomin' 'eck mardy bum nobbut a lad t'foot o' our stairs a pint 'o mild nobbut a lad. Big girl's blouse ey up nah then shurrup.
+    </p>
+    <p>
+        Shu' thi gob where there's muck there's brass a pint 'o mild. Be reet will 'e 'eckerslike by 'eck chuffin' nora that's champion. What's that when it's at ooam god's own county. Tha knows nay lad. What's that when it's at ooam. T'foot o' our stairs ah'll box thi ears sup wi' 'im tha daft apeth ah'll gi' thi summat to rooer abaht. Th'art nesh thee ne'ermind. Eeh. How much ah'll gi' thi summat to rooer abaht where's tha bin ne'ermind. How much gerritetten nobbut a lad. Face like a slapped arse bobbar cack-handed. God's own county wacken thi sen up dahn t'coil oil by 'eck dahn t'coil oil th'art nesh thee. A pint 'o mild. T'foot o' our stairs tell thi summat for nowt mardy bum where there's muck there's brass. Chuffin' nora.
+    </p>
+    <p>
+        Sup wi' 'im sup wi' 'im nah then. Dahn t'coil oil tha what will 'e 'eckerslike ah'll learn thi. A pint 'o mild chuffin' nora tha daft apeth shurrup michael palin. Ah'll gi' thi summat to rooer abaht tha what nah then tha knows. Dahn t'coil oil breadcake where's tha bin eeh. Breadcake how much. Bobbar be reet soft southern pansy. Is that thine. God's own county shu' thi gob mardy bum a pint 'o mild. Soft southern pansy breadcake a pint 'o mild.
+    </p>
+    <p>
+        An input: <input>
+    </p>
+</div>
+<div id="fut" class="fut">
+    <div class="margin-contain">
+        <h1>I am the foot</h1>
+    </div>
+</div>
+<script>
+    var isFocused, focusedResizing;
+
+    window.tryfix = function() {
+        var inputs = document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            input = inputs[i];
+            input.onfocus = focused;
+            input.onblur = blured;
+        }
+        window.onscroll = scrolled;
+    }
+
+    function focused(event) {
+        isFocused = true;
+        scrolled();
+    }
+
+    function blured(event) {
+        isFocused = false;
+        var headStyle = document.getElementById('hed').style;
+        var footStyle = document.getElementById('fut').style;
+        if (focusedResizing) {
+            focusedResizing = false;
+            headStyle.position = 'fixed';
+            headStyle.top = 0;
+            footStyle.display = 'block';
+        }
+    }
+
+    function scrolled() {
+        document.title = 'test';
+        var headStyle = document.getElementById('hed').style;
+        var foot = document.getElementById('fut');
+        var footStyle = foot.style;
+        if (isFocused) {
+            if (!focusedResizing) {
+                focusedResizing = true;
+                headStyle.position = 'absolute';
+                footStyle.display = 'none';
+            }
+            headStyle.top = window.pageYOffset + 'px';
+            // window.innerHeight wrong
+            //var footTop = window.pageYOffset + window.innerHeight - foot.offsetHeight;
+            //footStyle.bottom = (document.body.offsetHeight - footTop) + 'px';
+        }
+    }
+
+    document.title = 'robocat position:fixed fix for ios5/ios6/ios7';
+</script>
+</body>
+</html>
