@@ -5,16 +5,8 @@
     <div class="footer-mobile">
         <div class="tit-comissoes"> Comissões </div>
         <div class="col-xs-12 col-sm-6 nomes-comissoes">
-            <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
-            <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
-            <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
-            <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
-            <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
-            <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
-            <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-            <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
-            <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
-            <p><a href="/templates/mv/tv/index.html">TV Alerj Ao Vivo</a></p>
+            @include('partials.commitees-links-1')
+            @include('partials.commitees-links-2')
         </div>
         <div class="col-xs-2"></div>
         <div class="col-xs-8 col-sm-4 footer-logo-alerj">
@@ -55,21 +47,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 comissoes-footer">
-                            <p><a href="/comissoes/defesadoconsumidor">Disque Defesa do Consumidor</a></p>
-                            <p><a href="/comissoes/meioambiente">Disque Denúncia Meio Ambiente</a></p>
-                            <p><a href="/comissoes/preconceitos">Disque Preconceitos</a></p>
-                            <p><a href="/comissoes/pirataria">Disque Pirataria</a></p>
+                            @include('partials.commitees-links-1')
                         </div>
                         <div class="col-md-4 comissoes-footer">
-                            <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
-                            <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
-                            <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-                            <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
-                            <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
-                            <p><a href="http://stevesanderson.github.io/fixed-height-layouts-demo/simple.html">Teste Fixed Header</a></p>
-                            <p><a href="/templates/mv/tv/index.html">TV Alerj Ao Vivo</a></p>
-                            {{--<p><a href="/templates/mv/radio/index.html"></a></p>--}}
-                            <a href='http://www.agenciaradioweb.com.br/novosite4/alerj/jw.php' title='Play'>Radio Alerj</a>
+                            @include('partials.commitees-links-2')
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
