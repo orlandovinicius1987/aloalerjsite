@@ -9,3 +9,7 @@ Route::group(['prefix' => 'chat'], function() {
     Route::get('index', ['as' => 'home', 'uses' => 'Chat@index']);
     Route::get('terminated', ['as' => 'home', 'uses' => 'Chat@terminated']);
 });
+
+Route::group(['prefix' => 'tv'], function() {
+    Route::get('/', ['as' => 'tv.index', 'uses' => 'TV@index']);
+});
