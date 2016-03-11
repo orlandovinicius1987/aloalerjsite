@@ -4,8 +4,8 @@
 
 <script>
     // Disable jQuery Mobile loading message
-    $.mobile.loading().hide();
-    $.mobile.loadingMessage = false;
+//    $.mobile.loading().hide();
+//    $.mobile.loadingMessage = false;
 
     var isShowing = false;
 
