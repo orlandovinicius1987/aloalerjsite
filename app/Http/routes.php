@@ -11,5 +11,5 @@ Route::group(['prefix' => 'chat'], function() {
 });
 
 Route::group(['prefix' => 'tv'], function() {
-    Route::get('/', ['as' => 'tv.index', 'uses' => 'TV@index']);
+    Route::get('/', ['as' => 'tv.index', 'uses' => 'Tv@index']);
 });
