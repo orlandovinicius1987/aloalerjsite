@@ -72,8 +72,19 @@
             {
                 setTimeout(function()
                 {
-                    scroll();
-                    console.log('espada');
+                    $(function() {
+                        var $window = $(window);
+                        function top() {
+                            var $top = $window.scrollTop();
+                            if( $top > 100 ) {
+                                $("#top").css("position","absolute");
+                            }
+                            else {
+                                $("#top").css("position","fixed");
+                            }
+                        };
+                        $(window).scroll(top);
+                    });
                 }, 2000);
 
                 jQuery("#scrollToTop").click(function()

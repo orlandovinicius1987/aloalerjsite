@@ -3,7 +3,7 @@
 
 
 <!-- Header -->
-<div class="barra-dourada-top"></div>
+<div id="top" class="barra-dourada-top"></div>
 <div class="cabecalho{{ isset($home) ? '-home' : '' }}">
     <div class="container">
 
