@@ -61,11 +61,11 @@
             {{--alertSize();--}}
         {{--</script>--}}
 
-        <scrip>
+        <script>
             jQuery(document).ready(function()
             {
                 jQuery('html,body').scrollTop(0);
             });
-        </scrip>
+        </script>
     </body>
 </html>
