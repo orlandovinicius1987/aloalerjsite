@@ -62,11 +62,19 @@
         {{--</script>--}}
 
         <script>
-            setTimeout(function()
+            jQuery(document).ready(function()
             {
-                window.parent.$("body").animate({scrollTop:0}, 'slow');
-                console.log('espada');
-            }, 2000);
+                setTimeout(function()
+                {
+                    window.parent.$("body").animate({scrollTop:0}, 'slow');
+                    console.log('espada');
+                }, 2000);
+
+                jQuery("#scrollToTop").click(function()
+                {
+                    window.parent.$("body").animate({scrollTop:0}, 'slow');
+                });
+            })
         </script>
     </body>
 </html>
