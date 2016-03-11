@@ -67,6 +67,8 @@
                             <p><a href="/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
                             <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
                             <p><a href="/templates/mv/tv/index.html">TV Alerj Ao Vivo</a></p>
+                            {{--<p><a href="/templates/mv/radio/index.html"></a></p>--}}
+                            <a href='http://www.agenciaradioweb.com.br/novosite4/alerj/jw.php' title='Play'>Radio Alerj</a>
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
