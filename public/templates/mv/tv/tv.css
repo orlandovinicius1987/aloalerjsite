@@ -3,7 +3,7 @@
     padding-bottom: 56.25%;
     padding-top: 30px; height: 0; overflow: hidden;
     margin: auto ;
-    width: 80%;
+    width: 60%;
 }
 
 .video-container iframe,
@@ -15,3 +15,27 @@
     /*width: 70%;*/
     /*height: 70%;*/
 }
+
+.cabecalho img {
+    width: 60px;
+    height: 60px;
+    /*margin-top: 10px;*/
+}
+
+/*@media only (min-width : 768px) {*/
+    /*.cabecalho img {*/
+        /*width: 60px;*/
+    /*}*/
+/*}*/
+/*@media only (max-width : 992px) and (min-width : 769px) {*/
+    /*.cabecalho img {*/
+        /*width: 120px;*/
+    /*}*/
+/*}*/
+/*@media only screen and (min-width : 992px) {*/
+    /*.cabecalho img {*/
+        /*width: 156px;*/
+    /*}*/
+/*}*/
+
+
