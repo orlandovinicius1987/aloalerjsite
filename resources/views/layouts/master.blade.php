@@ -91,7 +91,18 @@
                 {
                     scroll();
                 });
-            })
+            });
+
+            jQuery("a[target='_blank']").click(function(e)
+            {
+                e.preventDefault();
+
+                var url = jQuery(e.currentTarget).attr('href');
+
+                window.open(url, '_system', '');
+
+                return false;
+            });
         </script>
     </body>
 </html>
