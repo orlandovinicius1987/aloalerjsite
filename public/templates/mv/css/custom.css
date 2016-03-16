@@ -46,10 +46,6 @@ p {
         margin-left: -6px !important;
     }
     .alerj-logo{
-        /*
-        border-right: 1px solid #ffffff;
-        border-left: 1px solid #ffffff;
-        */
     }
 
     .nome-comissao {
@@ -265,8 +261,6 @@ p {
 
     .alerj-logo {
         height: 145px;
-  /*      border-right: 1px solid #fff;
-        border-left: 1px solid #fff;*/
     }
 
     .alolerj-logo-home {
@@ -563,6 +557,7 @@ p {
         position: fixed;
         bottom: 0;
         width: 100%;
+        z-index: 999;
     }
 
     .panel-default > .panel-heading {
