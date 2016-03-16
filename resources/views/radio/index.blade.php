@@ -14,9 +14,9 @@
     <div class="radio-content text-center">
         {{--<img src="/templates/mv/img/radio-alerj.png" alt="" class="">--}}
 
-        <audio controls preload="preload">
+        <audio controls >
             <source src="//centova10.ciclanohost.com.br:6044/live.mp3" type="audio/mpeg">
-            Seu browser não suporta o elemento de audio.
+            Seu browser não suporta o elemento de audio!
         </audio>
 
         {{--<iframe--}}
