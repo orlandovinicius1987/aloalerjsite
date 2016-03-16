@@ -95,6 +95,8 @@
 
             jQuery("a[target='_blank']").click(function(e)
             {
+                alert('open');
+
                 e.preventDefault();
 
                 var url = jQuery(e.currentTarget).attr('href');
