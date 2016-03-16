@@ -12,6 +12,9 @@
         <link href="/templates/mv/css/carousel.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
 
+        @if (true)
+            <link rel="stylesheet" href="/templates/mv/css/app.css">
+        @endif
     </head>
 
     <body>
