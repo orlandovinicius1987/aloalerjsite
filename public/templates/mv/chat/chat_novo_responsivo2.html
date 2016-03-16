@@ -140,7 +140,7 @@
 
 </nav>
 
-<div class="container-fluid chat-miolo">
+<div id="container-chat" class="container-fluid chat-miolo">
 <!--
     &lt;!&ndash; Main component for a primary marketing message or call to action &ndash;&gt;
     <div class="jumbotron">
@@ -207,8 +207,8 @@
                         <input type="email" class="form-control chat-mensagem" id="btn-input" placeholder="Digite sua mensagem aqui...">
                     </div>
                     <div class="col-xs-3  col-sm-2 button-send">
-                        <button type="submit" class="btn btn-lg btn-primary hidden-xs">Enviar</button>
-                        <button type="submit" class="btn btn-primary visible-xs">Enviar</button>
+                        <button onclick="return false;" class="btn btn-lg btn-primary hidden-xs send-button">Enviar</button>
+                        <button  onclick="return false;" class="btn btn-primary visible-xs send-button">Enviar</button>
                     </div>
 
 
@@ -237,5 +237,26 @@
 <script src="../../dist/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script>
+    $(".send-button").click(function ()
+    {
+        console.log('qualquer coisa');
+        $("#container-chat").append('  <div class="row"><div class="talk-bubble tri-right round border left-top"><div class="talktext"><p>And finally on the right flush at the top. Uses .round .border and .right-top And finally on the right flush at the top. Uses .round .border and .right-top And finally on the right flush at the top. Uses .round .border and .right-top </p></div></div></div>');
+
+    });
+    jQuery('#container-chat').bind('DOMSubtreeModified', function(e) {
+        if (e.target.innerHTML.length > 0) {
+            jQuery("html, body").animate(
+                    {
+                        scrollTop: jQuery(document).height()
+                    },
+                    "fast"
+            );
+        }
+    });
+</script>
+
+
 </body>
 </html>

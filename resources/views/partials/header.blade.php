@@ -40,7 +40,7 @@
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
                         <a href="/">
-                            <img src="/templates/mv/svg/logo-alerj-monocromatica.svg" alt="" class="alerj-logo">
+                            <img src="/templates/mv/svg/logo-alerj-monocromatica_fio-branco.svg" alt="" class="alerj-logo">
                             {{--<object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">--}}
                         {{--Alerj Logo <!-- fallback image in CSS -->--}}
                         {{--</object>--}}
