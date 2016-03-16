@@ -1081,3 +1081,15 @@ p {
 
 
 }
+
+.radio-content {
+    /*background-color: #000000;*/
+}
+
+.radio-content img {
+    margin-top: 20px;
+}
+
+.radio-content audio {
+    background-color: #172b53;
+}

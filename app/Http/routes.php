@@ -13,3 +13,7 @@ Route::group(['prefix' => 'chat'], function() {
 Route::group(['prefix' => 'tv'], function() {
     Route::get('/', ['as' => 'tv.index', 'uses' => 'Tv@index']);
 });
+
+Route::group(['prefix' => 'radio'], function() {
+    Route::get('/', ['as' => 'radio.index', 'uses' => 'Radio@index']);
+});
