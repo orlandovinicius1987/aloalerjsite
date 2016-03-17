@@ -3,7 +3,7 @@
 <div class="cabecalho{{ isset($home) ? '-home' : '' }}">
     <div class="container">
 
-        @if (isset($home))
+        {{--@if (isset($home))--}}
             <div class="row row-eq-height">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
@@ -31,23 +31,23 @@
                 </div>
                 <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
-        @else
-            <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-                        <a href="/">
-                            <img src="/templates/mv/svg/logo-alerj-monocromatica_fio-branco.svg" alt="" class="alerj-logo">
+        {{--@else--}}
+            {{--<div class="row row-eq-height">--}}
+                {{--<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">--}}
+                    {{--<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">--}}
+                        {{--<a href="/">--}}
+                            {{--<img src="/templates/mv/svg/logo-alerj-monocromatica_fio-branco.svg" alt="" class="alerj-logo">--}}
                             {{--<object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">--}}
                         {{--Alerj Logo <!-- fallback image in CSS -->--}}
                         {{--</object>--}}
-                        </a>
-                    </div>
-                    <div class="col-xs-8 col-lg-3">@yield('page-name')</div>
-                    <div class="hidden-xs hidden-sm col-lg-6">@include('partials.telefones-uteis')</div>
-                </div>
-                <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
-            </div>
-        @endif
+                        {{--</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-xs-8 col-lg-3">@yield('page-name')</div>--}}
+                    {{--<div class="hidden-xs hidden-sm col-lg-6">@include('partials.telefones-uteis')</div>--}}
+                {{--</div>--}}
+                {{--<div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>--}}
+            {{--</div>--}}
+        {{--@endif--}}
     </div>
 </div>
 <!-- End Header -->
