@@ -367,9 +367,6 @@ p {
 
     /* Footer /
 
-
-
-
     /* Chat */
     .cabecalho.chat{
         height: 90px;
@@ -429,6 +426,13 @@ p {
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 
+    img.logo-com-tel-dc.visible-lg {
+        margin-left: 47px;
+    }
+    img.alolerj-logo.img-responsive {
+        margin: 15px;
+    }
+
 
     /* Custom, iPhone Retina */
     .carousel {
@@ -448,7 +452,7 @@ p {
         border-radius: 0;
         margin-bottom: 0;
         background: #C7CCD6 !important;
-        height: 177px;
+        height: 176px;
     }
 
     .cabecalho {
@@ -458,7 +462,7 @@ p {
         /*font-size: 12px;*/
         /*letter-spacing: 5px;*/
         background: #C7CCD6 !important;
-        height: 176px;
+        height: 171px;
     }
 
     .cabecalho:before {
@@ -522,19 +526,11 @@ p {
         height: 152px !important;
         margin-bottom: 10px;
         border:none;
+        margin-top: -1px;
     }
 
     .no-svg .alerj-logo {
         background-image: url(images/logo-alerj.svg);
-    }
-
-    .alolerj-logo {
-        height: 92px !important;
-        margin-top: 30px !important;
-    }
-
-    .no-svg .aloalerj-logo {
-        background-image: url(images/logo-alo-alerj.svg);
     }
 
     .balao-chat {
@@ -545,7 +541,6 @@ p {
     .no-svg .balao-chat {
         background-image: url(images/balao-chat.svg);
     }
-
 
     .bg_video {
         /*margin-bottom: 0 !important;*/
