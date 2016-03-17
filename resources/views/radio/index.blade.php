@@ -11,7 +11,7 @@
 @section('content-main')
     <!-- Load Radio -->
     <div class="radio-content text-center">
-        {{--<img src="/templates/mv/img/radio-alerj.png" alt="" class="">--}}
+        <img src="/templates/mv/img/radio-alerj.png" alt="" class="">
 
         <audio id="radio-alerj" controls>
             <source src="http://centova10.ciclanohost.com.br:6044/live.mp3" type="audio/mpeg">

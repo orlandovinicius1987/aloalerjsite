@@ -1071,15 +1071,18 @@ p {
         width: 100%;
         /*background-color: #2b542c;*/
     }
+}
 
 /* Video */
-
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    /*padding-bottom: 35%;*/
+    padding-bottom: 46%;
     padding-top: 30px; height: 0; overflow: hidden;
     margin: auto ;
-    width: 60%;
+    /*width: 60%;*/
+    width: 84%;
+    margin-top: 30px;
 }
 
 .video-container iframe,
@@ -1092,9 +1095,7 @@ p {
     /*height: 70%;*/
 }
 
-
-}
-
+/* Radio */
 .radio-content {
     /*background-color: #000000;*/
 }
