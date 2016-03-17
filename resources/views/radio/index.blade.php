@@ -6,26 +6,18 @@
 
 @section('sidebar-name')
     <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="logo-com-tel-dc"></a>
-    @stop
+@stop
 
-    @section('content-main')
-
+@section('content-main')
     <!-- Load Radio -->
     <div class="radio-content text-center">
         {{--<img src="/templates/mv/img/radio-alerj.png" alt="" class="">--}}
 
-        <audio controls >
+        <audio id="radio-alerj" controls>
             <source src="http://centova10.ciclanohost.com.br:6044/live.mp3" type="audio/mpeg">
-            Seu browser não suporta o elemento de audio!
+            Seu browser não suporta audio via HTML5, por favor atualize-o para ouvir a Radio Alerj.
         </audio>
-
-        {{--<iframe--}}
-                {{--src="//centova10.ciclanohost.com.br:6044/live.mp3"--}}
-                {{--allowfullscreen--}}
-                {{--frameborder="0">--}}
-        {{--</iframe>--}}
     </div>
-
 @stop
 
 @section('content-sidebar')

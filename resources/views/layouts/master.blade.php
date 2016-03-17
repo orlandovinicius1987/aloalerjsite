@@ -108,6 +108,11 @@
 
                 return false;
             });
+
+            jQuery(document).ready(function()
+            {
+                jQuery('audio')[0].play();
+            });
         </script>
     </body>
 </html>
