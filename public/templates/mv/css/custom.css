@@ -1085,6 +1085,12 @@ p {
 /* Radio */
 .radio-content {
     /*background-color: #000000;*/
+    background-image: url("/templates/mv/img/radio-alerj-phone.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
 }
 
 .radio-content img {
