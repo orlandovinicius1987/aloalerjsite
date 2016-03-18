@@ -10,8 +10,11 @@
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="/templates/mv/css/carousel.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css">
+        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?breno={{rand(0,5000)}}">
 
+        @if (Session::get('client') == 'app')
+            <link rel="stylesheet" href="/templates/mv/app.css?breno={{rand(0,5000)}}">
+        @endif
     </head>
 
     <body>
@@ -95,6 +98,8 @@
 
             jQuery("a[target='_blank']").click(function(e)
             {
+                alert('open');
+
                 e.preventDefault();
 
                 var url = jQuery(e.currentTarget).attr('href');
@@ -102,6 +107,11 @@
                 window.open(url, '_system', '');
 
                 return false;
+            });
+
+            jQuery(document).ready(function()
+            {
+                jQuery('audio')[0].play();
             });
         </script>
     </body>

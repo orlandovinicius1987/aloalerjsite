@@ -11,4 +11,4 @@
 <p><a href='/radio' title='Play'>Radio Alerj</a></p>
 {{--<p><a href='http://www.agenciaradioweb.com.br/novosite4/alerj/jw.php' title='Play'>Radio Alerj</a></p>--}}
 <p><a href="#" id="scrollToTop" title='Play'>Scroll</a></p>
-
+<a href="javascript: window.open('http://kallzenter.com/', '_system'); return false;">Visit Website</a>
