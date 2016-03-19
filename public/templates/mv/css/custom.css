@@ -50,7 +50,10 @@ p {
     .nome-comissao {
         color: #ffffff;
         font-size: 16px;
-        font-family: 'Oswald'
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+
     }
 
     .mobile-content {
@@ -270,7 +273,13 @@ p {
     }
     .nome-comissao{
         color:  #fff ;
-        font-size: 28px;
+        font-size: 24px;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 25px;
+        line-height: 1.4;
+        letter-spacing: 1.5px;
 
     }
     .logo-com-tel-dc {
@@ -481,6 +490,19 @@ p {
         margin-right: -15px;
     }
 
+    .nome-comissao {
+        color: #172b53;
+        font-size: 25px;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 45px;
+        line-height: 1.2;
+        letter-spacing: 1px;
+
+    }
+
+
 
     /*
  * Row with equal height columns
@@ -647,7 +669,7 @@ p {
         text-decoration: none;
     }
 
-    .nome-comissao{
+    .issaoe-comissao{
         font-family: 'Oswald', sans-serif;
         font-size: 20px;
         text-transform: uppercase;
@@ -1049,15 +1071,18 @@ p {
         width: 100%;
         /*background-color: #2b542c;*/
     }
+}
 
 /* Video */
-
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    /*padding-bottom: 35%;*/
+    padding-bottom: 46%;
     padding-top: 30px; height: 0; overflow: hidden;
     margin: auto ;
-    width: 60%;
+    /*width: 60%;*/
+    width: 84%;
+    margin-top: 30px;
 }
 
 .video-container iframe,
@@ -1070,9 +1095,7 @@ p {
     /*height: 70%;*/
 }
 
-
-}
-
+/* Radio */
 .radio-content {
     /*background-color: #000000;*/
 }
