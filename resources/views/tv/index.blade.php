@@ -9,16 +9,10 @@
 @stop
 
 @section('content-main')
-
-    <!--Load YouTube Video https://www.youtube.com/watch?v=e5iGB-228QA-->
-    <div class="video-container">
-        <iframe id="video" width="100%" height="100%"
-                src="//www.youtube.com/embed/e5iGB-228QA?autoplay=1"
-                allowfullscreen
-                frameborder="0">
-        </iframe>
+    <div class="spacer"></div>
+    <div class="video-wrapper">
+        <div id="video-player"></div>
     </div>
-
 @stop
 
 @section('content-sidebar')
