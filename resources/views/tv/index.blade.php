@@ -23,8 +23,9 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-         'title' => 'DEFESA DO CONSUMIDOR',
-         'telephone' => '0800 023 0007',
+         'title' => 'TV ALERJ',
+         'telephone' => '2588-1510',
          'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
+         'hours' => 'Aqui você tem poder!'
      ])
 @stop

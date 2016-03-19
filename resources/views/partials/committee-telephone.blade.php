@@ -5,7 +5,13 @@
         <div class="tel-comissao">{{ $telephone }}</div>
         <div class="linha-info"></div>
         {!! isset($site) ? $site : '' !!}
-        <p class="outras-info text-center">Atendimento das 8h às 20h</p>
+        <p class="outras-info text-center">
+            @if (! isset($hours))
+                Atendimento das 8h às 20h
+            @else
+               {{ $hours }}
+            @endif
+        </p>
     </div>
 </div>
 
