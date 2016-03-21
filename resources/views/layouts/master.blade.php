@@ -114,5 +114,7 @@
                 jQuery('audio')[0].play();
             });
         </script>
+
+        @include('tv.video-player-script')
     </body>
 </html>

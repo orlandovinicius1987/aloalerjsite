@@ -9,22 +9,17 @@
 @stop
 
 @section('content-main')
-
-    <!--Load YouTube Video https://www.youtube.com/watch?v=e5iGB-228QA-->
-    <div class="video-container">
-        <iframe id="video" width="100%" height="100%"
-                src="//www.youtube.com/embed/e5iGB-228QA?autoplay=1"
-                allowfullscreen
-                frameborder="0">
-        </iframe>
+    <div class="spacer"></div>
+    <div class="video-wrapper">
+        <div id="video-player"></div>
     </div>
-
 @stop
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-         'title' => 'DEFESA DO CONSUMIDOR',
-         'telephone' => '0800 023 0007',
+         'title' => 'TV ALERJ',
+         'telephone' => '2588-1510',
          'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
+         'hours' => 'Aqui você tem poder!'
      ])
 @stop
