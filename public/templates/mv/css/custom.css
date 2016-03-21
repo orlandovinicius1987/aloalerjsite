@@ -1079,10 +1079,10 @@ p {
         margin-bottom: 10px;
     }
 
-    .row {
-        width: 100%;
+    /*.row {*/
+        /*width: 100%;*/
         /*background-color: #2b542c;*/
-    }
+    /*}*/
 }
 
 /* Video */
