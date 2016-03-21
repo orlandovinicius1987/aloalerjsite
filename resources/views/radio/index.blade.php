@@ -13,10 +13,25 @@
     <div class="radio-content text-center">
         {{--<img src="/templates/mv/img/radio-alerj.png" alt="" class="">--}}
 
-        <audio id="radio-alerj" controls>
-            <source src="http://centova10.ciclanohost.com.br:6044/live.mp3" type="audio/mpeg">
-            Seu browser não suporta audio via HTML5, por favor atualize-o para ouvir a Radio Alerj.
-        </audio>
+        <div class="row">
+            <div class="col-xs-4">
+                <img src="/templates/mv/img/microfone.png" alt="" class="">
+            </div>
+            <div class="col-xs-3 col-xs-offset-4">
+                <img src="/templates/mv/img/ao-vivo.png" alt="" class="ao-vivo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <img src="/templates/mv/img/circulos-logo.png" alt="" class="">
+            </div>
+        </div>
+        <div class="row">
+            <audio id="radio-alerj" controls>
+                <source src="http://centova10.ciclanohost.com.br:6044/live.mp3" type="audio/mpeg">
+                Seu browser não suporta audio via HTML5, por favor atualize-o para ouvir a Radio Alerj.
+            </audio>
+        </div>
     </div>
 @stop
 

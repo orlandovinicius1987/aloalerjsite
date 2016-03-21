@@ -978,7 +978,7 @@ p {
         font-weight: 600;
     }
     button.btn.btn-lg.btn-primary {
-        padding: 10px 46px;
+        /*padding: 10px 46px;*/
         text-transform: uppercase;
         font-weight: 600;
         font-size: 20px;
@@ -1110,20 +1110,27 @@ p {
 /* Radio */
 .radio-content {
     /*background-color: #000000;*/
-    background-image: url("/templates/mv/img/radio-alerj-phone.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
+    /*background-image: url("/templates/mv/img/radio-alerj-phone.png");*/
+    /*background-position: center center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
+    background-color: #02204d;
 }
 
 .radio-content img {
+    /*margin-top: 20px;*/
+    width: 100%;
+}
+
+.radio-content .ao-vivo {
     margin-top: 20px;
 }
 
 .radio-content audio {
     background-color: #172b53;
+    margin-top: 15px;
+    width: 90%;
 }
 
 .video-wrapper {
