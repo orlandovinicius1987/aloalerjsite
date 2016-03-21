@@ -1074,30 +1074,36 @@ p {
 }
 
 /* Video */
-.video-container {
-    position: relative;
-    /*padding-bottom: 35%;*/
-    padding-bottom: 46%;
-    padding-top: 30px; height: 0; overflow: hidden;
-    margin: auto ;
-    /*width: 60%;*/
-    width: 84%;
-    margin-top: 30px;
-}
+/*.video-container {*/
+    /*position: relative;*/
+    /*!*padding-bottom: 35%;*!*/
+    /*padding-bottom: 46%;*/
+    /*padding-top: 30px; height: 0; overflow: hidden;*/
+    /*margin: auto ;*/
+    /*!*width: 60%;*!*/
+    /*width: 84%;*/
+    /*margin-top: 30px;*/
+/*}*/
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*width: 70%;*/
-    /*height: 70%;*/
-}
+/*.video-container iframe,*/
+/*.video-container object,*/
+/*.video-container embed {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*!*width: 70%;*!*/
+    /*!*height: 70%;*!*/
+/*}*/
 
 /* Radio */
 .radio-content {
     /*background-color: #000000;*/
+    background-image: url("/templates/mv/img/radio-alerj-phone.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
 }
 
 .radio-content img {
@@ -1116,6 +1122,8 @@ p {
     padding-bottom: 56.25%;
     padding-top: 25px;
     height: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .video-wrapper iframe {
     position: absolute;
