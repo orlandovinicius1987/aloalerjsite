@@ -13,6 +13,7 @@
     <div class="video-wrapper">
         <div id="video-player"></div>
     </div>
+    <div class="spacer"></div>
 @stop
 
 @section('content-sidebar')
