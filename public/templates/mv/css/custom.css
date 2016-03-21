@@ -111,6 +111,7 @@ p {
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
+        margin-top: 30px;
     }
     .footer-mobile p{
         color: #ffffff;
@@ -251,6 +252,7 @@ p {
     .footer-mobile-box{
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
+        margin-top: 30px;
     }
 
 
@@ -356,6 +358,7 @@ p {
         border-top: solid 2px #b6bcc7;
         background: #172b53 ;
         border-bottom: 5px solid #8fa143;
+        margin-top: 30px;
     }
     .footer-logo-alerj {
         right: 40px;
