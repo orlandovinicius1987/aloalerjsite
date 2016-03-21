@@ -42,7 +42,10 @@ p {
         height: 67px !important;
         margin-top: 10px !important;
         margin-bottom: 15px;
-        margin-left: -6px !important;
+        /*margin-left: -6px !important;*/
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
     }
     .alerj-logo{
     }
@@ -209,7 +212,10 @@ p {
         height: 67px !important;
         margin-top: 10px !important;
         margin-bottom: 15px;
-        margin-left: -6px !important;
+        /*margin-left: -6px !important;*/
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
     }
 
     /*.footer-chat .col-xs-9 input#btn-input {*/
@@ -269,9 +275,12 @@ p {
 
     .alolerj-logo-home {
         height: 77px !important;
-        margin-top: 10px !important;
-        margin-bottom: 15px;
-        margin-left: 40px !important;
+        /*margin-top: 10px !important;*/
+        /*margin-bottom: 15px;*/
+        /*margin-left: 40px !important;*/
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
     }
     .nome-comissao{
         color:  #fff ;

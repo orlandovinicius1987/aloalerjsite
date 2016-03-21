@@ -13,7 +13,8 @@
                         </a>
                     </div>
 
-                    <div class="col-xs-offset-3 col-xs-8  col-sm-offset-4 col-sm-8 visible-xs visible-sm">
+                    <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
+                    {{--<div class="col-xs-offset-3 col-xs-8  col-sm-offset-4 col-sm-8 visible-xs visible-sm">--}}
                         <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive">
                             AloAlerj Logo
                         </object>
