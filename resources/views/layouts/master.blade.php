@@ -36,7 +36,7 @@
         {{--<div class="container-fluid mobile-content visible-xs visible-sm">--}}
             {{--@yield('content-main')--}}
         {{--</div>--}}
-                
+
         <!-- End Content -->
 
         @include('partials.footer')
