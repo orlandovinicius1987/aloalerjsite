@@ -1,42 +1,81 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo img-responsive">
-        AloAlerj Logo
-    </object>
+    <h1 class="nome-comissao">Comissão de Defesa<br/>do Consumidor</h1>
 @stop
 
 @section('sidebar-name')
-    <object type="image/svg+xml" data="/templates/mv/svg/balao-chat.svg" class="balao-chat">
-        Logo Chat
-    </object>
+    <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel-dc visible-lg visible-md"></a>
+    <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="logo-com-tel-dc visible-sm"></a>
 @stop
 
 @section('content-main')
-    <div class="mobile-content hidden-xs hidden-sm">
-        @include('partials.slider')
-        {{--<div class="bg_video">--}}
-        {{--<video autoplay="" loop="" poster="#" class="img-responsive">--}}
-        {{--<source src="/templates/mv/videos/operadores_1.webm" type="video/webm">--}}
-        {{--<source src="/templates/mv/videos/operadores_1.mp4" type="video/mp4">--}}
-        {{--</video>--}}
-        {{--</div>--}}
-    </div>
 
-    <div class="visible-xs visible-sm">
-        <div class="row">
-            @include('partials.slider')
-            <div class="col-xs-12 col-sm-6 mobile-chat visible-xs visible-sm">
-                @include('partials.form-chat')
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Fale Conosco</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <div class="col-md-5">
+                    <input id="nome" name="nome" type="text" placeholder="Insira o seu nome" class="form-control input-md" required="">
+
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-6 mobile-telegram visible-xs visible-sm">
-                @include('partials.telegram')
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-5">
+                    <input id="email" name="email" type="text" placeholder="insira o seu email" class="form-control input-md" required="">
+
+                </div>
             </div>
-        </div>
-    </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="mensagem">Mensagem</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="mensagem" name="mensagem">insira a sua mensagem</textarea>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="assunto">Assunto</label>
+                <div class="col-md-5">
+                    <select id="assunto" name="assunto" class="form-control">
+                        <option value="Pergunta">Pergunta</option>
+                        <option value="Sugestão">Sugestão</option>
+                        <option value="Ajuda">Ajuda</option>
+                        <option value="Denuncia">Denuncia</option>
+                        <option value="Reclamação">Reclamação</option>
+                        <option value="Elogio">Elogio</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="send"></label>
+                <div class="col-md-4">
+                    <button id="send" name="send" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
 @stop
 
 @section('content-sidebar')
-    @include('partials.form-chat')
-    @include('partials.telegram')
+    @include('partials.committee-telephone', [
+         'title' => 'DEFESA DO CONSUMIDOR',
+         'telephone' => '0800 023 0007',
+         'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
+     ])
 @stop
