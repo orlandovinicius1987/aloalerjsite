@@ -13,6 +13,7 @@ class Contact extends Controller
 
     public function post(ContactRequest $request)
     {
-
+        return view('contact.mailsent')
+                ->with('name', $request->get('name'));
     }
 }
