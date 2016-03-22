@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class Home extends Request
+class Contact extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

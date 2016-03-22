@@ -1,16 +1,6 @@
-@extends('layouts.master')
-
-@section('page-name')
-    <h1 class="nome-comissao">Fale com a Alerj</h1>
-@stop
-
-@section('sidebar-name')
-    <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj.svg" class="logo-com-tel-dc visible-lg visible-md"></a>
-    <a href="/"> <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="logo-com-tel-dc visible-sm"></a>
-@stop
+@extends('contact.layout')
 
 @section('content-main')
-
     <form class="form-horizontal">
         <fieldset>
 
@@ -69,14 +59,41 @@
 
         </fieldset>
     </form>
-
-
 @stop
 
-@section('content-sidebar')
-    @include('partials.committee-telephone', [
-         'title' => 'FALE COM A ALERJ',
-         'telephone' => '0800 023 0007',
-         'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
-     ])
-@stop
+{{--FORM ACR NAO APAGAR!!!!!!!!!!!!--}}
+
+    {{--{!! Form::open(['url' => '/contact']) !!}--}}
+        {{--<div class="form-group">--}}
+            {{--<label for="exampleInputEmail1">Nome</label>--}}
+            {{--{!! Form::text('name', null, ['placeholder' => 'Nome completo', 'class' => 'form-control']) !!}--}}
+        {{--</div>--}}
+
+        {{--<div class="form-group">--}}
+            {{--<label for="exampleInputPassword1">Email</label>--}}
+            {{--{!! Form::text('email', null, ['placeholder' => 'E-mail', 'class' => 'form-control']) !!}--}}
+        {{--</div>--}}
+
+        {{--<div class="form-group">--}}
+            {{--<label for="exampleInputPassword1">Telefone</label>--}}
+            {{--{!! Form::text('telephone', null, ['placeholder' => 'Telefone', 'class' => 'form-control']) !!}--}}
+        {{--</div>--}}
+
+        {{--<div class="form-group">--}}
+            {{--<label for="exampleInputPassword1">Assunto</label>--}}
+            {{--{!!--}}
+                {{--Form::select('size',--}}
+                    {{--[--}}
+                        {{--'A' => 'Ajuda',--}}
+                        {{--'P' => 'Pergunta',--}}
+                        {{--'S' => 'Sugestão',--}}
+                        {{--'E' => 'Elogio',--}}
+                        {{--'D' => 'Denúncia',--}}
+                        {{--'R' => 'Reclamação',--}}
+                    {{--]--}}
+                {{--, null, ['class' => 'form-control'])--}}
+            {{--!!}--}}
+        {{--</div>--}}
+
+        {{--<button type="submit" class="btn btn-primary">Enviar mensagem</button>--}}
+    {{--{!! Form::close() !!}--}}
