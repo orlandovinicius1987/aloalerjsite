@@ -31,6 +31,7 @@ p {
     .cabecalho {
         background: #172b53;
         height: 67px;
+        margin-bottom: 40px;
     }
 
     .cabecalho-home {
@@ -48,6 +49,7 @@ p {
         width: 100%;
     }
     .alerj-logo{
+        height: 93px;
     }
 
     .nome-comissao {
@@ -317,6 +319,7 @@ p {
 
     .cabecalho{
         height: 120px;
+        margin-bottom: 45px;
     }
 
     .cabecalho-home {
@@ -1154,4 +1157,8 @@ p {
 
 .spacer {
     margin-top: 15px;
+}
+
+.texto-comissao-ma {
+    margin-top: 10px;
 }
