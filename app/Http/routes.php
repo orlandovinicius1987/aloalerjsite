@@ -17,3 +17,7 @@ Route::group(['prefix' => 'tv'], function() {
 Route::group(['prefix' => 'radio'], function() {
     Route::get('/', ['as' => 'radio.index', 'uses' => 'Radio@index']);
 });
+
+Route::group(['prefix' => 'contact'], function() {
+    Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
+});
