@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label for="input-nome" class="sr-only">Nome</label>
-        <span class="logo-chat-mobile visible-xs"></span>
+        <span class="logo-chat-mobile visible-xs visible-sm"></span>
         <input type="text" name="name" id="input-nome" class="form-control" placeholder="Insira o seu nome">
     </div>
     <div class="form-group">
