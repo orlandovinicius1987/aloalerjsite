@@ -21,6 +21,14 @@ p {
     color: #fff;
 }
 
+.form-control{
+    border: 1px solid #172b53;
+}
+
+form.form-vertical {
+    margin-top: 25px;
+}
+
 
 
 
@@ -145,6 +153,32 @@ p {
     .carousel-control.left{
         display: none;
     }
+
+
+
+    /* BOTÃO DO CHAT */
+    .iniciar-conversa {
+        border-radius: 5px;
+        border-color: #172B53;
+        border: 1px solid;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5em;
+        color: #172B53;
+        background-color: #4EC636;
+        text-transform: uppercase;
+    }
+
+    button.btn.btn-lg.btn-primary {
+        /*padding: 10px 46px;*/
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    button.btn.btn-lg.btn-primary:hover{
+        background: #00a400;
+    }
+    /* FIM - BOTÃO DO CHAT */
 
 
     /* Chat IPHONE */
@@ -284,6 +318,33 @@ p {
         margin-right: 0;
         width: 100%;
     }
+
+    /* BOTÃO DO CHAT */
+    .iniciar-conversa {
+        border-radius: 5px;
+        border-color: #172B53;
+        border: 1px solid;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5em;
+        color: #172B53;
+        background-color: #4EC636;
+        text-transform: uppercase;
+    }
+
+    button.btn.btn-lg.btn-primary {
+        /*padding: 10px 46px;*/
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    button.btn.btn-lg.btn-primary:hover{
+        background: #00a400;
+    }
+    /* FIM - BOTÃO DO CHAT */
+
+
+
     .nome-comissao{
         color:  #fff ;
         font-size: 24px;
@@ -455,6 +516,10 @@ p {
     }
     img.alolerj-logo.img-responsive {
         margin: 15px;
+    }
+
+    form.form-vertical {
+        margin-top: 50px;
     }
 
 
@@ -752,7 +817,7 @@ p {
     }
 
     .img-comissoes{
-        margin-top: 30px;
+        margin-top: 15px;
     }
 
 
@@ -984,8 +1049,12 @@ p {
     button.btn.btn-lg.btn-primary {
         /*padding: 10px 46px;*/
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 20px;
+    }
+
+    button.btn.btn-lg.btn-primary:hover{
+        background: #00a400;
     }
 
     .chat img.balao-chat {

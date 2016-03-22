@@ -3,12 +3,12 @@
     <input name="layout" type="hidden" value="{{ env('CHAT_LAYOUT') }}">
 
     <div class="form-group">
-        <label for="input-nome">Nome</label>
+        <label for="input-nome" class="sr-only">Nome</label>
         <span class="logo-chat-mobile visible-xs"></span>
         <input type="text" name="name" id="input-nome" class="form-control" placeholder="Insira o seu nome">
     </div>
     <div class="form-group">
-        <label for="input-email">Email</label>
+        <label for="input-email" class="sr-only">Email</label>
         <input type="email" name="email" id="input-email" class="form-control" placeholder="Insira o seu email">
     </div>
     <div class="form-group">
