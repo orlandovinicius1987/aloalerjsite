@@ -1,7 +1,7 @@
 <p><a href="/comissoes/pessoadeficiente">Disque Pessoa Portadora de Deficiência</a></p>
 <p><a href="/comissoes/saneamentoambiental">Disque Saneamento Ambiental</a></p>
 <p><a href="/comissoes/segurancapublica">Disque Segurança Pública</a></p>
-<p><a href="{{ route('home') }}/templates/mv/chat/chat_novo_responsivo2.html" target="_blank">POC Breno</a></p>
+<p><a href="{{ route('home') }}/templates/mv/chat/chat_novo_responsivo2.html">POC Breno</a></p>
 <p><a href="/templates/mv/chat/chat.html">POC Marcão</a></p>
 <p><a href="/tests/busca.html">POC ACR</a></p>
 <p><a href="/templates/mv/fixed_header/index.html">POC Fabiano</a></p>
