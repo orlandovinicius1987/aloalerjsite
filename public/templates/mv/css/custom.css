@@ -653,7 +653,8 @@ p {
     }
 
     .icones-apps {
-        margin: 0 20px 0 20px !important;
+        /*margin: 0 20px 0 20px !important;*/
+        margin: 0 !important;
     }
 
     .form-horizontal {
@@ -1162,3 +1163,30 @@ p {
 .texto-comissao-ma {
     margin-top: 10px;
 }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .nome-comissao {
+    color: #172b53;
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 45px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    margin-left: 20px;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .nome-comissao {
+    margin-left: 0;
+    }
+
+    .icones-apps {
+        margin: 0 !important;
+    }
+}
+
