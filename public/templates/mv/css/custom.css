@@ -1259,3 +1259,14 @@ form.form-vertical {
     }
 }
 
+.iniciar-conversa {
+    border-radius: 5px;
+    border-color: #172B53;
+    border: 1px solid;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    color: #172B53;
+    background-color: #4EC636;
+    text-transform: uppercase;
+}
+
