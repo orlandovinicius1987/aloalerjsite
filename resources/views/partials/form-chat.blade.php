@@ -5,11 +5,11 @@
     <div class="form-group">
         <label for="input-nome" class="sr-only">Nome</label>
         <span class="logo-chat-mobile visible-xs visible-sm"></span>
-        <input type="text" name="name" id="input-nome" class="form-control" placeholder="Insira o seu nome">
+        <input type="text" name="name" class="form-control" placeholder="Insira o seu nome">
     </div>
     <div class="form-group">
         <label for="input-email" class="sr-only">Email</label>
-        <input type="email" name="email" id="input-email" class="form-control" placeholder="Insira o seu email">
+        <input type="email" name="email" class="form-control" placeholder="Insira o seu email">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-lg btn-block iniciar-conversa">
