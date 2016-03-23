@@ -1,20 +1,20 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="4" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="5" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="6" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="7" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="8" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="9" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="10" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="11" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="12" class=""></li>
-    </ol>
+    {{--<!-- Indicators -->--}}
+    {{--<ol class="carousel-indicators">--}}
+        {{--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="1" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="2" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="3" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="4" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="5" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="6" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="7" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="8" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="9" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="10" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="11" class=""></li>--}}
+        {{--<li data-target="#myCarousel" data-slide-to="12" class=""></li>--}}
+    {{--</ol>--}}
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img class="first-slide" src="/templates/mv/img/slides/slide000.jpg" alt="First slide">
