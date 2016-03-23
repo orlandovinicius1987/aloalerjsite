@@ -44,7 +44,7 @@
     });
 </script>
 
-<script language="javascript">
+<script>
     $('#collapseOne').on('show.bs.collapse', function () {
         $('.panel-heading').animate({}, 500);
         $('.panel-heading').addClass('dropdown');
@@ -79,7 +79,7 @@
     {{--});--}}
 {{--</script>--}}
 
-{{--<script language="javascript">--}}
+{{--<script>--}}
 {{--$(document).ready(function() {--}}
 
 {{--$("#owl-example").owlCarousel({--}}
@@ -117,7 +117,7 @@
 {{--});--}}
 {{--</script>--}}
 
-<script language="javascript">
+<script>
     jQuery(document).ready(function ($) {
         setInterval(function () {
             moveRight();
