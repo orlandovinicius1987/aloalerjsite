@@ -1,6 +1,6 @@
 {{--<div class=" hidden-xs col-sm-5 col-md-5 col-lg-5">--}}
     <a class="buton-tel-uteis" href="#lista" id="btn-telefones-uteis">
-        <img src="/templates/mv/svg/fundo-button-tel.svg" class="buton-fundo-tel-uteis">
+        <img src="/templates/mv/svg/fundo-button-tel.svg" class="buton-fundo-tel-uteis" alt="telefones">
     </a>
     <div class="agenda-tel-uteis" id="agenda-tel-uteis">
         <div class="indice">

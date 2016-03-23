@@ -9,7 +9,7 @@
         </div>
         <div class="col-xs-2"></div>
         <div class="col-xs-8 col-sm-4 footer-logo-alerj">
-            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class=" img-responsive">
+            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="img-responsive" alt="Alerj">
         </div>
         <div class="col-xs-2"></div>
     </div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
-                            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive">
+                            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive" alt="Alerj">
                         </div>
                     </div>
                 </div>
