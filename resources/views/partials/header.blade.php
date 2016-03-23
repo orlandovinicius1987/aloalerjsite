@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="hidden-xs hidden-sm col-sm-3">
-                        <img src="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive">
+                        <img src="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive" alt="AloAlerj">
                     </div>
 
 
