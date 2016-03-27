@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
+Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
 Route::get('comissoes/{name}', ['as' => 'page', 'uses' => 'Committees@view']);
 

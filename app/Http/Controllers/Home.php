@@ -31,4 +31,9 @@ class Home extends Controller
 
         return view('home.index')->with('css', 'home')->with('home', true);
     }
+
+    public function offline()
+    {
+        return $this->index()->with('offline', true);
+    }
 }
