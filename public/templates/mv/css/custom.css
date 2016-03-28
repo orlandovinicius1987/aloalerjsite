@@ -67,7 +67,6 @@ form.form-vertical {
         height: 67px;
         margin-bottom: 40px;
     }
-
     .cabecalho-home {
         background: #172B53 !important;
         border-bottom: #c7ccd6 4px solid;
@@ -85,16 +84,46 @@ form.form-vertical {
     .alerj-logo{
         height: 93px;
     }
-
     .nome-comissao {
         color: #ffffff;
         font-size: 16px;
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         font-weight: 600;
-
     }
-
+    .titulo-comissao {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.7em;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        line-height: 1.3em;
+        text-transform: uppercase;
+    }
+    .tel-comissao {
+        font-family: 'Oswald', sans-serif;
+        margin-top: 18px;
+        margin-bottom: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 2.7em;
+        text-align: center;
+        color: #ffffff;
+        background-color: #172B53;
+    }
+    .linha-info {
+        height: 2px;
+        background-color: #172B53;
+        position: relative;
+    }
+    .outras-info {
+        text-align: center;
+        font-family: 'Maven Pro', sans-serif, 'Bold 400';
+        font-size: 1.3em;
+        color: #6a6a6a;
+        border-bottom: 1px solid #e3e5ea !important;
+        padding: 20px 0 20px 0;
+    }
     .mobile-content {
         margin-bottom: 50px;
     }
@@ -591,7 +620,7 @@ form.form-vertical {
         border-radius: 0;
         margin-bottom: 0;
         background: #C7CCD6 !important;
-        height: 176px;
+        height: 171px;
     }
 
     .cabecalho {
@@ -762,6 +791,28 @@ form.form-vertical {
         outline: none;
     }
 
+
+    .ficha-comissao {
+        color: #3b6884;
+        font-size: 1.5em;
+    }
+
+    .ficha-comissao h3 {
+        font-family: Oswald;
+        text-transform: uppercase;
+    }
+
+    .comissao-dados {
+        background: #e9eaee;
+        margin-top: 30px;
+        padding: 15px 0;
+    }
+    .comissao-telefones {
+        font-weight: 600;
+    }
+
+
+
     .corpo-comissoes {
         /*width: 100px;
         height: 26px;*/
@@ -877,18 +928,15 @@ form.form-vertical {
     }
 
     .texto-comissao{
-        font-size: 18px;
-        /*
-        -webkit-column-count: 2; !* Chrome, Safari, Opera *!
-        -moz-column-count: 2; !* Firefox *!
-        column-count: 2;
-        -webkit-column-gap: 20px; !* Chrome, Safari, Opera *!
-        -moz-column-gap: 20px; !* Firefox *!
-        column-gap: 20px;
-        */
-        margin: 20px 0 60px 0;
+        margin: 40px 0 40px 0;
         line-height: 1.2;
         text-align: justify;
+        border-bottom: solid 1px #d5d8e0;
+        padding-bottom: 20px;
+    }
+
+    .texto-comissao p{
+        font-size: 1.4em;
     }
 
     .img-comissoes{
