@@ -9,13 +9,21 @@ class Mailer
     /**
      * @param $input
      */
-    private function dispatch($view, $input, $to, $name, $subject)
+    private function dispatch($view, $input, $to, $subject, $bcc = null)
     {
-        Mail::send($view, ['data' => $input], function ($m) use ($input, $to, $name, $subject)
+        $to = $this->toArray($to);
+
+        $bcc = $this->toArray($bcc);
+
+        Mail::send($view, ['data' => $input], function ($m) use ($input, $to, $bcc, $subject)
         {
             $m->from(env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'));
 
-            $m->to($to, $name)->subject($subject);
+            $m->to($to);
+
+            $m->bcc($bcc);
+
+            $m->subject($subject);
         });
     }
 
@@ -23,8 +31,26 @@ class Mailer
     {
         $input = $request->all();
 
-        $this->dispatch('emails.contact', $input, env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'), 'Mensagem de ' . $input['name']);
+        $adminEmails = env('MAIL_ADMINS');
 
-        $this->dispatch('emails.contact', $input, $input['email'], $input['name'], 'Sua mensagem para o Alô Alerj');
+        $this->dispatch('emails.contact', $input, env('MAIL_FROM_EMAIL'), 'Mensagem de ' . $input['name'], $adminEmails);
+
+        $this->dispatch('emails.contact', $input, $input['email'], 'Sua mensagem para o Alô Alerj', $adminEmails);
+    }
+
+    /**
+     * @param $bcc
+     * @return mixed
+     */
+    private function toArray($bcc) {
+        if ($bcc && !is_array($bcc)) {
+            $bcc = str_replace(',', ';', $bcc);
+
+            $bcc = explode(';', $bcc);
+
+            return $bcc;
+        }
+
+        return $bcc;
     }
 }
