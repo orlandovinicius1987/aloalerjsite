@@ -29,4 +29,10 @@ class Contact extends Controller
         return view('contact.mailsent')
                 ->with('name', $request->get('name'));
     }
+
+    public function pretend()
+    {
+        return view('contact.mailsent')
+                ->with('name', 'Fulano de Tal');
+    }
 }

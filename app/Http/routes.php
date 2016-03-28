@@ -27,5 +27,6 @@ Route::group(['prefix' => 'radio'], function()
 Route::group(['prefix' => 'contact'], function()
 {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
+    Route::get('pretend', ['as' => 'contact.index', 'uses' => 'Contact@pretend']);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
