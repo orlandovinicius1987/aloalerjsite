@@ -3,23 +3,23 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
-                    {{ $input['name'] }}
+                    {{ $data['name'] }}
                 </td>
 
                 <td>
-                    {{ $input['e-mail'] }}
+                    {{ $data['e-mail'] }}
                 </td>
 
                 <td>
-                    Telefone: {{ $input['phone'] }}
+                    Telefone: {{ $data['phone'] }}
                 </td>
 
                 <td>
-                    Tipo: {{ \App\Services\Subject::find($input['subject']) }}
+                    Tipo: {{ \App\Services\Subject::find($data['subject']) }}
                 </td>
 
                 <td>
-                    Mensagem: {{ $input['message'] }}
+                    Mensagem: {{ $data['message'] }}
                 </td>
             </tr>
         </table>
