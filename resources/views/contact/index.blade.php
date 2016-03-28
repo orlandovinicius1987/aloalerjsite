@@ -5,7 +5,7 @@
         <fieldset>
             <!-- Form Name -->
             <h1 class="form-intro">
-                Caso tenha algum comentário, pergunta ou denúncia a fazer, por favor use o formulário abaixo.
+                Preencha os campos e envie sua mensagem para que possamos iniciar o seu atendimento.
             </h1>
 
             <!-- Text input-->
