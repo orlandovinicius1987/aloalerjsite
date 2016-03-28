@@ -1,3 +1,6 @@
+<div class="chat-horario">Atendimento pelo Chat das 8h às 19h</div>
+
+
 <form method="POST" action="{{ env('CHAT_CLIENT_URL') }}" class="form-vertical" accept-charset="UTF-8">
     <input name="clientId" type="hidden" value="{{ env('CHAT_CLIENT_ID') }}">
     <input name="layout" type="hidden" value="{{ env('CHAT_LAYOUT') }}">
