@@ -10,7 +10,7 @@ class Mailer
     {
         $input = $request->all();
 
-        Mail::send('emails.contact', ['request' => $input], function ($m) use ($input)
+        Mail::send('emails.contact', ['data' => $input], function ($m) use ($input)
         {
             $m->from(env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'));
 

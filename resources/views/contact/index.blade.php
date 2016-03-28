@@ -37,16 +37,7 @@
                 <label class="col-md-3 control-label  sr-only" for="assunto">Assunto</label>
                 <div class="col-md-12">
                     {!!
-                        Form::select('size',
-                            [
-                                'A' => 'Ajuda',
-                                'P' => 'Pergunta',
-                                'S' => 'Sugestão',
-                                'E' => 'Elogio',
-                                'D' => 'Denúncia',
-                                'R' => 'Reclamação',
-                            ]
-                        , null, ['class' => 'form-control'])
+                        Form::select('subject', \App\Services\Subject::all(), null, ['class' => 'form-control'])
                     !!}
                 </div>
             </div>
