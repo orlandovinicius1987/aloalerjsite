@@ -143,19 +143,20 @@
         <!-- IE10 -->
 
         <script>
-            $(".send-button").click(function ()
+            jQuery(".send-button").click(function ()
             {
-                console.log('qualquer coisa');
-                $("#container-chat").append('  <div class="row"><div class="talk-bubble tri-right round border left-top"><div class="talktext"><p>And finally on the right flush at the top. Uses .round .border and .right-top And finally on the right flush at the top. Uses .round .border and .right-top And finally on the right flush at the top. Uses .round .border and .right-top </p></div></div></div>');
+                var leftRight = Math.floor((Math.random() * 2) + 1) == 2 ? 'left' : 'right';
 
+                jQuery("#container-chat").append('<div class="row"><div class="bubble bubble-'+leftRight+'"><div class="row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum illum laborum neque numquam, odit perspiciatis sequi vero. Ullam.</div><div class="row"><small class="time pull-right">11:35</small></div></div></div>');
             });
+
             jQuery('#container-chat').bind('DOMSubtreeModified', function(e) {
                 if (e.target.innerHTML.length > 0) {
                     jQuery("html, body").animate(
-                            {
-                                scrollTop: jQuery(document).height()
-                            },
-                            "fast"
+                        {
+                            scrollTop: jQuery(document).height()
+                        },
+                        "fast"
                     );
                 }
             });
