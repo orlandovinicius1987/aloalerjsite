@@ -4,38 +4,38 @@
     {!! Form::open(['url' => '/contact', 'class' => 'form-horizontal']) !!}
         <fieldset>
             <!-- Form Name -->
-            <legend class="form-intro">
-                Caso tenha algum comentário, pergunta ou denúncia a fazer, por favor use o formulário abaixo.
-            </legend>
+            <h1 class="form-intro">
+                Preencha os campos e envie sua mensagem para que possamos iniciar o seu atendimento.
+            </h1>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="nome">Nome</label>
-                <div class="col-md-8">
+                <label class="col-md-3 control-label sr-only" for="nome">Nome</label>
+                <div class="col-md-12">
                     {!! Form::text('name', null, ['placeholder' => 'Digite seu nome completo', 'class' => 'form-control input-md', 'required' => 'required']) !!}
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="email">Email</label>
-                <div class="col-md-8">
+                <label class="col-md-3 control-label sr-only" for="email">Email</label>
+                <div class="col-md-12">
                     {!! Form::email('email', null, ['placeholder' => 'Digite seu e-mail', 'class' => 'form-control input-md', 'required' => 'required']) !!}
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="email">Telefone</label>
-                <div class="col-md-8">
+                <label class="col-md-3 control-label sr-only" for="email">Telefone</label>
+                <div class="col-md-12">
                     {!! Form::text('telephone', null, ['placeholder' => 'Digite seu telefone', 'class' => 'form-control input-md', 'required' => 'required']) !!}
                 </div>
             </div>
 
             <!-- Select Basic -->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="assunto">Assunto</label>
-                <div class="col-md-8">
+                <label class="col-md-3 control-label  sr-only" for="assunto">Assunto</label>
+                <div class="col-md-12">
                     {!!
                         Form::select('size',
                             [
@@ -53,17 +53,17 @@
 
             <!-- Textarea -->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="mensagem">Mensagem</label>
-                <div class="col-md-8">
+                <label class="col-md-3 control-label  sr-only" for="mensagem">Mensagem</label>
+                <div class="col-md-12">
                     {!! Form::textarea('message', null, ['placeholder' => 'Digite sua mensagem', 'class' => 'form-control', 'required' => 'required']) !!}
                 </div>
             </div>
 
             <!-- Button -->
             <div class="form-group">
-                <label class="col-md-3 control-label" for="send"></label>
-                <div class="col-md-4">
-                    <button id="send" name="send" class="btn btn-primary">Enviar mensagem</button>
+                <label class="col-md-12 control-label" for="send"></label>
+                <div class="col-md-4  pull-right">
+                    <button id="send" name="send" class="btn btn-primary btn-lg btn-block iniciar-conversa enviar-mensagem">Enviar mensagem</button>
                 </div>
             </div>
         </fieldset>

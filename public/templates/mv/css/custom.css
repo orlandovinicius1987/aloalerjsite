@@ -29,7 +29,33 @@ form.form-vertical {
     margin-top: 25px;
 }
 
+.btn.btn-lg.btn-primary:hover{
+    background: #00a400;
+}
 
+.chat-horario {
+    color: #696969;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.chat-offline {
+    text-align: center;
+    margin-top: 30px;
+    color: #7c0005;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.chat-offline-mensagem {
+    color: #172B53;
+    margin-top: 20px;
+}
+
+.enviar-mensagem {
+    margin-top: 20px;
+}
 
 
 /*==========  Mobile First Method  ==========*/
@@ -168,8 +194,8 @@ form.form-vertical {
         text-transform: uppercase;
     }
 
-    button.btn.btn-lg.btn-primary {
-        /*padding: 10px 46px;*/
+/*    button.btn.btn-lg.btn-primary {
+        !*padding: 10px 46px;*!
         text-transform: uppercase;
         font-weight: 400;
         font-size: 20px;
@@ -177,7 +203,7 @@ form.form-vertical {
 
     button.btn.btn-lg.btn-primary:hover{
         background: #00a400;
-    }
+    }*/
     /* FIM - BOTÃO DO CHAT */
 
 
@@ -332,8 +358,8 @@ form.form-vertical {
         text-transform: uppercase;
     }
 
-    button.btn.btn-lg.btn-primary {
-        /*padding: 10px 46px;*/
+ /*   button.btn.btn-lg.btn-primary {
+        !*padding: 10px 46px;*!
         text-transform: uppercase;
         font-weight: 400;
         font-size: 20px;
@@ -341,7 +367,7 @@ form.form-vertical {
 
     button.btn.btn-lg.btn-primary:hover{
         background: #00a400;
-    }
+    }*/
     /* FIM - BOTÃO DO CHAT */
 
 
@@ -520,7 +546,7 @@ form.form-vertical {
     }
 
     form.form-vertical {
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
 
@@ -581,6 +607,13 @@ form.form-vertical {
         line-height: 1.2;
         letter-spacing: 1px;
 
+    }
+
+
+
+    h1.form-intro {
+        font-size: 30px;
+        margin-bottom: 30px;
     }
 
 
@@ -729,7 +762,7 @@ form.form-vertical {
 
     .texto-chat {
         text-align: center;
-        margin: 50px 0 50px 0;
+        margin: 30px 0 30px 0;
         line-height: 140%;
     }
 
@@ -1047,16 +1080,14 @@ form.form-vertical {
         padding: 22px;
         font-weight: 600;
     }
-    button.btn.btn-lg.btn-primary {
+    .btn.btn-lg.btn-primary {
         /*padding: 10px 46px;*/
         text-transform: uppercase;
         font-weight: 400;
         font-size: 20px;
     }
 
-    button.btn.btn-lg.btn-primary:hover{
-        background: #00a400;
-    }
+
 
     .chat img.balao-chat {
         margin-top: 10px;
