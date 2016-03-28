@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Segurança Pública e Assuntos de Polícia</h1>
+    <h1 class="nome-comissao">{{ $committee['name'] }}</h1>
 @stop
 
 @section('sidebar-name')
@@ -10,17 +10,17 @@
 @stop
 
 @section('content-main')
-
-    Segurança Pública e Assuntos de Polícia
-
+    <div class="texto-comissao">
+        {!! $committee['texto'] !!}
+    </div>
 
 @stop
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Segurança Pública e Assuntos de Polícia',
-        'telephone' => '0800 023 0376',
-        'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
-     ])
+        'title' => $committee['short_name'],
+        'telephone' => $committee['phone'],
+        'site' => '',
+    ])
 @stop
 
