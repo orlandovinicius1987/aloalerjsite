@@ -19,11 +19,20 @@ class Mailer
         {
             $m->from(env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'));
 
-            $m->to($to);
+            if ($to)
+            {
+                $m->to($to);
+            }
 
-            $m->bcc($bcc);
+            if ($bcc)
+            {
+                $m->bcc($bcc);
+            }
 
-            $m->subject($subject);
+            if ($subject)
+            {
+                $m->subject($subject);
+            }
         });
     }
 
