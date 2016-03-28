@@ -11,7 +11,7 @@
                 </td>
 
                 <td>
-                    Telefone: {{ $data['phone'] }}
+                    Telefone: {{ $data['telephone'] }}
                 </td>
 
                 <td>
