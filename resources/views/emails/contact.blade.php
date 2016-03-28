@@ -7,7 +7,7 @@
                 </td>
 
                 <td>
-                    {{ $data['e-mail'] }}
+                    {{ $data['email'] }}
                 </td>
 
                 <td>
