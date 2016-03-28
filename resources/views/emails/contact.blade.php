@@ -5,19 +5,23 @@
                 <td>
                     {{ $data['name'] }}
                 </td>
-
+            </tr>
+            <tr>
                 <td>
                     {{ $data['email'] }}
                 </td>
-
+            </tr>
+            <tr>
                 <td>
                     Telefone: {{ $data['telephone'] }}
                 </td>
-
+            </tr>
+            <tr>
                 <td>
                     Tipo: {{ \App\Services\Subject::find($data['subject']) }}
                 </td>
-
+            </tr>
+            <tr>
                 <td>
                     Mensagem: {{ $data['message'] }}
                 </td>
