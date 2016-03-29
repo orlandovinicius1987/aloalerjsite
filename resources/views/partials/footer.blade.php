@@ -43,13 +43,17 @@
             <div class="panel-body ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 comissoes-footer">
+                        <div class="col-md-3 comissoes-footer">
                             @include('partials.commitees-links-1')
                         </div>
-                        <div class="col-md-4 comissoes-footer">
+                        <div class="col-md-3 comissoes-footer">
                             @include('partials.commitees-links-2')
                         </div>
-                        <div class="col-md-1"></div>
+                        <div class="col-md-3 comissoes-footer">
+                            @include('partials.commitees-links-3')
+                        </div>
+
+{{--                        <div class="col-md-1"></div>--}}
                         <div class="col-md-3">
                             <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive" alt="Alerj">
                         </div>
