@@ -21,7 +21,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'SOS Mulher',
+        'title' => 'Defesa dos Direitos da Mulher',
         'site' => '',
         'telephone' => '0800 282 0119',
     ])

@@ -23,7 +23,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Direitos Humanos',
+        'title' => 'Defesa dos Direitos Humanos e Cidadania',
         'telephone' => '0800 282 5108',
         'site' => '',
     ])

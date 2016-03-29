@@ -21,7 +21,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Proteção Animal',
+        'title' => 'Proteção ao Direito dos Animal',
         'telephone' => '0800 282 3595',
         'site' => '',
     ])

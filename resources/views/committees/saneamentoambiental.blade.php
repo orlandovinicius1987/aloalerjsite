@@ -20,8 +20,8 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'DISQUE SANEAMENTO AMBIENTAL',
-        'telephone' => '0800 023 0007',
+        'title' => 'SANEAMENTO AMBIENTAL',
+        'telephone' => '0800 282 8815',
         'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
      ])
 @stop

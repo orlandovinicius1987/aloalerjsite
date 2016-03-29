@@ -28,8 +28,8 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-         'title' => 'DISQUE MEIO AMBIENTE',
-         'telephone' => '0800 023 0007',
+         'title' => 'Defesa do Meio Ambiente',
+         'telephone' => '0800 282 0230',
          'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
      ])
 @stop
