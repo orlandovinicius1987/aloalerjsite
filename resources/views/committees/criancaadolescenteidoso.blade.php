@@ -23,7 +23,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Crianca Adolescente Idoso',
+        'title' => 'Assuntos da Criança do Adolescente e do Idoso',
         'telephone' => '0800 282 9191',
         'site' => '',
     ])

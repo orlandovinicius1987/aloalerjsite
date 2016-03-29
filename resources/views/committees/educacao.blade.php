@@ -22,7 +22,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Comissão de Educação',
+        'title' => 'Educação',
         'telephone' => '0800 282 1559',
         'site' => '',
     ])

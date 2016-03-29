@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Combate<br/>ao Preconceito</h1>
+    <h1 class="nome-comissao">
+
+        Comissão de Combate às Discriminações e Preconceitos de Raça,
+        <br/>Cor, Etnia, Religião e Procedência Nacional</h1>
 @stop
 
 @section('sidebar-name')
@@ -21,7 +24,7 @@
 @section('content-sidebar')
     @include('partials.committee-telephone', [
         'title' => 'DISQUE PRECONCEITOS',
-        'telephone' => '0800 025 5108',
+        'telephone' => '0800 025 0802',
         'site' => '',
      ])
 @stop

@@ -24,7 +24,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Tributação',
+        'title' => 'Tributação e Controle da Arrecadação',
         'telephone' => '0800 282 3595',
         'site' => '',
     ])

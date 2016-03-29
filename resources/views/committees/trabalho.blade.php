@@ -22,7 +22,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'TRABALHO',
+        'title' => 'Trabalho, Legislação Social e Seguridade Social',
         'telephone' => '0800 282 3596',
         'site' => '',
     ])
