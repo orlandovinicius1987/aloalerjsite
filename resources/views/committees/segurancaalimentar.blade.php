@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Segurança Alimentar</h1>
+    <h1 class="nome-comissao">Comissão para previnir <br/>e Combater a Pirataria</h1>
 @stop
 
 @section('sidebar-name')
@@ -20,9 +20,9 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'SEGURANÇA ALIMENTAR',
-        'telephone' => '0800 023 0376',
-        'site' => '<a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"> <div class="link-site"><strong>http://www.alerj.rj.gov.br/cdc/</strong></div> </a>',
-     ])
+        'title' => 'DISQUE PIRATARIA',
+        'telephone' => '0800 282 3596',
+        'site' => '',
+    ])
 @stop
 
