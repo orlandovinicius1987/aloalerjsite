@@ -42,9 +42,8 @@ class Committee
         'link_caption' => 'Pirataria',
         'short_name' => 'Prevenção e Combate a Pirataria',
         'phone' => '0800-282-6582',
-        'texto' => 'A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
-
-Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.'
+        'texto' => '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.</p>
+<p>Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>'
         ],
 
         'pessoadeficiente' => [
@@ -88,15 +87,15 @@ Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assun
         'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>'
         ],
 
-        'disquecrianca' => [
-        'name' => 'Disque Criança (?????????????????)',
-        'link_caption' => 'linha2',
-        'short_name' =>    'line3',
-        'phone' => '0800-023-0007',
-        'texto' => '<p>
-        Crianca Adolescente Idoso DISQUE CRIANÇA
-        <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>'
-        ],
+//        'disquecrianca' => [
+//        'name' => 'Disque Criança (?????????????????)',
+//        'link_caption' => 'linha2',
+//        'short_name' =>    'line3',
+//        'phone' => '0800-023-0007',
+//        'texto' => '<p>
+//        Crianca Adolescente Idoso DISQUE CRIANÇA
+//        <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>'
+//        ],
 
         'direitoshumanos' => [
         'name' => 'Comissão de Defesa dos Direitos Humanos e Cidadania',
@@ -111,7 +110,7 @@ Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assun
         'educacao' => [
         'name' => 'Comissão de Educação',
         'link_caption' => 'Educacao',
-        'short_name' => 'Educacao',
+        'short_name' => 'Educação',
         'phone' => '0800-282-1559',
         'texto' => '<p>A Comissão de Educação cuida dos assuntos relacionados ao sistema educacional. Compete a ela opinar e dar seguimento às proposições e assuntos relativos à educação e à instrução pública e particular. A Comissão realiza semanalmente audiências públicas para debater assuntos relevantes para todas as etapas do ensino, da educação infantil à universidade. As reuniões contam com presença de entidades, sindicatos e representantes das comunidades escolares, além de representantes do Poder Executivo, criando um canal de diálogo entre as instituições e esferas de poder.</p>
 <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
@@ -120,7 +119,7 @@ Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assun
         'segurancaalimentar' => [
         'name' => 'Comissão de Segurança Alimentar',
         'link_caption' => 'Seguranca Alimentar',
-        'short_name' => 'Seguranca Alimentar',
+        'short_name' => 'Segurança Alimentar',
         'phone' => '0800-282-0376',
         'texto' => '<p>A Comissão de Segurança Alimentar cuida para que os alimentos comercializados estejam adequados para consumo, seguindo as normas de produção, transporte e armazenamento. Compete à Comissão manifestar-se sobre a elaboração, coordenação e execução de programas e projetos ligados à segurança alimentar e combate à fome no Estado do Rio de Janeiro; políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte integrante dos direitos humanos; projetos e programas de geração de emprego e renda; e políticas públicas de assistência social.</p>
 <p>A Comissão atua com o objetivo de desenvolver estudos relacionados à garantia de alimentação e nutrição da população; fiscalizar e acompanhar projetos e ações governamentais na área de segurança alimentar; estudar e fiscalizar as ações das entidades da sociedade civil organizada voltadas para o combate à fome; estimular ações da sociedade civil voltadas para o combate à fome no Estado do Rio de Janeiro; e promover e coordenar campanhas de conscientização quanto ao desperdício de alimentos.</p>'
