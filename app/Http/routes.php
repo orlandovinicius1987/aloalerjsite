@@ -3,7 +3,9 @@
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
-Route::get('comissoes/{name}', ['as' => 'page', 'uses' => 'Committees@view']);
+Route::get('comissoes/{name}', ['as' => 'committees.show', 'uses' => 'Committees@show']);
+
+//Route::get('comissoes/{name}', ['as' => 'page', 'uses' => 'Committees@view']);
 
 Route::group(['prefix' => 'chat'], function()
 {
