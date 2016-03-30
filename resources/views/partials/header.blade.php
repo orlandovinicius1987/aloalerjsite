@@ -4,29 +4,29 @@
     <div class="container">
         @if (isset($home))
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
-                        <a href="/">
-                            <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
-                                Alerj Logo <!-- fallback image in CSS -->
+                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                        <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
+                            <a href="/">
+                                <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
+                                    Alerj Logo <!-- fallback image in CSS -->
+                                </object>
+                            </a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
+                        {{--<div class="col-xs-offset-3 col-xs-8  col-sm-offset-4 col-sm-8 visible-xs visible-sm">--}}
+                            <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive">
+                                AloAlerj Logo
                             </object>
-                        </a>
-                    </div>
+                        </div>
 
-                    <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
-                    {{--<div class="col-xs-offset-3 col-xs-8  col-sm-offset-4 col-sm-8 visible-xs visible-sm">--}}
-                        <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive">
-                            AloAlerj Logo
-                        </object>
-                    </div>
+                        <div class="hidden-xs hidden-sm col-sm-3">
+                            <img src="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive" alt="AloAlerj">
+                        </div>
 
-                    <div class="hidden-xs hidden-sm col-sm-3">
-                        <img src="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive" alt="AloAlerj">
+                        {{--<div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>--}}
                     </div>
-
-                    <div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>
-                </div>
-                <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
+                    <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
         @else
             <div class="row row-eq-height">
