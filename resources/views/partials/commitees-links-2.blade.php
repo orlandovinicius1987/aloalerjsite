@@ -3,5 +3,6 @@
 <p><a href="/comissoes/criancaadolescenteidoso">Assuntos da Criança do Adolescente e do Idoso</a></p>
 <p><a href="/comissoes/disquecrianca">Disque Criança</a></p>
 <p><a href="/comissoes/direitoshumanos">Defesa dos Direitos Humanos e Cidadania</a></p>
-<p><a href="/comissoes/educacao">Educação</a></p>
-<p><a href="/comissoes/segurancaalimentar">Segurança Alimentar</a></p>
+
+
+
