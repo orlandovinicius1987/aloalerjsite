@@ -13,11 +13,9 @@
 
 @section('content-main')
 
-    <img src="http://www.alerj.rj.gov.br/fotos/busconsumidor_04_fv_30_06_14.jpg" class="img-responsive img-comissoes">
-    <p class="texto-comissao">
-        Comissão de Assuntos da Criança do Adolescente e do Idoso
-        <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>
-
+    <div class="texto-comissao">
+        A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.
+    </div>
 
 @stop
 

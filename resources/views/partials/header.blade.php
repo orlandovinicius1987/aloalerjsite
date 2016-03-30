@@ -41,8 +41,8 @@
                         {{--</object>--}}
                         </a>
                     </div>
-                    <div class="col-xs-8 col-lg-4">@yield('page-name')</div>
-                    <div class="hidden-xs hidden-sm col-lg-6">@include('partials.telefones-uteis')</div>
+                    <div class="col-xs-8 col-lg-7">@yield('page-name')</div>
+                    <div class="hidden-xs hidden-sm col-lg-3">@include('partials.telefones-uteis')</div>
                 </div>
                 <div class="sidebar-right-top hidden-xs col-sm-3 col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>

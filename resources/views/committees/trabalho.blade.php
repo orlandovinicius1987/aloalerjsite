@@ -12,10 +12,10 @@
 
 @section('content-main')
 
-    <img src="http://www.alerj.rj.gov.br/fotos/busconsumidor_04_fv_30_06_14.jpg" class="img-responsive img-comissoes">
-    <p class="texto-comissao">A Comissão de Trabalho Legislação Social e Seguridade Social
-        ...<br/>
-        '</a>.</p>
+    <div class="texto-comissao">
+        A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.
+    </div>
+
 
 
 @stop

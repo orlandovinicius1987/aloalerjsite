@@ -11,11 +11,9 @@
 @stop
 
 @section('content-main')
-
-    <img src="http://www.alerj.rj.gov.br/fotos/busconsumidor_04_fv_30_06_14.jpg" class="img-responsive img-comissoes">
-    <p class="texto-comissao">Comissao de Protecao ao Direito dos Animais
-        <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>
-
+    <div class="texto-comissao">
+        A Comissão de Defesa dos Animais cuida dos assuntos relacionados ao bem-estar dos animais e zela para que não sofram maus-tratos e abandono.
+    </div>
 
 @stop
 
