@@ -1,9 +1,9 @@
 <div class="hidden-xs hidden-sm">
-    <div class="texto-chat">
-        @include('partials.telegram-text')
-    </div>
     <div class="icones-apps text-center">
         @include('partials.telegram-icons')
+    </div>
+    <div class="texto-chat">
+        @include('partials.telegram-text')
     </div>
 </div>
 

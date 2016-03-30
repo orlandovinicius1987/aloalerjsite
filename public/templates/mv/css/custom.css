@@ -26,7 +26,7 @@ p {
 }
 
 form.form-vertical {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .btn.btn-lg.btn-primary:hover{
@@ -191,7 +191,7 @@ form.form-vertical {
         width: 60px;
         height: 60px;
         position: absolute;
-        top:2px;
+        top:-8px;
     }
 
 
@@ -452,7 +452,7 @@ form.form-vertical {
         float: right;
         border-top: solid 2px #172b53 ;
         border-bottom: solid 2px #b6bcc7;
-        padding-bottom: 26px;
+        padding-bottom: 36px;
     }
 
     .mobile-content {
@@ -565,6 +565,11 @@ form.form-vertical {
 
     form.form-vertical {
         margin-top: 30px;
+    }
+
+    .telegram-text {
+        border-top: 1px solid #172B53;
+        padding-top: 15px;
     }
 
 
@@ -1321,7 +1326,7 @@ form.form-vertical {
     }
 
     .icones-apps {
-        margin: 0 !important;
+        margin: 0 25px 0 25px  !important;
     }
 }
 

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <p>
+        <p class="telegram-text">
             Use outros meios para fazer contato com o Alô Alerj pelo aplicativos abaixo, usando o número
         </p>
     </div>
