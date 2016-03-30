@@ -13,11 +13,16 @@
 
 @section('content-main')
 
-    <img src="http://www.alerj.rj.gov.br/fotos/busconsumidor_04_fv_30_06_14.jpg" class="img-responsive img-comissoes">
-    <p class="texto-comissao">
-        Comissão de Defesa dos Direitos Humanos e Cidadania
-        <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>
 
+    <div class="texto-comissao">
+    <p>
+        A Comissão de Defesa dos Direitos Humanos e Cidadania tem como tarefa acompanhar e se manifestar sobre proposições e assuntos ligados aos direitos inerentes ao ser humano, tendo em vista as condições mínimas à sua sobrevivência digna e ao exercício pleno de seus direitos e garantias individuais e coletivos.
+    </p>
+    <P>
+        A Comissão também trata de assuntos que dizem respeito às políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte dos direitos Humanos.
+
+    </p>
+    </div>
 
 @stop
 
