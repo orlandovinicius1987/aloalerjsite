@@ -2,8 +2,7 @@
 
 @section('page-name')
     <h1 class="nome-comissao">
-        Comissão de Tributação Controle da Arrecadação Estadual <br/>
-        e de Fiscalização dos Tributos Estaduais
+        Comissão de Tributação Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais
         </h1>
 @stop
 

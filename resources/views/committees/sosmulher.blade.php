@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Defesa  <br/>dos Direitos da Mulher</h1>
+    <h1 class="nome-comissao">Comissão de Defesa dos Direitos da Mulher</h1>
 @stop
 
 @section('sidebar-name')

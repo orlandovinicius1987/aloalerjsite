@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Segurança Pública <br/>e Assuntos de Polícia</h1>
+    <h1 class="nome-comissao">Comissão de Segurança Pública e Assuntos de Polícia</h1>
 @stop
 
 @section('sidebar-name')
