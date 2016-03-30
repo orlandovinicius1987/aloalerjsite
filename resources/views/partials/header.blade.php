@@ -24,7 +24,7 @@
                             <img src="/templates/mv/svg/logo-alo-alerj.svg" class="alolerj-logo img-responsive" alt="AloAlerj">
                         </div>
 
-                        {{--<div class="hidden-xs col-lg-6">@include('partials.telefones-uteis')</div>--}}
+                        <div class="hidden-xs hidden-sm col-lg-6">@include('partials.telefones-uteis')</div>
                     </div>
                     <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
