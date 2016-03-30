@@ -2,7 +2,7 @@
 
 @section('page-name')
     <h1 class="nome-comissao">
-        Comissão de Trabalho Legislação Social<br/> e Seguridade Social</h1>
+        Comissão de Trabalho Legislação Social e Seguridade Social</h1>
 @stop
 
 @section('sidebar-name')

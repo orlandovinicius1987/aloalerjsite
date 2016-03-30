@@ -2,7 +2,7 @@
 
 @section('page-name')
     <h1 class="nome-comissao">
-        Comissão de Protecao <br/>ao Direito dos Animais</h1>
+        Comissão de Protecao ao Direito dos Animais</h1>
 @stop
 
 @section('sidebar-name')
@@ -19,7 +19,7 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => 'Proteção ao Direito dos Animal',
+        'title' => 'Proteção ao Direito dos Animais',
         'telephone' => '0800 282 3595',
         'site' => '',
     ])

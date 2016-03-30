@@ -2,7 +2,7 @@
 
 @section('page-name')
     <h1 class="nome-comissao">
-        Comissão de Assuntos da Criança <br/>do Adolescente e do Idoso
+        Comissão de Assuntos da Criança do Adolescente e do Idoso
         </h1>
 @stop
 

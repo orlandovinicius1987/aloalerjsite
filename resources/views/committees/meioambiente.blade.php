@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão de Defesa<br/>de Meio Ambiente</h1>
+    <h1 class="nome-comissao">Comissão de Defesa de Meio Ambiente</h1>
 @stop
 
 @section('sidebar-name')

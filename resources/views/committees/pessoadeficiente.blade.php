@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-name')
-    <h1 class="nome-comissao">Comissão da Pessoa <br/>com Deficiência</h1>
+    <h1 class="nome-comissao">Comissão da Pessoa com Deficiência</h1>
 @stop
 
 @section('sidebar-name')

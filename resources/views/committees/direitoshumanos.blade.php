@@ -2,7 +2,7 @@
 
 @section('page-name')
     <h1 class="nome-comissao">
-        Comissão de Defesa dos Direitos Humanos <br/>e Cidadania
+        Comissão de Defesa dos Direitos Humanos e Cidadania
         </h1>
 @stop
 

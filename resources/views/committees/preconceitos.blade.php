@@ -3,8 +3,7 @@
 @section('page-name')
     <h1 class="nome-comissao">
 
-        Comissão de Combate às Discriminações e Preconceitos de Raça,
-        <br/>Cor, Etnia, Religião e Procedência Nacional</h1>
+        Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional</h1>
 @stop
 
 @section('sidebar-name')
