@@ -24,8 +24,8 @@
 
     @if ($committee['president'] && $committee['vice-president'])
         <div class="ficha-comissao text-center">
-            <div class="comissao-presidente"><h3>Presidência</h3>{!! $committee['president'] !!} </div>
-            <div class="comissao-secretario"><h3>Secretário</h3>{!! $committee['vice-president'] !!} </div>
+            <div class="comissao-presidente"><h3>Presidente</h3>{!! $committee['president'] !!} </div>
+            <div class="comissao-secretario"><h3>Vice-Presidente</h3>{!! $committee['vice-president'] !!} </div>
 
             <div class="comissao-dados">
                 <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee['office-phone'] !!}</div>
