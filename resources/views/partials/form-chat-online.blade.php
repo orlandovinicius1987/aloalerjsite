@@ -1,7 +1,7 @@
 
     <div class="row">
         <div class="col-xs-9 col-sm-8 col-lg-12">
-            <div class="chat-horario">Atendimento das 8h às 19h</div>
+            <div class="chat-horario">Atendimento das @include('partials.horario')</div>
         </div>
         <div class="col-xs-2 col-sm-offset-1 col-sm-2">
             <span class="logo-chat-mobile visible-xs visible-sm"></span>

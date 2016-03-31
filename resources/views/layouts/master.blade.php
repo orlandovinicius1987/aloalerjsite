@@ -23,11 +23,11 @@
         <!-- Content -->
         <div class="container">
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     @yield('content-main')
                 </div>
 
-                <div class="sidebar-right col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs hidden-sm">
+                <div class="sidebar-right col-xs-12 col-sm-3 col-lg-3 hidden-xs hidden-sm hidden-md">
                     @yield('content-sidebar')
                 </div>
             </div>
