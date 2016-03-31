@@ -22,16 +22,15 @@
         {!! $committee['texto'] !!}
     </div>
 
-    <div class="ficha-comissao text-center">
-        <div class="comissao-presidente"><h3>Presidência</h3>{!! $committee['president'] !!} </div>
-        <div class="comissao-secretario"><h3>Secretário</h3>{!! $committee['vice-president'] !!} </div>
+    {{--<div class="ficha-comissao text-center">--}}
+        {{--<div class="comissao-presidente"><h3>Presidência</h3>{!! $committee['president'] !!} </div>--}}
+        {{--<div class="comissao-secretario"><h3>Secretário</h3>{!! $committee['vice-president'] !!} </div>--}}
 
-        <div class="comissao-dados">
-            <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee['office-phone'] !!}</div>
-            <div class="comissao-endereco">{!! $committee['office-address'] !!}</div>
-        </div>
-    </div>
-
+        {{--<div class="comissao-dados">--}}
+            {{--<div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee['office-phone'] !!}</div>--}}
+            {{--<div class="comissao-endereco">{!! $committee['office-address'] !!}</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @stop
 
 @section('content-sidebar')
