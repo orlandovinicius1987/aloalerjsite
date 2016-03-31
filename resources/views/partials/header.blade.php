@@ -6,7 +6,7 @@
         @if (isset($home))
             <div class="row row-eq-height">
                      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                         <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
+                         <div class="col-xs-12 col-sm-12 visible-xs visible-sm ">
                              <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive"/>
                          </div>
                         <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
@@ -26,10 +26,10 @@
             </div>
         @else
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
+                <div class="col-xs-12 col-sm-12 col-md-12 visible-xs visible-sm visible-md">
                     <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive"/>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
+                <div class="hidden-xs hidden-sm hidden-md col-lg-9">
                     <div class="col-md-2 col-lg-2">
                         <a href="/">
                             <img src="/templates/mv/svg/logo-alerj-monocromatica.svg" alt="" class="alerj-logo visible-lg visible-md">
@@ -39,10 +39,10 @@
                         {{--</object>--}}
                         </a>
                     </div>
-                    <div class="col-lg-7">@yield('page-name')</div>
+                    <div class="col-md-7 col-lg-7">@yield('page-name')</div>
                     <div class="col-lg-3">@include('partials.telefones-uteis')</div>
                 </div>
-                <div class="sidebar-right-top hidden-xs hidden-sm col-md-3 col-lg-3 text-center">@yield('sidebar-name')</div>
+                <div class="sidebar-right-top hidden-xs hidden-sm hidden-md col-lg-3 text-center">@yield('sidebar-name')</div>
             </div>
         @endif
     </div>

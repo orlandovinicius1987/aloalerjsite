@@ -7,7 +7,7 @@
         {!! isset($site) ? $site : '' !!}
         <p class="outras-info text-center">
             @if (! isset($hours))
-                Atendimento das 8h às 20h
+                Atendimento das @include('partials.horario')
             @else
                {{ $hours }}
             @endif
