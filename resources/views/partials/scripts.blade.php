@@ -97,6 +97,8 @@
 </script>
 
 <script>
+    Vue.http.options.xhr = {withCredentials: true};
+
     new Vue({
         el: '#vue-app',
 
@@ -110,6 +112,23 @@
             __checkOnline: function()
             {
                 console.log('looking for online users...');
+
+                this.$http.headers.common.Authorization = 'Basic YXBpOnBhc3N3b3Jk';
+
+//                this.$http.get(
+//                        'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/jerryqiu',
+//                        {
+//                            params:{
+//                                'api_key':'05140fb9-6210-4047-a6d8-a64e826124a3'
+//                            },
+//                            headers: {
+//                                'User-Agent': "Riot-Games-Developer-Portal"
+//                                'Accept-Language': "en-US"
+//                                'Accept-Charset': "ISO-8859-1,utf-8"
+//                                'Origin':"https://developer.riotgames.com"
+//                            }
+//                        }
+//                );
 
                 this.$http({url: '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}', method: 'GET'}).then(function (response)
                 {
