@@ -7,9 +7,7 @@
 @stop
 
 @section('sidebar-name')
-    <object type="image/svg+xml" data="/templates/mv/svg/balao-chat.svg" class="balao-chat">
-        Logo Chat
-    </object>
+    @include('partials.chat-header')
 @stop
 
 @section('content-main')
