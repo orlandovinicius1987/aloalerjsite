@@ -97,8 +97,6 @@
 </script>
 
 <script>
-    Vue.http.options.xhr = {withCredentials: true};
-
     new Vue({
         el: '#vue-app',
 
@@ -115,48 +113,20 @@
 
                 console.log('looking for online users...');
 
-                this.$http.headers.common.Authorization = 'Basic YXBpOnBhc3N3b3Jk';
-
-//                this.$http.get(
-//                        'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/jerryqiu',
-//                        {
-//                            params:{
-//                                'api_key':'05140fb9-6210-4047-a6d8-a64e826124a3'
-//                            },
-//                            headers: {
-//                                'User-Agent': "Riot-Games-Developer-Portal"
-//                                'Accept-Language': "en-US"
-//                                'Accept-Charset': "ISO-8859-1,utf-8"
-//                                'Origin':"https://developer.riotgames.com"
-//                            }
-//                        }
-//                );
-
                 var self = this;
 
-                $.ajax({
+                jQuery.ajax({
                     url: url,
 
-                    // The name of the callback parameter, as specified by the YQL service
                     jsonp: "callback",
 
-                    // Tell jQuery we're expecting JSONP
                     dataType: "jsonp",
 
-                    // Work with the response
                     success: function( response ) {
                         console.log( response.length ); // server response
                         self.chatOnline = response.length > 0;
                     }
                 });
-
-//                this.$http({url: url, method: 'GET'}).then(function (response)
-//                {
-//                    console.log('found '+response.data.length)
-//                    this.chatOnline = response.data.length > 0;
-//                }, function () {
-//                    this.chatOnline = false; /// error
-//                });
             }
         },
 
