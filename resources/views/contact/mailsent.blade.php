@@ -3,9 +3,11 @@
 @section('content-main')
     <div class="spacer"></div>
 
-    <h1>
-        {{ $name }}, sua mensagem foi enviada com sucesso.<br/>
-        Agradecemos o seu contato .<br/>
-        Nós enviaremos uma resposta para o seu e-mail em breve.
-    </h1>
+    <div class="mailsent text-center">
+
+        <div class="mensagem-enviada"><h2>{{ $name }}, sua mensagem foi enviada com sucesso.</h2></div>
+        <div class="mensagem-agradecimento">Agradecemos o seu contato. Retornaremos em breve.</div>
+
+
+    </div>
 @stop
