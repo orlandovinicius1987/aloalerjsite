@@ -20,9 +20,9 @@
         <div class="container">
             <div class="panel-heading btn-group dropup">
                 <h4 class="panel-title corpo-comissoes">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Comissões <span class="caret"></span>
-                    </a>
+                    <span>
+                        Comissões
+                    </span>
                 </h4>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div class="panel-body ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-5 comissoes-footer">
+                        <div class="col-md-6  comissoes-footer">
                             @include('partials.commitees-links-1')
                         </div>
 {{--
@@ -56,7 +56,7 @@
 --}}
 
 {{--                        <div class="col-md-1"></div>--}}
-                        <div class="col-md-offset-4 col-md-3">
+                        <div class="col-md-offset-3 col-md-3">
                             <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive" alt="Alerj">
                         </div>
                     </div>
