@@ -113,7 +113,7 @@ class Committee
             'phone' => '0800-023-9191',
             'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
             'president' => 'Deputada Tia Jú',
-            'vice-president' => 'Daniele Guerreiro',
+            'vice-president' => 'Deputada Daniele Guerreiro',
             'office-phone' => '2588-1308 / 2588-1309',
             'office-address' => 'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
@@ -127,7 +127,7 @@ class Committee
             Crianca Adolescente Idoso DISQUE CRIANÇA
             <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
             'president' => 'Deputada Tia Jú',
-            'vice-president' => 'Daniele Guerreiro',
+            'vice-president' => 'Deputada Daniele Guerreiro',
             'office-phone' => '2588-1308 / 2588-1309',
             'office-address' => 'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
