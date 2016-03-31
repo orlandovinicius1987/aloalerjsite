@@ -1,5 +1,7 @@
 <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
 
 <script>
     var isShowing = false;
@@ -10,7 +12,7 @@
         {
             if ( ! isShowing)
             {
-                jQuery('#agenda-tel-uteis').show(function()
+                jQuery('#agenda-tel-uteis').chatOnline(function()
                 {
                     isShowing = true;
                 });
@@ -40,7 +42,7 @@
 </script>
 
 <script>
-    $('#collapseOne').on('show.bs.collapse', function () {
+    $('#collapseOne').on('chatOnline.bs.collapse', function () {
         $('.panel-heading').animate({}, 500);
         $('.panel-heading').addClass('dropdown');
         $('.panel-heading').removeClass('dropup');
@@ -92,4 +94,41 @@
             moveLeft();
         });
     });
+</script>
+
+<script>
+    new Vue({
+        el: '#vue-app',
+
+        data: {
+            message: 'Hello Vue.js!',
+            chatOnline: false,
+        },
+
+        methods:
+        {
+            __checkOnline: function()
+            {
+                console.log('looking for online users...');
+
+                this.$http({url: '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}', method: 'GET'}).then(function (response)
+                {
+                    console.log('found '+response.data.length)
+                    this.chatOnline = response.data.length > 0;
+                }, function () {
+                    this.chatOnline = false; /// error
+                });
+            }
+        },
+
+        ready: function()
+        {
+            this.__checkOnline();
+
+            setInterval(function ()
+            {
+                this.__checkOnline();
+            }.bind(this), 40 * 1000);
+        }
+    })
 </script>

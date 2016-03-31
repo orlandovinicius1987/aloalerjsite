@@ -17,7 +17,7 @@
         @endif
     </head>
 
-    <body>
+    <body id="vue-app">
         @include('partials.header')
 
         <!-- Content -->
@@ -111,7 +111,10 @@
 
             jQuery(document).ready(function()
             {
-                jQuery('audio')[0].play();
+                if ( jQuery('audio').length )
+                {
+                    jQuery('audio')[0].play();
+                }
             });
         </script>
 

@@ -1,5 +1,7 @@
-@if (isset($offline) && $offline)
-    @include('partials.form-chat-offline')
-@else
+<div v-if="chatOnline">
     @include('partials.form-chat-online')
-@endif
+</div>
+
+<div v-if="! chatOnline">
+    @include('partials.form-chat-offline')
+</div>
