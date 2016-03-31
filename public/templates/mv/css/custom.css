@@ -859,6 +859,19 @@ form.form-vertical {
         margin: 253px 25px -24px 25px;
     }
 
+
+    .mailsent {
+        margin-top: 150px;
+    }
+
+    .mensagem-enviada h2 {
+        font-family: Oswald;
+    }
+    .mensagem-agradecimento {
+        font-size: 1.5em;
+    }
+
+
     .comissoes-footer {
         /*font-family: 'Oswald', sans-serif;*/
         /*font-weight: 400;*/
