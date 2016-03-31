@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="panel-group hidden-xs hidden-sm" id="accordion"  >
+<div class="panel-group hidden-xs hidden-sm"   >
     <div class="panel panel-default">
         <div class="container">
             <div class="panel-heading btn-group dropup">
@@ -39,22 +39,24 @@
                 {{--<li><a href="#">Separated link</a></li>--}}
             {{--</ul>--}}
         {{--</div>--}}
-        <div id="collapseOne" class="panel-collapse collapse">
+        <div >
             <div class="panel-body ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 comissoes-footer">
+                        <div class="col-md-5 comissoes-footer">
                             @include('partials.commitees-links-1')
                         </div>
+{{--
                         <div class="col-md-3 comissoes-footer">
                             @include('partials.commitees-links-2')
                         </div>
                         <div class="col-md-3 comissoes-footer">
                             @include('partials.commitees-links-3')
                         </div>
+--}}
 
 {{--                        <div class="col-md-1"></div>--}}
-                        <div class="col-md-3">
+                        <div class="col-md-offset-4 col-md-3">
                             <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive" alt="Alerj">
                         </div>
                     </div>
