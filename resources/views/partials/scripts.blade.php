@@ -111,6 +111,8 @@
         {
             __checkOnline: function()
             {
+                var url = '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}';
+
                 console.log('looking for online users...');
 
                 this.$http.headers.common.Authorization = 'Basic YXBpOnBhc3N3b3Jk';
@@ -130,13 +132,31 @@
 //                        }
 //                );
 
-                this.$http({url: '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}', method: 'GET'}).then(function (response)
-                {
-                    console.log('found '+response.data.length)
-                    this.chatOnline = response.data.length > 0;
-                }, function () {
-                    this.chatOnline = false; /// error
+                var self = this;
+
+                $.ajax({
+                    url: url,
+
+                    // The name of the callback parameter, as specified by the YQL service
+                    jsonp: "callback",
+
+                    // Tell jQuery we're expecting JSONP
+                    dataType: "jsonp",
+
+                    // Work with the response
+                    success: function( response ) {
+                        console.log( response.length ); // server response
+                        self.chatOnline = response.length > 0;
+                    }
                 });
+
+//                this.$http({url: url, method: 'GET'}).then(function (response)
+//                {
+//                    console.log('found '+response.data.length)
+//                    this.chatOnline = response.data.length > 0;
+//                }, function () {
+//                    this.chatOnline = false; /// error
+//                });
             }
         },
 
