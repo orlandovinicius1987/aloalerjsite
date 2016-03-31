@@ -133,7 +133,19 @@ p {
 .footer-mobile a {
     color: #ffffff;
     font-size: 0.8em;
+    letter-spacing: 0.5px;
 }
+
+.comissoes-footer a:hover{
+    color: #56C5CE !important;
+    text-decoration: none;
+}
+
+.footer-mobile a:hover {
+    color: #56C5CE !important;
+    text-decoration: none;
+}
+
 
 .footer-mobile p {
     color: #ffffff;
@@ -167,7 +179,6 @@ form.form-vertical {
     text-align: center;
     margin-top: 30px;
     color: #7c0005;
-    font-weight: 600;
     font-size: 16px;
 }
 
@@ -685,6 +696,8 @@ form.form-vertical {
         padding: 0 0 2px 0;
         text-align: left;
         margin-left: 30px;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
     .nomes-comissoes{
         margin-top: 30px;
@@ -692,6 +705,8 @@ form.form-vertical {
     }
 
     /* Footer /
+
+
 
     /* Chat */
     .cabecalho.chat{
@@ -905,6 +920,12 @@ form.form-vertical {
         margin-top: 20px;
     }
 
+    img.balao-chat.offline {
+        opacity: 0.4;
+    }
+
+
+
     .chat-horario{
         margin-top: 40px;
     }
@@ -964,11 +985,11 @@ form.form-vertical {
         text-align: center;
         width: 100%;
         display: block;
-        padding: 10px 15px;
-        font-size: 18px;
+        padding: 10px 18px 4px 18px;
+        font-size: 14px;
         font-family: 'Oswald', sans-serif;
         outline: none;
-        margin-top: -10px;
+        margin-top: -31px;
     }
 
     .panel-title span:hover, .panel-title span:focus, .panel-title span:active {
@@ -1005,7 +1026,7 @@ form.form-vertical {
         /*width: 100px;
         height: 26px;*/
         background-color: #8FA143;
-        border-radius: 15px 15px 0 0;
+        border-radius: 10px 10px 0 0;
         text-transform: uppercase !important;
     }
 
@@ -1015,6 +1036,7 @@ form.form-vertical {
         font-family: 'Oswald', sans-serif;
         border-bottom: 5px solid #8FA143;
         border-top: 1px solid #8FA143 !important;
+        margin-top: -10px;
     }
 
     .iniciar-conversa {
@@ -1044,7 +1066,7 @@ form.form-vertical {
     }
 
     .logo-alerj-rodape {
-        margin: 301px 0px -25px 0px;
+        margin: 301px 20px -25px 20px;
     }
 
     .mailsent {
@@ -1059,6 +1081,8 @@ form.form-vertical {
     }
 
 
+
+    /* Comissoes Footer*/
     .comissoes-footer {
         /*font-family: 'Oswald', sans-serif;*/
         /*font-weight: 400;*/
@@ -1066,12 +1090,20 @@ form.form-vertical {
         /*font-size: 20px;*/
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin-top: 20px;
+        letter-spacing: 1px;
     }
 
     .comissoes-footer a {
         color: #fff;
         text-decoration: none;
     }
+
+    .comissoes-footer p {
+        font-size: 14px;
+        padding: 2px 0;
+    }
+    /* Fim - Comissoes Footer*/
 
     .issaoe-comissao{
         font-family: 'Oswald', sans-serif;
