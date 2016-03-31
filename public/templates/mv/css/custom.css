@@ -654,13 +654,9 @@ form.form-vertical {
         height: 707px;
     }
 
-
     .cabecalho-home {
-        border-top: 10px solid #172B53;
-        border-radius: 0;
-        margin-bottom: 0;
-        background: #C7CCD6 !important;
-        height: 171px;
+        background: #172B53 !important;
+        border-bottom: #c7ccd6 4px solid;
     }
 
     .cabecalho {
@@ -743,8 +739,8 @@ form.form-vertical {
         margin-top: 0 !important;
         text-align: center !important;
         padding-bottom: 26px;
-        margin-right: 0px;*/
-        min-height: calc(100vh - 172px);
+        margin-right: 0px;
+        min-height: calc(100vh - 172px);*/
 
     }
 
@@ -836,6 +832,7 @@ form.form-vertical {
     .ficha-comissao {
         color: #3b6884;
         font-size: 1.5em;
+        margin-bottom: 80px;
     }
 
     .ficha-comissao h3 {
@@ -1425,6 +1422,16 @@ form.form-vertical {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+
+    .cabecalho-home {
+        border-top: 10px solid #172B53;
+        border-radius: 0;
+        margin-bottom: 0;
+        background: #C7CCD6 !important;
+        height: 171px;
+    }
+
     .nome-comissao {
     margin-left: 0;
     }
