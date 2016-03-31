@@ -12,7 +12,7 @@
         {
             if ( ! isShowing)
             {
-                jQuery('#agenda-tel-uteis').chatOnline(function()
+                jQuery('#agenda-tel-uteis').show(function()
                 {
                     isShowing = true;
                 });
