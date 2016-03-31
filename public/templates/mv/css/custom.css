@@ -769,7 +769,7 @@ form.form-vertical {
 
     .panel-group .panel {
         border-radius: 0;
-        margin-bottom: -22px;
+        margin-bottom: -55px;
         background: #172b53;
         border-bottom: solid 5px #8FA143;
     }
@@ -856,7 +856,7 @@ form.form-vertical {
     }
 
     .logo-alerj-rodape {
-        margin: -53px 25px -24px 25px;
+        margin: 253px 25px -24px 25px;
     }
 
     .comissoes-footer {
