@@ -508,6 +508,18 @@ form.form-vertical {
         padding-top: 10px;
         border-top: 4px solid;
     }
+    .chat .botao-voltar {
+        max-width: 25px !important;
+        /* background: #f0f; */
+        margin-top: 5px !important;
+    }
+    .chat-mobile .atendente-home {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-top: 11px;
+        letter-spacing: 0.2px;
+    }
 
 
 
