@@ -1395,6 +1395,15 @@ form.form-vertical {
 
 
 
+    .icones-apps {
+    margin-bottom: 30px;
+    }
+
+    .icones-apps img.img-responsive {
+        margin: 0 10px 0 10px;
+    }
+
+
     /*Chat DESKTOP*/
 
     .cabecalho.chat{
