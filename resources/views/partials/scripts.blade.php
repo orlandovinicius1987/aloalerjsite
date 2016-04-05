@@ -97,47 +97,73 @@
 </script>
 
 <script>
-    new Vue({
-        el: '#vue-app',
+    jQuery(function()
+    {
+        var clientChatSocket = io('{{ config('env.socket_url') }}');
 
-        data: {
-            message: 'Hello Vue.js!',
-            chatOnline: false,
-        },
+        new Vue({
+            el: '#vue-app',
 
-        methods:
-        {
-            __checkOnline: function()
-            {
-                var url = '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}';
+            data: {
+                message: 'Hello Vue.js!',
+                chatOnline: false,
+            },
 
-                console.log('looking for online users...');
+            methods: {
+                __checkOnline: function () {
+                    var url = '{{ env("CHAT_CLIENT_BASE_URL") }}/api/v1/chat/client/operators/online/for/client/{{ env('CHAT_CLIENT_ID') }}';
 
-                var self = this;
+                    console.log('looking for online users...');
 
-                jQuery.ajax({
-                    url: url,
+                    var self = this;
 
-                    jsonp: "callback",
+                    jQuery.ajax({
+                        url: url,
 
-                    dataType: "jsonp",
+                        jsonp: "callback",
 
-                    success: function( response ) {
-                        console.log( response.length ); // server response
-                        self.chatOnline = response.length > 0;
-                    }
-                });
-            }
-        },
+                        dataType: "jsonp",
 
-        ready: function()
-        {
-            this.__checkOnline();
+                        success: function (response) {
+                            console.log(response.length); // server response
+                            self.chatOnline = response.length > 0;
+                        }
+                    });
+                },
 
-            setInterval(function ()
+                __bootSocketListeners: function()
+                {
+                    clientChatSocket.on('chat-channel:UserAuthenticated', function(data)
+                    {
+                        this.__checkOnlineInAWhile();
+                    }.bind(this));
+
+                    clientChatSocket.on('chat-channel:UserLoggedOut', function(data)
+                    {
+                        this.__checkOnlineInAWhile();
+                    }.bind(this));
+                },
+
+                __checkOnlineInAWhile: function ()
+                {
+                    setTimeout(function ()
+                    {
+                        this.__checkOnline();
+                    }.bind(this), 1500);
+                }
+            },
+
+            ready: function ()
             {
                 this.__checkOnline();
-            }.bind(this), 40 * 1000);
-        }
-    })
+
+                this.__bootSocketListeners();
+
+                setInterval(function ()
+                {
+                    this.__checkOnline();
+                }.bind(this), 40 * 1000);
+            }
+        });
+    });
 </script>

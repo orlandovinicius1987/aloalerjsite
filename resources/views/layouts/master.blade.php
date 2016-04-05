@@ -15,6 +15,8 @@
         @if (Session::get('client') == 'app')
             <link rel="stylesheet" href="/templates/mv/app.css?breno={{rand(0,5000)}}">
         @endif
+
+        <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
     </head>
 
     <body id="vue-app">
