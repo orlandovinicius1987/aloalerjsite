@@ -41,5 +41,6 @@
         'telephone' => $committee['phone'],
         'site' => '',
     ])
+    @include('partials.telegram')
 @stop
 

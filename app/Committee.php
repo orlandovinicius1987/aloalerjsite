@@ -25,10 +25,10 @@ class Committee
             'short_name' => 'Defesa do Meio Ambiente',
             'phone' => '0800-282-0230',
             'texto' => '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Thiago Pampolha',
+            'vice-president' => 'Jefferson Ferreira França Júnior',
+            'office-phone' => '2588-1308 / 2588-1309',
+            'office-address' => 'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
         ],
 
         'preconceitos' => [
@@ -112,10 +112,10 @@ class Committee
             'short_name' => 'Assuntos da Criança do Adolescente e do Idoso',
             'phone' => '0800-023-9191',
             'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
-            'president' => 'Deputada Tia Jú',
-            'vice-president' => 'Deputada Daniele Guerreiro',
-            'office-phone' => '2588-1308 / 2588-1309',
-            'office-address' => 'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+            'president' => 'Deputada Estadual Jucélia Oliveira Freitas (Tia Ju)',
+            'vice-president' => 'Joao B. Nascimento',
+            'office-phone' => '2588 -1243/ 2588-1669',
+            'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
 
         'disquecrianca' => [
@@ -140,10 +140,10 @@ class Committee
             'texto' => '<p>A Comissão de Defesa dos Direitos Humanos e Cidadania tem como tarefa acompanhar e se manifestar sobre proposições e assuntos ligados aos direitos inerentes ao ser humano, tendo em vista as condições mínimas à sua sobrevivência digna e o exercício pleno das garantias individuais e coletivas. A Comissão prioriza a articulação de canais efetivos, institucionalizados ou não, para a intermediação entre sociedade e poder público, a fim de alterar a fórmula tradicional de elaboração e implementação de políticas públicas.</p>
     <p>O objetivo principal é acompanhar e se manifestar sobre programas e ações relacionadas a todos os direitos humanos e, se necessário, agir em caso de violações. Dessa forma, assume uma postura de estabelecer uma arena de diálogo entre as diferentes esferas governamentais e a sociedade civil, bem como dar voz aos movimentos sociais.</p>
     <p>Diante das denúncias, solicitações de auxílio e acompanhamentos de casos, a Comissão pode tomar medidas com o intuito de esclarecer ou solucionar fatos reportados sobre violações de direitos humanos, a partir dos seguintes mecanismos: acolhimento das famílias vítimas de violações de direitos; requerimento de informações mediante ofício às instituições públicas envolvidas na denúncia; encaminhamento do usuário para órgãos responsáveis pelos diferentes setores governamentais; articulação com as demais comissões permanentes da casa com o intuito de buscar solucionar as demandas; realização de audiência pública para convocar instituições públicas a prestar esclarecimentos, promovendo a discussão sobre o tema para, assim, avançar na qualidade das políticas públicas.</p>',
-            'president' => '',
+            'president' => 'Deputado Estadual Marcelo Freixo',
             'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'office-phone' => '2588-1555',
+            'office-address' => 'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
         ],
 
         'educacao' => [
@@ -153,10 +153,10 @@ class Committee
             'phone' => '0800-282-1559',
             'texto' => '<p>A Comissão de Educação cuida dos assuntos relacionados ao sistema educacional. Compete a ela opinar e dar seguimento às proposições e assuntos relativos à educação e à instrução pública e particular. A Comissão realiza semanalmente audiências públicas para debater assuntos relevantes para todas as etapas do ensino, da educação infantil à universidade. As reuniões contam com presença de entidades, sindicatos e representantes das comunidades escolares, além de representantes do Poder Executivo, criando um canal de diálogo entre as instituições e esferas de poder.</p>
             <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
-            'president' => '',
+            'president' => 'Deputado Comte Bittencourt',
             'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'office-phone' => '(21) 2588-1394',
+            'office-address' => 'Gabinete T 02 Anexo',
         ],
 
         'segurancaalimentar' => [
@@ -179,10 +179,10 @@ class Committee
             'phone' => '0800-282-0119',
             'texto' => '<p>A missão da Comissão de Defesa dos Direitos da Mulher é lutar pela igualdade entre homens e mulheres, e prestar apoio e acolhimento amigável às mulheres. A Comissão combate ideias preconceituosas, o machismo e  o patrimonialismo, que geram desigualdade nas relações de trabalho, assédio sexual e moral, além de violência à mulher, que a cada 14 minutos faz uma vítima no Brasil.</p>
     <p>A Comissão se utiliza de redes de atendimento e serviços jurídicos voltados para a mulher, criados por políticas públicas e espaços de solidariedade conquistadas na luta por respeito e igualdade, para fazer seu trabalho.  O "SOS MULHER", como é chamado o 0800 da Comissão, funciona de segunda a sexta, das 9h às 18h, com um atendimento especializado e feito apenas por mulheres preparadas.</p>',
-            'president' => '',
+            'president' => 'Deputada Enfermeira Rejane',
             'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'office-phone' => '0800 282 0119',
+            'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
         ],
 
         'tributacao' => [
@@ -215,10 +215,10 @@ class Committee
             'short_name' => 'Protecao ao Direito dos Animais',
             'phone' => '0800-282-3595',
             'texto' => '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputada Daniele Guerreiro',
+            'vice-president' => 'Carlos Diniz',
+            'office-phone' => '2588-1000',
+            'office-address' => 'Palácio 23 de julho, sala 104',
         ],
 
     ];
