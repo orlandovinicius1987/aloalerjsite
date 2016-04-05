@@ -554,6 +554,10 @@ form.form-vertical {
         margin: 0 90px 0 90px !important;
         background: #f0f;
     }
+
+
+
+
     #slider {
         margin: -2px auto 0 auto;
     }
@@ -679,9 +683,17 @@ form.form-vertical {
     }
 
     .icones-apps {
-        margin: 0 28px 0 28px !important;
+        margin: 10px 28px 0 28px !important;
         background: #f0f;
     }
+    .icones-apps img.img-responsive {
+        margin: 0 15px 0 15px !important;
+    }
+    p.telegram-text {
+        margin-top: 8px;
+    }
+
+
 
     .mobile-telegram {
         margin-top: 0px;
@@ -1396,12 +1408,21 @@ form.form-vertical {
 
 
     .icones-apps {
-    margin-bottom: 30px;
+        margin-bottom: 30px;
+        background: #00ff00 !important;
     }
 
     .icones-apps img.img-responsive {
-        margin: 0 10px 0 10px;
+        margin: 0 40px 0 40px !important;
     }
+
+    /*
+    .icones-apps {
+        margin: 0px 100px 0px 100px !important;
+        margin-bottom: 30px;
+        padding-bottom: 100px;
+    }
+    */
 
 
     /*Chat DESKTOP*/
@@ -1666,6 +1687,15 @@ form.form-vertical {
 
     .icones-apps {
         margin: 0 25px 0 25px  !important;
+        background: #ff00ff !important;
+    }
+
+    .icones-apps img.img-responsive {
+        margin: 0 10px 0 10px !important;
+    }
+
+    .telegram-text {
+        padding-top: 20px;
     }
 }
 
