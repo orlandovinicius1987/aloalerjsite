@@ -11,7 +11,7 @@
 @stop
 
 @section('content-main')
-    <div class="hidden-xs hidden-sm">
+    <div class="hidden-xs hidden-sm hidden-md">
         {{--@include('partials.slider')--}}
         <div class="bg_video">
             <video autoplay="" loop="" poster="#" class="img-responsive">
@@ -21,13 +21,13 @@
         </div>
     </div>
 
-    <div class="visible-xs visible-sm">
+    <div class="visible-xs visible-sm visible-md">
         <div class="row">
             @include('partials.slider')
-            <div class="col-xs-12 col-sm-6 mobile-chat visible-xs visible-sm">
+            <div class="col-xs-12 col-sm-6 mobile-chat visible-xs visible-sm visible-md">
                 @include('partials.form-chat')
             </div>
-            <div class="col-xs-12 col-sm-6 mobile-telegram visible-xs visible-sm">
+            <div class="col-xs-12 col-sm-6 mobile-telegram visible-xs visible-sm  visible-md">
                 @include('partials.telegram')
             </div>
         </div>
