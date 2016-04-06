@@ -13,10 +13,10 @@ class Committee
             'phone' => '0800-282-7060',
             'texto' => '<p>A Comissão de Defesa dos Direitos do Consumidor zela pelos seus direitos enquanto consumidor, seja de serviços ou produtos. Ela se manifesta aos assuntos referentes à economia popular; à composição, qualidade, apresentação, publicidade e distribuição de bens e serviços; às relações de consumo e medidas de defesa do consumidor; e ao acolhimento e investigação de denúncias relacionados aos direitos do consumidor.</p>
      <p>Existem várias formas de entrar em contato com a comissão. Os atendimentos são feitos pelos canais do Alô Alerj ou presencialmente, na sala localizada no térreo do prédio da Alerj, na Rua da Alfândega, número 8. A comissão também vai até você por meio do Ônibus Itinerante, que faz rotas por todo o Estado. Para solicitar a presença do Ônibus da Defesa do Consumidor em seu bairro e conferir os itinerários já programados, <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Luiz Martins',
+            'vice-president' => 'Deputado Jânio Mendes',
+            'office-phone' => '0800 282-7060',
+            'office-address' => 'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.',
         ],
 
         'meioambiente' => [
@@ -26,8 +26,8 @@ class Committee
             'phone' => '0800-282-0230',
             'texto' => '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
             'president' => 'Deputado Thiago Pampolha',
-            'vice-president' => 'Jefferson Ferreira França Júnior',
-            'office-phone' => '2588-1308 / 2588-1309',
+            'vice-president' => 'Deputado Carlos Minc',
+            'office-phone' => '(21) 2588-1308 / (21) 2588-1309',
             'office-address' => 'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
         ],
 
@@ -37,10 +37,10 @@ class Committee
             'short_name' => 'Combate às Discriminações e Preconceitos',
             'phone' => '0800-282-0802',
             'texto' => '<p>A Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional recebe e investiga denúncias de preconceito. Para lutar contra a discriminação, a comissão conta com a colaboração de várias entidades que se destinam a esse tipo de combate. Compete à comissão acompanhar e se manifestar sobre todos os assuntos pertinentes às ideologias racistas e práticas discriminatórias em geral.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Átila Nunes',
+            'vice-president' => 'Deputado Gerson Bergher',
+            'office-phone' => '(21) 2588-1308',
+            'office-address' => 'Rua da Assembleia, s/nº – gabinete 308 – Centro.',
         ],
 
         'pirataria' => [
@@ -51,10 +51,10 @@ class Committee
             'texto' => '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
             
             Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Dionísio Lins',
+            'vice-president' => 'Deputado Jânio Mendes',
+            'office-phone' => '(21) 2588-1732',
+            'office-address' => 'Palácio 23 de Julho, térreo, gabinete 01',
         ],
 
         'pessoadeficiente' => [
@@ -63,10 +63,10 @@ class Committee
             'short_name' => 'Pessoa com Deficiência',
             'phone' => '0800-285-5005',
             'texto' => '<p>A Comissão da Pessoa com Deficiência tem como objetivo assegurar os direitos de todas as pessoas com algum tipo de deficiência. Ela recebe e investiga denúncias relacionas ao tema, por meio do Alô Alerj.  A comissão conta com a colaboração de entidades que estão relacionadas à causa. Compete a ela se manifestar sobre todas as proposições referentes à Pessoa com Deficiência, bem como à legislação pertinente.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Márcio Pacheco',
+            'vice-president' => 'Carlos Diniz',
+            'office-phone' => '(21) 2588-1308',
+            'office-address' => 'Palácio Tiradentes, sala 112',
         ],
 
         'saneamentoambiental' => [
@@ -76,10 +76,10 @@ class Committee
             'phone' => '0800-282-8815',
             'texto' => '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Vale ressaltar que produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.</p>
     <p>Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Nivaldo Mulin',
+            'vice-president' => 'Deputada Lucinha',
+            'office-phone' => '(21) 2588-1309',
+            'office-address' => 'Palácio Tiradentes, sala 130',
         ],
 
         'segurancapublica' => [
@@ -88,10 +88,10 @@ class Committee
             'short_name' => 'Segurança Pública e Assuntos de Polícia',
             'phone' => '0800-282-3135',
             'texto' => '<p>A Comissão de Segurança Pública e Assuntos de Polícia, além de trabalhar em prol da segurança dos cidadãos, é um importante canal de denúncias, que podem ser registradas anonimamente pelo Alô Alerj, garantindo a proteção do denunciante. Compete à comissão se manifestar sobre assuntos referentes ao sistema de segurança pública em geral, planos e programas de segurança da população do Estado, bem como sobre qualquer proposição que se refira à segurança pública.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputada Martha Rocha',
+            'vice-president' => 'Deputado Bruno Dallari',
+            'office-phone' => '(21) 2588-1219',
+            'office-address' => 'Palácio Tiradentes, Prédio Anexo, gabinete 407',
         ],
 
         'trabalho' => [
@@ -100,10 +100,10 @@ class Committee
             'short_name' => 'Trabalho, Legislação Social e Seguridade Social',
             'phone' => '0800-282-3596',
             'texto' => '<p>A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Paulo Ramos',
+            'vice-president' => 'Deputado Edson Albertassi',
+            'office-phone' => '(21) 2588-1569',
+            'office-address' => 'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
         ],
 
         'criancaadolescenteidoso' => [
@@ -114,7 +114,7 @@ class Committee
             'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
             'president' => 'Deputada Estadual Jucélia Oliveira Freitas (Tia Ju)',
             'vice-president' => 'Joao B. Nascimento',
-            'office-phone' => '2588 -1243/ 2588-1669',
+            'office-phone' => '(21) 2588-1243 / (21) 2588-1669',
             'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
 
@@ -128,7 +128,7 @@ class Committee
             <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
             'president' => 'Deputada Tia Jú',
             'vice-president' => 'Deputada Daniele Guerreiro',
-            'office-phone' => '2588-1308 / 2588-1309',
+            'office-phone' => '(21) 2588-1308 / (21) 2588-1309',
             'office-address' => 'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
 
@@ -142,7 +142,7 @@ class Committee
     <p>Diante das denúncias, solicitações de auxílio e acompanhamentos de casos, a Comissão pode tomar medidas com o intuito de esclarecer ou solucionar fatos reportados sobre violações de direitos humanos, a partir dos seguintes mecanismos: acolhimento das famílias vítimas de violações de direitos; requerimento de informações mediante ofício às instituições públicas envolvidas na denúncia; encaminhamento do usuário para órgãos responsáveis pelos diferentes setores governamentais; articulação com as demais comissões permanentes da casa com o intuito de buscar solucionar as demandas; realização de audiência pública para convocar instituições públicas a prestar esclarecimentos, promovendo a discussão sobre o tema para, assim, avançar na qualidade das políticas públicas.</p>',
             'president' => 'Deputado Estadual Marcelo Freixo',
             'vice-president' => '',
-            'office-phone' => '2588-1555',
+            'office-phone' => '(21) 2588-1555',
             'office-address' => 'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
         ],
 
@@ -166,10 +166,10 @@ class Committee
             'phone' => '0800-282-0376',
             'texto' => '<p>A Comissão de Segurança Alimentar cuida para que os alimentos comercializados estejam adequados para consumo, seguindo as normas de produção, transporte e armazenamento. Compete à Comissão manifestar-se sobre a elaboração, coordenação e execução de programas e projetos ligados à segurança alimentar e combate à fome no Estado do Rio de Janeiro; políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte integrante dos direitos humanos; projetos e programas de geração de emprego e renda; e políticas públicas de assistência social.</p>
     <p>A Comissão atua com o objetivo de desenvolver estudos relacionados à garantia de alimentação e nutrição da população; fiscalizar e acompanhar projetos e ações governamentais na área de segurança alimentar; estudar e fiscalizar as ações das entidades da sociedade civil organizada voltadas para o combate à fome; estimular ações da sociedade civil voltadas para o combate à fome no Estado do Rio de Janeiro; e promover e coordenar campanhas de conscientização quanto ao desperdício de alimentos.</p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputada Lucinha',
+            'vice-president' => 'Deputado Waguinho',
+            'office-phone' => '(21) 2588-1308',
+            'office-address' => 'Palácio Tiradentes, sala 317',
         ],
 
         'sosmulher' => [
@@ -181,7 +181,7 @@ class Committee
     <p>A Comissão se utiliza de redes de atendimento e serviços jurídicos voltados para a mulher, criados por políticas públicas e espaços de solidariedade conquistadas na luta por respeito e igualdade, para fazer seu trabalho.  O "SOS MULHER", como é chamado o 0800 da Comissão, funciona de segunda a sexta, das 9h às 18h, com um atendimento especializado e feito apenas por mulheres preparadas.</p>',
             'president' => 'Deputada Enfermeira Rejane',
             'vice-president' => '',
-            'office-phone' => '0800 282 0119',
+            'office-phone' => '0800 282-0119',
             'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
         ],
 
@@ -189,7 +189,7 @@ class Committee
             'name' => 'Comissão de Tributação Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
             'link_caption' => 'Tributacao',
             'short_name' => 'Tributação e Controle da Arrecadação',
-            'phone' => '0800-282-3595',
+            'phone' => '0800 282-3595',
             'texto' => '<p>A Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais trata dos assuntos referentes à tributação, arrecadação e fiscalização dos tributos estaduais. Cabe à Comissão:</p>
                 <ul>
                 <li>Solicitar que o Tribunal de Contas do Estado promova inspeções e auditorias na arrecadação de tributos estaduais;</li>
@@ -203,10 +203,10 @@ class Committee
                 <li>Requerer informações, relatórios, balanços e inspeções sobre as contas ou autorizações de despesas de órgãos e entidades da administração estadual, diretamente ou através do Tribunal de Contas do Estado;</li>
                 <li>Opinar sobre quaisquer proposições de implicações orçamentárias, bem como empréstimos públicos, fixação de subsídios do Governador, do Vice-Governador do Estado e dos Deputados.</li>
                 </ul></p>',
-            'president' => '',
-            'vice-president' => '',
-            'office-phone' => '',
-            'office-address' => '',
+            'president' => 'Deputado Luiz Paulo',
+            'vice-president' => 'Orlando Júnior',
+            'office-phone' => '(21) 2588-1259',
+            'office-address' => 'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo',
         ],
 
         'animais' => [
@@ -217,8 +217,8 @@ class Committee
             'texto' => '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
             'president' => 'Deputada Daniele Guerreiro',
             'vice-president' => 'Carlos Diniz',
-            'office-phone' => '2588-1000',
-            'office-address' => 'Palácio 23 de julho, sala 104',
+            'office-phone' => '(21) 2588-1000',
+            'office-address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
         ],
 
     ];
