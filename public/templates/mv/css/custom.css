@@ -3,8 +3,13 @@ body {
     line-height: 1.5;
     color: #172B53;
 }
+
 p {
     font-size: 16px;
+}
+
+a:link {
+    text-decoration: none;
 }
 
 .margin {
@@ -333,8 +338,13 @@ form.form-vertical {
         padding-top: 50px;
         padding-bottom: 40px;
     }
-    .telefone{
+
+    .telefone {
         font-size: 25px;
+    }
+
+    .telefone-link:link, .telefone-link:visited, .telefone-link:hover, .telefone-link:active {
+        color: #337ab7;
     }
 
     .icones-apps {
@@ -1174,6 +1184,9 @@ form.form-vertical {
         text-align: center;
         color: #ffffff;
         background-color: #172B53;
+    }
+    .tel-comissao-link:link, .tel-comissao-link:visited, .tel-comissao-link:hover, .tel-comissao-link:active {
+        color: #ffffff;
     }
     .linha-info {
         height: 2px;
