@@ -12,17 +12,14 @@
 
 @section('content-main')
     <div class="hidden-xs hidden-sm hidden-md">
-        {{--@include('partials.slider')--}}
-{{--
         <div class="bg_video">
             <video autoplay="" loop="" poster="#" class="img-responsive">
-                <source src="/templates/mv/videos/operadores_1.webm" type="video/webm">
-                <source src="/templates/mv/videos/operadores_1.mp4" type="video/mp4">
+                <source src="/templates/mv/videos/alo-alerj.webm" type="video/webm">
+                <source src="/templates/mv/videos/alo-alerj.mp4" type="video/mp4">
             </video>
         </div>
---}}
-        @include('partials.slider')
 
+        {{--@include('partials.slider')--}}
     </div>
 
     <div class="visible-xs visible-sm visible-md">
