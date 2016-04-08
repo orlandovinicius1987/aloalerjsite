@@ -11,7 +11,7 @@
 @stop
 
 @section('content-main')
-    <div class="hidden-xs hidden-sm hidden-md">
+    <div class="hidden-xs hidden-sm hidden-md video-aloalerj">
         <div class="bg_video">
             <video autoplay="" loop="" poster="#" class="img-responsive">
                 <source src="/templates/mv/videos/alo-alerj.webm" type="video/webm">
