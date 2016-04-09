@@ -74,9 +74,22 @@ class Committee
             'link_caption' => 'Saneamento Ambiental',
             'short_name' => 'Saneamento Ambiental',
             'phone' => '0800-282-8815',
-            'texto' => '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Vale ressaltar que produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.</p>
-    <p>Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
-            'president' => 'Deputado Nivaldo Mulin',
+            'texto' => '
+                <p>A Comissão de Saneamento Ambiental trabalha em prol da educação ambiental e do desenvolvimento de estudos científicos sobre á agua e sua escassez. também é uma grande estimuladora de ações da sociedade civil em defesa dos recursos hídricos.</p>
+                
+                <p>Ela elabora projetos educativos que ressaltam a água como um bem essencial à vida; acompanha todas as atividades relacionadas à extração e exploração comercial da água, com o objetivo de oferecer qualidade e garantia de preservação das fontes; desenvolve pesquisas sobre a despoluição de rios, lagos, lagoas, baías e praias situadas no Estado do Rio de Janeiro; e acompanha as ações dos Conselhos Gestores de bacias hidrográficas e de programas e projetos governamentais relacionados ao Plano Estadual de Recursos Hídricos.</p>
+                
+                <p>Compete à comissão se manifestar sobre:<p>
+                
+                <ul>
+                    <li>A elaboração, coordenação e execução de programas e projetos ligados aos setores de saneamento, recursos hídricos e defesa das águas no Estado</li>
+                    <li>A prestação de serviços de abastecimento de água e esgoto sanitário</li>
+                    <li>O desenvolvimento do saneamento ambiental</li>
+                    <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos</li>
+                    <li>A Política Estadual de Saneamento, Recursos Hídricos e Defesa das Águas no Estado</li> 
+                </ul>
+            ',
+            'president' => 'Deputado Nivaldo Mulim',
             'vice-president' => 'Deputada Lucinha',
             'office-phone' => '(21) 2588-1309',
             'office-address' => 'Palácio Tiradentes, sala 130',
