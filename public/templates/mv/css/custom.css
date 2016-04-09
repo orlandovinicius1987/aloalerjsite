@@ -1728,3 +1728,7 @@ form.form-vertical {
     text-transform: uppercase;
 }
 
+/* hack de ACR para resolver problema de margem */
+p {
+    margin: 0 40px 10px;
+}
