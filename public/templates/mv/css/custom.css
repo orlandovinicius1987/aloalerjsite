@@ -1727,8 +1727,3 @@ form.form-vertical {
     background-color: #4EC636;
     text-transform: uppercase;
 }
-
-/* hack de ACR para resolver problema de margem */
-p {
-    margin: 0 40px 10px;
-}
