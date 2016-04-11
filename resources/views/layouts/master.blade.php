@@ -28,7 +28,7 @@
         <!-- Content -->
         <div class="container">
             <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 video-aloalerj">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     @yield('content-main')
                 </div>
 

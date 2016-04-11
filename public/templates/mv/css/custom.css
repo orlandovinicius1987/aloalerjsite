@@ -215,7 +215,7 @@ form.form-vertical {
 }
 
 .video-aloalerj {
-    margin-right: 0 !important;
+    margin-right: -15px !important;
     padding-right: 0 !important;
 }
 
@@ -1726,9 +1726,4 @@ form.form-vertical {
     color: #172B53;
     background-color: #4EC636;
     text-transform: uppercase;
-}
-
-/* hack de ACR para resolver problema de margem */
-p {
-    margin: 0 40px 10px;
 }
