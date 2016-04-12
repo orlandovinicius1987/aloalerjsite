@@ -77,10 +77,16 @@ class Committee
             'texto' => '
                 <p>A Comissão de Saneamento ambiental atua em ações técnicas e socioeconômicas fundamentadas na busca de melhorias da saúde pública, tendo por objetivo monitorar, fiscalizar e acompanhar níveis crescentes de salubridade ambiental no Estado do Rio de Janeiro.</p>
                 
+                <br>
+
                 <p>Dentre as principais atividades relacionadas ao saneamento ambiental, está o cumprimento do que estabelece os princípios fundamentais e diretrizes nacionais para o saneamento (Lei nº 11.445/2007): universalização do acesso aos serviços público de saneamento básico; abastecimento de água; esgotamento sanitário; limpeza urbana e manejo dos resíduos sólidos; disponibilidade, em todas as áreas urbanas, de serviços de drenagem e de manejo das águas pluviais; entre outros.</p>
                 
+                <br>
+                
+                <p>Compete à Comissão de Saneamento Ambiental opinar sobre:</p> 
+                
                 <ol>
-                  <li>Compete à Comissão de Saneamento Ambiental opinar sobre: projetos atinentes à realização de obras e serviços públicos pelo município, autarquias, entidades paraestatais e concessionárias de serviços públicos de âmbito Estadual;</li>
+                  <li>projetos atinentes à realização de obras e serviços públicos pelo município, autarquias, entidades paraestatais e concessionárias de serviços públicos de âmbito Estadual;</li>
                 
                   <li>fiscalização da promoção do abastecimento de água potável, do esgotamento sanitário, da limpeza urbana, do manejo de resíduos sólidos e da drenagem e manejo das águas pluviais urbanas;</li>
                 
