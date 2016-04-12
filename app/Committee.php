@@ -75,19 +75,29 @@ class Committee
             'short_name' => 'Saneamento Ambiental',
             'phone' => '0800-282-8815',
             'texto' => '
-                <p>A Comissão de Saneamento Ambiental trabalha em prol da educação ambiental e do desenvolvimento de estudos científicos sobre á agua e sua escassez. também é uma grande estimuladora de ações da sociedade civil em defesa dos recursos hídricos.</p>
+                <p>A Comissão de Saneamento ambiental atua em ações técnicas e socioeconômicas fundamentadas na busca de melhorias da saúde pública, tendo por objetivo monitorar, fiscalizar e acompanhar níveis crescentes de salubridade ambiental no Estado do Rio de Janeiro.</p>
                 
-                <p>Ela elabora projetos educativos que ressaltam a água como um bem essencial à vida; acompanha todas as atividades relacionadas à extração e exploração comercial da água, com o objetivo de oferecer qualidade e garantia de preservação das fontes; desenvolve pesquisas sobre a despoluição de rios, lagos, lagoas, baías e praias situadas no Estado do Rio de Janeiro; e acompanha as ações dos Conselhos Gestores de bacias hidrográficas e de programas e projetos governamentais relacionados ao Plano Estadual de Recursos Hídricos.</p>
+                <p>Dentre as principais atividades relacionadas ao saneamento ambiental, está o cumprimento do que estabelece os princípios fundamentais e diretrizes nacionais para o saneamento (Lei nº 11.445/2007): universalização do acesso aos serviços público de saneamento básico; abastecimento de água; esgotamento sanitário; limpeza urbana e manejo dos resíduos sólidos; disponibilidade, em todas as áreas urbanas, de serviços de drenagem e de manejo das águas pluviais; entre outros.</p>
                 
-                <p>Compete à comissão se manifestar sobre:<p>
+                <ol>
+                  <li>Compete à Comissão de Saneamento Ambiental opinar sobre: projetos atinentes à realização de obras e serviços públicos pelo município, autarquias, entidades paraestatais e concessionárias de serviços públicos de âmbito Estadual;</li>
                 
-                <ul>
-                    <li>A elaboração, coordenação e execução de programas e projetos ligados aos setores de saneamento, recursos hídricos e defesa das águas no Estado</li>
-                    <li>A prestação de serviços de abastecimento de água e esgoto sanitário</li>
-                    <li>O desenvolvimento do saneamento ambiental</li>
-                    <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos</li>
-                    <li>A Política Estadual de Saneamento, Recursos Hídricos e Defesa das Águas no Estado</li> 
-                </ul>
+                  <li>fiscalização da promoção do abastecimento de água potável, do esgotamento sanitário, da limpeza urbana, do manejo de resíduos sólidos e da drenagem e manejo das águas pluviais urbanas;</li>
+                
+                  <li>fiscalização e auxílio na promoção da não geração, redução, reutilização, reciclagem e tratamento dos resíduos sólidos, bem como disposição final ambientalmente adequada dos rejeitos;</li>
+                
+                  <li>fiscalização e auxílio na promoção de incentivo à indústria da reciclagem, tendo em vista fomentar o uso de matérias-primas e insumos derivados de materiais recicláveis e reciclados;</li>
+                
+                  <li>auxílio na promoção da integração dos catadores de materiais reutilizáveis e recicláveis nas ações que envolvam a responsabilidade compartilhada pelo ciclo de vida dos produtos;</li>
+                
+                  <li>fiscalização e auxílio na promoção de incentivo ao desenvolvimento de sistemas de gestão ambiental e empresarial voltados para a melhoria dos processos produtivos e ao reaproveitamento dos resíduos sólidos, incluídos a recuperação e o aproveitamento energético;</li>
+                
+                  <li>promoção de adoção de padrões sustentáveis de produção e consumo de bens e serviços, do desenvolvimento e aprimoramento de tecnologias limpas como forma de minimizar impactos ambientais;</li>
+                
+                  <li>outras matérias pertinentes à proteção do meio ambiente, como por exemplo a balneabilidade das praias fluminenses.</li>
+                
+                  <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos.</li>
+                </ol>
             ',
             'president' => 'Deputado Nivaldo Mulim',
             'vice-president' => 'Deputada Lucinha',
