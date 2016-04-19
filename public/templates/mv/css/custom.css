@@ -840,7 +840,8 @@ form.form-vertical {
     }
 
     img.alolerj-logo.img-responsive {
-        margin: 15px;
+        max-width: 210px;
+        margin-top: 25px;
     }
 
     form.form-vertical {
