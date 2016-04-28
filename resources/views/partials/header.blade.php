@@ -4,26 +4,51 @@
 {{--<div class="cabecalho{{ isset($home) ? '-home' : '' }}">--}}
     <div class="container">
         @if (isset($home))
-            <div class="row row-eq-height">
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
-                         <div class="col-xs-12 col-sm-12 col-md-12 visible-xs visible-sm visible-md ">
-                             <img src="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo-home img-responsive"/>
-                         </div>
-                        <div class="hidden-xs hidden-sm hidden-md col-lg-2">
-                            <a href="/">
-                                <object type="image/svg+xml" data="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo">
-                                    Alerj Logo <!-- fallback image in CSS -->
-                                </object>
-                            </a>
-                        </div>
-                        <div class="hidden-xs hidden-sm hidden-md col-sm-3 col-lg-5">
-                            <img src="/templates/mv/svg/logo-alo-alerj-nova.svg" class="alolerj-logo img-responsive" alt="AloAlerj">
-                        </div>
+                <!-- Navigation -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand visible-lg" href="#page-top"><img src="/templates/mv/svg/logo-alerj-monocromatica.svg" class="alerj-logo img-responsive"></a>
+                    <a class="navbar-brand" href="#page-top">
+                        <img src="/templates/mv/svg/logo-alo-alerj-nova.svg" class="alolerj-logo-home img-responsive" alt="AloAlerj"></a>
+                </div>
 
-                        <div class="hidden-xs hidden-sm  hidden-md col-lg-5">@include('partials.telefones-uteis')</div>
-                    </div>
-                    <div class="sidebar-right-top hidden-xs hidden-sm hidden-md col-lg-3 text-center">@yield('sidebar-name')</div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right navbar-shadow">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#portfolio">O Alô Alerj</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#about">Comissões</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Contatos</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Telefones Úteis</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="#contact">Alerj</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
+            <!-- /.container-fluid -->
+        </nav>
+
         @else
             <div class="row row-eq-height">
                 <div class="col-xs-12 col-sm-12 col-md-12 visible-xs visible-sm visible-md">

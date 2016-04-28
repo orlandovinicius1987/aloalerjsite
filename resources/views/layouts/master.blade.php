@@ -15,6 +15,9 @@
         <link href="/templates/mv/css/carousel.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?breno={{rand(0,5000)}}">
 
+
+        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?breno={{rand(0,5000)}}">
+
         @if (Session::get('client') == 'app')
             <link rel="stylesheet" href="/templates/mv/app.css?breno={{rand(0,5000)}}">
         @endif

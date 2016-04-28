@@ -1,4 +1,4 @@
-<div class="sidebar-content">
+<div class="sidebar-content boxshadow">
     <div class="infos text-center">
         <p class="titulo-comissao">{{ $title }}</p>
         <div class="linha-info"></div>
