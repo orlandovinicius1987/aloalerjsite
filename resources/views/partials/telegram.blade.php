@@ -1,4 +1,4 @@
-<div class="hidden-xs hidden-sm">
+<div class="hidden-xs hidden-sm boxshadow">
     <div class="icones-apps text-center">
         @include('partials.telegram-icons')
     </div>

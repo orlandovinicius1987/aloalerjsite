@@ -1,5 +1,8 @@
 
     <div class="chat-offline">
+        <div>
+            <img src="/templates/mv/svg/balao-chat.svg" class="balao-chat offline">
+        </div>
 
         <div class="chat-horario">O horário de atendimento pelo Chat é das 8h às 19h.</div>
         <div class="chat-offline-mensagem">Envie uma mensagem para que possamos iniciar o seu atendimento.</div>

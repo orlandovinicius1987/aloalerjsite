@@ -41,6 +41,7 @@
     });
 </script>
 
+
 <script>
     $('#collapseOne').on('chatOnline.bs.collapse', function () {
         $('.panel-heading').animate({}, 500);
@@ -167,3 +168,10 @@
         });
     });
 </script>
+
+
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="/templates/mv/js/classie.js"></script>
+<script src="/templates/mv/js/cbpAnimatedHeader.js"></script>
+
