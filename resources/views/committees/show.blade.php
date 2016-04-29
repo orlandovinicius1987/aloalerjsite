@@ -10,6 +10,10 @@
 @stop
 
 @section('content-main')
+
+    <div class="page-name">
+        @yield('page-name')
+    </div>
     <div class="hidden-lg">
         @include('partials.committee-telephone', [
            'title' => $committee['short_name'],

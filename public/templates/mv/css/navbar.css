@@ -1,3 +1,7 @@
+
+
+
+
 /*!
  * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -129,15 +133,31 @@ header .intro-text .skills {
 */
 
 
+.navbar-fixed-top.navbar-shrink .navbar-nav>li>a {
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+
+.navbar-fixed-top.navbar-shrink .navbar-nav {
+    margin-top: 5px;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+
 .navbar-fixed-top.navbar-shrink .alolerj-logo-home {
-    width: 130px;
+    width: 120px;
 }
 
 
 .navbar-fixed-top.navbar-shrink .alerj-logo {
-    height: 125px !important;
+    height: 70px !important;
     /* margin-bottom: 10px; */
-    margin-top: -41px;
+    margin-top: -26px;
 }
 
 
@@ -198,6 +218,7 @@ header .intro-text .skills {
     border-left: 0;
 }
 
+
 .navbar-nav>li>a {
     font-size: 17px;
 }
@@ -206,32 +227,54 @@ header .intro-text .skills {
     color: #c7cbd6 !important;
 }
 .navbar a:hover {
-    background: #9A9FAC !important;
+    background: #5e6e85  !important;
 }
 
-.navbar a:active {
+/*.navbar a:active {
     background: #f0f !important;
-}
+}*/
 
 .navbar a:focus {
     outline: 0;
-    background: #5e6e85 !important;
+    background: #9A9FAC !important;
     color: #c7cbd6 !important;
 }
 
+.envelopemenu {
+    font-size: 34px;
+    padding: 0px 30px;
+    line-height: 0px;
+    margin-top: 9px;
+    display: table;
+}
+
+.navbar-shrink .envelopemenu {
+    font-size: 24px;
+    padding: 0px 15px;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+}
+
+
 .navbar .navbar-nav {
     letter-spacing: 1px;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
 }
 
 .navbar .navbar-nav li a:focus {
     outline: 0;
 }
 
+/*
 .navbar-default,
 .navbar-inverse {
     border-top: 5px solid #172B53;
     background: #C7CCD6 !important;
-}
+    border-bottom: 0px;
+}*/
 /*
 section {
     padding: 100px 0;
@@ -535,8 +578,67 @@ footer .footer-below {
 a.navbar-brand:hover {
     background: none !important;
 }
+a.navbar-brand:focus {
+    background: none !important;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+    .navbar-default, .navbar-inverse {
+        background: #172B53 !important;
+        border-bottom: 2px solid #C7CCD6 !important;
+    }
+}
+/* !! END - Custom, iPhone Retina */
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+    .navbar-default, .navbar-inverse {
+        background: #172B53 !important;
+        border-bottom: 3px solid #C7CCD6 !important;
+    }
+}
+
+/* !! END -  Extra Small Devices, Phones */
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .navbar-default, .navbar-inverse {
+        background: #172B53 !important;
+        border-bottom: 5px solid #C7CCD6 !important;
+    }
+}
+/* !! END - Small Devices, Tablets */
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .navbar-default,
+    .navbar-inverse {
+        background: #172B53;
+        border-bottom: 5px solid #C7CCD6;
+    }
+}
+/* !! END - Medium Devices, Desktops */
+
+
+@media (min-width: 1200px) {
+    .navbar-default,
+    .navbar-inverse {
+        border-top: 5px solid #172B53;
+        background: #C7CCD6 !important;
+        border-bottom: 0px;
+    }
+
+}
+
+
 
 @media (max-width: 1200px) {
+
+
     .navbar-header {
         float: none;
     }
@@ -572,3 +674,6 @@ a.navbar-brand:hover {
         display:block !important;
     }
 }
+
+
+

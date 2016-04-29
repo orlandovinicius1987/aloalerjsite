@@ -8,6 +8,7 @@
         <meta name="description" content="Sistema de Atendimento via Chat do Alo Alerj e Comissoes" />
         <meta name="Author" content="Antonio Carlos Ribeiro [https://antoniocarlosribeiro.com]" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <link href="//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -15,12 +16,11 @@
         <link href="/templates/mv/css/carousel.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?breno={{rand(0,5000)}}">
 
-
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?breno={{rand(0,5000)}}">
-
         @if (Session::get('client') == 'app')
             <link rel="stylesheet" href="/templates/mv/app.css?breno={{rand(0,5000)}}">
         @endif
+
+        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?breno={{rand(0,5000)}}">
 
         <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
     </head>

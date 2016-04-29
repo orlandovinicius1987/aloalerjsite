@@ -26,19 +26,6 @@ a:link {
     color: #fff;
 }
 
-
-.boxshadow {
-    background: #F5F5F5;
-    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
-    border-radius: 6px;
-    /*width: 236px;*/
-    display: inline-block;
-    margin: 15px 0 10px 0;
-    padding: 20px 15px 20px 15px ;
-}
-
-
 .cabecalho-home {
     background: #172B53 !important;
     border-bottom: #c7ccd6 4px solid;
@@ -844,6 +831,7 @@ form.form-vertical {
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 
+
     img.logo-com-tel-dc.visible-lg {
         margin-left: 47px;
     }
@@ -909,10 +897,10 @@ form.form-vertical {
     .mobile-content {
         margin-right: -15px;
     }
-
+/*
     .nome-comissao {
         color: #172b53;
-        font-size: 25px;
+        font-size: 36px;
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         font-weight: 600;
@@ -920,7 +908,7 @@ form.form-vertical {
         line-height: 1.2;
         letter-spacing: 1px;
 
-    }
+    }*/
 
 
 
@@ -983,7 +971,7 @@ form.form-vertical {
     }
 
     .alerj-logo {
-        height: 152px !important;
+        height: 100px !important;
         /*margin-bottom: 10px;*/
         border:none;
         margin-top: -41px;
@@ -1700,7 +1688,7 @@ form.form-vertical {
 @media (min-width: 992px) {
     .nome-comissao {
     color: #172b53;
-    font-size: 22px;
+    font-size: 36px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     font-weight: 400;
@@ -1709,10 +1697,25 @@ form.form-vertical {
     letter-spacing: 1px;
     margin-left: 20px;
     }
+
+
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+
+
+    .boxshadow {
+        background: #F5F5F5;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+        border-radius: 6px;
+        /*width: 236px;*/
+        display: inline-block;
+        margin: 15px 0 10px 0;
+        padding: 20px 15px 20px 15px ;
+    }
 
 
     .cabecalho-home {
