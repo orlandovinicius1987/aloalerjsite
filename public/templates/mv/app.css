@@ -2,4 +2,7 @@
     body {
         margin-top: 93px;
     }
+    .navbar-fixed-top {
+        margin-top: 93px;
+    }
 }
