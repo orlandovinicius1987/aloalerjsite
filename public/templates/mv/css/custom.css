@@ -231,6 +231,21 @@ form.form-vertical {
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
+
+    .alolerj-logo-home {
+         height: 40px !important;
+         margin-top: -9px !important;
+         -webkit-transition: all .3s;
+         -moz-transition: all .3s;
+         transition: all .3s;
+     }
+
+    .navbar-shrink .alolerj-logo-home {
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
+
     .cabecalho {
         background: #172b53;
         height: 67px;
@@ -608,6 +623,13 @@ form.form-vertical {
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
 
+    .alolerj-logo-home {
+        height: 70px !important;
+        margin-top: -25px !important;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
     .alerj-logo {
         height: 145px;
     }
