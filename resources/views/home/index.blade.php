@@ -28,6 +28,7 @@
             <div class="col-xs-12 col-sm-6 mobile-chat visible-xs visible-sm visible-md">
                 @include('partials.form-chat')
             </div>
+
             <div class="col-xs-12 col-sm-6 mobile-telegram visible-xs visible-sm  visible-md">
                 @include('partials.telegram')
             </div>

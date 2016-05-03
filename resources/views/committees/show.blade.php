@@ -12,7 +12,15 @@
 @section('content-main')
 
     <div class="page-name">
+
         @yield('page-name')
+
+        <div class="comissoes-telefone visible-lg">
+            @include('partials.committee-telephone', [
+              'title' => '',
+              'telephone' => $committee['phone'],
+              'site' => '',
+          ])</div>
     </div>
     <div class="hidden-lg">
         @include('partials.committee-telephone', [
@@ -38,6 +46,7 @@
         </div>
     @endif
 @stop
+{{--
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
@@ -47,4 +56,5 @@
     ])
     @include('partials.telegram')
 @stop
+--}}
 

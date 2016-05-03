@@ -30,14 +30,24 @@
 
         <!-- Content -->
         <div class="container">
-            <div class="row row-eq-height">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     @yield('content-main')
                 </div>
+            </div>
 
-                <div class="sidebar-right col-xs-12 col-sm-3 col-lg-3 hidden-xs hidden-sm hidden-md">
-                    @yield('content-sidebar')
+
+            <div class="row row-eq-height blocos">
+                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
+                    @include('partials.form-chat')
                 </div>
+                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
+                    @include('partials.app')
+                </div>
+                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
+                    @include('partials.telegram')
+                </div>
+
             </div>
         </div>
 
