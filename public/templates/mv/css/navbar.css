@@ -529,13 +529,6 @@ footer .footer-below {
 }*/
 
 
-a.navbar-brand:hover {
-    background: none !important;
-}
-a.navbar-brand:focus {
-    background: none !important;
-}
-
 
 
 @media (max-width: 320px) {
@@ -553,11 +546,17 @@ a.navbar-brand:focus {
 
     .navbar-default .navbar-nav>li>a {
         color: #AFC2E9 ;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
     }
 
     .navbar-default .navbar-nav>li>a:hover {
         color: #8FAAE0;
         background: #122140 ;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
     }
 
 }
@@ -586,11 +585,17 @@ a.navbar-brand:focus {
     }
     .navbar-default .navbar-nav>li>a {
         color: #AFC2E9 ;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
     }
 
     .navbar-default .navbar-nav>li>a:hover {
         color: #8FAAE0;
         background: #122140 ;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
     }
 
 }
@@ -622,6 +627,10 @@ a.navbar-brand:focus {
     .navbar-inverse {
         background: #172B53;
         border-bottom: 5px solid #C7CCD6;
+    }
+    .navbar-default .navbar-nav>li>a:hover {
+        color: #8FAAE0 ;
+        background: #122140 ;
     }
 }
 /* !! END - Medium Devices, Desktops */
@@ -685,6 +694,13 @@ a.navbar-brand:focus {
     .navbar-default .navbar-nav>li>a {
         color: #777;
     }
+    .navbar-collapse {
+        width: auto;
+        border-top: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        margin-top: 0px;
+    }
 
 
 }
@@ -732,3 +748,10 @@ a.navbar-brand:focus {
 
 
 
+
+a:hover.navbar-brand {
+    background: none !important;
+}
+a:focus.navbar-brand {
+    background: none !important;
+}
