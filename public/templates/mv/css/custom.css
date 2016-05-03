@@ -239,6 +239,11 @@ img.app-mockup {
     margin: 23px 0 0 0;
 }
 
+.app-texto {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 .blocos {
     margin-bottom: 40px;
 }
@@ -968,17 +973,6 @@ img.app-mockup {
 
 
 
-    /*
- * Row with equal height columns
- * --------------------------------------------------
- */
-    .row-eq-height {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display:         flex;
-    }
-
     .sidebar-right-top {
         background-color: #E7E8EC;
     }
@@ -1169,7 +1163,7 @@ img.app-mockup {
 
     .texto-chat {
         text-align: center;
-        margin: 30px 0 0px 0;
+        margin: 30px 0 15px 0;
         line-height: 140%;
     }
 
@@ -1477,7 +1471,6 @@ img.app-mockup {
 
     .icones-apps {
         margin-bottom: 30px;
-        background: #00ff00 !important;
     }
 
     .icones-apps img.img-responsive {
@@ -1807,16 +1800,21 @@ img.app-mockup {
     }
 
     .icones-apps {
-        margin: 0 25px 0 25px  !important;
-        background: #ff00ff !important;
+        margin: 20px 25px 0px 25px !important;
+        background: none !important;
+        padding-bottom: 120px;
     }
 
     .icones-apps img.img-responsive {
-        margin: 0 0px 0 0px !important;
+        margin: 0 5px 0 5px !important;
     }
 
     .telegram-text {
-        padding-top: 20px;
+        padding: 28px 0 0 0;
+        margin-bottom: 25PX;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 22px;
     }
 }
 
@@ -1829,4 +1827,16 @@ img.app-mockup {
     color: #172B53;
     background-color: #4EC636;
     text-transform: uppercase;
+}
+
+
+/*
+* Row with equal height columns
+* --------------------------------------------------
+*/
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
 }
