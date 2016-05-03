@@ -9,7 +9,7 @@
                 <p><img src="/templates/mv/img/download_app_googleplay.png" class="button-applestore offline" /></p>
             </div>
             <div class="col-lg-6 img-app">
-                <p><img src="/templates/mv/img/app_mockup_peq.png" class=app-mockup offline" /></p>
+                <img src="/templates/mv/img/app_mockup_peq.png" class=app-mockup offline" />
             </div>
         </div>
     </div>
