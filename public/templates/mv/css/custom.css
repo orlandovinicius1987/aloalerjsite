@@ -226,6 +226,22 @@ form.form-vertical {
     padding-right: 0 !important;
 }
 
+.boxshadow.download-app {
+    margin: 15px 0 0 0;
+    padding: 20px 0 0 0;
+}
+
+img.app-mockup {
+    width: 200px;
+    margin: 0px 0 0 -31px;
+}
+.app-buttons {
+    margin: 23px 0 0 0;
+}
+
+.blocos {
+    margin-bottom: 40px;
+}
 
 /*==========  Mobile First Method  ==========*/
 
@@ -1720,7 +1736,44 @@ form.form-vertical {
     margin-left: 20px;
     }
 
+    /*
+    .comissoes-telefone {
+        float: right;
+    }
+    */
 
+    .comissoes-telefone .boxshadow {
+        background: none ;
+        -webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,0.22);
+        box-shadow: 0 0px 0px 0 rgba(0,0,0,0.22);
+        border-radius: 0px;
+        display: inline-block;
+        margin: 0x 0 0x 0;
+        padding: 0px
+    }
+
+    .comissoes-telefone .sidebar-content{
+        margin:0px 0px 0px 0px;
+    }
+
+    .comissoes-telefone .tel-comissao {
+        margin: -20px 0px 0px 0px ;
+        padding: 0px;
+        font-size: 1.7em;
+        color: #172B53;
+        background-color: #fff !important;
+    }
+    .comissoes-telefone .tel-comissao a {
+        color: #172B53;
+    }
+
+
+    .comissoes-telefone .linha-info{
+        display: none !important;
+    }
+    .comissoes-telefone .outras-info{
+        display: none !important;
+    }
 }
 
 /* Large devices (large desktops, 1200px and up) */
@@ -1733,7 +1786,7 @@ form.form-vertical {
         -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
         box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
         border-radius: 6px;
-        /*width: 236px;*/
+        width: 100%;
         display: inline-block;
         margin: 15px 0 10px 0;
         padding: 20px 15px 20px 15px ;
