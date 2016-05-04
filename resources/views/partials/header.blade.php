@@ -30,10 +30,10 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="#portfolio">O Alô Alerj</a>
+                            <a href="/pages/aloalerj">O Alô Alerj</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="#about">Comissões</a>
+                            <a href="/pages/comittees">Comissões</a>
                         </li>
                         <li class="page-scroll">
                             <a href="#contact">Contatos</a>

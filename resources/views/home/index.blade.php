@@ -14,8 +14,8 @@
     <div class="hidden-xs hidden-sm hidden-md">
         <div class="bg_video video-aloalerj">
             <video autoplay="" loop="" poster="#" class="img-responsive">
-                <source src="/templates/mv/videos/alo-alerj.webm" type="video/webm">
-                <source src="/templates/mv/videos/alo-alerj.mp4" type="video/mp4">
+                <source src="/templates/mv/videos/Alo-alerj-novo-formato.webm" type="video/webm">
+                <source src="/templates/mv/videos/Alo-alerj-novo-formato_1.mp4" type="video/mp4">
             </video>
         </div>
 
