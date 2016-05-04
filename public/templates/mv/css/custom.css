@@ -249,10 +249,7 @@ img.app-mockup {
     margin-bottom: 40px;
 }
 
-.comissoes {
-    column-count: 2;
-    margin: 20px 0px 40px 0px;
-}
+
 
 .comissoes p {
     font-size: 20px;
@@ -262,6 +259,11 @@ img.app-mockup {
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
+
+
+    body {
+        margin-top: 50px;
+    }
 
     .alolerj-logo-home {
          height: 40px !important;
@@ -558,6 +560,12 @@ img.app-mockup {
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
 
+
+
+    body {
+        margin-top: 50px;
+    }
+
     .visible-xs .telefone {
         font-size: 30px;
         font-weight: 600;
@@ -653,6 +661,11 @@ img.app-mockup {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+
+
+    body {
+        margin-top: 90px;
+    }
 
     .alolerj-logo-home {
         height: 70px !important;
@@ -1727,6 +1740,11 @@ img.app-mockup {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+    body {
+        margin-top: 90px;
+    }
+
     .nome-comissao {
     color: #172b53;
     font-size: 36px;
@@ -1782,7 +1800,14 @@ img.app-mockup {
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 
+    body {
+        margin-top: 0px;
+    }
 
+    .comissoes {
+        column-count: 2;
+        margin: 20px 0px 40px 0px;
+    }
 
     .boxshadow {
         background: #F5F5F5;
