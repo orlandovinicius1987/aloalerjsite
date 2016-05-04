@@ -81,7 +81,6 @@ a:link {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 2.7em;
-    text-align: center;
     color: #ffffff;
     background-color: #172B53;
 }
@@ -255,6 +254,10 @@ img.app-mockup {
     font-size: 20px;
 }
 
+.tel-comissao-link:link, .tel-comissao-link:visited, .tel-comissao-link:hover, .tel-comissao-link:active {
+    color: #ffffff;
+}
+
 /*==========  Mobile First Method  ==========*/
 
 /* Custom, iPhone Retina */
@@ -307,6 +310,7 @@ img.app-mockup {
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         font-weight: 600;
+        text-align: center;
     }
 
 
@@ -341,6 +345,9 @@ img.app-mockup {
         text-align: center;
         color: #ffffff;
         background-color: #172B53;
+    }
+    .tel-comissao-link:link, .tel-comissao-link:visited, .tel-comissao-link:hover, .tel-comissao-link:active {
+        color: #ffffff;
     }
 
     .ficha-comissao {
@@ -664,7 +671,7 @@ img.app-mockup {
 
 
     body {
-        margin-top: 90px;
+        margin-top: 100px;
     }
 
     .alolerj-logo-home {
@@ -1253,7 +1260,7 @@ img.app-mockup {
         padding-top: 10px;
         padding-bottom: 10px;
         font-size: 2.7em;
-        text-align: center;
+        /*text-align: center;*/
         color: #ffffff;
         background-color: #172B53;
     }
@@ -1746,22 +1753,21 @@ img.app-mockup {
     }
 
     .nome-comissao {
-    color: #172b53;
-    font-size: 36px;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-top: 40px;
-    line-height: 1.2;
-    letter-spacing: 1px;
-    margin-left: 20px;
+        color: #172b53;
+        font-size: 36px;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-top: 40px;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        margin-left: 20px;
+        text-align: left !important;
     }
 
-    /*
     .comissoes-telefone {
-        float: right;
+        text-align: left !important;
     }
-    */
 
     .comissoes-telefone .boxshadow {
         background: none ;
@@ -1783,9 +1789,12 @@ img.app-mockup {
         font-size: 1.7em;
         color: #172B53;
         background-color: #fff !important;
+        text-align: left;
     }
+
     .comissoes-telefone .tel-comissao a {
         color: #172B53;
+        font-size: 32px;
     }
 
 
@@ -1808,6 +1817,8 @@ img.app-mockup {
         column-count: 2;
         margin: 20px 0px 40px 0px;
     }
+
+
 
     .boxshadow {
         background: #F5F5F5;

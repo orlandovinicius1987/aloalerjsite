@@ -1,5 +1,5 @@
 <div class="sidebar-content boxshadow">
-    <div class="infos text-center">
+    <div class="infos">
         <p class="titulo-comissao">{{ $title }}</p>
         <div class="linha-info"></div>
         <div class="tel-comissao"><a href="tel:{{ $telephone }}" class="tel-comissao-link">{{ $telephone }}</a></div>

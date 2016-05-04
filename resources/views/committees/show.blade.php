@@ -9,7 +9,7 @@
 
     <div class="page-name">
 
-        <h1 class="nome-comissao">{{ $committee['name'] }}</h1>
+        <h1 class="nome-comissao visible-lg">{{ $committee['name'] }}</h1>
 
         <div class="comissoes-telefone visible-lg">
             @include('partials.committee-telephone', [
