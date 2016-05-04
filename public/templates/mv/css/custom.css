@@ -305,8 +305,7 @@ img.app-mockup {
         height: 93px;
     }
     .nome-comissao {
-        color: #ffffff;
-        font-size: 16px;
+        font-size: 24px;
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         font-weight: 600;
@@ -722,8 +721,7 @@ img.app-mockup {
 
 
     .nome-comissao{
-        color:  #fff ;
-        font-size: 24px;
+        font-size: 30px;
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         font-weight: 600;
@@ -1762,7 +1760,7 @@ img.app-mockup {
         line-height: 1.2;
         letter-spacing: 1px;
         margin-left: 20px;
-        text-align: left !important;
+        /*text-align: center !important;*/
     }
 
     .comissoes-telefone {
@@ -1842,7 +1840,8 @@ img.app-mockup {
     }
 
     .nome-comissao {
-    margin-left: 0;
+        margin-left: 0;
+        text-align: left;
     }
 
     .icones-apps {
