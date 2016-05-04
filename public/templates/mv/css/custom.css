@@ -2,6 +2,7 @@ body {
     font-family: 'Maven Pro', sans-serif, 'Medium 500';
     line-height: 1.5;
     color: #172B53;
+    background: #fffeff !important;
 }
 
 p {
@@ -246,6 +247,15 @@ img.app-mockup {
 
 .blocos {
     margin-bottom: 40px;
+}
+
+.comissoes {
+    column-count: 2;
+    margin: 20px 0px 40px 0px;
+}
+
+.comissoes p {
+    font-size: 20px;
 }
 
 /*==========  Mobile First Method  ==========*/
