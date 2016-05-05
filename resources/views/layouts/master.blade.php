@@ -135,5 +135,7 @@
         </script>
 
         @include('tv.video-player-script')
+
+        @include('partials.google-analytics')
     </body>
 </html>
