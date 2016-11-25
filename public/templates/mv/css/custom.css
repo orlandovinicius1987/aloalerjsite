@@ -1891,7 +1891,11 @@ img.app-mockup {
 
 
 
+.protocolo-container {
+    margin: 40px 0 ;
+}
 
+}
 .protocolo-label {
     font-size: 125%;
     padding: 15px;
