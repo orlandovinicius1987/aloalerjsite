@@ -4,48 +4,35 @@
 
 @section('content-main')
     <div class="page-name">
-        <h1 class="nome-pagina">Acompanhamento de protocolo nº <i>xxxxxxxxxxxxxxx</i></h1>
+        <h1 class="nome-pagina">Acompanhamento de protocolo </h1>
     </div>
     <div class="texto-pages">
-        
+
 
         <!-- Obs -->
         <P>Olá: <i>Nome do usuário</i></P>
 
-
         <div class="container">
-            <div class="notice notice-success">
-                <strong>Número do Protocolo</strong> XXXXX-XXXXX-XXXX
+
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Número do Protocolo</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>XXXX-XXXX-XXX</strong>
+                </div>
             </div>
-            <div class="notice notice-danger">
-                <strong>Status</strong> Em Andamento
-            </div>
 
-        </div>
-
-        <!-- Text input-->
-
-        <div class="row">
-            <div class="container">
-                <label class="col-md-3">Nº de Protocolo</label>
-                <div class="col-md-8">
-                    xxxx-xxxxxxx-xxxxx
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-andamento">
+                    <strong>Em andamento</strong>
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
-        <div class="row">
-            <div class="container">
-                <label class="col-md-3">Status</label>
-                <div class="col-md-8">
-                    EM ANDAMENTO
-                </div>
-            </div>
-        </div>
-
-        <div class="alert alert-success" role="alert">...</div>
-        <div class="alert alert-info" role="alert">...</div>
 
 
         <div class="jumbotron">

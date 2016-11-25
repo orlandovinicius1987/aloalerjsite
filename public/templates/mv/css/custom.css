@@ -1885,3 +1885,56 @@ img.app-mockup {
     display: -ms-flexbox;
     display:         flex;
 }
+
+
+
+
+
+
+
+.protocolo-label {
+    font-size: 125%;
+    padding: 15px;
+    border-left: 0px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.protocolo {
+    padding: 15px;
+    background-color: #F4F4F6;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.protocolo-label {
+    border-left: 0px solid #7f7f84;
+}
+
+.protocolo-success {
+    border-color: #80D651;
+}
+.protocolo-success>strong {
+    color: #80D651;
+    font-size: 125%;
+    background-color: #E7E8EC;
+}
+
+.protocolo-numero {
+    border-color: #1A335F;
+}
+.protocolo-numero>strong {
+    color: #1A335F;
+    font-size: 125%;
+}
+
+
+.protocolo-andamento {
+    border-color: #d73814;
+}
+.protocolo-andamento>strong {
+    color: #d73814;
+    font-size: 125%;
+}
