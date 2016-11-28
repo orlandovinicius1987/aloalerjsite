@@ -1217,9 +1217,11 @@ i.icone {
     .protocolo-bloco .form-horizontal {
         margin: 0 0 0 30px;
     }
-    .protocolo-bloco h4{
-        margin-bottom: 25px;
+    .protocolo-bloco h3{
+        margin-top: 0;
+        margin-bottom: 20px;
     }
+
     .protocolo-button {
         margin-top: 20px;
     }

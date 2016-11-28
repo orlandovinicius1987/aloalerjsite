@@ -1,7 +1,7 @@
 <div class="hidden-xs hidden-sm boxshadow">
     <div class="protocolo-bloco text-center">
         {{--<i class="fa fa-ticket icone" aria-hidden="true"> </i>--}}
-        <h4>Acompanhamento <br>de Protocolo </h4>
+        <h3>Acompanhamento <br>de Protocolo </h3>
    {{--     <div class="container">
             <div class="row">
                 <div class="">
