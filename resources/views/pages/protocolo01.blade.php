@@ -6,7 +6,7 @@
     <div class="page-name">
         <h1 class="nome-pagina">Insira o número de seu protocolo</h1>
     </div>
-    <div class="texto-pages">
+    <div class="texto-pages protocolo-login">
         <form class="form-horizontal">
             <fieldset>
 
@@ -33,16 +33,11 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="btnLogin"></label>
                     <div class="col-md-8">
-                        <button name="btnLogin" class="btn btn-primary" id="btnLogin">Ver Processo</button>
+                        <button name="btnLogin" class="btn btn-primary btn btn-primary btn-lg protocolo-button btn-block " id="btnLogin">Ver Processo</button>
                     </div>
                 </div>
                 <!-- Obs -->
-                <div class="">
-                    <label class="col-md-3 " for=""></label>
-                    <div class="col-md-8">
-                        * Observação
-                    </div>
-                </div>
+
 
             </fieldset>
         </form>
