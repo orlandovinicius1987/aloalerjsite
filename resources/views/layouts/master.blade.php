@@ -37,21 +37,7 @@
             </div>
 
 
-            <div class="row row-eq-height blocos">
-                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
-                    @include('partials.form-chat')
-                </div>
-{{--                <div class="col-xs-12 col-lg-3 hidden-xs hidden-sm hidden-md">
-                    @include('partials.app')
-                </div>--}}
-                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
-                    @include('partials.telegram')
-                </div>
-                <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
-                    @include('partials.protocolo-login')
-                </div>
 
-            </div>
         </div>
 
         {{--<div class="container-fluid mobile-content visible-xs visible-sm">--}}
