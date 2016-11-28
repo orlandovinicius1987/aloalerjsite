@@ -48,7 +48,7 @@
 
 
             <div class="form-group ">
-                <button type="button" class="btn btn-primary btn-lg btn-block login-button">Consultar</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block protocolo-button">Consultar</button>
             </div>
 
         </form>

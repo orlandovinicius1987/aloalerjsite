@@ -1198,6 +1198,7 @@ i.icone {
         color: #172B53;
         background-color: #4EC636;
         text-transform: uppercase;
+        margin-bottom: 17px;
     }
 
     .icones-apps {
@@ -1210,7 +1211,7 @@ i.icone {
     }
 
     .protocolo-bloco {
-        margin-bottom: 35px;
+        margin-bottom: 17px;
     }
 
     .protocolo-bloco .form-horizontal {
@@ -1218,6 +1219,9 @@ i.icone {
     }
     .protocolo-bloco h4{
         margin-bottom: 25px;
+    }
+    .protocolo-button {
+        margin-top: 20px;
     }
 
 
@@ -1877,7 +1881,8 @@ i.icone {
     }
 
     .icones-apps {
-        margin: 10px 15px 0px 0px !important;
+        /*margin: 10px 15px 0px 0px !important;*/
+        margin: 5px 50px 0px 50px !important;
         background: none !important;
         /*padding-bottom: 120px;*/
     }
