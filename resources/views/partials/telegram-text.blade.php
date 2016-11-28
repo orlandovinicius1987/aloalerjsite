@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <p class="telegram-text">
-            Entre em contato com o Alô Alerj também pelo WhatsApp e Telegram, usando o número abaixo:
+            Entre em contato com o Alô Alerj também pelo WhatsApp e Telegram, usando o número:
         </p>
     </div>
 </div>

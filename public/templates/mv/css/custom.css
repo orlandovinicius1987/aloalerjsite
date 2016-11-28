@@ -201,7 +201,7 @@ form.form-vertical {
 .chat-horario {
     color: #696969;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 16px;
 }
 
@@ -214,7 +214,10 @@ form.form-vertical {
 
 .chat-offline-mensagem {
     color: #172B53;
-    margin-top: 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
 }
 
 .enviar-mensagem {
@@ -232,17 +235,30 @@ form.form-vertical {
 }
 
 img.app-mockup {
-    width: 200px;
-    margin: 0px 0 0 -31px;
+    width: 120px;
+    margin: 0px 0 0 -5px;
 }
 .app-buttons {
-    margin: 23px 0 0 0;
+    margin: 4px 30px 68px 30px;
+}
+
+.app-buttons .col-lg-6 {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+i.icone {
+    font-size: 60px;
 }
 
 .app-texto {
-    margin-top: 10px;
-    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 10px 12px 20px 12px ;
+    font-weight: 600;
 }
+
 
 .blocos {
     margin-bottom: 40px;
@@ -414,7 +430,7 @@ img.app-mockup {
     }
 
     .icones-apps {
-        margin: 0 30px 0 30px !important;
+        margin: 10px 30px 0 30px !important;
     }
     #slider {
         margin: -2px auto 0 auto;
@@ -783,7 +799,11 @@ img.app-mockup {
         margin: 0 15px 0 15px !important;
     }
     p.telegram-text {
-        margin-top: 8px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .telegra-telefone{
+        margin-bottom: 20px;
     }
 
 
@@ -921,8 +941,8 @@ img.app-mockup {
     }
 
     .telegram-text {
-        border-top: 1px solid #dbdbdb;
-        padding-top: 15px;
+        border-top: 0px solid #dbdbdb;
+        padding-top: 0px;
     }
 
 
@@ -1046,7 +1066,7 @@ img.app-mockup {
     }
 
     .balao-chat {
-        height: 120px;
+        height: 45px;
         /*margin-top: 20px;*/
     }
 
@@ -1057,7 +1077,7 @@ img.app-mockup {
 
 
     .chat-horario{
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     .no-svg .balao-chat {
@@ -1189,9 +1209,21 @@ img.app-mockup {
         margin: 60px 20px 0 20px;
     }
 
+    .protocolo-bloco {
+        margin-bottom: 35px;
+    }
+
+    .protocolo-bloco .form-horizontal {
+        margin: 0 0 0 30px;
+    }
+    .protocolo-bloco h4{
+        margin-bottom: 25px;
+    }
+
+
     .texto-chat {
         text-align: center;
-        margin: 30px 0 15px 0;
+        /*margin: 30px 0 15px 0;*/
         line-height: 140%;
     }
 
@@ -1845,9 +1877,9 @@ img.app-mockup {
     }
 
     .icones-apps {
-        margin: 20px 25px 0px 25px !important;
+        margin: 10px 15px 0px 0px !important;
         background: none !important;
-        padding-bottom: 120px;
+        /*padding-bottom: 120px;*/
     }
 
     .icones-apps img.img-responsive {
@@ -1855,11 +1887,13 @@ img.app-mockup {
     }
 
     .telegram-text {
+        /*
         padding: 28px 0 0 0;
         margin-bottom: 25PX;
-        font-size: 17px;
+        */
+        font-size: 16px;
         font-weight: 600;
-        line-height: 22px;
+        line-height: 18px;
     }
 }
 
@@ -1941,4 +1975,16 @@ img.app-mockup {
 .protocolo-andamento>strong {
     color: #d73814;
     font-size: 125%;
+}
+
+
+img.ios {
+/*    max-height: 37px;
+    margin-top: 10px;*/
+
+}
+
+img.google {
+/*    max-height: 40px;
+    margin-top: 5px;*/
 }
