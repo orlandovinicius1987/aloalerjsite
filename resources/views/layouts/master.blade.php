@@ -37,7 +37,6 @@
             </div>
 
 
-
         </div>
 
         {{--<div class="container-fluid mobile-content visible-xs visible-sm">--}}

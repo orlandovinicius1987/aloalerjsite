@@ -928,6 +928,13 @@ i.icone {
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 
+    .texto-pages {
+        margin-bottom: 200px;
+        margin-top: 30px;
+    }
+    .page-name{
+        margin-top: 50px;
+    }
 
     img.logo-com-tel-dc.visible-lg {
         margin-left: 47px;
@@ -1264,7 +1271,7 @@ i.icone {
         /*font-size: 20px;*/
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-top: 20px;
+        margin-top: 40px;
         letter-spacing: 1px;
     }
 
@@ -1857,7 +1864,7 @@ i.icone {
 
     .comissoes {
         column-count: 2;
-        margin: 20px 0px 40px 0px;
+        margin: 40px 0px 40px 0px;
     }
 
 
