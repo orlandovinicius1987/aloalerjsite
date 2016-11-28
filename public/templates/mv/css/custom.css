@@ -170,7 +170,7 @@ a:link {
 
 
 .form-control{
-    border: 1px solid #172b53;
+    border: 1px solid #c9c9c9;
 }
 
 form.form-vertical {
@@ -178,19 +178,26 @@ form.form-vertical {
 }
 
 .btn.btn-lg.btn-primary:hover{
-    background: #00a400;
+    background: #748136;
 }
 
-/*.btn-primary {
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-}*/
+.btn-primary {
+    color: #fffff;
+    background-color: #8FA143;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+}
+.btn-primary:hover {
+    border: none;
+    background-color: #748136;
+}
+
 .btn-primary:focus,
 .btn-primary.focus {
     color: #fff;
-    background-color: #4EC636;
-    border-color: #122b40;
+    border: none;
+    background-color: #5a652a;
+
 }
 
 
@@ -509,12 +516,12 @@ i.icone {
     /* BOTÃO DO CHAT */
     .iniciar-conversa {
         border-radius: 5px;
-        border-color: #172B53;
-        border: 1px solid;
+        /*border-color: #172B53;*/
+        border: 0px solid;
         font-family: 'Oswald', sans-serif;
         font-size: 1.5em;
         color: #172B53;
-        background-color: #4EC636;
+        background-color: #8FA143;
         text-transform: uppercase;
     }
 
@@ -718,13 +725,12 @@ i.icone {
         font-family: 'Oswald', sans-serif;
         font-size: 1.5em;
         color: #172B53;
-        background-color: #4EC636;
+        background-color: #8FA143;
         text-transform: uppercase;
     }
 
  /*   button.btn.btn-lg.btn-primary {
         !*padding: 10px 46px;*!
-        text-transform: uppercase;
         font-weight: 400;
         font-size: 20px;
     }
@@ -1906,12 +1912,12 @@ i.icone {
 
 .iniciar-conversa {
     border-radius: 5px;
-    border-color: #172B53;
-    border: 1px solid;
+    /*border-color: #172B53;*/
+    border: 0px solid;
     font-family: 'Oswald', sans-serif;
     font-size: 1.5em;
-    color: #172B53;
-    background-color: #4EC636;
+    color: #ffffff;
+    background-color: #8FA143;
     text-transform: uppercase;
 }
 
@@ -1994,4 +2000,10 @@ img.ios {
 img.google {
 /*    max-height: 40px;
     margin-top: 5px;*/
+}
+
+.protocolo-login .form-horizontal .control-label {
+    padding-top: 0px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
