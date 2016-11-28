@@ -1,4 +1,7 @@
-<div class="hidden-xs hidden-sm boxshadow">
+<div class="hidden-xs hidden-sm boxshadow text-center">
+
+    {{--<i class="fa fa-commenting icone" aria-hidden="true"></i>--}}
+
     <div class="icones-apps text-center">
         @include('partials.telegram-icons')
     </div>

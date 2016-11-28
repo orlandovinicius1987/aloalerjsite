@@ -4,58 +4,98 @@
 
 @section('content-main')
     <div class="page-name">
-        <h1 class="nome-pagina">Acompanhamento de protocolo nº <i>xxxxxxxxxxxxxxx</i></h1>
+        <h1 class="nome-pagina">Acompanhamento de protocolo </h1>
     </div>
     <div class="texto-pages">
-        
+
 
         <!-- Obs -->
-        <P>Olá: <i>Nome do usuário</i></P>
 
 
-        <div class="container">
-            <div class="notice notice-success">
-                <strong>Número do Protocolo</strong> XXXXX-XXXXX-XXXX
+        <div class="container protocolo-container">
+
+
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Nome</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>Nome do Cidadão</strong>
+                </div>
             </div>
-            <div class="notice notice-danger">
-                <strong>Status</strong> Em Andamento
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Número do Protocolo</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>XXXX-XXXX-XXX</strong>
+                </div>
             </div>
 
-        </div>
 
-        <!-- Text input-->
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Nome do solicitado</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>Ceg / Comissão de Direitos dos Designers</strong>
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="container">
-                <label class="col-md-3">Nº de Protocolo</label>
-                <div class="col-md-8">
-                    xxxx-xxxxxxx-xxxxx
+
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Data de abertura do pedido</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>25 de Novembro de 2016</strong>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Assunto</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-numero">
+                    <strong>Título do Assunto</strong>
+                </div>
+            </div>
+
+
+
+            <div class="row text-center">
+                <div class="col-md-offset-2 col-md-3 protocolo text-right protocolo-label  ">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-md-5 protocolo protocolo-andamento">
+                    <strong>Em andamento</strong>
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
-        <div class="row">
-            <div class="container">
-                <label class="col-md-3">Status</label>
-                <div class="col-md-8">
-                    EM ANDAMENTO
-                </div>
-            </div>
-        </div>
-
-        <div class="alert alert-success" role="alert">...</div>
-        <div class="alert alert-info" role="alert">...</div>
 
 
         <div class="jumbotron">
-            <h1>Hello, world!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet ipsum a urna bibendum ullamcorper. Fusce eget diam id orci molestie varius a ut nulla. Donec ac orci at justo pulvinar auctor id sed magna. Donec sit amet cursus ex. Nunc luctus pulvinar augue eu consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fermentum justo diam, sit amet varius enim interdum nec. Aenean porta nisl nec convallis hendrerit. Vivamus vitae vestibulum lorem. Duis viverra magna lorem, non porta lectus ultricies quis. Proin cursus nisl arcu, at finibus nisl tincidunt ac. Quisque vitae bibendum sapien, nec sagittis neque. Suspendisse potenti.
+            <h3>Ofício: Alô-ALERJ n° 2016113225 <span class="pull-right">Rio de Janeiro, 25 de Novembro de 2016</span></h3>
+            <p>&nbsp;</p>
 
-                Nullam ut ornare lectus, non elementum ante. Morbi commodo dapibus dui ac suscipit. Integer vitae maximus turpis. Aliquam vestibulum dictum purus molestie rhoncus. Vestibulum hendrerit libero nisl, vitae imperdiet eros ultricies vel. Donec egestas quam ut magna posuere egestas. Sed rutrum felis nisl, in fringilla eros sollicitudin id. Proin et turpis nunc. Nullam gravida nisl et aliquam eleifend.
+            <p>Por se tratar de um assunto de competência desta Assembleia Legislativa, pedimos o favor de analisar a solicitação abaixo e tomar as providências necessárias:</p>
+<br>
+            <p>Moizes Ribeiro Moura<br>
+            Rua Itacuan, 2 quadra 189<br>
+            Vista Alegre<br>
+            São Gonçalo, RJ<br>
+            24722-160<br>
+            (21) 3788-9935<br>
+                <br>
+            <p>
+                Cidadão solicita auxílio para que seja realizada a renovação do passe livre de seu filho deficiente que foi feito
+                inicialmente no dia 5 de maio de 2016 e, até a presente data, não recebeu nenhuma resposta da Secretaria
+                do Estado de Transportes. O mesmo ressalta que necessita do benefício para o tratamento de seu filho.
+                Cartão Nº: 1503001545641; Benefício em nome de: Renato de Abreu Ribeiro Moura (identidade Nº
+                262874290); Deficiência: F 710 retardamento mental. Desde já, agradece.
+            </p>
 
-                Quisque sollicitudin ex nisi. Ut eleifend tortor sagittis dolor hendrerit, eget volutpat nunc tempus. Curabitur tortor lectus, maximus eget libero eu, posuere vulputate ex. In hac habitasse platea dictumst. Morbi erat eros, congue ut mattis sollicitudin, euismod id tortor. Sed tristique neque aliquam arcu fringilla lacinia nec auctor ligula. Fusce dapibus pellentesque consequat. Integer a imperdiet est.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
         </div>
 
     </div>
