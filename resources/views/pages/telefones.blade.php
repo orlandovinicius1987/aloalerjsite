@@ -6,7 +6,7 @@
     <div class="page-name">
         <h1 class="nome-pagina">Telefones Úteis</h1>
     </div>
-    <div class="texto-pages">
+    <div class="texto-pages telefones-uteis">
 
 
 
@@ -15,13 +15,16 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-offset-2 col-sm-8">
                     <div class="panel panel-default">
-                        <div class="panel-heading c-list">
+
+                        
+
+                        <div class="panel-heading c-list"  style="display: none;">
                             <span class="title">Telefones Úteis</span>
                             <ul class="pull-right c-controls">
                                 <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="fa fa-ellipsis-v"></i></a></li>
                             </ul>
                         </div>
-                        <div class="row" style="display: none;">
+                        <div class="row">
                             <div class="col-xs-12">
                                 <div class="input-group c-search">
                                     <input type="text" class="form-control" id="contact-list-search">
@@ -31,6 +34,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <ul class="list-group" id="contact-list">
                             <li class="list-group-item">
                                 <div class="contato col-xs-12" id="letra-a">
