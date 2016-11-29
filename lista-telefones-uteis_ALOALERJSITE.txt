@@ -1,0 +1,73 @@
+ABAM;Associação Brasileira de Auxílio Mútuo ao Servidor Público ;2232-4580
+Aerobarcas; ;2533-4343
+Aeroporto Internacional; ;2432-7070
+Aeroporto de Jacarepaguá; ;2620-8589
+Aeroporto Santos Dumont; ;3398-5050
+AFDM - BRASIL; ;3398-4526
+Agência Nacional de Saúde; ;3398-4527
+Água e esgoto;Cedae (Companhia Estadual de Águas e Esgotos) ;0800-2821-195
+Al-Anon; ;2507-4558
+Alcoólicos Anônimos; ;2507-5830
+Alô Rio; ;2542-8080,2542-8004
+Ambulância;Serviço Público de Remoção de Doentes - SAMU ;192
+Ampla;Iluminação e energia ;0800-2821-195
+ANATEL; ;0800-282-1195
+Animais;Suipa (Sociedade União Internacional Protetora dos Animais) ;2501-1529,2501-9954,2261-6875,2501-8691,2261-9405,2501-1085
+Anjos do Asfalto; ;2590-2121
+ASEP;Agência Reguladora de Serviços Públicos do Rio de Janeiro ;2253-4813
+Atendimento ao Turista;Centro Integrado de Atendimento ao Turista ;2541-7522,2542-8004,2542-8080
+APAE; ;2220-5065
+Banco Central; ;2253-9283
+Banco de Sangue; ;0800-280-0120
+BPTur;Batalhão de Policiamento em Áreas Turísticas ;2332-7932
+Barcas; ;133
+Caixa Econômica Federal; ;3978-8827
+CAS; ;3978-8829
+Cedae; ;0800-24-9040
+CEG;Gás ;0800-24-7766,0800-282-0205,0800-979-2345
+Central de Atendimento à Mulher; ;180
+Central de Atendimento ao Cidadão; ;1746
+CET-Rio;Trânsito ;2226-5566,0800-282-0708
+Comlurb;Companhia Municipal de Limpeza Urbana ;2204-9999,2214-7073
+Corpo de Bombeiros; ;193
+Correios; ;0800-570-0100
+Crianças desaparecidas; ;2286-8337,2226-6375,2286-7631
+CVV;Centro de Valorização da Vida ;0800-726-0101
+Defesa Civil; ;199
+Defesa Civil Estadual; ;3399-4302,3399-4301,2293-1713
+Defesa Civil Municipal; ;199
+Delegacia de Atendimento ao Turista; ;0800-282-1195
+Delegacia da Mulher; ;142
+Detran; ;0800-20-4040,0800-24-7766
+Direitos Humanos; ;2508-5500
+Disque-Aids; ;0800-570-0100
+Disque-Amamentação; ;141
+Disque Barulho; ;2503-2795
+Disque Denúncia; ;2253-1177
+Disque Intoxicação; ;0800 722 6001
+Disque Procon;Defesa do consumidor ;1512
+Disque Sinal; ;2508-5500
+Disque Transportes;Trânsito ;2286-8010
+Disque Verde;Patrulha ambiental ;2498-1001
+GAT;Grupamento de Apoio ao Turista ;2535-3780,2535-2385
+HEMORIO;Disque Sangue;0800 2820708
+INCA; ;3207-1000
+Instituto Benjamin Constant; ;3478-4442
+Light;Iluminação e energia ;0800-282-0120
+Moradores de rua;Secretaria de Estado de Assistência Social e Direitos Humanos ;2299-5451,2299-5697
+Nar-Anon; ;2263-6595
+Narcóticos Anônimos; ;2533-5015
+Polícia Civil; ;197
+Polícia Federal; ;194
+Polícia Militar; ;190
+Poda ou remoção de árvores; ;2221-2574
+Praças abandonadas;Fundação Parques e Jardins ;2323-3500
+RioLuz;Iluminação e energia ;3907-5600,2535-5151
+Rodoviária Novo Rio; ;2263-4857,3213-1800,R 397
+Secretaria Municipal de Assistência Social; ;3973-3800
+Tapa buraco; ;2589-1234
+Telefonia; ;10331
+TURISRIO;Companhia de Turismo do Estado do Rio de Janeiro ;0800 282 2007,2333-1037
+Vigilância sanitária; ;2503-2280,2215-0690
+
+
