@@ -2051,7 +2051,7 @@ img.google {
     outline:0px !important;
     -webkit-appearance:none;
     box-shadow: none;
-    border-bottom: 2px solid #C7CCD6;
+    border-bottom: 1px solid #C7CCD6;
     background: #F4F4F6;
 }
 .c-search > .input-group-btn .btn {
@@ -2111,6 +2111,13 @@ ul.c-controls li a:hover {
     /*font-size: 1.25em;*/
 /*}*/
 
+
 .telefones-uteis li.list-group-item:nth-child(even) {
     background: #F4F4F6;
+}
+span.glyphicon.glyphicon-earphone.c-info {
+    margin-right: 5px;
+}
+span.tel-contato {
+    margin-right: 10px;
 }
