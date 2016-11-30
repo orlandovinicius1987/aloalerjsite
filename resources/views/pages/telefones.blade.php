@@ -694,7 +694,7 @@
                                     <p class="label-contato"><strong>Vigilância sanitária</strong></p>
                                     <p class="info-contato"></p>
                                     <span class="tel-contato"><span class="glyphicon glyphicon-earphone c-info" ></span><strong>2503-2280</strong></span>
-                                    <span class="tel-contato"><span class="glyphicon glyphicon-earphone c-info" ></span><strong>2215-0690</strong></span>
+                                    <span class="tel-contato"><span class="glyphicon glyphicon-earphone c-info" ></span><strong><a href="tel:+55212215-06905">2215-0690</a></strong></span>
                                     <div class="linha-contato"></div>
                                 </div>
                                 <div class="clearfix"></div>
