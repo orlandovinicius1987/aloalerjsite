@@ -25,7 +25,7 @@ class Committee
             'short_name' => 'Defesa do Meio Ambiente',
             'phone' => '0800-282-0230',
             'texto' => '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
-            'president' => 'Deputado Thiago Pampolha',
+            'president' => 'Deputado Gustavo Tutuca',
             'vice-president' => 'Deputado Carlos Minc',
             'office-phone' => '(21) 2588-1308 / (21) 2588-1309',
             'office-address' => 'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
@@ -37,7 +37,7 @@ class Committee
             'short_name' => 'Combate às Discriminações e Preconceitos',
             'phone' => '0800-282-0802',
             'texto' => '<p>A Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional recebe e investiga denúncias de preconceito. Para lutar contra a discriminação, a comissão conta com a colaboração de várias entidades que se destinam a esse tipo de combate. Compete à comissão acompanhar e se manifestar sobre todos os assuntos pertinentes às ideologias racistas e práticas discriminatórias em geral.</p>',
-            'president' => 'Átila Nunes',
+            'president' => 'Deputado Carlos Minc',
             'vice-president' => 'Deputado Gerson Bergher',
             'office-phone' => '(21) 2588-1308',
             'office-address' => 'Rua da Assembleia, s/nº – gabinete 308 – Centro.',
@@ -105,7 +105,7 @@ class Committee
                   <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos.</li>
                 </ol>
             ',
-            'president' => 'Deputado Nivaldo Mulim',
+            'president' => 'Deputada Cidinha Campos',
             'vice-president' => 'Deputada Lucinha',
             'office-phone' => '(21) 2588-1309',
             'office-address' => 'Palácio Tiradentes, sala 130',
@@ -239,12 +239,12 @@ class Committee
         ],
 
         'animais' => [
-            'name' => 'Comissao de Protecao ao Direito dos Animais',
+            'name' => 'Comissão de Proteção ao Direito dos Animais',
             'link_caption' => 'Animais',
             'short_name' => 'Protecao ao Direito dos Animais',
             'phone' => '0800-282-3595',
             'texto' => '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
-            'president' => 'Deputada Daniele Guerreiro',
+            'president' => 'Deputado Carlos Osório',
             'vice-president' => 'Carlos Diniz',
             'office-phone' => '(21) 2588-1000',
             'office-address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
