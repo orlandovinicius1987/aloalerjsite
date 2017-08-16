@@ -25,9 +25,9 @@ class Committee
             'short_name' => 'Defesa do Meio Ambiente',
             'phone' => '0800-282-0230',
             'texto' => '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
-            'president' => 'Deputado Gustavo Tutuca',
+            'president' => 'Deputado Pedro Fernandes',
             'vice-president' => 'Deputado Carlos Minc',
-            'office-phone' => '(21) 2588-1308 / (21) 2588-1309',
+            'office-phone' => '(21) 2588-1360',
             'office-address' => 'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
         ],
 
