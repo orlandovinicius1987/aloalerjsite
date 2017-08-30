@@ -45,7 +45,8 @@
                             <a href="http://www.alerj.rj.gov.br/" target="_blank">Alerj</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/pages/protocolo01">Protocolo</a>
+                            {{--<a href="/pages/protocolo01">Protocolo</a>--}}
+                            <a href="http://transparencia.alerj.rj.gov.br/protocolo">Protocolo</a>
                         </li>
                         <li class="page-scroll menuicon">
                             <a href="/contact" title="Contato"> <i class="fa fa-envelope-o envelopemenu" aria-hidden="true"></i></a>
