@@ -218,7 +218,7 @@ class Committee
             'name' => 'Comissão de Tributação Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
             'link_caption' => 'Tributacao',
             'short_name' => 'Tributação e Controle da Arrecadação',
-            'phone' => '0800 282-5888',
+            'phone' => '0800-282-5888',
             'texto' => '<p>A Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais trata dos assuntos referentes à tributação, arrecadação e fiscalização dos tributos estaduais. Cabe à Comissão:</p>
                 <ul>
                 <li>Solicitar que o Tribunal de Contas do Estado promova inspeções e auditorias na arrecadação de tributos estaduais;</li>
