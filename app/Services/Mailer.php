@@ -42,7 +42,7 @@ class Mailer
 
         $adminEmails = env('MAIL_ADMINS');
 
-        $this->dispatch('emails.contact', $input, env('MAIL_FROM_EMAIL'), 'Mensagem de ' . $input['name'], $adminEmails);
+        $this->dispatch('emails.contact', $input, env('MAIL_CONTACT_EMAIL'), 'Mensagem de ' . $input['name'], $adminEmails);
 
         $this->dispatch('emails.contact', $input, $input['email'], 'Sua mensagem para o Alô Alerj');
     }

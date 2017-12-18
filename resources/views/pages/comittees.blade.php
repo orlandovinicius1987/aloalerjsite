@@ -19,7 +19,7 @@
             <p><a href="/comissoes/pirataria">Prevenção e Combate a Pirataria</a></p>
             <p><a href="/comissoes/pessoadeficiente">Pessoa com Deficiência</a></p>
             <p><a href="/comissoes/saneamentoambiental">Saneamento Ambiental</a></p>
-            <p><a href="/comissoes/segurancapublica">Segurança Pública e Assuntos de Polícia</a></p>
+            <p><a href="/comissoes/segurancapublica">Segurança P≤ública e Assuntos de Polícia</a></p>
             <p><a href="/comissoes/trabalho">Trabalho, Legislação Social e Seguridade Social</a></p>
             <p><a href="/comissoes/criancaadolescenteidoso">Assuntos da Criança do Adolescente e do Idoso</a></p>
             <p><a href="/comissoes/direitoshumanos">Defesa dos Direitos Humanos e Cidadania</a></p>
