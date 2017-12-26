@@ -33,16 +33,51 @@
             </div>
 
             <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-3 control-label sr-only" for="cpf">CPF</label>
-                <div class="col-md-12">
-                    {!! Form::text('cpf', null, ['placeholder' => 'Digite seu CPF', 'class' => 'form-control input-md', 'required' => 'required']) !!}
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label sr-only" for="cpf">CPF</label>
+                    <div>
+                        {!! Form::text('cpf', null, ['placeholder' => 'Digite seu CPF', 'class' => 'form-control input-md', 'required' => 'required']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label sr-only" for="scholarship">Data de nascimento</label>
+                    <div>
+                        {!! Form::text('birthdate', null, ['placeholder' => 'Nascimento', 'class' => 'form-control input-md', 'required' => 'required']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label sr-only" for="scholarship">Sexo</label>
+                    <div>
+                        {!!
+                            Form::select('sex_1', \App\Services\Sex::all(1), null, ['class' => 'form-control'])
+                        !!}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label sr-only" for="scholarship">Identidade de gênero</label>
+                    <div>
+                        {!!
+                            Form::select('sex_2', \App\Services\Sex::all(2), null, ['class' => 'form-control'])
+                        !!}
+                    </div>
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-
                 <div class="row">
                     <div class="col-md-6">
                         <label class="col-md-3 control-label sr-only" for="identidade">Identidade</label>
@@ -77,17 +112,6 @@
                 <label class="col-md-3 control-label sr-only" for="area">Àrea de Atuação</label>
                 <div class="col-md-12">
                     {!! Form::text('area', null, ['placeholder' => 'Àrea de Atuação', 'class' => 'form-control input-md', 'required' => 'required']) !!}
-                </div>
-            </div>
-
-
-            <!-- Select Basic -->
-            <div class="form-group">
-                <label class="col-md-3 control-label  sr-only" for="sex">Sexo</label>
-                <div class="col-md-12">
-                    {!!
-                        Form::select('subject', \App\Services\Sex::all(), null, ['class' => 'form-control'])
-                    !!}
                 </div>
             </div>
 
