@@ -7,8 +7,8 @@ use Mail;
 class Sex
 {
     public static $sex_1 = [
-        'M' => 'Masculino',
-        'F' => 'Feminino',
+        'Masculino' => 'Masculino',
+        'Feminino' => 'Feminino',
     ];
 
     public static $sex_2 = [
