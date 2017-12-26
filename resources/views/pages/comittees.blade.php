@@ -24,5 +24,5 @@
             <p><a href="/comissoes/trabalho">Trabalho, Legislação Social e Seguridade Social</a></p>
             <p><a href="/comissoes/tributacao">Tributação e Controle da Arrecadação</a></p>
         </div>
-g    </div>
+    </div>
 @stop
