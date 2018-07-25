@@ -19,6 +19,7 @@ class CommitteesSeeder extends Seeder
      <p>Existem várias formas de entrar em contato com a comissão. Os atendimentos são feitos pelos canais do Alô Alerj ou presencialmente, na sala localizada no térreo do prédio da Alerj, na Rua da Alfândega, número 8. A comissão também vai até você por meio do Ônibus Itinerante, que faz rotas por todo o Estado. Para solicitar a presença do Ônibus da Defesa do Consumidor em seu bairro e conferir os itinerários já programados, <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
                     'president' => 'Deputado Luiz Martins',
                     'vice_president' => 'Deputado Jânio Mendes',
+                    'public' => true,
                     'office_phone' => '0800 282-7060',
                     'office_address' =>
                         'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.'
@@ -34,6 +35,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
                     'president' => 'Deputado Pedro Fernandes',
                     'vice_president' => 'Deputado Carlos Minc',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1360',
                     'office_address' =>
                         'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes'
@@ -50,6 +52,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional recebe e investiga denúncias de preconceito. Para lutar contra a discriminação, a comissão conta com a colaboração de várias entidades que se destinam a esse tipo de combate. Compete à comissão acompanhar e se manifestar sobre todos os assuntos pertinentes às ideologias racistas e práticas discriminatórias em geral.</p>',
                     'president' => 'Deputado Carlos Minc',
                     'vice_president' => 'Deputado Gerson Bergher',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1308',
                     'office_address' =>
                         'Rua da Assembleia, s/nº – gabinete 308 – Centro.'
@@ -68,6 +71,7 @@ class CommitteesSeeder extends Seeder
             Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
                     'president' => 'Deputado Dionísio Lins',
                     'vice_president' => 'Deputado Jânio Mendes',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1732',
                     'office_address' =>
                         'Palácio 23 de Julho, térreo, gabinete 01'
@@ -83,6 +87,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão da Pessoa com Deficiência tem como objetivo assegurar os direitos de todas as pessoas com algum tipo de deficiência. Ela recebe e investiga denúncias relacionas ao tema, por meio do Alô Alerj.  A comissão conta com a colaboração de entidades que estão relacionadas à causa. Compete a ela se manifestar sobre todas as proposições referentes à Pessoa com Deficiência, bem como à legislação pertinente.</p>',
                     'president' => 'Deputado Márcio Pacheco',
                     'vice_president' => 'Carlos Diniz',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1308',
                     'office_address' => 'Palácio Tiradentes, sala 112'
                 ],
@@ -127,6 +132,7 @@ class CommitteesSeeder extends Seeder
             ',
                     'president' => 'Deputada Cidinha Campos',
                     'vice_president' => 'Deputada Lucinha',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1309',
                     'office_address' => 'Palácio Tiradentes, sala 130'
                 ],
@@ -142,6 +148,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão de Segurança Pública e Assuntos de Polícia, além de trabalhar em prol da segurança dos cidadãos, é um importante canal de denúncias, que podem ser registradas anonimamente pelo Alô Alerj, garantindo a proteção do denunciante. Compete à comissão se manifestar sobre assuntos referentes ao sistema de segurança pública em geral, planos e programas de segurança da população do Estado, bem como sobre qualquer proposição que se refira à segurança pública.</p>',
                     'president' => 'Deputada Martha Rocha',
                     'vice_president' => 'Deputado Bruno Dallari',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1219',
                     'office_address' =>
                         'Palácio Tiradentes, Prédio Anexo, gabinete 407'
@@ -159,6 +166,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.</p>',
                     'president' => 'Deputado Paulo Ramos',
                     'vice_president' => 'Deputado Edson Albertassi',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1569',
                     'office_address' =>
                         'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro'
@@ -177,26 +185,10 @@ class CommitteesSeeder extends Seeder
                     'president' =>
                         'Deputada Estadual Jucélia Oliveira Freitas (Tia Ju)',
                     'vice_president' => 'Joao B. Nascimento',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
                     'office_address' =>
                         'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
-                ],
-            'disquecrianca' =>
-                [
-                    'slug' => 'disquecrianca',
-                    'name' => 'Disque Criança (?????????????????)',
-                    'link_caption' => 'linha2',
-                    'short_name' => 'line3',
-                    'phone' => '0800-023-0007',
-                    'texto' =>
-                        '<p>
-            Crianca Adolescente Idoso DISQUE CRIANÇA
-            <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
-                    'president' => 'Deputada Tia Jú',
-                    'vice_president' => 'Deputada Daniele Guerreiro',
-                    'office_phone' => '(21) 2588-1308 / (21) 2588-1309',
-                    'office_address' =>
-                        'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
                 ],
             'direitoshumanos' =>
                 [
@@ -212,6 +204,7 @@ class CommitteesSeeder extends Seeder
     <p>Diante das denúncias, solicitações de auxílio e acompanhamentos de casos, a Comissão pode tomar medidas com o intuito de esclarecer ou solucionar fatos reportados sobre violações de direitos humanos, a partir dos seguintes mecanismos: acolhimento das famílias vítimas de violações de direitos; requerimento de informações mediante ofício às instituições públicas envolvidas na denúncia; encaminhamento do usuário para órgãos responsáveis pelos diferentes setores governamentais; articulação com as demais comissões permanentes da casa com o intuito de buscar solucionar as demandas; realização de audiência pública para convocar instituições públicas a prestar esclarecimentos, promovendo a discussão sobre o tema para, assim, avançar na qualidade das políticas públicas.</p>',
                     'president' => 'Deputado Estadual Marcelo Freixo',
                     'vice_president' => '',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1555',
                     'office_address' =>
                         'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.'
@@ -228,6 +221,7 @@ class CommitteesSeeder extends Seeder
             <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
                     'president' => 'Deputado Comte Bittencourt',
                     'vice_president' => '',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1394',
                     'office_address' => 'Gabinete T 02 Anexo'
                 ],
@@ -243,6 +237,7 @@ class CommitteesSeeder extends Seeder
     <p>A Comissão atua com o objetivo de desenvolver estudos relacionados à garantia de alimentação e nutrição da população; fiscalizar e acompanhar projetos e ações governamentais na área de segurança alimentar; estudar e fiscalizar as ações das entidades da sociedade civil organizada voltadas para o combate à fome; estimular ações da sociedade civil voltadas para o combate à fome no Estado do Rio de Janeiro; e promover e coordenar campanhas de conscientização quanto ao desperdício de alimentos.</p>',
                     'president' => 'Deputada Lucinha',
                     'vice_president' => 'Deputado Waguinho',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1308',
                     'office_address' => 'Palácio Tiradentes, sala 317'
                 ],
@@ -258,6 +253,7 @@ class CommitteesSeeder extends Seeder
     <p>A Comissão se utiliza de redes de atendimento e serviços jurídicos voltados para a mulher, criados por políticas públicas e espaços de solidariedade conquistadas na luta por respeito e igualdade, para fazer seu trabalho.  O "SOS MULHER", como é chamado o 0800 da Comissão, funciona de segunda a sexta, das 9h às 18h, com um atendimento especializado e feito apenas por mulheres preparadas.</p>',
                     'president' => 'Deputada Enfermeira Rejane',
                     'vice_president' => '',
+                    'public' => true,
                     'office_phone' => '0800 282-0119',
                     'office_address' =>
                         'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409'
@@ -286,6 +282,7 @@ class CommitteesSeeder extends Seeder
                 </ul></p>',
                     'president' => 'Deputado Luiz Paulo',
                     'vice_president' => 'Orlando Júnior',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1259',
                     'office_address' =>
                         'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo'
@@ -301,6 +298,7 @@ class CommitteesSeeder extends Seeder
                         '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
                     'president' => 'Deputado Carlos Osório',
                     'vice_president' => 'Carlos Diniz',
+                    'public' => true,
                     'office_phone' => '(21) 2588-1000',
                     'office_address' =>
                         'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
@@ -327,6 +325,7 @@ class CommitteesSeeder extends Seeder
                 'bio' => $committee->texto,
                 'president' => $committee->president,
                 'vice_president' => $committee->vice_president,
+                'public' => true,
                 'office_phone' => $committee->office_phone,
                 'office_address' => $committee->office_address
             ]);

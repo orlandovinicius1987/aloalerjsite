@@ -141,6 +141,7 @@ class CreateCallsTable extends Migration
             $table->string('vice_president');
             $table->string('office_phone');
             $table->string('office_address');
+            $table->string('public')->default(false);
 
             $table->timestamps();
         });

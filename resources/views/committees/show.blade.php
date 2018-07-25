@@ -9,35 +9,35 @@
 
     <div class="page-name">
 
-        <h1 class="nome-comissao ">{{ $committee['name'] }}</h1>
+        <h1 class="nome-comissao ">{{ $committee->name }}</h1>
 
         <div class="comissoes-telefone visible-lg">
             @include('partials.committee-telephone', [
               'title' => '',
-              'telephone' => $committee['phone'],
+              'telephone' => $committee->phone,
               'site' => '',
           ])</div>
     </div>
     <div class="hidden-lg">
         @include('partials.committee-telephone', [
            'title' => '',
-           'telephone' => $committee['phone'],
+           'telephone' => $committee->phone,
            'site' => '',
        ])
     </div>
 
     <div class="texto-comissao">
-        {!! $committee['texto'] !!}
+        {!! $committee->bio !!}
     </div>
 
-    @if ($committee['president'] && $committee['vice-president'])
+    @if ($committee->president && $committee->vice_president)
         <div class="ficha-comissao text-center">
-            <div class="comissao-presidente"><h3>Presidente</h3>{!! $committee['president'] !!} </div>
-            <div class="comissao-secretario"><h3>Vice-Presidente</h3>{!! $committee['vice-president'] !!} </div>
+            <div class="comissao_presidente"><h3>Presidente</h3>{!! $committee->president !!} </div>
+            <div class="comissao-secretario"><h3>Vice-Presidente</h3>{!! $committee->vice_president !!} </div>
 
             <div class="comissao-dados">
-                <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee['office-phone'] !!}</div>
-                <div class="comissao-endereco">{!! $committee['office-address'] !!}</div>
+                <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee->office_phone !!}</div>
+                <div class="comissao-endereco">{!! $committee->office_address !!}</div>
             </div>
         </div>
     @endif
@@ -46,8 +46,8 @@
 
 @section('content-sidebar')
     @include('partials.committee-telephone', [
-        'title' => $committee['short_name'],
-        'telephone' => $committee['phone'],
+        'title' => $committee->short_name,
+        'telephone' => $committee->phone,
         'site' => '',
     ])
     @include('partials.telegram')
