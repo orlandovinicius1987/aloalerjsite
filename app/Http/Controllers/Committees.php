@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Committee as CommitteeData;
+use App\Data\Models\Committee as CommitteeData;
 
 class Committees extends Controller
 {
