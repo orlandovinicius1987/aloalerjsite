@@ -9,7 +9,10 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "pragmarx/coollection": "^0.5.7"
+        "pragmarx/coollection": "^0.5.7",
+        "guzzlehttp/guzzle": "^6.0",
+        "mccool/laravel-auto-presenter": "^7.0",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
@@ -25,7 +28,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+      "files": [
+        "app/Support/helpers.php"
+      ]
     },
     "autoload-dev": {
         "psr-4": {
