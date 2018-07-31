@@ -5,7 +5,7 @@
         <h1 class="nome-pagina">Comissões</h1>
     </div>
     <div class="texto-pages">
-        <p>O Alô Alerj é um canal de comunicação entre você e a Assembleia Legislativa do Estado do Rio de Janeiro (Alerj). Somos uma ouvidoria, de caráter conciliatório e informativo, a serviço do cidadão. O nosso objetivo é ajudar você a solucionar o seu problema. Aqui você pode registrar reclamações, solicitações e sugestões sobre órgãos públicos e/ou privados.</p>
+        <p>O Alô Alerj é um canal de comunicação entre você e a Assembleia Legislativa do Estado do Rio de Janeiro (Alerj). Aqui você pode registrar reclamações, solicitações e sugestões sobre os temas tratados nas nossas comissões:</p>
 
         <div class="comissoes">
             <p><a href="/comissoes/criancaadolescenteidoso">Assuntos da Criança do Adolescente e do Idoso</a></p>
