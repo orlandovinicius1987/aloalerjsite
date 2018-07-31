@@ -10,7 +10,6 @@
         <p>Temos operadores preparados para atender você, de segunda a sexta-feira, das 9h às 18h. Ao ligar para o Alô Alerj tenha em mãos os seus dados para agilizar o atendimento. O registro de sua demanda sempre gera um número de protocolo, que é fornecido por nossos atendentes. Não esqueça de anotá-lo! É por meio desse número que você poderá acompanhar o andamento do seu processo.</p>
 
         <h2>Como Funciona</h2>
-        <p>Após o cadastro da sua demanda, ela é encaminhada para o órgão competente, que tem, a partir daí, 60 dias para responder. Você receberá em sua casa, por meio de carta, uma cópia do registro da reclamação e também a resposta do órgão competente, se houver. Após o prazo de 60 dias, caso não haja resposta, você pode ligar para o Alô Alerj e demandar que seja enviada uma notificação para a reclamada. Nosso equipe está pronta para auxiliá-lo.
-        </p>
+        <p>Após o cadastro da sua demanda, ela é encaminhada para uma das comissões, que analisará a questão e tentará ajudá-lo a resolver os problemas apontados. Você receberá uma resposta por e-mail.</p>
     </div>
 @stop
