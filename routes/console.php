@@ -1,18 +1,35 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
+Artisan::command('z:import', function () {
+    ini_set('memory_limit', '2048M');
 
-/*
-|--------------------------------------------------------------------------
-| Console Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of your Closure based console
-| commands. Each Closure is bound to a command instance allowing a
-| simple approach to interacting with each command's IO methods.
-|
-*/
+    $file = file(base_path('Base_Exportada/Historico.txt'));
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+    $columns = collect(explode(' ', trim(preg_replace('/\s+/', ' ',$file[0]))));
+
+    $columns = collect(explode(' ', $file[1]))->map(function($value, $key) use ($columns) {
+        return [
+            'column' => $columns[$key],
+            'size' => strlen($value),
+        ];
+    });
+
+    unset($file[0]);
+    unset($file[1]);
+
+    foreach ($file as $line) {
+        $fields = collect();
+
+        foreach ($columns as $column) {
+            $fields->push(substr($line, 0, $column['size']));
+
+            $line = substr($line, $column['size']);
+        }
+
+        $fields->dump();
+    }
+
+
+
 })->describe('Display an inspiring quote');
+
