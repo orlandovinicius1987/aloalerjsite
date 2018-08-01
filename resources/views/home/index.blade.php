@@ -13,6 +13,13 @@
 @section('content-main')
     <div class="hidden-xs hidden-sm hidden-md">
 
+        <br><br>
+        <div class="jumbotron">
+            <h1>ATENÇÃO</h1>
+            <p>O serviço Alô Alerj estará passando por uma reformulação nos próximos dias, o que poderá ocasionar sobrecarga nas linhas telefônicas que integram o sistema 0800. Lembramos que as mensagens também podem ser encaminhadas pelo site da Alerj, por meio do link
+                <a href="https://www.aloalerj.rj.gov.br/contact">https://www.aloalerj.rj.gov.br/contact</a>.</p>
+        </div>
+
         @include('partials.slider-desktop')
 
         <div class="row row-eq-height blocos">
