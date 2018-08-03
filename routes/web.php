@@ -40,7 +40,7 @@ Route::group(['prefix' => 'contact'], function () {
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Home@index')->name('home');
 
 //Route::group(['prefix' => 'callcenter', 'middleware' => ['auth']], function()
 Route::group(['prefix' => 'callcenter'], function () {

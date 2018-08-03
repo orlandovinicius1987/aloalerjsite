@@ -27,7 +27,7 @@ if (jQuery("#" + appName).length > 0) {
                 me = this
 
                 me.refreshing = true
-                
+
                 axios.get('/zipcode', {
                     params: {
                         search: this.zipcode,

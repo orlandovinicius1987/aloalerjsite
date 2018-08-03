@@ -1,17 +1,18 @@
 <?php
-
 Artisan::command('z:import', function () {
     ini_set('memory_limit', '2048M');
 
     $file = file(base_path('Base_Exportada/Historico.txt'));
 
-    $columns = collect(explode(' ', trim(preg_replace('/\s+/', ' ',$file[0]))));
+    $columns = collect(
+        explode(' ', trim(preg_replace('/\s+/', ' ', $file[0])))
+    );
 
-    $columns = collect(explode(' ', $file[1]))->map(function($value, $key) use ($columns) {
-        return [
-            'column' => $columns[$key],
-            'size' => strlen($value),
-        ];
+    $columns = collect(explode(' ', $file[1]))->map(function (
+        $value,
+        $key
+    ) use ($columns) {
+        return ['column' => $columns[$key], 'size' => strlen($value)];
     });
 
     unset($file[0]);
@@ -28,8 +29,4 @@ Artisan::command('z:import', function () {
 
         $fields->dump();
     }
-
-
-
 })->describe('Display an inspiring quote');
-
