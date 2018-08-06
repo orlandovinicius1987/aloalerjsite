@@ -38,6 +38,8 @@ class ImportCercred
             return;
         }
 
+        $this->info('Importing PERSONS...');
+
         PersonModel::truncate();
 
         $this->db()
