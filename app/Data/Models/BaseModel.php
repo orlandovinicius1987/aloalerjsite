@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Data\Models;
 
 use App\Data\Presenters\BasePresenter;
 use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
 use McCool\LaravelAutoPresenter\HasPresenter;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 abstract class BaseModel extends Model implements HasPresenter
 {
@@ -41,6 +41,7 @@ abstract class BaseModel extends Model implements HasPresenter
         return collect($model->dataTypes)->get($column);
     }
 
+
     /**
      * @return string
      */
@@ -64,4 +65,5 @@ abstract class BaseModel extends Model implements HasPresenter
 
         return $attributes;
     }
+
 }
