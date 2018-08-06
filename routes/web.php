@@ -44,10 +44,7 @@ Route::get('/home', 'Home@index')->name('home');
 
 //Route::group(['prefix' => 'callcenter', 'middleware' => ['auth']], function()
 Route::group(['prefix' => 'callcenter'], function () {
-    Route::get('/', [
-        'as' => 'callcenter.home.index',
-        'uses' => 'CallCenter\Home@index',
-    ]);
+    Route::get('/', 'PersonsController@index')->name('persons.index');
 
     Route::group(['prefix' => 'persons'], function () {
         Route::get('/', 'PersonsController@index')->name('persons.index');
