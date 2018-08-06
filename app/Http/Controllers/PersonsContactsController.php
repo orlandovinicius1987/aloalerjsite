@@ -1,17 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\ContactTypeModel;
-use App\Data\Models\PersonContactModel;
-use App\Data\Models\PersonModel;
-use App\Data\Repositories\CallsRepository;
-use App\Data\Repositories\PersonsAddressesRepository;
-use App\Data\Repositories\PersonsContactsRepository;
-use App\Data\Repositories\PersonsRepository;
-use App\Http\Requests\PersonRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\PersonRequest;
+use App\Data\Models\PersonContactModel;
+use App\Data\Models\ContactTypeModel;
 
-class PersonsContactsController extends BaseController
+class PersonsContactsController extends Controller
 {
     /**
      * @return $this

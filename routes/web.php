@@ -119,8 +119,4 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::post('/', 'CallsController@store')->name('calls.store');
         Route::get('/show/{id}', 'CallsController@show')->name('calls.show');
     });
-
-    Route::group(['prefix' => 'zipcode'], function () {
-        Route::get('/{zipcode}', 'CallsController@show')->name('calls.show');
-    });
 });

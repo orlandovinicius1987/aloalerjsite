@@ -1,20 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\PersonModel;
-use App\Data\Repositories\AreasRepository;
-use App\Data\Repositories\CallsRepository;
-use App\Data\Repositories\CallTypesRepository;
-use App\Data\Repositories\CommitteesRepository;
-use App\Data\Repositories\OriginsRepository;
-use App\Data\Repositories\PersonsAddressesRepository;
-use App\Data\Repositories\PersonsContactsRepository;
-use App\Data\Repositories\PersonsRepository;
-use App\Http\Requests\PersonRequest;
 use Illuminate\Http\Request;
-use PragmaRX\ZipCode\Contracts\ZipCode;
+use App\Http\Requests\PersonRequest;
 
-class PersonsController extends BaseController
+class PersonsController extends Controller
 {
     /**
      * @param Request     $request
