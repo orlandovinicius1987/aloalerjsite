@@ -1,35 +1,42 @@
 <?php
 
+use App\Data\Models\PersonModel;
+
 Artisan::command('z:import', function () {
     ini_set('memory_limit', '2048M');
 
-    $file = file(base_path('Base_Exportada/Historico.txt'));
+    $counter = 0;
 
-    $columns = collect(explode(' ', trim(preg_replace('/\s+/', ' ',$file[0]))));
+    PersonModel::truncate();
 
-    $columns = collect(explode(' ', $file[1]))->map(function($value, $key) use ($columns) {
-        return [
-            'column' => $columns[$key],
-            'size' => strlen($value),
-        ];
-    });
+    DB::connection('cercred')
+        ->table('pessoa')
+        ->get()
+        ->each(function ($person) use (&$counter) {
+            PersonModel::create([
+                'id' => $person->pessoa_id,
+                'code' => $person->codigo,
+                'name' => $person->nome,
+                'cpf_cnpj' => $person->cpf,
+                'identification' => $person->rg,
+                'birthdate' => $person->nascimento,
+                'gender_id' => $person->sexo,
+                'civil_status_id' => $person->estado_civil_id,
+                'spouse_name' => $person->nome_conjuge,
+                'main_occupation_id' => $person->ocupacao_principal,
+                'scholarship_id' => $person->escolaridade_id,
+                'income' => (float) str_replace('$', '', $person->renda),
+                'person_type_id' => $person->tipo_pessoa,
+                'created_at' => $person->inclusao,
+                'updated_by' => $person->usuario_id_alteracao,
+            ]);
 
-    unset($file[0]);
-    unset($file[1]);
+            $counter++;
 
-    foreach ($file as $line) {
-        $fields = collect();
-
-        foreach ($columns as $column) {
-            $fields->push(substr($line, 0, $column['size']));
-
-            $line = substr($line, $column['size']);
-        }
-
-        $fields->dump();
-    }
-
-
-
+            if ($counter % 100 === 0) {
+                $this->info(
+                    "{$counter} = {$person->pessoa_id} - {$person->nome}"
+                );
+            }
+        });
 })->describe('Display an inspiring quote');
-

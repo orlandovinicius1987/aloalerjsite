@@ -14,11 +14,18 @@ class PersonModel extends BaseModel
      * @var array
      */
     protected $fillable = [
+        'id',
         'cpf_cnpj',
         'name',
         'identification',
         'is_anonymous',
-        'origins_id',
+        'civil_status_id',
+        'spouse_name',
+        'ocupacao_principal_id',
+        'scholarship_id',
+        'income',
+        'person_type_id',
         'created_by_id',
+        'updated_by_id',
     ];
 }
