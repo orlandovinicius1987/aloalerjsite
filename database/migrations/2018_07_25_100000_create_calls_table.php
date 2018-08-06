@@ -16,8 +16,12 @@ class CreateCallsTable extends Migration
             $table->increments('id');
 
             $table
+                ->string('code')
+                ->nullable()
+                ->index();
+
+            $table
                 ->string('cpf_cnpj')
-                ->unique()
                 ->nullable()
                 ->index();
 
@@ -26,14 +30,45 @@ class CreateCallsTable extends Migration
                 ->nullable()
                 ->index();
 
+            $table->string('identification')->nullable();
+
+            $table->date('birthdate')->nullable();
+
             $table
-                ->string('identification')
-                ->nullable()
-                ->index();
+                ->integer('gender_id')
+                ->unsigned()
+                ->nullable();
+
+            $table
+                ->integer('civil_status_id')
+                ->unsigned()
+                ->nullable();
+
+            $table->string('spouse_name')->nullable();
+
+            $table
+                ->integer('main_occupation_id')
+                ->unsigned()
+                ->nullable();
+
+            $table
+                ->integer('scholarship_id')
+                ->unsigned()
+                ->nullable();
+
+            $table->float('income')->nullable();
+
+            $table
+                ->integer('person_type_id')
+                ->unsigned()
+                ->nullable();
+
+            $table
+                ->integer('updated_by_id')
+                ->unsigned()
+                ->nullable();
 
             $table->boolean('is_anonymous')->default(false);
-
-            $table->integer('origins_id')->unsigned();
 
             $table
                 ->integer('created_by_id')
@@ -178,6 +213,8 @@ class CreateCallsTable extends Migration
                 ->integer('area_id')
                 ->unsigned()
                 ->index();
+
+            $table->integer('origin_id')->unsigned();
 
             $table->string('subject', 512);
 

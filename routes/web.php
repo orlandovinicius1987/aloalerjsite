@@ -44,10 +44,7 @@ Route::get('/home', 'Home@index')->name('home');
 
 //Route::group(['prefix' => 'callcenter', 'middleware' => ['auth']], function()
 Route::group(['prefix' => 'callcenter'], function () {
-    Route::get('/', [
-        'as' => 'callcenter.home.index',
-        'uses' => 'CallCenter\Home@index',
-    ]);
+    Route::get('/', 'PersonsController@index')->name('persons.index');
 
     Route::group(['prefix' => 'persons'], function () {
         Route::get('/', 'PersonsController@index')->name('persons.index');
@@ -118,9 +115,5 @@ Route::group(['prefix' => 'callcenter'], function () {
         );
         Route::post('/', 'CallsController@store')->name('calls.store');
         Route::get('/show/{id}', 'CallsController@show')->name('calls.show');
-    });
-
-    Route::group(['prefix' => 'zipcode'], function () {
-        Route::get('/{zipcode}', 'CallsController@show')->name('calls.show');
     });
 });

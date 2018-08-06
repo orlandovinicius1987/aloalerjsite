@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Data\Repositories\AreasRepository;
@@ -12,11 +13,9 @@ use App\Data\Repositories\PersonsRepository;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as IlluminateController;
 
-use Illuminate\Routing\Controller;
-use PragmaRX\ZipCode\Contracts\ZipCode;
-
-abstract class BaseController extends Controller
+abstract class Controller extends IlluminateController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -33,7 +32,6 @@ abstract class BaseController extends Controller
     protected $committeesRepository;
     protected $callTypesRepository;
     protected $areasRepository;
-    protected $zipcode;
 
     /**
      * Persons constructor.
@@ -48,8 +46,7 @@ abstract class BaseController extends Controller
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
         CallTypesRepository $callTypesRepository,
-        AreasRepository $areasRepository,
-        ZipCode $zipcode
+        AreasRepository $areasRepository
     ) {
         $this->personsRepository = $personRepository;
         $this->callsRepository = $callsRepository;
@@ -59,7 +56,7 @@ abstract class BaseController extends Controller
         $this->committeesRepository = $committeesRepository;
         $this->callTypesRepository = $callTypesRepository;
         $this->areasRepository = $areasRepository;
-        $this->zipcode = $zipcode;
+
     }
 
     /**

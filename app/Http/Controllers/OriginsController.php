@@ -1,14 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\PersonModel;
-use App\Data\Repositories\PersonsRepository;
-use App\Data\Repositories\OriginsRepository;
-use App\Http\Requests\PersonRequest;
-use App\Http\Requests\ViaRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\ViaRequest;
 
-class OriginsController extends BaseController
+class OriginsController extends Controller
 {
     /**
      * @param Request     $request

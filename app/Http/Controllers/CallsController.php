@@ -1,22 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\PersonModel;
-use App\Data\Repositories\AreasRepository;
-use App\Data\Repositories\CallsRepository;
-use App\Data\Repositories\CallTypesRepository;
-use App\Data\Repositories\CommitteesRepository;
-use App\Data\Repositories\PersonsAddressesRepository;
-use App\Data\Repositories\PersonsContactsRepository;
-use App\Data\Repositories\PersonsRepository;
-use App\Data\Repositories\ViasRepository;
-use App\Http\Requests\CallRequest;
-use App\Http\Requests\PersonRequest;
-use App\Http\Requests\ViaRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\ViaRequest;
+use App\Http\Requests\CallRequest;
+use App\Data\Repositories\ViasRepository;
 
-class CallsController extends BaseController
+class CallsController extends Controller
 {
     /**
      * @return $this

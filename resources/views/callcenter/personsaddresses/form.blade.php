@@ -69,6 +69,7 @@
 
             <div class="col-md-6">
                 <input id="zipcode"
+                       v-model="form.zipcode"
                        class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
                        value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required autofocus
                        @keyup="typeKeyUp">
@@ -86,6 +87,7 @@
 
             <div class="col-md-6">
                 <input id="street" type="street" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
+                       v-model="form.street"
                        name="street" value="{{is_null(old('street')) ? $address->street : old('street')}}" required
                        autofocus>
 
@@ -103,6 +105,7 @@
 
             <div class="col-md-6">
                 <input id="complement" type="complement"
+                       v-model="form.complement"
                        class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}" name="complement"
                        value="{{is_null(old('complement')) ? $address->complement : old('complement')}}" required
                        autofocus>
@@ -120,6 +123,7 @@
 
             <div class="col-md-6">
                 <input id="neighbourhood" type="neighbourhood"
+                       v-model="form.neighborhood"
                        class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}" name="neighbourhood"
                        value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
                        required autofocus>
@@ -137,6 +141,7 @@
 
             <div class="col-md-6">
                 <input id="city" type="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                       v-model="form.city"
                        name="city" value="{{is_null(old('city')) ? $address->city : old('city')}}" required autofocus>
 
                 @if ($errors->has('city'))
@@ -152,6 +157,7 @@
 
             <div class="col-md-6">
                 <input id="state" type="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                       v-model="form.state"
                        name="state" value="{{is_null(old('state')) ? $address->state : old('state')}}" required
                        autofocus>
 
@@ -168,6 +174,7 @@
 
             <div class="col-md-6">
                 <input id="from" type="from" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
+                       v-model="form.country"
                        name="from" value="{{is_null(old('from')) ? $address->from : old('from')}}" required autofocus>
 
                 @if ($errors->has('from'))
