@@ -18,7 +18,11 @@ class PersonContactModel extends BaseModel
         'contact_type_id',
         'contact',
         'from',
+        'status',
+        'email_id',
         'validated_at',
         'validated_by_id',
+        'provider_enrichment_id',
+        'created_at',
     ];
 }
