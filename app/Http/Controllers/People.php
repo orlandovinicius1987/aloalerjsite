@@ -15,7 +15,7 @@ class People extends Controller
     {
         $pesquisa = $request->get('pesquisa');
         if ($pesquisa) {
-            $person = $this->peopleRepository->findByCollumn(
+            $person = $this->peopleRepository->findByColumn(
                 'cpf_cnpj',
                 $pesquisa
             );
@@ -110,7 +110,7 @@ class People extends Controller
         return view('callcenter.people.form')
             ->with('formDisabled', true)
             ->with([
-                'person' => $this->peopleRepository->findByCollumn(
+                'person' => $this->peopleRepository->findByColumn(
                     'cpf_cnpj',
                     $cpf_cnpj
                 ),

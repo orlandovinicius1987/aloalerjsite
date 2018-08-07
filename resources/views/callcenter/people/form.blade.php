@@ -2,51 +2,53 @@
 
 @section('content')
 
-<div class="card-header">{{ __('Dados pessoais') }}</div>
+<div class="card">
 
-<div class="card-body">
+    <div class="card-header">{{ __('Dados pessoais') }}</div>
 
-    @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
+    <div class="card-body">
 
-    @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-    @endif
-
-    @if (isset($message))
-    <div class="alert alert-success">
-        {{ $message }}
-    </div>
-    @endif
-
-    @if(session()->has('warning'))
-    <div class="alert alert-warning">
-        {{ session()->get('warning') }}
-    </div>
-    @endif
-
-    <form method="POST" action="{{ route('persons.store') }}" aria-label="{{ __('Persons') }}">
-        @csrf
-
-        @if (isset($person))
-        <input name="person_id" type="hidden" value="{{ $person->id }}">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
         @endif
 
-        @if (isset($workflow))
-        <input name="workflow" type="hidden" value="{{ $workflow }}">
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
         @endif
 
-        <div class="form-group row">
-            <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF')
-                }}</label>
+        @if (isset($message))
+        <div class="alert alert-success">
+            {{ $message }}
+        </div>
+        @endif
+
+        @if(session()->has('warning'))
+        <div class="alert alert-warning">
+            {{ session()->get('warning') }}
+        </div>
+        @endif
+
+        <form method="POST" action="{{ route('persons.store') }}" aria-label="{{ __('Persons') }}">
+            @csrf
+
+            @if (isset($person))
+            <input name="person_id" type="hidden" value="{{ $person->id }}">
+            @endif
+
+            @if (isset($workflow))
+            <input name="workflow" type="hidden" value="{{ $workflow }}">
+            @endif
+
+            <div class="form-group row">
+                <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF')
+                    }}</label>
 
             <div class="col-md-6">
-                <input id="cpf_cnpj"
+                <input id="cpf_cnpj" type="cpf_cnpj"
                        class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                        name="cpf_cnpj"
                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
@@ -129,18 +131,19 @@
             </div>
         </div>
 
-        <div class="form-group row mb-0">
-            <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    @if (isset($workflow) && $workflow)
-                    {{ __('Próximo passo >>') }}
-                    @else
-                    {{ __('Gravar') }}
-                    @endif
-                </button>
+            <div class="form-group row mb-0">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        @if (isset($workflow) && $workflow)
+                        {{ __('Próximo passo >>') }}
+                        @else
+                        {{ __('Gravar') }}
+                        @endif
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 @if (isset($calls))

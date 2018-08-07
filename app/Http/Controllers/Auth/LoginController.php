@@ -7,7 +7,7 @@ use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-class Login extends Controller
+class LoginController  extends  Controller
 {
     /*
     |--------------------------------------------------------------------------

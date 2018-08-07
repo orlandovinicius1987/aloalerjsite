@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="card-header">{{ __('Endereços') }}</div>
+    <div class="card">
+        <div class="card-header">{{ __('Endereços') }}</div>
 
 <div class="card-body" id="vue-addresses">
 
@@ -37,7 +37,7 @@
             <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
 
             <div class="col-md-6">
-                <input id="cpf_cnpj" type="cpf_cnpj"
+                <input id="cpf_cnpj"
                        class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"  readonly="readonly">
 
@@ -53,7 +53,7 @@
             <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
 
             <div class="col-md-6">
-                <input id="name" type="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                        name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"  readonly="readonly">
 
                 @if ($errors->has('name'))
@@ -87,7 +87,7 @@
             <label for="street" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço') }}</label>
 
             <div class="col-md-6">
-                <input id="street" type="street" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
+                <input id="street" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
                        v-model="form.street"
                        name="street" value="{{is_null(old('street')) ? $address->street : old('street')}}" required
                        autofocus>
@@ -105,7 +105,7 @@
             <label for="complement" class="col-sm-4 col-form-label text-md-right">{{ __('Complemento') }}</label>
 
             <div class="col-md-6">
-                <input id="complement" type="complement"
+                <input id="complement"
                        v-model="form.complement"
                        class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}" name="complement"
                        value="{{is_null(old('complement')) ? $address->complement : old('complement')}}" required
@@ -123,7 +123,7 @@
             <label for="neighbourhood" class="col-sm-4 col-form-label text-md-right">{{ __('Bairro') }}</label>
 
             <div class="col-md-6">
-                <input id="neighbourhood" type="neighbourhood"
+                <input id="neighbourhood"
                        v-model="form.neighborhood"
                        class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}" name="neighbourhood"
                        value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
@@ -141,7 +141,7 @@
             <label for="city" class="col-sm-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
 
             <div class="col-md-6">
-                <input id="city" type="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                <input id="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
                        v-model="form.city"
                        name="city" value="{{is_null(old('city')) ? $address->city : old('city')}}" required autofocus>
 
@@ -157,7 +157,7 @@
             <label for="state" class="col-sm-4 col-form-label text-md-right">{{ __('Estado') }}</label>
 
             <div class="col-md-6">
-                <input id="state" type="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                <input id="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                        v-model="form.state"
                        name="state" value="{{is_null(old('state')) ? $address->state : old('state')}}" required
                        autofocus>
@@ -174,7 +174,7 @@
             <label for="from" class="col-sm-4 col-form-label text-md-right">{{ __('País') }}</label>
 
             <div class="col-md-6">
-                <input id="from" type="from" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
+                <input id="from" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
                        v-model="form.country" value="Brasil"
                        name="from" readonly="readonly" required autofocus>
 
@@ -196,18 +196,18 @@
             </div>
         </div>
 
-        <div class="form-group row mb-0">
-            <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    @if (isset($workflow) && $workflow)
-                    {{ __('Próximo passo >>') }}
-                    @else
-                    {{ __('Gravar') }}
-                    @endif
-                </button>
-            </div>
+                <div class="form-group row mb-0">
+                    <div class="col-md-8 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            @if (isset($workflow) && $workflow)
+                            {{ __('Próximo passo >>') }}
+                            @else
+                            {{ __('Gravar') }}
+                            @endif
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-
+    </div>
 @endsection

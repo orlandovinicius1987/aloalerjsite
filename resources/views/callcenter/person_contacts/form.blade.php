@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="card-header">{{ __('Contatos') }}</div>
+    <div class="card">
+        <div class="card-header">{{ __('Contatos') }}</div>
 
 <div class="card-body">
 
@@ -37,14 +37,14 @@
             <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
 
             <div class="col-md-6">
-                <input id="cpf_cnpj" type="cpf_cnpj"
+                <input id="cpf_cnpj"
                        class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"  readonly="readonly">
 
                 @if ($errors->has('cpf_cnpj'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -131,14 +131,14 @@
             </div>
         </div>
 
-        <div class="form-group row mb-0">
-            <div class="col-md-8 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Gravar') }}
-                </button>
-            </div>
+                <div class="form-group row mb-0">
+                    <div class="col-md-8 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Gravar') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-
+    </div>
 @endsection
