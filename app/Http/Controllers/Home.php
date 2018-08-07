@@ -5,7 +5,7 @@ use App\Http\Requests\Home as HomeRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
-class Home extends BaseController
+class Home extends Controller
 {
     /**
      * @var HomeRequest

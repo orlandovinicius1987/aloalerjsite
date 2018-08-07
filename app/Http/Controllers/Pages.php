@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-class Pages extends BaseController
+class Pages extends Controller
 {
     public function show($page)
     {
