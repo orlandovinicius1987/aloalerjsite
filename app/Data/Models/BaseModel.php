@@ -50,6 +50,7 @@ abstract class BaseModel extends Model implements HasPresenter
 
     /**
      * @return array
+     * test
      */
     public function attributesToArray()
     {
