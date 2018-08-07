@@ -18,7 +18,7 @@ class ImportCercred
 
         $this->command = $command;
 
-        // $this->people();
+        $this->people();
 
         $this->emails();
 
