@@ -23,11 +23,11 @@ class Person extends BaseModel
 
     public function contacts()
     {
-        return $this->belongsToMany(PersonContact::class);
+        return $this->hasMany(PersonContact::class);
     }
 
     public function addresses()
     {
-        return $this->belongsToMany(PersonAddress::class);
+        return $this->hasMany(PersonAddress::class);
     }
 }

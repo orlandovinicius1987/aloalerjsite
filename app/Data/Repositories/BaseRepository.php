@@ -83,7 +83,7 @@ abstract class BaseRepository
      *
      * @return mixed
      */
-    public function findByCollumn($collumn, $value)
+    public function findByColumn($collumn, $value)
     {
         return $this->model::where($collumn, $value)->first();
     }
