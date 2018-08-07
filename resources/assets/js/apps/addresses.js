@@ -64,26 +64,10 @@ if (jQuery("#" + appName).length > 0) {
 
                 this.timeout = setTimeout(function () { me.refresh() }, 500)
             },
-
-            refreshTable(table) {
-                axios.get('/'+table)
-                    .then(function(response) {
-                        me.tables[table] = response.data
-                    })
-                    .catch(function(error) {
-                        console.log(error)
-
-                        me.tables[table] = []
-                    })
-            },
         },
 
         mounted() {
-            this.refresh()
-
-            this.refreshTable('addresses')
-
+            // this.refresh()
         },
     })
-
 }
