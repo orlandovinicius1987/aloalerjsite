@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Data\Models;
 
 use App\Data\Presenters\BasePresenter;
@@ -41,7 +40,6 @@ abstract class BaseModel extends Model implements HasPresenter
         return collect($model->dataTypes)->get($column);
     }
 
-
     /**
      * @return string
      */
@@ -60,10 +58,9 @@ abstract class BaseModel extends Model implements HasPresenter
         $decorated = AutoPresenter::decorate($this);
 
         foreach ($this->presenters as $key) {
-            $attributes[$key] = $decorated->{$key};
+            $attributes[$key] = $decorated->$key;
         }
 
         return $attributes;
     }
-
 }

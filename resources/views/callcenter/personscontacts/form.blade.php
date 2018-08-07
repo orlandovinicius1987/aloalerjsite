@@ -53,13 +53,13 @@
             <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
 
             <div class="col-md-6">
-                <input id="name" type="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                        name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"  readonly="readonly">
 
                 @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -70,7 +70,9 @@
             <div class="col-md-6">
                 <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
                        name="mobile"
-                       value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}"  required autofocus>
+                       value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}"  required autofocus
+                       v-mask='["(##)####-####", "(##)#####-####"]'
+                       type="tel">
 
                 @if ($errors->has('mobile'))
                 <span class="invalid-feedback" role="alert">
@@ -86,7 +88,7 @@
             <div class="col-md-6">
                 <input class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
                        value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
-                       autofocus>
+                       autofocus v-mask='["(##)#####-####"]'>
 
                 @if ($errors->has('whatsapp'))
                 <span class="invalid-feedback" role="alert">
@@ -100,7 +102,7 @@
             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
 
             <div class="col-md-6">
-                <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                        value="{{is_null(old('email')) ? $contact->email : old('email')}}" required
                        autofocus>
 
@@ -118,7 +120,8 @@
             <div class="col-md-6">
                 <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
                        value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
-                       autofocus>
+                       autofocus
+                       v-mask='["(##)####-####", "(##)#####-####"]'>
 
                 @if ($errors->has('phone'))
                 <span class="invalid-feedback" role="alert">

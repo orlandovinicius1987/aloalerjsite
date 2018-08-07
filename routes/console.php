@@ -1,5 +1,4 @@
 <?php
-
 use App\Services\ImportCercred;
 
 Artisan::command('cercred:import', function () {

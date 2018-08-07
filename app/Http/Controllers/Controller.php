@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Data\Repositories\AreasRepository;
@@ -56,7 +55,6 @@ abstract class Controller extends IlluminateController
         $this->committeesRepository = $committeesRepository;
         $this->callTypesRepository = $callTypesRepository;
         $this->areasRepository = $areasRepository;
-
     }
 
     /**

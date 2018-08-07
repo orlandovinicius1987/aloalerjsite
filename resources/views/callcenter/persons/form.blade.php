@@ -46,16 +46,17 @@
                 }}</label>
 
             <div class="col-md-6">
-                <input id="cpf_cnpj" type="cpf_cnpj"
+                <input id="cpf_cnpj"
                        class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                        name="cpf_cnpj"
                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
-                       required autofocus>
+                       required autofocus
+                       v-mask='["###.###.###-##", "##.###.###/####-##"]'>
 
                 @if ($errors->has('cpf_cnpj'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -65,15 +66,15 @@
                 }}</label>
 
             <div class="col-md-6">
-                <input id="name" type="name"
+                <input id="name"
                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                        name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
                        required autofocus>
 
                 @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -83,7 +84,7 @@
                 }}</label>
 
             <div class="col-md-6">
-                <input id="identification" type="identification"
+                <input id="identification"
                        class="form-control{{ $errors->has('identification') ? ' is-invalid' : '' }}"
                        name="identification"
                        value="{{is_null(old('identification')) ? $person->identification : old('identification')}}"
@@ -91,8 +92,8 @@
 
                 @if ($errors->has('identification'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('identification') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('identification') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -102,7 +103,7 @@
                 }}</label>
 
             <div class="col-md-6">
-                <select id="origins_id" type="origins_id"
+                <select id="origins_id"
                         class="form-control{{ $errors->has('origins_id') ? ' is-invalid' : '' }}"
                         name="origins_id"
                         value="{{is_null(old('origins_id')) ? $person->origins_id : old('origins_id')}}"
@@ -122,8 +123,8 @@
 
                 @if ($errors->has('origins_id'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('origins_id') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('origins_id') }}</strong>
+                </span>
                 @endif
             </div>
         </div>

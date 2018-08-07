@@ -40,12 +40,13 @@
                 <div class="form-group">
                     <form action="{{ route('persons.index') }}" id="searchForm">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Pesquisar</label>
+                            <label for="pesquisa">Pesquisar</label>
                             <input
                                 type="text" class="form-control"
                                 name="pesquisa"
                                 placeholder="digite o CPF a ser pesquisado"
                                 value="{{ $pesquisa or '' }}"
+                                v-mask='["###.###.###-##", "##.###.###/####-##"]'
                             >
                         </div>
 

@@ -43,8 +43,8 @@
 
                 @if ($errors->has('cpf_cnpj'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -58,8 +58,8 @@
 
                 @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -72,7 +72,8 @@
                        v-model="form.zipcode"
                        class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
                        value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required autofocus
-                       @keyup="typeKeyUp">
+                       @keyup="typeKeyUp"
+                       v-mask='["##.###-###]'>
 
                 @if ($errors->has('zipcode'))
                 <span class="invalid-feedback" role="alert">
@@ -93,8 +94,8 @@
 
                 @if ($errors->has('street'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('street') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('street') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -112,8 +113,8 @@
 
                 @if ($errors->has('complement'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('complement') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('complement') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -130,8 +131,8 @@
 
                 @if ($errors->has('neighbourhood'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('neighbourhood') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('neighbourhood') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -146,8 +147,8 @@
 
                 @if ($errors->has('city'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('city') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('city') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -163,8 +164,8 @@
 
                 @if ($errors->has('state'))
                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('state') }}</strong>
-                                        </span>
+                    <strong>{{ $errors->first('state') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
@@ -174,8 +175,8 @@
 
             <div class="col-md-6">
                 <input id="from" type="from" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
-                       v-model="form.country"
-                       name="from" value="{{is_null(old('from')) ? $address->from : old('from')}}" required autofocus>
+                       v-model="form.country" value="Brasil"
+                       name="from" value="{{is_null(old('from')) ? $address->from : old('from')}}" readonly="readonly" required autofocus>
 
                 @if ($errors->has('from'))
                 <span class="invalid-feedback" role="alert">
