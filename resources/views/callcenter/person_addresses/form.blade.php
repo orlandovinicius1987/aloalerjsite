@@ -97,18 +97,32 @@
 
                         @if ($errors->has('street'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('street') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('street') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
 
-
                 <div class="form-group row">
-                    <label for="complement"
-                           class="col-sm-4 col-form-label text-md-right">{{ __('Complemento') }}</label>
+                    <label for="number" class="col-sm-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-2">
+                        <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                               v-model="form.number"
+                               name="number" value="{{is_null(old('number')) ? $address->state : old('number')}}" required
+                               autofocus>
+
+                        @if ($errors->has('number'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('number') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+
+
+                    <label for="complement" class="col-sm-2 col-form-label text-md-right">{{ __('Complemento') }}</label>
+
+                    <div class="col-md-2">
                         <input id="complement"
                                v-model="form.complement"
                                class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
@@ -118,11 +132,12 @@
                                autofocus>
 
                         @if ($errors->has('complement'))
-                            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('complement') }}</strong>
-                </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('complement') }}</strong>
+                        </span>
                         @endif
                     </div>
+
                 </div>
 
                 <div class="form-group row">
@@ -138,8 +153,8 @@
 
                         @if ($errors->has('neighbourhood'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('neighbourhood') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('neighbourhood') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -147,7 +162,7 @@
                 <div class="form-group row">
                     <label for="city" class="col-sm-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input id="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
                                v-model="form.city"
                                name="city" value="{{is_null(old('city')) ? $address->city : old('city')}}" required
@@ -155,16 +170,14 @@
 
                         @if ($errors->has('city'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('city') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('city') }}</strong>
+                            </span>
                         @endif
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="state" class="col-sm-4 col-form-label text-md-right">{{ __('Estado') }}</label>
+                    <label for="state" class="col-sm-1 col-form-label text-md-right">{{ __('Estado') }}</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-1">
                         <input id="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                v-model="form.state"
                                name="state" value="{{is_null(old('state')) ? $address->state : old('state')}}" required
@@ -172,35 +185,17 @@
 
                         @if ($errors->has('state'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('state') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('state') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="from" class="col-sm-4 col-form-label text-md-right">{{ __('País') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="from" class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
-                               v-model="form.country" value="Brasil"
-                               name="from" readonly="readonly" required autofocus>
-
-                        @if ($errors->has('from'))
-                            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('from') }}</strong>
-                </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="is_mailable" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço Validado')
-                }}</label>
+                    <label for="is_mailable" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço Validado')}}</label>
                     <div class="col-md-6">
                         <input type="hidden" name="is_mailable" value="0">
-                        <input type="checkbox" name="is_mailable" {{old('send_answer_by_email')
-                || $address->send_answer_by_email ? 'checked="checked"' : ''}} >
+                        <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}} >
                     </div>
                 </div>
 
