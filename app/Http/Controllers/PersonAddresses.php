@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
-class PersonAddresses  extends  Controller
+class PersonAddresses extends Controller
 {
     /**
      * @return $this
@@ -35,9 +35,7 @@ class PersonAddresses  extends  Controller
         $request->merge(['id' => $request->get('address_id')]);
         $this->peopleAddressesRepository->createFromRequest($request);
 
-        $person = $this->peopleRepository->findById(
-            $request->get('person_id')
-        );
+        $person = $this->peopleRepository->findById($request->get('person_id'));
         $calls = $this->callsRepository->findByPerson($person->id);
         $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id

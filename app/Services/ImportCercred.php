@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services;
 
 use App\Data\Models\ContactType;
@@ -96,7 +95,11 @@ class ImportCercred
                 }
             });
 
-        $last = PersonAddress::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+        $last =
+            PersonAddress::orderBy('id', 'desc')
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('person_addresses_id_seq', {$last}, true);");
     }
@@ -176,7 +179,11 @@ class ImportCercred
                 }
             });
 
-        $last = PersonContact::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+        $last =
+            PersonContact::orderBy('id', 'desc')
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
@@ -188,10 +195,7 @@ class ImportCercred
         $contactTypeId = ContactType::where('code', 'email')->first()->id;
 
         if (
-            PersonContact::where(
-                'contact_type_id',
-                $contactTypeId
-            )->count() ==
+            PersonContact::where('contact_type_id', $contactTypeId)->count() ==
             $this->db()
                 ->table('email')
                 ->count()
@@ -250,7 +254,11 @@ class ImportCercred
                 }
             });
 
-        $last = PersonContact::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+        $last =
+            PersonContact::orderBy('id', 'desc')
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
@@ -305,7 +313,11 @@ class ImportCercred
                 }
             });
 
-        $last = Person::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+        $last =
+            Person::orderBy('id', 'desc')
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('people_id_seq', {$last}, true);");
     }

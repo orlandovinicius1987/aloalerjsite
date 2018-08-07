@@ -1,5 +1,4 @@
 <?php
-
 use App\Data\Models\UserType as UserTypeModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
@@ -19,12 +18,10 @@ class AddUserTypes extends Migration
 
     public function down()
     {
-        DB
-            ::table('user_types')
+        DB::table('user_types')
             ->where('name', '=', 'Administrador')
             ->delete();
-        DB
-            ::table('user_types')
+        DB::table('user_types')
             ->where('name', '=', 'Usuario')
             ->delete();
 
@@ -33,4 +30,3 @@ class AddUserTypes extends Migration
         });
     }
 }
-

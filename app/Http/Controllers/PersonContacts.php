@@ -41,9 +41,7 @@ class PersonContacts extends Controller
         //$request->merge(['id' => $request->get('contact_id')]);
         //$this->peopleContactsRepository->createFromRequest($request);
 
-        $person = $this->peopleRepository->findById(
-            $request->get('person_id')
-        );
+        $person = $this->peopleRepository->findById($request->get('person_id'));
         $calls = $this->callsRepository->findByPerson($person->id);
         $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id

@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Home as HomeRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
-class Home extends Controller
+class Home extends BaseController
 {
     /**
      * @var HomeRequest
@@ -20,8 +19,7 @@ class Home extends Controller
 
     private function checkClient()
     {
-        if ($this->request->get('client') == 'app')
-        {
+        if ($this->request->get('client') == 'app') {
             Session::put('client', 'app');
         }
     }
@@ -31,9 +29,9 @@ class Home extends Controller
         $this->checkClient();
 
         return view('home.index')
-                ->with('css', 'home')
-                ->with('home', true)
-                ->with('offline', $this->checkOffline());
+            ->with('css', 'home')
+            ->with('home', true)
+            ->with('offline', $this->checkOffline());
     }
 
     public function offline()
@@ -45,8 +43,6 @@ class Home extends Controller
     {
         $now = Carbon::now();
 
-        return $now->hour >= 19
-                || $now->hour < 8
-                || $now->isWeekend();
+        return $now->hour >= 19 || $now->hour < 8 || $now->isWeekend();
     }
 }

@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-class Radio extends Controller
+class Radio extends BaseController
 {
-    public function index() {
+    public function index()
+    {
         return view('radio.index');
     }
 }

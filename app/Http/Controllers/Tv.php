@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-class Tv extends Controller
+class Tv extends BaseController
 {
-    public function index() {
+    public function index()
+    {
         return view('tv.index');
     }
 }

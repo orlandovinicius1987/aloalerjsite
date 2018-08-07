@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Data\Repositories\Vias as ViasRepository;
 
-class Areas  extends  Controller
+class Areas extends Controller
 {
     /**
      * @param Request     $request

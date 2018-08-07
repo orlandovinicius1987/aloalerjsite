@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Data\Repositories;
 
 use App\Data\Models\Call;
@@ -20,5 +19,4 @@ class Calls extends BaseRepository
     {
         return $this->model::where('person_id', $person_id)->get();
     }
-
 }
