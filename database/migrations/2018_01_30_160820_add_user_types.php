@@ -33,3 +33,4 @@ class AddUserTypes extends Migration
         });
     }
 }
+

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
-class PeopleAddresses  extends  Controller
+class PersonAddresses  extends  Controller
 {
     /**
      * @return $this
@@ -13,7 +13,7 @@ class PeopleAddresses  extends  Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        return view('callcenter.peopleaddresses.form')
+        return view('callcenter.person_addresses.form')
             ->with('person', $person)
             ->with(['address' => $this->peopleRepository->new()]);
     }
@@ -28,7 +28,7 @@ class PeopleAddresses  extends  Controller
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $view = 'callcenter.peoplecontacts.form';
+            $view = 'callcenter.person_contacts.form';
             $message = 'Endereço cadastro com sucesso.';
         }
 

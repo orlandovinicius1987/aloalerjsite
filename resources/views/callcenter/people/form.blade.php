@@ -147,11 +147,11 @@
 @endif
 
 @if (isset($addresses))
-@include('callcenter.personsaddresses.index')
+@include('callcenter.person_addresses.index')
 @endif
 
 @if (isset($contacts))
-@include('callcenter.personscontacts.index')
+@include('callcenter.person_contacts.index')
 @endif
 
 @endsection

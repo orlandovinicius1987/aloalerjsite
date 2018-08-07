@@ -58,34 +58,34 @@ Route::group(['prefix' => 'callcenter'], function () {
     });
 
     Route::group(['prefix' => 'personsAddresses'], function () {
-        Route::get('/', 'PeopleAddresses@index')->name(
+        Route::get('/', 'PersonAddresses@index')->name(
             'personsAddresses.index'
         );
         Route::get(
             '/create/{person_id}',
-            'PeopleAddresses@create'
+            'PersonAddresses@create'
         )->name('personsAddresses.create');
 
-        Route::post('/', 'PeopleAddresses@store')->name(
+        Route::post('/', 'PersonAddresses@store')->name(
             'personsAddresses.store'
         );
-        Route::get('/show/{id}', 'PeopleAddresses@show')->name(
+        Route::get('/show/{id}', 'PersonAddresses@show')->name(
             'personsAddresses.show'
         );
     });
 
     Route::group(['prefix' => 'personsContacts'], function () {
-        Route::get('/', 'PeopleContacts@index')->name(
+        Route::get('/', 'PersonContacts@index')->name(
             'personsContacts.index'
         );
         Route::get(
             '/create/{person_id}',
-            'PeopleContacts@create'
+            'PersonContacts@create'
         )->name('personsContacts.create');
-        Route::post('/', 'PeopleContacts@store')->name(
+        Route::post('/', 'PersonContacts@store')->name(
             'personsContacts.store'
         );
-        Route::get('/show/{id}', 'PeopleContacts@show')->name(
+        Route::get('/show/{id}', 'PersonContacts@show')->name(
             'personsContacts.show'
         );
     });

@@ -6,7 +6,7 @@ use App\Http\Requests\PersonRequest;
 use App\Data\Models\PersonContact;
 use App\Data\Models\ContactType;
 
-class PeopleContacts  extends  Controller
+class PersonContacts extends Controller
 {
     /**
      * @return $this

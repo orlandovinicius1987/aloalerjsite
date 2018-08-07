@@ -23,5 +23,6 @@ class Call extends BaseModel
         'answer',
         'answered_at',
         'answered_by_id',
+        'origin_id',
     ];
 }
