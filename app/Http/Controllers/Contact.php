@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Contact as ContactRequest;
 use App\Services\Mailer;
 
-class Contact extends BaseController
+class Contact extends Controller
 {
     /**
      * @var Mailer

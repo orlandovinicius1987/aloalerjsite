@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-class Radio extends BaseController
+class Radio extends Controller
 {
     public function index()
     {

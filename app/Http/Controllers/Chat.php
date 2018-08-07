@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-class Chat extends BaseController
+class Chat extends Controller
 {
     public function index()
     {
