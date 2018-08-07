@@ -13881,8 +13881,11 @@ __webpack_require__(49);
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_mask__ = __webpack_require__(50);
 
 window._ = __webpack_require__(14);
 window.Popper = __webpack_require__(3).default;
@@ -13908,6 +13911,13 @@ try {
 __webpack_require__(13);
 
 window.Vue = __webpack_require__(36);
+
+/**
+ * Vue Mask
+ */
+
+
+Vue.directive('mask', __WEBPACK_IMPORTED_MODULE_0_v_mask__["a" /* VueMaskDirective */]);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -35935,7 +35945,7 @@ module.exports = function spread(callback) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.5.16
+ * Vue.js v2.5.17
  * (c) 2014-2018 Evan You
  * Released under the MIT License.
  */
@@ -41024,7 +41034,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.5.16';
+Vue.version = '2.5.17';
 
 /*  */
 
@@ -47205,7 +47215,7 @@ if (jQuery("#" + appName).length > 0) {
                 me.refreshing = true;
 
                 axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
-                    me.tables.people = response.data;
+                    me.tables.people = response.data.data;
 
                     me.refreshing = false;
                 }).catch(function (error) {
@@ -47333,6 +47343,145 @@ if (jQuery("#" + appName).length > 0) {
         }
     });
 }
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export VueMaskPlugin */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return directive; });
+function format (data, mask) {
+  if (!mask) return data;
+
+  var maskStartRegExp = /^([^#ANX]+)/;
+
+  if (+data.length === 1 && maskStartRegExp.test(mask)) {
+    data = maskStartRegExp.exec(mask)[0] + data;
+  }
+
+  var text = '';
+
+  var cOffset = 0;
+
+  for (var i = 0; i < mask.length; i += 1) {
+    var m = mask.charAt(i);
+    switch (m) {
+      case '#':
+        break;
+      case 'A':
+        break;
+      case '?':
+        break;
+      case 'N':
+        break;
+      case 'X':
+        break;
+      default:
+        data = data.replace(m, '');
+    }
+  }
+  for (var _i = 0, x = 1; x && _i < mask.length; _i += 1) {
+    var c = data.charAt(_i - cOffset);
+    var _m = mask.charAt(_i);
+
+    switch (_m) {
+      case '#':
+        /\d/.test(c) ? text += c : x = 0;
+        break;
+      case 'A':
+        /[a-z]/i.test(c) ? text += c : x = 0;
+        break;
+      case 'N':
+        /[a-z0-9]/i.test(c) ? text += c : x = 0;
+        break;
+
+      case '?':
+        cOffset += 1;
+        break;
+      case 'X':
+        text += c;
+        break;
+      default:
+        text += _m;
+
+        if (c && c !== _m) {
+          data = ' ' + data;
+        }
+
+        break;
+    }
+  }
+  return text;
+}
+
+var trigger = function trigger(el, type) {
+  var e = document.createEvent('HTMLEvents');
+  e.initEvent(type, true, true);
+  el.dispatchEvent(e);
+};
+
+var inBrowser = typeof window !== 'undefined';
+var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+var isEdge = UA && UA.indexOf('edge/') > 0;
+var isAndroid = UA && UA.indexOf('android') > 0;
+var isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge;
+
+function updateValue(el) {
+  var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var value = el.value,
+      _el$dataset = el.dataset,
+      _el$dataset$previousV = _el$dataset.previousValue,
+      previousValue = _el$dataset$previousV === undefined ? '' : _el$dataset$previousV,
+      mask = _el$dataset.mask;
+
+
+  if (force || value && value !== previousValue && value.length > previousValue.length) {
+    el.value = format(value, mask);
+    if (isAndroid && isChrome) {
+      setTimeout(function () {
+        return trigger(el, 'input');
+      }, 0);
+    } else {
+      trigger(el, 'input');
+    }
+  }
+
+  el.dataset.previousValue = value;
+}
+
+function updateMask(el, mask) {
+  el.dataset.mask = mask;
+}
+
+var directive = {
+  bind: function bind(el, _ref) {
+    var value = _ref.value;
+
+    updateMask(el, value);
+    updateValue(el);
+  },
+  componentUpdated: function componentUpdated(el, _ref2) {
+    var value = _ref2.value,
+        oldValue = _ref2.oldValue;
+
+    var isMaskChanged = value !== oldValue;
+
+    if (isMaskChanged) {
+      updateMask(el, value);
+    }
+
+    updateValue(el, isMaskChanged);
+  }
+};
+
+var plugin = (function (Vue) {
+  Vue.directive('mask', directive);
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (plugin);
+
+
 
 /***/ })
 /******/ ]);

@@ -29,10 +29,9 @@
                                     <input
                                         type="text" class="form-control"
                                         name="pesquisa"
-                                        placeholder="digite o CPF a ser pesquisado"
+                                        placeholder="digite CPF, CNPJ ou nome"
                                         v-model="form.search"
                                         @keyup="typeKeyUp"
-                                        v-mask='["###.###.###-##", "##.###.###/####-##"]'
                                     >
                                 </div>
                             </form>

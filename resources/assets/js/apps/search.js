@@ -28,7 +28,7 @@ if (jQuery("#" + appName).length > 0) {
 
                 axios.post('/api/v1/search', {search: this.form.search})
                 .then(function(response) {
-                    me.tables.people = response.data
+                    me.tables.people = response.data.data
 
                     me.refreshing = false
                 })
