@@ -1,17 +1,15 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\Committe;
-use App\Data\Models\Origin;
-use App\Data\Models\Person;
+use App\Data\Models\Committee;
 use App\Data\Models\ViaModel;
 
-class CommitteesRepository extends BaseRepository
+class Committees extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = Committe::class;
+    protected $model = Committee::class;
 
     public function findBySlug($slug)
     {

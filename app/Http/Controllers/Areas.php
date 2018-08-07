@@ -3,9 +3,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
-use App\Data\Repositories\ViasRepository;
+use App\Data\Repositories\Vias as ViasRepository;
 
-class AreasController extends Controller
+class Areas  extends  Controller
 {
     /**
      * @param Request     $request

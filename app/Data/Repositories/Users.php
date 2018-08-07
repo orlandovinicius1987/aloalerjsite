@@ -28,7 +28,7 @@ class Users extends Base
      */
     public function __construct(
         Authorization $authorization,
-        TiposUsuarios $tiposUsuarios
+        UserTypes $tiposUsuarios
     ) {
         $this->authorization = $authorization;
 
@@ -86,7 +86,7 @@ class Users extends Base
                     : 'usuario'
             );
 
-        return app(TiposUsuarios::class)->findByName($type);
+        return app(UserTypes::class)->findByName($type);
     }
 
     private function isAdministrador($permissions)

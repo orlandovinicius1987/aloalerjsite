@@ -7,7 +7,6 @@ class Person extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'id',
         'cpf_cnpj',
         'name',
         'identification',

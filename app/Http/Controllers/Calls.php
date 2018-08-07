@@ -5,16 +5,16 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Http\Requests\CallRequest;
-use App\Data\Repositories\ViasRepository;
+use App\Data\Repositories\Vias as ViasRepository;
 
-class CallsController extends Controller
+class Calls  extends  Controller
 {
     /**
      * @return $this
      */
     public function create($person_id)
     {
-        $person = $this->personsRepository->findById($person_id);
+        $person = $this->peopleRepository->findById($person_id);
 
         return view('callcenter.calls.form')
             ->with('person', $person)
@@ -29,14 +29,14 @@ class CallsController extends Controller
      */
     public function store(CallRequest $request)
     {
-        $view = 'callcenter.persons.form';
+        $view = 'callcenter.people.form';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $view = 'callcenter.personsaddresses.form';
+            $view = 'callcenter.peopleaddresses.form';
             $message = 'Reclamação cadastrada com sucesso.';
         }
 
-        $person = $this->personsRepository->findById(
+        $person = $this->peopleRepository->findById(
             $request->get('person_id')
         );
 
@@ -58,10 +58,10 @@ class CallsController extends Controller
         $call->save();
 
         $calls = $this->callsRepository->findByPerson($person->id);
-        $addresses = $this->personsAddressesRepository->findByPerson(
+        $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id
         );
-        $contacts = $this->personsContactsRepository->findByPerson($person->id);
+        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
         return view($view)
             ->with('person', $person)
@@ -71,7 +71,7 @@ class CallsController extends Controller
 
             ->with($this->getComboBoxMenus())
 
-            ->with(['address' => $this->personsRepository->new()])
+            ->with(['address' => $this->peopleRepository->new()])
             ->with('message', $message)
             ->with('workflow', $request->get('workflow'));
     }
@@ -84,7 +84,7 @@ class CallsController extends Controller
     public function show($id)
     {
         $call = $this->callsRepository->findById($id);
-        $person = $this->personsRepository->findById($call->person_id);
+        $person = $this->peopleRepository->findById($call->person_id);
 
         return view('callcenter.calls.form')
             ->with($this->getComboBoxMenus())

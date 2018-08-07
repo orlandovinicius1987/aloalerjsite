@@ -2,11 +2,9 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
-use App\Data\Models\Person;
 
-class PersonsContactsRepository extends BaseRepository
+class PersonContacts extends BaseRepository
 {
     /**
      * @var $model

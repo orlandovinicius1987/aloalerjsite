@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
-class PersonsController extends Controller
+class People  extends  Controller
 {
     /**
      * @param Request     $request
@@ -15,20 +15,20 @@ class PersonsController extends Controller
     {
         $pesquisa = $request->get('pesquisa');
         if ($pesquisa) {
-            $person = $this->personsRepository->findByCollumn(
+            $person = $this->peopleRepository->findByCollumn(
                 'cpf_cnpj',
                 $pesquisa
             );
             if ($person) {
                 $calls = $this->callsRepository->findByPerson($person->id);
-                $addresses = $this->personsAddressesRepository->findByPerson(
+                $addresses = $this->peopleAddressesRepository->findByPerson(
                     $person->id
                 );
-                $contacts = $this->personsContactsRepository->findByPerson(
+                $contacts = $this->peopleContactsRepository->findByPerson(
                     $person->id
                 );
 
-                return view('callcenter.persons.form')
+                return view('callcenter.people.form')
                     ->with('person', $person)
                     ->with('calls', $calls)
                     ->with('addresses', $addresses)
@@ -38,7 +38,7 @@ class PersonsController extends Controller
                 dd("pessoa não encontrada");
             }
         } else {
-            return view('callcenter.persons.index');
+            return view('callcenter.people.index');
         }
     }
 
@@ -47,8 +47,8 @@ class PersonsController extends Controller
      */
     public function create()
     {
-        return view('callcenter.persons.form')
-            ->with(['person' => $this->personsRepository->new()])
+        return view('callcenter.people.form')
+            ->with(['person' => $this->peopleRepository->new()])
             ->with($this->getComboBoxMenus())
             ->with('workflow', '1');
     }
@@ -60,7 +60,7 @@ class PersonsController extends Controller
      */
     public function store(PersonRequest $request)
     {
-        $url = 'callcenter.persons.form';
+        $url = 'callcenter.people.form';
         $message = $this->messageDefault;
         if (!$request->get('person_id')) {
             $url = 'callcenter.calls.form';
@@ -70,14 +70,14 @@ class PersonsController extends Controller
         $view->with($this->getComboBoxMenus());
 
         if ($request->get('person_id')) {
-            $person = $this->personsRepository->findById(
+            $person = $this->peopleRepository->findById(
                 $request->get('person_id')
             );
             $calls = $this->callsRepository->findByPerson($person->id);
-            $addresses = $this->personsAddressesRepository->findByPerson(
+            $addresses = $this->peopleAddressesRepository->findByPerson(
                 $person->id
             );
-            $contacts = $this->personsContactsRepository->findByPerson(
+            $contacts = $this->peopleContactsRepository->findByPerson(
                 $person->id
             );
 
@@ -92,7 +92,7 @@ class PersonsController extends Controller
         }
 
         $request->merge(['id' => $request->get('person_id')]);
-        $person = $this->personsRepository->createFromRequest($request);
+        $person = $this->peopleRepository->createFromRequest($request);
 
         return $view
             ->with('person', $person)
@@ -107,10 +107,10 @@ class PersonsController extends Controller
      */
     public function show($cpf_cnpj)
     {
-        return view('callcenter.persons.form')
+        return view('callcenter.people.form')
             ->with('formDisabled', true)
             ->with([
-                'person' => $this->personsRepository->findByCollumn(
+                'person' => $this->peopleRepository->findByCollumn(
                     'cpf_cnpj',
                     $cpf_cnpj
                 ),

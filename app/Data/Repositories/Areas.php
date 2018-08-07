@@ -2,16 +2,14 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\AreaModel;
+use App\Data\Models\Area;
 use App\Data\Models\Person;
 use App\Data\Models\ViaModel;
 
-class AreasRepository extends BaseRepository
+class Areas extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = AreaModel::class;
-
-
+    protected $model = Area::class;
 }

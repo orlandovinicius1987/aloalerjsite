@@ -2,15 +2,14 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\Call;
+use App\Data\Models\PersonAddress;
 
-class CallsRepository extends BaseRepository
+class PersonAddresses extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = Call::class;
-
+    protected $model = PersonAddress::class;
 
     /**
      * @param person_id
@@ -21,5 +20,4 @@ class CallsRepository extends BaseRepository
     {
         return $this->model::where('person_id', $person_id)->get();
     }
-
 }

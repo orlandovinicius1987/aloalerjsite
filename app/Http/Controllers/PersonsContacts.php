@@ -6,18 +6,18 @@ use App\Http\Requests\PersonRequest;
 use App\Data\Models\PersonContact;
 use App\Data\Models\ContactType;
 
-class PersonsContactsController extends Controller
+class PeopleContacts  extends  Controller
 {
     /**
      * @return $this
      */
     public function create($person_id)
     {
-        $person = $this->personsRepository->findById($person_id);
+        $person = $this->peopleRepository->findById($person_id);
 
-        return view('callcenter.personsContacts.form')
+        return view('callcenter.peopleContacts.form')
             ->with('person', $person)
-            ->with(['contact' => $this->personsContactsRepository->new()]);
+            ->with(['contact' => $this->peopleContactsRepository->new()]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PersonsContactsController extends Controller
      */
     public function store(PersonRequest $request)
     {
-        $view = 'callcenter.persons.form';
+        $view = 'callcenter.people.form';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
             $message = 'Reclamação cadastrada com sucesso.';
@@ -39,16 +39,16 @@ class PersonsContactsController extends Controller
         }
 
         //$request->merge(['id' => $request->get('contact_id')]);
-        //$this->personsContactsRepository->createFromRequest($request);
+        //$this->peopleContactsRepository->createFromRequest($request);
 
-        $person = $this->personsRepository->findById(
+        $person = $this->peopleRepository->findById(
             $request->get('person_id')
         );
         $calls = $this->callsRepository->findByPerson($person->id);
-        $addresses = $this->personsAddressesRepository->findByPerson(
+        $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id
         );
-        $contacts = $this->personsContactsRepository->findByPerson($person->id);
+        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
         return view($view)
             ->with('person', $person)
@@ -69,10 +69,10 @@ class PersonsContactsController extends Controller
      */
     public function show($id)
     {
-        $contact = $this->personsContactsRepository->findById($id);
-        $person = $this->personsRepository->findById($contact->person_id);
+        $contact = $this->peopleContactsRepository->findById($id);
+        $person = $this->peopleRepository->findById($contact->person_id);
 
-        return view('callcenter.personsContacts.form')
+        return view('callcenter.peopleContacts.form')
             ->with($this->getComboBoxMenus())
             ->with('contact', $contact)
             ->with('person', $person);

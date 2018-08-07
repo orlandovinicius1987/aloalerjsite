@@ -4,7 +4,7 @@ namespace App\Data\Repositories;
 
 use App\Data\Models\Person;
 
-class PersonsRepository extends BaseRepository
+class People extends BaseRepository
 {
     /**
      * @var $model

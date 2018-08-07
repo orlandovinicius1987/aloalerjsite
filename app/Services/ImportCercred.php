@@ -19,11 +19,11 @@ class ImportCercred
 
         $this->command = $command;
 
-//        $this->persons();
-//
-//        $this->emails();
-//
-//        $this->phones();
+        $this->people();
+
+        $this->emails();
+
+        $this->phones();
 
         $this->addresses();
     }
@@ -243,7 +243,7 @@ class ImportCercred
             });
     }
 
-    private function persons()
+    private function people()
     {
         $counter = 0;
 
@@ -266,7 +266,7 @@ class ImportCercred
             ->table('pessoa')
             ->get()
             ->each(function ($person) use (&$counter) {
-                Person::create([
+                Person::insert([
                     'id' => $person->pessoa_id,
                     'code' => $person->codigo,
                     'name' => $person->nome,
