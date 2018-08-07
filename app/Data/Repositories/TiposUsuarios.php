@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\TipoUsuario;
+use App\Data\Models\UserType;
 use Illuminate\Support\Facades\Cache;
 
 class TiposUsuarios extends Base
@@ -9,7 +9,7 @@ class TiposUsuarios extends Base
     /**
      * @var string
      */
-    protected $model = TipoUsuario::class;
+    protected $model = UserType::class;
 
     /**
      * @param $name
@@ -22,7 +22,7 @@ class TiposUsuarios extends Base
             'TiposUsuarios-findByName-' . $name,
             1000,
             function () use ($name) {
-                return TipoUsuario::where('nome', $name)->first();
+                return UserType::where('name', $name)->first();
             }
         );
     }

@@ -2,14 +2,14 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\PersonModel;
+use App\Data\Models\Person;
 
 class PersonsRepository extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = PersonModel::class;
+    protected $model = Person::class;
 
     private function searchByCpf($string)
     {

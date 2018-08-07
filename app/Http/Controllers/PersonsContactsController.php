@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
-use App\Data\Models\PersonContactModel;
-use App\Data\Models\ContactTypeModel;
+use App\Data\Models\PersonContact;
+use App\Data\Models\ContactType;
 
 class PersonsContactsController extends Controller
 {
@@ -84,10 +84,10 @@ class PersonsContactsController extends Controller
     private function createPersonContact(PersonRequest $request, $code)
     {
         if ($request->get($code)) {
-            PersonContactModel::create([
+            PersonContact::create([
                 'person_id' => $request->get('person_id'),
                 'contact_type_id' =>
-                    ContactTypeModel::where('code', $code)->first()->id,
+                    ContactType::where('code', $code)->first()->id,
                 'contact' => $request->get($code),
             ]);
         }

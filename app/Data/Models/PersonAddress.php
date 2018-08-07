@@ -2,15 +2,8 @@
 
 namespace App\Data\Models;
 
-class PersonAddressModel extends BaseModel
+class PersonAddress extends BaseModel
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $table = 'persons_addresses';
-
     /**
      * @var array
      */
@@ -26,5 +19,6 @@ class PersonAddressModel extends BaseModel
         'is_mailable',
         'validated_at',
         'validated_by_id',
+        'address_id',
     ];
 }

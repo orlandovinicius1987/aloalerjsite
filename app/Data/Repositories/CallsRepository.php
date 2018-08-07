@@ -2,14 +2,14 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\CallModel;
+use App\Data\Models\Call;
 
 class CallsRepository extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = CallModel::class;
+    protected $model = Call::class;
 
 
     /**

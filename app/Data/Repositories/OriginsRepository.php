@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\OriginModel;
-use App\Data\Models\PersonModel;
+use App\Data\Models\Origin;
+use App\Data\Models\Person;
 use App\Data\Models\ViaModel;
 
 class OriginsRepository extends BaseRepository
@@ -11,7 +11,7 @@ class OriginsRepository extends BaseRepository
     /**
      * @var $model
      */
-    protected $model = OriginModel::class;
+    protected $model = Origin::class;
 
 
 }

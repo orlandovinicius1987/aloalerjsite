@@ -1,15 +1,8 @@
 <?php
 namespace App\Data\Models;
 
-class PersonContactModel extends BaseModel
+class PersonContact extends BaseModel
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $table = 'persons_contacts';
-
     /**
      * @var array
      */

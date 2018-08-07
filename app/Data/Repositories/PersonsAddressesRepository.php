@@ -2,15 +2,15 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\PersonAddressModel;
-use App\Data\Models\PersonModel;
+use App\Data\Models\PersonAddress;
+use App\Data\Models\Person;
 
 class PersonsAddressesRepository extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = PersonAddressModel::class;
+    protected $model = PersonAddress::class;
 
     /**
      * @param person_id

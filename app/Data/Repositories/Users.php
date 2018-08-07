@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\TipoUsuario;
+use App\Data\Models\UserType;
 use App\Data\Models\User;
 use App\Services\Authorization;
 use Illuminate\Support\Facades\Auth;
@@ -70,10 +70,10 @@ class Users extends Base
      *
      * @return mixed
      */
-    private function getTipoUsuario($username)
+    private function getUserType($username)
     {
         return // $this->authorization->getUserProfiles($username)->first()
-        TipoUsuario::where('nome', 'Usuario')->first();
+        UserType::where('name', 'Usuario')->first();
     }
 
     private function getUserTypeFromPermissions($permissions)

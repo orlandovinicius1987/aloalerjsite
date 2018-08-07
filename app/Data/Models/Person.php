@@ -1,15 +1,8 @@
 <?php
 namespace App\Data\Models;
 
-class PersonModel extends BaseModel
+class Person extends BaseModel
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $table = 'persons';
-
     /**
      * @var array
      */
@@ -31,11 +24,11 @@ class PersonModel extends BaseModel
 
     public function contacts()
     {
-        return $this->belongsToMany(PersonContactModel::class);
+        return $this->belongsToMany(PersonContact::class);
     }
 
     public function addresses()
     {
-        return $this->belongsToMany(PersonAddressModel::class);
+        return $this->belongsToMany(PersonAddress::class);
     }
 }

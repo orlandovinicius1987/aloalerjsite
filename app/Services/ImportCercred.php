@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Data\Models\ContactTypeModel;
-use App\Data\Models\PersonAddressModel;
-use App\Data\Models\PersonContactModel;
-use App\Data\Models\PersonModel;
+use App\Data\Models\ContactType;
+use App\Data\Models\PersonAddress;
+use App\Data\Models\PersonContact;
+use App\Data\Models\Person;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -19,11 +19,11 @@ class ImportCercred
 
         $this->command = $command;
 
-        $this->persons();
-
-        $this->emails();
-
-        $this->phones();
+//        $this->persons();
+//
+//        $this->emails();
+//
+//        $this->phones();
 
         $this->addresses();
     }
@@ -33,7 +33,7 @@ class ImportCercred
         $counter = 0;
 
         if (
-            PersonAddressModel::count() ==
+            PersonAddress::count() ==
             $this->db()
                 ->table('endereco')
                 ->count()
@@ -45,7 +45,7 @@ class ImportCercred
 
         $this->info('Importing ADDRESSES...');
 
-        PersonAddressModel::truncate();
+        PersonAddress::truncate();
 
         $statuses = coollect(
             $this->db()
@@ -75,7 +75,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonAddressModel::create([
+                PersonAddress::create([
                     'person_id' => $endereco->pessoa_id,
                     'zipcode' => $endereco->cep,
                     'street' => $endereco->endereco,
@@ -101,11 +101,11 @@ class ImportCercred
     {
         $counter = 0;
 
-        $phoneId = ContactTypeModel::where('code', 'phone')->first()->id;
-        $mobileId = ContactTypeModel::where('code', 'mobile')->first()->id;
+        $phoneId = ContactType::where('code', 'phone')->first()->id;
+        $mobileId = ContactType::where('code', 'mobile')->first()->id;
 
         if (
-            PersonContactModel::whereIn('contact_type_id', [
+            PersonContact::whereIn('contact_type_id', [
                 $phoneId,
                 $mobileId,
             ])->count() ==
@@ -120,7 +120,7 @@ class ImportCercred
 
         $this->info('Importing PHONES...');
 
-        PersonContactModel::truncate();
+        PersonContact::truncate();
 
         $statuses = $this->db()
             ->table('telefone_status')
@@ -152,7 +152,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonContactModel::create([
+                PersonContact::create([
                     'person_id' => $telefone->pessoa_id,
                     'contact_type_id' =>
                         $type == 'celular' ? $mobileId : $phoneId,
@@ -177,10 +177,10 @@ class ImportCercred
     {
         $counter = 0;
 
-        $contactTypeId = ContactTypeModel::where('code', 'email')->first()->id;
+        $contactTypeId = ContactType::where('code', 'email')->first()->id;
 
         if (
-            PersonContactModel::where(
+            PersonContact::where(
                 'contact_type_id',
                 $contactTypeId
             )->count() ==
@@ -195,7 +195,7 @@ class ImportCercred
 
         $this->info('Importing EMAILS...');
 
-        PersonContactModel::truncate();
+        PersonContact::truncate();
 
         $statuses = $this->db()
             ->table('email_status')
@@ -222,7 +222,7 @@ class ImportCercred
                     ->where('email_status', $email->email_status)
                     ->first()->descricao;
 
-                PersonContactModel::create([
+                PersonContact::create([
                     'person_id' => $email->pessoa_id,
                     'contact_type_id' => $contactTypeId,
                     'contact' => $email->email,
@@ -248,7 +248,7 @@ class ImportCercred
         $counter = 0;
 
         if (
-            PersonModel::count() ==
+            Person::count() ==
             $this->db()
                 ->table('pessoa')
                 ->count()
@@ -260,13 +260,13 @@ class ImportCercred
 
         $this->info('Importing PERSONS...');
 
-        PersonModel::truncate();
+        Person::truncate();
 
         $this->db()
             ->table('pessoa')
             ->get()
             ->each(function ($person) use (&$counter) {
-                PersonModel::create([
+                Person::create([
                     'id' => $person->pessoa_id,
                     'code' => $person->codigo,
                     'name' => $person->nome,

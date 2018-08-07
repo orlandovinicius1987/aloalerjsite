@@ -2,15 +2,8 @@
 
 namespace App\Data\Models;
 
-class CallModel extends BaseModel
+class Call extends BaseModel
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $table = 'calls';
-
     /**
      * @var array
      */
