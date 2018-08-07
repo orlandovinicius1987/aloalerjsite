@@ -19,7 +19,7 @@ class ImportCercred
 
         $this->command = $command;
 
-        $this->people();
+        // $this->people();
 
         $this->emails();
 
@@ -95,6 +95,10 @@ class ImportCercred
                     $this->info("{$counter} = {$endereco->endereco}");
                 }
             });
+
+        $last = PersonAddress::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+
+        DB::raw("setval('person_addresses_id_seq', {$last}, true);");
     }
 
     private function phones()
@@ -171,6 +175,10 @@ class ImportCercred
                     $this->info("{$counter} = {$telefone->telefone}");
                 }
             });
+
+        $last = PersonContact::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+
+        DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
 
     private function emails()
@@ -241,6 +249,10 @@ class ImportCercred
                     );
                 }
             });
+
+        $last = PersonContact::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+
+        DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
 
     private function people()
@@ -281,7 +293,7 @@ class ImportCercred
                     'income' => (float) str_replace('$', '', $person->renda),
                     'person_type_id' => $person->tipo_pessoa,
                     'created_at' => $person->inclusao,
-                    'updated_by' => $person->usuario_id_alteracao,
+                    'updated_by_id' => $person->usuario_id_alteracao,
                 ]);
 
                 $counter++;
@@ -292,6 +304,10 @@ class ImportCercred
                     );
                 }
             });
+
+        $last = Person::orderBy('id', 'desc')->take(1)->get()->first()->id + 1;
+
+        DB::raw("setval('people_id_seq', {$last}, true);");
     }
 
     private function info($message)
