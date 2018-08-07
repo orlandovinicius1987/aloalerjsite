@@ -1,4 +1,14 @@
-<div class="card-header">{{ __('Reclamações') }}</div>
+<div class="card-header">
+    {{ __('Reclamações') }}
+
+    <a id="buttonAndamentos"
+       href="{{ route('calls.create',['person_id'=>$person->id]) }}"
+       class="btn btn-primary btn-sm pull-right"
+    >
+        <i class="fa fa-plus"></i>
+        Nova Reclamação
+    </a>
+</div>
 
 <div class="card">
     <div class="card-body">
@@ -20,12 +30,4 @@
             @endforelse
         </table>
     </div>
-
-    <a id="buttonAndamentos"
-        href="{{ route('calls.create',['person_id'=>$person->id]) }}"
-        class="btn btn-primary pull-right"
-    >
-        <i class="fa fa-plus"></i>
-        Nova Reclamação
-    </a>
 </div>
