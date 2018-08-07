@@ -23,7 +23,9 @@ class Committees extends Controller
     public function show($committeeName)
     {
         return view('committees.show', [
-            'committee' => $this->committeeRepository->findBySlug($committeeName)
+            'committee' => $this->committeeRepository->findBySlug(
+                $committeeName
+            ),
         ]);
     }
 }

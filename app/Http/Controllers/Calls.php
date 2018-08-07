@@ -7,7 +7,7 @@ use App\Http\Requests\ViaRequest;
 use App\Http\Requests\CallRequest;
 use App\Data\Repositories\Vias as ViasRepository;
 
-class Calls  extends  Controller
+class Calls extends Controller
 {
     /**
      * @return $this
@@ -36,9 +36,7 @@ class Calls  extends  Controller
             $message = 'Reclamação cadastrada com sucesso.';
         }
 
-        $person = $this->peopleRepository->findById(
-            $request->get('person_id')
-        );
+        $person = $this->peopleRepository->findById($request->get('person_id'));
 
         $request->merge(['id' => $request->get('call_id')]);
         $call = $this->callsRepository->createFromRequest($request);

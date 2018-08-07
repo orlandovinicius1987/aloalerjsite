@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <form action="{{ route('persons.index') }}" id="searchForm">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Pesquisar</label>
+                                <label for="pesquisa">Pesquisar</label>
 
                                 <input
                                     type="text" class="form-control"
@@ -49,6 +49,7 @@
                                     placeholder="digite o CPF a ser pesquisado"
                                     v-model="form.search"
                                     @keyup="typeKeyUp"
+                                    v-mask='["###.###.###-##", "##.###.###/####-##"]'
                                 >
                             </div>
 

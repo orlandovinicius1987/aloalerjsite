@@ -14,7 +14,7 @@ use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
 
-abstract class Controller extends  IlluminateController
+abstract class Controller extends IlluminateController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 

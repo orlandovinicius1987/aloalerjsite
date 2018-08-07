@@ -6,7 +6,5 @@ class CallType extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = [
-        'name',
-    ];
+    protected $fillable = ['name'];
 }
