@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\TipoUsuario;
+use App\Data\Models\UserType;
 use App\Data\Models\User;
 use App\Services\Authorization;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +28,7 @@ class Users extends Base
      */
     public function __construct(
         Authorization $authorization,
-        TiposUsuarios $tiposUsuarios
+        UserTypes $tiposUsuarios
     ) {
         $this->authorization = $authorization;
 
@@ -70,10 +70,10 @@ class Users extends Base
      *
      * @return mixed
      */
-    private function getTipoUsuario($username)
+    private function getUserType($username)
     {
         return // $this->authorization->getUserProfiles($username)->first()
-        TipoUsuario::where('nome', 'Usuario')->first();
+        UserType::where('name', 'Usuario')->first();
     }
 
     private function getUserTypeFromPermissions($permissions)
@@ -86,7 +86,7 @@ class Users extends Base
                     : 'usuario'
             );
 
-        return app(TiposUsuarios::class)->findByName($type);
+        return app(UserTypes::class)->findByName($type);
     }
 
     private function isAdministrador($permissions)

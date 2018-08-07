@@ -44,76 +44,76 @@ Route::get('/home', 'Home@index')->name('home');
 
 //Route::group(['prefix' => 'callcenter', 'middleware' => ['auth']], function()
 Route::group(['prefix' => 'callcenter'], function () {
-    Route::get('/', 'PersonsController@index')->name('persons.index');
+    Route::get('/', 'People@index')->name('persons.index');
 
     Route::group(['prefix' => 'persons'], function () {
-        Route::get('/', 'PersonsController@index')->name('persons.index');
-        Route::get('/create', 'PersonsController@create')->name(
+        Route::get('/', 'People@index')->name('persons.index');
+        Route::get('/create', 'People@create')->name(
             'persons.create'
         );
-        Route::post('/', 'PersonsController@store')->name('persons.store');
-        Route::get('/show/{cpf_cnpj}', 'PersonsController@show')->name(
+        Route::post('/', 'People@store')->name('persons.store');
+        Route::get('/show/{cpf_cnpj}', 'People@show')->name(
             'persons.show'
         );
     });
 
     Route::group(['prefix' => 'personsAddresses'], function () {
-        Route::get('/', 'PersonsAddressesController@index')->name(
+        Route::get('/', 'PersonAddresses@index')->name(
             'personsAddresses.index'
         );
         Route::get(
             '/create/{person_id}',
-            'PersonsAddressesController@create'
+            'PersonAddresses@create'
         )->name('personsAddresses.create');
 
-        Route::post('/', 'PersonsAddressesController@store')->name(
+        Route::post('/', 'PersonAddresses@store')->name(
             'personsAddresses.store'
         );
-        Route::get('/show/{id}', 'PersonsAddressesController@show')->name(
+        Route::get('/show/{id}', 'PersonAddresses@show')->name(
             'personsAddresses.show'
         );
     });
 
     Route::group(['prefix' => 'personsContacts'], function () {
-        Route::get('/', 'PersonsContactsController@index')->name(
+        Route::get('/', 'PersonContacts@index')->name(
             'personsContacts.index'
         );
         Route::get(
             '/create/{person_id}',
-            'PersonsContactsController@create'
+            'PersonContacts@create'
         )->name('personsContacts.create');
-        Route::post('/', 'PersonsContactsController@store')->name(
+        Route::post('/', 'PersonContacts@store')->name(
             'personsContacts.store'
         );
-        Route::get('/show/{id}', 'PersonsContactsController@show')->name(
+        Route::get('/show/{id}', 'PersonContacts@show')->name(
             'personsContacts.show'
         );
     });
 
     Route::group(['prefix' => 'origins'], function () {
-        Route::get('/', 'OriginsController@index')->name('origins.index');
-        Route::get('/create', 'OriginsController@create')->name(
+        Route::get('/', 'Origins@index')->name('origins.index');
+        Route::get('/create', 'Origins@create')->name(
             'origins.create'
         );
-        Route::post('/', 'OriginsController@store')->name('origins.store');
-        Route::get('/show/{id}', 'OriginsController@show')->name(
+        Route::post('/', 'Origins@store')->name('origins.store');
+        Route::get('/show/{id}', 'Origins@show')->name(
             'origins.show'
         );
     });
 
     Route::group(['prefix' => 'areas'], function () {
-        Route::get('/', 'AreasController@index')->name('areas.index');
-        Route::get('/create', 'AreasController@create')->name('areas.create');
-        Route::post('/', 'AreasController@store')->name('areas.store');
-        Route::get('/show/{id}', 'AreasController@show')->name('areas.show');
+        Route::get('/', 'Areas@index')->name('areas.index');
+        Route::get('/create', 'Areas@create')->name('areas.create');
+        Route::post('/', 'Areas@store')->name('areas.store');
+        Route::get('/show/{id}', 'Areas@show')->name('areas.show');
     });
 
     Route::group(['prefix' => 'calls'], function () {
-        Route::get('/', 'CallsController@index')->name('calls.index');
-        Route::get('/create/{person_id}', 'CallsController@create')->name(
+        Route::get('/', 'Calls@index')->name('calls.index');
+        Route::get('/create/{person_id}', 'Calls@create')->name(
             'calls.create'
         );
-        Route::post('/', 'CallsController@store')->name('calls.store');
-        Route::get('/show/{id}', 'CallsController@show')->name('calls.show');
+        Route::post('/', 'Calls@store')->name('calls.store');
+        Route::get('/show/{id}', 'Calls@show')->name('calls.show');
     });
 });

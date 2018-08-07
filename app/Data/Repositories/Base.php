@@ -158,7 +158,7 @@ abstract class Base
      */
     protected function makeResultForSelect(
         $result,
-        $label = 'nome',
+        $label = 'name',
         $value = 'id'
     ) {
         return $result->map(function ($row) use ($value, $label) {

@@ -1,5 +1,6 @@
 <?php
-use App\Data\Models\TipoUsuario as TipoUsuarioModel;
+
+use App\Data\Models\UserType as UserTypeModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
@@ -7,9 +8,9 @@ class AddUserTypes extends Migration
 {
     public function up()
     {
-        TipoUsuarioModel::create(['nome' => 'Administrador']);
+        UserTypeModel::create(['name' => 'Administrador']);
 
-        TipoUsuarioModel::create(['nome' => 'Usuario']);
+        UserTypeModel::create(['name' => 'Usuario']);
 
         Schema::table('users', function ($table) {
             $table->integer('user_type_id')->unsigned();
@@ -19,12 +20,12 @@ class AddUserTypes extends Migration
     public function down()
     {
         DB
-            ::table('tipos_usuarios')
-            ->where('nome', '=', 'Administrador')
+            ::table('user_types')
+            ->where('name', '=', 'Administrador')
             ->delete();
         DB
-            ::table('tipos_usuarios')
-            ->where('nome', '=', 'Usuario')
+            ::table('user_types')
+            ->where('name', '=', 'Usuario')
             ->delete();
 
         Schema::table('users', function ($table) {
@@ -32,3 +33,4 @@ class AddUserTypes extends Migration
         });
     }
 }
+

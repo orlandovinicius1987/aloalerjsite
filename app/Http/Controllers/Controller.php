@@ -1,20 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Repositories\AreasRepository;
-use App\Data\Repositories\CallsRepository;
-use App\Data\Repositories\CallTypesRepository;
-use App\Data\Repositories\CommitteesRepository;
-use App\Data\Repositories\OriginsRepository;
-use App\Data\Repositories\PersonsAddressesRepository;
-use App\Data\Repositories\PersonsContactsRepository;
-use App\Data\Repositories\PersonsRepository;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use App\Data\Repositories\Areas as AreasRepository;
+use App\Data\Repositories\Calls as CallsRepository;
+use App\Data\Repositories\People as PeopleRepository;
+use App\Data\Repositories\Origins as OriginsRepository;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller as IlluminateController;
+use App\Data\Repositories\CallTypes as CallTypesRepository;
+use App\Data\Repositories\Committees as CommitteesRepository;
+use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
+use App\Data\Repositories\PersonContacts as PersonContactsRepository;
 
-abstract class Controller extends IlluminateController
+abstract class Controller extends  IlluminateController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -23,10 +23,10 @@ abstract class Controller extends IlluminateController
     /**
      * @var Repository
      */
-    protected $personsRepository;
+    protected $peopleRepository;
     protected $callsRepository;
-    protected $personsAddressesRepository;
-    protected $personsContactsRepository;
+    protected $peopleAddressesRepository;
+    protected $peopleContactsRepository;
     protected $originsRepository;
     protected $committeesRepository;
     protected $callTypesRepository;
@@ -35,22 +35,30 @@ abstract class Controller extends IlluminateController
     /**
      * Persons constructor.
      *
-     * @param Repository $repository
+     * @param PeopleRepository $personRepository
+     * @param CallsRepository $callsRepository
+     * @param PersonAddressesRepository $peopleAddressesRepository
+     * @param PersonContactsRepository $peopleContactsRepository
+     * @param OriginsRepository $originsRepository
+     * @param CommitteesRepository $committeesRepository
+     * @param CallTypesRepository $callTypesRepository
+     * @param AreasRepository $areasRepository
+     * @internal param Repository $repository
      */
     public function __construct(
-        PersonsRepository $personRepository,
+        PeopleRepository $personRepository,
         CallsRepository $callsRepository,
-        PersonsAddressesRepository $personsAddressesRepository,
-        PersonsContactsRepository $personsContactsRepository,
+        PersonAddressesRepository $peopleAddressesRepository,
+        PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
         CallTypesRepository $callTypesRepository,
         AreasRepository $areasRepository
     ) {
-        $this->personsRepository = $personRepository;
+        $this->peopleRepository = $personRepository;
         $this->callsRepository = $callsRepository;
-        $this->personsAddressesRepository = $personsAddressesRepository;
-        $this->personsContactsRepository = $personsContactsRepository;
+        $this->peopleAddressesRepository = $peopleAddressesRepository;
+        $this->peopleContactsRepository = $peopleContactsRepository;
         $this->originsRepository = $originsRepository;
         $this->committeesRepository = $committeesRepository;
         $this->callTypesRepository = $callTypesRepository;

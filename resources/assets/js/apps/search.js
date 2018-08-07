@@ -1,4 +1,4 @@
-const appName = 'vue-addresses'
+const appName = 'vue-search'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -6,10 +6,8 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             tables: {
-                addresses: [],
+                people: [],
             },
-
-            pesquisa: '',
 
             refreshing: false,
 
@@ -18,12 +16,7 @@ if (jQuery("#" + appName).length > 0) {
             typeTimeout: null,
 
             form: {
-                zipcode: null,
-                street: null,
-                complement: null,
-                neighborhood: null,
-                city: null,
-                state: null,
+                search: null,
             }
         },
 
@@ -33,18 +26,9 @@ if (jQuery("#" + appName).length > 0) {
 
                 me.refreshing = true
 
-                axios.get('/api/v1/zipcode/'+this.form.zipcode)
+                axios.post('/api/v1/search', {search: this.form.search})
                 .then(function(response) {
-                    me.tables.addresses = response.data
-
-                    if (response.data.addresses[0].street_name) {
-                        me.form.zipcode = response.data.addresses[0].zip
-                        me.form.street = response.data.addresses[0].street_name
-                        me.form.neighborhood = response.data.addresses[0].neighborhood
-                        me.form.city = response.data.addresses[0].city
-                        me.form.state = response.data.addresses[0].state_id
-                        me.form.country = 'Brasil'
-                    }
+                    me.tables.people = response.data
 
                     me.refreshing = false
                 })
@@ -79,10 +63,11 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
+            console.log('mounted');
+
             this.refresh()
 
-            this.refreshTable('addresses')
-
+            // this.refreshTable('people')
         },
     })
 

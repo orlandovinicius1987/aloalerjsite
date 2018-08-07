@@ -1,9 +1,7 @@
 <?php
 namespace App\Data\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Committee extends Model
+class ContactType extends BaseModel
 {
     /**
      * @var array

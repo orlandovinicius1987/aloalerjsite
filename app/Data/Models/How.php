@@ -1,11 +1,11 @@
 <?php
 namespace App\Data\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Committee extends Model
+class How extends BaseModel
 {
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = ['name'];
