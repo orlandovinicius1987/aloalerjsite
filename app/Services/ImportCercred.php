@@ -19,11 +19,11 @@ class ImportCercred
 
         $this->command = $command;
 
-        // $this->persons();
+        $this->persons();
 
-        // $this->emails();
+        $this->emails();
 
-        // $this->phones();
+        $this->phones();
 
         $this->addresses();
     }

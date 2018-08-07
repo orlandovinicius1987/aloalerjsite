@@ -13686,6 +13686,7 @@ module.exports = __webpack_require__(37);
 
 __webpack_require__(12);
 
+__webpack_require__(42);
 __webpack_require__(36);
 
 /***/ }),
@@ -35957,8 +35958,6 @@ if (jQuery("#" + appName).length > 0) {
 
                 me.refreshing = true;
 
-                console.log(this);
-
                 axios.get('/api/v1/zipcode/' + this.form.zipcode).then(function (response) {
                     me.tables.addresses = response.data;
 
@@ -36013,6 +36012,84 @@ if (jQuery("#" + appName).length > 0) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-search';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            tables: {
+                people: []
+            },
+
+            refreshing: false,
+
+            filler: false,
+
+            typeTimeout: null,
+
+            form: {
+                search: null
+            }
+        },
+
+        methods: {
+            refresh: function refresh() {
+                me = this;
+
+                me.refreshing = true;
+
+                axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
+                    me.tables.people = response.data;
+
+                    me.refreshing = false;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.tables.addresses = [];
+
+                    me.refreshing = false;
+                });
+            },
+            typeKeyUp: function typeKeyUp() {
+                clearTimeout(this.timeout);
+
+                me = this;
+
+                this.timeout = setTimeout(function () {
+                    me.refresh();
+                }, 500);
+            },
+            refreshTable: function refreshTable(table) {
+                axios.get('/' + table).then(function (response) {
+                    me.tables[table] = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.tables[table] = [];
+                });
+            }
+        },
+
+        mounted: function mounted() {
+            console.log('mounted');
+
+            this.refresh();
+
+            // this.refreshTable('people')
+        }
+    });
+}
 
 /***/ })
 /******/ ]);

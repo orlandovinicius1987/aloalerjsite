@@ -69,10 +69,11 @@
 
             <div class="col-md-6">
                 <input id="zipcode"
-                       v-model="form.zipcode"
-                       class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
-                       value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required autofocus
-                       @keyup="typeKeyUp">
+                   v-model="form.zipcode"
+                   class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
+                   value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required autofocus
+                   @keyup="typeKeyUp"
+                >
 
                 @if ($errors->has('zipcode'))
                 <span class="invalid-feedback" role="alert">

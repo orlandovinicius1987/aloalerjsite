@@ -1,7 +1,7 @@
-<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
+{{--<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>--}}
+{{--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+{{--<script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.min.js"></script>--}}
+{{--<script src="//cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>--}}
 
 <script>
     var isShowing = false;
@@ -188,13 +188,9 @@
 
 </script>
 
-<!-- JavaScrip Search Plugin -->
-<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
-
-
-
-<!-- Plugin JavaScript -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="/templates/mv/js/classie.js"></script>
-<script src="/templates/mv/js/cbpAnimatedHeader.js"></script>
-
+{{--<!-- JavaScrip Search Plugin -->--}}
+{{--<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>--}}
+{{--<!-- Plugin JavaScript -->--}}
+{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>--}}
+{{--<script src="/templates/mv/js/classie.js"></script>--}}
+{{--<script src="/templates/mv/js/cbpAnimatedHeader.js"></script>--}}

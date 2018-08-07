@@ -28,4 +28,14 @@ class PersonModel extends BaseModel
         'created_by_id',
         'updated_by_id',
     ];
+
+    public function contacts()
+    {
+        return $this->belongsToMany(PersonContactModel::class);
+    }
+
+    public function addresses()
+    {
+        return $this->belongsToMany(PersonAddressModel::class);
+    }
 }
