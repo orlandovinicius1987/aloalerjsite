@@ -39,7 +39,11 @@ class People extends BaseRepository
 
     private function searchByName($string)
     {
-        $query = $this->getBaseQuery()->where('name', 'like', $string . '%');
+        $query = $this->getBaseQuery()->where(
+            'name',
+            'ILIKE',
+            '%' . $string . '%'
+        );
 
         if (($count = $query->count()) > 20) {
             return $this->error(
