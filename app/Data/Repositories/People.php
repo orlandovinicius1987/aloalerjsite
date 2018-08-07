@@ -13,6 +13,10 @@ class People extends BaseRepository
 
     private function searchByCpf($string)
     {
+        info($this->model::with(['contacts', 'addresses'])
+                    ->where('cpf_cnpj', $string)
+                    ->get()->toArray());
+
         return $this->model::with(['contacts', 'addresses'])
             ->where('cpf_cnpj', $string)
             ->get();

@@ -50,20 +50,21 @@ abstract class BaseModel extends Model implements HasPresenter
         return BasePresenter::class;
     }
 
-    /**
-     * @return array
-     */
-    public function attributesToArray()
-    {
-        $attributes = parent::attributesToArray();
-
-        $decorated = AutoPresenter::decorate($this);
-
-        foreach ($this->presenters as $key) {
-            $attributes[$key] = $decorated->{$key};
-        }
-
-        return $attributes;
-    }
+    // Isso aqui está BUGADO. Não está retornando array em tudo quando se faz um ->toArray()
+    //    /**
+    //     * @return array
+    //     */
+    //    public function attributesToArray()
+    //    {
+    //        $attributes = parent::attributesToArray();
+    //
+    //        $decorated = AutoPresenter::decorate($this);
+    //
+    //        foreach ($this->presenters as $key) {
+    //            $attributes[$key] = $decorated->{$key};
+    //        }
+    //
+    //        return $attributes;
+    //    }
 
 }

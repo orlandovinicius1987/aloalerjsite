@@ -9,7 +9,7 @@
                         <h5>{{ __('Pesquisar pessoas') }}</h5>
                     </div>
 
-                    <div class="col-8 text-right">
+                    <div class="col-8 text-right" v-if="form.search && tables.people.length === 0">
                         <a href="{{ route('persons.create') }}" class="btn btn-primary btn-sm float-right">
                             <i class="fa fa-plus"></i>
                             Cadastrar novo cidadão
@@ -33,13 +33,6 @@
                                         v-model="form.search"
                                         @keyup="typeKeyUp"
                                     >
-                                </div>
-
-                                <div
-                                    class="btn btn-primary btn-sm input-group-addon" id="searchButton"
-                                    onClick="javascript:document.getElementById('searchForm').submit();"
-                                >
-                                    <i class="fa fa-search"></i> Pesquisar
                                 </div>
                             </form>
                         </div>
@@ -66,21 +59,30 @@
                     </div>
 
                     <div class="col-12" v-if="tables.people.length > 0">
-                        <table class="table table-borderless">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">CPF</th>
                                     <th scope="col">Endereços</th>
+                                    <th scope="col">Contatos</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="person in tables.people">
                                     <td v-html="person.name"></td>
+
                                     <td v-html="person.cpf_cnpj"></td>
+
                                     <td>
                                         <p v-for="address in person.addresses">
                                             @{{ address.street }}
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <p v-for="contact in person.contacts">
+                                            @{{ contact.contact }}
                                         </p>
                                     </td>
                                 </tr>
