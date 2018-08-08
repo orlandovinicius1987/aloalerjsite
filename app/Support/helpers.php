@@ -46,6 +46,11 @@ function is_administrator()
     return $user->is_administrator;
 }
 
+function only_numbers($string)
+{
+    return preg_replace('/\D/', '',$string);
+}
+
 class Timer
 {
     public static $starttime;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class OriginRequest extends BaseRequest
+class OriginRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.

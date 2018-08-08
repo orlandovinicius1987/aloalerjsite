@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class AreaRequest extends BaseRequest
+class AreaRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.
