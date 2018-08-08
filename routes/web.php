@@ -50,7 +50,7 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/', 'People@index')->name('persons.index');
         Route::get('/create', 'People@create')->name('persons.create');
         Route::post('/', 'People@store')->name('persons.store');
-        Route::get('/show/{cpf_cnpj}', 'People@show')->name('persons.show');
+        Route::get('/show/{id}', 'People@show')->name('persons.show');
     });
 
     Route::group(['prefix' => 'personsAddresses'], function () {

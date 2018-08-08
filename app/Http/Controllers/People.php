@@ -105,15 +105,20 @@ class People extends Controller
      *
      * @return $this
      */
-    public function show($cpf_cnpj)
+    public function show($id)
     {
+        $person = $this->peopleRepository->findById($id);
+        $calls = $this->callsRepository->findByPerson($person->id);
+        $addresses = $this->peopleAddressesRepository->findByPerson(
+            $person->id
+        );
+        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
+
         return view('callcenter.people.form')
-            ->with('formDisabled', true)
-            ->with([
-                'person' => $this->peopleRepository->findByColumn(
-                    'cpf_cnpj',
-                    $cpf_cnpj
-                ),
-            ]);
+            ->with('person', $person)
+            ->with('calls', $calls)
+            ->with('addresses', $addresses)
+            ->with('contacts', $contacts)
+            ->with(['origins' => $this->originsRepository->all()]);
     }
 }
