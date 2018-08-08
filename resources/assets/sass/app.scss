@@ -9,6 +9,29 @@
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
+  background-color: $hard-grey;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  border-top: 5px solid $blue;
 }
+
+
+@media only screen and (min-width: 992px) {
+  .alerj-logo {
+    height: 80px !important;
+    /* margin-bottom: 10px; */
+    border: none;
+    margin-top: -13px;
+    margin-left: 45px;
+    margin-right: 30px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    float: left;
+  }
+
+  .alolerj-logo-home {
+    height: 60px;
+  }
+
+}
+
