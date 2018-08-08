@@ -6,7 +6,7 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             tables: {
-                people: [],
+                people: null,
             },
 
             refreshing: false,
@@ -14,6 +14,8 @@ if (jQuery("#" + appName).length > 0) {
             filler: false,
 
             typeTimeout: null,
+
+            errors: null,
 
             form: {
                 search: null,
@@ -26,9 +28,18 @@ if (jQuery("#" + appName).length > 0) {
 
                 me.refreshing = true
 
+                me.errors = null
+
+                me.tables.people = null
+
                 axios.post('/api/v1/search', {search: this.form.search})
                 .then(function(response) {
-                    me.tables.people = response.data.data
+                    if (response.data.success) {
+                        me.tables.people = response.data.data
+                    } else {
+                        me.tables.people = []
+                        me.errors = response.data.errors
+                    }
 
                     me.refreshing = false
                 })
