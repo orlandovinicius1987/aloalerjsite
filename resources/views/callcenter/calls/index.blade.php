@@ -1,12 +1,12 @@
 <div class="card-header">
-    {{ __('Reclamações') }}
+    {{ __('Protocolos') }}
 
     <a id="buttonAndamentos"
        href="{{ route('calls.create',['person_id'=>$person->id]) }}"
        class="btn btn-primary btn-sm pull-right"
     >
         <i class="fa fa-plus"></i>
-        Nova Reclamação
+        Novo Protocolo
     </a>
 </div>
 
@@ -26,7 +26,7 @@
                     <td>{{ $call->subject }}</td>
                 </tr>
             @empty
-                <p>Nenhuma Reclamação encontrada</p>
+                <p>Nenhumo Protocolo encontrada</p>
             @endforelse
         </table>
     </div>

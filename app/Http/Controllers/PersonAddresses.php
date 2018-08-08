@@ -23,7 +23,7 @@ class PersonAddresses extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PersonRequest $request)
+    public function store(Request $request)
     {
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;

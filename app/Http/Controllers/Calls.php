@@ -33,7 +33,7 @@ class Calls extends Controller
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
             $view = 'callcenter.person_addresses.form';
-            $message = 'Reclamação cadastrada com sucesso.';
+            $message = 'Protocolo cadastrado com sucesso.';
         }
 
         $person = $this->peopleRepository->findById($request->get('person_id'));

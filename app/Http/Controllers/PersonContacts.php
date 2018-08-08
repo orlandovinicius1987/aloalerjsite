@@ -15,7 +15,7 @@ class PersonContacts extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        return view('callcenter.peopleContacts.form')
+        return view('callcenter.person_contacts.form')
             ->with('person', $person)
             ->with(['contact' => $this->peopleContactsRepository->new()]);
     }
@@ -25,12 +25,12 @@ class PersonContacts extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PersonRequest $request)
+    public function store(Request $request)
     {
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $message = 'Reclamação cadastrada com sucesso.';
+            $message = 'Protocolo cadastrado com sucesso.';
 
             $this->createPersonContact($request, 'mobile');
             $this->createPersonContact($request, 'whatsapp');
@@ -70,7 +70,7 @@ class PersonContacts extends Controller
         $contact = $this->peopleContactsRepository->findById($id);
         $person = $this->peopleRepository->findById($contact->person_id);
 
-        return view('callcenter.peopleContacts.form')
+        return view('callcenter.person_contacts.form')
             ->with($this->getComboBoxMenus())
             ->with('contact', $contact)
             ->with('person', $person);
@@ -79,7 +79,7 @@ class PersonContacts extends Controller
     /**
      * @param PersonRequest $request
      */
-    private function createPersonContact(PersonRequest $request, $code)
+    private function createPersonContact(Request $request, $code)
     {
         if ($request->get($code)) {
             PersonContact::create([

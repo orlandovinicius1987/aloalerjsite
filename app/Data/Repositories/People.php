@@ -17,7 +17,7 @@ class People extends BaseRepository
 
     private function getBaseQuery()
     {
-        return $this->model::with(['contacts', 'addresses']);
+        return $this->model::with(['contacts', 'addresses', 'calls']);
     }
 
     private function response($data, $count = 0, $messages = null)

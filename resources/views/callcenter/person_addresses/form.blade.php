@@ -79,8 +79,8 @@
 
                         @if ($errors->has('zipcode'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('zipcode') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('zipcode') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
