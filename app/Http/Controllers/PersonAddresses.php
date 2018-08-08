@@ -35,7 +35,7 @@ class PersonAddresses extends Controller
         $request->merge(['id' => $request->get('address_id')]);
         $request->merge([
             'street' =>
-                $request->get('street') . ' , ' . $request->get('number'),
+                trim($request->get('street')) . ', ' . $request->get('number'),
         ]);
         $this->peopleAddressesRepository->createFromRequest($request);
 
