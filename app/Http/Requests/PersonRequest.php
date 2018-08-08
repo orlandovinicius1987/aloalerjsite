@@ -11,7 +11,7 @@ class PersonRequest extends Request
     public function rules()
     {
         return [
-            'cpf_cnpj' => 'required|cpf_cnpj|unique:people',
+            'cpf_cnpj' => 'required_if:person_id,null|cpf_cnpj',
             'name' => 'required',
         ];
     }

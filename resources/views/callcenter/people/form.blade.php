@@ -52,7 +52,9 @@
                            name="cpf_cnpj"
                            value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
                            required autofocus
-                           v-mask='["###.###.###-##", "##.###.###/####-##"]'>
+                           v-mask='["###.###.###-##", "##.###.###/####-##"]'
+                           {{$person->id ? 'disabled="disabled"' : '' }}
+                    >
 
                     @if ($errors->has('cpf_cnpj'))
                     <span class="invalid-feedback" role="alert">
