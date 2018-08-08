@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 class CallRequest extends Request
@@ -11,9 +10,6 @@ class CallRequest extends Request
      */
     public function rules()
     {
-        return [
-            'cpf_cnpj'          => 'required',
-            'name'          => 'required',
-        ];
+        return ['cpf_cnpj' => 'required', 'name' => 'required'];
     }
 }

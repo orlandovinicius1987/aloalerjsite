@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 class PersonRequest extends Request
@@ -22,9 +21,7 @@ class PersonRequest extends Request
      */
     public function messages()
     {
-        return [
-            'unique' => 'Este CPF já consta da nossa base de dados',
-        ];
+        return ['unique' => 'Este CPF já consta da nossa base de dados'];
     }
 
     /**

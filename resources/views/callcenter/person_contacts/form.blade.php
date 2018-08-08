@@ -18,7 +18,7 @@
     </div>
     @endif
 
-    <form method="POST" action="{{ route('personsContacts.store') }}" aria-label="{{ __('Contatos') }}">
+    <form method="POST" action="{{ route('persons_contacts.store') }}" aria-label="{{ __('Contatos') }}">
         @csrf
 
         @if (isset($person))
