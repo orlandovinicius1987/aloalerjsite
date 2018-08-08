@@ -60,7 +60,7 @@ class People extends Controller
      */
     public function store(PersonRequest $request)
     {
-        $person_id = $this->UserAlreadyRegistered($request);
+        $person_id = $this->userAlreadyRegistered($request);
 
         $url = 'callcenter.people.form';
         $message = $this->messageDefault;
@@ -126,7 +126,7 @@ class People extends Controller
      * @param PersonRequest $request
      * @return $person_id
      */
-    private function UserAlreadyRegistered(PersonRequest $request)
+    private function userAlreadyRegistered(PersonRequest $request)
     {
         $person = null;
         if (!$request->get('$person_id') and ($request->get('cpf_cnpj'))) {
