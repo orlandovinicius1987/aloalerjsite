@@ -32,6 +32,16 @@ class People extends BaseRepository
         ];
     }
 
+    private function searchByProtocolNumber($string)
+    {
+        $call = app(Calls::class)->findByColumn('protocol_number', $string);
+        if ($call) {
+            $query = $this->getBaseQuery()->where('id', $call->person_id);
+            return $this->response($query->get(), $query->count());
+        }
+        return $this->response(null);
+    }
+
     private function searchByCpf($string)
     {
         $query = $this->getBaseQuery()->where('cpf_cnpj', $string);
@@ -60,6 +70,12 @@ class People extends BaseRepository
     public function searchByEverything($string)
     {
         $result = $this->searchByCpf($string);
+
+        if ($result['success'] && $result['count'] > 0) {
+            return $result;
+        }
+
+        $result = $this->searchByProtocolNumber($string);
 
         if ($result['success'] && $result['count'] > 0) {
             return $result;
