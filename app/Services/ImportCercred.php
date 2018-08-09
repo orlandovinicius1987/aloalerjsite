@@ -25,7 +25,7 @@ class ImportCercred
     private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
-            Progress::create([
+            Progress::create($this->sanitize([
                 'record_id' => $record->id,
                 'progress_type_id' => ProgressType::firstOrCreate(['name' => $history->historico_tipo_descricao])->id,
                 'created_by_id' => $history->historico_usuario_id_alteracao,
@@ -33,13 +33,13 @@ class ImportCercred
                 'created_at' => $history->historico_data_inicio_atendimento,
                 'updated_at' => $history->historico_data_inicio_atendimento,
                 'history_fields' => $history->history_fields->toJson(),
-            ]);
+            ]));
         }
     }
 
     private function createRecordFromProtocol($protocol)
     {
-        return Record::create([
+        return Record::create($this->sanitize([
             'protocol' => $protocol->protocolo_codigo,
             'person_id' => $protocol->pessoa_id,
             'record_type_id' => $protocol->pessoa_id,
@@ -48,7 +48,7 @@ class ImportCercred
             'record_action_id' => $this->inferActionFromProtocol($protocol),
             'created_at' => $date = $this->inferDateFromProtocol($protocol),
             'updated_at' => $date
-        ]);
+        ]));
     }
 
     /**
@@ -70,19 +70,19 @@ class ImportCercred
 
         $this->command = $command;
 
-//        $this->people();
+        $this->people();
 
-//        $this->emails();
-//
-//        $this->phones();
-//
-//        $this->addresses();
-//
-//        $this->users();
+        $this->emails();
 
-//        $this->progressTypes();
-//
-//        $this->recordActions();
+        $this->phones();
+
+        $this->addresses();
+
+        $this->users();
+
+        $this->progressTypes();
+
+        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -159,7 +159,7 @@ class ImportCercred
         Record::truncate();
         Progress::truncate();
 
-        Person::all()->each(function($person) {
+        Person::all()->each(function($person) use (&$counter) {
             $person->protocols = $this->getProtocolsForPerson($person)->map(function($protocol) {
                 $protocol->history_data = $this->getHistory($protocol->objeto_id)->map(function($history) {
                     $history->history_fields = $this->getHistoryFields($history->historico_id);
@@ -240,14 +240,14 @@ class ImportCercred
              ->table('usuario')
              ->get()
              ->each(function ($row) {
-                 User::insert([
-                                  'id' => $row->usuario_id,
-                                  'name' => $row->nome,
-                                  'email' => $row->nome.'@cercred.com.br',
-                                  'username' => $row->nome,
-                                  'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
-                                  'password' => bcrypt($row->nome.$row->usuario_id),
-                              ]);
+                 User::insert($this->sanitize([
+                    'id' => $row->usuario_id,
+                    'name' => $row->nome,
+                    'email' => $row->nome.'@cercred.com.br',
+                    'username' => $row->nome,
+                    'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
+                    'password' => bcrypt($row->nome.$row->usuario_id),
+                ]));
              });
     }
 
@@ -298,7 +298,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonAddress::create([
+                PersonAddress::create($this->sanitize($this->sanitize([
                     'person_id' => $endereco->pessoa_id,
                     'zipcode' => $endereco->cep,
                     'street' => $endereco->endereco,
@@ -310,7 +310,7 @@ class ImportCercred
                     'from' => $type,
                     'status' => $status,
                     'address_id' => $endereco->endereco_id,
-                ]);
+                ])));
 
                 $counter++;
 
@@ -380,7 +380,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonContact::create([
+                PersonContact::create($this->sanitize([
                     'person_id' => $telefone->pessoa_id,
                     'contact_type_id' =>
                         $type == 'celular' ? $mobileId : $phoneId,
@@ -391,7 +391,7 @@ class ImportCercred
                         $telefone->enriquecimento_provedor_id,
                     'telefone_id' => $telefone->telefone_id,
                     'created_at' => Carbon::parse($telefone->inclusao),
-                ]);
+                ]));
 
                 $counter++;
 
@@ -451,7 +451,7 @@ class ImportCercred
                     ->where('email_status', $email->email_status)
                     ->first()->descricao;
 
-                $contact = PersonContact::create([
+                $contact = PersonContact::create($this->sanitize([
                     'person_id' => $email->pessoa_id,
                     'contact_type_id' => $contactTypeId,
                     'contact' => $email->email,
@@ -460,7 +460,7 @@ class ImportCercred
                     'provider_enrichment_id' =>
                         $email->enriquecimento_provedor_id,
                     'email_id' => $email->email_id,
-                ]);
+                ]));
 
                 $counter++;
 
@@ -497,7 +497,7 @@ class ImportCercred
             ->table('pessoa')
             ->get()
             ->each(function ($person) use (&$counter) {
-                Person::insert([
+                Person::insert($this->sanitize([
                     'id' => $person->pessoa_id,
                     'code' => $person->codigo,
                     'name' => $person->nome,
@@ -513,7 +513,7 @@ class ImportCercred
                     'person_type_id' => $person->tipo_pessoa,
                     'created_at' => $person->inclusao,
                     'updated_by_id' => $person->usuario_id_alteracao,
-                ]);
+                ]));
 
                 $counter++;
 
@@ -597,5 +597,16 @@ from historico
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
 where historico.historico_id = {$historyId};"));
+    }
+
+    public function sanitize($array)
+    {
+        foreach ($array as $key => $value) {
+            if (is_string($value)) {
+                $array[$key] = trim($value);
+            }
+        }
+
+        return $array;
     }
 }
