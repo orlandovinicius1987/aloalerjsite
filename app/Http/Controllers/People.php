@@ -127,12 +127,12 @@ class People extends Controller
     private function userAlreadyRegistered(PersonRequest $request)
     {
         $person = null;
-        if (!$request->get('$person_id') and ($request->get('cpf_cnpj'))) {
+        if (!$request->get('$person_id') and $request->get('cpf_cnpj')) {
             $person = $this->peopleRepository->findByColumn(
                 'cpf_cnpj',
                 $request->get('cpf_cnpj')
             );
         }
-        return $person ? $person->id : null;
+        return $person ? $person->id : $request->get('person_id');
     }
 }
