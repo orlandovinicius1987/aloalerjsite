@@ -4,7 +4,9 @@ namespace App\Services;
 
 use Carbon\Carbon;
 use App\Data\Models\User;
+use App\Data\Models\Record;
 use App\Data\Models\Person;
+use App\Data\Models\Progress;
 use App\Data\Models\UserType;
 use App\Data\Models\ContactType;
 use App\Data\Models\ProgressType;
@@ -16,28 +18,86 @@ class ImportCercred
 {
     protected $command;
 
+    private function createRecordFromHistory($history)
+    {
+        return Record::insert([
+            'protocol' => $history->protocolo_codigo,
+            'person_id' => $history->pessoa_id,
+            'record_type_id' => $history->pessoa_id,
+        ]);
+    }
+
     public function import($command)
     {
         ini_set('memory_limit', '2048M');
 
         $this->command = $command;
 
-        $this->people();
+//        $this->people();
+//
+//        $this->emails();
+//
+//        $this->phones();
+//
+//        $this->addresses();
+//
+//        $this->users();
 
-        $this->emails();
+        $this->recordTypes();
 
-        $this->phones();
+        $this->progressTypes();
 
-        $this->addresses();
-
-        $this->users();
-
-        $this->progressType();
-
-        $this->progress();
+        $this->recordsAndProgress();
     }
 
-    protected function progressType()
+    private function recordTypes()
+    {
+        $this->info('Importing RECORD TYPES...');
+
+        ProgressType::truncate();
+
+        $this->db()
+             ->table('historico_tipo')
+             ->get()
+             ->each(function ($row) {
+                 RecordType::insert([
+                      'id' => $row->historico_tipo,
+                      'name' => $row->descricao,
+                 ]);
+             });
+
+        $last =
+            RecordType::orderBy('id', 'desc')
+                        ->take(1)
+                        ->get()
+                        ->first()->id + 1;
+
+        DB::raw("setval('record_types_id_seq', {$last}, true);");
+    }
+
+    protected function recordsAndProgress()
+    {
+        $this->info('Importing RECORDS AND PROGRESS...');
+
+        Record::truncate();
+        Progress::truncate();
+
+        Person::all()->each(function($person) {
+            $this->getHistoryRecordsForPerson($person)->each(function($history) {
+                $record = $this->createRecordFromHistory($history);
+            });
+        });
+
+        $last =
+            ProgressType::orderBy('id', 'desc')
+                        ->take(1)
+                        ->get()
+                        ->first()->id + 1;
+
+        DB::raw("setval('progress_types_id_seq', {$last}, true);");
+    }
+
+    protected function progressTypes()
     {
         $this->info('Importing PROGRESS TYPES...');
 
@@ -391,5 +451,34 @@ class ImportCercred
     protected function db()
     {
         return DB::connection('cercred');
+    }
+
+    private function getHistoryRecordsForPerson($person)
+    {
+        return coollect($this->db()
+                    ->select("select
+  pessoa.pessoa_id,
+  pessoa.nome pessoa_nome,
+  protocolo.protocolo_id,
+  protocolo.protocolo_codigo,
+  objeto.objeto_id,
+  objeto.codigo objeto_codigo,
+  objeto.objeto_tipo,
+  objeto_status.descricao objeto_status_descricao,
+  historico.historico_id,
+  historico.complemento historico_complemento,
+  historico_tipo.descricao historico_tipo_descricao,
+  historico.usuario_id historico_usuario_id,
+  historico.usuario_id_alteracao historico_usuario_id_alteracao,
+  historico.*
+
+from protocolo
+  left join objeto on protocolo.objeto_id = objeto.objeto_id
+  left join historico on protocolo.objeto_id = historico.objeto_id
+  left join historico_tipo on historico.historico_tipo = historico_tipo.historico_tipo
+  left join pessoa on historico.pessoa_id = pessoa.pessoa_id
+  left join objeto_status on objeto_status.objeto_status = objeto.objeto_status
+where pessoa.pessoa_id = {$person->id}
+order by pessoa.pessoa_id, protocolo.protocolo_id, historico.data_inicio_atendimento"));
     }
 }

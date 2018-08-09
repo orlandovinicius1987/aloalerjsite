@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -44,18 +45,6 @@ class CreateRecordsTable extends Migration
             $table->integer('origin_id')->unsigned();
 
             $table->string('subject', 512);
-
-            $table->text('original');
-
-            $table->text('rectified')->nullable();
-
-            $table->timestamp('rectified_at')->nullable();
-
-            $table
-                ->integer('rectified_by_id')
-                ->nullable()
-                ->unsigned()
-                ->index();
 
             $table
                 ->integer('answer_address_id')
