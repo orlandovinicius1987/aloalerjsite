@@ -8,7 +8,6 @@ use App\Data\Models\RecordAction;
 use Carbon\Carbon;
 use App\Data\Models\User;
 use App\Data\Models\Record;
-use App\Data\Models\RecordType;
 use App\Data\Models\Person;
 use App\Data\Models\Progress;
 use App\Data\Models\UserType;
@@ -17,6 +16,7 @@ use App\Data\Models\ProgressType;
 use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class ImportCercred
 {
@@ -79,19 +79,19 @@ class ImportCercred
 
         $this->command = $command;
 
-        $this->people();
-
-        $this->emails();
-
-        $this->phones();
-
-        $this->addresses();
-
-        $this->users();
-
-        $this->progressTypes();
-
-        $this->recordActions();
+//        $this->people();
+//
+//        $this->emails();
+//
+//        $this->phones();
+//
+//        $this->addresses();
+//
+//        $this->users();
+//
+//        $this->progressTypes();
+//
+//        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -140,7 +140,7 @@ class ImportCercred
                 'Comissão Responsável'
             )->first();
 
-            if (isset($data['historico_propriedade_valor'])) {
+            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Area::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
@@ -158,7 +158,7 @@ class ImportCercred
                 'Origem'
             )->first();
 
-            if (isset($data['historico_propriedade_valor'])) {
+            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Origin::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
@@ -202,6 +202,10 @@ class ImportCercred
                             $this->createProgress($history, $record);
                         });
                     } catch (\Exception $exception) {
+                        dump($protocol);
+
+                        throw $exception;
+                    } catch (FatalThrowableError $exception) {
                         dump($protocol);
 
                         throw $exception;
