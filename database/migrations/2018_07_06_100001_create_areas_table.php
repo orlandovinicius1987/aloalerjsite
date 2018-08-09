@@ -1,4 +1,5 @@
 <?php
+use App\Data\Models\Area;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateAreasTable extends Migration
         });
 
         $array = [
-            [999999, 'Nenhum'],
+            [999999, 'Desconhecido'],
             [0, 'Abuso aos direitos humanos'],
             [1, 'Ação social'],
             [2, 'Animais'],
@@ -56,6 +57,8 @@ class CreateAreasTable extends Migration
                 'updated_at' => now(),
             ]);
         }
+
+        DB::statement("SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));");
     }
 
     /**
