@@ -31,8 +31,8 @@ class Person extends BaseModel
         return $this->hasMany(PersonAddress::class);
     }
 
-    public function calls()
+    public function records()
     {
-        return $this->hasMany(Call::class);
+        return $this->hasMany(Record::class);
     }
 }

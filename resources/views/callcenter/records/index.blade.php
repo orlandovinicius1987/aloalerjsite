@@ -2,7 +2,7 @@
     {{ __('Protocolos') }}
 
     <a id="buttonAndamentos"
-       href="{{ route('calls.create',['person_id'=>$person->id]) }}"
+       href="{{ route('records.create',['person_id'=>$person->id]) }}"
        class="btn btn-primary btn-sm pull-right"
     >
         <i class="fa fa-plus"></i>
@@ -12,7 +12,7 @@
 
 <div class="card">
     <div class="card-body">
-        <table id="callsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="recordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Protocolos</th>
@@ -23,13 +23,13 @@
                 </tr>
             </thead>
 
-            @forelse ($calls as $call)
+            @forelse ($records as $record)
                 <tr>
-                    <td><a href="{{ route('calls.show',['id' => $call->id]) }}">{{ $call->protocol_number }}</a></td>
-                    <td>{{ $call->subject }}</td>
-                    <td>{{ $call->committee->name }}</td>
-                    <td>{{ $call->callType->name }}</td>
-                    <td>{{ $call->area->name }}</td>
+                    <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
+                    <td>{{ $record->subject }}</td>
+                    <td>{{ $record->committee->name }}</td>
+                    <td>{{ $record->recordType->name }}</td>
+                    <td>{{ $record->area->name }}</td>
                 </tr>
             @empty
                 <p>Nenhumo Protocolo encontrada</p>

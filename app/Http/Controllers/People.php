@@ -14,13 +14,14 @@ class People extends Controller
     public function index(Request $request)
     {
         $pesquisa = $request->get('pesquisa');
+
         if ($pesquisa) {
             $person = $this->peopleRepository->findByColumn(
                 'cpf_cnpj',
                 $pesquisa
             );
             if ($person) {
-                $calls = $this->callsRepository->findByPerson($person->id);
+                $records = $this->recordsRepository->findByPerson($person->id);
                 $addresses = $this->peopleAddressesRepository->findByPerson(
                     $person->id
                 );
@@ -30,7 +31,7 @@ class People extends Controller
 
                 return view('callcenter.people.form')
                     ->with('person', $person)
-                    ->with('calls', $calls)
+                    ->with('records', $records)
                     ->with('addresses', $addresses)
                     ->with('contacts', $contacts)
                     ->with(['origins' => $this->originsRepository->all()]);
@@ -65,7 +66,7 @@ class People extends Controller
         $url = 'callcenter.people.form';
         $message = $this->messageDefault;
         if (!$person_id) {
-            $url = 'callcenter.calls.form';
+            $url = 'callcenter.records.form';
             $message = 'Usuário cadastrado com sucesso.';
         }
         $view = view($url);
@@ -73,7 +74,7 @@ class People extends Controller
 
         if ($person_id) {
             $person = $this->peopleRepository->findById($person_id);
-            $calls = $this->callsRepository->findByPerson($person->id);
+            $records = $this->recordsRepository->findByPerson($person->id);
             $addresses = $this->peopleAddressesRepository->findByPerson(
                 $person->id
             );
@@ -82,12 +83,12 @@ class People extends Controller
             );
 
             $view
-                ->with('calls', $calls)
+                ->with('records', $records)
                 ->with('addresses', $addresses)
                 ->with('contacts', $contacts);
         } else {
             $view
-                ->with(['call' => $this->callsRepository->new()])
+                ->with(['record' => $this->recordsRepository->new()])
                 ->with('workflow', $request->get('workflow'));
         }
 
@@ -96,7 +97,6 @@ class People extends Controller
 
         return $view
             ->with('person', $person)
-
             ->with('message', $message);
     }
 
@@ -108,7 +108,7 @@ class People extends Controller
     public function show($id)
     {
         $person = $this->peopleRepository->findById($id);
-        $calls = $this->callsRepository->findByPerson($person->id);
+        $records = $this->recordsRepository->findByPerson($person->id);
         $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id
         );
@@ -116,7 +116,7 @@ class People extends Controller
 
         return view('callcenter.people.form')
             ->with('person', $person)
-            ->with('calls', $calls)
+            ->with('records', $records)
             ->with('addresses', $addresses)
             ->with('contacts', $contacts)
             ->with(['origins' => $this->originsRepository->all()]);
