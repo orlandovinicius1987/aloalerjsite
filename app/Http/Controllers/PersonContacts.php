@@ -42,7 +42,7 @@ class PersonContacts extends Controller
         //$this->peopleContactsRepository->createFromRequest($request);
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
-        $calls = $this->callsRepository->findByPerson($person->id);
+        $records = $this->recordsRepository->findByPerson($person->id);
         $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id
         );
@@ -50,7 +50,7 @@ class PersonContacts extends Controller
 
         return view($view)
             ->with('person', $person)
-            ->with('calls', $calls)
+            ->with('records', $records)
             ->with('addresses', $addresses)
             ->with('contacts', $contacts)
 

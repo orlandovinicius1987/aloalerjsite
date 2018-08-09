@@ -114,8 +114,8 @@
     </div>
 </div>
 
-@if (isset($calls))
-@include('callcenter.calls.index')
+@if (isset($records))
+@include('callcenter.records.index')
 @endif
 
 @if (isset($addresses))

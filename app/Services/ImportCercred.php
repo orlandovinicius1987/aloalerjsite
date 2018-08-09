@@ -5,6 +5,7 @@ namespace App\Services;
 use Carbon\Carbon;
 use App\Data\Models\User;
 use App\Data\Models\Record;
+use App\Data\Models\RecordType;
 use App\Data\Models\Person;
 use App\Data\Models\Progress;
 use App\Data\Models\UserType;

@@ -17,7 +17,7 @@ class People extends BaseRepository
 
     private function getBaseQuery()
     {
-        return $this->model::with(['contacts', 'addresses', 'calls']);
+        return $this->model::with(['contacts', 'addresses', 'records']);
     }
 
     private function response($data, $count = 0, $messages = null)
@@ -32,7 +32,7 @@ class People extends BaseRepository
 
     private function searchByProtocolNumber($string)
     {
-        $call = app(Calls::class)->findByColumn('protocol_number', $string);
+        $call = app(Records::class)->findByColumn('protocol', $string);
         if ($call) {
             $query = $this->getBaseQuery()->where('id', $call->person_id);
             return $this->response($query->get(), $query->count());

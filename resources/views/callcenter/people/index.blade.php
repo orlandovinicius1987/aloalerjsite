@@ -94,8 +94,8 @@
                             </td>
 
                             <td>
-                                <p v-for="call in person.calls">
-                                    <a :href="'/callcenter/calls/show/' + call.id">@{{ call.protocol_number }}</a>
+                                <p v-for="record in person.records">
+                                    <a :href="'/callcenter/records/show/' + record.id">@{{ record.protocol }}</a>
                                 </p>
                             </td>
 
