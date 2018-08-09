@@ -13,15 +13,19 @@
         <table id="addressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Endereço</th>
+                    <th>Complemento</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
                 </tr>
             </thead>
 
             @forelse ($addresses as $address)
                 <tr>
-                    <td><a href="{{ route('persons_addresses.show',['id' => $address->id]) }}">{{ $address->id }}</a></td>
                     <td><a href="{{ route('persons_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
+                    <td>{{$address->complement}}</td>
+                    <td>{{$address->neighbourhood}}</td>
+                    <td>{{$address->city}}</td>
                 </tr>
             @empty
                 <p>Nenhum Endereço encontrado</p>

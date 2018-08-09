@@ -13,13 +13,13 @@
         <table id="contactsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Tipo de Contato</th>
                     <th>Contato</th>
                 </tr>
             </thead>
             @forelse ($contacts as $contact)
                 <tr>
-                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->id }}</a></td>
+                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contactType->name }}</a></td>
                     <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
                 </tr>
             @empty

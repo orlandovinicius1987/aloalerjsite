@@ -17,13 +17,19 @@
                 <tr>
                     <th>Protocolos</th>
                     <th>Assuntos</th>
+                    <th>Comissão</th>
+                    <th>Tipo de Protocolo</th>
+                    <th>Área</th>
                 </tr>
             </thead>
 
             @forelse ($calls as $call)
                 <tr>
-                    <td><a href="{{ route('calls.show',['id' => $call->id]) }}">{{ $call->id }}</a></td>
+                    <td><a href="{{ route('calls.show',['id' => $call->id]) }}">{{ $call->protocol_number }}</a></td>
                     <td>{{ $call->subject }}</td>
+                    <td>{{ $call->committee->name }}</td>
+                    <td>{{ $call->callType->name }}</td>
+                    <td>{{ $call->area->name }}</td>
                 </tr>
             @empty
                 <p>Nenhumo Protocolo encontrada</p>
