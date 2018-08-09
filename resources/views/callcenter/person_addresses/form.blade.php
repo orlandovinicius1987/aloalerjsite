@@ -17,7 +17,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('personsAddresses.store') }}" aria-label="{{ __('Endereços') }}">
+            <form method="POST" action="{{ route('persons_addresses.store') }}" aria-label="{{ __('Endereços') }}">
                 @csrf
 
                 @if (isset($person))
@@ -79,8 +79,8 @@
 
                         @if ($errors->has('zipcode'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('zipcode') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('zipcode') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>

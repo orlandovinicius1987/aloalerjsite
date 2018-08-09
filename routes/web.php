@@ -53,30 +53,32 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/show/{id}', 'People@show')->name('persons.show');
     });
 
-    Route::group(['prefix' => 'personsAddresses'], function () {
+    Route::group(['prefix' => 'persons_addresses'], function () {
         Route::get('/', 'PersonAddresses@index')->name(
-            'personsAddresses.index'
+            'persons_addresses.index'
         );
         Route::get('/create/{person_id}', 'PersonAddresses@create')->name(
-            'personsAddresses.create'
+            'persons_addresses.create'
         );
 
         Route::post('/', 'PersonAddresses@store')->name(
-            'personsAddresses.store'
+            'persons_addresses.store'
         );
         Route::get('/show/{id}', 'PersonAddresses@show')->name(
-            'personsAddresses.show'
+            'persons_addresses.show'
         );
     });
 
-    Route::group(['prefix' => 'personsContacts'], function () {
-        Route::get('/', 'PersonContacts@index')->name('personsContacts.index');
+    Route::group(['prefix' => 'persons_contacts'], function () {
+        Route::get('/', 'PersonContacts@index')->name('persons_contacts.index');
         Route::get('/create/{person_id}', 'PersonContacts@create')->name(
-            'personsContacts.create'
+            'persons_contacts.create'
         );
-        Route::post('/', 'PersonContacts@store')->name('personsContacts.store');
+        Route::post('/', 'PersonContacts@store')->name(
+            'persons_contacts.store'
+        );
         Route::get('/show/{id}', 'PersonContacts@show')->name(
-            'personsContacts.show'
+            'persons_contacts.show'
         );
     });
 

@@ -18,4 +18,9 @@ class PersonContact extends BaseModel
         'provider_enrichment_id',
         'created_at',
     ];
+
+    public function contactType()
+    {
+        return $this->belongsTo(ContactType::class);
+    }
 }

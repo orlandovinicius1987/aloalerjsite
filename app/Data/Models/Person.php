@@ -30,4 +30,9 @@ class Person extends BaseModel
     {
         return $this->hasMany(PersonAddress::class);
     }
+
+    public function calls()
+    {
+        return $this->hasMany(Call::class);
+    }
 }

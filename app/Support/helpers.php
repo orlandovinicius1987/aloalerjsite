@@ -48,7 +48,7 @@ function is_administrator()
 
 function only_numbers($string)
 {
-    return preg_replace('/\D/', '',$string);
+    return preg_replace('/\D/', '', $string);
 }
 
 class Timer

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 class PersonRequest extends Request
@@ -12,7 +11,7 @@ class PersonRequest extends Request
     public function rules()
     {
         return [
-            'cpf_cnpj' => 'required|cpf_cnpj|unique:people',
+            'cpf_cnpj' => 'required_if:person_id,null|cpf_cnpj',
             'name' => 'required',
         ];
     }
@@ -22,9 +21,7 @@ class PersonRequest extends Request
      */
     public function messages()
     {
-        return [
-            'unique' => 'Este CPF já consta da nossa base de dados',
-        ];
+        return ['unique' => 'Este CPF já consta da nossa base de dados'];
     }
 
     /**

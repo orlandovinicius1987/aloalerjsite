@@ -23,7 +23,7 @@ class PersonAddresses extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PersonRequest $request)
+    public function store(Request $request)
     {
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;
@@ -70,7 +70,7 @@ class PersonAddresses extends Controller
         $address = $this->peopleAddressesRepository->findById($id);
         $person = $this->peopleRepository->findById($address->person_id);
 
-        return view('callcenter.peopleAddresses.form')
+        return view('callcenter.person_addresses.form')
             ->with($this->getComboBoxMenus())
             ->with('address', $address)
             ->with('person', $person);

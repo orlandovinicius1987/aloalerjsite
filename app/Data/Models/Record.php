@@ -24,4 +24,19 @@ class Record extends BaseModel
         'answered_by_id',
         'origin_id',
     ];
+
+    public function committee()
+    {
+        return $this->belongsTo(Committee::class);
+    }
+
+    public function callType()
+    {
+        return $this->belongsTo(CallType::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
 }
