@@ -7,7 +7,7 @@ class Record extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'protocol_number',
+        'protocol',
         'committee_id',
         'person_id',
         'record_type_id',

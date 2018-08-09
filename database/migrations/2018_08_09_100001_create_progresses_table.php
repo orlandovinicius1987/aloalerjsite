@@ -47,6 +47,10 @@ class CreateProgressesTable extends Migration
                 ->unsigned()
                 ->nullable();
 
+            $table
+                ->json('history_fields')
+                ->nullable();
+
             $table->index('created_at');
         });
     }
