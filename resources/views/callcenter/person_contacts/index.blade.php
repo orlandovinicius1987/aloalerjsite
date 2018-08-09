@@ -2,7 +2,7 @@
     <div class="card-header">
         {{ __('Contatos') }}
 
-        <a id="buttonContatos" href="{{ route('personsContacts.create',['person_id' => $person->id]) }}"
+        <a id="buttonContatos" href="{{ route('persons_contacts.create',['person_id' => $person->id]) }}"
            class="btn btn-primary btn-sm pull-right">
             <i class="fa fa-plus"></i>
             Novo Contato
@@ -13,14 +13,14 @@
         <table id="contactsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Tipo de Contato</th>
                     <th>Contato</th>
                 </tr>
             </thead>
             @forelse ($contacts as $contact)
                 <tr>
-                    <td><a href="{{ route('personsContacts.show',['id' => $contact->id]) }}">{{ $contact->id }}</a></td>
-                    <td><a href="{{ route('personsContacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
+                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contactType->name }}</a></td>
+                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
                 </tr>
             @empty
                 <p>Nenhum Contato encontrado</p>
