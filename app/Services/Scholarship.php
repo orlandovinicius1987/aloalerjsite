@@ -30,4 +30,3 @@ class Scholarship
         return static::$subjects[$id];
     }
 }
-

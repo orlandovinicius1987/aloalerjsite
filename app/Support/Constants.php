@@ -3,5 +3,4 @@ namespace App\Support;
 
 class Constants
 {
-
 }
