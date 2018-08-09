@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Models;
 
-class Call extends BaseModel
+class Record extends BaseModel
 {
     /**
      * @var array
@@ -10,7 +10,7 @@ class Call extends BaseModel
         'protocol_number',
         'committee_id',
         'person_id',
-        'call_type_id',
+        'record_type_id',
         'area_id',
         'subject',
         'original',

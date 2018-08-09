@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCallsTable extends Migration
+class CreateRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateCallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('calls', function (Blueprint $table) {
+        Schema::create('records', function (Blueprint $table) {
             $table->increments('id');
 
             $table
-                ->string('protocol_number')
+                ->string('protocol')
                 ->index()
                 ->nullable();
 
@@ -32,7 +32,7 @@ class CreateCallsTable extends Migration
                 ->index();
 
             $table
-                ->integer('call_type_id')
+                ->integer('record_type_id')
                 ->unsigned()
                 ->index();
 
@@ -86,6 +86,6 @@ class CreateCallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calls');
+        Schema::dropIfExists('records');
     }
 }

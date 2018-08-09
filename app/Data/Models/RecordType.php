@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Models;
 
-class CallType extends BaseModel
+class RecordType extends BaseModel
 {
     /**
      * @var array

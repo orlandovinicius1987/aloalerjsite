@@ -1,14 +1,14 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\Call;
+use App\Data\Models\Record;
 
-class Calls extends BaseRepository
+class Records extends BaseRepository
 {
     /**
      * @var $model
      */
-    protected $model = Call::class;
+    protected $model = Record::class;
 
     /**
      * @param person_id

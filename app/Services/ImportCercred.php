@@ -1,16 +1,20 @@
 <?php
+
 namespace App\Services;
 
+use Carbon\Carbon;
+use App\Data\Models\User;
+use App\Data\Models\Person;
+use App\Data\Models\UserType;
 use App\Data\Models\ContactType;
+use App\Data\Models\ProgressType;
 use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
-use App\Data\Models\Person;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ImportCercred
 {
-    private $command;
+    protected $command;
 
     public function import($command)
     {
@@ -25,9 +29,61 @@ class ImportCercred
         $this->phones();
 
         $this->addresses();
+
+        $this->users();
+
+        $this->progressType();
+
+        $this->progress();
     }
 
-    private function addresses()
+    protected function progressType()
+    {
+        $this->info('Importing PROGRESS TYPES...');
+
+        ProgressType::truncate();
+
+        $this->db()
+             ->table('historico_tipo')
+             ->get()
+             ->each(function ($row) {
+                 ProgressType::insert([
+                                         'id' => $row->historico_tipo,
+                                         'name' => $row->descricao,
+                                     ]);
+             });
+
+        $last =
+            ProgressType::orderBy('id', 'desc')
+                        ->take(1)
+                        ->get()
+                        ->first()->id + 1;
+
+        DB::raw("setval('progress_types_id_seq', {$last}, true);");
+    }
+
+    protected function users()
+    {
+        $this->info('Importing USERS...');
+
+        User::truncate();
+
+        $this->db()
+             ->table('usuario')
+             ->get()
+             ->each(function ($row) {
+                 User::insert([
+                                  'id' => $row->usuario_id,
+                                  'name' => $row->nome,
+                                  'email' => $row->nome.'@cercred.com.br',
+                                  'username' => $row->nome,
+                                  'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
+                                  'password' => bcrypt($row->nome.$row->usuario_id),
+                              ]);
+             });
+    }
+
+    protected function addresses()
     {
         $counter = 0;
 
@@ -104,7 +160,7 @@ class ImportCercred
         DB::raw("setval('person_addresses_id_seq', {$last}, true);");
     }
 
-    private function phones()
+    protected function phones()
     {
         $counter = 0;
 
@@ -127,7 +183,10 @@ class ImportCercred
 
         $this->info('Importing PHONES...');
 
-        PersonContact::truncate();
+        PersonContact::whereIn('contact_type_id', [
+            $phoneId,
+            $mobileId,
+        ])->delete();
 
         $statuses = $this->db()
             ->table('telefone_status')
@@ -188,7 +247,7 @@ class ImportCercred
         DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
 
-    private function emails()
+    protected function emails()
     {
         $counter = 0;
 
@@ -207,7 +266,7 @@ class ImportCercred
 
         $this->info('Importing EMAILS...');
 
-        PersonContact::truncate();
+        PersonContact::where('contact_type_id', $contactTypeId)->delete();
 
         $statuses = $this->db()
             ->table('email_status')
@@ -219,6 +278,7 @@ class ImportCercred
 
         $this->db()
             ->table('email')
+            //->where('email', 'sandrinhabs_35@yahoo.com.br')
             ->get()
             ->each(function ($email) use (
                 &$counter,
@@ -226,6 +286,7 @@ class ImportCercred
                 $statuses,
                 $types
             ) {
+
                 $type = coollect($types)
                     ->where('email_tipo', $email->email_tipo)
                     ->first()->descricao;
@@ -234,7 +295,7 @@ class ImportCercred
                     ->where('email_status', $email->email_status)
                     ->first()->descricao;
 
-                PersonContact::create([
+                $contact = PersonContact::create([
                     'person_id' => $email->pessoa_id,
                     'contact_type_id' => $contactTypeId,
                     'contact' => $email->email,
@@ -263,7 +324,7 @@ class ImportCercred
         DB::raw("setval('person_contacts_id_seq', {$last}, true);");
     }
 
-    private function people()
+    protected function people()
     {
         $counter = 0;
 
@@ -322,12 +383,12 @@ class ImportCercred
         DB::raw("setval('people_id_seq', {$last}, true);");
     }
 
-    private function info($message)
+    protected function info($message)
     {
         $this->command->info($message);
     }
 
-    private function db()
+    protected function db()
     {
         return DB::connection('cercred');
     }

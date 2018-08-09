@@ -3,7 +3,7 @@ namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistoryType extends Model
+class ProgressType extends Model
 {
     /**
      * @var array

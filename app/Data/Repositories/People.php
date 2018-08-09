@@ -22,8 +22,6 @@ class People extends BaseRepository
 
     private function response($data, $count = 0, $messages = null)
     {
-        info(['---------------------------- MESSAGES', $messages]);
-
         return [
             'data' => $data,
             'success' => is_null($messages),
