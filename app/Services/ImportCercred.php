@@ -25,24 +25,21 @@ class ImportCercred
     private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
-            Progress::create([
+            Progress::create($this->sanitize([
                 'record_id' => $record->id,
-                'progress_type_id' =>
-                    ProgressType::firstOrCreate([
-                        'name' => $history->historico_tipo_descricao,
-                    ])->id,
+                'progress_type_id' => ProgressType::firstOrCreate(['name' => $history->historico_tipo_descricao])->id,
                 'created_by_id' => $history->historico_usuario_id_alteracao,
                 'original' => $history->historico_complemento,
                 'created_at' => $history->historico_data_inicio_atendimento,
                 'updated_at' => $history->historico_data_inicio_atendimento,
                 'history_fields' => $history->history_fields->toJson(),
-            ]);
+            ]));
         }
     }
 
     private function createRecordFromProtocol($protocol)
     {
-        return Record::create([
+        return Record::create($this->sanitize([
             'protocol' => $protocol->protocolo_codigo,
             'person_id' => $protocol->pessoa_id,
             'record_type_id' => $protocol->pessoa_id,
@@ -50,8 +47,8 @@ class ImportCercred
             'origin_id' => $this->inferOriginFromProtocol($protocol) ?: 999999,
             'record_action_id' => $this->inferActionFromProtocol($protocol),
             'created_at' => $date = $this->inferDateFromProtocol($protocol),
-            'updated_at' => $date,
-        ]);
+            'updated_at' => $date
+        ]));
     }
 
     /**
@@ -61,8 +58,7 @@ class ImportCercred
     private function findRecordActionByName($history)
     {
         $action = RecordAction::where(
-            'name',
-            $history->action_description
+            'name', $history->action_description
         )->first();
 
         return $action;
@@ -74,19 +70,19 @@ class ImportCercred
 
         $this->command = $command;
 
-        //        $this->people();
+        $this->people();
 
-        //        $this->emails();
-        //
-        //        $this->phones();
-        //
-        //        $this->addresses();
-        //
-        //        $this->users();
+        $this->emails();
 
-        //        $this->progressTypes();
-        //
-        //        $this->recordActions();
+        $this->phones();
+
+        $this->addresses();
+
+        $this->users();
+
+        $this->progressTypes();
+
+        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -103,14 +99,12 @@ class ImportCercred
             if (!$action && $history->action_id) {
                 RecordAction::insert([
                     'id' => $history->action_id,
-                    'name' => $history->action_description,
+                    'name' => $history->action_description
                 ]);
 
                 $action = $this->findRecordActionByName($history);
 
-                DB::statement(
-                    "SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));"
-                );
+                DB::statement("SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));");
             }
         }
 
@@ -120,8 +114,7 @@ class ImportCercred
     private function inferDateFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            return $protocol->history_data[0]
-                ->historico_data_inicio_atendimento;
+            return $protocol->history_data[0]->historico_data_inicio_atendimento;
         }
 
         return null;
@@ -130,14 +123,11 @@ class ImportCercred
     private function inferAreaFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Comissão Responsável'
-            )->first();
+            $data = $protocol->history_data[0]->history_fields->where('historico_propriedade_tipo_descricao', 'Comissão Responsável')->first();
 
             if (isset($data['historico_propriedade_valor'])) {
                 return Area::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor,
+                    'name' => $data->historico_propriedade_valor
                 ])->id;
             }
         }
@@ -148,14 +138,11 @@ class ImportCercred
     private function inferOriginFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Origem'
-            )->first();
+            $data = $protocol->history_data[0]->history_fields->where('historico_propriedade_tipo_descricao', 'Origem')->first();
 
             if (isset($data['historico_propriedade_valor'])) {
                 return Origin::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor,
+                    'name' => $data->historico_propriedade_valor
                 ])->id;
             }
         }
@@ -172,49 +159,37 @@ class ImportCercred
         Record::truncate();
         Progress::truncate();
 
-        Person::all()->each(function ($person) {
-            $person->protocols = $this->getProtocolsForPerson($person)
-                ->map(function ($protocol) {
-                    $protocol->history_data = $this->getHistory(
-                        $protocol->objeto_id
-                    )->map(function ($history) {
-                        $history->history_fields = $this->getHistoryFields(
-                            $history->historico_id
-                        );
+        Person::all()->each(function($person) use (&$counter) {
+            $person->protocols = $this->getProtocolsForPerson($person)->map(function($protocol) {
+                $protocol->history_data = $this->getHistory($protocol->objeto_id)->map(function($history) {
+                    $history->history_fields = $this->getHistoryFields($history->historico_id);
 
-                        return $history;
-                    });
-
-                    return $protocol;
-                })
-                ->each(function ($protocol) use (&$counter) {
-                    try {
-                        $record = $this->createRecordFromProtocol($protocol);
-
-                        $protocol->history_data->each(function ($history) use (
-                            $record
-                        ) {
-                            $this->createProgress($history, $record);
-                        });
-                    } catch (\Exception $exception) {
-                        dump($protocol);
-
-                        throw $exception;
-                    }
-
-                    $counter++;
-
-                    if ($counter % 10 === 0) {
-                        $this->info(
-                            "{$counter} = {$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-                        );
-                    }
+                    return $history;
                 });
+
+                return $protocol;
+            })->each(function($protocol) use (&$counter) {
+                try {
+                    $record = $this->createRecordFromProtocol($protocol);
+
+                    $protocol->history_data->each(function($history) use ($record) {
+                        $this->createProgress($history, $record);
+                    });
+                } catch (\Exception $exception) {
+                    dump($protocol);
+
+                    throw $exception;
+                }
+
+                $counter++;
+
+                if ($counter % 10 === 0) {
+                    $this->info("{$counter} = {$protocol->pessoa_nome} ({$protocol->pessoa_id})");
+                }
+            });
         });
 
-        DB::statement(
-            "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
-        );
+        DB::statement("SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));");
     }
 
     private function recordActions()
@@ -224,18 +199,16 @@ class ImportCercred
         RecordAction::truncate();
 
         $this->db()
-            ->table('action')
-            ->get()
-            ->each(function ($row) {
-                RecordAction::insert([
+             ->table('action')
+             ->get()
+             ->each(function ($row) {
+                 RecordAction::insert([
                     'id' => $row->action_id,
                     'name' => $row->description,
                 ]);
-            });
+             });
 
-        DB::statement(
-            "SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));"
-        );
+        DB::statement("SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));");
     }
 
     protected function progressTypes()
@@ -245,18 +218,16 @@ class ImportCercred
         ProgressType::truncate();
 
         $this->db()
-            ->table('historico_tipo')
-            ->get()
-            ->each(function ($row) {
-                ProgressType::insert([
-                    'id' => $row->historico_tipo,
-                    'name' => $row->descricao,
-                ]);
-            });
+             ->table('historico_tipo')
+             ->get()
+             ->each(function ($row) {
+                 ProgressType::insert([
+                                         'id' => $row->historico_tipo,
+                                         'name' => $row->descricao,
+                                     ]);
+             });
 
-        DB::statement(
-            "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
-        );
+        DB::statement("SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));");
     }
 
     protected function users()
@@ -266,19 +237,18 @@ class ImportCercred
         User::truncate();
 
         $this->db()
-            ->table('usuario')
-            ->get()
-            ->each(function ($row) {
-                User::insert([
+             ->table('usuario')
+             ->get()
+             ->each(function ($row) {
+                 User::insert($this->sanitize([
                     'id' => $row->usuario_id,
                     'name' => $row->nome,
-                    'email' => $row->nome . '@cercred.com.br',
+                    'email' => $row->nome.'@cercred.com.br',
                     'username' => $row->nome,
-                    'user_type_id' =>
-                        UserType::where('name', 'Usuario')->first()->id,
-                    'password' => bcrypt($row->nome . $row->usuario_id),
-                ]);
-            });
+                    'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
+                    'password' => bcrypt($row->nome.$row->usuario_id),
+                ]));
+             });
     }
 
     protected function addresses()
@@ -328,7 +298,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonAddress::create([
+                PersonAddress::create($this->sanitize($this->sanitize([
                     'person_id' => $endereco->pessoa_id,
                     'zipcode' => $endereco->cep,
                     'street' => $endereco->endereco,
@@ -340,7 +310,7 @@ class ImportCercred
                     'from' => $type,
                     'status' => $status,
                     'address_id' => $endereco->endereco_id,
-                ]);
+                ])));
 
                 $counter++;
 
@@ -349,9 +319,7 @@ class ImportCercred
                 }
             });
 
-        DB::statement(
-            "SELECT setval('public.person_addresses_id_seq', (SELECT max(id) FROM public.person_addresses));"
-        );
+        DB::statement("SELECT setval('public.person_addresses_id_seq', (SELECT max(id) FROM public.person_addresses));");
     }
 
     protected function phones()
@@ -412,7 +380,7 @@ class ImportCercred
                         ->first()->descricao
                 );
 
-                PersonContact::create([
+                PersonContact::create($this->sanitize([
                     'person_id' => $telefone->pessoa_id,
                     'contact_type_id' =>
                         $type == 'celular' ? $mobileId : $phoneId,
@@ -423,7 +391,7 @@ class ImportCercred
                         $telefone->enriquecimento_provedor_id,
                     'telefone_id' => $telefone->telefone_id,
                     'created_at' => Carbon::parse($telefone->inclusao),
-                ]);
+                ]));
 
                 $counter++;
 
@@ -432,9 +400,7 @@ class ImportCercred
                 }
             });
 
-        DB::statement(
-            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
-        );
+        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
     }
 
     protected function emails()
@@ -466,9 +432,9 @@ class ImportCercred
             ->table('email_tipo')
             ->get();
 
-        //->where('email', 'sandrinhabs_35@yahoo.com.br')
         $this->db()
             ->table('email')
+            //->where('email', 'sandrinhabs_35@yahoo.com.br')
             ->get()
             ->each(function ($email) use (
                 &$counter,
@@ -476,6 +442,7 @@ class ImportCercred
                 $statuses,
                 $types
             ) {
+
                 $type = coollect($types)
                     ->where('email_tipo', $email->email_tipo)
                     ->first()->descricao;
@@ -484,7 +451,7 @@ class ImportCercred
                     ->where('email_status', $email->email_status)
                     ->first()->descricao;
 
-                $contact = PersonContact::create([
+                $contact = PersonContact::create($this->sanitize([
                     'person_id' => $email->pessoa_id,
                     'contact_type_id' => $contactTypeId,
                     'contact' => $email->email,
@@ -493,7 +460,7 @@ class ImportCercred
                     'provider_enrichment_id' =>
                         $email->enriquecimento_provedor_id,
                     'email_id' => $email->email_id,
-                ]);
+                ]));
 
                 $counter++;
 
@@ -504,9 +471,7 @@ class ImportCercred
                 }
             });
 
-        DB::statement(
-            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
-        );
+        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
     }
 
     protected function people()
@@ -532,7 +497,7 @@ class ImportCercred
             ->table('pessoa')
             ->get()
             ->each(function ($person) use (&$counter) {
-                Person::insert([
+                Person::insert($this->sanitize([
                     'id' => $person->pessoa_id,
                     'code' => $person->codigo,
                     'name' => $person->nome,
@@ -548,7 +513,7 @@ class ImportCercred
                     'person_type_id' => $person->tipo_pessoa,
                     'created_at' => $person->inclusao,
                     'updated_by_id' => $person->usuario_id_alteracao,
-                ]);
+                ]));
 
                 $counter++;
 
@@ -559,9 +524,7 @@ class ImportCercred
                 }
             });
 
-        DB::statement(
-            "SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));"
-        );
+        DB::statement("SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));");
     }
 
     protected function info($message)
@@ -576,9 +539,8 @@ class ImportCercred
 
     private function getProtocolsForPerson($person)
     {
-        return coollect(
-            $this->db()->select(
-                "select
+        return coollect($this->db()
+                    ->select("select
   DISTINCT
   pessoa.pessoa_id,
   pessoa.nome pessoa_nome,
@@ -590,16 +552,13 @@ from protocolo
   left join pessoa on
                      historico.pessoa_id = pessoa.pessoa_id
 where pessoa.pessoa_id = {$person->id}
-order by pessoa.pessoa_id, protocolo.protocolo_id"
-            )
-        );
+order by pessoa.pessoa_id, protocolo.protocolo_id"));
     }
 
     private function getHistory($objetoId)
     {
-        return coollect(
-            $this->db()->select(
-                "select
+        return coollect($this->db()
+                             ->select("select
   DISTINCT
   historico.historico_id,
   historico.complemento historico_complemento,
@@ -619,16 +578,13 @@ from historico
   left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
-where historico.objeto_id = {$objetoId};"
-            )
-        );
+where historico.objeto_id = {$objetoId};"));
     }
 
     private function getHistoryFields($historyId)
     {
-        return coollect(
-            $this->db()->select(
-                "select
+        return coollect($this->db()
+                             ->select("select
   historico_propriedade.historico_propriedade_id,
   historico_propriedade.valor historico_propriedade_valor,
   historico_propriedade_tipo.historico_propriedade_tipo,
@@ -640,8 +596,17 @@ from historico
   left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
-where historico.historico_id = {$historyId};"
-            )
-        );
+where historico.historico_id = {$historyId};"));
+    }
+
+    public function sanitize($array)
+    {
+        foreach ($array as $key => $value) {
+            if (is_string($value)) {
+                $array[$key] = trim($value);
+            }
+        }
+
+        return $array;
     }
 }
