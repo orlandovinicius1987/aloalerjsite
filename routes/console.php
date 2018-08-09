@@ -56,4 +56,3 @@ Artisan::command('cercred:index', function () {
         $table->index('action_type');
     });
 })->describe('index');
-
