@@ -6,7 +6,6 @@ Artisan::command('cercred:import', function () {
     app(ImportCercred::class)->import($this);
 })->describe('Display an inspiring quote');
 
-
 Artisan::command('cercred:index', function () {
     $this->info('INDEXING...');
 
@@ -49,4 +48,3 @@ Artisan::command('cercred:index', function () {
         $table->index('codigo');
     });
 })->describe('index');
-

@@ -34,15 +34,15 @@ class ImportCercred
 
         $this->command = $command;
 
-//        $this->people();
-//
-//        $this->emails();
-//
-//        $this->phones();
-//
-//        $this->addresses();
-//
-//        $this->users();
+        //        $this->people();
+        //
+        //        $this->emails();
+        //
+        //        $this->phones();
+        //
+        //        $this->addresses();
+        //
+        //        $this->users();
 
         $this->recordTypes();
 
@@ -58,20 +58,20 @@ class ImportCercred
         ProgressType::truncate();
 
         $this->db()
-             ->table('historico_tipo')
-             ->get()
-             ->each(function ($row) {
-                 RecordType::insert([
-                      'id' => $row->historico_tipo,
-                      'name' => $row->descricao,
-                 ]);
-             });
+            ->table('historico_tipo')
+            ->get()
+            ->each(function ($row) {
+                RecordType::insert([
+                    'id' => $row->historico_tipo,
+                    'name' => $row->descricao,
+                ]);
+            });
 
         $last =
             RecordType::orderBy('id', 'desc')
-                        ->take(1)
-                        ->get()
-                        ->first()->id + 1;
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('record_types_id_seq', {$last}, true);");
     }
@@ -83,17 +83,19 @@ class ImportCercred
         Record::truncate();
         Progress::truncate();
 
-        Person::all()->each(function($person) {
-            $this->getHistoryRecordsForPerson($person)->each(function($history) {
+        Person::all()->each(function ($person) {
+            $this->getHistoryRecordsForPerson($person)->each(function (
+                $history
+            ) {
                 $record = $this->createRecordFromHistory($history);
             });
         });
 
         $last =
             ProgressType::orderBy('id', 'desc')
-                        ->take(1)
-                        ->get()
-                        ->first()->id + 1;
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('progress_types_id_seq', {$last}, true);");
     }
@@ -105,20 +107,20 @@ class ImportCercred
         ProgressType::truncate();
 
         $this->db()
-             ->table('historico_tipo')
-             ->get()
-             ->each(function ($row) {
-                 ProgressType::insert([
-                                         'id' => $row->historico_tipo,
-                                         'name' => $row->descricao,
-                                     ]);
-             });
+            ->table('historico_tipo')
+            ->get()
+            ->each(function ($row) {
+                ProgressType::insert([
+                    'id' => $row->historico_tipo,
+                    'name' => $row->descricao,
+                ]);
+            });
 
         $last =
             ProgressType::orderBy('id', 'desc')
-                        ->take(1)
-                        ->get()
-                        ->first()->id + 1;
+                ->take(1)
+                ->get()
+                ->first()->id + 1;
 
         DB::raw("setval('progress_types_id_seq', {$last}, true);");
     }
@@ -130,18 +132,19 @@ class ImportCercred
         User::truncate();
 
         $this->db()
-             ->table('usuario')
-             ->get()
-             ->each(function ($row) {
-                 User::insert([
-                                  'id' => $row->usuario_id,
-                                  'name' => $row->nome,
-                                  'email' => $row->nome.'@cercred.com.br',
-                                  'username' => $row->nome,
-                                  'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
-                                  'password' => bcrypt($row->nome.$row->usuario_id),
-                              ]);
-             });
+            ->table('usuario')
+            ->get()
+            ->each(function ($row) {
+                User::insert([
+                    'id' => $row->usuario_id,
+                    'name' => $row->nome,
+                    'email' => $row->nome . '@cercred.com.br',
+                    'username' => $row->nome,
+                    'user_type_id' =>
+                        UserType::where('name', 'Usuario')->first()->id,
+                    'password' => bcrypt($row->nome . $row->usuario_id),
+                ]);
+            });
     }
 
     protected function addresses()
@@ -337,9 +340,9 @@ class ImportCercred
             ->table('email_tipo')
             ->get();
 
+        //->where('email', 'sandrinhabs_35@yahoo.com.br')
         $this->db()
             ->table('email')
-            //->where('email', 'sandrinhabs_35@yahoo.com.br')
             ->get()
             ->each(function ($email) use (
                 &$counter,
@@ -347,7 +350,6 @@ class ImportCercred
                 $statuses,
                 $types
             ) {
-
                 $type = coollect($types)
                     ->where('email_tipo', $email->email_tipo)
                     ->first()->descricao;
@@ -456,8 +458,9 @@ class ImportCercred
 
     private function getHistoryRecordsForPerson($person)
     {
-        return coollect($this->db()
-                    ->select("select
+        return coollect(
+            $this->db()->select(
+                "select
   pessoa.pessoa_id,
   pessoa.nome pessoa_nome,
   protocolo.protocolo_id,
@@ -480,6 +483,8 @@ from protocolo
   left join pessoa on historico.pessoa_id = pessoa.pessoa_id
   left join objeto_status on objeto_status.objeto_status = objeto.objeto_status
 where pessoa.pessoa_id = {$person->id}
-order by pessoa.pessoa_id, protocolo.protocolo_id, historico.data_inicio_atendimento"));
+order by pessoa.pessoa_id, protocolo.protocolo_id, historico.data_inicio_atendimento"
+            )
+        );
     }
 }

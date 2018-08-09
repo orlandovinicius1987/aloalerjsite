@@ -128,7 +128,6 @@
                                class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement')}}"
-                               required
                                autofocus>
 
                         @if ($errors->has('complement'))

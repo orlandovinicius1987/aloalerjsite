@@ -95,9 +95,7 @@ class People extends Controller
         $request->merge(['id' => $person_id]);
         $person = $this->peopleRepository->createFromRequest($request);
 
-        return $view
-            ->with('person', $person)
-            ->with('message', $message);
+        return $view->with('person', $person)->with('message', $message);
     }
 
     /**
