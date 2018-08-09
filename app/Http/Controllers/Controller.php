@@ -3,13 +3,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
-use App\Data\Repositories\Calls as CallsRepository;
+use App\Data\Repositories\Records as RecordsRepository;
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\Origins as OriginsRepository;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller as IlluminateController;
-use App\Data\Repositories\CallTypes as CallTypesRepository;
+use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
@@ -24,44 +24,44 @@ abstract class Controller extends IlluminateController
      * @var Repository
      */
     protected $peopleRepository;
-    protected $callsRepository;
+    protected $recordsRepository;
     protected $peopleAddressesRepository;
     protected $peopleContactsRepository;
     protected $originsRepository;
     protected $committeesRepository;
-    protected $callTypesRepository;
+    protected $recordTypesRepository;
     protected $areasRepository;
 
     /**
      * Persons constructor.
      *
      * @param PeopleRepository $personRepository
-     * @param CallsRepository $callsRepository
+     * @param RecordsRepository $RecordsRepository
      * @param PersonAddressesRepository $peopleAddressesRepository
      * @param PersonContactsRepository $peopleContactsRepository
      * @param OriginsRepository $originsRepository
      * @param CommitteesRepository $committeesRepository
-     * @param CallTypesRepository $callTypesRepository
+     * @param RecordTypesRepository $RecordTypesRepository
      * @param AreasRepository $areasRepository
      * @internal param Repository $repository
      */
     public function __construct(
         PeopleRepository $personRepository,
-        CallsRepository $callsRepository,
+        RecordsRepository $RecordsRepository,
         PersonAddressesRepository $peopleAddressesRepository,
         PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
-        CallTypesRepository $callTypesRepository,
+        RecordTypesRepository $RecordTypesRepository,
         AreasRepository $areasRepository
     ) {
         $this->peopleRepository = $personRepository;
-        $this->callsRepository = $callsRepository;
+        $this->recordsRepository = $RecordsRepository;
         $this->peopleAddressesRepository = $peopleAddressesRepository;
         $this->peopleContactsRepository = $peopleContactsRepository;
         $this->originsRepository = $originsRepository;
         $this->committeesRepository = $committeesRepository;
-        $this->callTypesRepository = $callTypesRepository;
+        $this->recordTypesRepository = $RecordTypesRepository;
         $this->areasRepository = $areasRepository;
     }
 
@@ -83,7 +83,7 @@ abstract class Controller extends IlluminateController
     {
         return [
             'committees' => $this->committeesRepository->all(),
-            'callTypes' => $this->callTypesRepository->all(),
+            'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
         ];

@@ -26,9 +26,9 @@ class Record extends BaseModel
         return $this->belongsTo(Committee::class);
     }
 
-    public function callType()
+    public function recordType()
     {
-        return $this->belongsTo(CallType::class);
+        return $this->belongsTo(RecordType::class);
     }
 
     public function area()

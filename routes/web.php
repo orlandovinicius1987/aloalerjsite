@@ -96,10 +96,10 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/show/{id}', 'Areas@show')->name('areas.show');
     });
 
-    Route::group(['prefix' => 'calls'], function () {
-        Route::get('/', 'Calls@index')->name('calls.index');
-        Route::get('/create/{person_id}', 'Calls@create')->name('calls.create');
-        Route::post('/', 'Calls@store')->name('calls.store');
-        Route::get('/show/{id}', 'Calls@show')->name('calls.show');
+    Route::group(['prefix' => 'records'], function () {
+        Route::get('/', 'Records@index')->name('records.index');
+        Route::get('/create/{person_id}', 'Records@create')->name('records.create');
+        Route::post('/', 'Records@store')->name('records.store');
+        Route::get('/show/{id}', 'Records@show')->name('records.show');
     });
 });

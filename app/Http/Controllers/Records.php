@@ -7,7 +7,7 @@ use App\Http\Requests\ViaRequest;
 use App\Http\Requests\CallRequest;
 use App\Data\Repositories\Vias as ViasRepository;
 
-class Calls extends Controller
+class Records extends Controller
 {
     /**
      * @return $this
@@ -16,9 +16,9 @@ class Calls extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        return view('callcenter.calls.form')
+        return view('callcenter.records.form')
             ->with('person', $person)
-            ->with(['call' => $this->callsRepository->new()])
+            ->with(['record' => $this->recordsRepository->new()])
             ->with($this->getComboBoxMenus());
     }
 
@@ -27,7 +27,7 @@ class Calls extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CallRequest $request)
+    public function store(Request $request)
     {
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;
@@ -38,10 +38,10 @@ class Calls extends Controller
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
 
-        $request->merge(['id' => $request->get('call_id')]);
-        $call = $this->callsRepository->createFromRequest($request);
+        $request->merge(['id' => $request->get('record_id')]);
+        $record = $this->recordsRepository->createFromRequest($request);
 
-        $call->protocol_number = sprintf(
+        $record->protocol = sprintf(
             '%s%s%s.%s.%s%s.%s',
             Carbon::now()->year,
             Carbon::now()->month,
@@ -50,12 +50,12 @@ class Calls extends Controller
             Carbon::now()->hour,
             Carbon::now()->minute,
 
-            $call->id
+            $record->id
         );
 
-        $call->save();
+        $record->save();
 
-        $calls = $this->callsRepository->findByPerson($person->id);
+        $records = $this->recordsRepository->findByPerson($person->id);
         $addresses = $this->peopleAddressesRepository->findByPerson(
             $person->id
         );
@@ -63,7 +63,7 @@ class Calls extends Controller
 
         return view($view)
             ->with('person', $person)
-            ->with('calls', $calls)
+            ->with('records', $records)
             ->with('addresses', $addresses)
             ->with('contacts', $contacts)
 
@@ -81,12 +81,12 @@ class Calls extends Controller
      */
     public function show($id)
     {
-        $call = $this->callsRepository->findById($id);
-        $person = $this->peopleRepository->findById($call->person_id);
+        $record = $this->recordsRepository->findById($id);
+        $person = $this->peopleRepository->findById($record->person_id);
 
-        return view('callcenter.calls.form')
+        return view('callcenter.records.form')
             ->with($this->getComboBoxMenus())
-            ->with('call', $call)
+            ->with('record', $record)
             ->with('person', $person);
     }
 }
