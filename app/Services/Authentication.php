@@ -102,17 +102,15 @@ class Authentication
             'success' => true,
             'code' => 200,
             'message' => null,
-            'data' =>
-                [
-                    'name' => [$credentials['username']],
-                    'email' => [$credentials['username'] . '@alerj.rj.gov.br'],
-                    'memberof' =>
-                        [
-                            'CN=ProjEsp,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
-                            'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br'
-                        ],
-                    'description' => ['matricula: N/C']
-                ]
+            'data' => [
+                'name' => [$credentials['username']],
+                'email' => [$credentials['username'] . '@alerj.rj.gov.br'],
+                'memberof' => [
+                    'CN=ProjEsp,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
+                    'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
+                ],
+                'description' => ['matricula: N/C'],
+            ],
         ];
     }
 }

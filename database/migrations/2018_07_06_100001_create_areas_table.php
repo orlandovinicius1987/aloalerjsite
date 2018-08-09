@@ -58,7 +58,9 @@ class CreateAreasTable extends Migration
             ]);
         }
 
-        DB::statement("SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));");
+        DB::statement(
+            "SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));"
+        );
     }
 
     /**

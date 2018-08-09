@@ -33,7 +33,7 @@ class RemoteRequest
                 'verify' => false,
                 'debug' => false,
                 RequestOptions::JSON => $data,
-                'allow_redirects' => true
+                'allow_redirects' => true,
             ]);
         } catch (ClientException $exception) {
             $response = $exception->getResponse();

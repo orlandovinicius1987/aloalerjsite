@@ -44,7 +44,6 @@ class CreateRecordsTable extends Migration
                 ->nullable()
                 ->index();
 
-
             $table
                 ->integer('record_action_id')
                 ->index()

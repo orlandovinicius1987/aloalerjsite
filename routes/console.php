@@ -35,7 +35,9 @@ Artisan::command('cercred:index', function () {
         $table->index('codigo');
     });
 
-    Schema::connection('cercred')->table('historico_propriedade', function ($table) {
+    Schema::connection('cercred')->table('historico_propriedade', function (
+        $table
+    ) {
         $table->index('historico_id');
         $table->index('historico_propriedade_tipo');
     });
