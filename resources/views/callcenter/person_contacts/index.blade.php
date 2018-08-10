@@ -2,11 +2,12 @@
     <div class="card-header">
         {{ __('Contatos') }}
 
-        <a id="buttonContatos" href="{{ route('persons_contacts.create',['person_id' => $person->id]) }}"
-           class="btn btn-primary btn-sm pull-right">
-            <i class="fa fa-plus"></i>
-            Novo Contato
-        </a>
+        {{--<a id="buttonContatos" href="{{ route('persons_contacts.create',['person_id' => $person->id]) }}"--}}
+           {{--class="btn btn-primary btn-sm pull-right">--}}
+            {{--<i class="fa fa-plus"></i>--}}
+            {{--Novo Contato--}}
+        {{--</a>--}}
+        @include('callcenter.person_contacts.form-modal')
     </div>
 
     <div class="card-body">

@@ -13,6 +13,7 @@ use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
+use App\Data\Repositories\ContactTypes as ContactTypesRepository;
 
 abstract class Controller extends IlluminateController
 {
@@ -31,6 +32,7 @@ abstract class Controller extends IlluminateController
     protected $committeesRepository;
     protected $recordTypesRepository;
     protected $areasRepository;
+    protected $contactTypesRepository;
 
     /**
      * Persons constructor.
@@ -53,7 +55,8 @@ abstract class Controller extends IlluminateController
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
         RecordTypesRepository $RecordTypesRepository,
-        AreasRepository $areasRepository
+        AreasRepository $areasRepository,
+        ContactTypesRepository $contactTypesRepository
     ) {
         $this->peopleRepository = $personRepository;
         $this->recordsRepository = $RecordsRepository;
@@ -63,6 +66,7 @@ abstract class Controller extends IlluminateController
         $this->committeesRepository = $committeesRepository;
         $this->recordTypesRepository = $RecordTypesRepository;
         $this->areasRepository = $areasRepository;
+        $this->contactTypesRepository = $contactTypesRepository;
     }
 
     /**
@@ -86,6 +90,7 @@ abstract class Controller extends IlluminateController
             'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
+            'contactTypes' => $this->contactTypesRepository->all()
         ];
         //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
     }

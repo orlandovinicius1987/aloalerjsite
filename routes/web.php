@@ -7,7 +7,7 @@ Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
 Route::get('comissoes/{name}', [
     'as' => 'committees.show',
-    'uses' => 'Committees@show',
+    'uses' => 'Committees@show'
 ]);
 
 Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
@@ -19,7 +19,7 @@ Route::group(['prefix' => 'chat'], function () {
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
     Route::get('terminated', [
         'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated',
+        'uses' => 'Chat@terminated'
     ]);
 });
 
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'contact'], function () {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
     Route::get('pretend', [
         'as' => 'contact.index',
-        'uses' => 'Contact@pretend',
+        'uses' => 'Contact@pretend'
     ]);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
@@ -51,35 +51,43 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/create', 'People@create')->name('persons.create');
         Route::post('/', 'People@store')->name('persons.store');
         Route::get('/show/{person_id}', 'People@show')->name('persons.show');
+
+        Route
+            ::post('/insertContact', 'People@insertContact')
+            ->name('persons.insertContact');
     });
 
     Route::group(['prefix' => 'persons_addresses'], function () {
-        Route::get('/', 'PersonAddresses@index')->name(
-            'persons_addresses.index'
-        );
-        Route::get('/create/{person_id}', 'PersonAddresses@create')->name(
-            'persons_addresses.create'
-        );
+        Route
+            ::get('/', 'PersonAddresses@index')
+            ->name('persons_addresses.index');
+        Route
+            ::get('/create/{person_id}', 'PersonAddresses@create')
+            ->name('persons_addresses.create');
 
-        Route::post('/', 'PersonAddresses@store')->name(
-            'persons_addresses.store'
-        );
-        Route::get('/show/{id}', 'PersonAddresses@show')->name(
-            'persons_addresses.show'
-        );
+        Route
+            ::post('/', 'PersonAddresses@store')
+            ->name('persons_addresses.store');
+        Route
+            ::get('/show/{id}', 'PersonAddresses@show')
+            ->name('persons_addresses.show');
     });
 
     Route::group(['prefix' => 'persons_contacts'], function () {
         Route::get('/', 'PersonContacts@index')->name('persons_contacts.index');
-        Route::get('/create/{person_id}', 'PersonContacts@create')->name(
-            'persons_contacts.create'
-        );
-        Route::post('/', 'PersonContacts@store')->name(
-            'persons_contacts.store'
-        );
-        Route::get('/show/{id}', 'PersonContacts@show')->name(
-            'persons_contacts.show'
-        );
+        Route
+            ::get('/create/{person_id}', 'PersonContacts@create')
+            ->name('persons_contacts.create');
+        Route
+            ::post('/', 'PersonContacts@store')
+            ->name('persons_contacts.store');
+        Route
+            ::get('/show/{id}', 'PersonContacts@show')
+            ->name('persons_contacts.show');
+
+        Route
+            ::get('/createOutside/{id}', 'PersonContacts@createOutside')
+            ->name('persons_contacts.createOutside');
     });
 
     Route::group(['prefix' => 'origins'], function () {
@@ -98,10 +106,16 @@ Route::group(['prefix' => 'callcenter'], function () {
 
     Route::group(['prefix' => 'records'], function () {
         Route::get('/', 'Records@index')->name('records.index');
-        Route::get('/create/{person_id}', 'Records@create')->name(
-            'records.create'
-        );
+        Route
+            ::get('/create/{person_id}', 'Records@create')
+            ->name('records.create');
         Route::post('/', 'Records@store')->name('records.store');
         Route::get('/show/{id}', 'Records@show')->name('records.show');
+    });
+
+    Route::group(['prefix' => 'contact_types'], function () {
+        Route
+            ::get('/array/', 'ContactTypes@array')
+            ->name('contact_types.array');
     });
 });
