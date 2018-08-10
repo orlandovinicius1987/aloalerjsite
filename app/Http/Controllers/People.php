@@ -63,14 +63,15 @@ class People extends Controller
     {
         $person_id = $this->userAlreadyRegistered($request);
 
-        $url = 'callcenter.people.form';
+        $route = 'persons.show';
         $message = $this->messageDefault;
         if (!$person_id) {
-            $url = 'callcenter.records.form';
+            $route = 'records.create';
             $message = 'Usuário cadastrado com sucesso.';
         }
-        $view = view($url);
-        $view->with($this->getComboBoxMenus());
+
+        $with = [];
+        $with = array_merge($with, $this->getComboBoxMenus());
 
         if ($person_id) {
             $person = $this->peopleRepository->findById($person_id);
@@ -82,22 +83,23 @@ class People extends Controller
                 $person->id
             );
 
-            $view
-                ->with('records', $records)
-                ->with('addresses', $addresses)
-                ->with('contacts', $contacts);
+            $with['records'] = $records;
+            $with['addresses'] = $addresses;
+            $with['contacts'] = $contacts;
         } else {
-            $view
-                ->with(['record' => $this->recordsRepository->new()])
-                ->with('workflow', $request->get('workflow'));
+            $with['record'] = $this->recordsRepository->new();
+            $with['workflow'] = $request->get('workflow');
         }
 
         $request->merge(['id' => $person_id]);
         $person = $this->peopleRepository->createFromRequest($request);
 
-        return $view
-            ->with('person', $person)
-            ->with('message', $message);
+        $with['person'] = $person;
+        $with['message'] = $message;
+
+        return redirect()
+            ->route($route, ['person_id' => $person->id])
+            ->with('data', $with);
     }
 
     /**
@@ -105,21 +107,33 @@ class People extends Controller
      *
      * @return $this
      */
-    public function show($id)
+    public function show($person_id)
     {
-        $person = $this->peopleRepository->findById($id);
-        $records = $this->recordsRepository->findByPerson($person->id);
-        $addresses = $this->peopleAddressesRepository->findByPerson(
-            $person->id
-        );
-        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
+        $view = view('callcenter.people.form');
 
-        return view('callcenter.people.form')
-            ->with('person', $person)
-            ->with('records', $records)
-            ->with('addresses', $addresses)
-            ->with('contacts', $contacts)
-            ->with(['origins' => $this->originsRepository->all()]);
+        $data = is_null(session('data')) ? [] : session('data');
+
+        if (!empty($data)) {
+            foreach ($data as $key => $item) {
+                $view->with($key, $item);
+            }
+            return $view;
+        } else {
+            $person = $this->peopleRepository->findById($person_id);
+            $records = $this->recordsRepository->findByPerson($person->id);
+            $addresses = $this->peopleAddressesRepository->findByPerson(
+                $person->id
+            );
+            $contacts = $this->peopleContactsRepository->findByPerson(
+                $person->id
+            );
+
+            return $view
+                ->with('person', $person)
+                ->with('records', $records)
+                ->with('addresses', $addresses)
+                ->with('contacts', $contacts);
+        }
     }
 
     /**
@@ -129,12 +143,24 @@ class People extends Controller
     private function userAlreadyRegistered(PersonRequest $request)
     {
         $person = null;
-        if (!$request->get('$person_id') and ($request->get('cpf_cnpj'))) {
+        if (!$request->get('$person_id') and $request->get('cpf_cnpj')) {
             $person = $this->peopleRepository->findByColumn(
                 'cpf_cnpj',
                 $request->get('cpf_cnpj')
             );
         }
-        return $person ? $person->id : null;
+        return $person ? $person->id : $request->get('person_id');
+    }
+
+    /**
+     * @return $this
+     */
+    public function form(Request $request)
+    {
+        dd($request);
+        return view('callcenter.people.form')
+            ->with(['person' => $this->peopleRepository->new()])
+            ->with($this->getComboBoxMenus())
+            ->with('workflow', '1');
     }
 }

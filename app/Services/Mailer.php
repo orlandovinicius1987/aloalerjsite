@@ -15,22 +15,23 @@ class Mailer
 
         $bcc = $this->toArray($bcc);
 
-        Mail::send($view, ['data' => $input], function ($m) use ($input, $to, $bcc, $subject)
-        {
+        Mail::send($view, ['data' => $input], function ($m) use (
+            $input,
+            $to,
+            $bcc,
+            $subject
+        ) {
             $m->from(env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'));
 
-            if ($to)
-            {
+            if ($to) {
                 $m->to($to);
             }
 
-            if ($bcc)
-            {
+            if ($bcc) {
                 $m->bcc($bcc);
             }
 
-            if ($subject)
-            {
+            if ($subject) {
                 $m->subject($subject);
             }
         });
@@ -42,16 +43,28 @@ class Mailer
 
         $adminEmails = env('MAIL_ADMINS');
 
-        $this->dispatch('emails.contact', $input, env('MAIL_CONTACT_EMAIL'), 'Mensagem de ' . $input['name'], $adminEmails);
+        $this->dispatch(
+            'emails.contact',
+            $input,
+            env('MAIL_CONTACT_EMAIL'),
+            'Mensagem de ' . $input['name'],
+            $adminEmails
+        );
 
-        $this->dispatch('emails.contact', $input, $input['email'], 'Sua mensagem para o Alô Alerj');
+        $this->dispatch(
+            'emails.contact',
+            $input,
+            $input['email'],
+            'Sua mensagem para o Alô Alerj'
+        );
     }
 
     /**
      * @param $bcc
      * @return mixed
      */
-    private function toArray($bcc) {
+    private function toArray($bcc)
+    {
         if ($bcc && !is_array($bcc)) {
             $bcc = str_replace(',', ';', $bcc);
 

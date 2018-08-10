@@ -1,4 +1,5 @@
 <?php
+use App\Data\Models\RecordType;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -41,6 +42,10 @@ class CreateRecordTypesTable extends Migration
                 'updated_at' => now(),
             ]);
         }
+
+        DB::statement(
+            "SELECT setval('public.record_types_id_seq', (SELECT max(id) FROM public.record_types));"
+        );
     }
 
     /**

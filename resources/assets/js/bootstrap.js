@@ -25,11 +25,11 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 /**
- * Vue Mask
+ * Vue The Mask
  */
 
-import { VueMaskDirective } from 'v-mask'
-Vue.directive('mask', VueMaskDirective);
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

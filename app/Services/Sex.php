@@ -37,16 +37,12 @@ class Sex
 
     public static function all($kind = 1)
     {
-        return $kind === 1
-            ? static::$sex_1
-            : static::$sex_2;
+        return $kind === 1 ? static::$sex_1 : static::$sex_2;
     }
 
     public static function find($id, $kind = 1)
     {
-        $types = $kind === 1
-            ? static::$sex_1
-            : static::$sex_2;
+        $types = $kind === 1 ? static::$sex_1 : static::$sex_2;
 
         return $types[$id];
     }

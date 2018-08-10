@@ -17,6 +17,11 @@ class CreateRecordsTable extends Migration
             $table->increments('id');
 
             $table
+                ->integer('person_id')
+                ->unsigned()
+                ->index();
+
+            $table
                 ->string('protocol')
                 ->index()
                 ->nullable();
@@ -28,23 +33,24 @@ class CreateRecordsTable extends Migration
                 ->index();
 
             $table
-                ->integer('person_id')
-                ->unsigned()
-                ->index();
-
-            $table
                 ->integer('record_type_id')
                 ->unsigned()
+                ->nullable()
                 ->index();
 
             $table
                 ->integer('area_id')
                 ->unsigned()
+                ->nullable()
                 ->index();
 
-            $table->integer('origin_id')->unsigned();
+            $table
+                ->integer('record_action_id')
+                ->index()
+                ->unsigned()
+                ->nullable();
 
-            $table->string('subject', 512);
+            $table->integer('origin_id')->unsigned();
 
             $table
                 ->integer('answer_address_id')

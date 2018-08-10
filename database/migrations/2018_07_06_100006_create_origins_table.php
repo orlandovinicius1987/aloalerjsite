@@ -1,4 +1,5 @@
 <?php
+use App\Data\Models\Origin;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +22,7 @@ class CreateOriginsTable extends Migration
         });
 
         $array = [
-            [999999, 'Nenhum'],
+            [999999, 'Desconhecido'],
             [0, '0800'],
             [1, 'Chat'],
             [2, 'Whatsapp'],
@@ -38,6 +39,10 @@ class CreateOriginsTable extends Migration
                 'updated_at' => now(),
             ]);
         }
+
+        DB::statement(
+            "SELECT setval('public.origins_id_seq', (SELECT max(id) FROM public.origins));"
+        );
     }
 
     /**

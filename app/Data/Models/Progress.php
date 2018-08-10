@@ -9,11 +9,15 @@ class Progress extends BaseModel
     protected $fillable = [
         'record_id',
         'progress_type_id',
+        'progress_action_id',
         'created_by_id',
         'original',
         'rectified',
         'rectified_at',
         'rectified_by_id',
+        'history_fields',
+        'created_at',
+        'updated_at',
     ];
 
     public function record()

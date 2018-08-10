@@ -15,9 +15,15 @@ class PersonAddresses extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
+        $workflow = is_null(session('data'))
+            ? null
+            : session('data')['workflow'];
+
         return view('callcenter.person_addresses.form')
             ->with('person', $person)
-            ->with(['address' => $this->peopleRepository->new()]);
+            ->with('workflow', $workflow)
+            ->with(['address' => $this->peopleRepository->new()])
+            ->with($this->getComboBoxMenus());
     }
 
     /**
@@ -27,10 +33,10 @@ class PersonAddresses extends Controller
      */
     public function store(PersonAddressRequest $request)
     {
-        $view = 'callcenter.people.form';
+        $route = 'persons.show';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $view = 'callcenter.person_contacts.form';
+            $route = 'persons_contacts.create';
             $message = 'Endereço cadastro com sucesso.';
         }
 
@@ -48,18 +54,18 @@ class PersonAddresses extends Controller
         );
         $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
-        return view($view)
-            ->with('person', $person)
-            ->with('records', $records)
-            ->with('addresses', $addresses)
-            ->with('contacts', $contacts)
+        $with = [];
+        $with = array_merge($with, $this->getComboBoxMenus());
+        $with['person'] = $person;
+        $with['records'] = $records;
+        $with['addresses'] = $addresses;
+        $with['contacts'] = $contacts;
+        $with['message'] = $message;
+        $with['workflow'] = $request->get('workflow');
 
-            ->with($this->getComboBoxMenus())
-
-            ->with(['contact' => $this->peopleContactsRepository->new()])
-
-            ->with('message', $message)
-            ->with('workflow', $request->get('workflow'));
+        return redirect()
+            ->route($route, ['person_id' => $person->id])
+            ->with('data', $with);
     }
 
     /**

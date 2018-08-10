@@ -50,7 +50,7 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/', 'People@index')->name('persons.index');
         Route::get('/create', 'People@create')->name('persons.create');
         Route::post('/', 'People@store')->name('persons.store');
-        Route::get('/show/{id}', 'People@show')->name('persons.show');
+        Route::get('/show/{person_id}', 'People@show')->name('persons.show');
     });
 
     Route::group(['prefix' => 'persons_addresses'], function () {
@@ -98,7 +98,9 @@ Route::group(['prefix' => 'callcenter'], function () {
 
     Route::group(['prefix' => 'records'], function () {
         Route::get('/', 'Records@index')->name('records.index');
-        Route::get('/create/{person_id}', 'Records@create')->name('records.create');
+        Route::get('/create/{person_id}', 'Records@create')->name(
+            'records.create'
+        );
         Route::post('/', 'Records@store')->name('records.store');
         Route::get('/show/{id}', 'Records@show')->name('records.show');
     });
