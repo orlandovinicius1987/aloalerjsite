@@ -188,9 +188,6 @@ class ImportCercred
     {
         $this->info('Importing RECORDS AND PROGRESS...');
 
-        //        Record::truncate();
-        //        Progress::truncate();
-
         Person::all()->each(function ($person) {
             $person->protocols = $this->getProtocolsForPerson($person)
                 ->map(function ($protocol) {
@@ -217,15 +214,23 @@ class ImportCercred
 
             unset($person);
 
-            if ($this->counter > 100000) {
-                $this->info('----------------------- END OF LINE');
-                die();
-            }
+            $this->checkMemory();
         });
 
         DB::statement(
             "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
         );
+    }
+
+    /**
+     * @param $this
+     */
+    function checkMemory()
+    {
+        if (memory_get_peak_usage() > 1500450656) {
+            $this->info('----------------------- END OF MEMORY');
+            die();
+        }
     }
 
     public function importProtocol($protocol)
