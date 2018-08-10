@@ -13949,7 +13949,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
@@ -13961,7 +13961,8 @@ __webpack_require__(3);
 __webpack_require__(40);
 __webpack_require__(41);
 __webpack_require__(42);
-__webpack_require__(48);
+__webpack_require__(43);
+__webpack_require__(49);
 
 /***/ }),
 /* 14 */
@@ -47366,16 +47367,6 @@ if (jQuery("#" + appName).length > 0) {
 /* 43 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports) {
-
 var appName = 'vue-personal-info';
 
 if (jQuery("#" + appName).length > 0) {
@@ -47391,6 +47382,95 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         methods: {}
+    });
+}
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-contact-outside-workflow';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            currentContactType: "",
+            contactTypesArray: [],
+            refreshing: false
+        },
+
+        computed: {
+            currentContactTypeName: function currentContactTypeName() {
+                return this.contactTypesArray[this.currentContactType];
+            },
+
+            mobileSelected: function mobileSelected() {
+                return this.currentContactTypeName == 'mobile';
+            },
+
+            whatsappSelected: function whatsappSelected() {
+                return this.currentContactTypeName == 'whatsapp';
+            },
+
+            emailSelected: function emailSelected() {
+                return this.currentContactTypeName == 'email';
+            },
+
+            phoneSelected: function phoneSelected() {
+                return this.currentContactTypeName == 'phone';
+            },
+
+            facebookSelected: function facebookSelected() {
+                return this.currentContactTypeName == 'facebook';
+            },
+
+            twitterSelected: function twitterSelected() {
+                return this.currentContactTypeName == 'twitter';
+            },
+
+            instagramSelected: function instagramSelected() {
+                return this.currentContactTypeName == 'instagram';
+            }
+        },
+
+        methods: {
+            refresh: function refresh() {
+                this.refreshContactTypesArray();
+            },
+            refreshContactTypesArray: function refreshContactTypesArray() {
+                me = this;
+
+                me.refreshing = true;
+
+                axios.get('/callcenter/contact_types/array').then(function (response) {
+                    me.contactTypesArray = response.data;
+
+                    me.refreshing = false;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.contactTypesArray = [];
+
+                    me.refreshing = false;
+                });
+            }
+        },
+
+        beforeMount: function beforeMount() {
+            this.refresh();
+        }
     });
 }
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonContactsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
@@ -52,6 +53,15 @@ class People extends Controller
             ->with(['person' => $this->peopleRepository->new()])
             ->with($this->getComboBoxMenus())
             ->with('workflow', '1');
+    }
+
+    public function insertContact(PersonContactsRequest $request)
+    {
+        $this->peopleContactsRepository->createFromRequest($request);
+
+        return redirect()
+            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->with($this->getSuccessMessage());
     }
 
     /**
@@ -132,7 +142,8 @@ class People extends Controller
                 ->with('person', $person)
                 ->with('records', $records)
                 ->with('addresses', $addresses)
-                ->with('contacts', $contacts);
+                ->with('contacts', $contacts)
+                ->with($this->getComboBoxMenus());
         }
     }
 

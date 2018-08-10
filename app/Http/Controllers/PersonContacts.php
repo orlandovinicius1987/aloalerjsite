@@ -85,6 +85,32 @@ class PersonContacts extends Controller
     }
 
     /**
+     * @param $cpf_cnpj
+     *
+     * @return $this
+     */
+    public function createOutside($person_id)
+    {
+        $personContact = $this->peopleContactsRepository->findByPerson(
+            $person_id
+        );
+
+        $contact = [];
+
+        foreach ($personContact as $item) {
+            $contact[$item->contactType->code] = $item->contact;
+        }
+        $contact = (object) $contact;
+
+        $person = $this->peopleRepository->findById($person_id);
+
+        return view('callcenter.person_contacts.form-outside')
+            ->with($this->getComboBoxMenus())
+            ->with('contact', $contact)
+            ->with('person', $person);
+    }
+
+    /**
      * @param PersonRequest $request
      */
     private function createPersonContact(Request $request, $code)
@@ -94,7 +120,7 @@ class PersonContacts extends Controller
                 'person_id' => $request->get('person_id'),
                 'contact_type_id' =>
                     ContactType::where('code', $code)->first()->id,
-                'contact' => $request->get($code),
+                'contact' => $request->get($code)
             ]);
         }
     }
