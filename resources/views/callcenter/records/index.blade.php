@@ -27,9 +27,9 @@
                 <tr>
                     <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
                     <td>{{ $record->subject }}</td>
-                    <td>{{ $record->committee->name }}</td>
-                    <td>{{ $record->recordType->name }}</td>
-                    <td>{{ $record->area->name }}</td>
+                    <td>{{ $record->committee or '' }}</td>
+                    <td>{{ $record->recordType->name or '' }}</td>
+                    <td>{{ $record->area->name or '' }}</td>
                 </tr>
             @empty
                 <p>Nenhumo Protocolo encontrada</p>
