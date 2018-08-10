@@ -14,6 +14,7 @@ use App\Data\Models\ProgressType;
 use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
 use Illuminate\Support\Facades\DB;
+use App\Data\Models\RecordType;
 
 class ImportCercred
 {

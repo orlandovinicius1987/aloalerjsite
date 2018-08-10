@@ -19,6 +19,8 @@ class Record extends BaseModel
         'answered_at',
         'answered_by_id',
         'origin_id',
+        'resolved_at',
+        'resolved_by_id',
     ];
 
     public function committee()

@@ -20,6 +20,7 @@ if (jQuery("#" + appName).length > 0) {
             form: {
                 zipcode: null,
                 street: null,
+                number: null,
                 complement: null,
                 neighborhood: null,
                 city: null,

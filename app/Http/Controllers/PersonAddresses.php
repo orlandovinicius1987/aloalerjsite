@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonAddress as PersonAddressRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
+
 
 class PersonAddresses extends Controller
 {
@@ -23,7 +25,7 @@ class PersonAddresses extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(PersonAddressRequest $request)
     {
         $view = 'callcenter.people.form';
         $message = $this->messageDefault;

@@ -107,9 +107,9 @@
                     <label for="number" class="col-sm-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
                     <div class="col-md-2">
-                        <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                        <input type="number" min="1" id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                v-model="form.number"
-                               name="number" value="{{is_null(old('number')) ? $address->state : old('number')}}" required
+                               name="number" value="{{is_null(old('number')) ? $address->number : old('number')}}" required
                                autofocus>
 
                         @if ($errors->has('number'))
@@ -128,7 +128,6 @@
                                class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement')}}"
-                               required
                                autofocus>
 
                         @if ($errors->has('complement'))
