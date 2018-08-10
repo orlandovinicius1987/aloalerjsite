@@ -188,8 +188,8 @@ class ImportCercred
     {
         $this->info('Importing RECORDS AND PROGRESS...');
 
-        Record::truncate();
-        Progress::truncate();
+        //        Record::truncate();
+        //        Progress::truncate();
 
         Person::all()->each(function ($person) {
             $person->protocols = $this->getProtocolsForPerson($person)
@@ -214,6 +214,13 @@ class ImportCercred
                         "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
                     );
                 });
+
+            unset($person);
+
+            if ($this->counter > 100000) {
+                $this->info('----------------------- END OF LINE');
+                die();
+            }
         });
 
         DB::statement(
@@ -600,6 +607,7 @@ from protocolo
   left join pessoa on
                      historico.pessoa_id = pessoa.pessoa_id
 where pessoa.pessoa_id = {$person->id}
+and pessoa.pessoa_id not in (select person_id from public.records)
 order by pessoa.pessoa_id, protocolo.protocolo_id"
             )
         );
@@ -609,7 +617,7 @@ order by pessoa.pessoa_id, protocolo.protocolo_id"
     {
         return coollect(
             $this->db()->select(
-                "select
+                "select 
   DISTINCT
   historico.historico_id,
   historico.complemento historico_complemento,
