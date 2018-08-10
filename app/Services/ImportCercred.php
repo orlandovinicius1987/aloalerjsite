@@ -79,19 +79,19 @@ class ImportCercred
 
         $this->command = $command;
 
-//        $this->people();
-//
-//        $this->emails();
-//
-//        $this->phones();
-//
-//        $this->addresses();
-//
-//        $this->users();
-//
-//        $this->progressTypes();
-//
-//        $this->recordActions();
+        //        $this->people();
+        //
+        //        $this->emails();
+        //
+        //        $this->phones();
+        //
+        //        $this->addresses();
+        //
+        //        $this->users();
+        //
+        //        $this->progressTypes();
+        //
+        //        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -140,7 +140,10 @@ class ImportCercred
                 'Comissão Responsável'
             )->first();
 
-            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
+            if (
+                $data instanceof \stdClass ||
+                isset($data['historico_propriedade_valor'])
+            ) {
                 return Area::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
@@ -158,7 +161,10 @@ class ImportCercred
                 'Origem'
             )->first();
 
-            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
+            if (
+                $data instanceof \stdClass ||
+                isset($data['historico_propriedade_valor'])
+            ) {
                 return Origin::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;

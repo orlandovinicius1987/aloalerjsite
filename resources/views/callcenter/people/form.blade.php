@@ -2,12 +2,10 @@
 
 @section('content')
 
-<div class="card">
-
+<div class="card" id="vue-personal-info">
     <div class="card-header">{{ __('Dados pessoais') }}</div>
 
     <div class="card-body">
-
         @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
