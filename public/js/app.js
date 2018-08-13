@@ -47331,6 +47331,17 @@ if (jQuery("#" + appName).length > 0) {
                 this.timeout = setTimeout(function () {
                     me.refresh();
                 }, 500);
+            },
+
+
+            isNumber: function isNumber(evt) {
+                evt = evt ? evt : window.event;
+                charCode = evt.which ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
+                    evt.preventDefault();;
+                } else {
+                    return true;
+                }
             }
         },
 
