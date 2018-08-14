@@ -90,7 +90,7 @@ abstract class Controller extends IlluminateController
             'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
-            'contactTypes' => $this->contactTypesRepository->all()
+            'contactTypes' => $this->contactTypesRepository->all(),
         ];
         //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
     }
