@@ -32,7 +32,7 @@
                     <td>{{ $record->area->name or '' }}</td>
                 </tr>
             @empty
-                <p>Nenhumo Protocolo encontrada</p>
+                <p>Nenhum Protocolo encontrado</p>
             @endforelse
         </table>
     </div>
