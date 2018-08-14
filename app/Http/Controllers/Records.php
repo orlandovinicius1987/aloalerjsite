@@ -34,11 +34,11 @@ class Records extends Controller
                 $this->recordsRepository->findByPerson($record->personid),
             'addresses' =>
                 $this->peopleAddressesRepository->findByPerson(
-                    $record->personid
+                    $record->person_id
                 ),
             'contacts' =>
                 $this->peopleContactsRepository->findByPerson(
-                    $record->personid
+                    $record->person_id
                 ),
             'workflow' => request()->get('workflow')
         ]);
