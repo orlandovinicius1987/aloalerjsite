@@ -1,10 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
-use App\Http\Requests\CallRequest;
 use App\Data\Repositories\Vias as ViasRepository;
 
 class Records extends Controller
@@ -27,6 +25,36 @@ class Records extends Controller
             ->with($this->getComboBoxMenus());
     }
 
+    protected function makeViewDataFromRecord($record)
+    {
+        return array_merge($this->getComboBoxMenus(), [
+            'person' => $record->person,
+            'record' => $record,
+            'records' => $this->recordsRepository->findByPerson(
+                $record->person_id
+            ),
+            'addresses' => $this->peopleAddressesRepository->findByPerson(
+                $record->person_id
+            ),
+            'contacts' => $this->peopleContactsRepository->findByPerson(
+                $record->person_id
+            ),
+            'workflow' => request()->get('workflow'),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     */
+    protected function showSuccessMessage(Request $request): void
+    {
+        $this->flashMessage(
+            $request->get('workflow')
+                ? 'Protocolo cadastrado com sucesso.'
+                : $this->messageDefault
+        );
+    }
+
     /**
      * @param Request $request
      *
@@ -34,50 +62,18 @@ class Records extends Controller
      */
     public function store(Request $request)
     {
-        $route = 'persons.show';
-        $message = $this->messageDefault;
-        if ($request->get('workflow')) {
-            $route = 'persons_addresses.create';
-            $message = 'Protocolo cadastrado com sucesso.';
-        }
+        $record = $this->recordsRepository->create(coollect($request->all()));
 
-        $person = $this->peopleRepository->findById($request->get('person_id'));
-
-        $request->merge(['id' => $request->get('record_id')]);
-        $record = $this->recordsRepository->createFromRequest($request);
-
-        $record->protocol = sprintf(
-            '%s%s%s.%s.%s%s.%s',
-            Carbon::now()->year,
-            Carbon::now()->month,
-            Carbon::now()->day,
-            $person->id,
-            Carbon::now()->hour,
-            Carbon::now()->minute,
-
-            $record->id
-        );
-
-        $record->save();
-
-        $records = $this->recordsRepository->findByPerson($person->id);
-        $addresses = $this->peopleAddressesRepository->findByPerson(
-            $person->id
-        );
-        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
-
-        $with = [];
-        $with = array_merge($with, $this->getComboBoxMenus());
-        $with['person'] = $person;
-        $with['records'] = $records;
-        $with['addresses'] = $addresses;
-        $with['contacts'] = $contacts;
-        $with['message'] = $message;
-        $with['workflow'] = $request->get('workflow');
+        $this->showSuccessMessage($request);
 
         return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+            ->route(
+                $request->get('workflow')
+                    ? 'persons_addresses.create'
+                    : 'persons.show',
+                ['person_id' => $record->person->id]
+            )
+            ->with('data', $this->makeViewDataFromRecord($record));
     }
 
     /**

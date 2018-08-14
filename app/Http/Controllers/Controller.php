@@ -90,8 +90,20 @@ abstract class Controller extends IlluminateController
             'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
-            'contactTypes' => $this->contactTypesRepository->all()
+            'contactTypes' => $this->contactTypesRepository->all(),
         ];
         //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
+    }
+
+    protected function flashMessage($message, $type = 'success')
+    {
+        $alerts = session()->get('alerts') ?: [];
+
+        $alerts[] = [
+            'type' => $type,
+            'message' => $message,
+        ];
+
+        session()->flash("alerts", $alerts);
     }
 }

@@ -120,7 +120,7 @@ class PersonContacts extends Controller
                 'person_id' => $request->get('person_id'),
                 'contact_type_id' =>
                     ContactType::where('code', $code)->first()->id,
-                'contact' => $request->get($code)
+                'contact' => $request->get($code),
             ]);
         }
     }
