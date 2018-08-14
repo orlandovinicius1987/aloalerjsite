@@ -2,15 +2,18 @@
 namespace App\Http\Requests;
 
 use App\Rules\Contact;
+use App\Rules\ContactWorkflow;
 
-class PersonContactsRequest extends Request
+class PersonContactsWorkflowRequest extends Request
 {
     public function rules()
     {
         return [
-            'person_id' => 'required',
-            'contact_type_id' => 'required',
-            'contact' => ['required', new Contact()],
+            //'contact_type_id' => 'required',
+            'mobile' => ['required', new ContactWorkflow()],
+            'whatsapp' => ['required', new ContactWorkflow()],
+            'email' => ['required', new ContactWorkflow()],
+            'phone' => ['required', new ContactWorkflow()],
         ];
     }
 }
