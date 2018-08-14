@@ -99,10 +99,7 @@ abstract class Controller extends IlluminateController
     {
         $alerts = session()->get('alerts') ?: [];
 
-        $alerts[] = [
-            'type' => $type,
-            'message' => $message
-        ];
+        $alerts[] = ['type' => $type, 'message' => $message];
 
         session()->flash("alerts", $alerts);
     }
