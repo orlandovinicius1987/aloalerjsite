@@ -203,9 +203,9 @@
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         @if (isset($workflow) && $workflow)
-                        {{ __('Próximo passo >>') }}
+                            {{ __('Próximo passo >>') }}
                         @else
-                        {{ __('Gravar') }}
+                            {{ __('Gravar') }}
                         @endif
                     </button>
                 </div>
