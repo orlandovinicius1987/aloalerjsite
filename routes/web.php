@@ -73,6 +73,19 @@ Route::group(['prefix' => 'callcenter'], function () {
             ->name('persons_addresses.show');
     });
 
+    Route::group(['prefix' => 'progresses'], function () {
+        Route::get('/', 'Progresses@index')->name('progresses.index');
+        Route
+            ::get('/create/{record_id}', 'Progresses@create')
+            ->name('progresses.create');
+
+        Route::post('/', 'Progresses@store')->name('progresses.store');
+        Route
+            ::post('/finish', 'Progresses@storeAndFinish')
+            ->name('progresses.storeAndFinish');
+        Route::get('/show/{id}', 'Progresses@show')->name('progresses.show');
+    });
+
     Route::group(['prefix' => 'persons_contacts'], function () {
         Route::get('/', 'PersonContacts@index')->name('persons_contacts.index');
         Route
@@ -105,7 +118,6 @@ Route::group(['prefix' => 'callcenter'], function () {
     });
 
     Route::group(['prefix' => 'records'], function () {
-        Route::get('/', 'Records@index')->name('records.index');
         Route
             ::get('/create/{person_id}', 'Records@create')
             ->name('records.create');

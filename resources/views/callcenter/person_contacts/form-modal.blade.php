@@ -150,7 +150,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" id='buttonRelacionarLei' class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Salvar</button>
                     </div>
 

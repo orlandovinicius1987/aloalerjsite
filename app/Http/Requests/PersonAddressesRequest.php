@@ -12,7 +12,6 @@ class PersonAddressesRequest extends Request
             'neighbourhood' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'is_mailable' => 'required',
             'number' => 'numeric'
         ];
     }

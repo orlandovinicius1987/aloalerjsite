@@ -4,6 +4,7 @@ namespace App\Data\Repositories;
 use Carbon\Carbon;
 use App\Data\Models\Record;
 use App\Data\Repositories\People as PeopleRepository;
+use Illuminate\Support\Facades\Auth;
 
 class Records extends BaseRepository
 {
@@ -73,5 +74,13 @@ class Records extends BaseRepository
         $this->addProgressForRecord($record, $data);
 
         return $record;
+    }
+
+    public function markAsResolved($record_id)
+    {
+        $record = $this->model::find($record_id);
+        $record->resolved_at = now();
+        $record->resolved_by = Auth::user();
+        $record->save();
     }
 }

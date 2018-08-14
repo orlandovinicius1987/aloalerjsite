@@ -144,7 +144,7 @@ return [
             'progress_type_id' => 'tipo de andamento',
             'progress_action_id' => 'ação de andamento',
             'created_by_id' => 'criado por',
-            'original' => 'original',
+            'original' => 'solicitação',
             'rectified' => 'retificado',
             'rectified_at' => 'retificado em',
             'rectified_by_id' => 'retificado por',

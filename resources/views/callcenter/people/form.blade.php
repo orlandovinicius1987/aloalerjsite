@@ -121,7 +121,11 @@
 @endif
 
 @if (isset($contacts))
-@include('callcenter.person_contacts.index')
+    @include('callcenter.person_contacts.index')
+@endif
+
+@if (isset($progresses))
+    @include('callcenter.progress.table')
 @endif
 
 @endsection
