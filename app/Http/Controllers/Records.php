@@ -31,15 +31,15 @@ class Records extends Controller
             'person' => $record->person,
             'record' => $record,
             'records' => $this->recordsRepository->findByPerson(
-                $record->personid
+                $record->person_id
             ),
             'addresses' => $this->peopleAddressesRepository->findByPerson(
-                $record->personid
+                $record->person_id
             ),
             'contacts' => $this->peopleContactsRepository->findByPerson(
-                $record->personid
+                $record->person_id
             ),
-            'workflow' => request()->get('workflow')
+            'workflow' => request()->get('workflow'),
         ]);
     }
 

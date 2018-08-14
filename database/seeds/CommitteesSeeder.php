@@ -21,7 +21,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '0800 282-7060',
                 'office_address' =>
-                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.'
+                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.',
             ],
             'meioambiente' => [
                 'slug' => 'meioambiente',
@@ -36,7 +36,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1360',
                 'office_address' =>
-                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes'
+                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
             ],
             'preconceitos' => [
                 'slug' => 'preconceitos',
@@ -52,7 +52,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
                 'office_address' =>
-                    'Rua da Assembleia, s/nº – gabinete 308 – Centro.'
+                    'Rua da Assembleia, s/nº – gabinete 308 – Centro.',
             ],
             'pirataria' => [
                 'slug' => 'pirataria',
@@ -69,7 +69,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Jânio Mendes',
                 'public' => true,
                 'office_phone' => '(21) 2588-1732',
-                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01'
+                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01',
             ],
             'pessoadeficiente' => [
                 'slug' => 'pessoadeficiente',
@@ -83,7 +83,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Carlos Diniz',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 112'
+                'office_address' => 'Palácio Tiradentes, sala 112',
             ],
             'saneamentoambiental' => [
                 'slug' => 'saneamentoambiental',
@@ -127,7 +127,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Lucinha',
                 'public' => true,
                 'office_phone' => '(21) 2588-1309',
-                'office_address' => 'Palácio Tiradentes, sala 130'
+                'office_address' => 'Palácio Tiradentes, sala 130',
             ],
             'segurancapublica' => [
                 'slug' => 'segurancapublica',
@@ -142,7 +142,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1219',
                 'office_address' =>
-                    'Palácio Tiradentes, Prédio Anexo, gabinete 407'
+                    'Palácio Tiradentes, Prédio Anexo, gabinete 407',
             ],
             'trabalho' => [
                 'slug' => 'trabalho',
@@ -159,7 +159,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1569',
                 'office_address' =>
-                    'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro'
+                    'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
             ],
             'criancaadolescenteidoso' => [
                 'slug' => 'criancaadolescenteidoso',
@@ -176,7 +176,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
                 'office_address' =>
-                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
+                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
             ],
             'direitoshumanos' => [
                 'slug' => 'direitoshumanos',
@@ -193,7 +193,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1555',
                 'office_address' =>
-                    'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.'
+                    'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
             ],
             'educacao' => [
                 'slug' => 'educacao',
@@ -208,7 +208,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '',
                 'public' => true,
                 'office_phone' => '(21) 2588-1394',
-                'office_address' => 'Gabinete T 02 Anexo'
+                'office_address' => 'Gabinete T 02 Anexo',
             ],
             'segurancaalimentar' => [
                 'slug' => 'segurancaalimentar',
@@ -223,7 +223,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Waguinho',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 317'
+                'office_address' => 'Palácio Tiradentes, sala 317',
             ],
             'sosmulher' => [
                 'slug' => 'sosmulher',
@@ -239,7 +239,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '0800 282-0119',
                 'office_address' =>
-                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409'
+                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
             ],
             'tributacao' => [
                 'slug' => 'tributacao',
@@ -267,7 +267,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1259',
                 'office_address' =>
-                    'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo'
+                    'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo',
             ],
             'animais' => [
                 'slug' => 'animais',
@@ -282,8 +282,8 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '(21) 2588-1000',
                 'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
-            ]
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
         ]);
     }
 
@@ -308,7 +308,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => $committee->vice_president,
                 'public' => true,
                 'office_phone' => $committee->office_phone,
-                'office_address' => $committee->office_address
+                'office_address' => $committee->office_address,
             ]);
         });
     }
