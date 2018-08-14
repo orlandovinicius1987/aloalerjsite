@@ -3,18 +3,18 @@
 @section('content')
 <div class="card">
     <div class="card-header">{{ __('Protocolos') }}</div>
-    <div class="card-body">
 
+    <div class="card-body">
         @if (isset($message))
-        <div class="alert alert-success">
-            {{ $message }}
-        </div>
+            <div class="alert alert-success">
+                {{ $message }}
+            </div>
         @endif
 
         @if(session()->has('warning'))
-        <div class="alert alert-warning">
-            {{ session()->get('warning') }}
-        </div>
+            <div class="alert alert-warning">
+                {{ session()->get('warning') }}
+            </div>
         @endif
 
         <form method="POST" action="{{ route('records.store') }}" aria-label="{{ __('Protocolos') }}">
@@ -83,20 +83,6 @@
                     @if ($errors->has('origins_id'))
                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('origin_id') }}</strong>
-                                                </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="subject" class="col-sm-4 col-form-label text-md-right">{{ __('Assunto') }}</label>
-                <div class="col-md-6">
-                    <input id="subject" type="subject"
-                           class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject"
-                           value="{{is_null(old('subject')) ? $record->subject : old('subject')}}" required autofocus>
-                    @if ($errors->has('subject'))
-                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
                                                 </span>
                     @endif
                 </div>

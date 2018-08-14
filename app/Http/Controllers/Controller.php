@@ -94,4 +94,16 @@ abstract class Controller extends IlluminateController
         ];
         //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
     }
+
+    protected function flashMessage($message, $type = 'success')
+    {
+        $alerts = session()->get('alerts') ?: [];
+
+        $alerts[] = [
+            'type' => $type,
+            'message' => $message
+        ];
+
+        session()->flash("alerts", $alerts);
+    }
 }

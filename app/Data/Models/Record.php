@@ -12,13 +12,9 @@ class Record extends BaseModel
         'person_id',
         'record_type_id',
         'area_id',
-        'subject',
         'answer_address_id',
         'send_answer_by_email',
-        'answer',
-        'answered_at',
-        'answered_by_id',
-        'origin_id',
+        'origin_id'
     ];
 
     public function committee()
@@ -34,5 +30,10 @@ class Record extends BaseModel
     public function area()
     {
         return $this->belongsTo(Area::class);
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
     }
 }
