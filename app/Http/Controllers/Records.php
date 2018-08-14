@@ -30,17 +30,16 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' =>
-                $this->recordsRepository->findByPerson($record->personid),
-            'addresses' =>
-                $this->peopleAddressesRepository->findByPerson(
-                    $record->person_id
-                ),
-            'contacts' =>
-                $this->peopleContactsRepository->findByPerson(
-                    $record->person_id
-                ),
-            'workflow' => request()->get('workflow')
+            'records' => $this->recordsRepository->findByPerson(
+                $record->person_id
+            ),
+            'addresses' => $this->peopleAddressesRepository->findByPerson(
+                $record->person_id
+            ),
+            'contacts' => $this->peopleContactsRepository->findByPerson(
+                $record->person_id
+            ),
+            'workflow' => request()->get('workflow'),
         ]);
     }
 

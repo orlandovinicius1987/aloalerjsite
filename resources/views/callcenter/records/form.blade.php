@@ -41,8 +41,8 @@
                            readonly="readonly">
                     @if ($errors->has('cpf_cnpj'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -55,8 +55,8 @@
                            readonly="readonly">
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -82,8 +82,8 @@
 
                     @if ($errors->has('origins_id'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('origin_id') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('origin_id') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -166,8 +166,8 @@
 
                     @if ($errors->has('area_id'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('area_id') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('area_id') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -182,8 +182,8 @@
                                   required rows="15">{{$record->original}}</textarea>
                     @if ($errors->has('original'))
                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('original') }}</strong>
-                            </span>
+                        <strong>{{ $errors->first('original') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -203,9 +203,9 @@
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         @if (isset($workflow) && $workflow)
-                        {{ __('Próximo passo >>') }}
+                            {{ __('Próximo passo >>') }}
                         @else
-                        {{ __('Gravar') }}
+                            {{ __('Gravar') }}
                         @endif
                     </button>
                 </div>
