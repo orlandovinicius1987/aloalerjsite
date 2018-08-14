@@ -17,7 +17,7 @@ class Progress extends BaseModel
         'rectified_by_id',
         'history_fields',
         'created_at',
-        'updated_at',
+        'updated_at'
     ];
 
     public function record()
