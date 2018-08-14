@@ -27,7 +27,7 @@
                 <tr>
                     <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
                     <td>{{ $record->subject }}</td>
-                    <td>{{ $record->committee or '' }}</td>
+                    <td>{{ $record->committee->name or '' }}</td>
                     <td>{{ $record->recordType->name or '' }}</td>
                     <td>{{ $record->area->name or '' }}</td>
                 </tr>
