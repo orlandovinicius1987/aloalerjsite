@@ -13,7 +13,7 @@ class PersonAddressesRequest extends Request
             'city' => 'required',
             'state' => 'required',
             'is_mailable' => 'required',
-            'number' => 'numeric'
+            'number' => 'numeric',
         ];
     }
 }

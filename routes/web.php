@@ -51,10 +51,6 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/create', 'People@create')->name('persons.create');
         Route::post('/', 'People@store')->name('persons.store');
         Route::get('/show/{person_id}', 'People@show')->name('persons.show');
-
-        Route::post('/insertContact', 'People@insertContact')->name(
-            'persons.insertContact'
-        );
     });
 
     Route::group(['prefix' => 'persons_addresses'], function () {
@@ -87,6 +83,10 @@ Route::group(['prefix' => 'callcenter'], function () {
 
         Route::get('/createOutside/{id}', 'PersonContacts@createOutside')->name(
             'persons_contacts.createOutside'
+        );
+
+        Route::post('/insertContact', 'PersonContacts@insertContact')->name(
+            'persons_contacts.insertContact'
         );
     });
 

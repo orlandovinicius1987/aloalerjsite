@@ -55,15 +55,6 @@ class People extends Controller
             ->with('workflow', '1');
     }
 
-    public function insertContact(PersonContactsRequest $request)
-    {
-        $this->peopleContactsRepository->createFromRequest($request);
-
-        return redirect()
-            ->route('persons.show', ['person_id' => $request->get('person_id')])
-            ->with($this->getSuccessMessage());
-    }
-
     /**
      * @param Request     $request
      *
