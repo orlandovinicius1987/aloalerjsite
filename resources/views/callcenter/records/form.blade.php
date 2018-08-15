@@ -226,4 +226,8 @@
         </form>
     </div>
 </div>
+
+@if (isset($progresses))
+    @include('callcenter.progress.table')
+@endif
 @endsection

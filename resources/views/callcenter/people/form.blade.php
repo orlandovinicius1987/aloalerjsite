@@ -124,9 +124,5 @@
     @include('callcenter.person_contacts.index')
 @endif
 
-@if (isset($progresses))
-    @include('callcenter.progress.table')
-@endif
-
 @endsection
 

@@ -1,25 +1,13 @@
                 <div class="card">
-                    <div class="card-header">{{ __('Andamentos') }}</div>
+                    <div class="card-header">{{ __('Andamentos') }}
+                        <a id="buttonEndereços" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
+                           class="btn btn-primary btn-sm pull-right">
+                            <i class="fa fa-plus"></i>
+                            Novo Andamento
+                        </a>
+                    </div>
 
                     <div class="card-body">
-
-                        @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                        @endif
-
-                        @if(session()->has('warning'))
-                        <div class="alert alert-warning">
-                            {{ session()->get('warning') }}
-                        </div>
-                        @endif
-
-                        <div class="col-xs-8 col-md-10">
-                            <h4>
-                                {{--<a href="{{ route('progresses.create') }}">Novo</a>--}}
-                            </h4>
-                        </div>
 
                         <table id="progressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
@@ -35,7 +23,7 @@
                             @forelse ($progresses as $progress)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin_id }}</a>
+                                        <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name }}</a>
                                     </td>
                                     <td>
                                         @if(is_null($progress->recordType))
@@ -66,5 +54,6 @@
                                 <p>Nenhum andamento encontrado.</p>
                             @endforelse
                         </table>
+                        {{ $progresses->links() }}
                     </div>
                 </div>

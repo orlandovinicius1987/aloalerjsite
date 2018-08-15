@@ -89,6 +89,14 @@ class Records extends Controller
 
         return view('callcenter.records.form')
             ->with($this->getComboBoxMenus())
+            ->with(
+                'progresses',
+                $this->progressesRepository->allWherePaginate(
+                    'record_id',
+                    $id,
+                    15
+                )
+            )
             ->with('record', $record)
             ->with('person', $person);
     }

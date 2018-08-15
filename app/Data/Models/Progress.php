@@ -43,6 +43,11 @@ class Progress extends BaseModel
         return $this->belongsTo(Area::class);
     }
 
+    public function origin()
+    {
+        return $this->belongsTo(Origin::class);
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class);

@@ -26,9 +26,10 @@ class Progresses extends Controller
         return view('callcenter.progress.form')
             ->with([
                 'progress' => $this->progressesRepository->new(),
-                'record_id' => $record_id
+                'record' => $this->recordsRepository->findById($record_id)
             ])
-            ->with($this->getComboBoxMenus());
+            ->with($this->getComboBoxMenus())
+            ->with('formDisabled', false);
     }
 
     /**
@@ -63,8 +64,14 @@ class Progresses extends Controller
      */
     public function show($id)
     {
-        return view('progresses.form')
-            ->with('formDisabled', true)
-            ->with(['via' => $this->progressesRepository->findById($id)]);
+        $progress = $this->progressesRepository->findById($id);
+        return view('callcenter.progress.form')
+            ->with([
+                'progress' => $progress,
+                'record' =>
+                    $this->recordsRepository->findById($progress->record_id)
+            ])
+            ->with($this->getComboBoxMenus())
+            ->with('formDisabled', true);
     }
 }
