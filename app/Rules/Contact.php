@@ -13,7 +13,7 @@ class Contact implements Rule
         'phone' => 'Telefone Fixo',
         'facebook' => 'Facebook',
         'twitter' => 'Twitter',
-        'instagram' => 'Instagram'
+        'instagram' => 'Instagram',
     ];
 
     /**
@@ -35,14 +35,41 @@ class Contact implements Rule
      */
     public function passes($attribute, $value)
     {
+        $contactTypeCode = app(ContactType::class)->find(
+            request('contact_type_id')
+        )->code;
+
+        return $this->regexRules($contactTypeCode, request('contact'));
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
         $contactTypeRepository = app(ContactType::class);
         $contactTypeCode = $contactTypeRepository->find(
             request('contact_type_id')
         )->code;
-        $contact = request('contact');
 
+        return (
+            'O campo contato não é um ' .
+            $this->fieldNamesArray[$contactTypeCode] .
+            ' válido.'
+        );
+    }
+
+    /**
+     * @param $contactTypeCode
+     * @param $contact
+     * @param $match
+     * @return bool
+     */
+    protected function regexRules($contactTypeCode, $contact)
+    {
         $pass = false;
-
         switch ($contactTypeCode) {
             case 'mobile':
                 $contact = preg_replace('/\D/', '', $contact);
@@ -74,26 +101,6 @@ class Contact implements Rule
                 $pass = true;
                 break;
         }
-
         return $pass;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        $contactTypeRepository = app(ContactType::class);
-        $contactTypeCode = $contactTypeRepository->find(
-            request('contact_type_id')
-        )->code;
-
-        return (
-            'O campo contato não é um ' .
-            $this->fieldNamesArray[$contactTypeCode] .
-            ' válido.'
-        );
     }
 }

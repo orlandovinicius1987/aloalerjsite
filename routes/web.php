@@ -51,10 +51,6 @@ Route::group(['prefix' => 'callcenter'], function () {
         Route::get('/create', 'People@create')->name('persons.create');
         Route::post('/', 'People@store')->name('persons.store');
         Route::get('/show/{person_id}', 'People@show')->name('persons.show');
-
-        Route
-            ::post('/insertContact', 'People@insertContact')
-            ->name('persons.insertContact');
     });
 
     Route::group(['prefix' => 'persons_addresses'], function () {
@@ -88,19 +84,23 @@ Route::group(['prefix' => 'callcenter'], function () {
 
     Route::group(['prefix' => 'persons_contacts'], function () {
         Route::get('/', 'PersonContacts@index')->name('persons_contacts.index');
-        Route
-            ::get('/create/{person_id}', 'PersonContacts@create')
-            ->name('persons_contacts.create');
-        Route
-            ::post('/', 'PersonContacts@store')
-            ->name('persons_contacts.store');
-        Route
-            ::get('/show/{id}', 'PersonContacts@show')
-            ->name('persons_contacts.show');
+        Route::get('/create/{person_id}', 'PersonContacts@create')->name(
+            'persons_contacts.create'
+        );
+        Route::post('/', 'PersonContacts@store')->name(
+            'persons_contacts.store'
+        );
+        Route::get('/show/{id}', 'PersonContacts@show')->name(
+            'persons_contacts.show'
+        );
 
-        Route
-            ::get('/createOutside/{id}', 'PersonContacts@createOutside')
-            ->name('persons_contacts.createOutside');
+        Route::get('/createOutside/{id}', 'PersonContacts@createOutside')->name(
+            'persons_contacts.createOutside'
+        );
+
+        Route::post('/insertContact', 'PersonContacts@insertContact')->name(
+            'persons_contacts.insertContact'
+        );
     });
 
     Route::group(['prefix' => 'origins'], function () {
