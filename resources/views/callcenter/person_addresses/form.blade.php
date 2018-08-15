@@ -26,8 +26,8 @@
                     <input name="person_id" type="hidden" value="{{ $person->id }}">
                 @endif
 
-                @if (isset($workflow))
-                    <input name="workflow" type="hidden" value="{{ $workflow }}">
+                @if (isset($workflow) || old('workflow'))
+                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 @if (isset($address))
@@ -110,7 +110,6 @@
 
                     <div class="col-md-2">
                         <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
-                               v-model="form.number"
                                v-on:keypress="isNumber(event)"
                                name="number" value="{{!is_null(old('number')) ? $address->state : old('number')}}" required
                                autofocus
@@ -128,7 +127,6 @@
 
                     <div class="col-md-2">
                         <input id="complement"
-                               v-model="form.complement"
                                class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement')}}"
@@ -205,7 +203,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-primary">
-                            @if (isset($workflow) && $workflow)
+                            @if ((isset($workflow) && $workflow) || old('workflow'))
                                 {{ __('Próximo passo >>') }}
                             @else
                                 {{ __('Gravar') }}

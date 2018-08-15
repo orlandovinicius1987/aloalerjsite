@@ -171,5 +171,6 @@ return [
         'phone' => 'Telefone Fixo',
         'whatsapp' => 'WhatsApp',
         'mobile' => 'Celular',
+        'number ' => 'número',
     ],
 ];

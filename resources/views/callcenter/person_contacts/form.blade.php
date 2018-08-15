@@ -23,15 +23,15 @@
             @csrf
 
             @if (isset($person))
-            <input name="person_id" type="hidden" value="{{ $person->id }}">
+                <input name="person_id" type="hidden" value="{{ $person->id }}">
             @endif
 
-            @if (isset($workflow))
-            <input name="workflow" type="hidden" value="{{ $workflow }}">
+            @if (isset($workflow) || old('workflow'))
+                <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
             @endif
 
             @if (isset($contact))
-            <input name="contact_id" type="hidden" value="{{ $contact->id }}">
+                <input name="contact_id" type="hidden" value="{{ $contact->id }}">
             @endif
 
             <div class="form-group row">

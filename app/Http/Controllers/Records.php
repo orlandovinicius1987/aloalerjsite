@@ -64,8 +64,10 @@ class Records extends Controller
     public function store(RecordRequest $request)
     {
         $record = $this->recordsRepository->create(coollect($request->all()));
-        $request->merge(['record_id' => $record->id]);
-        $this->progressesRepository->createFromRequest($request);
+        if (is_null($request->get('record_id'))) {
+            $request->merge(['record_id' => $record->id]);
+            $this->progressesRepository->createFromRequest($request);
+        }
 
         $this->showSuccessMessage($request);
 
