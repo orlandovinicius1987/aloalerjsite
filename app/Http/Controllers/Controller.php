@@ -14,6 +14,7 @@ use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
+use App\Data\Repositories\Progresses as ProgressesRepository;
 
 abstract class Controller extends IlluminateController
 {
@@ -33,6 +34,7 @@ abstract class Controller extends IlluminateController
     protected $recordTypesRepository;
     protected $areasRepository;
     protected $contactTypesRepository;
+    protected $progressesRepository;
 
     /**
      * Persons constructor.
@@ -56,7 +58,8 @@ abstract class Controller extends IlluminateController
         CommitteesRepository $committeesRepository,
         RecordTypesRepository $RecordTypesRepository,
         AreasRepository $areasRepository,
-        ContactTypesRepository $contactTypesRepository
+        ContactTypesRepository $contactTypesRepository,
+        ProgressesRepository $progressesRepository
     ) {
         $this->peopleRepository = $personRepository;
         $this->recordsRepository = $RecordsRepository;
@@ -67,6 +70,7 @@ abstract class Controller extends IlluminateController
         $this->recordTypesRepository = $RecordTypesRepository;
         $this->areasRepository = $areasRepository;
         $this->contactTypesRepository = $contactTypesRepository;
+        $this->progressesRepository = $progressesRepository;
     }
 
     /**
@@ -91,18 +95,15 @@ abstract class Controller extends IlluminateController
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
             'contactTypes' => $this->contactTypesRepository->all(),
+            'progressTypes' => $this->progressesRepository->all()
         ];
-        //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
     }
 
     protected function flashMessage($message, $type = 'success')
     {
         $alerts = session()->get('alerts') ?: [];
 
-        $alerts[] = [
-            'type' => $type,
-            'message' => $message,
-        ];
+        $alerts[] = ['type' => $type, 'message' => $message];
 
         session()->flash("alerts", $alerts);
     }

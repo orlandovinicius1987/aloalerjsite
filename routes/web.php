@@ -7,7 +7,7 @@ Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
 Route::get('comissoes/{name}', [
     'as' => 'committees.show',
-    'uses' => 'Committees@show',
+    'uses' => 'Committees@show'
 ]);
 
 Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
@@ -19,7 +19,7 @@ Route::group(['prefix' => 'chat'], function () {
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
     Route::get('terminated', [
         'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated',
+        'uses' => 'Chat@terminated'
     ]);
 });
 
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'contact'], function () {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
     Route::get('pretend', [
         'as' => 'contact.index',
-        'uses' => 'Contact@pretend',
+        'uses' => 'Contact@pretend'
     ]);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
@@ -54,19 +54,32 @@ Route::group(['prefix' => 'callcenter'], function () {
     });
 
     Route::group(['prefix' => 'persons_addresses'], function () {
-        Route::get('/', 'PersonAddresses@index')->name(
-            'persons_addresses.index'
-        );
-        Route::get('/create/{person_id}', 'PersonAddresses@create')->name(
-            'persons_addresses.create'
-        );
+        Route
+            ::get('/', 'PersonAddresses@index')
+            ->name('persons_addresses.index');
+        Route
+            ::get('/create/{person_id}', 'PersonAddresses@create')
+            ->name('persons_addresses.create');
 
-        Route::post('/', 'PersonAddresses@store')->name(
-            'persons_addresses.store'
-        );
-        Route::get('/show/{id}', 'PersonAddresses@show')->name(
-            'persons_addresses.show'
-        );
+        Route
+            ::post('/', 'PersonAddresses@store')
+            ->name('persons_addresses.store');
+        Route
+            ::get('/show/{id}', 'PersonAddresses@show')
+            ->name('persons_addresses.show');
+    });
+
+    Route::group(['prefix' => 'progresses'], function () {
+        Route::get('/', 'Progresses@index')->name('progresses.index');
+        Route
+            ::get('/create/{record_id}', 'Progresses@create')
+            ->name('progresses.create');
+
+        Route::post('/', 'Progresses@store')->name('progresses.store');
+        Route
+            ::post('/finish', 'Progresses@storeAndFinish')
+            ->name('progresses.storeAndFinish');
+        Route::get('/show/{id}', 'Progresses@show')->name('progresses.show');
     });
 
     Route::group(['prefix' => 'persons_contacts'], function () {
@@ -105,17 +118,16 @@ Route::group(['prefix' => 'callcenter'], function () {
     });
 
     Route::group(['prefix' => 'records'], function () {
-        Route::get('/', 'Records@index')->name('records.index');
-        Route::get('/create/{person_id}', 'Records@create')->name(
-            'records.create'
-        );
+        Route
+            ::get('/create/{person_id}', 'Records@create')
+            ->name('records.create');
         Route::post('/', 'Records@store')->name('records.store');
         Route::get('/show/{id}', 'Records@show')->name('records.show');
     });
 
     Route::group(['prefix' => 'contact_types'], function () {
-        Route::get('/array/', 'ContactTypes@array')->name(
-            'contact_types.array'
-        );
+        Route
+            ::get('/array/', 'ContactTypes@array')
+            ->name('contact_types.array');
     });
 });

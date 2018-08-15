@@ -30,16 +30,17 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' => $this->recordsRepository->findByPerson(
-                $record->person_id
-            ),
-            'addresses' => $this->peopleAddressesRepository->findByPerson(
-                $record->person_id
-            ),
-            'contacts' => $this->peopleContactsRepository->findByPerson(
-                $record->person_id
-            ),
-            'workflow' => request()->get('workflow'),
+            'records' =>
+                $this->recordsRepository->findByPerson($record->person_id),
+            'addresses' =>
+                $this->peopleAddressesRepository->findByPerson(
+                    $record->person_id
+                ),
+            'contacts' =>
+                $this->peopleContactsRepository->findByPerson(
+                    $record->person_id
+                ),
+            'workflow' => request()->get('workflow')
         ]);
     }
 
@@ -88,6 +89,14 @@ class Records extends Controller
 
         return view('callcenter.records.form')
             ->with($this->getComboBoxMenus())
+            ->with(
+                'progresses',
+                $this->progressesRepository->allWherePaginate(
+                    'record_id',
+                    $id,
+                    15
+                )
+            )
             ->with('record', $record)
             ->with('person', $person);
     }

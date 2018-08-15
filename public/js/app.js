@@ -13949,7 +13949,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(46);
 
 
 /***/ }),
@@ -13963,6 +13963,7 @@ __webpack_require__(41);
 __webpack_require__(42);
 __webpack_require__(43);
 __webpack_require__(44);
+__webpack_require__(45);
 
 /***/ }),
 /* 14 */
@@ -47477,6 +47478,29 @@ if (jQuery("#" + appName).length > 0) {
 
 /***/ }),
 /* 45 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-progress';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {},
+
+        methods: {
+            changeFormRoute: function changeFormRoute(oi) {
+                e = document.getElementById('formProgress');
+                e.action = oi;
+                e.submit();
+            }
+        }
+
+    });
+}
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

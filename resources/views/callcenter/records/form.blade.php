@@ -5,6 +5,18 @@
     <div class="card-header">{{ __('Protocolos') }}</div>
 
     <div class="card-body">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+
         @if (isset($message))
             <div class="alert alert-success">
                 {{ $message }}
@@ -214,4 +226,8 @@
         </form>
     </div>
 </div>
+
+@if (isset($progresses))
+    @include('callcenter.progress.table')
+@endif
 @endsection
