@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PersonAddress as PersonAddressRequest;
+use App\Http\Requests\PersonContactsRequest;
+use App\Http\Requests\PersonAddressesRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
@@ -27,11 +28,27 @@ class PersonAddresses extends Controller
     }
 
     /**
+     * @param $cpf_cnpj
+     *
+     * @return $this
+     */
+    public function show($id)
+    {
+        $address = $this->peopleAddressesRepository->findById($id);
+        $person = $this->peopleRepository->findById($address->person_id);
+
+        return view('callcenter.person_addresses.form')
+            ->with($this->getComboBoxMenus())
+            ->with('address', $address)
+            ->with('person', $person);
+    }
+
+    /**
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PersonAddressRequest $request)
+    public function store(PersonAddressesRequest $request)
     {
         $route = 'persons.show';
         $message = $this->messageDefault;
@@ -43,7 +60,7 @@ class PersonAddresses extends Controller
         $request->merge(['id' => $request->get('address_id')]);
         $request->merge([
             'street' =>
-                trim($request->get('street')) . ', ' . $request->get('number'),
+                trim($request->get('street')) . ', ' . $request->get('number')
         ]);
         $this->peopleAddressesRepository->createFromRequest($request);
 
@@ -66,21 +83,5 @@ class PersonAddresses extends Controller
         return redirect()
             ->route($route, ['person_id' => $person->id])
             ->with('data', $with);
-    }
-
-    /**
-     * @param $cpf_cnpj
-     *
-     * @return $this
-     */
-    public function show($id)
-    {
-        $address = $this->peopleAddressesRepository->findById($id);
-        $person = $this->peopleRepository->findById($address->person_id);
-
-        return view('callcenter.person_addresses.form')
-            ->with($this->getComboBoxMenus())
-            ->with('address', $address)
-            ->with('person', $person);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonContactsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
@@ -132,7 +133,8 @@ class People extends Controller
                 ->with('person', $person)
                 ->with('records', $records)
                 ->with('addresses', $addresses)
-                ->with('contacts', $contacts);
+                ->with('contacts', $contacts)
+                ->with($this->getComboBoxMenus());
         }
     }
 

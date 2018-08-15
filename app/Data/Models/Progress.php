@@ -16,8 +16,11 @@ class Progress extends BaseModel
         'rectified_at',
         'rectified_by_id',
         'history_fields',
+        'origin_id',
+        'record_type_id',
+        'area_id',
         'created_at',
-        'updated_at',
+        'updated_at'
     ];
 
     public function record()
@@ -28,6 +31,21 @@ class Progress extends BaseModel
     public function progressType()
     {
         return $this->belongsTo(ProgressType::class);
+    }
+
+    public function recordType()
+    {
+        return $this->belongsTo(RecordType::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function origin()
+    {
+        return $this->belongsTo(Origin::class);
     }
 
     public function createdBy()

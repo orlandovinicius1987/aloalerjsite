@@ -4,6 +4,8 @@
     <div class="card">
         <div class="card-header">{{ __('Endereços') }}</div>
 
+        {{--{{dd(old('number'))}}--}}
+
         <div class="card-body" id="vue-addresses">
             @if (isset($message))
                 <div class="alert alert-success">
@@ -107,15 +109,17 @@
                     <label for="number" class="col-sm-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
                     <div class="col-md-2">
-                        <input type="number" min="1" id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                        <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                v-model="form.number"
-                               name="number" value="{{is_null(old('number')) ? $address->number : old('number')}}" required
-                               autofocus>
+                               v-on:keypress="isNumber(event)"
+                               name="number" value="{{!is_null(old('number')) ? $address->state : old('number')}}" required
+                               autofocus
+                        >
 
                         @if ($errors->has('number'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('number') }}</strong>
-                        </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('number') }}</strong>
+                            </span>
                         @endif
                     </div>
 

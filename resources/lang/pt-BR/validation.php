@@ -96,7 +96,6 @@ return [
     'unique' => 'O campo :attribute já está sendo utilizado.',
     'uploaded' => 'Ocorreu uma falha no upload do campo :attribute.',
     'url' => 'O campo :attribute tem um formato inválido.',
-
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -109,7 +108,6 @@ return [
     */
 
     'custom' => ['attribute-name' => ['rule-name' => 'custom-message']],
-
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -121,5 +119,57 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'nome',
+        'email' => 'email',
+        'password' => 'senha',
+        'protocol' => 'protocolo',
+        'committee_id' => 'comissão',
+        'person_id' => 'pessoa',
+        'record_type_id' => 'tipo de registro',
+        'area_id' => 'area',
+        'answer_address_id' => 'endereço de resposta',
+        'send_answer_by_email' => 'enviar resposta por email',
+        'origin_id' => 'origem',
+        'record_id' => 'registro',
+        'progress_type_id' => 'tipo de andamento',
+        'progress_action_id' => 'ação de andamento',
+        'created_by_id' => 'criado por',
+        'original' => 'original',
+        'rectified' => 'retificado',
+        'rectified_at' => 'retificado em',
+        'rectified_by_id' => 'retificado por',
+        'history_fields' => 'campos de histórico',
+        'created_at' => 'criado em',
+        'updated_at' => 'atualizado em',
+        'contact_type_id' => 'tipo de contato',
+        'contact' => 'contato',
+        'from' => 'de',
+        'status' => 'estado',
+        'email_id' => 'email',
+        'validated_at' => 'validado em',
+        'validated_by_id' => 'validado por',
+        'provider_enrichment_id' => '',
+        'zipcode' => 'CEP',
+        'street' => 'endereço',
+        'complement' => 'complemento',
+        'neighbourhood' => 'bairro',
+        'city' => 'cidade',
+        'state' => 'estado',
+        'is_mailable' => '',
+        'address_id' => 'endereço',
+        'cpf_cnpj' => 'CPF/CNPJ',
+        'identification' => 'RG',
+        'is_anonymous' => 'é anônimo',
+        'civil_status_id' => 'estado civil',
+        'spouse_name' => 'nome do cônjuge',
+        'ocupacao_principal_id' => 'ocupação principal',
+        'scholarship_id' => 'nível de escolaridade',
+        'income' => 'salário',
+        'person_type_id' => 'tipo de pessoa',
+        'updated_by_id' => 'atualizado por',
+        'phone' => 'Telefone Fixo',
+        'whatsapp' => 'WhatsApp',
+        'mobile' => 'Celular',
+    ],
 ];

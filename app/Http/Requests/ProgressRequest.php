@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests;
 
-class CallRequest extends Request
+class ProgressRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.
@@ -10,6 +10,6 @@ class CallRequest extends Request
      */
     public function rules()
     {
-        return ['cpf_cnpj' => 'required', 'name' => 'required'];
+        return ['origin_id' => 'required', 'original' => 'required'];
     }
 }

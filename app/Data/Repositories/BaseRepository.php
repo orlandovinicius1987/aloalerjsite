@@ -21,17 +21,21 @@ abstract class BaseRepository
     }
 
     /**
-     * @param Request $request
+     * @param mixed $request
      *
      * @return mixed
      */
-    public function createFromRequest(Request $request)
+    public function createFromRequest($data)
     {
-        is_null($id = $request->input('id'))
-            ? $model = new $this->model()
-            : $model = $this->model::find($id);
+        if ($data instanceof Request) {
+            $data = coollect($data->all());
+        }
 
-        $model->fill($request->all());
+        !$data->has('id') || is_null($data->id)
+            ? $model = new $this->model()
+            : $model = $this->model::find($data->id);
+
+        $model->fill($data->toArray());
 
         $model->save();
 
@@ -104,6 +108,11 @@ abstract class BaseRepository
         return $this->makeResultForSelect($this->model::all());
     }
 
+    public function allWherePaginate($field, $value, $sizeOfPage)
+    {
+        //        return ($this->model::paginate(15));
+        return ($this->model::where($field, $value)->paginate($sizeOfPage));
+    }
     /**
      * @param $field
      * @return mixed

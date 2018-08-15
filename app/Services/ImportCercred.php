@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Services;
 
 use App\Data\Models\Area;
@@ -22,6 +21,8 @@ class ImportCercred
 {
     protected $command;
 
+    protected $counter = 0;
+
     private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
@@ -39,11 +40,15 @@ class ImportCercred
                     'history_fields' => $history->history_fields->toJson(),
                 ])
             );
+
+            $this->increment();
         }
     }
 
     private function createRecordFromProtocol($protocol)
     {
+        $this->increment();
+
         return Record::create(
             $this->sanitize([
                 'protocol' => $protocol->protocolo_codigo,
@@ -79,6 +84,10 @@ class ImportCercred
 
         $this->command = $command;
 
+        \Debugbar::disable();
+
+        DB::connection()->disableQueryLog();
+
         //        $this->people();
         //
         //        $this->emails();
@@ -88,10 +97,10 @@ class ImportCercred
         //        $this->addresses();
         //
         //        $this->users();
-        //
-        //        $this->progressTypes();
-        //
-        //        $this->recordActions();
+
+        $this->progressTypes();
+
+        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -178,12 +187,7 @@ class ImportCercred
     {
         $this->info('Importing RECORDS AND PROGRESS...');
 
-        $counter = 0;
-
-        Record::truncate();
-        Progress::truncate();
-
-        Person::all()->each(function ($person) use (&$counter) {
+        Person::all()->each(function ($person) {
             $person->protocols = $this->getProtocolsForPerson($person)
                 ->map(function ($protocol) {
                     $protocol->history_data = $this->getHistory(
@@ -198,38 +202,53 @@ class ImportCercred
 
                     return $protocol;
                 })
-                ->each(function ($protocol) use (&$counter) {
-                    try {
-                        $record = $this->createRecordFromProtocol($protocol);
+                ->each(function ($protocol) {
+                    $this->importProtocol($protocol);
 
-                        $protocol->history_data->each(function ($history) use (
-                            $record
-                        ) {
-                            $this->createProgress($history, $record);
-                        });
-                    } catch (\Exception $exception) {
-                        dump($protocol);
-
-                        throw $exception;
-                    } catch (FatalThrowableError $exception) {
-                        dump($protocol);
-
-                        throw $exception;
-                    }
-
-                    $counter++;
-
-                    if ($counter % 10 === 0) {
-                        $this->info(
-                            "{$counter} = {$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-                        );
-                    }
+                    $this->increment(
+                        10,
+                        "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
+                    );
                 });
+
+            unset($person);
+
+            $this->checkMemory();
         });
 
         DB::statement(
             "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
         );
+    }
+
+    /**
+     * @param $this
+     */
+    function checkMemory()
+    {
+        if (memory_get_peak_usage() > 1500450656) {
+            $this->info('----------------------- END OF MEMORY');
+            die();
+        }
+    }
+
+    public function importProtocol($protocol)
+    {
+        try {
+            $record = $this->createRecordFromProtocol($protocol);
+
+            $protocol->history_data->each(function ($history) use ($record) {
+                $this->createProgress($history, $record);
+            });
+        } catch (\Exception $exception) {
+            dump($protocol);
+
+            throw $exception;
+        } catch (FatalThrowableError $exception) {
+            dump($protocol);
+
+            throw $exception;
+        }
     }
 
     private function recordActions()
@@ -300,7 +319,7 @@ class ImportCercred
 
     protected function addresses()
     {
-        $counter = 0;
+        $this->counter = 0;
 
         if (
             PersonAddress::count() ==
@@ -332,7 +351,7 @@ class ImportCercred
         $this->db()
             ->table('endereco')
             ->get()
-            ->each(function ($endereco) use (&$counter, $statuses, $types) {
+            ->each(function ($endereco) use ($statuses, $types) {
                 $type = lower(
                     $types
                         ->where('endereco_tipo', $endereco->endereco_tipo)
@@ -363,11 +382,7 @@ class ImportCercred
                     )
                 );
 
-                $counter++;
-
-                if ($counter % 100 === 0) {
-                    $this->info("{$counter} = {$endereco->endereco}");
-                }
+                $this->increment(100, $endereco->endereco);
             });
 
         DB::statement(
@@ -377,7 +392,7 @@ class ImportCercred
 
     protected function phones()
     {
-        $counter = 0;
+        $this->counter = 0;
 
         $phoneId = ContactType::where('code', 'phone')->first()->id;
         $mobileId = ContactType::where('code', 'mobile')->first()->id;
@@ -415,7 +430,6 @@ class ImportCercred
             ->table('telefone')
             ->get()
             ->each(function ($telefone) use (
-                &$counter,
                 $phoneId,
                 $mobileId,
                 $statuses,
@@ -448,11 +462,7 @@ class ImportCercred
                     ])
                 );
 
-                $counter++;
-
-                if ($counter % 100 === 0) {
-                    $this->info("{$counter} = {$telefone->telefone}");
-                }
+                $this->increment(100, $telefone->telefone);
             });
 
         DB::statement(
@@ -462,7 +472,7 @@ class ImportCercred
 
     protected function emails()
     {
-        $counter = 0;
+        $this->counter = 0;
 
         $contactTypeId = ContactType::where('code', 'email')->first()->id;
 
@@ -493,12 +503,7 @@ class ImportCercred
         $this->db()
             ->table('email')
             ->get()
-            ->each(function ($email) use (
-                &$counter,
-                $contactTypeId,
-                $statuses,
-                $types
-            ) {
+            ->each(function ($email) use ($contactTypeId, $statuses, $types) {
                 $type = coollect($types)
                     ->where('email_tipo', $email->email_tipo)
                     ->first()->descricao;
@@ -520,13 +525,7 @@ class ImportCercred
                     ])
                 );
 
-                $counter++;
-
-                if ($counter % 100 === 0) {
-                    $this->info(
-                        "{$counter} = {$email->email} - {$email->email_id}"
-                    );
-                }
+                $this->increment(100, "{$email->email} - {$email->email_id}");
             });
 
         DB::statement(
@@ -536,7 +535,7 @@ class ImportCercred
 
     protected function people()
     {
-        $counter = 0;
+        $this->counter = 0;
 
         if (
             Person::count() ==
@@ -556,7 +555,7 @@ class ImportCercred
         $this->db()
             ->table('pessoa')
             ->get()
-            ->each(function ($person) use (&$counter) {
+            ->each(function ($person) {
                 Person::insert(
                     $this->sanitize([
                         'id' => $person->pessoa_id,
@@ -578,13 +577,7 @@ class ImportCercred
                     ])
                 );
 
-                $counter++;
-
-                if ($counter % 100 === 0) {
-                    $this->info(
-                        "{$counter} = {$person->pessoa_id} - {$person->nome}"
-                    );
-                }
+                $this->increment(100, "{$person->pessoa_id} - {$person->nome}");
             });
 
         DB::statement(
@@ -606,7 +599,7 @@ class ImportCercred
     {
         return coollect(
             $this->db()->select(
-                "select
+                "select 
   DISTINCT
   pessoa.pessoa_id,
   pessoa.nome pessoa_nome,
@@ -618,6 +611,7 @@ from protocolo
   left join pessoa on
                      historico.pessoa_id = pessoa.pessoa_id
 where pessoa.pessoa_id = {$person->id}
+and pessoa.pessoa_id not in (select person_id from public.records)
 order by pessoa.pessoa_id, protocolo.protocolo_id"
             )
         );
@@ -627,7 +621,7 @@ order by pessoa.pessoa_id, protocolo.protocolo_id"
     {
         return coollect(
             $this->db()->select(
-                "select
+                "select 
   DISTINCT
   historico.historico_id,
   historico.complemento historico_complemento,
@@ -682,5 +676,23 @@ where historico.historico_id = {$historyId};"
         }
 
         return $array;
+    }
+
+    public function increment($mod = 100, $message = '')
+    {
+        $this->counter++;
+
+        if ($this->counter % $mod === 0) {
+            $counter = str_pad($this->counter, 8, ' ', STR_PAD_LEFT);
+
+            $memory = str_pad(
+                number_format(memory_get_peak_usage()),
+                13,
+                ' ',
+                STR_PAD_LEFT
+            );
+
+            $this->info("{$counter} records {$memory} bytes = {$message}");
+        }
     }
 }

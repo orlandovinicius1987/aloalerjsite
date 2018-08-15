@@ -13,6 +13,8 @@ use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
+use App\Data\Repositories\ContactTypes as ContactTypesRepository;
+use App\Data\Repositories\Progresses as ProgressesRepository;
 
 abstract class Controller extends IlluminateController
 {
@@ -31,6 +33,8 @@ abstract class Controller extends IlluminateController
     protected $committeesRepository;
     protected $recordTypesRepository;
     protected $areasRepository;
+    protected $contactTypesRepository;
+    protected $progressesRepository;
 
     /**
      * Persons constructor.
@@ -53,7 +57,9 @@ abstract class Controller extends IlluminateController
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
         RecordTypesRepository $recordTypesRepository,
-        AreasRepository $areasRepository
+        AreasRepository $areasRepository,
+        ContactTypesRepository $contactTypesRepository,
+        ProgressesRepository $progressesRepository
     ) {
         $this->peopleRepository = $personRepository;
         $this->recordsRepository = $recordsRepository;
@@ -63,6 +69,8 @@ abstract class Controller extends IlluminateController
         $this->committeesRepository = $committeesRepository;
         $this->recordTypesRepository = $recordTypesRepository;
         $this->areasRepository = $areasRepository;
+        $this->contactTypesRepository = $contactTypesRepository;
+        $this->progressesRepository = $progressesRepository;
     }
 
     /**
@@ -86,7 +94,17 @@ abstract class Controller extends IlluminateController
             'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
+            'contactTypes' => $this->contactTypesRepository->all(),
+            'progressTypes' => $this->progressesRepository->all()
         ];
-        //app(TiposLeisRepository::class)->allOrderBy('nome')->pluck('nome', 'id'),
+    }
+
+    protected function flashMessage($message, $type = 'success')
+    {
+        $alerts = session()->get('alerts') ?: [];
+
+        $alerts[] = ['type' => $type, 'message' => $message];
+
+        session()->flash("alerts", $alerts);
     }
 }

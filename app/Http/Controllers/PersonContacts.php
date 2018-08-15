@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonContactsRequest;
+use App\Http\Requests\PersonContactsWorkflowRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 use App\Data\Models\PersonContact;
@@ -31,7 +33,7 @@ class PersonContacts extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(PersonContactsWorkflowRequest $request)
     {
         $route = 'persons.show';
         $message = $this->messageDefault;
@@ -85,17 +87,52 @@ class PersonContacts extends Controller
     }
 
     /**
+     * @param $cpf_cnpj
+     *
+     * @return $this
+     */
+    public function createOutside($person_id)
+    {
+        $personContact = $this->peopleContactsRepository->findByPerson(
+            $person_id
+        );
+
+        $contact = [];
+
+        foreach ($personContact as $item) {
+            $contact[$item->contactType->code] = $item->contact;
+        }
+        $contact = (object) $contact;
+
+        $person = $this->peopleRepository->findById($person_id);
+
+        return view('callcenter.person_contacts.form-outside')
+            ->with($this->getComboBoxMenus())
+            ->with('contact', $contact)
+            ->with('person', $person);
+    }
+
+    /**
      * @param PersonRequest $request
      */
-    private function createPersonContact(Request $request, $code)
+    private function createPersonContact(PersonContactsRequest $request, $code)
     {
         if ($request->get($code)) {
             PersonContact::create([
                 'person_id' => $request->get('person_id'),
                 'contact_type_id' =>
                     ContactType::where('code', $code)->first()->id,
-                'contact' => $request->get($code),
+                'contact' => $request->get($code)
             ]);
         }
+    }
+
+    public function insertContact(PersonContactsRequest $request)
+    {
+        $this->peopleContactsRepository->createFromRequest($request);
+
+        return redirect()
+            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->with($this->getSuccessMessage());
     }
 }

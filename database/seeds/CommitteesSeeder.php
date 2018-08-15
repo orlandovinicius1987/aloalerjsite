@@ -284,6 +284,224 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
+            'defesa-civil' => [
+                'slug' => 'defesa-civil',
+                'name' => 'Comissão de Defesa Civil',
+                'link_caption' => 'Defesa Civil',
+                'short_name' => 'Defesa Civil',
+                'phone' => '2588-1308/1309',
+                'email' => 'mscarabelli@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Flávio Bolsonaro',
+                'vice_president' => 'Mauro S Scarabelli',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308/1309',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'ciencia-tecnologia' => [
+                'slug' => 'ciencia-tecnologia',
+                'name' => 'Comissão de Comissão de Ciência e Tecnologia',
+                'link_caption' => 'Ciência e Tecnologia',
+                'short_name' => 'Ciência e Tecnologia',
+                'phone' => '2588-1308',
+                'email' => 'mlima@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Rosenverg Reis',
+                'vice_president' => 'Marcelo Lima',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'constituicao-justica' => [
+                'slug' => 'constituicao-justica',
+                'name' => 'Comissão de Constituição e Justiça',
+                'link_caption' => 'Constituição e Justiça',
+                'short_name' => 'Constituição e Justiça',
+                'phone' => '2588-1530',
+                'email' => 'tatiana.guima@hotmail.com',
+                'texto' =>
+                    '',
+                'president' => 'Deputado André Lazaroni',
+                'vice_president' => 'Tatiana G Costa',
+                'public' => true,
+                'office_phone' => '(21) 2588-1530',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'cultura' => [
+                'slug' => 'cultura',
+                'name' => 'Comissão de Cultura',
+                'link_caption' => 'Cultura',
+                'short_name' => 'Cultura',
+                'phone' => '2588-1308',
+                'email' => 'haquino@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Zaqueu Teixeira',
+                'vice_president' => 'Haroldo Aquino',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'meio-ambiente' => [
+                'slug' => 'meio-ambiente',
+                'name' => '	Comissão de Defesa do Meio Ambiente',
+                'link_caption' => 'Meio Ambiente',
+                'short_name' => 'Meio Ambiente',
+                'phone' => '2588-1308',
+                'email' => 'jfranca@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado André Lazaroni',
+                'vice_president' => 'Jefferson Franca',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'economia' => [
+                'slug' => 'economia',
+                'name' => 'Comissão de Economia Indústria e Comércio',
+                'link_caption' => 'Economia Indústria e Comércio',
+                'short_name' => 'Economia Indústria e Comércio',
+                'phone' => '',
+                'email' => '@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Waldeck Carneiro',
+                'vice_president' => '',
+                'public' => true,
+                'office_phone' => '',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+            'esporte-lazer' => [
+                'slug' => 'esporte-lazer',
+                'name' => 'Comissão de Esporte e Lazer',
+                'link_caption' => 'Esporte e Lazer',
+                'short_name' => 'Esporte e Lazer',
+                'phone' => '2588-1391',
+                'email' => 'sjesus@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Chiquinho da Mangueira',
+                'vice_president' => '	Sandra J Ferreira',
+                'public' => true,
+                'office_phone' => '(21) 2588-1391',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'indicacoes-legislativas' => [
+                'slug' => 'indicacoes-legislativas',
+                'name' => 'Comissão de Indicações Legislativas',
+                'link_caption' => 'Indicações Legislativas',
+                'short_name' => 'Indicações Legislativas',
+                'phone' => '2588-1308',
+                'email' => 'lfaustino@alerj.rj.gov.br	',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Marcos Abrahão',
+                'vice_president' => 'Luiz C Faustino',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'orcamento-financas' => [
+                'slug' => 'orcamento-financas',
+                'name' => '	Comissão de Orçamento Finanças Fiscalização Financeira e Controle',
+                'link_caption' => 'Orçamento Finanças Fiscalização Financeira e Controle',
+                'short_name' => 'Orçamento Finanças Fiscalização Financeira e Controle',
+                'phone' => '2588-1400',
+                'email' => 'apaiva@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Gustavo Tutuca',
+                'vice_president' => 'Ada Paiva',
+                'public' => true,
+                'office_phone' => '(21) 2588-1400',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'politica-urbana' => [
+                'slug' => 'politica-urbana',
+                'name' => 'Comissão de Política Urbana Habitação e Assuntos Fundiários',
+                'link_caption' => 'Política Urbana Habitação e Assuntos Fundiários',
+                'short_name' => 'Política Urbana Habitação e Assuntos Fundiários',
+                'phone' => '2588-1308',
+                'email' => 'rmoura@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Zeidan Lula',
+                'vice_president' => 'Romulo Moura',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'drogas' => [
+                'slug' => 'drogas',
+                'name' => 'Comissão de Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'link_caption' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'short_name' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'phone' => '2588-1308',
+                'email' => 'calmeida@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Dr Deodato',
+                'vice_president' => 'Carla Almeida',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'turismo' => [
+                'slug' => 'turismo',
+                'name' => 'Comissão de Turismo',
+                'link_caption' => 'Turismo',
+                'short_name' => 'Turismo',
+                'phone' => '2588-1308',
+                'email' => 'comissaodeturismo@alerj.rj.gov.br',
+                'email2' => 'fcosta@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado Silas Bento',
+                'vice_president' => 'Fabio Costa',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+            'agricultura' => [
+                'slug' => 'agricultura',
+                'name' => '	Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'link_caption' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'short_name' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'phone' => '2588-1308',
+                'email' => 'rcastro@alerj.rj.gov.br',
+                'texto' =>
+                    '',
+                'president' => 'Deputado João Peixoto',
+                'vice_president' => 'Rogerio V. Castro',
+                'public' => true,
+                'office_phone' => '(21) 2588-1308',
+                'office_address' =>
+                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
+
+
         ]);
     }
 

@@ -3,18 +3,30 @@
 @section('content')
 <div class="card">
     <div class="card-header">{{ __('Protocolos') }}</div>
+
     <div class="card-body">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
 
         @if (isset($message))
-        <div class="alert alert-success">
-            {{ $message }}
-        </div>
+            <div class="alert alert-success">
+                {{ $message }}
+            </div>
         @endif
 
         @if(session()->has('warning'))
-        <div class="alert alert-warning">
-            {{ session()->get('warning') }}
-        </div>
+            <div class="alert alert-warning">
+                {{ session()->get('warning') }}
+            </div>
         @endif
 
         <form method="POST" action="{{ route('records.store') }}" aria-label="{{ __('Protocolos') }}">
@@ -41,8 +53,8 @@
                            readonly="readonly">
                     @if ($errors->has('cpf_cnpj'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -55,8 +67,8 @@
                            readonly="readonly">
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -82,22 +94,8 @@
 
                     @if ($errors->has('origins_id'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('origin_id') }}</strong>
-                                                </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="subject" class="col-sm-4 col-form-label text-md-right">{{ __('Assunto') }}</label>
-                <div class="col-md-6">
-                    <input id="subject" type="subject"
-                           class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject"
-                           value="{{is_null(old('subject')) ? $record->subject : old('subject')}}" required autofocus>
-                    @if ($errors->has('subject'))
-                    <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('origin_id') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -180,8 +178,8 @@
 
                     @if ($errors->has('area_id'))
                     <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('area_id') }}</strong>
-                                                </span>
+                        <strong>{{ $errors->first('area_id') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -196,8 +194,8 @@
                                   required rows="15">{{$record->original}}</textarea>
                     @if ($errors->has('original'))
                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('original') }}</strong>
-                            </span>
+                        <strong>{{ $errors->first('original') }}</strong>
+                    </span>
                     @endif
                 </div>
             </div>
@@ -217,9 +215,9 @@
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         @if (isset($workflow) && $workflow)
-                        {{ __('Próximo passo >>') }}
+                            {{ __('Próximo passo >>') }}
                         @else
-                        {{ __('Gravar') }}
+                            {{ __('Gravar') }}
                         @endif
                     </button>
                 </div>
@@ -228,4 +226,8 @@
         </form>
     </div>
 </div>
+
+@if (isset($progresses))
+    @include('callcenter.progress.table')
+@endif
 @endsection

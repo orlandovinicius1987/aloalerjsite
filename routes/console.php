@@ -1,4 +1,6 @@
 <?php
+use App\Data\Models\Progress;
+use App\Data\Models\Record;
 use App\Services\ImportCercred;
 
 Artisan::command('cercred:import', function () {
@@ -58,3 +60,8 @@ Artisan::command('cercred:index', function () {
         $table->index('action_type');
     });
 })->describe('index');
+
+Artisan::command('cercred:truncate-records', function () {
+    Record::truncate();
+    Progress::truncate();
+})->describe('Display an inspiring quote');
