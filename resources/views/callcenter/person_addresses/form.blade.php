@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">{{ __('Endereços') }}</div>
+        <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> {{ __('Endereços') }}</div>
 
         {{--{{dd(old('number'))}}--}}
 

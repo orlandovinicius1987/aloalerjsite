@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">{{ __('Contatos') }}</div>
+    <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> {{ __('Contatos') }}</div>
+
 
     <div class="card-body" id="vue-contacts">
 

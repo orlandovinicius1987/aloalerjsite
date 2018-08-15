@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card" id="vue-progress">
-        <div class="card-header"><a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a> > {{ __('Andamentos') }}</div>
+        <div class="card-header"><a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a> >> {{ __('Andamentos') }}</div>
 
                     <div class="card-body">
                         <form id="formProgress" method="POST" action="{{ route('progresses.store') }}" aria-label="{{ __('Progresses') }}">
@@ -33,7 +33,7 @@
                                 <label for="origin_id" class="col-sm-4 col-form-label text-md-right">{{ __('Origem') }}</label>
 
                                 <div class="col-md-6">
-                                    <select id="origin_id" type="origin_id"
+                                    <select id="origin_id"
                                             class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id" @include('partials.disabled')
                                             value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id')}}" autofocus required>
                                         <option value="">SELECIONE</option>
