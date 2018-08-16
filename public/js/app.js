@@ -47272,17 +47272,7 @@ var appName = 'vue-addresses';
 
 Vue.directive('init', {
     bind: function bind(el, binding, vnode) {
-        //console.info(binding.arg)
-        //console.info(binding.value)
-        //console.info(vnode.context.form['zipcode']);
-        try {
-            console.info(vnode.context.form[binding.arg]);
-            console.info(binding.value);
-            console.info(binding.arg);
-            vnode.context.form[binding.arg] = binding.value;
-        } catch (e) {
-            console.info(e);
-        }
+        vnode.context.form[binding.arg] = binding.value;
     }
 });
 
