@@ -13,7 +13,7 @@ class PersonContactsWorkflowRequest extends Request
             'mobile' => ['required', new ContactWorkflow()],
             'whatsapp' => ['required', new ContactWorkflow()],
             'email' => ['required', new ContactWorkflow()],
-            'phone' => ['required', new ContactWorkflow()],
+            'phone' => ['required', new ContactWorkflow()]
         ];
     }
 }

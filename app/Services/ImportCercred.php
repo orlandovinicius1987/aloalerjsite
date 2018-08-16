@@ -31,13 +31,13 @@ class ImportCercred
                     'record_id' => $record->id,
                     'progress_type_id' =>
                         ProgressType::firstOrCreate([
-                            'name' => $history->historico_tipo_descricao,
+                            'name' => $history->historico_tipo_descricao
                         ])->id,
                     'created_by_id' => $history->historico_usuario_id_alteracao,
                     'original' => $history->historico_complemento,
                     'created_at' => $history->historico_data_inicio_atendimento,
                     'updated_at' => $history->historico_data_inicio_atendimento,
-                    'history_fields' => $history->history_fields->toJson(),
+                    'history_fields' => $history->history_fields->toJson()
                 ])
             );
 
@@ -59,7 +59,7 @@ class ImportCercred
                     $this->inferOriginFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
                 'created_at' => $date = $this->inferDateFromProtocol($protocol),
-                'updated_at' => $date,
+                'updated_at' => $date
             ])
         );
     }
@@ -70,10 +70,9 @@ class ImportCercred
      */
     private function findRecordActionByName($history)
     {
-        $action = RecordAction::where(
-            'name',
-            $history->action_description
-        )->first();
+        $action = RecordAction
+            ::where('name', $history->action_description)
+            ->first();
 
         return $action;
     }
@@ -117,7 +116,7 @@ class ImportCercred
             if (!$action && $history->action_id) {
                 RecordAction::insert([
                     'id' => $history->action_id,
-                    'name' => $history->action_description,
+                    'name' => $history->action_description
                 ]);
 
                 $action = $this->findRecordActionByName($history);
@@ -134,8 +133,7 @@ class ImportCercred
     private function inferDateFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            return $protocol->history_data[0]
-                ->historico_data_inicio_atendimento;
+            return $protocol->history_data[0]->historico_data_inicio_atendimento;
         }
 
         return null;
@@ -144,17 +142,19 @@ class ImportCercred
     private function inferAreaFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Comissão Responsável'
-            )->first();
+            $data = $protocol->history_data[0]->history_fields
+                ->where(
+                    'historico_propriedade_tipo_descricao',
+                    'Comissão Responsável'
+                )
+                ->first();
 
             if (
                 $data instanceof \stdClass ||
                 isset($data['historico_propriedade_valor'])
             ) {
                 return Area::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor,
+                    'name' => $data->historico_propriedade_valor
                 ])->id;
             }
         }
@@ -165,17 +165,16 @@ class ImportCercred
     private function inferOriginFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Origem'
-            )->first();
+            $data = $protocol->history_data[0]->history_fields
+                ->where('historico_propriedade_tipo_descricao', 'Origem')
+                ->first();
 
             if (
                 $data instanceof \stdClass ||
                 isset($data['historico_propriedade_valor'])
             ) {
                 return Origin::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor,
+                    'name' => $data->historico_propriedade_valor
                 ])->id;
             }
         }
@@ -263,7 +262,7 @@ class ImportCercred
             ->each(function ($row) {
                 RecordAction::insert([
                     'id' => $row->action_id,
-                    'name' => $row->description,
+                    'name' => $row->description
                 ]);
             });
 
@@ -284,7 +283,7 @@ class ImportCercred
             ->each(function ($row) {
                 ProgressType::insert([
                     'id' => $row->historico_tipo,
-                    'name' => $row->descricao,
+                    'name' => $row->descricao
                 ]);
             });
 
@@ -311,7 +310,7 @@ class ImportCercred
                         'username' => $row->nome,
                         'user_type_id' =>
                             UserType::where('name', 'Usuario')->first()->id,
-                        'password' => bcrypt($row->nome . $row->usuario_id),
+                        'password' => bcrypt($row->nome . $row->usuario_id)
                     ])
                 );
             });
@@ -377,7 +376,7 @@ class ImportCercred
                             'is_mailable' => true,
                             'from' => $type,
                             'status' => $status,
-                            'address_id' => $endereco->endereco_id,
+                            'address_id' => $endereco->endereco_id
                         ])
                     )
                 );
@@ -398,10 +397,9 @@ class ImportCercred
         $mobileId = ContactType::where('code', 'mobile')->first()->id;
 
         if (
-            PersonContact::whereIn('contact_type_id', [
-                $phoneId,
-                $mobileId,
-            ])->count() ==
+            PersonContact
+                ::whereIn('contact_type_id', [$phoneId, $mobileId])
+                ->count() ==
             $this->db()
                 ->table('telefone')
                 ->count()
@@ -413,10 +411,9 @@ class ImportCercred
 
         $this->info('Importing PHONES...');
 
-        PersonContact::whereIn('contact_type_id', [
-            $phoneId,
-            $mobileId,
-        ])->delete();
+        PersonContact
+            ::whereIn('contact_type_id', [$phoneId, $mobileId])
+            ->delete();
 
         $statuses = $this->db()
             ->table('telefone_status')
@@ -458,7 +455,7 @@ class ImportCercred
                         'provider_enrichment_id' =>
                             $telefone->enriquecimento_provedor_id,
                         'telefone_id' => $telefone->telefone_id,
-                        'created_at' => Carbon::parse($telefone->inclusao),
+                        'created_at' => Carbon::parse($telefone->inclusao)
                     ])
                 );
 
@@ -521,7 +518,7 @@ class ImportCercred
                         'status' => lower($status),
                         'provider_enrichment_id' =>
                             $email->enriquecimento_provedor_id,
-                        'email_id' => $email->email_id,
+                        'email_id' => $email->email_id
                     ])
                 );
 
@@ -573,7 +570,7 @@ class ImportCercred
                             (float) str_replace('$', '', $person->renda),
                         'person_type_id' => $person->tipo_pessoa,
                         'created_at' => $person->inclusao,
-                        'updated_by_id' => $person->usuario_id_alteracao,
+                        'updated_by_id' => $person->usuario_id_alteracao
                     ])
                 );
 
