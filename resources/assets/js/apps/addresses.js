@@ -2,7 +2,18 @@ const appName = 'vue-addresses'
 
 Vue.directive('init', {
     bind: function(el, binding, vnode) {
-        vnode.context[binding.arg] = binding.value;
+        //console.info(binding.arg)
+        //console.info(binding.value)
+        //console.info(vnode.context.form['zipcode']);
+        try {
+            console.info(vnode.context.form[binding.arg])
+            console.info(binding.value)
+            console.info(binding.arg)
+            vnode.context.form[binding.arg] = binding.value;
+
+        } catch (e) {
+            console.info(e);
+        }
 
     }
 })
@@ -27,7 +38,6 @@ if (jQuery("#" + appName).length > 0) {
             form: {
                 zipcode: null,
                 street: null,
-                complement: null,
                 neighborhood: null,
                 city: null,
                 state: null,

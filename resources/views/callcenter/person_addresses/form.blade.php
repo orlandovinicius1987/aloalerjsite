@@ -68,11 +68,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="zipcode" class="col-sm-4 col-form-label text-md-right">{{ __('CEP') }}</label>
+                    <label for="zipcode" class="col-sm-4 col-form-label text-md-right">{{ __('CEP') }} {{old('zipcode')}}</label>
 
                     <div class="col-md-6">
                         <input id="zipcode"
                                v-model="form.zipcode"
+                               v-init:zipcode="'{{old('zipcode')}}'"
                                class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
                                value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required
                                autofocus
@@ -93,6 +94,7 @@
                     <div class="col-md-6">
                         <input id="street" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
                                v-model="form.street"
+                               v-init:street="'{{old('street')}}'"
                                name="street" value="{{is_null(old('street')) ? $address->street : old('street')}}"
                                required
                                autofocus>
@@ -111,7 +113,8 @@
                     <div class="col-md-2">
                         <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                v-on:keypress="isNumber(event)"
-                               name="number" value="{{!is_null(old('number')) ? $address->state : old('number')}}" required
+                               name="number"
+                               value="{{is_null(old('number')) ? $address->number : old('number')}}" required
                                autofocus
                         >
 
@@ -147,6 +150,7 @@
                     <div class="col-md-6">
                         <input id="neighbourhood"
                                v-model="form.neighborhood"
+                               v-init:neighborhood="'{{old('neighbourhood')}}'"
                                class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
                                name="neighbourhood"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
@@ -166,6 +170,7 @@
                     <div class="col-md-4">
                         <input id="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
                                v-model="form.city"
+                               v-init:city="'{{old('city')}}'"
                                name="city" value="{{is_null(old('city')) ? $address->city : old('city')}}" required
                                autofocus>
 
@@ -181,6 +186,7 @@
                     <div class="col-md-1">
                         <input id="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                v-model="form.state"
+                               v-init:state="'{{old('state')}}'"
                                name="state" value="{{is_null(old('state')) ? $address->state : old('state')}}" required
                                autofocus>
 
