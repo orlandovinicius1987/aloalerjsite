@@ -284,7 +284,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'defesa-civil' => [
                 'slug' => 'defesa-civil',
                 'name' => 'Comissão de Defesa Civil',
@@ -292,8 +291,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Defesa Civil',
                 'phone' => '2588-1308/1309',
                 'email' => 'mscarabelli@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Flávio Bolsonaro',
                 'vice_president' => 'Mauro S Scarabelli',
                 'public' => true,
@@ -301,7 +299,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'ciencia-tecnologia' => [
                 'slug' => 'ciencia-tecnologia',
                 'name' => 'Comissão de Comissão de Ciência e Tecnologia',
@@ -309,8 +306,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Ciência e Tecnologia',
                 'phone' => '2588-1308',
                 'email' => 'mlima@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Rosenverg Reis',
                 'vice_president' => 'Marcelo Lima',
                 'public' => true,
@@ -318,7 +314,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'constituicao-justica' => [
                 'slug' => 'constituicao-justica',
                 'name' => 'Comissão de Constituição e Justiça',
@@ -326,8 +321,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Constituição e Justiça',
                 'phone' => '2588-1530',
                 'email' => 'tatiana.guima@hotmail.com',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado André Lazaroni',
                 'vice_president' => 'Tatiana G Costa',
                 'public' => true,
@@ -335,7 +329,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'cultura' => [
                 'slug' => 'cultura',
                 'name' => 'Comissão de Cultura',
@@ -343,8 +336,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Cultura',
                 'phone' => '2588-1308',
                 'email' => 'haquino@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Zaqueu Teixeira',
                 'vice_president' => 'Haroldo Aquino',
                 'public' => true,
@@ -352,7 +344,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'meio-ambiente' => [
                 'slug' => 'meio-ambiente',
                 'name' => '	Comissão de Defesa do Meio Ambiente',
@@ -360,8 +351,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Meio Ambiente',
                 'phone' => '2588-1308',
                 'email' => 'jfranca@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado André Lazaroni',
                 'vice_president' => 'Jefferson Franca',
                 'public' => true,
@@ -369,7 +359,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'economia' => [
                 'slug' => 'economia',
                 'name' => 'Comissão de Economia Indústria e Comércio',
@@ -377,8 +366,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Economia Indústria e Comércio',
                 'phone' => '',
                 'email' => '@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Waldeck Carneiro',
                 'vice_president' => '',
                 'public' => true,
@@ -386,7 +374,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'esporte-lazer' => [
                 'slug' => 'esporte-lazer',
                 'name' => 'Comissão de Esporte e Lazer',
@@ -394,8 +381,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Esporte e Lazer',
                 'phone' => '2588-1391',
                 'email' => 'sjesus@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Chiquinho da Mangueira',
                 'vice_president' => '	Sandra J Ferreira',
                 'public' => true,
@@ -410,8 +396,7 @@ class CommitteesSeeder extends Seeder
                 'short_name' => 'Indicações Legislativas',
                 'phone' => '2588-1308',
                 'email' => 'lfaustino@alerj.rj.gov.br	',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Marcos Abrahão',
                 'vice_president' => 'Luiz C Faustino',
                 'public' => true,
@@ -421,13 +406,15 @@ class CommitteesSeeder extends Seeder
             ],
             'orcamento-financas' => [
                 'slug' => 'orcamento-financas',
-                'name' => '	Comissão de Orçamento Finanças Fiscalização Financeira e Controle',
-                'link_caption' => 'Orçamento Finanças Fiscalização Financeira e Controle',
-                'short_name' => 'Orçamento Finanças Fiscalização Financeira e Controle',
+                'name' =>
+                    '	Comissão de Orçamento Finanças Fiscalização Financeira e Controle',
+                'link_caption' =>
+                    'Orçamento Finanças Fiscalização Financeira e Controle',
+                'short_name' =>
+                    'Orçamento Finanças Fiscalização Financeira e Controle',
                 'phone' => '2588-1400',
                 'email' => 'apaiva@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Gustavo Tutuca',
                 'vice_president' => 'Ada Paiva',
                 'public' => true,
@@ -437,13 +424,15 @@ class CommitteesSeeder extends Seeder
             ],
             'politica-urbana' => [
                 'slug' => 'politica-urbana',
-                'name' => 'Comissão de Política Urbana Habitação e Assuntos Fundiários',
-                'link_caption' => 'Política Urbana Habitação e Assuntos Fundiários',
-                'short_name' => 'Política Urbana Habitação e Assuntos Fundiários',
+                'name' =>
+                    'Comissão de Política Urbana Habitação e Assuntos Fundiários',
+                'link_caption' =>
+                    'Política Urbana Habitação e Assuntos Fundiários',
+                'short_name' =>
+                    'Política Urbana Habitação e Assuntos Fundiários',
                 'phone' => '2588-1308',
                 'email' => 'rmoura@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Zeidan Lula',
                 'vice_president' => 'Romulo Moura',
                 'public' => true,
@@ -453,13 +442,15 @@ class CommitteesSeeder extends Seeder
             ],
             'drogas' => [
                 'slug' => 'drogas',
-                'name' => 'Comissão de Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
-                'link_caption' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
-                'short_name' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'name' =>
+                    'Comissão de Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'link_caption' =>
+                    'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'short_name' =>
+                    'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
                 'phone' => '2588-1308',
                 'email' => 'calmeida@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Dr Deodato',
                 'vice_president' => 'Carla Almeida',
                 'public' => true,
@@ -475,8 +466,7 @@ class CommitteesSeeder extends Seeder
                 'phone' => '2588-1308',
                 'email' => 'comissaodeturismo@alerj.rj.gov.br',
                 'email2' => 'fcosta@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado Silas Bento',
                 'vice_president' => 'Fabio Costa',
                 'public' => true,
@@ -486,13 +476,15 @@ class CommitteesSeeder extends Seeder
             ],
             'agricultura' => [
                 'slug' => 'agricultura',
-                'name' => '	Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
-                'link_caption' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
-                'short_name' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'name' =>
+                    '	Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'link_caption' =>
+                    'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'short_name' =>
+                    'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
                 'phone' => '2588-1308',
                 'email' => 'rcastro@alerj.rj.gov.br',
-                'texto' =>
-                    '',
+                'texto' => '',
                 'president' => 'Deputado João Peixoto',
                 'vice_president' => 'Rogerio V. Castro',
                 'public' => true,
@@ -500,8 +492,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
-
         ]);
     }
 

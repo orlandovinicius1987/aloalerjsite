@@ -6,6 +6,7 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             currentContactType: "",
+            currentContact: "",
             contactTypesArray: [],
             refreshing: false,
         },

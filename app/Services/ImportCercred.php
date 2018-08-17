@@ -55,8 +55,8 @@ class ImportCercred
                 'person_id' => $protocol->pessoa_id,
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
-                'origin_id' =>
-                    $this->inferOriginFromProtocol($protocol) ?: 999999,
+                'origin_id' => $this->inferOriginFromProtocol($protocol)
+                    ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
                 'created_at' => $date = $this->inferDateFromProtocol($protocol),
                 'updated_at' => $date,
@@ -450,8 +450,9 @@ class ImportCercred
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' =>
-                            $type == 'celular' ? $mobileId : $phoneId,
+                        'contact_type_id' => $type == 'celular'
+                            ? $mobileId
+                            : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,

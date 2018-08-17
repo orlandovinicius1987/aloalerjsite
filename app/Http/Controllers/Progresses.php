@@ -7,18 +7,6 @@ use App\Http\Requests\ProgressRequest;
 class Progresses extends Controller
 {
     /**
-     * @param Request     $request
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index(Request $request)
-    {
-        return view('progresses.index')
-            ->with('pesquisa', $request->get('pesquisa'))
-            ->with('origins', $this->repository->search($request));
-    }
-
-    /**
      * @return $this
      */
     public function create($record_id)
