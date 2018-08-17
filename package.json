@@ -19,5 +19,8 @@
         "popper.js": "^1.12",
         "vue": "^2.5.17",
         "vue-the-mask": "^0.11.1"
+    },
+    "dependencies": {
+        "npm": "^6.4.0"
     }
 }

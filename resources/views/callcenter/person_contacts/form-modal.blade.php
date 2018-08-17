@@ -7,7 +7,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="contactsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="contactsModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div id="vue-contact-outside-workflow" class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -17,6 +17,9 @@
                     </button>
                 </div>
 
+                {!! $person !!}
+
+                @{{ person }}
 
                 <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('persons_contacts.insertContact') }}" method="post">
 
@@ -41,7 +44,7 @@
                                 <p>Contato</p>
 
                                 <div v-if="mobileSelected">
-                                        <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
+                                        <input v-model="currentContact" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
                                                id="contact"
                                                name="contact"
                                                value="" required autofocus
