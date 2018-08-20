@@ -46,10 +46,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Não Resolvidos</a>
+                            <a class="nav-link" href="{{route('records.index')}}">Não Resolvidos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pesquisar</a>
+                            <a class="nav-link" href="{{url('/callcenter')}}">Pesquisar</a>
                         </li>
                         @guest
                             <li class="nav-item">

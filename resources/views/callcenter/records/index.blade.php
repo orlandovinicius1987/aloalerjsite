@@ -1,6 +1,10 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="card-header">
     {{ __('Protocolos') }}
 
+    @if(isset($person))
     <a id="buttonAndamentos"
        href="{{ route('records.create',['person_id'=>$person->id]) }}"
        class="btn btn-primary btn-sm pull-right"
@@ -8,11 +12,12 @@
         <i class="fa fa-plus"></i>
         Novo Protocolo
     </a>
+        @endif
 </div>
 
 <div class="card">
     <div class="card-body">
-        <table id="recordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="recordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%" border="1">
             <thead>
                 <tr>
                     <th>Protocolos</th>
@@ -37,3 +42,4 @@
         </table>
     </div>
 </div>
+@endsection

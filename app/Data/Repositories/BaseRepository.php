@@ -113,6 +113,13 @@ abstract class BaseRepository
         //        return ($this->model::paginate(15));
         return ($this->model::where($field, $value)->paginate($sizeOfPage));
     }
+
+    public function whereIsNullPaginate($field, $sizeOfPage)
+    {
+        //        return ($this->model::paginate(15));
+        return ($this->model::whereNull($field)->paginate($sizeOfPage));
+    }
+
     /**
      * @param $field
      * @return mixed
