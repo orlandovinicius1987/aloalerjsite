@@ -12,8 +12,6 @@ Route::get('comissoes/{name}', [
 
 Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
 
-//Route::get('comissoes/{name}', ['as' => 'page', 'uses' => 'Committees@view']);
-
 Route::group(['prefix' => 'chat'], function () {
     Route::get('index', ['as' => 'chat.index', 'uses' => 'Chat@index']);
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
@@ -42,93 +40,16 @@ Route::group(['prefix' => 'contact'], function () {
 
 Route::get('/home', 'Home@index')->name('home');
 
-//Route::group(['prefix' => 'callcenter', 'middleware' => ['auth']], function()
 Route::group(['prefix' => 'callcenter'], function () {
-    Route::get('/', 'People@index')->name('persons.index');
+    require __DIR__ . '/callcenter/contact_types.php';
 
-    Route::group(['prefix' => 'persons'], function () {
-        Route::get('/', 'People@index')->name('persons.index');
-        Route::get('/create', 'People@create')->name('persons.create');
-        Route::post('/', 'People@store')->name('persons.store');
-        Route::get('/show/{person_id}', 'People@show')->name('persons.show');
-    });
+    require __DIR__ . '/callcenter/persons.php';
 
-    Route::group(['prefix' => 'persons_addresses'], function () {
-        Route
-            ::get('/', 'PersonAddresses@index')
-            ->name('persons_addresses.index');
-        Route
-            ::get('/create/{person_id}', 'PersonAddresses@create')
-            ->name('persons_addresses.create');
+    require __DIR__ . '/callcenter/persons_addresses.php';
 
-        Route
-            ::post('/', 'PersonAddresses@store')
-            ->name('persons_addresses.store');
-        Route
-            ::get('/show/{id}', 'PersonAddresses@show')
-            ->name('persons_addresses.show');
-    });
+    require __DIR__ . '/callcenter/persons_contacts.php';
 
-    Route::group(['prefix' => 'progresses'], function () {
-        Route::get('/', 'Progresses@index')->name('progresses.index');
-        Route
-            ::get('/create/{record_id}', 'Progresses@create')
-            ->name('progresses.create');
+    require __DIR__ . '/callcenter/progresses.php';
 
-        Route::post('/', 'Progresses@store')->name('progresses.store');
-        Route
-            ::post('/finish', 'Progresses@storeAndFinish')
-            ->name('progresses.storeAndFinish');
-        Route::get('/show/{id}', 'Progresses@show')->name('progresses.show');
-    });
-
-    Route::group(['prefix' => 'persons_contacts'], function () {
-        Route::get('/', 'PersonContacts@index')->name('persons_contacts.index');
-        Route::get('/create/{person_id}', 'PersonContacts@create')->name(
-            'persons_contacts.create'
-        );
-        Route::post('/', 'PersonContacts@store')->name(
-            'persons_contacts.store'
-        );
-        Route::get('/show/{id}', 'PersonContacts@show')->name(
-            'persons_contacts.show'
-        );
-
-        Route::get('/createOutside/{id}', 'PersonContacts@createOutside')->name(
-            'persons_contacts.createOutside'
-        );
-
-        Route::post('/insertContact', 'PersonContacts@insertContact')->name(
-            'persons_contacts.insertContact'
-        );
-    });
-
-    Route::group(['prefix' => 'origins'], function () {
-        Route::get('/', 'Origins@index')->name('origins.index');
-        Route::get('/create', 'Origins@create')->name('origins.create');
-        Route::post('/', 'Origins@store')->name('origins.store');
-        Route::get('/show/{id}', 'Origins@show')->name('origins.show');
-    });
-
-    Route::group(['prefix' => 'areas'], function () {
-        Route::get('/', 'Areas@index')->name('areas.index');
-        Route::get('/create', 'Areas@create')->name('areas.create');
-        Route::post('/', 'Areas@store')->name('areas.store');
-        Route::get('/show/{id}', 'Areas@show')->name('areas.show');
-    });
-
-    Route::group(['prefix' => 'records'], function () {
-        Route
-            ::get('/create/{person_id}', 'Records@create')
-            ->name('records.create');
-        Route::post('/', 'Records@store')->name('records.store');
-        Route::get('/', 'Records@index')->name('records.index');
-        Route::get('/show/{id}', 'Records@show')->name('records.show');
-    });
-
-    Route::group(['prefix' => 'contact_types'], function () {
-        Route
-            ::get('/array/', 'ContactTypes@array')
-            ->name('contact_types.array');
-    });
+    require __DIR__ . '/callcenter/records.php';
 });

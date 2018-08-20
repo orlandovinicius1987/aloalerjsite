@@ -24,7 +24,8 @@ class PersonAddresses extends Controller
             ->with('person', $person)
             ->with('workflow', $workflow)
             ->with(['address' => $this->peopleRepository->new()])
-            ->with($this->getComboBoxMenus());
+            ->with($this->getComboBoxMenus())
+            ->with('formDisabled', false);
     }
 
     /**
@@ -40,7 +41,8 @@ class PersonAddresses extends Controller
         return view('callcenter.person_addresses.form')
             ->with($this->getComboBoxMenus())
             ->with('address', $address)
-            ->with('person', $person);
+            ->with('person', $person)
+            ->with('formDisabled', true);
     }
 
     /**

@@ -92,6 +92,11 @@ abstract class BaseRepository
         return $this->model::where($collumn, $value)->first();
     }
 
+    public function allWhereOperator($collumn, $operator, $value)
+    {
+        return $this->model::where($collumn, $operator ,$value)->get();
+    }
+
     /**
      * @return mixed
      */

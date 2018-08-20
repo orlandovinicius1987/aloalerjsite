@@ -90,12 +90,16 @@ abstract class Controller extends IlluminateController
     public function getComboBoxMenus()
     {
         return [
-            'committees' => $this->committeesRepository->all(),
+            'committees' => $this->committeesRepository->allWhereOperator(
+                'bio',
+                '<>',
+                ''
+            ),
             'recordTypes' => $this->recordTypesRepository->all(),
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
             'contactTypes' => $this->contactTypesRepository->all(),
-            'progressTypes' => $this->progressesRepository->all()
+            'progressTypes' => $this->progressesRepository->all(),
         ];
     }
 
