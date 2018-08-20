@@ -6,7 +6,6 @@ use App\Http\Requests\PersonAddressesRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 
-
 class PersonAddresses extends Controller
 {
     /**
@@ -62,7 +61,7 @@ class PersonAddresses extends Controller
         $request->merge(['id' => $request->get('address_id')]);
         $request->merge([
             'street' =>
-                trim($request->get('street')) . ', ' . $request->get('number')
+                trim($request->get('street')) . ', ' . $request->get('number'),
         ]);
         $this->peopleAddressesRepository->createFromRequest($request);
 

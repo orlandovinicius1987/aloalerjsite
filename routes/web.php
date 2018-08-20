@@ -7,7 +7,7 @@ Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
 Route::get('comissoes/{name}', [
     'as' => 'committees.show',
-    'uses' => 'Committees@show'
+    'uses' => 'Committees@show',
 ]);
 
 Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
@@ -17,7 +17,7 @@ Route::group(['prefix' => 'chat'], function () {
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
     Route::get('terminated', [
         'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated'
+        'uses' => 'Chat@terminated',
     ]);
 });
 
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'contact'], function () {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
     Route::get('pretend', [
         'as' => 'contact.index',
-        'uses' => 'Contact@pretend'
+        'uses' => 'Contact@pretend',
     ]);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
