@@ -26,7 +26,7 @@ if (jQuery("#" + appName).length > 0) {
             form: {
                 zipcode: null,
                 street: null,
-                neighborhood: null,
+                neighbourhood: null,
                 city: null,
                 state: null,
             }
@@ -45,7 +45,7 @@ if (jQuery("#" + appName).length > 0) {
                     if (response.data.addresses[0].street_name) {
                         me.form.zipcode = response.data.addresses[0].zip
                         me.form.street = response.data.addresses[0].street_name
-                        me.form.neighborhood = response.data.addresses[0].neighborhood
+                        me.form.neighbourhood = response.data.addresses[0].neighborhood
                         me.form.city = response.data.addresses[0].city
                         me.form.state = response.data.addresses[0].state_id
                         me.form.country = 'Brasil'

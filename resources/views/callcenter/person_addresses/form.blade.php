@@ -149,8 +149,8 @@
 
                     <div class="col-md-6">
                         <input id="neighbourhood"
-                               v-model="form.neighborhood"
-                               v-init:neighborhood="'{{old('neighbourhood')}}'"
+                               v-model="form.neighbourhood"
+                               v-init:neighbourhood="'{{old('neighbourhood')}}'"
                                class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
                                name="neighbourhood"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
