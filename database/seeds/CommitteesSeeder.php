@@ -284,7 +284,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'defesa-civil' => [
                 'slug' => 'defesa-civil',
                 'name' => 'Comissão de Defesa Civil',
@@ -300,7 +299,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'ciencia-tecnologia' => [
                 'slug' => 'ciencia-tecnologia',
                 'name' => 'Comissão de Comissão de Ciência e Tecnologia',
@@ -316,7 +314,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'constituicao-justica' => [
                 'slug' => 'constituicao-justica',
                 'name' => 'Comissão de Constituição e Justiça',
@@ -332,7 +329,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'cultura' => [
                 'slug' => 'cultura',
                 'name' => 'Comissão de Cultura',
@@ -348,7 +344,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'meio-ambiente' => [
                 'slug' => 'meio-ambiente',
                 'name' => '	Comissão de Defesa do Meio Ambiente',
@@ -364,7 +359,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'economia' => [
                 'slug' => 'economia',
                 'name' => 'Comissão de Economia Indústria e Comércio',
@@ -380,7 +374,6 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
-
             'esporte-lazer' => [
                 'slug' => 'esporte-lazer',
                 'name' => 'Comissão de Esporte e Lazer',

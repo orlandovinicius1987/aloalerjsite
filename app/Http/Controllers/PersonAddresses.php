@@ -23,7 +23,8 @@ class PersonAddresses extends Controller
             ->with('person', $person)
             ->with('workflow', $workflow)
             ->with(['address' => $this->peopleRepository->new()])
-            ->with($this->getComboBoxMenus());
+            ->with($this->getComboBoxMenus())
+            ->with('formDisabled', false);
     }
 
     /**
@@ -39,7 +40,8 @@ class PersonAddresses extends Controller
         return view('callcenter.person_addresses.form')
             ->with($this->getComboBoxMenus())
             ->with('address', $address)
-            ->with('person', $person);
+            ->with('person', $person)
+            ->with('formDisabled', true);
     }
 
     /**
@@ -59,7 +61,7 @@ class PersonAddresses extends Controller
         $request->merge(['id' => $request->get('address_id')]);
         $request->merge([
             'street' =>
-                trim($request->get('street')) . ', ' . $request->get('number')
+                trim($request->get('street')) . ', ' . $request->get('number'),
         ]);
         $this->peopleAddressesRepository->createFromRequest($request);
 
