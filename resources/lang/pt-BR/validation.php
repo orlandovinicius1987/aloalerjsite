@@ -28,7 +28,7 @@ return [
         'numeric' => 'O campo :attribute deve ser entre :min e :max.',
         'file' => 'O campo :attribute deve ser entre :min e :max kilobytes.',
         'string' => 'O campo :attribute deve ser entre :min e :max caracteres.',
-        'array' => 'O campo :attribute deve ter entre :min e :max itens.'
+        'array' => 'O campo :attribute deve ter entre :min e :max itens.',
     ],
     'boolean' => 'O campo :attribute deve ser verdadeiro ou falso.',
     'confirmed' => 'O campo :attribute de confirmação não confere.',
@@ -57,7 +57,7 @@ return [
         'file' => 'O campo :attribute não pode ser superior a :max kilobytes.',
         'string' =>
             'O campo :attribute não pode ser superior a :max caracteres.',
-        'array' => 'O campo :attribute não pode ter mais do que :max itens.'
+        'array' => 'O campo :attribute não pode ter mais do que :max itens.',
     ],
     'mimes' => 'O campo :attribute deve ser um arquivo do tipo: :values.',
     'mimetypes' => 'O campo :attribute deve ser um arquivo do tipo: :values.',
@@ -65,7 +65,7 @@ return [
         'numeric' => 'O campo :attribute deve ser pelo menos :min.',
         'file' => 'O campo :attribute deve ter pelo menos :min kilobytes.',
         'string' => 'O campo :attribute deve ter pelo menos :min caracteres.',
-        'array' => 'O campo :attribute deve ter pelo menos :min itens.'
+        'array' => 'O campo :attribute deve ter pelo menos :min itens.',
     ],
     'not_in' => 'O campo :attribute selecionado é inválido.',
     'numeric' => 'O campo :attribute deve ser um número.',
@@ -89,7 +89,7 @@ return [
         'numeric' => 'O campo :attribute deve ser :size.',
         'file' => 'O campo :attribute deve ser :size kilobytes.',
         'string' => 'O campo :attribute deve ser :size caracteres.',
-        'array' => 'O campo :attribute deve conter :size itens.'
+        'array' => 'O campo :attribute deve conter :size itens.',
     ],
     'string' => 'O campo :attribute deve ser uma string.',
     'timezone' => 'O campo :attribute deve ser uma zona válida.',
@@ -171,6 +171,6 @@ return [
         'phone' => 'Telefone Fixo',
         'whatsapp' => 'WhatsApp',
         'mobile' => 'Celular',
-        'number' => 'número'
-    ]
+        'number' => 'número',
+    ],
 ];
