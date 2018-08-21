@@ -34,11 +34,11 @@
             @csrf
 
             @if (isset($person))
-            <input name="person_id" type="hidden" value="{{ $person->id }}">
+                <input name="person_id" type="hidden" value="{{ $person->id }}">
             @endif
 
-            @if (isset($workflow))
-            <input name="workflow" type="hidden" value="{{ $workflow }}">
+            @if (isset($workflow) || old('workflow'))
+                <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
             @endif
 
             <div class="form-group row">
@@ -113,11 +113,11 @@
 </div>
 
 @if (isset($records))
-@include('callcenter.records.index')
+    @include('callcenter.records.index')
 @endif
 
 @if (isset($addresses))
-@include('callcenter.person_addresses.index')
+    @include('callcenter.person_addresses.index')
 @endif
 
 @if (isset($contacts))

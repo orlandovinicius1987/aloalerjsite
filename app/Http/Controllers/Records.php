@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecordRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Data\Repositories\Vias as ViasRepository;
@@ -46,7 +47,7 @@ class Records extends Controller
     /**
      * @param Request $request
      */
-    protected function showSuccessMessage(Request $request): void
+    protected function showSuccessMessage(RecordRequest $request): void
     {
         $this->flashMessage(
             $request->get('workflow')
@@ -60,9 +61,13 @@ class Records extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(RecordRequest $request)
     {
         $record = $this->recordsRepository->create(coollect($request->all()));
+        if (is_null($request->get('record_id'))) {
+            $request->merge(['record_id' => $record->id]);
+            $this->progressesRepository->createFromRequest($request);
+        }
 
         $this->showSuccessMessage($request);
 

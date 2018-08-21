@@ -13,7 +13,7 @@ class Contact implements Rule
         'phone' => 'Telefone Fixo',
         'facebook' => 'Facebook',
         'twitter' => 'Twitter',
-        'instagram' => 'Instagram',
+        'instagram' => 'Instagram'
     ];
 
     /**

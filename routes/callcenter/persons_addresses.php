@@ -1,5 +1,6 @@
 <?php
 Route::group(['prefix' => 'persons_addresses'], function () {
+    Route::get('/', 'PersonAddresses@index')->name('persons_addresses.index');
     Route::get('/create/{person_id}', 'PersonAddresses@create')->name(
         'persons_addresses.create'
     );

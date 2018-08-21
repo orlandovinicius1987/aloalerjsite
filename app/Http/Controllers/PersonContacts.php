@@ -89,8 +89,10 @@ class PersonContacts extends Controller
     /**
      * @param PersonRequest $request
      */
-    private function createPersonContact(PersonContactsRequest $request, $code)
-    {
+    private function createPersonContact(
+        PersonContactsWorkflowRequest $request,
+        $code
+    ) {
         if ($request->get($code)) {
             PersonContact::create([
                 'person_id' => $request->get('person_id'),
