@@ -38,8 +38,8 @@ class ImportCercred
                     'created_at' => $history->historico_data_inicio_atendimento,
                     'updated_at' => $history->historico_data_inicio_atendimento,
                     'history_fields' => $history->history_fields->toJson(),
-                    'origin_id' => $this->inferOriginFromProtocol($protocol)
-                        ?: 999999,
+                    'origin_id' =>
+                        $this->inferOriginFromProtocol($protocol) ?: 999999,
                 ])
             );
 
@@ -450,9 +450,8 @@ class ImportCercred
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' => $type == 'celular'
-                            ? $mobileId
-                            : $phoneId,
+                        'contact_type_id' =>
+                            $type == 'celular' ? $mobileId : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,

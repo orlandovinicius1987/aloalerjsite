@@ -15,10 +15,8 @@ class AlterRecordTableAddResolvedColumn extends Migration
     {
         //
         Schema::table('records', function (Blueprint $table) {
-
             $table->dateTime('resolved_at')->nullable();
             $table->integer('resolved_by_id')->nullable();
-
         });
     }
 
@@ -30,10 +28,8 @@ class AlterRecordTableAddResolvedColumn extends Migration
     public function down()
     {
         Schema::table('records', function (Blueprint $table) {
-
             $table->dropColumn('resolved_at');
             $table->dropColumn('resolved_by_id');
-
         });
     }
 }
