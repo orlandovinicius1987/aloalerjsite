@@ -12,14 +12,14 @@ class RecordRequest extends Request
     {
         return [
             'origin_id' => 'required',
-            'original' => 'required_without:record_id'
+            'original' => 'required_without:record_id',
         ];
     }
 
     public function messages()
     {
         return [
-            'required_without' => 'O campo solicitação não pode ser vazio.'
+            'required_without' => 'O campo solicitação não pode ser vazio.',
         ];
     }
 }
