@@ -3,8 +3,8 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> {{ __('Contatos') }}</div>
-        <div class="card-body" id="vue-contacts">
 
+        <div class="card-body" id="vue-contacts">
             @if (isset($message))
                 <div class="alert alert-success">
                     {{ $message }}
