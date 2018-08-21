@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">{{ __('Protocolos') }}</div>
+    <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> Protocolos: {{ $record->protocol }} </div>
 
     <div class="card-body">
         @if (session('status'))
@@ -36,8 +36,8 @@
             <input name="person_id" type="hidden" value="{{ $person->id }}">
             @endif
 
-            @if (isset($workflow))
-            <input name="workflow" type="hidden" value="{{ $workflow }}">
+            @if (isset($workflow) || old('workflow'))
+                <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
             @endif
 
             @if (isset($record))
@@ -47,7 +47,7 @@
             <div class="form-group row">
                 <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
                 <div class="col-md-6">
-                    <input id="cpf_cnpj" type="cpf_cnpj"
+                    <input id="cpf_cnpj"
                            class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
                            value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
                            readonly="readonly">
@@ -62,7 +62,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
                 <div class="col-md-6">
-                    <input id="name" type="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                    <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                            name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
                            readonly="readonly">
                     @if ($errors->has('name'))
@@ -83,12 +83,11 @@
                             autofocus>
                         <option value="">SELECIONE</option>
                         @foreach ($origins as $key => $origin)
-                        @if(((!is_null($record->id)) && (!is_null($record->origin_id) && $record->origin_id ===
-                        $origin->id) || (!is_null(old('origins_id'))) && old('origins_id') == $origin->id))
-                        <option value="{{ $origin->id }}" selected="selected">{{ $origin->name }}</option>
-                        @else
-                        <option value="{{ $origin->id }}">{{ $origin->name }}</option>
-                        @endif
+                            @if(((!is_null($record->id)) && (!is_null($record->origin_id) && $record->origin_id === $origin->id) || (!is_null(old('origin_id'))) && old('origin_id') == $origin->id))
+                                <option value="{{ $origin->id }}" selected="selected">{{ $origin->name }}</option>
+                            @else
+                                <option value="{{ $origin->id }}">{{ $origin->name }}</option>
+                            @endif
                         @endforeach
                     </select>
 
@@ -112,12 +111,11 @@
                             autofocus>
                         <option value="">SELECIONE</option>
                         @foreach ($committees as $key => $committe)
-                        @if(((!is_null($record->id)) && (!is_null($record->committee_id) && $record->committee_id ===
-                        $committe->id) || (!is_null(old('origins_id'))) && old('origins_id') == $committe->id))
-                        <option value="{{ $committe->id }}" selected="selected">{{ $committe->name }}</option>
-                        @else
-                        <option value="{{ $committe->id }}">{{ $committe->name }}</option>
-                        @endif
+                            @if(((!is_null($record->id)) && (!is_null($record->committee_id) && $record->committee_id === $committe->id) || (!is_null(old('committee_id'))) && old('committee_id') == $committe->id))
+                                <option value="{{ $committe->id }}" selected="selected">{{ $committe->name }}</option>
+                            @else
+                                <option value="{{ $committe->id }}">{{ $committe->name }}</option>
+                            @endif
                         @endforeach
                     </select>
 
@@ -133,7 +131,7 @@
                 <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
 
                 <div class="col-md-6">
-                    <select id="record_type_id" type="record_type_id"
+                    <select id="record_type_id"
                             class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }}"
                             name="record_type_id"
                             value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id')}}"
@@ -141,12 +139,11 @@
                             autofocus>
                         <option value="">SELECIONE</option>
                         @foreach ($recordTypes as $key => $recordType)
-                        @if(((!is_null($record->id)) && (!is_null($record->record_type_id) && $record->record_type_id ===
-                        $recordType->id) || (!is_null(old('record_type_id'))) && old('record_type_id') == $committe->id))
-                        <option value="{{ $recordType->id }}" selected="selected">{{ $recordType->name }}</option>
-                        @else
-                        <option value="{{ $recordType->id }}">{{ $recordType->name }}</option>
-                        @endif
+                            @if(((!is_null($record->id)) && (!is_null($record->record_type_id) && $record->record_type_id === $recordType->id) || (!is_null(old('record_type_id'))) && old('record_type_id') == $recordType->id))
+                                <option value="{{ $recordType->id }}" selected="selected">{{ $recordType->name }}</option>
+                            @else
+                                <option value="{{ $recordType->id }}">{{ $recordType->name }}</option>
+                            @endif
                         @endforeach
                     </select>
 
@@ -167,12 +164,11 @@
                             value="{{is_null(old('area_id')) ? $record->area_id : old('area_id')}}" required autofocus>
                         <option value="">SELECIONE</option>
                         @foreach ($areas as $key => $area)
-                        @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) ||
-                        (!is_null(old('area_id'))) && old('area_id') == $committe->id))
-                        <option value="{{ $area->id }}" selected="selected">{{ $area->name }}</option>
-                        @else
-                        <option value="{{ $area->id }}">{{ $area->name }}</option>
-                        @endif
+                            @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) || (!is_null(old('area_id'))) && old('area_id') == $area->id))
+                                <option value="{{ $area->id }}" selected="selected">{{ $area->name }}</option>
+                            @else
+                                <option value="{{ $area->id }}">{{ $area->name }}</option>
+                            @endif
                         @endforeach
                     </select>
 
@@ -184,21 +180,23 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="original" class="col-sm-4 col-form-label text-md-right">{{ __('Solicitação') }}</label>
-                <div class="col-md-6">
-                        <textarea id="original"
-                                  class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
-                                  name="original"
-                                  value="{{is_null(old('original')) ? $record->original : old('original')}}"
-                                  required rows="15">{{$record->original}}</textarea>
-                    @if ($errors->has('original'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('original') }}</strong>
-                    </span>
-                    @endif
+            @if (isset($record) and is_null($record->id))
+                <div class="form-group row">
+                    <label for="original" class="col-sm-4 col-form-label text-md-right">{{ __('Solicitação') }}</label>
+                    <div class="col-md-6">
+                            <textarea id="original"
+                                      class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
+                                      name="original"
+                                      value="{{is_null(old('original')) ? $record->original : old('original')}}"
+                                      required rows="15">{{$record->original}}</textarea>
+                        @if ($errors->has('original'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('original') }}</strong>
+                        </span>
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endif
 
             <div class="form-group row">
                 <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">{{ __('Resposta por

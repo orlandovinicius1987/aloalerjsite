@@ -94,7 +94,7 @@ abstract class BaseRepository
 
     public function allWhereOperator($collumn, $operator, $value)
     {
-        return $this->model::where($collumn, $operator ,$value)->get();
+        return $this->model::where($collumn, $operator, $value)->get();
     }
 
     /**

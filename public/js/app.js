@@ -47270,6 +47270,12 @@ if (jQuery("#" + appName).length > 0) {
 
 var appName = 'vue-addresses';
 
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
@@ -47290,7 +47296,6 @@ if (jQuery("#" + appName).length > 0) {
             form: {
                 zipcode: null,
                 street: null,
-                complement: null,
                 neighborhood: null,
                 city: null,
                 state: null
