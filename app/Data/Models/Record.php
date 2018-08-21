@@ -14,7 +14,7 @@ class Record extends BaseModel
         'area_id',
         'answer_address_id',
         'send_answer_by_email',
-        'origin_id',
+        'origin_id'
     ];
 
     public function committee()

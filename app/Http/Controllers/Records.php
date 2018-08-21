@@ -40,7 +40,7 @@ class Records extends Controller
             'contacts' => $this->peopleContactsRepository->findByPerson(
                 $record->person_id
             ),
-            'workflow' => request()->get('workflow'),
+            'workflow' => request()->get('workflow')
         ]);
     }
 

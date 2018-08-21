@@ -1,16 +1,16 @@
-<div class="card-header">
-    {{ __('Protocolos') }}
+<div class="card mt-4">
+    <div class="card-header">
+        {{ __('Protocolos') }}
 
-    <a id="buttonAndamentos"
-       href="{{ route('records.create',['person_id'=>$person->id]) }}"
-       class="btn btn-primary btn-sm pull-right"
-    >
-        <i class="fa fa-plus"></i>
-        Novo Protocolo
-    </a>
-</div>
+        <a id="buttonAndamentos"
+           href="{{ route('records.create',['person_id'=>$person->id]) }}"
+           class="btn btn-primary btn-sm pull-right"
+        >
+            <i class="fa fa-plus"></i>
+            Novo Protocolo
+        </a>
+    </div>
 
-<div class="card">
     <div class="card-body">
         <table id="recordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>

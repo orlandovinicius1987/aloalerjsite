@@ -30,6 +30,6 @@ $factory->define(ProgressModel::class, function (Faker $faker) {
                     ->all()
                     ->toArray()
             )['id'],
-        'original' => $faker->name,
+        'original' => $faker->name
     ];
 });

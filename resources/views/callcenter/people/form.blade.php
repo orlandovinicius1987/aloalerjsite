@@ -113,11 +113,11 @@
 </div>
 
 @if (isset($records))
-@include('callcenter.records.index')
+    @include('callcenter.records.index')
 @endif
 
 @if (isset($addresses))
-@include('callcenter.person_addresses.index')
+    @include('callcenter.person_addresses.index')
 @endif
 
 @if (isset($contacts))
