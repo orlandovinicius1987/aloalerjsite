@@ -23,7 +23,64 @@ class ImportCercred
 
     protected $counter = 0;
 
-    private function createProgress($history, $record, $protocol)
+    private function getAllHistory($historico_id)
+    {
+        $history = coollect(
+            $this->db()->select(
+                'select
+  historico_propriedade.historico_id,
+  historico_propriedade.historico_propriedade_id,
+  historico_propriedade.valor historico_propriedade_valor,
+  historico_propriedade_tipo.historico_propriedade_tipo,
+  historico_propriedade_tipo.descricao historico_propriedade_tipo_descricao
+from historico
+  left join historico_propriedade on historico_propriedade.historico_id = historico.historico_id
+  left join historico_propriedade_tipo on historico_propriedade_tipo.historico_propriedade_tipo = historico_propriedade.historico_propriedade_tipo
+  left join historico_tipo on historico.historico_tipo = historico_tipo.historico_tipo
+  left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
+  left join action on action.action_id = action_historico.action_id
+  left join action_type on action_type.action_type = action.action_type
+where  historico_propriedade_tipo.descricao is not null
+and historico.historico_id = ' .
+                    $historico_id
+            )
+        );
+
+        if ($history->isEmpty()) {
+            return null;
+        }
+
+        return $history;
+    }
+
+    public function import($command)
+    {
+        ini_set('memory_limit', '2048M');
+
+        $this->command = $command;
+
+        \Debugbar::disable();
+
+        DB::connection()->disableQueryLog();
+
+        //        $this->people();
+        //
+        //        $this->emails();
+        //
+        //        $this->phones();
+        //
+        //        $this->addresses();
+        //
+        //        $this->users();
+        //
+        //        $this->progressTypes();
+
+        //        $this->recordActions();
+
+        $this->recordsAndProgress();
+    }
+
+    private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
             Progress::create(
@@ -38,8 +95,7 @@ class ImportCercred
                     'created_at' => $history->historico_data_inicio_atendimento,
                     'updated_at' => $history->historico_data_inicio_atendimento,
                     'history_fields' => $history->history_fields->toJson(),
-                    'origin_id' =>
-                        $this->inferOriginFromProtocol($protocol) ?: 999999,
+                    'origin_id' => $this->inferOriginFromHistory($history),
                 ])
             );
 
@@ -57,7 +113,7 @@ class ImportCercred
                 'person_id' => $protocol->pessoa_id,
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
-                'record_action_id' => $this->inferActionFromProtocol($protocol), //?????
+                'record_action_id' => $this->inferActionFromProtocol($protocol),
                 'created_at' => $date = $this->inferDateFromProtocol($protocol),
                 'updated_at' => $date,
             ])
@@ -76,33 +132,6 @@ class ImportCercred
         )->first();
 
         return $action;
-    }
-
-    public function import($command)
-    {
-        ini_set('memory_limit', '2048M');
-
-        $this->command = $command;
-
-        \Debugbar::disable();
-
-        DB::connection()->disableQueryLog();
-
-        //        $this->people();
-
-        //        $this->emails();
-
-        //        $this->phones();
-
-        //        $this->addresses();
-
-        //        $this->users();
-
-        $this->progressTypes();
-
-        $this->recordActions();
-
-        $this->recordsAndProgress();
     }
 
     public function inferActionFromProtocol($protocol)
@@ -157,6 +186,28 @@ class ImportCercred
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
             }
+        }
+
+        return null;
+    }
+
+    private function inferOriginFromHistory($history)
+    {
+        if (!$history = $this->getAllHistory($history->historico_id)) {
+            return null;
+        }
+
+        $origin = $history
+            ->where('historico_propriedade_tipo_descricao', 'Origem')
+            ->first();
+
+        if (
+            $origin instanceof \stdClass ||
+            isset($origin['historico_propriedade_valor'])
+        ) {
+            return Origin::firstOrCreate([
+                'name' => $origin->historico_propriedade_valor,
+            ])->id;
         }
 
         return null;
@@ -238,7 +289,7 @@ class ImportCercred
             $record = $this->createRecordFromProtocol($protocol);
 
             $protocol->history_data->each(function ($history) use ($record) {
-                $this->createProgress($history, $record, $protocol);
+                $this->createProgress($history, $record);
             });
         } catch (\Exception $exception) {
             dump($protocol);

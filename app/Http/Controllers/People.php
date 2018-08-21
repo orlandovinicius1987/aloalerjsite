@@ -118,22 +118,16 @@ class People extends Controller
             foreach ($data as $key => $item) {
                 $view->with($key, $item);
             }
+
             return $view;
         } else {
             $person = $this->peopleRepository->findById($person_id);
-            $records = $this->recordsRepository->findByPerson($person->id);
-            $addresses = $this->peopleAddressesRepository->findByPerson(
-                $person->id
-            );
-            $contacts = $this->peopleContactsRepository->findByPerson(
-                $person->id
-            );
 
             return $view
                 ->with('person', $person)
-                ->with('records', $records)
-                ->with('addresses', $addresses)
-                ->with('contacts', $contacts)
+                ->with('records', $person->records)
+                ->with('addresses', $person->addresses)
+                ->with('contacts', $person->contacts)
                 ->with($this->getComboBoxMenus());
         }
     }

@@ -15,6 +15,7 @@ use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
 use App\Data\Repositories\Progresses as ProgressesRepository;
+use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 
 abstract class Controller extends IlluminateController
 {
@@ -35,6 +36,7 @@ abstract class Controller extends IlluminateController
     protected $areasRepository;
     protected $contactTypesRepository;
     protected $progressesRepository;
+    protected $progressTypesRepository;
 
     /**
      * Persons constructor.
@@ -47,6 +49,9 @@ abstract class Controller extends IlluminateController
      * @param CommitteesRepository $committeesRepository
      * @param RecordTypesRepository $recordTypesRepository
      * @param AreasRepository $areasRepository
+     * @param ContactTypesRepository $contactTypesRepository
+     * @param ProgressesRepository $progressesRepository
+     * @param ProgressTypesRepository $progressTypesRepository
      * @internal param Repository $repository
      */
     public function __construct(
@@ -59,7 +64,8 @@ abstract class Controller extends IlluminateController
         RecordTypesRepository $recordTypesRepository,
         AreasRepository $areasRepository,
         ContactTypesRepository $contactTypesRepository,
-        ProgressesRepository $progressesRepository
+        ProgressesRepository $progressesRepository,
+        ProgressTypesRepository $progressTypesRepository
     ) {
         $this->peopleRepository = $personRepository;
         $this->recordsRepository = $recordsRepository;
@@ -71,6 +77,7 @@ abstract class Controller extends IlluminateController
         $this->areasRepository = $areasRepository;
         $this->contactTypesRepository = $contactTypesRepository;
         $this->progressesRepository = $progressesRepository;
+        $this->progressTypesRepository = $progressTypesRepository;
     }
 
     /**
@@ -99,7 +106,7 @@ abstract class Controller extends IlluminateController
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
             'contactTypes' => $this->contactTypesRepository->all(),
-            'progressTypes' => $this->progressesRepository->all(),
+            'progressTypes' => $this->progressTypesRepository->all(),
         ];
     }
 

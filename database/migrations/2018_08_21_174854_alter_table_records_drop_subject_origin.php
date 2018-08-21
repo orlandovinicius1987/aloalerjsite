@@ -15,7 +15,6 @@ class AlterTableRecordsDropSubjectOrigin extends Migration
     {
         Schema::table('records', function (Blueprint $table) {
             $table->dropColumn('origin_id');
-            $table->dropColumn('subject');
         });
     }
 
@@ -31,7 +30,6 @@ class AlterTableRecordsDropSubjectOrigin extends Migration
                 ->integer('origin_id')
                 ->unsigned()
                 ->nullable();
-            $table->text('subject')->nullable();
         });
     }
 }
