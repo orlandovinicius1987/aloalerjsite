@@ -40,34 +40,34 @@ abstract class Controller extends IlluminateController
      * Persons constructor.
      *
      * @param PeopleRepository $personRepository
-     * @param RecordsRepository $RecordsRepository
+     * @param RecordsRepository $recordsRepository
      * @param PersonAddressesRepository $peopleAddressesRepository
      * @param PersonContactsRepository $peopleContactsRepository
      * @param OriginsRepository $originsRepository
      * @param CommitteesRepository $committeesRepository
-     * @param RecordTypesRepository $RecordTypesRepository
+     * @param RecordTypesRepository $recordTypesRepository
      * @param AreasRepository $areasRepository
      * @internal param Repository $repository
      */
     public function __construct(
         PeopleRepository $personRepository,
-        RecordsRepository $RecordsRepository,
+        RecordsRepository $recordsRepository,
         PersonAddressesRepository $peopleAddressesRepository,
         PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
-        RecordTypesRepository $RecordTypesRepository,
+        RecordTypesRepository $recordTypesRepository,
         AreasRepository $areasRepository,
         ContactTypesRepository $contactTypesRepository,
         ProgressesRepository $progressesRepository
     ) {
         $this->peopleRepository = $personRepository;
-        $this->recordsRepository = $RecordsRepository;
+        $this->recordsRepository = $recordsRepository;
         $this->peopleAddressesRepository = $peopleAddressesRepository;
         $this->peopleContactsRepository = $peopleContactsRepository;
         $this->originsRepository = $originsRepository;
         $this->committeesRepository = $committeesRepository;
-        $this->recordTypesRepository = $RecordTypesRepository;
+        $this->recordTypesRepository = $recordTypesRepository;
         $this->areasRepository = $areasRepository;
         $this->contactTypesRepository = $contactTypesRepository;
         $this->progressesRepository = $progressesRepository;

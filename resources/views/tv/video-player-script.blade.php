@@ -24,6 +24,13 @@
     // 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
         event.target.playVideo();
+
+        var iframe = player.getIframe();
+
+        var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+        if (requestFullScreen) {
+            requestFullScreen.bind(iframe)();
+        }
     }
 
     // 5. The API calls this function when the player's state changes.

@@ -32,9 +32,9 @@ class People extends BaseRepository
 
     private function searchByProtocolNumber($string)
     {
-        $call = app(Records::class)->findByColumn('protocol', $string);
-        if ($call) {
-            $query = $this->getBaseQuery()->where('id', $call->person_id);
+        $record = app(Records::class)->findByColumn('protocol', $string);
+        if ($record) {
+            $query = $this->getBaseQuery()->where('id', $record->person_id);
             return $this->response($query->get(), $query->count());
         }
         return $this->response(null);

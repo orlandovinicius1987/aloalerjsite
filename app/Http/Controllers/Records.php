@@ -40,7 +40,7 @@ class Records extends Controller
             'contacts' => $this->peopleContactsRepository->findByPerson(
                 $record->person_id
             ),
-            'workflow' => request()->get('workflow')
+            'workflow' => request()->get('workflow'),
         ]);
     }
 
@@ -103,5 +103,14 @@ class Records extends Controller
             )
             ->with('record', $record)
             ->with('person', $person);
+    }
+
+    public function index()
+    {
+        $records = $this->recordsRepository->whereIsNullPaginate(
+            'resolved_at',
+            15
+        );
+        return view('callcenter.records.index')->with('records', $records);
     }
 }
