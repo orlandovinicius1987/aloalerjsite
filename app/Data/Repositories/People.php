@@ -5,22 +5,24 @@ use App\Data\Models\Person;
 
 class People extends BaseRepository
 {
+    const RECORDS_COUNT_LIMIT = 20;
+
     /**
      * @var $model
      */
     protected $model = Person::class;
 
-    private function error($count, $messages)
+    protected function error($count, $messages)
     {
         return $this->response(null, $count, $messages);
     }
 
-    private function getBaseQuery()
+    protected function getBaseQuery()
     {
         return $this->model::with(['contacts', 'addresses', 'records']);
     }
 
-    private function response($data, $count = 0, $messages = null)
+    protected function response($data, $count = 0, $messages = null)
     {
         return [
             'data' => $data,
@@ -30,7 +32,7 @@ class People extends BaseRepository
         ];
     }
 
-    private function searchByProtocolNumber($string)
+    protected function searchByProtocolNumber($string)
     {
         $record = app(Records::class)->findByColumn('protocol', $string);
         if ($record) {
@@ -40,22 +42,20 @@ class People extends BaseRepository
         return $this->response(null);
     }
 
-    private function searchByCpf($string)
+    protected function searchByCpf($string)
     {
         $query = $this->getBaseQuery()->where('cpf_cnpj', $string);
 
         return $this->response($query->get(), $query->count());
     }
 
-    private function searchByName($string)
+    protected function searchByName($string)
     {
-        $query = $this->getBaseQuery()->where(
-            'name',
-            'ILIKE',
-            '%' . $string . '%'
-        );
+        $query = $this->getBaseQuery()
+            ->where('name', 'ILIKE', '%' . $string . '%')
+            ->take(static::RECORDS_COUNT_LIMIT + 1);
 
-        if (($count = $query->count()) > 20) {
+        if (($count = $query->count()) > static::RECORDS_COUNT_LIMIT) {
             return $this->error(
                 $count,
                 'Busca resultou em mais de 20 registros'
