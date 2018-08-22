@@ -1,8 +1,8 @@
 <?php
 namespace App\Data\Repositories;
 
+use Validator;
 use App\Data\Models\Person;
-use App\Support\Constants;
 use Illuminate\Support\Facades\Cache;
 
 class People extends BaseRepository
@@ -14,7 +14,7 @@ class People extends BaseRepository
      */
     protected $model = Person::class;
 
-    private function emptyResult()
+    private function emptyResponse()
     {
         return $this->response([], 0);
     }
@@ -26,7 +26,9 @@ class People extends BaseRepository
 
     protected function getBaseQuery()
     {
-        return $this->model::with(['contacts', 'addresses', 'records']);
+        return $this->model::with(['contacts', 'addresses', 'records'])->take(
+            static::RECORDS_COUNT_LIMIT + 1
+        );
     }
 
     protected function response($data, $count = 0, $messages = null)
@@ -54,6 +56,10 @@ class People extends BaseRepository
 
     protected function searchByCpf($string)
     {
+        if (!$this->validCpfCnpj($string)) {
+            return $this->emptyResponse();
+        }
+
         $query = $this->getBaseQuery()->where('cpf_cnpj', $string);
 
         return $this->response($query->get(), $query->count());
@@ -61,9 +67,11 @@ class People extends BaseRepository
 
     protected function searchByName($string)
     {
-        $query = $this->getBaseQuery()
-            ->where('name', 'ILIKE', '%' . $string . '%')
-            ->take(static::RECORDS_COUNT_LIMIT + 1);
+        $query = $this->getBaseQuery()->where(
+            'name',
+            'ILIKE',
+            '%' . $string . '%'
+        );
 
         if ($query->count() > static::RECORDS_COUNT_LIMIT) {
             return $this->error(
@@ -78,7 +86,7 @@ class People extends BaseRepository
     public function searchByEverything($string)
     {
         if (empty(trim($string))) {
-            return $this->emptyResult();
+            return $this->emptyResponse();
         }
 
         return Cache::remember($string, 10, function () use ($string) {
@@ -96,5 +104,15 @@ class People extends BaseRepository
 
             return $this->searchByName($string);
         });
+    }
+
+    private function validCpfCnpj($string)
+    {
+        return Validator::make(
+            ['string' => $string],
+            [
+                'string' => 'required|cpf_cnpj',
+            ]
+        )->passes();
     }
 }
