@@ -23,7 +23,9 @@
                             @forelse ($progresses as $progress)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name }}</a>
+                                        @if(!is_null($progress->origin))
+                                            <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name }}</a>
+                                        @endif
                                     </td>
                                     <td>
                                         @if(is_null($progress->recordType))

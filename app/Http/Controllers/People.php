@@ -125,7 +125,7 @@ class People extends Controller
 
             return $view
                 ->with('person', $person)
-                ->with('records', $person->records)
+                ->with('records', ($person->records)->get(0)->paginate(15))
                 ->with('addresses', $person->addresses)
                 ->with('contacts', $person->contacts)
                 ->with($this->getComboBoxMenus());
