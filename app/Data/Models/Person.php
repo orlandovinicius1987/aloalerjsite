@@ -1,6 +1,8 @@
 <?php
 namespace App\Data\Models;
 
+use App\Support\Constants;
+
 class Person extends BaseModel
 {
     /**
@@ -20,6 +22,8 @@ class Person extends BaseModel
         'created_by_id',
         'updated_by_id',
     ];
+
+    protected $flushKeys = [Constants::CACHE_KEY_PEOPLE_SEARCH_BY_EVERYTHING];
 
     public function contacts()
     {

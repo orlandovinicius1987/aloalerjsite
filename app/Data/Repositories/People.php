@@ -2,6 +2,8 @@
 namespace App\Data\Repositories;
 
 use App\Data\Models\Person;
+use App\Support\Constants;
+use Illuminate\Support\Facades\Cache;
 
 class People extends BaseRepository
 {
@@ -11,6 +13,11 @@ class People extends BaseRepository
      * @var $model
      */
     protected $model = Person::class;
+
+    private function emptyResult()
+    {
+        return $this->response([], 0);
+    }
 
     protected function error($count, $messages)
     {
@@ -35,10 +42,13 @@ class People extends BaseRepository
     protected function searchByProtocolNumber($string)
     {
         $record = app(Records::class)->findByColumn('protocol', $string);
+
         if ($record) {
             $query = $this->getBaseQuery()->where('id', $record->person_id);
+
             return $this->response($query->get(), $query->count());
         }
+
         return $this->response(null);
     }
 
@@ -55,30 +65,36 @@ class People extends BaseRepository
             ->where('name', 'ILIKE', '%' . $string . '%')
             ->take(static::RECORDS_COUNT_LIMIT + 1);
 
-        if (($count = $query->count()) > static::RECORDS_COUNT_LIMIT) {
+        if ($query->count() > static::RECORDS_COUNT_LIMIT) {
             return $this->error(
-                $count,
+                $query->count(),
                 'Busca resultou em mais de 20 registros'
             );
         }
 
-        return $this->response($query->get(), $count);
+        return $this->response($query->get(), $query->count());
     }
 
     public function searchByEverything($string)
     {
-        $result = $this->searchByCpf($string);
-
-        if ($result['success'] && $result['count'] > 0) {
-            return $result;
+        if (empty(trim($string))) {
+            return $this->emptyResult();
         }
 
-        $result = $this->searchByProtocolNumber($string);
+        return Cache::remember($string, 10, function () use ($string) {
+            $result = $this->searchByCpf($string);
 
-        if ($result['success'] && $result['count'] > 0) {
-            return $result;
-        }
+            if ($result['success'] && $result['count'] > 0) {
+                return $result;
+            }
 
-        return $this->searchByName($string);
+            $result = $this->searchByProtocolNumber($string);
+
+            if ($result['success'] && $result['count'] > 0) {
+                return $result;
+            }
+
+            return $this->searchByName($string);
+        });
     }
 }
