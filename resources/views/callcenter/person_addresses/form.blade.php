@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> {{ __('Endereços') }}</div>
+        <div class="card-header">
+            <ul class="aloalerj-breadcrumbs">
+                <li>
+                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                </li>
 
-        {{--{{dd(old('number'))}}--}}
+                <li>{{ __('Endereços') }}</li>
+            </ul>
+        </div>
 
         <div class="card-body" id="vue-addresses">
             @if (isset($message))

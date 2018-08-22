@@ -2,7 +2,17 @@
 
 @section('content')
     <div class="card mt-4">
-        <div class="card-header"><a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a> >> Protocolos: {{ $record->protocol }} </div>
+        <div class="card-header">
+            <ul class="aloalerj-breadcrumbs">
+                <li>
+                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">
+                        {{ $person->name }}
+                    </a>
+                </li>
+
+                <li>Protocolo {{ $record->protocol }}</li>
+            </ul>
+        </div>
 
         <div class="card-body">
             @if (session('status'))
