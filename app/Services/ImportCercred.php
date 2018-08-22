@@ -63,19 +63,19 @@ and historico.historico_id = ' .
 
         DB::connection()->disableQueryLog();
 
-        //        $this->people();
+        $this->people();
         //
-        //        $this->emails();
+        $this->emails();
         //
-        //        $this->phones();
+        $this->phones();
         //
-        //        $this->addresses();
+        $this->addresses();
         //
-        //        $this->users();
+        $this->users();
         //
-        //        $this->progressTypes();
+        $this->progressTypes();
 
-        //        $this->recordActions();
+        $this->recordActions();
 
         $this->recordsAndProgress();
     }
@@ -501,8 +501,9 @@ and historico.historico_id = ' .
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' =>
-                            $type == 'celular' ? $mobileId : $phoneId,
+                        'contact_type_id' => $type == 'celular'
+                            ? $mobileId
+                            : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,

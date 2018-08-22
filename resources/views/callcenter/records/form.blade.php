@@ -73,31 +73,33 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="committee_id" class="col-sm-4 col-form-label text-md-right">{{ __('Origem') }}</label>
+            @if (isset($record) and is_null($record->id))
+                <div class="form-group row">
+                    <label for="committee_id" class="col-sm-4 col-form-label text-md-right">{{ __('Origem') }}</label>
 
-                <div class="col-md-6">
-                    <select id="committee_id" type="origin_id"
-                            class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id"
-                            value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id')}}" required
-                            autofocus>
-                        <option value="">SELECIONE</option>
-                        @foreach ($origins as $key => $origin)
-                            @if(((!is_null($record->id)) && (!is_null($record->origin_id) && $record->origin_id === $origin->id) || (!is_null(old('origin_id'))) && old('origin_id') == $origin->id))
-                                <option value="{{ $origin->id }}" selected="selected">{{ $origin->name }}</option>
-                            @else
-                                <option value="{{ $origin->id }}">{{ $origin->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
+                    <div class="col-md-6">
+                        <select id="committee_id" type="origin_id"
+                                class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id"
+                                value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id')}}" required
+                                autofocus>
+                            <option value="">SELECIONE</option>
+                            @foreach ($origins as $key => $origin)
+                                @if(((!is_null($record->id)) && (!is_null($record->origin_id) && $record->origin_id === $origin->id) || (!is_null(old('origin_id'))) && old('origin_id') == $origin->id))
+                                    <option value="{{ $origin->id }}" selected="selected">{{ $origin->name }}</option>
+                                @else
+                                    <option value="{{ $origin->id }}">{{ $origin->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
 
-                    @if ($errors->has('origins_id'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('origin_id') }}</strong>
-                    </span>
-                    @endif
+                        @if ($errors->has('origins_id'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('origin_id') }}</strong>
+                        </span>
+                        @endif
+                    </div>
                 </div>
-            </div>
+            @endIf
 
             <div class="form-group row">
                 <label for="committee_id" class="col-sm-4 col-form-label text-md-right">{{ __('Comissão') }}</label>
