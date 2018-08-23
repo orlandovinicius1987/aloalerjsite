@@ -1,9 +1,9 @@
 <?php
 namespace App\Data\Models;
 
+use Illuminate\Support\Facades\Cache;
 use App\Data\Presenters\BasePresenter;
 use Illuminate\Database\Eloquent\Model;
-use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
 use McCool\LaravelAutoPresenter\HasPresenter;
 
 abstract class BaseModel extends Model implements HasPresenter
@@ -29,6 +29,20 @@ abstract class BaseModel extends Model implements HasPresenter
     protected $presenters = [];
 
     /**
+     * Cache keys to be flushed when a model is saved.
+     *
+     * @var array
+     */
+    protected $flushKeys = [];
+
+    private function flushKeys()
+    {
+        coollect($this->flushKeys)->each(function ($key) {
+            Cache::forget($key);
+        });
+    }
+
+    /**
      * @param $column
      *
      * @return mixed
@@ -46,6 +60,13 @@ abstract class BaseModel extends Model implements HasPresenter
     public function getPresenterClass()
     {
         return BasePresenter::class;
+    }
+
+    public function save(array $options = [])
+    {
+        $this->flushKeys();
+
+        return parent::save($options);
     }
 
     // Isso aqui está BUGADO. Não está retornando array em tudo quando se faz um ->toArray()

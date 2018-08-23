@@ -1,26 +1,37 @@
 <?php
 namespace App\Data\Repositories;
 
+use Validator;
 use App\Data\Models\Person;
+use Illuminate\Support\Facades\Cache;
 
 class People extends BaseRepository
 {
+    const RECORDS_COUNT_LIMIT = 20;
+
     /**
      * @var $model
      */
     protected $model = Person::class;
 
-    private function error($count, $messages)
+    private function emptyResponse()
+    {
+        return $this->response([], 0);
+    }
+
+    protected function error($count, $messages)
     {
         return $this->response(null, $count, $messages);
     }
 
-    private function getBaseQuery()
+    protected function getBaseQuery()
     {
-        return $this->model::with(['contacts', 'addresses', 'records']);
+        return $this->model::with(['contacts', 'addresses', 'records'])->take(
+            static::RECORDS_COUNT_LIMIT + 1
+        );
     }
 
-    private function response($data, $count = 0, $messages = null)
+    protected function response($data, $count = 0, $messages = null)
     {
         return [
             'data' => $data,
@@ -30,24 +41,31 @@ class People extends BaseRepository
         ];
     }
 
-    private function searchByProtocolNumber($string)
+    protected function searchByProtocolNumber($string)
     {
         $record = app(Records::class)->findByColumn('protocol', $string);
+
         if ($record) {
             $query = $this->getBaseQuery()->where('id', $record->person_id);
+
             return $this->response($query->get(), $query->count());
         }
+
         return $this->response(null);
     }
 
-    private function searchByCpf($string)
+    protected function searchByCpf($string)
     {
+        if (!$this->validCpfCnpj($string)) {
+            return $this->emptyResponse();
+        }
+
         $query = $this->getBaseQuery()->where('cpf_cnpj', $string);
 
         return $this->response($query->get(), $query->count());
     }
 
-    private function searchByName($string)
+    protected function searchByName($string)
     {
         $query = $this->getBaseQuery()->where(
             'name',
@@ -55,30 +73,46 @@ class People extends BaseRepository
             '%' . $string . '%'
         );
 
-        if (($count = $query->count()) > 20) {
+        if ($query->count() > static::RECORDS_COUNT_LIMIT) {
             return $this->error(
-                $count,
+                $query->count(),
                 'Busca resultou em mais de 20 registros'
             );
         }
 
-        return $this->response($query->get(), $count);
+        return $this->response($query->get(), $query->count());
     }
 
     public function searchByEverything($string)
     {
-        $result = $this->searchByCpf($string);
-
-        if ($result['success'] && $result['count'] > 0) {
-            return $result;
+        if (empty(trim($string))) {
+            return $this->emptyResponse();
         }
 
-        $result = $this->searchByProtocolNumber($string);
+        return Cache::remember($string, 10, function () use ($string) {
+            $result = $this->searchByCpf($string);
 
-        if ($result['success'] && $result['count'] > 0) {
-            return $result;
-        }
+            if ($result['success'] && $result['count'] > 0) {
+                return $result;
+            }
 
-        return $this->searchByName($string);
+            $result = $this->searchByProtocolNumber($string);
+
+            if ($result['success'] && $result['count'] > 0) {
+                return $result;
+            }
+
+            return $this->searchByName($string);
+        });
+    }
+
+    private function validCpfCnpj($string)
+    {
+        return Validator::make(
+            ['string' => $string],
+            [
+                'string' => 'required|cpf_cnpj',
+            ]
+        )->passes();
     }
 }
