@@ -7,6 +7,10 @@ Artisan::command('cercred:import', function () {
     app(ImportCercred::class)->import($this);
 })->describe('Display an inspiring quote');
 
+Artisan::command('cercred:update-progresses', function () {
+    app(ImportCercred::class)->updateProgressTypes($this);
+})->describe('Display an inspiring quote');
+
 Artisan::command('cercred:index', function () {
     Schema::connection('cercred')->table('historico', function ($table) {
         $table->index('historico_id');

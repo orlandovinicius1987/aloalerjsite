@@ -111,6 +111,9 @@ class Records extends Controller
             'resolved_at',
             15
         );
-        return view('callcenter.records.index')->with('records', $records);
+        return view('callcenter.records.not-resolved')->with(
+            'records',
+            $records
+        );
     }
 }
