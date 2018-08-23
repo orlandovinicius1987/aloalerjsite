@@ -106,7 +106,9 @@ abstract class Controller extends IlluminateController
             'areas' => $this->areasRepository->all(),
             'origins' => $this->originsRepository->all(),
             'contactTypes' => $this->contactTypesRepository->all(),
-            'progressTypes' => $this->progressTypesRepository->all(),
+            'progressTypes' => $this->progressTypesRepository->allOrderBy(
+                'name'
+            ),
         ];
     }
 

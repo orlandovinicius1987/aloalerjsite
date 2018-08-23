@@ -157,6 +157,29 @@
                 </div>
             </div>
 
+            @if (isset($record) and is_null($record->id))
+                <div class="form-group row">
+                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Assunto') }}</label>
+
+                    <div class="col-md-6">
+                        <select id="progress_type_id" type="progress_type_id"
+                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }}" name="progress_type_id"
+                                value="" required autofocus>
+                            <option value="">SELECIONE</option>
+                            @foreach ($progressTypes as $key => $progressType)
+                                    <option value="{{ $progressType->id }}">{{ $progressType->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @if ($errors->has('progress_type_id'))
+                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('progress_type_id') }}</strong>
+                                                    </span>
+                        @endif
+                    </div>
+                </div>
+            @endIf
+
             <div class="form-group row">
                 <label for="area_id" class="col-sm-4 col-form-label text-md-right">{{ __('Área') }}</label>
 

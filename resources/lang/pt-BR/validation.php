@@ -132,7 +132,7 @@ return [
         'send_answer_by_email' => 'enviar resposta por email',
         'origin_id' => 'origem',
         'record_id' => 'registro',
-        'progress_type_id' => 'tipo de andamento',
+        'progress_type_id' => 'assunto',
         'progress_action_id' => 'ação de andamento',
         'created_by_id' => 'criado por',
         'original' => 'original',
