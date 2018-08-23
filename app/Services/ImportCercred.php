@@ -697,7 +697,7 @@ and historico.historico_id = ' .
                     $this->sanitize([
                         'id' => $person->pessoa_id,
                         'code' => $person->codigo,
-                        'name' => $person->nome,
+                        'name' => $this->fixAccentRecursively($person->nome),
                         'cpf_cnpj' => $person->cpf,
                         'identification' => $person->rg,
                         'birthdate' => $person->nascimento,
@@ -831,5 +831,32 @@ where historico.historico_id = {$historyId};"
 
             $this->info("{$counter} records {$memory} bytes = {$message}");
         }
+    }
+
+    /**
+     * @param $person
+     * @return null|string|string[]
+     */
+    function fixAccent($string)
+    {
+        return preg_replace_callback(
+            "/(.*)(&#[0-9]+)(.*)/",
+            function ($m) {
+                return (
+                    $m[1] .
+                    mb_convert_encoding($m[2] . ';', "UTF-8", "HTML-ENTITIES") .
+                    $m[3]
+                );
+            },
+            $string
+        );
+    }
+
+    function fixAccentRecursively($string)
+    {
+        while ($string != $this->fixAccent($string)) {
+            $string = $this->fixAccent($string);
+        }
+        return $string;
     }
 }
