@@ -1,24 +1,34 @@
-                <div class="card">
-                    <div class="card-header">{{ __('Andamentos') }}
-                        <a id="buttonEndereços" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
-                           class="btn btn-primary btn-sm pull-right">
-                            <i class="fa fa-plus"></i>
-                            Novo Andamento
-                        </a>
-                    </div>
+<div class="card mt-4">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-4">
+                <h5>
+                    {{ __('Andamentos') }}
+                </h5>
+            </div>
 
-                    <div class="card-body">
+            <div class="col-8 text-right">
+                <a id="buttonEndereços" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
+                   class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-plus"></i>
+                    Novo Andamento
+                </a>
+            </div>
+        </div>
+    </div>
 
-                        <table id="progressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                            <tr>
-                                <th>Origem</th>
-                                <th>Tipo</th>
-                                <th>Área</th>
-                                <th>Tipo de Andamento</th>
-                                <th>Solicitação</th>
-                            </tr>
-                            </thead>
+    <div class="card-body">
+
+        <table id="progressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Origem</th>
+                <th>Tipo</th>
+                <th>Área</th>
+                <th>Tipo de Andamento</th>
+                <th>Solicitação</th>
+            </tr>
+            </thead>
 
                             @forelse ($progresses as $progress)
                                 <tr>

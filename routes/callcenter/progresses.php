@@ -1,8 +1,5 @@
 <?php
 Route::group(['prefix' => 'progresses'], function () {
-    //Não funciona
-    Route::get('/', 'Progresses@index')->name('progresses.index');
-
     Route::get('/create/{record_id}', 'Progresses@create')->name(
         'progresses.create'
     );
