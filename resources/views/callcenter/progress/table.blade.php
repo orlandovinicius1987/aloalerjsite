@@ -33,7 +33,7 @@
             @forelse ($progresses as $progress)
                 <tr>
                     <td>
-                        <a class="btn btn-success" href="{{$progress->show_link}}" target="_blank">
+                        <a class="btn btn-success" href="{{$progress->show_link}}">
                             <i class="fa fa-external-link-square"></i>
                         </a>
                     </td>
