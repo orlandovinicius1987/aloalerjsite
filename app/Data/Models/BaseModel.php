@@ -66,6 +66,8 @@ abstract class BaseModel extends Model implements HasPresenter
     {
         $this->flushKeys();
 
+        Cache::tags(['search'])->flush();
+
         return parent::save($options);
     }
 
