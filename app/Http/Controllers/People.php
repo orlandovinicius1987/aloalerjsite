@@ -122,10 +122,17 @@ class People extends Controller
             return $view;
         } else {
             $person = $this->peopleRepository->findById($person_id);
+            $records = (
+                $this->recordsRepository->allWherePaginate(
+                    'person_id',
+                    $person_id,
+                    15
+                )
+            );
 
             return $view
                 ->with('person', $person)
-                ->with('records', $person->records)
+                ->with('records', $records)
                 ->with('addresses', $person->addresses)
                 ->with('contacts', $person->contacts)
                 ->with($this->getComboBoxMenus());
