@@ -22,52 +22,50 @@
         <table id="progressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Origem</th>
-                <th>Tipo</th>
-                <th>Área</th>
+                <th>Visualizar</th>
                 <th>Tipo de Andamento</th>
+                <th>Origem</th>
+                <th>Área</th>
                 <th>Solicitação</th>
             </tr>
             </thead>
 
-                            @forelse ($progresses as $progress)
-                                <tr>
-                                    <td>
-                                        @if(is_null($progress->origin))
-                                            N/C
-                                        @else
-                                            <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name ?? ''}}</a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if(is_null($progress->recordType))
-                                            N/C
-                                        @else
-                                            {{$progress->recordType->name}}
-                                        @endIf
-                                    </td>
-                                    <td>
-                                        @if(is_null($progress->area))
-                                            N/C
-                                        @else
-                                            {{$progress->area->name}}
-                                        @endIf
-                                    </td>
-                                    <td>
-                                        @if(is_null($progress->progressType))
-                                            N/C
-                                        @else
-                                            {{$progress->progressType->name}}
-                                        @endIf
-                                    </td>
-                                    <td>
-                                        {{$progress->original}}
-                                    </td>
-                                </tr>
-                            @empty
-                                <p>Nenhum andamento encontrado.</p>
-                            @endforelse
-                        </table>
-                        {{ $progresses->links() }}
-                    </div>
-                </div>
+            @forelse ($progresses as $progress)
+                <tr>
+                    <td>
+                        <a class="btn btn-success" href="{{$progress->show_link}} ? 'N/C'">
+                            <i class="fa fa-external-link-square"></i>
+                        </a>
+                    </td>
+                    <td>
+                        @if(is_null($progress->progressType))
+                            N/C
+                        @else
+                            {{$progress->progressType->name}}
+                        @endIf
+                    </td>
+                    <td>
+                        @if(is_null($progress->recordType))
+                            N/C
+                        @else
+                            {{ $progress->origin->name }}
+                        @endIf
+                    </td>
+                    <td>
+                        @if(is_null($progress->area))
+                            N/C
+                        @else
+                            {{$progress->area->name}}
+                        @endIf
+                    </td>
+                    <td>
+                        {{$progress->original}}
+                    </td>
+                </tr>
+            @empty
+                <p>Nenhum andamento encontrado.</p>
+            @endforelse
+        </table>
+        {{ $progresses->links() }}
+    </div>
+</div>

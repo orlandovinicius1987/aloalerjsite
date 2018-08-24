@@ -80,6 +80,91 @@ and historico.historico_id = ' .
         $this->recordsAndProgress();
     }
 
+    public function updateProgressTypes($command)
+    {
+        $this->command = $command;
+
+        $this->info('Updating PROGRESS TYPES...');
+
+        $elements = [
+            'Demanda de atendimento',
+            'Telefone',
+            'Email',
+            'Outras',
+            'Prestação de serviços',
+            'Água e Esgoto',
+            'Lixo',
+            'Projetos de Lei',
+            'Denúncia',
+            'Agradecimento/Elogio',
+            'Demanda sem clareza',
+            'Outros',
+            'Pedido',
+            'Luz ou Iluminação',
+            'Transportes',
+            'Saúde',
+            'Educação',
+            'Serviços Públicos',
+            'Serviços Privados',
+            'ALERJ',
+            'Falta de fiscalização',
+            'Outros',
+            'Segurança Pública',
+            'Maus tratos aos animais',
+            'Comissão do Trabalho',
+            'Queda de Ligação',
+            'Reenvio de protocolo',
+            'Comissão dos Direitos da Mulher',
+            'Venda',
+            'Não Venda',
+            'Não Tabulado',
+            'Exclusão da Venda',
+            'Pré-Venda',
+            'Expirado',
+            'E-mail Material de Venda Enviado',
+            'SMS Enviado',
+            'Voice Messenger Enviado',
+            'Carta Enviada',
+            'Resposta de Protocolo',
+            'Fidelização',
+            'Agendamento Automático',
+            'Informação',
+            'Baixa de CPF',
+            'Baixa de Contrato',
+            'Baixa de Contrato Parcela',
+            'Devolução de CPF',
+            'Devolução de Contrato',
+            'Devolução de Contrato Parcela',
+            'Discador - Não Atende',
+            'Discador - Ocupado',
+            'Discador - Máquina',
+            'Discador - Fax',
+            'Discador - Sem Agente Disp.',
+            'Discador - Número Errado',
+            'Discador - Cliente Desligou',
+            'Discador - Mudo',
+            'Discador - Validado',
+            'Discador - Recado URA',
+            'Discador - Não Retornar',
+            'Discador - Desconhece Pessoa',
+            'Discador - Caixa Postal',
+            'Discador - Mensagem Operadora',
+            'Discador - Silêncio',
+            'Discador - Falha na Operadora',
+            'Discador - Congestionamento',
+        ];
+
+        ProgressType::truncate();
+
+        foreach ($elements as $key => $element) {
+            $this->info('Inserting ' . $element);
+            ProgressType::insert([
+                'id' => $key,
+                'name' => $element,
+            ]);
+        }
+    }
+
     private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
@@ -611,7 +696,7 @@ and historico.historico_id = ' .
                     $this->sanitize([
                         'id' => $person->pessoa_id,
                         'code' => $person->codigo,
-                        'name' => $person->nome,
+                        'name' => $this->fixAccentRecursively($person->nome),
                         'cpf_cnpj' => $person->cpf,
                         'identification' => $person->rg,
                         'birthdate' => $person->nascimento,
@@ -745,5 +830,32 @@ where historico.historico_id = {$historyId};"
 
             $this->info("{$counter} records {$memory} bytes = {$message}");
         }
+    }
+
+    /**
+     * @param $person
+     * @return null|string|string[]
+     */
+    function fixAccent($string)
+    {
+        return preg_replace_callback(
+            "/(.*)(&#[0-9]+)(.*)/",
+            function ($m) {
+                return (
+                    $m[1] .
+                    mb_convert_encoding($m[2] . ';', "UTF-8", "HTML-ENTITIES") .
+                    $m[3]
+                );
+            },
+            $string
+        );
+    }
+
+    function fixAccentRecursively($string)
+    {
+        while ($string != $this->fixAccent($string)) {
+            $string = $this->fixAccent($string);
+        }
+        return $string;
     }
 }
