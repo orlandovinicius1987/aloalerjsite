@@ -170,6 +170,7 @@ and historico.historico_id = ' .
         if ($history->historico_complemento) {
             Progress::create(
                 $this->sanitize([
+                    'original_history_id' => $history->historico_id,
                     'record_id' => $record->id,
                     'progress_type_id' =>
                         ProgressType::firstOrCreate([
@@ -322,39 +323,28 @@ and historico.historico_id = ' .
     protected function recordsAndProgress()
     {
         $this->info('Importing RECORDS AND PROGRESS...');
-
         Person::all()->each(function ($person) {
-            $person->protocols = $this->getProtocolsForPerson($person)
-                ->map(function ($protocol) {
-                    $protocol->history_data = $this->getHistory(
-                        $protocol->objeto_id
-                    )->map(function ($history) {
+            $person->protocols = $this->getProtocolsForPerson($person)->each(
+                function ($protocol) {
+                    $newProtocol = $this->importProtocol($protocol);
+
+                    $this->getHistory($protocol->objeto_id)->each(function (
+                        $history
+                    ) use ($newProtocol, $protocol) {
                         $history->history_fields = $this->getHistoryFields(
                             $history->historico_id
                         );
-
-                        return $history;
+                        $this->createProgress($history, $newProtocol);
+                        $this->increment(
+                            10,
+                            "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
+                        );
                     });
-
-                    return $protocol;
-                })
-                ->each(function ($protocol) {
-                    $this->importProtocol($protocol);
-
-                    $this->increment(
-                        10,
-                        "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-                    );
-                });
-
+                }
+            );
             unset($person);
-
             $this->checkMemory();
         });
-
-        DB::statement(
-            "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
-        );
     }
 
     /**
@@ -371,11 +361,7 @@ and historico.historico_id = ' .
     public function importProtocol($protocol)
     {
         try {
-            $record = $this->createRecordFromProtocol($protocol);
-
-            $protocol->history_data->each(function ($history) use ($record) {
-                $this->createProgress($history, $record);
-            });
+            return $this->createRecordFromProtocol($protocol);
         } catch (\Exception $exception) {
             dump($protocol);
 
@@ -586,8 +572,9 @@ and historico.historico_id = ' .
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' =>
-                            $type == 'celular' ? $mobileId : $phoneId,
+                        'contact_type_id' => $type == 'celular'
+                            ? $mobileId
+                            : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,
@@ -735,20 +722,16 @@ and historico.historico_id = ' .
     {
         return coollect(
             $this->db()->select(
-                "select 
-  DISTINCT
+                "
+select distinct
   pessoa.pessoa_id,
   pessoa.nome pessoa_nome,
   protocolo.protocolo_id,
   protocolo.protocolo_codigo,
   protocolo.objeto_id
-from protocolo
-  left join historico on protocolo.objeto_id = historico.objeto_id
-  left join pessoa on
-                     historico.pessoa_id = pessoa.pessoa_id
-where pessoa.pessoa_id = {$person->id}
-and pessoa.pessoa_id not in (select person_id from public.records)
-order by pessoa.pessoa_id, protocolo.protocolo_id"
+from cercred.protocolo, cercred.objeto, cercred.pessoa
+where protocolo.objeto_id = objeto.objeto_id and objeto.pessoa_id = pessoa.pessoa_id and pessoa.pessoa_id = {$person->id}
+"
             )
         );
     }
