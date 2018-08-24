@@ -36,7 +36,7 @@
                                         @if(is_null($progress->origin))
                                             N/C
                                         @else
-                                            <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name }}</a>
+                                            <a href="{{ route('progresses.show', ['id' => $progress->id]) }}">{{ $progress->origin->name ?? ''}}</a>
                                         @endif
                                     </td>
                                     <td>
