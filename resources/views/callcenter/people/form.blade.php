@@ -112,7 +112,7 @@
     </div>
 
     @if (isset($records))
-        @include('callcenter.records.index')
+        @include('callcenter.records.partials.table-section')
     @endif
 
     @if (isset($addresses))
