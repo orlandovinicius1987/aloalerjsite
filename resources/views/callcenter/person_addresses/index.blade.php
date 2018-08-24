@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th>Endereço</th>
+                    <th>Número</th>
                     <th>Complemento</th>
                     <th>Bairro</th>
                     <th>Cidade</th>
@@ -23,6 +24,7 @@
             @forelse ($addresses as $address)
                 <tr>
                     <td><a href="{{ route('persons_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
+                    <td>{{$address->number}}</td>
                     <td>{{$address->complement}}</td>
                     <td>{{$address->neighbourhood}}</td>
                     <td>{{$address->city}}</td>

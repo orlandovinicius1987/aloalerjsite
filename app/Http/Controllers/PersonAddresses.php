@@ -59,10 +59,6 @@ class PersonAddresses extends Controller
         }
 
         $request->merge(['id' => $request->get('address_id')]);
-        $request->merge([
-            'street' =>
-                trim($request->get('street')) . ', ' . $request->get('number'),
-        ]);
         $this->peopleAddressesRepository->createFromRequest($request);
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
