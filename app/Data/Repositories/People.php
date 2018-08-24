@@ -60,7 +60,10 @@ class People extends BaseRepository
             return $this->emptyResponse();
         }
 
-        $query = $this->getBaseQuery()->where('cpf_cnpj', $string);
+        $query = $this->getBaseQuery()->where(
+            'cpf_cnpj',
+            only_numbers($string)
+        );
 
         return $this->response($query->get(), $query->count());
     }
