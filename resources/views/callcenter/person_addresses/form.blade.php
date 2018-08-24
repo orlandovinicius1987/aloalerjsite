@@ -78,13 +78,16 @@
 
                     <div class="col-md-6">
                         <input id="zipcode"
+                               name="zipcode"
                                v-model="form.zipcode"
-                               v-init:zipcode="'{{old('zipcode')}}'"
-                               class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}" name="zipcode"
-                               value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}" required
-                               autofocus
+                               v-init:zipcode="'{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}'"
+                               value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}"
+                               class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}"
                                @keyup="typeKeyUp"
-                               v-mask='["##.###-###"]'>
+                               v-mask='["##.###-###"]'
+                               autofocus
+                               required
+                        >
 
                         @if ($errors->has('zipcode'))
                             <span class="invalid-feedback" role="alert">
@@ -98,12 +101,15 @@
                     <label for="street" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço') }}</label>
 
                     <div class="col-md-6">
-                        <input id="street" class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
+                        <input id="street"
+                               name="street"
                                v-model="form.street"
-                               v-init:street="'{{old('street')}}'"
-                               name="street" value="{{is_null(old('street')) ? $address->street : old('street')}}"
+                               v-init:street="'{{is_null(old('street')) ? $address->street : old('street')}}'"
+                               value="{{is_null(old('street')) ? $address->street : old('street')}}"
+                               class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
                                required
-                               autofocus>
+                               autofocus
+                        >
 
                         @if ($errors->has('street'))
                             <span class="invalid-feedback" role="alert">
@@ -117,10 +123,12 @@
                     <label for="number" class="col-sm-4 col-form-label text-md-right">{{ __('Número') }}</label>
 
                     <div class="col-md-2">
-                        <input id="number" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
-                               v-on:keypress="isNumber(event)"
+                        <input id="number"
                                name="number"
-                               value="{{is_null(old('number')) ? $address->number : old('number')}}" required
+                               v-on:keypress="isNumber(event)"
+                               value="{{is_null(old('number')) ? $address->number : old('number')}}"
+                               class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                               required
                                autofocus
                         >
 
@@ -136,10 +144,11 @@
 
                     <div class="col-md-2">
                         <input id="complement"
-                               class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement')}}"
-                               autofocus>
+                               class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
+                               autofocus
+                        >
 
                         @if ($errors->has('complement'))
                         <span class="invalid-feedback" role="alert">
@@ -155,12 +164,14 @@
 
                     <div class="col-md-6">
                         <input id="neighbourhood"
-                               v-model="form.neighbourhood"
-                               v-init:neighbourhood="'{{old('neighbourhood')}}'"
-                               class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
                                name="neighbourhood"
+                               v-model="form.neighbourhood"
+                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}'"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
-                               required autofocus>
+                               class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
+                               required
+                               autofocus
+                        >
 
                         @if ($errors->has('neighbourhood'))
                             <span class="invalid-feedback" role="alert">
@@ -174,11 +185,15 @@
                     <label for="city" class="col-sm-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
 
                     <div class="col-md-4">
-                        <input id="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                        <input id="city"
+                               name="city"
                                v-model="form.city"
-                               v-init:city="'{{old('city')}}'"
-                               name="city" value="{{is_null(old('city')) ? $address->city : old('city')}}" required
-                               autofocus>
+                               v-init:city="'{{is_null(old('city')) ? $address->city : old('city')}}'"
+                               value="{{is_null(old('city')) ? $address->city : old('city')}}"
+                               class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                               required
+                               autofocus
+                        >
 
                         @if ($errors->has('city'))
                             <span class="invalid-feedback" role="alert">
@@ -190,11 +205,15 @@
                     <label for="state" class="col-sm-1 col-form-label text-md-right">{{ __('Estado') }}</label>
 
                     <div class="col-md-1">
-                        <input id="state" class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                        <input id="state"
+                               name="state"
                                v-model="form.state"
-                               v-init:state="'{{old('state')}}'"
-                               name="state" value="{{is_null(old('state')) ? $address->state : old('state')}}" required
-                               autofocus>
+                               v-init:state="'{{is_null(old('state')) ? $address->state : old('state')}}'"
+                               value="{{is_null(old('state')) ? $address->state : old('state')}}"
+                               class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                               required
+                               autofocus
+                        >
 
                         @if ($errors->has('state'))
                             <span class="invalid-feedback" role="alert">

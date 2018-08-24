@@ -10,6 +10,7 @@ class PersonAddress extends BaseModel
         'person_id',
         'zipcode',
         'street',
+        'number',
         'complement',
         'neighbourhood',
         'city',

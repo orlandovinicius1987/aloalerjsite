@@ -33,6 +33,11 @@
             @forelse ($progresses as $progress)
                 <tr>
                     <td>
+                        <a class="btn btn-success" href="{{$progress->show_link}} ? 'N/C'">
+                            <i class="fa fa-external-link-square"></i>
+                        </a>
+                    </td>
+                    <td>
                         @if(is_null($progress->progressType))
                             N/C
                         @else
