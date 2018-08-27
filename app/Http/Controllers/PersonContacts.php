@@ -21,7 +21,7 @@ class PersonContacts extends Controller
             ? null
             : session('data')['workflow'];
 
-        return view('callcenter.person_contacts.form')
+        return view('callcenter.person_contacts.form-workflow')
             ->with('person', $person)
             ->with('workflow', $workflow)
             ->with(['contact' => $this->peopleContactsRepository->new()])

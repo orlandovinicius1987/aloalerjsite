@@ -11,9 +11,9 @@ class RecordRequest extends Request
     public function rules()
     {
         return [
-            'origin_id' => 'required',
+            //'origin_id' => 'required',
+            //'original' => 'required_without:record_id',
             'progress_type_id' => 'required',
-            'original' => 'required_without:record_id',
         ];
     }
 
