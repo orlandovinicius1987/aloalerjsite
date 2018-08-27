@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card mt-4" id="vue-contact-outside-workflow">
+    <div class="card mt-4">
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a>
                 </li>
 
                 <li>{{ __('Contatos') }}</li>
@@ -74,116 +74,72 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo de Contato') }}</label>
-                    <div class="col-md-6">
-                        <select
-                            id="contact_type_id"
-                            name="contact_type_id"
-                            {{--v-model="currentContactType"--}}
-                            class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }}"
-                            autofocus
-                            required
-                        >
-                            <option value="">SELECIONE</option>
-                            @foreach ($contactTypes as $key => $contactType)
-                                @if(((!is_null($contact->id)) && (!is_null($contact->contact_type_id) && $contact->contact_type_id == $contactType->id) || (!is_null(old('contact_type_id'))) && old('contact_type_id') == $contactType->id))
-                                    <option value="{{ $contactType->id }}" selected="selected">{{ $contactType->name }}</option>
-                                @else
-                                    <option value="{{ $contactType->id }}">{{ $contactType->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-
-                        @if ($errors->has('contact_type_id'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('contact_type_id') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-
-                </div>
-
-                <div class="form-group row" v-if="mobileSelected">
-                    <label for="whatsapp" class="col-sm-4 col-form-label text-md-right">{{ __('Celular') }}</label>
+                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">{{ __('Celular') }}</label>
 
                     <div class="col-md-6">
-                        <input
-                                name="contact"
-                                id="contact"
-                                v-mask='["(##)####-####", "(##)#####-####"]'
-                                v-model="currentContact"
-                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}"
-                                class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
-                                autofocus
-                                required
+                        <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
+                               id="mobile"
+                               name="mobile"
+                               value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}" required autofocus
+                               v-mask='["(##)####-####", "(##)#####-####"]'
+                               v-model='form.mobile'
                         >
 
-                        @if ($errors->has('whatsapp'))
+                        @if ($errors->has('mobile'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('whatsapp') }}</strong>
-                            </span>
+                        <strong>{{ $errors->first('mobile') }}</strong>
+                    </span>
                         @endif
                     </div>
-
                 </div>
 
-                <div class="form-group row" v-if="whatsappSelected">
+                <div class="form-group row">
                     <label for="whatsapp" class="col-sm-4 col-form-label text-md-right">{{ __('Whatsapp') }}</label>
 
                     <div class="col-md-6">
-                        <input
-                            name="contact"
-                            id="contact"
-                            v-mask='["(##)#####-####"]'
-                            v-model="currentContact"
-                            value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
-                            class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}"
-                            autofocus
-                            required
+                        <input class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
+                               id="whatsapp"
+                               value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
+                               autofocus
+                               v-mask='["(##)#####-####"]'
+                               v-model='form.whatsapp'
                         >
 
                         @if ($errors->has('whatsapp'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('whatsapp') }}</strong>
-                            </span>
+                        <strong>{{ $errors->first('whatsapp') }}</strong>
+                    </span>
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group row" v-if="emailSelected">
+                <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
 
                     <div class="col-md-6">
-                        <input type=email
-                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                               name="contact"
-                               id="contact"
-                               value="{{is_null(old('contact')) ? $contact->email : old('contact')}}"
-                               required
-                               autofocus
-                        >
+                        <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                               id="email"
+                               value="{{is_null(old('email')) ? $contact->email : old('email')}}" required
+                               autofocus>
 
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                         @endif
                     </div>
                 </div>
 
-                <div class="form-group row" v-if="phoneSelected">
+                <div class="form-group row">
                     <label for="phone" class="col-sm-4 col-form-label text-md-right">{{ __('Telefone Fixo') }}</label>
 
                     <div class="col-md-6">
-                        <input
-                            name="phone"
-                            id="phone"
-                            value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
-                            v-mask="['(##) ####-####', '(##) #####-####']"
-                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
-                            required
-                            autofocus
-                        >
+                        <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                               id="phone"
+                               value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
+                               autofocus
+                               v-mask="['(##) ####-####', '(##) #####-####']"
+                               v-model='form.phone'>
 
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
