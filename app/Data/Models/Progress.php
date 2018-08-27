@@ -23,6 +23,7 @@ class Progress extends BaseModel
         'area_id',
         'created_at',
         'updated_at',
+        'original_history_id',
     ];
 
     protected $presenters = ['show_link'];

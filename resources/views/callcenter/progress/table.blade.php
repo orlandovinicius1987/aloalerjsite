@@ -22,11 +22,11 @@
         <table id="progressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Visualizar</th>
                 <th>Tipo de Andamento</th>
                 <th>Origem</th>
                 <th>Área</th>
                 <th>Solicitação</th>
+                <th>Opções</th>
             </tr>
             </thead>
 
@@ -60,6 +60,11 @@
                     </td>
                     <td>
                         {{$progress->original}}
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="{{$progress->show_link}}">
+                            <i class="fa fa-search"></i>
+                        </a>
                     </td>
                 </tr>
             @empty

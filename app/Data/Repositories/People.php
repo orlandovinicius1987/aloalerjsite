@@ -92,7 +92,9 @@ class People extends BaseRepository
             return $this->emptyResponse();
         }
 
-        return Cache::remember($string, 10, function () use ($string) {
+        return Cache::tags(['search'])->remember($string, 10, function () use (
+            $string
+        ) {
             $result = $this->searchByCpf($string);
 
             if ($result['success'] && $result['count'] > 0) {
