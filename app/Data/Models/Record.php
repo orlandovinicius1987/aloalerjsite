@@ -24,6 +24,11 @@ class Record extends BaseModel
         'record_action_id',
     ];
 
+    public function progresses()
+    {
+        return $this->hasMany(Progress::class);
+    }
+
     public function committee()
     {
         return $this->belongsTo(Committee::class);

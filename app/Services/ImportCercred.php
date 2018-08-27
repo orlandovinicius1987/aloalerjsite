@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Data\Models\Area;
 use App\Data\Models\Origin;
 use App\Data\Models\RecordAction;
+use App\Data\Models\RecordType;
 use Carbon\Carbon;
 use App\Data\Models\User;
 use App\Data\Models\Record;
@@ -102,7 +103,59 @@ and historico.historico_id = ' .
 
         //        $this->records();
 
-        $this->firstAndLastHistories();
+        // $this->firstAndLastHistories();
+
+        $this->inferAndFillMissinData();
+    }
+
+    private function inferAndFillMissinData()
+    {
+        // where('id', 1362639)
+
+        Record::all()->each(function ($record) {
+            $history = $record->progresses->where(
+                'original_history_id',
+                $record->historico_id
+            )->first();
+
+            if ($history) {
+                $history = json_decode(json_encode($history->toArray()));
+
+                $action = $this->findActionByHistoryId(
+                    $history->original_history_id
+                );
+
+                $history->history_data[] = coollect([
+                    'history_fields' => coollect(
+                        json_decode($history->history_fields, true)
+                    ),
+                ])->merge(json_decode(json_encode($action, true)));
+
+                $record->area_id = $this->inferAreaFromProtocol($history)
+                    ?: 999999;
+
+                $record->record_type_id = $this->inferRecordTypeFromProtocol(
+                    $history
+                );
+
+                $record->record_action_id = $this->inferActionFromProtocol(
+                    $history
+                );
+
+                $historico = coollect(
+                    $this->db()->select(
+                        "select * from historico where historico_id = {$history->original_history_id}"
+                    )
+                )->first();
+
+                $record->created_at = $historico->data_inicio_atendimento
+                    ?: $record->created_at;
+
+                $record->save();
+
+                $this->increment('INFER MISSING');
+            }
+        });
     }
 
     private function personDoesNotHaveAnyOtherProtocols($person_id)
@@ -255,6 +308,46 @@ and historico.historico_id = ' .
         return $action;
     }
 
+    /**
+     * @param $history
+     * @return mixed
+     */
+    private function findRecordTypeByName($history)
+    {
+        $action = RecordType::where(
+            'name',
+            $history->action_description
+        )->first();
+
+        return $action;
+    }
+
+    public function inferRecordTypeFromProtocol($protocol)
+    {
+        $type = null;
+
+        if (isset($protocol->history_data[0])) {
+            $history = $protocol->history_data[0];
+
+            $type = $this->findRecordTypeByName($history);
+
+            if (!$type && $history->action_id) {
+                RecordType::insert([
+                    'id' => $history->action_id,
+                    'name' => $history->action_description,
+                ]);
+
+                $type = $this->findRecordTypeByName($history);
+
+                DB::statement(
+                    "SELECT setval('public.record_types_id_seq', (SELECT max(id) FROM public.record_types));"
+                );
+            }
+        }
+
+        return $type ? $type->id : null;
+    }
+
     public function inferActionFromProtocol($protocol)
     {
         $action = null;
@@ -294,10 +387,12 @@ and historico.historico_id = ' .
     private function inferAreaFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Comissão Responsável'
-            )->first();
+            $data = coollect($protocol->history_data[0]->history_fields)
+                ->where(
+                    'historico_propriedade_tipo_descricao',
+                    'Comissão Responsável'
+                )
+                ->first();
 
             if (
                 $data instanceof \stdClass ||
@@ -947,6 +1042,26 @@ where historico.historico_id = {$historyId};"
         }
 
         return $array;
+    }
+
+    public function findActionByHistoryId($historyId)
+    {
+        return coollect(
+            $this->db()->select(
+                "select
+  historico.historico_id,
+  action.action_id action_id,
+  action.description action_description,
+  action.action_type action_type,
+  action_type.description action_type_description
+from historico
+  left join historico_tipo on historico.historico_tipo = historico_tipo.historico_tipo
+  left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
+  left join action on action.action_id = action_historico.action_id
+  left join action_type on action_type.action_type = action.action_type
+where historico_id = {$historyId}"
+            )
+        )->first();
     }
 
     public function increment($counterName, $mod = 100, $message = '')
