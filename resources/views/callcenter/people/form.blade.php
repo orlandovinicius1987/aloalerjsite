@@ -99,11 +99,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="identification" class="col-sm-3 col-form-label text-md-right">
+                    <label for="identification" class="col-sm-2 col-form-label text-md-right">
                         {{ __('Criado em')}}
                     </label>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <input id="identification"
                            class="form-control"
                            value="{{ $person->created_at ?? '' }}"
@@ -111,11 +111,11 @@
                         >
                     </div>
 
-                    <label for="identification" class="col-sm-3 col-form-label text-md-right">
+                    <label for="identification" class="col-sm-2 col-form-label text-md-right">
                         {{ __('Alterado em')}}
                     </label>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <input id="identification"
                            class="form-control"
                            value="{{ $person->updated_at ?? '' }}"
