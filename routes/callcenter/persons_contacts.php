@@ -7,7 +7,6 @@ Route::group(['prefix' => 'persons_contacts'], function () {
     );
     Route::post('/', 'PersonContacts@store')->name('persons_contacts.store');
 
-    //Falta fazer
     Route::get('/show/{id}', 'PersonContacts@show')->name(
         'persons_contacts.show'
     );
@@ -18,5 +17,9 @@ Route::group(['prefix' => 'persons_contacts'], function () {
 
     Route::get('/createOutside/{id}', 'PersonContacts@createOutside')->name(
         'persons_contacts.createOutside'
+    );
+
+    Route::post('/update', 'PersonContacts@update')->name(
+        'persons_contacts.update'
     );
 });

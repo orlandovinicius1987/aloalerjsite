@@ -21,6 +21,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        window.laravel = @json($laravel) //laravel.old
+    </script>
 </head>
 <body>
 
