@@ -32,7 +32,7 @@
             @forelse ($progresses as $progress)
                 <tr>
                     <td>
-                        <a href="{{$progress->show_link}}">
+                        <a href="{{ $progress->link }}">
                             {{ $progress->progressType->name ?? '' }}
                         </a>
                     </td>

@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Models;
 
-use App\Data\Presenters\ProgressPresenter;
+use App\Data\Presenters\Progress as ProgressPresenter;
 
 class Progress extends BaseModel
 {
@@ -26,7 +26,7 @@ class Progress extends BaseModel
         'original_history_id',
     ];
 
-    protected $presenters = ['show_link'];
+    protected $presenters = ['link'];
 
     public function getPresenterClass()
     {

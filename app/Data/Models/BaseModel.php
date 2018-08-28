@@ -2,7 +2,7 @@
 namespace App\Data\Models;
 
 use Illuminate\Support\Facades\Cache;
-use App\Data\Presenters\BasePresenter;
+use App\Data\Presenters\Base;
 use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\HasPresenter;
 
@@ -59,7 +59,7 @@ abstract class BaseModel extends Model implements HasPresenter
      */
     public function getPresenterClass()
     {
-        return BasePresenter::class;
+        return Base::class;
     }
 
     public function save(array $options = [])

@@ -2,6 +2,7 @@
 namespace App\Data\Models;
 
 use App\Support\Constants;
+use App\Data\Presenters\Person as PersonPresenter;
 
 class Person extends BaseModel
 {
@@ -22,6 +23,13 @@ class Person extends BaseModel
         'created_by_id',
         'updated_by_id',
     ];
+
+    protected $presenters = ['created_at_formatted', 'updated_at_formatted'];
+
+    public function getPresenterClass()
+    {
+        return PersonPresenter::class;
+    }
 
     protected $flushKeys = [Constants::CACHE_KEY_PEOPLE_SEARCH_BY_EVERYTHING];
 

@@ -107,7 +107,7 @@
                         <div class="col-md-4">
                             <input id="identification"
                                class="form-control"
-                               value="{{ $person->created_at ?? '' }}"
+                               value="{{ $person->created_at_formatted ?? '' }}"
                                disabled
                             >
                         </div>
@@ -119,7 +119,7 @@
                         <div class="col-md-4">
                             <input id="identification"
                                class="form-control"
-                               value="{{ $person->updated_at ?? '' }}"
+                               value="{{ $person->updated_at_formatted ?? '' }}"
                                disabled
                             >
                         </div>
