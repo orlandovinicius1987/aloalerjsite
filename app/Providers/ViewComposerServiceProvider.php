@@ -20,6 +20,10 @@ class ViewComposerServiceProvider extends ServiceProvider
             if (!isset($view->laravel)) {
                 $view->with('laravel', []);
             }
+
+            if (!isset($view->workflow)) {
+                $view->with('workflow', false);
+            }
         });
     }
 }

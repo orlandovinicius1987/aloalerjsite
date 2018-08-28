@@ -19,7 +19,7 @@
     </div>
 
     <div class="card-body">
-        <table id="addressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="addressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Endereço</th>

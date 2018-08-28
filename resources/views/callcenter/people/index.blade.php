@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-12" v-if="tables.people.length > 0">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th scope="col">Nome</th>
