@@ -15,6 +15,26 @@
 }
 
 
+.card {
+  border: 1px solid rgba(199, 204, 214, 0.7);
+
+  .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(199, 204, 214, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+    h5{
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+
+
 @media only screen and (min-width: 992px) {
   .alerj-logo {
     height: 80px !important;
@@ -34,6 +54,9 @@
   }
 
 }
+
+
+
 
 // Breadcrumbs
 .aloalerj-breadcrumbs {
