@@ -45,6 +45,26 @@ class CreateRecordsTable extends Migration
                 ->index();
 
             $table
+                ->integer('objeto_id')
+                ->unsigned()
+                ->nullable()
+                ->index();
+
+            $table
+                ->integer('historico_id')
+                ->unsigned()
+                ->nullable()
+                ->index();
+
+            $table
+                ->integer('historico_id_finalizador')
+                ->unsigned()
+                ->nullable()
+                ->index();
+
+            $table->boolean('person_first_record')->default(false);
+
+            $table
                 ->integer('record_action_id')
                 ->index()
                 ->unsigned()
