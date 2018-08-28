@@ -1,12 +1,21 @@
 <div class="card mt-4">
     <div class="card-header">
-        {{ __('Endereços') }}
+        <div class="row">
+            <div class="col-4">
+                <h5>
+                    {{ __('Endereços') }}
+                </h5>
+            </div>
 
-        <a id="buttonEndereços" href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
-           class="btn btn-primary btn-sm pull-right">
-            <i class="fa fa-plus"></i>
-            Novo Endereço
-        </a>
+            <div class="col-8 text-right">
+                <a id="buttonEndereços"
+                   href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
+                   class="btn btn-primary btn-sm pull-right"
+                >
+                    <i class="fa fa-plus"></i> Novo Endereço
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="card-body">

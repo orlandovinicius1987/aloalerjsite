@@ -33,33 +33,16 @@
             @forelse ($progresses as $progress)
                 <tr>
                     <td>
-                        <a class="btn btn-success" href="{{$progress->show_link}} ? 'N/C'">
-                            <i class="fa fa-external-link-square"></i>
-                        </a>
+                        {{ $progress->progressType->name ?? '' }}
                     </td>
                     <td>
-                        @if(is_null($progress->progressType))
-                            N/C
-                        @else
-                            {{$progress->progressType->name}}
-                        @endIf
+                        {{ $progress->origin->name ?? '' }}
                     </td>
                     <td>
-                        @if(is_null($progress->recordType))
-                            N/C
-                        @else
-                            {{ $progress->origin->name }}
-                        @endIf
+                        {{ $progress->area->name ?? '' }}
                     </td>
                     <td>
-                        @if(is_null($progress->area))
-                            N/C
-                        @else
-                            {{$progress->area->name}}
-                        @endIf
-                    </td>
-                    <td>
-                        {{$progress->original}}
+                        {{ $progress->original }}
                     </td>
                     <td>
                         <a class="btn btn-success" href="{{$progress->show_link}}">
