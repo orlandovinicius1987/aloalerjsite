@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Data\Models\Area;
 use App\Data\Models\Origin;
 use App\Data\Models\RecordAction;
+use App\Data\Models\RecordType;
 use Carbon\Carbon;
 use App\Data\Models\User;
 use App\Data\Models\Record;
@@ -21,7 +22,30 @@ class ImportCercred
 {
     protected $command;
 
-    protected $counter = 0;
+    protected $counters = [];
+
+    private function allHistoryIdsExceptForPerson(
+        $person_id,
+        $firstHistory,
+        $lastHistory
+    ) {
+        $exclude = array_filter([$firstHistory, $lastHistory]);
+
+        if (count($exclude) == 0) {
+            return collect();
+        }
+
+        return coollect(
+            $this->db()->select(
+                "select
+      historico_id
+        from historico
+        where imported = false and historico.pessoa_id = {$person_id} and historico.historico_id not in (" .
+                    implode(',', $exclude) .
+                    ");"
+            )
+        );
+    }
 
     private function getAllHistory($historico_id)
     {
@@ -63,21 +87,80 @@ and historico.historico_id = ' .
 
         DB::connection()->disableQueryLog();
 
-        $this->people();
+        //        $this->people();
+        //        //
+        //        $this->emails();
+        //        //
+        //        $this->phones();
+        //        //
+        //        $this->addresses();
+        //        //
+        //        $this->users();
+        //        //
+        //        $this->progressTypes();
         //
-        $this->emails();
-        //
-        $this->phones();
-        //
-        $this->addresses();
-        //
-        $this->users();
-        //
-        $this->progressTypes();
+        //        $this->recordActions();
 
-        $this->recordActions();
+        //        $this->records();
 
-        $this->recordsAndProgress();
+        // $this->firstAndLastHistories();
+
+        $this->inferAndFillMissinData();
+    }
+
+    private function inferAndFillMissinData()
+    {
+        // where('id', 1362639)
+
+        Record::all()->each(function ($record) {
+            $history = $record->progresses->where(
+                'original_history_id',
+                $record->historico_id
+            )->first();
+
+            if ($history) {
+                $history = json_decode(json_encode($history->toArray()));
+
+                $action = $this->findActionByHistoryId(
+                    $history->original_history_id
+                );
+
+                $history->history_data[] = coollect([
+                    'history_fields' => coollect(
+                        json_decode($history->history_fields, true)
+                    ),
+                ])->merge(json_decode(json_encode($action, true)));
+
+                $record->area_id = $this->inferAreaFromProtocol($history)
+                    ?: 999999;
+
+                $record->record_type_id = $this->inferRecordTypeFromProtocol(
+                    $history
+                );
+
+                $record->record_action_id = $this->inferActionFromProtocol(
+                    $history
+                );
+
+                $historico = coollect(
+                    $this->db()->select(
+                        "select * from historico where historico_id = {$history->original_history_id}"
+                    )
+                )->first();
+
+                $record->created_at = $historico->data_inicio_atendimento
+                    ?: $record->created_at;
+
+                $record->save();
+
+                $this->increment('INFER MISSING');
+            }
+        });
+    }
+
+    private function personDoesNotHaveAnyOtherProtocols($person_id)
+    {
+        return is_null(Record::where('person_id', $person_id)->first());
     }
 
     public function updateProgressTypes($command)
@@ -168,7 +251,7 @@ and historico.historico_id = ' .
     private function createProgress($history, $record)
     {
         if ($history->historico_complemento) {
-            Progress::create(
+            return Progress::create(
                 $this->sanitize([
                     'original_history_id' => $history->historico_id,
                     'record_id' => $record->id,
@@ -184,19 +267,24 @@ and historico.historico_id = ' .
                     'origin_id' => $this->inferOriginFromHistory($history),
                 ])
             );
-
-            $this->increment();
         }
+
+        return null;
     }
 
     private function createRecordFromProtocol($protocol)
     {
-        $this->increment();
-
         return Record::create(
             $this->sanitize([
                 'protocol' => $protocol->protocolo_codigo,
                 'person_id' => $protocol->pessoa_id,
+                'objeto_id' => $protocol->objeto_id,
+                'historico_id' => $protocol->historico_id,
+                'historico_id_finalizador' =>
+                    $protocol->historico_id_finalizador,
+                'person_first_record' => $this->personDoesNotHaveAnyOtherProtocols(
+                    $protocol->pessoa_id
+                ),
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
@@ -218,6 +306,46 @@ and historico.historico_id = ' .
         )->first();
 
         return $action;
+    }
+
+    /**
+     * @param $history
+     * @return mixed
+     */
+    private function findRecordTypeByName($history)
+    {
+        $action = RecordType::where(
+            'name',
+            $history->action_description
+        )->first();
+
+        return $action;
+    }
+
+    public function inferRecordTypeFromProtocol($protocol)
+    {
+        $type = null;
+
+        if (isset($protocol->history_data[0])) {
+            $history = $protocol->history_data[0];
+
+            $type = $this->findRecordTypeByName($history);
+
+            if (!$type && $history->action_id) {
+                RecordType::insert([
+                    'id' => $history->action_id,
+                    'name' => $history->action_description,
+                ]);
+
+                $type = $this->findRecordTypeByName($history);
+
+                DB::statement(
+                    "SELECT setval('public.record_types_id_seq', (SELECT max(id) FROM public.record_types));"
+                );
+            }
+        }
+
+        return $type ? $type->id : null;
     }
 
     public function inferActionFromProtocol($protocol)
@@ -259,10 +387,12 @@ and historico.historico_id = ' .
     private function inferAreaFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Comissão Responsável'
-            )->first();
+            $data = coollect($protocol->history_data[0]->history_fields)
+                ->where(
+                    'historico_propriedade_tipo_descricao',
+                    'Comissão Responsável'
+                )
+                ->first();
 
             if (
                 $data instanceof \stdClass ||
@@ -320,31 +450,133 @@ and historico.historico_id = ' .
         return null;
     }
 
-    protected function recordsAndProgress()
+    protected function firstAndLastHistories()
     {
-        $this->info('Importing RECORDS AND PROGRESS...');
+        $this->info('Importing FIRST-HISTORY...');
+
+        //Progress::truncate();
+        //$this->db()->statement('update historico set imported = false');
+
+        //        \DB::listen(function ($query) {
+        //            $this->info($query->sql);
+        //            $this->info(json_encode($query->bindings));
+        //        });
+
+        Record::all()->each(function ($record) {
+            $this->increment(
+                'RECORD FOR HISTORY',
+                100,
+                "record {$record->id} - person {$record->person_id}"
+            );
+
+            $ids = [];
+
+            $firstHistory = !empty($record->historico_id)
+                ? $record->historico_id
+                : null;
+
+            $lastHistory = !empty($record->historico_id_finalizador)
+                ? $record->historico_id_finalizador
+                : null;
+
+            if ($firstHistory) {
+                $ids[] = $record->historico_id;
+            }
+
+            if ($record->person_first_record) {
+                $this->allHistoryIdsExceptForPerson(
+                    $record->person_id,
+                    $firstHistory,
+                    $lastHistory
+                )->each(function ($history) use (&$ids) {
+                    $ids[] = $history->historico_id;
+                });
+            }
+
+            if ($lastHistory) {
+                $ids[] = $lastHistory;
+            }
+
+            if (count($ids) == 0) {
+                return;
+            }
+
+            $allHistory = $this->getHistory($ids, 'historico_id');
+
+            $allHistory->each(function ($history) use ($record, $allHistory) {
+                if ($history->historico_id) {
+                    $history->history_fields = $this->getHistoryFields(
+                        $history->historico_id
+                    );
+
+                    $this->increment(
+                        'PROGRESS',
+                        100,
+                        "objeto {$record->objeto_id} historico {$record->historico_id} - history count {$allHistory->count()} - record {$record->id} - person {$record->person_id}"
+                    );
+
+                    $this->db()->statement(
+                        'update historico set imported = true where historico_id = ' .
+                            $history->historico_id .
+                            ';'
+                    );
+
+                    return $this->createProgress($history, $record);
+                }
+            });
+
+            unset($allHistory);
+            unset($ids);
+        });
+
+        //        $this->getHistory($protocol->objeto_id)->each(function (
+        //            $history
+        //        ) use ($newProtocol, $protocol) {
+        //            $history->history_fields = $this->getHistoryFields(
+        //                $history->historico_id
+        //            );
+        //            $this->createProgress($history, $newProtocol);
+        //            $this->increment(
+        //                10,
+        //                "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
+        //            );
+        //        });
+    }
+
+    protected function records()
+    {
+        $this->info('Importing RECORDS...');
+
         Person::all()->each(function ($person) {
             $person->protocols = $this->getProtocolsForPerson($person)->each(
                 function ($protocol) {
-                    $newProtocol = $this->importProtocol($protocol);
+                    $this->importProtocol($protocol);
 
-                    $this->getHistory($protocol->objeto_id)->each(function (
-                        $history
-                    ) use ($newProtocol, $protocol) {
-                        $history->history_fields = $this->getHistoryFields(
-                            $history->historico_id
-                        );
-                        $this->createProgress($history, $newProtocol);
-                        $this->increment(
-                            10,
-                            "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-                        );
-                    });
+                    $this->increment(
+                        'RECORDS',
+                        100,
+                        "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record"
+                    );
                 }
             );
+
             unset($person);
+
             $this->checkMemory();
         });
+
+        //        $this->getHistory($protocol->objeto_id)->each(function (
+        //            $history
+        //        ) use ($newProtocol, $protocol) {
+        //            $history->history_fields = $this->getHistoryFields(
+        //                $history->historico_id
+        //            );
+        //            $this->createProgress($history, $newProtocol);
+        //            $this->increment(
+        //                10,
+        //                "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
+        //            );
+        //        });
     }
 
     /**
@@ -504,7 +736,7 @@ and historico.historico_id = ' .
                     )
                 );
 
-                $this->increment(100, $endereco->endereco);
+                $this->increment('ADDRESSES', 100, $endereco->endereco);
             });
 
         DB::statement(
@@ -584,7 +816,7 @@ and historico.historico_id = ' .
                     ])
                 );
 
-                $this->increment(100, $telefone->telefone);
+                $this->increment('PHONES', 100, $telefone->telefone);
             });
 
         DB::statement(
@@ -647,7 +879,11 @@ and historico.historico_id = ' .
                     ])
                 );
 
-                $this->increment(100, "{$email->email} - {$email->email_id}");
+                $this->increment(
+                    'EMAILS',
+                    100,
+                    "{$email->email} - {$email->email_id}"
+                );
             });
 
         DB::statement(
@@ -665,12 +901,12 @@ and historico.historico_id = ' .
                 ->table('pessoa')
                 ->count()
         ) {
-            $this->info('PERSONS: done');
+            $this->info('PEOPLE: done');
 
             return;
         }
 
-        $this->info('Importing PERSONS...');
+        $this->info('Importing PEOPLE...');
 
         Person::truncate();
 
@@ -699,7 +935,11 @@ and historico.historico_id = ' .
                     ])
                 );
 
-                $this->increment(100, "{$person->pessoa_id} - {$person->nome}");
+                $this->increment(
+                    'PEOPLE',
+                    100,
+                    "{$person->pessoa_id} - {$person->nome}"
+                );
             });
 
         DB::statement(
@@ -727,16 +967,21 @@ select distinct
   pessoa.nome pessoa_nome,
   protocolo.protocolo_id,
   protocolo.protocolo_codigo,
-  protocolo.objeto_id
+  protocolo.objeto_id,
+  protocolo.historico_id,
+  protocolo.historico_id_finalizador
 from cercred.protocolo, cercred.objeto, cercred.pessoa
 where protocolo.objeto_id = objeto.objeto_id and objeto.pessoa_id = pessoa.pessoa_id and pessoa.pessoa_id = {$person->id}
+order by protocolo.protocolo_id
 "
             )
         );
     }
 
-    private function getHistory($objetoId)
+    private function getHistory($objetoId, $field = 'objeto_id')
     {
+        $objetoId = (array) $objetoId;
+
         return coollect(
             $this->db()->select(
                 "select 
@@ -759,7 +1004,10 @@ from historico
   left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
-where historico.objeto_id = {$objetoId};"
+where historico.imported = false 
+and historico.{$field} in (" .
+                    implode(',', $objetoId) .
+                    ");"
             )
         );
     }
@@ -796,12 +1044,44 @@ where historico.historico_id = {$historyId};"
         return $array;
     }
 
-    public function increment($mod = 100, $message = '')
+    public function findActionByHistoryId($historyId)
     {
-        $this->counter++;
+        return coollect(
+            $this->db()->select(
+                "select
+  historico.historico_id,
+  action.action_id action_id,
+  action.description action_description,
+  action.action_type action_type,
+  action_type.description action_type_description
+from historico
+  left join historico_tipo on historico.historico_tipo = historico_tipo.historico_tipo
+  left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
+  left join action on action.action_id = action_historico.action_id
+  left join action_type on action_type.action_type = action.action_type
+where historico_id = {$historyId}"
+            )
+        )->first();
+    }
 
-        if ($this->counter % $mod === 0) {
-            $counter = str_pad($this->counter, 8, ' ', STR_PAD_LEFT);
+    public function increment($counterName, $mod = 100, $message = '')
+    {
+        if (!isset($this->counter[$counterName])) {
+            $this->counter[$counterName] = 0;
+        }
+
+        $this->counter[$counterName]++;
+
+        if (
+            $this->counter[$counterName] == 1 ||
+            $this->counter[$counterName] % $mod === 0
+        ) {
+            $counter = str_pad(
+                $this->counter[$counterName],
+                8,
+                ' ',
+                STR_PAD_LEFT
+            );
 
             $memory = str_pad(
                 number_format(memory_get_peak_usage()),
@@ -810,7 +1090,9 @@ where historico.historico_id = {$historyId};"
                 STR_PAD_LEFT
             );
 
-            $this->info("{$counter} records {$memory} bytes = {$message}");
+            $this->info(
+                "{$counterName} - {$counter} records {$memory} bytes = {$message}"
+            );
         }
     }
 
