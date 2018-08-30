@@ -160,10 +160,10 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button v-on:click="changeFormRoute('{{route('progresses.store')}}')" class="btn btn-primary" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.store')}}')" class="btn btn-danger" @include('partials.disabled')>
                             {{ __('Gravar') }}
                         </button>
-                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish')}}')" class="btn btn-primary" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish')}}')" class="btn btn-danger" @include('partials.disabled')>
                             {{ __('Gravar e finalizar') }}
                         </button>
                     </div>

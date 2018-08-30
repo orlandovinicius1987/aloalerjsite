@@ -21,7 +21,7 @@ class PersonContacts extends Controller
             ? null
             : session('data')['workflow'];
 
-        return view('callcenter.person_contacts.form')
+        return view('callcenter.person_contacts.form-workflow')
             ->with('person', $person)
             ->with('workflow', $workflow)
             ->with(['contact' => $this->peopleContactsRepository->new()])
@@ -82,6 +82,11 @@ class PersonContacts extends Controller
 
         return view('callcenter.person_contacts.form')
             ->with($this->getComboBoxMenus())
+            ->with('laravel', [
+                'contact' => $contact->toArray(),
+                'person' => $person->toArray(),
+                'old' => old(),
+            ])
             ->with('contact', $contact)
             ->with('person', $person);
     }
@@ -105,6 +110,16 @@ class PersonContacts extends Controller
 
     public function insertContact(PersonContactsRequest $request)
     {
+        $this->peopleContactsRepository->createFromRequest($request);
+
+        return redirect()
+            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->with($this->getSuccessMessage());
+    }
+
+    public function update(PersonContactsRequest $request)
+    {
+        $request->merge(['id' => $request->get('contact_id')]);
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()

@@ -1,17 +1,26 @@
 <div class="card mt-4">
     <div class="card-header">
-        {{ __('Contatos') }}
+        <div class="row align-items-center">
+            <div class="col-4">
+                <h5>
+                    {{ __('Contatos') }}
+                </h5>
+            </div>
 
-        {{--<a id="buttonContatos" href="{{ route('persons_contacts.create',['person_id' => $person->id]) }}"--}}
-           {{--class="btn btn-primary btn-sm pull-right">--}}
-            {{--<i class="fa fa-plus"></i>--}}
-            {{--Novo Contato--}}
-        {{--</a>--}}
+            <div class="col-8 text-right">
+                <a id="buttonContatos" href="#" data-toggle="modal" data-target="#contactsModal"
+                   class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-plus"></i>
+                    Novo Contato
+                </a>
+            </div>
+        </div>
+
         @include('callcenter.person_contacts.form-modal')
     </div>
 
     <div class="card-body">
-        <table id="contactsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="contactsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Tipo de Contato</th>
@@ -27,6 +36,5 @@
                 <p>Nenhum Contato encontrado</p>
             @endforelse
         </table>
-
     </div>
 </div>

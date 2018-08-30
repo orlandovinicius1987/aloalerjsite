@@ -1,16 +1,25 @@
 <div class="card mt-4">
     <div class="card-header">
-        {{ __('Endereços') }}
+        <div class="row align-items-center">
+            <div class="col-4">
+                <h5>
+                    {{ __('Endereços') }}
+                </h5>
+            </div>
 
-        <a id="buttonEndereços" href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
-           class="btn btn-primary btn-sm pull-right">
-            <i class="fa fa-plus"></i>
-            Novo Endereço
-        </a>
+            <div class="col-8 text-right">
+                <a id="buttonEndereços"
+                   href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
+                   class="btn btn-primary btn-sm pull-right"
+                >
+                    <i class="fa fa-plus"></i> Novo Endereço
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="card-body">
-        <table id="addressesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="addressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Endereço</th>

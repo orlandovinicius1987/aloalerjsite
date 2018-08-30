@@ -246,8 +246,8 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            @if (isset($workflow) && $workflow)
+                        <button type="submit" class="btn btn-danger">
+                            @if ($workflow)
                                 {{ __('Próximo passo >>') }}
                             @else
                                 {{ __('Gravar') }}

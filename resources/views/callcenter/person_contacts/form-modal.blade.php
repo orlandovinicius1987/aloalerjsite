@@ -1,11 +1,3 @@
-    <!-- Button trigger modal -->
-    <a id="buttonContatos" href="#" data-toggle="modal" data-target="#contactsModal"
-       class="btn btn-primary btn-sm pull-right">
-        <i class="fa fa-plus"></i>
-        Novo Contato
-    </a>
-
-
     <!-- Modal -->
     <div class="modal fade" id="contactsModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div id="vue-contact-outside-workflow" class="modal-dialog" role="document">

@@ -4,7 +4,7 @@
     <div id="vue-search">
         <div class="card mt-4">
             <div class="card-header">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-4">
                         <h5>{{ __('Pesquisar pessoas') }}</h5>
                     </div>
@@ -46,7 +46,7 @@
 
         <div class="card mt-4" v-if="form.search && tables.people && !errors">
             <div class="card-header">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-4">
                         <h5>{{ __('Resultado') }}</h5>
                     </div>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-12" v-if="tables.people.length > 0">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th scope="col">Nome</th>
