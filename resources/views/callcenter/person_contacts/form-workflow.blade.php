@@ -82,6 +82,8 @@
                                name="mobile"
                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}" autofocus
                                v-mask='["(##)####-####", "(##)#####-####"]'
+                               v-model='form.mobile'
+                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
                         >
 
                         @if ($errors->has('mobile'))
@@ -101,6 +103,8 @@
                                value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
                                autofocus
                                v-mask='["(##)#####-####"]'
+                               v-model='form.whatsapp'
+                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
                         >
 
                         @if ($errors->has('whatsapp'))
@@ -136,7 +140,10 @@
                                id="phone"
                                value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
                                autofocus
-                               v-mask="['(##) ####-####', '(##) #####-####']">
+                               v-mask="['(##) ####-####', '(##) #####-####']"
+                               v-model='form.phone'
+                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
+                        >
 
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">

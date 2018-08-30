@@ -13,8 +13,8 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             laravel: laravel,
-            currentContactType: laravel.length == 0 ? '' : laravel.contact.contact_type_id ,
-            currentContact:  laravel.length == 0 ? '' : laravel.contact.contact,
+            currentContactType: '' ,
+            currentContact:  '',
             contactTypesArray: [],
             refreshing: false,
         },
@@ -76,11 +76,21 @@ if (jQuery("#" + appName).length > 0) {
 
                         me.refreshing = false
                     })
+            },
+
+            initializeCurrents(){
+                this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id
+                this.currentContact = laravel.length == 0 ? '' : (laravel.old.contact != null && laravel.length > 0 ? laravel.old.contact : laravel.contact.contact)
             }
         },
 
         beforeMount() {
             this.refresh()
         },
+
+        mounted() {
+            this.initializeCurrents()
+        }
+
     })
 }

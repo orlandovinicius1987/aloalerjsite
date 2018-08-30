@@ -79,15 +79,22 @@
                     <label for="mobile" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo de Contato') }}</label>
 
                     <div class="col-md-6">
-                        <select
+                        <input
                             id="contact_type_id"
                             name="contact_type_id"
+                            v-model="currentContactType"
+                            readonly="readonly"
+                            type="hidden"
+                        />
+                        <select
+                            id="contact_type_id_select"
+                            name="contact_type_id_select"
                             v-model="currentContactType"
                             {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id')}}'"--}}
                             class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }}"
                             autofocus
                             required
-                            readonly="true"
+                            disabled="disabled"
                         >
                             <option value="">SELECIONE</option>
                             @foreach ($contactTypes as $key => $contactType)
@@ -166,7 +173,7 @@
                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                required
                                autofocus
-                               type=email
+                               type="email"
                         >
 
                         @if ($errors->has('email'))
