@@ -98,20 +98,30 @@ class People extends BaseRepository
             $result = $this->searchByCpf($string);
 
             if ($result['success'] && $result['count'] > 0) {
+                $result['foundBy'] = 'cpf_cnpj';
                 return $result;
             }
 
             $result = $this->searchByProtocolNumber($string);
 
             if ($result['success'] && $result['count'] > 0) {
+                $result['foundBy'] = 'protocol';
                 return $result;
             }
 
-            return $this->searchByName($string);
+            $result = $this->searchByName($string);
+
+            if ($result['success'] && $result['count'] > 0) {
+                $result['foundBy'] = 'name';
+                return $result;
+            }
+
+            $result['foundBy'] = '';
+            return $result;
         });
     }
 
-    private function validCpfCnpj($string)
+    public function validCpfCnpj($string)
     {
         return Validator::make(
             ['string' => $string],
