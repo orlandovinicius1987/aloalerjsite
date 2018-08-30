@@ -27,6 +27,7 @@
                     <th>Complemento</th>
                     <th>Bairro</th>
                     <th>Cidade</th>
+                    <th>Status</th>
                 </tr>
             </thead>
 
@@ -37,6 +38,11 @@
                     <td>{{$address->complement}}</td>
                     <td>{{$address->neighbourhood}}</td>
                     <td>{{$address->city}}</td>
+                    @if($address->active)
+                        <td><span class="badge badge-success">{{$address->active_string}}</span></td>
+                    @else
+                        <td><span class="badge badge-danger">{{$address->active_string}}</span></td>
+                    @endIf
                 </tr>
             @empty
                 <p>Nenhum Endereço encontrado</p>

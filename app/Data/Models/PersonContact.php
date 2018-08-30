@@ -1,6 +1,8 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Presenters\PersonContact as PersonContactPresenter;
+
 class PersonContact extends BaseModel
 {
     /**
@@ -17,7 +19,15 @@ class PersonContact extends BaseModel
         'validated_by_id',
         'provider_enrichment_id',
         'created_at',
+        'active',
     ];
+
+    protected $presenters = ['active_string'];
+
+    public function getPresenterClass()
+    {
+        return PersonContactPresenter::class;
+    }
 
     public function contactType()
     {

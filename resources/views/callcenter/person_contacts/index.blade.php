@@ -25,12 +25,18 @@
                 <tr>
                     <th>Tipo de Contato</th>
                     <th>Contato</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             @forelse ($contacts as $contact)
                 <tr>
                     <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contactType->name }}</a></td>
                     <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
+                    @if($contact->active)
+                        <td><span class="badge badge-success">{{$contact->active_string}}</span></td>
+                    @else
+                        <td><span class="badge badge-danger">{{$contact->active_string}}</span></td>
+                    @endIf
                 </tr>
             @empty
                 <p>Nenhum Contato encontrado</p>
