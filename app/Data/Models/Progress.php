@@ -19,7 +19,6 @@ class Progress extends BaseModel
         'rectified_by_id',
         'history_fields',
         'origin_id',
-        'record_type_id',
         'area_id',
         'created_at',
         'updated_at',
