@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-header">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-4">
                 <h5>
                     {{ __('Endereços') }}

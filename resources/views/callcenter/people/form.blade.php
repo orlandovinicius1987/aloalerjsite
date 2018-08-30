@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="card mt-4" id="vue-personal-info">
-        <div class="card-header"><h5>{{ __('Dados pessoais') }}</h5></div>
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <h5>{{ __('Dados pessoais') }}</h5>
+                </div>
+            </div>
+        </div>
 
         <div class="card-body">
             @if (session('status'))
