@@ -13,7 +13,7 @@ class RemoveRecordTypeIdFromProgresses extends Migration
     public function up()
     {
         Schema::table('progresses', function (Blueprint $table) {
-            $table->dropIfExists('record_type_id');
+            $table->dropColumn('record_type_id');
         });
     }
 
