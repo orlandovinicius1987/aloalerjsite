@@ -40,7 +40,7 @@ Route::group(['prefix' => 'contact'], function () {
 
 Route::get('/home', 'Home@index')->name('home');
 
-Route::group(['prefix' => 'callcenter'], function () {
+Route::group(['prefix' => 'callcenter', 'middleware' => 'auth'], function () {
     require __DIR__ . '/callcenter/contact_types.php';
 
     require __DIR__ . '/callcenter/persons.php';

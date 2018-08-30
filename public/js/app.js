@@ -47318,6 +47318,7 @@ if (jQuery("#" + appName).length > 0) {
                         me.form.city = response.data.addresses[0].city;
                         me.form.state = response.data.addresses[0].state_id;
                         me.form.country = 'Brasil';
+                        document.getElementById("number").focus();
                     }
 
                     me.refreshing = false;
@@ -47362,6 +47363,13 @@ if (jQuery("#" + appName).length > 0) {
 /***/ (function(module, exports) {
 
 var appName = 'vue-contacts';
+
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({

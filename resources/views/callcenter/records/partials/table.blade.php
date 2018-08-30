@@ -1,6 +1,6 @@
 <div class="card mt-4">
     <div class="card-header">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-4">
                 <h5>
                     {{ __('Protocolos') }}
@@ -22,7 +22,7 @@
     </div>
 
     <div class="card-body">
-        <table id="recordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="recordsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Protocolos</th>

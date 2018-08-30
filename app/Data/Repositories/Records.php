@@ -80,7 +80,7 @@ class Records extends BaseRepository
     {
         $record = $this->model::find($record_id);
         $record->resolved_at = now();
-        $record->resolved_by = Auth::user();
+        $record->resolved_by_id = Auth::user()->id;
         $record->save();
     }
 }
