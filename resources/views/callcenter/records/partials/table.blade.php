@@ -29,6 +29,7 @@
                 <th>Comissão</th>
                 <th>Tipo de Protocolo</th>
                 <th>Área</th>
+                <th>Criado em</th>
             </tr>
             </thead>
 
@@ -38,6 +39,7 @@
                     <td>{{ $record->committee->name or '' }}</td>
                     <td>{{ $record->recordType->name or '' }}</td>
                     <td>{{ $record->area->name or '' }}</td>
+                    <td>{{ $record->created_at_formatted or '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum Protocolo encontrado</p>
