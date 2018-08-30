@@ -1,6 +1,8 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Presenters\PersonContact as PersonAddressPresenter;
+
 class PersonAddress extends BaseModel
 {
     /**
@@ -20,5 +22,13 @@ class PersonAddress extends BaseModel
         'validated_at',
         'validated_by_id',
         'address_id',
+        'active',
     ];
+
+    protected $presenters = ['active_string'];
+
+    public function getPresenterClass()
+    {
+        return PersonAddressPresenter::class;
+    }
 }

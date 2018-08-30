@@ -47200,6 +47200,8 @@ if (jQuery("#" + appName).length > 0) {
 
             typeTimeout: null,
 
+            foundBy: null,
+
             errors: null,
 
             form: {
@@ -47220,6 +47222,7 @@ if (jQuery("#" + appName).length > 0) {
                 axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
                     if (response.data.success) {
                         me.tables.people = response.data.data;
+                        me.foundBy = response.data.foundBy;
                     } else {
                         me.tables.people = [];
                         me.errors = response.data.errors;

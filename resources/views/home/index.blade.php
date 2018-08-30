@@ -19,9 +19,6 @@
             <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
                 @include('partials.form-chat')
             </div>
-            {{--                <div class="col-xs-12 col-lg-3 hidden-xs hidden-sm hidden-md">
-                                @include('partials.app')
-                            </div>--}}
             <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
                 @include('partials.telegram')
             </div>
