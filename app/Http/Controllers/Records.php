@@ -107,6 +107,12 @@ class Records extends Controller
 
     public function index()
     {
+        $records = $this->recordsRepository->allPaginate(15);
+        return view('callcenter.records.index')->with('records', $records);
+    }
+
+    public function nonResolved()
+    {
         $records = $this->recordsRepository->whereIsNullPaginate(
             'resolved_at',
             15

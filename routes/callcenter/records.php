@@ -4,4 +4,7 @@ Route::group(['prefix' => 'records'], function () {
     Route::post('/', 'Records@store')->name('records.store');
     Route::get('/show/{id}', 'Records@show')->name('records.show');
     Route::get('/', 'Records@index')->name('records.index');
+    Route::get('/non-resolved', 'Records@nonResolved')->name(
+        'records.nonResolved'
+    );
 });
