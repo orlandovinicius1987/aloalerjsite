@@ -43,8 +43,6 @@
                 <p>Nenhum Protocolo encontrado</p>
             @endforelse
         </table>
-        @if(method_exists($records,'links'))
             {{ $records->links() }}
-        @endif
     </div>
 </div>
