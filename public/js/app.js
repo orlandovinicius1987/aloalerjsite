@@ -47318,6 +47318,7 @@ if (jQuery("#" + appName).length > 0) {
                         me.form.city = response.data.addresses[0].city;
                         me.form.state = response.data.addresses[0].state_id;
                         me.form.country = 'Brasil';
+                        document.getElementById("number").focus();
                     }
 
                     me.refreshing = false;
