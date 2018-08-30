@@ -61,6 +61,14 @@ class Contact implements Rule
         );
     }
 
+    private function validatePhone($phone)
+    {
+        $phone = preg_replace('/\D/', '', $phone);
+        return (
+            strlen($phone) == 10 || strlen($phone) == 11 || strlen($phone) == 0
+        );
+    }
+
     /**
      * @param $contactTypeCode
      * @param $contact
@@ -72,12 +80,10 @@ class Contact implements Rule
         $pass = false;
         switch ($contactTypeCode) {
             case 'mobile':
-                $contact = preg_replace('/\D/', '', $contact);
-                $pass = (strlen($contact) == 10 || strlen($contact) == 11);
+                $pass = $this->validatePhone($contact);
                 break;
             case 'whatsapp':
-                $contact = preg_replace('/\D/', '', $contact);
-                $pass = (strlen($contact) == 10 || strlen($contact) == 11);
+                $pass = $this->validatePhone($contact);
                 break;
             case 'email':
                 preg_match_all(
@@ -88,8 +94,7 @@ class Contact implements Rule
                 $pass = (sizeof($match) == 1);
                 break;
             case 'phone':
-                $contact = preg_replace('/\D/', '', $contact);
-                $pass = (strlen($contact) == 10 || strlen($contact) == 11);
+                $pass = $this->validatePhone($contact);
                 break;
             case 'facebook':
                 $pass = true;
