@@ -51,8 +51,8 @@
 
                         @if ($errors->has('cpf_cnpj'))
                             <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -67,8 +67,8 @@
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>

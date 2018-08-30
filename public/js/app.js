@@ -47492,7 +47492,15 @@ if (jQuery("#" + appName).length > 0) {
             },
             initializeCurrents: function initializeCurrents() {
                 this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
-                this.currentContact = laravel.length == 0 ? '' : laravel.old.contact != null && laravel.length > 0 ? laravel.old.contact : laravel.contact.contact;
+                if (laravel.length == 0) {
+                    this.currentContact = '';
+                } else {
+                    if (laravel.old.contact != null) {
+                        this.currentContact = laravel.old.contact;
+                    } else {
+                        this.currentContact = laravel.contact.contact;
+                    }
+                }
             }
         },
 
