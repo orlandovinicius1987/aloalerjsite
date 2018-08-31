@@ -9,7 +9,7 @@
 
             <div class="col-8 text-right">
                 <a id="buttonEndereços"
-                   href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
+                   href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
                    class="btn btn-primary btn-sm pull-right"
                 >
                     <i class="fa fa-plus"></i> Novo Endereço
@@ -33,7 +33,7 @@
 
             @forelse ($addresses as $address)
                 <tr>
-                    <td><a href="{{ route('persons_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
+                    <td><a href="{{ route('people_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
                     <td>{{$address->number}}</td>
                     <td>{{$address->complement}}</td>
                     <td>{{$address->neighbourhood}}</td>

@@ -30,8 +30,8 @@
             </thead>
             @forelse ($contacts as $contact)
                 <tr>
-                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contactType->name }}</a></td>
-                    <td><a href="{{ route('persons_contacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
+                    <td><a href="{{ route('people_contacts.show',['id' => $contact->id]) }}">{{ $contact->contactType->name }}</a></td>
+                    <td><a href="{{ route('people_contacts.show',['id' => $contact->id]) }}">{{ $contact->contact }}</a></td>
                     @if($contact->active)
                         <td><span class="badge badge-success">{{$contact->active_string}}</span></td>
                     @else

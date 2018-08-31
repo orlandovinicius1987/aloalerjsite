@@ -5,7 +5,7 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
                 </li>
 
                 <li>{{ __('Endereços') }}</li>
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('persons_addresses.store') }}" aria-label="{{ __('Endereços') }}">
+            <form method="POST" action="{{ route('people_addresses.store') }}" aria-label="{{ __('Endereços') }}">
                 @csrf
 
                 @if (isset($person))

@@ -9,7 +9,7 @@
                     </button>
                 </div>
 
-                <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('persons_contacts.insertContact') }}" method="post">
+                <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('people_contacts.insertContact') }}" method="post">
 
                     <div class="modal-body">
 

@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="col-8 text-right" v-if="form.search && (foundBy != 'cpf_cnpj')">
-                        <a v-bind:href="'{{ route('persons.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
+                        <a v-bind:href="'{{ route('people.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
                             <i class="fa fa-plus"></i>
                             Cadastrar novo cidadão
                         </a>
@@ -73,12 +73,12 @@
                             <tbody>
                             <tr v-for="person in tables.people">
                                 <td>
-                                    <a :href="'/callcenter/persons/show/' + person.id">@{{ person.name }}</a>
+                                    <a :href="'/callcenter/people/show/' + person.id">@{{ person.name }}</a>
                                 </td>
 
                                 <!--<td v-html="person.cpf_cnpj"></td>-->
                                 <td>
-                                    <a :href="'/callcenter/persons/show/' + person.id">@{{ person.cpf_cnpj }}</a>
+                                    <a :href="'/callcenter/people/show/' + person.id">@{{ person.cpf_cnpj }}</a>
                                 </td>
 
                                 <td>
