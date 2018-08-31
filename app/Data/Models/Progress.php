@@ -42,11 +42,6 @@ class Progress extends BaseModel
         return $this->belongsTo(ProgressType::class);
     }
 
-    public function recordType()
-    {
-        return $this->belongsTo(RecordType::class);
-    }
-
     public function area()
     {
         return $this->belongsTo(Area::class);

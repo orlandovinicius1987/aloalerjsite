@@ -51,10 +51,10 @@ class PersonAddresses extends Controller
      */
     public function store(PersonAddressesRequest $request)
     {
-        $route = 'persons.show';
+        $route = 'people.show';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $route = 'persons_contacts.create';
+            $route = 'people_contacts.create';
             $message = 'Endereço cadastro com sucesso.';
         }
 

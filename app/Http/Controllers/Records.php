@@ -74,8 +74,8 @@ class Records extends Controller
         return redirect()
             ->route(
                 $request->get('workflow')
-                    ? 'persons_addresses.create'
-                    : 'persons.show',
+                    ? 'people_addresses.create'
+                    : 'people.show',
                 ['person_id' => $record->person->id]
             )
             ->with('data', $this->makeViewDataFromRecord($record));

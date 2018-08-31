@@ -43,6 +43,7 @@
                 <p>Nenhum Protocolo encontrado</p>
             @endforelse
         </table>
-            {{ $records->links() }}
+
+        {{ $records->links() }}
     </div>
 </div>

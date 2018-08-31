@@ -35,7 +35,7 @@ class PersonContacts extends Controller
      */
     public function store(PersonContactsWorkflowRequest $request)
     {
-        $route = 'persons.show';
+        $route = 'people.show';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
             $message = 'Protocolo cadastrado com sucesso.';
@@ -110,7 +110,7 @@ class PersonContacts extends Controller
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()
-            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->route('people.show', ['person_id' => $request->get('person_id')])
             ->with($this->getSuccessMessage());
     }
 
@@ -120,7 +120,7 @@ class PersonContacts extends Controller
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()
-            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->route('people.show', ['person_id' => $request->get('person_id')])
             ->with($this->getSuccessMessage());
     }
 }
