@@ -3,15 +3,15 @@ use App\Data\Models\Progress;
 use App\Data\Models\Record;
 use App\Services\ImportCercred;
 
-Artisan::command('cercred:import', function () {
+Artisan::command('aloalerj:cercred:import', function () {
     app(ImportCercred::class)->import($this);
 })->describe('Display an inspiring quote');
 
-Artisan::command('cercred:update-progresses', function () {
+Artisan::command('aloalerj:cercred:update-progresses', function () {
     app(ImportCercred::class)->updateProgressTypes($this);
 })->describe('Display an inspiring quote');
 
-Artisan::command('cercred:index', function () {
+Artisan::command('aloalerj:cercred:index', function () {
     Schema::connection('cercred')->table('historico', function ($table) {
         $table->index('historico_id');
 
@@ -65,7 +65,37 @@ Artisan::command('cercred:index', function () {
     });
 })->describe('index');
 
-Artisan::command('cercred:truncate-records', function () {
+Artisan::command('aloalerj:cercred:truncate-records', function () {
     Record::truncate();
     Progress::truncate();
+})->describe('Display an inspiring quote');
+
+Artisan::command('aloalerj:update-sequences', function () {
+    $tables = [
+        'areas',
+        'audits',
+        'committees',
+        'contact_types',
+        'hows',
+        'migrations',
+        'origins',
+        'people',
+        'person_addresses',
+        'person_contacts',
+        'progress_types',
+        'progresses',
+        'record_actions',
+        'record_types',
+        'records',
+        'user_types',
+        'users',
+    ];
+
+    coollect($tables)->each(function ($table) {
+        $this->info('fix sequence for ' . $table);
+
+        DB::statement(
+            "SELECT setval('public.{$table}_id_seq', (SELECT max(id) FROM public.{$table}));"
+        );
+    });
 })->describe('Display an inspiring quote');
