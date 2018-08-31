@@ -21,7 +21,7 @@ if (jQuery("#" + appName).length > 0) {
 
         computed: {
             mask: function () {
-                let mask = "X".repeat(255)
+                let mask = "*".repeat(255)
 
                 switch (this.currentContactTypeName) {
                     case 'mobile' :
@@ -43,6 +43,18 @@ if (jQuery("#" + appName).length > 0) {
             currentContactTypeName: function () {
                 return this.contactTypesArray[this.currentContactType]
             },
+
+            tokens() {
+                return {
+                    '*': {pattern: /.*/},
+                    '#': {pattern: /\d/},
+                    'X': {pattern: /[0-9a-zA-Z]/},
+                    'S': {pattern: /[a-zA-Z]/},
+                    'A': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleUpperCase()},
+                    'a': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase()},
+                    '!': {escape: true}
+                }
+            }
         },
 
         methods: {

@@ -39,6 +39,7 @@
                                     value=""
                                     type="text"
                                     masked="masked"
+                                    :tokens="tokens"
                                     required
                                     autofocus
                                 ></the-mask>

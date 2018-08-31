@@ -47440,7 +47440,7 @@ if (jQuery("#" + appName).length > 0) {
 
         computed: {
             mask: function mask() {
-                var mask = "X".repeat(255);
+                var mask = "*".repeat(255);
 
                 switch (this.currentContactTypeName) {
                     case 'mobile':
@@ -47462,6 +47462,22 @@ if (jQuery("#" + appName).length > 0) {
 
             currentContactTypeName: function currentContactTypeName() {
                 return this.contactTypesArray[this.currentContactType];
+            },
+
+            tokens: function tokens() {
+                return {
+                    '*': { pattern: /.*/ },
+                    '#': { pattern: /\d/ },
+                    'X': { pattern: /[0-9a-zA-Z]/ },
+                    'S': { pattern: /[a-zA-Z]/ },
+                    'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                            return v.toLocaleUpperCase();
+                        } },
+                    'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                            return v.toLocaleLowerCase();
+                        } },
+                    '!': { escape: true }
+                };
             }
         },
 
