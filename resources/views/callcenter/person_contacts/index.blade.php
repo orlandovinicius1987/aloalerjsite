@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Contatos') }}
+                    Contatos
                 </h5>
             </div>
 

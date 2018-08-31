@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <h5>{{ __('Pesquisar pessoas') }}</h5>
+                        <h5>Pesquisar pessoas</h5>
                     </div>
 
                     <div class="col-8 text-right" v-if="form.search && (foundBy != 'cpf_cnpj')">
@@ -48,7 +48,7 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <h5>{{ __('Resultado') }}</h5>
+                        <h5>Resultado</h5>
                     </div>
                 </div>
             </div>

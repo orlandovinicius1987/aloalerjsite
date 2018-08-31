@@ -3,10 +3,10 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Protocolos') }}
+                    Protocolos
 
                     @if (isset($onlyNonResolved))
-                        {{ __('Não Resolvidos') }}
+                        Não Resolvidos
                     @endif
                 </h5>
             </div>

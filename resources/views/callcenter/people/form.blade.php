@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col-12">
-                    <h5>{{ __('Dados pessoais') }}</h5>
+                    <h5>Dados pessoais</h5>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('people.store') }}" aria-label="{{ __('people') }}">
+            <form method="POST" action="{{ route('people.store') }}">
                 @csrf
 
                 @if (isset($person))
@@ -47,13 +47,13 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="cpf_cnpj" class="col-sm-2 col-form-label text-md-right">{{ __('CNPJ/CPF')}}</label>
+                    <label for="cpf_cnpj" class="col-sm-2 col-form-label text-md-right">CNPJ/CPF</label>
 
                     <div class="col-sm-4">
                         <input id="cpf_cnpj" type="cpf_cnpj"
                            class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                            name="cpf_cnpj"
-                           value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
+                           value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                            required autofocus
                            v-mask='["###.###.###-##", "##.###.###/####-##"]'
                            {{$person->id ? 'disabled="disabled"' : '' }}
@@ -67,14 +67,14 @@
                     </div>
 
                     <label for="identification" class="col-sm-2 col-form-label text-md-right">
-                        {{ __('RG')}}
+                        RG
                     </label>
 
                     <div class="col-sm-4">
                         <input id="identification"
                            class="form-control{{ $errors->has('identification') ? ' is-invalid' : '' }}"
                            name="identification"
-                           value="{{is_null(old('identification')) ? $person->identification : old('identification')}}"
+                           value="{{is_null(old('identification')) ? $person->identification : old('identification') }}"
                            required autofocus
                         >
 
@@ -87,12 +87,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label text-md-right">{{ __('Nome Completo')}}</label>
+                    <label for="name" class="col-sm-2 col-form-label text-md-right">Nome Completo</label>
 
                     <div class="col-sm-10">
                         <input id="name"
                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                           name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
+                           name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                            required autofocus
                         >
 
@@ -107,7 +107,7 @@
                 @if (!$workflow)
                     <div class="form-group row">
                         <label for="identification" class="col-sm-2 col-form-label text-md-right">
-                            {{ __('Criado em')}}
+                            Criado em
                         </label>
 
                         <div class="col-md-4">
@@ -119,7 +119,7 @@
                         </div>
 
                         <label for="identification" class="col-sm-2 col-form-label text-md-right">
-                            {{ __('Alterado em')}}
+                            Alterado em
                         </label>
 
                         <div class="col-md-4">
@@ -137,9 +137,9 @@
                         <br>
                         <button type="submit" class="btn btn-danger">
                             @if ($workflow)
-                                {{ __('Próximo passo >>') }}
+                                Próximo passo >>
                             @else
-                                {{ __('Gravar') }}
+                                Gravar
                             @endif
                         </button>
                     </div>

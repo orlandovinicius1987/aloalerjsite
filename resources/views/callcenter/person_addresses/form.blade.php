@@ -8,7 +8,7 @@
                     <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
                 </li>
 
-                <li>{{ __('Endereços') }}</li>
+                <li>Endereços</li>
             </ul>
         </div>
 
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('people_addresses.store') }}" aria-label="{{ __('Endereços') }}">
+            <form method="POST" action="{{ route('people_addresses.store') }}" aria-label="Endereços">
                 @csrf
 
                 @if (isset($person))
@@ -41,12 +41,12 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
+                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">CNPJ/CPF</label>
 
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
-                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
+                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                readonly="readonly">
 
                         @if ($errors->has('cpf_cnpj'))
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
+                    <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
 
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                               name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
+                               name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
 
                         @if ($errors->has('name'))
@@ -74,14 +74,14 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="zipcode" class="col-sm-4 col-form-label text-md-right">{{ __('CEP') }} {{old('zipcode')}}</label>
+                    <label for="zipcode" class="col-sm-4 col-form-label text-md-right">CEP {{old('zipcode') }}</label>
 
                     <div class="col-md-6">
                         <input id="zipcode"
                                name="zipcode"
                                v-model="form.zipcode"
-                               v-init:zipcode="'{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}'"
-                               value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode')}}"
+                               v-init:zipcode="'{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}'"
+                               value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}"
                                class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}"
                                @keyup="typeKeyUp"
                                v-mask='["##.###-###"]'
@@ -98,14 +98,14 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="street" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço') }}</label>
+                    <label for="street" class="col-sm-4 col-form-label text-md-right">Endereço</label>
 
                     <div class="col-md-6">
                         <input id="street"
                                name="street"
                                v-model="form.street"
-                               v-init:street="'{{is_null(old('street')) ? $address->street : old('street')}}'"
-                               value="{{is_null(old('street')) ? $address->street : old('street')}}"
+                               v-init:street="'{{is_null(old('street')) ? $address->street : old('street') }}'"
+                               value="{{is_null(old('street')) ? $address->street : old('street') }}"
                                class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -120,13 +120,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="number" class="col-sm-4 col-form-label text-md-right">{{ __('Número') }}</label>
+                    <label for="number" class="col-sm-4 col-form-label text-md-right">Número</label>
 
                     <div class="col-md-2">
                         <input id="number"
                                name="number"
                                v-on:keypress="isNumber(event)"
-                               value="{{is_null(old('number')) ? $address->number : old('number')}}"
+                               value="{{is_null(old('number')) ? $address->number : old('number') }}"
                                class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -140,12 +140,12 @@
                     </div>
 
 
-                    <label for="complement" class="col-sm-2 col-form-label text-md-right">{{ __('Complemento') }}</label>
+                    <label for="complement" class="col-sm-2 col-form-label text-md-right">Complemento</label>
 
                     <div class="col-md-2">
                         <input id="complement"
                                name="complement"
-                               value="{{is_null(old('complement')) ? $address->complement : old('complement')}}"
+                               value="{{is_null(old('complement')) ? $address->complement : old('complement') }}"
                                class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
                                autofocus
                         >
@@ -160,14 +160,14 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="neighbourhood" class="col-sm-4 col-form-label text-md-right">{{ __('Bairro') }}</label>
+                    <label for="neighbourhood" class="col-sm-4 col-form-label text-md-right">Bairro</label>
 
                     <div class="col-md-6">
                         <input id="neighbourhood"
                                name="neighbourhood"
                                v-model="form.neighbourhood"
-                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}'"
-                               value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood')}}"
+                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}'"
+                               value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}"
                                class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -182,14 +182,14 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="city" class="col-sm-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
+                    <label for="city" class="col-sm-4 col-form-label text-md-right">Cidade</label>
 
                     <div class="col-md-4">
                         <input id="city"
                                name="city"
                                v-model="form.city"
-                               v-init:city="'{{is_null(old('city')) ? $address->city : old('city')}}'"
-                               value="{{is_null(old('city')) ? $address->city : old('city')}}"
+                               v-init:city="'{{is_null(old('city')) ? $address->city : old('city') }}'"
+                               value="{{is_null(old('city')) ? $address->city : old('city') }}"
                                class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -202,14 +202,14 @@
                         @endif
                     </div>
 
-                    <label for="state" class="col-sm-1 col-form-label text-md-right">{{ __('Estado') }}</label>
+                    <label for="state" class="col-sm-1 col-form-label text-md-right">Estado</label>
 
                     <div class="col-md-1">
                         <input id="state"
                                name="state"
                                v-model="form.state"
-                               v-init:state="'{{is_null(old('state')) ? $address->state : old('state')}}'"
-                               value="{{is_null(old('state')) ? $address->state : old('state')}}"
+                               v-init:state="'{{is_null(old('state')) ? $address->state : old('state') }}'"
+                               value="{{is_null(old('state')) ? $address->state : old('state') }}"
                                class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -224,7 +224,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="is_mailable" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço Validado')}}</label>
+                    <label for="is_mailable" class="col-sm-4 col-form-label text-md-right">Endereço Validado</label>
                     <div class="col-md-6">
                         <input type="hidden" name="is_mailable" value="0">
                         <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}} >
@@ -233,7 +233,7 @@
 
                 @if (!((isset($workflow) && $workflow) || old('workflow')) && isset($address->zipcode))
                     <div class="form-group row">
-                        <label for="active" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço Ativo')}}</label>
+                        <label for="active" class="col-sm-4 col-form-label text-md-right">Endereço Ativo</label>
                         <div class="col-md-6">
                             <input type="hidden" name="active" value="0">
                             <input type="checkbox" name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}} >
@@ -248,9 +248,9 @@
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-danger">
                             @if ((isset($workflow) && $workflow) || old('workflow'))
-                                {{ __('Próximo passo >>') }}
+                                Próximo passo >>
                             @else
-                                {{ __('Gravar') }}
+                                Gravar
                             @endif
                         </button>
                     </div>

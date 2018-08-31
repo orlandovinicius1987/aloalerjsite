@@ -8,12 +8,12 @@
                     <a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a>
                 </li>
 
-                <li>{{ __('Andamentos') }}</li>
+                <li>Andamentos</li>
             </ul>
         </div>
 
         <div class="card-body">
-            <form id="formProgress" method="POST" action="{{ route('progresses.store') }}" aria-label="{{ __('Progresses') }}">
+            <form id="formProgress" method="POST" action="{{ route('progresses.store') }}">
                 @csrf
 
                 @if (isset($progress))
@@ -23,11 +23,11 @@
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
 
                 <div class="form-group row">
-                    <label for="protocol" class="col-sm-4 col-form-label text-md-right">{{ __('Protocolo') }}</label>
+                    <label for="protocol" class="col-sm-4 col-form-label text-md-right">Protocolo</label>
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
-                               value="{{is_null(old('protocol')) ? $record->protocol : old('protocol')}}"
+                               value="{{is_null(old('protocol')) ? $record->protocol : old('protocol') }}"
                                readonly="readonly">
                         @if ($errors->has('protocol'))
                             <span class="invalid-feedback" role="alert">
@@ -38,12 +38,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="origin_id" class="col-sm-4 col-form-label text-md-right">{{ __('Origem') }}</label>
+                    <label for="origin_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
 
                     <div class="col-md-6">
                         <select id="origin_id"
                                 class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id" @include('partials.disabled')
-                                value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id')}}" autofocus required>
+                                value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id') }}" autofocus required>
                             <option value="">SELECIONE</option>
                             @foreach ($origins as $key => $origin)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->origin_id) && $progress->origin_id === $origin->id) ||
@@ -64,12 +64,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
+                    <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">Tipo</label>
 
                     <div class="col-md-6">
                         <select id="record_type_id" type="record_type_id"
                                 class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }}" name="record_type_id"
-                                value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id')}}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->record_type_id) && $progress->record_type_id === $recordType->id) ||
@@ -90,12 +90,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="area_id" class="col-sm-4 col-form-label text-md-right">{{ __('Área') }}</label>
+                    <label for="area_id" class="col-sm-4 col-form-label text-md-right">Área</label>
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
                                 class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }}" name="area_id"
-                                value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id')}}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->area_id) && $progress->area_id === $area->id) ||
@@ -116,12 +116,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo de Andamento') }}</label>
+                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">Tipo de Andamento</label>
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
                                 class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }}" name="progress_type_id"
-                                value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id')}}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->progress_type_id) && $progress->progress_type_id === $progressType->id) ||
@@ -143,12 +143,12 @@
 
 
                 <div class="form-group row">
-                    <label for="original" class="col-sm-4 col-form-label text-md-right">{{ __('Solicitação') }}</label>
+                    <label for="original" class="col-sm-4 col-form-label text-md-right">Solicitação</label>
                     <div class="col-md-6">
                     <textarea id="original"
                       class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
                       name="original"
-                      value="{{is_null(old('original')) ? $progress->original : old('original')}}"
+                      value="{{is_null(old('original')) ? $progress->original : old('original') }}"
                       required rows="15" @include('partials.disabled')>{{$progress->original}}</textarea>
                         @if ($errors->has('original'))
                             <span class="invalid-feedback" role="alert">
@@ -162,11 +162,11 @@
                     <div class="col-md-8 offset-md-4">
                         <a href="{{ url()->previous() }}" class="btn btn-danger">Voltar</a>
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store')}}')" class="btn btn-danger" @include('partials.disabled')>
-                            {{ __('Gravar') }}
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger" @include('partials.disabled')>
+                            Gravar
                         </button>
-                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish')}}')" class="btn btn-danger" @include('partials.disabled')>
-                            {{ __('Gravar e finalizar') }}
+                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger" @include('partials.disabled')>
+                            Gravar e finalizar
                         </button>
                     </div>
                 </div>

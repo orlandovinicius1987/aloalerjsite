@@ -36,7 +36,7 @@
                     {{--{{ config('app.name', 'Laravel') }}--}} <img src="/templates/mv/svg/logo-alo-alerj-nova.svg" class="alolerj-logo-home img-responsive" alt="AloAlerj"> - Call Center
 
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -50,14 +50,14 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('records.nonResolved')}}">Não Resolvidos</a>
+                            <a class="nav-link" href="{{route('records.nonResolved') }}">Não Resolvidos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/callcenter')}}">Pesquisar</a>
+                            <a class="nav-link" href="{{url('/callcenter') }}">Pesquisar</a>
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Entrar</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -69,7 +69,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }}
+                                        Sair
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

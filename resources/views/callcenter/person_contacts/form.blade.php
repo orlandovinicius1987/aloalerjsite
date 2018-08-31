@@ -8,7 +8,7 @@
                     <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
                 </li>
 
-                <li>{{ __('Contatos') }}</li>
+                <li>Contatos</li>
             </ul>
         </div>
 
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('people_contacts.update') }}" aria-label="{{ __('Contatos') }}">
+            <form method="POST" action="{{ route('people_contacts.update') }}" aria-label="Contatos">
                 @csrf
 
                 @if (isset($person))
@@ -41,12 +41,12 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
+                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">CNPJ/CPF</label>
 
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
-                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
+                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                readonly="readonly">
 
                         @if ($errors->has('cpf_cnpj'))
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
+                    <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
 
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                               name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
+                               name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
 
                         @if ($errors->has('name'))
@@ -76,14 +76,14 @@
             {{--{{dd($contact->contact_type_id,$contact->contact)}}--}}
 
                 <div class="form-group row" >
-                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo de Contato') }}</label>
+                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">Tipo de Contato</label>
 
                     <div class="col-md-6">
                         <select
                             id="contact_type_id"
                             name="contact_type_id"
                             v-model="currentContactType"
-                            {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id')}}'"--}}
+                            {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id') }}'"--}}
                             class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }}"
                             autofocus
                             required
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="form-group row" v-if="mobileSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Celular') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Celular</label>
 
                     <div class="col-md-6">
                         <input
@@ -117,7 +117,7 @@
                                 id="contact"
                                 v-mask='["(##)####-####", "(##)#####-####"]'
                                 v-model="currentContact"
-                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}"
+                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}"
                                 class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
                                 autofocus
                                 required
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="form-group row" v-if="whatsappSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Whatsapp') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Whatsapp</label>
 
                     <div class="col-md-6">
                         <input
@@ -140,7 +140,7 @@
                             id="contact"
                             v-mask='["(##)#####-####"]'
                             v-model="currentContact"
-                            value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
+                            value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
                             class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}"
                             autofocus
                             required
@@ -155,14 +155,14 @@
                 </div>
 
                 <div class="form-group row" v-if="emailSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">E-mail</label>
 
                     <div class="col-md-6">
                         <input
                                id="contact"
                                name="contact"
                                v-model="currentContact"
-                               value="{{is_null(old('contact')) ? $contact->email : old('contact')}}"
+                               value="{{is_null(old('contact')) ? $contact->email : old('contact') }}"
                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                required
                                autofocus
@@ -178,14 +178,14 @@
                 </div>
 
                 <div class="form-group row" v-if="phoneSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Telefone Fixo') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Telefone Fixo</label>
 
                     <div class="col-md-6">
                         <input
                             id="contact"
                             name="contact"
                             v-model="currentContact"
-                            value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
+                            value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
                             v-mask="['(##) ####-####']"
                             class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                             required
@@ -202,14 +202,14 @@
 
 
                 <div class="form-group row" v-if="facebookSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Facebook') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Facebook</label>
 
                     <div class="col-md-6">
                         <input
                             id="contact"
                             name="contact"
                             v-model="currentContact"
-                            value="{{is_null(old('facebook')) ? $contact->phone : old('facebook')}}"
+                            value="{{is_null(old('facebook')) ? $contact->phone : old('facebook') }}"
                             class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}"
                             required
                             autofocus
@@ -224,13 +224,13 @@
                 </div>
 
                 <div class="form-group row" v-if="twitterSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Twitter') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Twitter</label>
 
                     <div class="col-md-6">
                         <input
                             id="contact"
                             name="contact"
-                            value="{{is_null(old('twitter')) ? $contact->phone : old('twitter')}}"
+                            value="{{is_null(old('twitter')) ? $contact->phone : old('twitter') }}"
                             class="form-control{{ $errors->has('twitter') ? ' is-invalid' : '' }}"
                             required
                             autofocus
@@ -245,13 +245,13 @@
                 </div>
 
                 <div class="form-group row" v-if="instagramSelected">
-                    <label for="contact" class="col-sm-4 col-form-label text-md-right">{{ __('Instagram') }}</label>
+                    <label for="contact" class="col-sm-4 col-form-label text-md-right">Instagram</label>
 
                     <div class="col-md-6">
                         <input
                             id="contact"
                             name="contact"
-                            value="{{is_null(old('instagram')) ? $contact->phone : old('instagram')}}"
+                            value="{{is_null(old('instagram')) ? $contact->phone : old('instagram') }}"
                             class="form-control{{ $errors->has('instagram') ? ' is-invalid' : '' }}"
                             required
                             autofocus
@@ -266,7 +266,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="active" class="col-sm-4 col-form-label text-md-right">{{ __('Contato Ativo')}}</label>
+                    <label for="active" class="col-sm-4 col-form-label text-md-right">Contato Ativo</label>
                     <div class="col-md-6">
                         <input type="hidden" name="active" value="0">
                         <input type="checkbox" name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}} >
@@ -276,7 +276,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-danger">
-                            {{ __('Gravar') }}
+                            Gravar
                         </button>
                     </div>
                 </div>
