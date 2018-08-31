@@ -5,7 +5,7 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
                 </li>
 
                 <li>{{ __('Contatos') }}</li>
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('persons_contacts.update') }}" aria-label="{{ __('Contatos') }}">
+            <form method="POST" action="{{ route('people_contacts.update') }}" aria-label="{{ __('Contatos') }}">
                 @csrf
 
                 @if (isset($person))
@@ -262,6 +262,14 @@
                             <strong>{{ $errors->first('instagram') }}</strong>
                         </span>
                         @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="active" class="col-sm-4 col-form-label text-md-right">{{ __('Contato Ativo')}}</label>
+                    <div class="col-md-6">
+                        <input type="hidden" name="active" value="0">
+                        <input type="checkbox" name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}} >
                     </div>
                 </div>
 

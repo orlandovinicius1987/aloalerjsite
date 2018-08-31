@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="col-8 text-right" v-if="form.search && (foundBy != 'cpf_cnpj')">
-                        <a v-bind:href="'{{ route('persons.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
+                        <a v-bind:href="'{{ route('people.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
                             <i class="fa fa-plus"></i>
                             Cadastrar novo cidadão
                         </a>

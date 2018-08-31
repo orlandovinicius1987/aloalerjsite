@@ -7,20 +7,27 @@
             <th>Complemento</th>
             <th>Bairro</th>
             <th>Cidade</th>
+            <th>Status</th>
         </tr>
         </thead>
 
         @forelse ($addresses as $address)
             <tr>
-                <td><a href="{{ route('persons_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
+                <td><a href="{{ route('people_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
                 <td>{{$address->number}}</td>
                 <td>{{$address->complement}}</td>
                 <td>{{$address->neighbourhood}}</td>
                 <td>{{$address->city}}</td>
+                @if($address->active)
+                    <td><span class="badge badge-success">{{$address->active_string}}</span></td>
+                @else
+                    <td><span class="badge badge-danger">{{$address->active_string}}</span></td>
+                @endIf
             </tr>
         @empty
             <p>Nenhum Endereço encontrado</p>
         @endforelse
     </table>
+
     {{ $addresses->links() }}
 </div>

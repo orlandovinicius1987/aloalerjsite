@@ -5,7 +5,7 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">
                         {{ $person->name }}
                     </a>
                 </li>

@@ -39,7 +39,7 @@ abstract class Controller extends IlluminateController
     protected $progressTypesRepository;
 
     /**
-     * Persons constructor.
+     * People constructor.
      *
      * @param PeopleRepository $personRepository
      * @param RecordsRepository $recordsRepository

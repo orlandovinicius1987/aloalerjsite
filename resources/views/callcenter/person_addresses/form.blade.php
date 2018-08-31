@@ -5,7 +5,7 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
                 </li>
 
                 <li>{{ __('Endereços') }}</li>
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('persons_addresses.store') }}" aria-label="{{ __('Endereços') }}">
+            <form method="POST" action="{{ route('people_addresses.store') }}" aria-label="{{ __('Endereços') }}">
                 @csrf
 
                 @if (isset($person))
@@ -230,6 +230,19 @@
                         <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}} >
                     </div>
                 </div>
+
+                @if (!((isset($workflow) && $workflow) || old('workflow')) && isset($address->zipcode))
+                    <div class="form-group row">
+                        <label for="active" class="col-sm-4 col-form-label text-md-right">{{ __('Endereço Ativo')}}</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="active" value="0">
+                            <input type="checkbox" name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}} >
+                        </div>
+                    </div>
+                @else
+                    <input type="hidden" name="active" value="1">
+                @endIf
+
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">

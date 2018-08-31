@@ -18,12 +18,12 @@
                 <tbody>
                 <tr v-for="person in tables.people">
                     <td>
-                        <a :href="'/callcenter/persons/show/' + person.id">@{{ person.name }}</a>
+                        <a :href="'/callcenter/people/show/' + person.id">@{{ person.name }}</a>
                     </td>
 
                     <!--<td v-html="person.cpf_cnpj"></td>-->
                     <td>
-                        <a :href="'/callcenter/persons/show/' + person.id">@{{ person.cpf_cnpj }}</a>
+                        <a :href="'/callcenter/people/show/' + person.id">@{{ person.cpf_cnpj }}</a>
                     </td>
 
                     <td>

@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('persons.store') }}" aria-label="{{ __('Persons') }}">
+            <form method="POST" action="{{ route('people.store') }}" aria-label="{{ __('people') }}">
                 @csrf
 
                 @if (isset($person))

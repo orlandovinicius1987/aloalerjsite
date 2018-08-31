@@ -1,5 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
+
+use App\Http\Controllers\Controller;
 
 class Radio extends Controller
 {

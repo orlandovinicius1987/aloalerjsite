@@ -3,13 +3,13 @@
         <div id="vue-contact-outside-workflow" class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Relacionar Assunto</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Novo contato</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
-                <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('persons_contacts.insertContact') }}" method="post">
+                <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('people_contacts.insertContact') }}" method="post">
 
                     <div class="modal-body">
 

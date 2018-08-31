@@ -1,12 +1,13 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
+use Illuminate\Http\Request;
+use App\Data\Models\ContactType;
+use App\Data\Models\PersonContact;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PersonRequest;
 use App\Http\Requests\PersonContactsRequest;
 use App\Http\Requests\PersonContactsWorkflowRequest;
-use Illuminate\Http\Request;
-use App\Http\Requests\PersonRequest;
-use App\Data\Models\PersonContact;
-use App\Data\Models\ContactType;
 
 class PersonContacts extends Controller
 {
@@ -35,7 +36,7 @@ class PersonContacts extends Controller
      */
     public function store(PersonContactsWorkflowRequest $request)
     {
-        $route = 'persons.show';
+        $route = 'people.show';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
             $message = 'Protocolo cadastrado com sucesso.';
@@ -62,9 +63,7 @@ class PersonContacts extends Controller
         $with['message'] = $message;
         $with['workflow'] = $request->get('workflow');
 
-        return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+        return redirect()->route($route, ['person_id' => $person->id]);
     }
 
     /**
@@ -110,7 +109,7 @@ class PersonContacts extends Controller
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()
-            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->route('people.show', ['person_id' => $request->get('person_id')])
             ->with($this->getSuccessMessage());
     }
 
@@ -120,7 +119,7 @@ class PersonContacts extends Controller
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()
-            ->route('persons.show', ['person_id' => $request->get('person_id')])
+            ->route('people.show', ['person_id' => $request->get('person_id')])
             ->with($this->getSuccessMessage());
     }
 }
