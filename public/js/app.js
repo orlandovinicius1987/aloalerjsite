@@ -47439,36 +47439,29 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         computed: {
+            mask: function mask() {
+                var mask = "X".repeat(255);
+
+                switch (this.currentContactTypeName) {
+                    case 'mobile':
+                    case 'whatsapp':
+                        mask = ["(##) ####-####", "(##) #-####-####"];
+                        break;
+                    case 'phone':
+                        mask = '(##) ####-####';
+                        break;
+                }
+
+                return mask;
+            },
+
+            masked: function masked() {
+                return true;
+            },
+
+
             currentContactTypeName: function currentContactTypeName() {
                 return this.contactTypesArray[this.currentContactType];
-            },
-
-            mobileSelected: function mobileSelected() {
-                return this.currentContactTypeName == 'mobile';
-            },
-
-            whatsappSelected: function whatsappSelected() {
-                return this.currentContactTypeName == 'whatsapp';
-            },
-
-            emailSelected: function emailSelected() {
-                return this.currentContactTypeName == 'email';
-            },
-
-            phoneSelected: function phoneSelected() {
-                return this.currentContactTypeName == 'phone';
-            },
-
-            facebookSelected: function facebookSelected() {
-                return this.currentContactTypeName == 'facebook';
-            },
-
-            twitterSelected: function twitterSelected() {
-                return this.currentContactTypeName == 'twitter';
-            },
-
-            instagramSelected: function instagramSelected() {
-                return this.currentContactTypeName == 'instagram';
             }
         },
 

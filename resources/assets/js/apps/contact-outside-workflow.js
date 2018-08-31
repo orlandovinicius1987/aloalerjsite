@@ -20,36 +20,28 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         computed: {
+            mask: function () {
+                let mask = "X".repeat(255)
+
+                switch (this.currentContactTypeName) {
+                    case 'mobile' :
+                    case 'whatsapp' :
+                        mask = ["(##) ####-####", "(##) #-####-####"];
+                        break;
+                    case 'phone':
+                        mask = '(##) ####-####';
+                        break;
+                }
+
+                return mask
+            },
+
+            masked() {
+                return true
+            },
+
             currentContactTypeName: function () {
                 return this.contactTypesArray[this.currentContactType]
-            },
-
-            mobileSelected: function () {
-                return (this.currentContactTypeName == 'mobile')
-            },
-
-            whatsappSelected: function () {
-                return (this.currentContactTypeName == 'whatsapp')
-            },
-
-            emailSelected: function () {
-                return (this.currentContactTypeName == 'email')
-            },
-
-            phoneSelected: function () {
-                return (this.currentContactTypeName == 'phone')
-            },
-
-            facebookSelected: function () {
-                return (this.currentContactTypeName == 'facebook')
-            },
-
-            twitterSelected: function () {
-                return (this.currentContactTypeName == 'twitter')
-            },
-
-            instagramSelected: function () {
-                return (this.currentContactTypeName == 'instagram')
             },
         },
 
