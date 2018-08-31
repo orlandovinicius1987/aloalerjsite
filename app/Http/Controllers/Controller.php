@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
 use App\Data\Repositories\Records as RecordsRepository;
@@ -130,5 +131,14 @@ abstract class Controller extends IlluminateController
         $alerts[] = ['type' => $type, 'message' => $message];
 
         session()->flash("alerts", $alerts);
+    }
+
+    protected function showSuccessMessage($message = null): void
+    {
+        $message = $message ?: $this->messageDefault;
+
+        $this->flashMessage(
+            Workflow::started() ? $message : $this->messageDefault
+        );
     }
 }

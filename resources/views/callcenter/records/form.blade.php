@@ -15,29 +15,6 @@
         </div>
 
         <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
-
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos">
                 @csrf
@@ -45,12 +22,6 @@
                 @if (isset($person))
                 <input name="person_id" type="hidden" value="{{ $person->id }}">
                 @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
-                @endif
-
-                <input name="workflow"  value="{{ $workflow }}">
 
                 @if (isset($record))
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
@@ -243,6 +214,35 @@
                         || $record->send_answer_by_email ? 'checked="checked"' : ''}} >
                     </div>
                 </div>
+
+                @if (!$workflow)
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Criado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $record->created_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Alterado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $record->updated_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                @endif
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">

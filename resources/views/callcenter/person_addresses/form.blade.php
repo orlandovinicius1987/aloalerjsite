@@ -13,27 +13,12 @@
         </div>
 
         <div class="card-body" id="vue-addresses">
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('people_addresses.store') }}" aria-label="Endereços">
                 @csrf
 
                 @if (isset($person))
                     <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 @if (isset($address))
@@ -242,6 +227,35 @@
                 @else
                     <input type="hidden" name="active" value="1">
                 @endIf
+
+                @if (!$workflow)
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Criado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $address->created_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Alterado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $address->updated_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                @endif
 
 
                 <div class="form-group row mb-0">

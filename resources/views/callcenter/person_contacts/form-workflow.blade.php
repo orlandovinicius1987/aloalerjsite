@@ -13,27 +13,12 @@
         </div>
 
         <div class="card-body" id="vue-contacts">
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('people_contacts.store') }}" aria-label="Contatos">
                 @csrf
 
                 @if (isset($person))
                     <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 @if (isset($contact))

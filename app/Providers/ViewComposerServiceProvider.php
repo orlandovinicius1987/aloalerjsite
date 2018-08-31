@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Workflow;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,7 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             }
 
             if (!isset($view->workflow)) {
-                $view->with('workflow', session()->get('workflow'));
+                $view->with('workflow', Workflow::started());
             }
         });
     }
