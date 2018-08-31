@@ -31,7 +31,8 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' => $this->recordsRepository->findByPerson(
+            'records' => $this->recordsRepository->allWherePaginate(
+                'person_id',
                 $record->person_id
             ),
             'addresses' => $this->peopleAddressesRepository->findByPerson(
@@ -95,11 +96,7 @@ class Records extends Controller
             ->with($this->getComboBoxMenus())
             ->with(
                 'progresses',
-                $this->progressesRepository->allWherePaginate(
-                    'record_id',
-                    $id,
-                    15
-                )
+                $this->progressesRepository->allWherePaginate('record_id', $id)
             )
             ->with('record', $record)
             ->with('person', $person);
@@ -107,16 +104,19 @@ class Records extends Controller
 
     public function index()
     {
-        $records = $this->recordsRepository->allPaginate(15);
-        return view('callcenter.records.index')->with('records', $records);
+        return view('callcenter.records.index')->with(
+            'records',
+            $this->recordsRepository->allPaginate()
+        );
     }
 
     public function nonResolved()
     {
-        $records = $this->recordsRepository->whereIsNullPaginate(
-            'resolved_at',
-            15
+        return view('callcenter.records.index')->with(
+            'records',
+            $records = $this->recordsRepository->whereIsNullPaginate(
+                'resolved_at'
+            )
         );
-        return view('callcenter.records.index')->with('records', $records);
     }
 }
