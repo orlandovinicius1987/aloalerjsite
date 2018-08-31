@@ -26,6 +26,7 @@
                 <th>Origem</th>
                 <th>Área</th>
                 <th>Solicitação</th>
+                <th>Criado em</th>
             </tr>
             </thead>
 
@@ -45,6 +46,7 @@
                     <td>
                         {{ $progress->original }}
                     </td>
+                    <td>{{ $progress->created_at_formatted or '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum andamento encontrado.</p>

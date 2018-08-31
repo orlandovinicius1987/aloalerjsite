@@ -261,6 +261,6 @@
     </div>
 
     @if (isset($progresses))
-        @include('callcenter.progress.table')
+        @include('callcenter.progress.partials.table')
     @endif
 @endsection

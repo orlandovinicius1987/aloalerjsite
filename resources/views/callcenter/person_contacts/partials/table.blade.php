@@ -26,6 +26,7 @@
                     <th>Tipo de Contato</th>
                     <th>Contato</th>
                     <th>Status</th>
+                    <th>Criado em</th>
                 </tr>
             </thead>
             @forelse ($contacts as $contact)
@@ -37,6 +38,7 @@
                     @else
                         <td><span class="badge badge-danger">{{$contact->active_string}}</span></td>
                     @endIf
+                    <td>{{ $contact->created_at_formatted or '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum Contato encontrado</p>
