@@ -14,7 +14,7 @@
 
             @forelse ($addresses as $address)
                 <tr>
-                <td><a href="{{ route('people_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
+                    <td><a href="{{ route('people_addresses.show',['id' => $address->id]) }}">{{ $address->street }}</a></td>
                     <td>{{$address->number}}</td>
                     <td>{{$address->complement}}</td>
                     <td>{{$address->neighbourhood}}</td>
