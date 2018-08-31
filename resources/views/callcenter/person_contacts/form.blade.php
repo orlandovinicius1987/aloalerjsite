@@ -46,7 +46,7 @@
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
-                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
+                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
                                readonly="readonly">
 
                         @if ($errors->has('cpf_cnpj'))
@@ -62,7 +62,7 @@
 
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                               name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
+                               name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
                                readonly="readonly">
 
                         @if ($errors->has('name'))
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-            {{--{{dd($contact->contact_type_id,$contact->contact)}}--}}
+                {{--{{dd($contact->contact_type_id,$contact->contact)}}--}}
 
                 <div class="form-group row" >
                     <label for="mobile" class="col-sm-4 col-form-label text-md-right">Tipo de Contato</label>
@@ -83,7 +83,6 @@
                             id="contact_type_id"
                             name="contact_type_id"
                             v-model="currentContactType"
-<<<<<<< HEAD
                             readonly="readonly"
                             type="hidden"
                         />
@@ -92,9 +91,6 @@
                             name="contact_type_id_select"
                             v-model="currentContactType"
                             {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id')}}'"--}}
-=======
-                            {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id') }}'"--}}
->>>>>>> upstream/master
                             class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }}"
                             autofocus
                             required
@@ -124,14 +120,14 @@
 
                     <div class="col-md-6">
                         <input
-                                name="contact"
-                                id="contact"
-                                v-mask='["(##)####-####", "(##)#####-####"]'
-                                v-model="currentContact"
-                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}"
-                                class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
-                                autofocus
-                                required
+                            name="contact"
+                            id="contact"
+                            v-mask='["(##)####-####", "(##)#####-####"]'
+                            v-model="currentContact"
+                            value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}"
+                            class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
+                            autofocus
+                            required
                         >
 
                         @if ($errors->has('whatsapp'))
@@ -151,7 +147,7 @@
                             id="contact"
                             v-mask='["(##)#####-####"]'
                             v-model="currentContact"
-                            value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
+                            value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
                             class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}"
                             autofocus
                             required
@@ -170,14 +166,14 @@
 
                     <div class="col-md-6">
                         <input
-                               id="contact"
-                               name="contact"
-                               v-model="currentContact"
-                               value="{{is_null(old('contact')) ? $contact->email : old('contact') }}"
-                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                               required
-                               autofocus
-                               type="email"
+                            id="contact"
+                            name="contact"
+                            v-model="currentContact"
+                            value="{{is_null(old('contact')) ? $contact->email : old('contact')}}"
+                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                            required
+                            autofocus
+                               type=email
                         >
 
                         @if ($errors->has('email'))
@@ -196,7 +192,7 @@
                             id="contact"
                             name="contact"
                             v-model="currentContact"
-                            value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
+                            value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
                             v-mask="['(##) ####-####']"
                             class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                             required
@@ -220,7 +216,7 @@
                             id="contact"
                             name="contact"
                             v-model="currentContact"
-                            value="{{is_null(old('facebook')) ? $contact->phone : old('facebook') }}"
+                            value="{{is_null(old('facebook')) ? $contact->phone : old('facebook')}}"
                             class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}"
                             required
                             autofocus
@@ -241,7 +237,7 @@
                         <input
                             id="contact"
                             name="contact"
-                            value="{{is_null(old('twitter')) ? $contact->phone : old('twitter') }}"
+                            value="{{is_null(old('twitter')) ? $contact->phone : old('twitter')}}"
                             class="form-control{{ $errors->has('twitter') ? ' is-invalid' : '' }}"
                             required
                             autofocus
@@ -262,7 +258,7 @@
                         <input
                             id="contact"
                             name="contact"
-                            value="{{is_null(old('instagram')) ? $contact->phone : old('instagram') }}"
+                            value="{{is_null(old('instagram')) ? $contact->phone : old('instagram')}}"
                             class="form-control{{ $errors->has('instagram') ? ' is-invalid' : '' }}"
                             required
                             autofocus

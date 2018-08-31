@@ -1,23 +1,3 @@
-<div class="card mt-4">
-    <div class="card-header">
-        <div class="row align-items-center">
-            <div class="col-4">
-                <h5>
-                    Andamentos
-                </h5>
-            </div>
-
-            <div class="col-8 text-right">
-                <a id="buttonEndereços" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
-                   class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-plus"></i>
-                    Novo Andamento
-                </a>
-            </div>
-        </div>
-    </div>
-
-<<<<<<< HEAD:resources/views/callcenter/progress/partials/table.blade.php
     <div class="card-body">
 
         <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -55,7 +35,3 @@
         </table>
         {{ $progresses->links() }}
     </div>
-=======
-    @include('callcenter.progress.partials.table')
->>>>>>> upstream/master:resources/views/callcenter/progress/table.blade.php
-</div>

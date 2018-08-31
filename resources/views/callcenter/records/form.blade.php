@@ -50,6 +50,8 @@
                     <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
+                <input name="workflow"  value="{{ $workflow }}">
+
                 @if (isset($record))
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
                 @endif

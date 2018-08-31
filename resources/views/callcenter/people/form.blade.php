@@ -153,11 +153,11 @@
     @endif
 
     @if (isset($addresses))
-        @include('callcenter.person_addresses.partials.table')
+        @include('callcenter.person_addresses.index')
     @endif
 
     @if (isset($contacts))
-        @include('callcenter.person_contacts.partials.table')
+        @include('callcenter.person_contacts.index')
     @endif
 @endsection
 
