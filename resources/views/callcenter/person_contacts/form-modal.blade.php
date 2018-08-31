@@ -10,9 +10,7 @@
                 </div>
 
                 <form class="form" id="form_insertContact" name="form_insertContact" action="{{ route('people_contacts.insertContact') }}" method="post">
-
                     <div class="modal-body">
-
                         {{ csrf_field() }}
 
                         <input name="person_id" type="hidden" value="{{ $person->id }}">
@@ -136,17 +134,15 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Salvar</button>
+                            <i class="fa fa-plus"></i> Salvar
+                        </button>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
