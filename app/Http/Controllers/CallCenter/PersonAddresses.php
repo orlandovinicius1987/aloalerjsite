@@ -76,8 +76,6 @@ class PersonAddresses extends Controller
         $with['message'] = $message;
         $with['workflow'] = $request->get('workflow');
 
-        return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+        return redirect()->route($route, ['person_id' => $person->id]);
     }
 }

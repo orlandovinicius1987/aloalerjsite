@@ -108,9 +108,7 @@ class People extends Controller
         $with['person'] = $person;
         $with['message'] = $message;
 
-        return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+        return redirect()->route($route, ['person_id' => $person->id]);
     }
 
     /**
@@ -143,7 +141,7 @@ class People extends Controller
             return $view
                 ->with('person', $person)
                 ->with('records', $records)
-                ->with('addresses', $person->addresses)
+                ->with('addresses', $person->addresses()->paginate())
                 ->with('contacts', $person->contacts)
                 ->with($this->getComboBoxMenus());
         }

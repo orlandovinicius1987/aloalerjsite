@@ -48,5 +48,7 @@
                 <p>Nenhum Endereço encontrado</p>
             @endforelse
         </table>
+
+        {{ $addresses->links() }}
     </div>
 </div>
