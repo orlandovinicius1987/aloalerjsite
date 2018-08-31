@@ -10,7 +10,16 @@
                     </a>
                 </li>
 
-                <li>Protocolo {{ $record->protocol }}</li>
+                <li>
+                    Protocolo {{ $record->protocol }}
+                </li>
+
+                @if ($record->resolved_at)
+                    <li>
+                        //TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274
+                    </li>
+                @endif
+
             </ul>
         </div>
 
@@ -261,6 +270,6 @@
     </div>
 
     @if (isset($progresses))
-        @include('callcenter.progress.partials.table')
+        @include('callcenter.progress.index')
     @endif
 @endsection

@@ -4,7 +4,7 @@
             <tr>
                 <th>Tipo de Contato</th>
                 <th>Contato</th>
-                <th>Status</th>
+                <th>Situação</th>
                 <th>Criado em</th>
             </tr>
             </thead>

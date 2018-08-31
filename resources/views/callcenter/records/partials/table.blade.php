@@ -33,6 +33,7 @@
                 <th>Comissão</th>
                 <th>Tipo de Protocolo</th>
                 <th>Área</th>
+                <th>Situação</th>
                 <th>Criado em</th>
             </tr>
             </thead>
@@ -43,6 +44,11 @@
                     <td>{{ $record->committee->name or '' }}</td>
                     <td>{{ $record->recordType->name or '' }}</td>
                     <td>{{ $record->area->name or '' }}</td>
+                    @if($record->active)
+                    <td><span class="badge badge-success">{{$record->active_string}}</span></td>
+                    @else
+                        <td><span class="badge badge-danger">{{$record->active_string}}</span></td>
+                    @endIf
                     <td>{{ $record->created_at_formatted or '' }}</td>
                 </tr>
             @empty

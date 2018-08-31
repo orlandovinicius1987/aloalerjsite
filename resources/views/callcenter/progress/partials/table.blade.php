@@ -7,6 +7,7 @@
                 <th>Origem</th>
                 <th>Área</th>
                 <th>Solicitação</th>
+                <th>Finalizador</th>
                 <th>Criado em</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>
                         {{ $progress->original }}
                     </td>
+                    <td>//TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274</td>
                     <td>{{ $progress->created_at_formatted or '' }}</td>
                 </tr>
             @empty
