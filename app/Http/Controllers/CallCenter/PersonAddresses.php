@@ -1,10 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\PersonContactsRequest;
-use App\Http\Requests\PersonAddressesRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\PersonRequest;
+use App\Http\Requests\PersonAddressesRequest;
 
 class PersonAddresses extends Controller
 {

@@ -1,7 +1,6 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\PersonContactsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 

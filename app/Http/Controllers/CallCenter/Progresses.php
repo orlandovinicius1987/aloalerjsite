@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProgressRequest;

@@ -1,10 +1,9 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\RecordRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
-use App\Data\Repositories\Vias as ViasRepository;
+use App\Http\Requests\RecordRequest;
 
 class Records extends Controller
 {

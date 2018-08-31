@@ -1,12 +1,12 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
+use Illuminate\Http\Request;
+use App\Data\Models\ContactType;
+use App\Data\Models\PersonContact;
+use App\Http\Requests\PersonRequest;
 use App\Http\Requests\PersonContactsRequest;
 use App\Http\Requests\PersonContactsWorkflowRequest;
-use Illuminate\Http\Request;
-use App\Http\Requests\PersonRequest;
-use App\Data\Models\PersonContact;
-use App\Data\Models\ContactType;
 
 class PersonContacts extends Controller
 {
