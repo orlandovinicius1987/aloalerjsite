@@ -23,6 +23,7 @@ class People extends Controller
             );
             if ($person) {
                 $records = $this->recordsRepository->findByPerson($person->id);
+
                 $addresses = $this->peopleAddressesRepository->findByPerson(
                     $person->id
                 );
@@ -143,8 +144,8 @@ class People extends Controller
             return $view
                 ->with('person', $person)
                 ->with('records', $records)
-                ->with('addresses', $person->addresses)
-                ->with('contacts', $person->contacts)
+                ->with('addresses', $person->addresses()->paginate())
+                ->with('contacts', $person->contacts()->paginate())
                 ->with($this->getComboBoxMenus());
         }
     }
