@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\CallCenter;
 
+use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Data\Models\ContactType;
 use App\Data\Models\PersonContact;
@@ -18,13 +19,8 @@ class PersonContacts extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        $workflow = is_null(session('data'))
-            ? null
-            : session('data')['workflow'];
-
         return view('callcenter.person_contacts.form-workflow')
             ->with('person', $person)
-            ->with('workflow', $workflow)
             ->with(['contact' => $this->peopleContactsRepository->new()])
             ->with($this->getComboBoxMenus());
     }
@@ -37,8 +33,10 @@ class PersonContacts extends Controller
     public function store(PersonContactsWorkflowRequest $request)
     {
         $route = 'people.show';
+
         $message = $this->messageDefault;
-        if ($request->get('workflow')) {
+
+        if (Workflow::started()) {
             $message = 'Protocolo cadastrado com sucesso.';
 
             $this->createPersonContact($request, 'mobile');
@@ -61,7 +59,8 @@ class PersonContacts extends Controller
         $with['addresses'] = $addresses;
         $with['contacts'] = $contacts;
         $with['message'] = $message;
-        $with['workflow'] = $request->get('workflow');
+
+        Workflow::end();
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }

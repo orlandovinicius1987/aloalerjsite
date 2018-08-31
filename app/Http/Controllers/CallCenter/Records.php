@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\CallCenter;
 
+use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Http\Controllers\Controller;
@@ -15,13 +16,8 @@ class Records extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        $workflow = is_null(session('data'))
-            ? null
-            : session('data')['workflow'];
-
         return view('callcenter.records.form')
             ->with('person', $person)
-            ->with('workflow', $workflow)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -41,7 +37,6 @@ class Records extends Controller
             'contacts' => $this->peopleContactsRepository->findByPerson(
                 $record->person_id
             ),
-            'workflow' => request()->get('workflow'),
         ]);
     }
 
@@ -51,7 +46,7 @@ class Records extends Controller
     protected function showSuccessMessage(RecordRequest $request): void
     {
         $this->flashMessage(
-            $request->get('workflow')
+            Workflow::started()
                 ? 'Protocolo cadastrado com sucesso.'
                 : $this->messageDefault
         );
@@ -73,9 +68,7 @@ class Records extends Controller
         $this->showSuccessMessage($request);
 
         return redirect()->route(
-            $request->get('workflow')
-                ? 'people_addresses.create'
-                : 'people.show',
+            Workflow::started() ? 'people_addresses.create' : 'people.show',
             ['person_id' => $record->person->id]
         );
     }

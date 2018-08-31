@@ -20,10 +20,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             }
 
             if (!isset($view->workflow)) {
-                $view->with(
-                    'workflow',
-                    request()->get('workflow') || old('workflow')
-                );
+                $view->with('workflow', session()->get('workflow'));
             }
         });
     }
