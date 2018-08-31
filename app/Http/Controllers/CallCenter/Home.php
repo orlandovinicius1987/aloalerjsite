@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 
-class Home extends BaseController
+class Home extends Controller
 {
     public function index()
     {

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\CallCenter;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
+use App\Http\Controllers\Controller;
 
 class People extends Controller
 {

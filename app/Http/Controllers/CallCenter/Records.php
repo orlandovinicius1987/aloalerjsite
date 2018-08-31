@@ -3,6 +3,7 @@ namespace App\Http\Controllers\CallCenter;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RecordRequest;
 
 class Records extends Controller
