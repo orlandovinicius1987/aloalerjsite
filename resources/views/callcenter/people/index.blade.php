@@ -52,6 +52,7 @@
                     </div>
                 </div>
             </div>
+
             @include('callcenter.people.partials.table')
         </div>
     </div>

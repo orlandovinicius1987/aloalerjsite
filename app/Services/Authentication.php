@@ -73,8 +73,6 @@ class Authentication
         );
     }
 
-    // 090609
-
     /**
      * @param $request
      * @param $response

@@ -21,29 +21,27 @@
                         <a :href="'/callcenter/people/show/' + person.id">@{{ person.name }}</a>
                     </td>
 
-                    <!--<td v-html="person.cpf_cnpj"></td>-->
                     <td>
                         <a :href="'/callcenter/people/show/' + person.id">@{{ person.cpf_cnpj }}</a>
                     </td>
 
                     <td>
-                        <p v-for="address in person.addresses">
+                        <p v-for="address in person.addresses.slice(0, 15)">
                             @{{ address.street }}
                         </p>
                     </td>
 
                     <td>
-                        <p v-for="contact in person.contacts">
+                        <p v-for="contact in person.contacts.slice(0, 15)">
                             @{{ contact.contact }}
                         </p>
                     </td>
 
                     <td>
-                        <p v-for="record in person.records">
+                        <p v-for="record in person.records.slice(0, 15)">
                             <a :href="'/callcenter/records/show/' + record.id">@{{ record.protocol }}</a>
                         </p>
                     </td>
-
                 </tr>
                 </tbody>
             </table>
