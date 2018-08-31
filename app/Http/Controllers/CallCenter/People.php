@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\CallCenter;
 
+use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
 use App\Http\Controllers\Controller;
@@ -50,6 +51,8 @@ class People extends Controller
      */
     public function create($search)
     {
+        Workflow::start();
+
         $newPerson = $this->peopleRepository->new();
 
         if ($this->peopleRepository->validCpfCnpj($search)) {
@@ -62,8 +65,7 @@ class People extends Controller
 
         return view('callcenter.people.form')
             ->with(['person' => $newPerson])
-            ->with($this->getComboBoxMenus())
-            ->with('workflow', '1');
+            ->with($this->getComboBoxMenus());
     }
 
     /**
@@ -100,10 +102,10 @@ class People extends Controller
             $with['contacts'] = $contacts;
         } else {
             $with['record'] = $this->recordsRepository->new();
-            $with['workflow'] = $request->get('workflow');
         }
 
         $request->merge(['id' => $person_id]);
+
         $person = $this->peopleRepository->createFromRequest($request);
 
         $with['person'] = $person;
@@ -162,17 +164,5 @@ class People extends Controller
             );
         }
         return $person ? $person->id : $request->get('person_id');
-    }
-
-    /**
-     * @return $this
-     */
-    public function form(Request $request)
-    {
-        dd($request);
-        return view('callcenter.people.form')
-            ->with(['person' => $this->peopleRepository->new()])
-            ->with($this->getComboBoxMenus())
-            ->with('workflow', '1');
     }
 }

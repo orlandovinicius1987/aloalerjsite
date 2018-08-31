@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\CallCenter;
 
+use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PersonAddressesRequest;
@@ -14,13 +15,8 @@ class PersonAddresses extends Controller
     {
         $person = $this->peopleRepository->findById($person_id);
 
-        $workflow = is_null(session('data'))
-            ? null
-            : session('data')['workflow'];
-
         return view('callcenter.person_addresses.form')
             ->with('person', $person)
-            ->with('workflow', $workflow)
             ->with(['address' => $this->peopleRepository->new()])
             ->with($this->getComboBoxMenus())
             ->with('formDisabled', false);
@@ -52,7 +48,7 @@ class PersonAddresses extends Controller
     {
         $route = 'people.show';
         $message = $this->messageDefault;
-        if ($request->get('workflow')) {
+        if (Workflow::started()) {
             $route = 'people_contacts.create';
             $message = 'Endereço cadastro com sucesso.';
         }
@@ -74,7 +70,6 @@ class PersonAddresses extends Controller
         $with['addresses'] = $addresses;
         $with['contacts'] = $contacts;
         $with['message'] = $message;
-        $with['workflow'] = $request->get('workflow');
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }
