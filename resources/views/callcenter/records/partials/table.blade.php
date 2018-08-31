@@ -4,6 +4,10 @@
             <div class="col-4">
                 <h5>
                     {{ __('Protocolos') }}
+
+                    @if (isset($onlyNonResolved))
+                        {{ __('Não Resolvidos') }}
+                    @endif
                 </h5>
             </div>
 
