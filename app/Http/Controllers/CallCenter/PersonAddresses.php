@@ -1,10 +1,9 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\PersonContactsRequest;
-use App\Http\Requests\PersonAddressesRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\PersonRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PersonAddressesRequest;
 
 class PersonAddresses extends Controller
 {
@@ -51,10 +50,10 @@ class PersonAddresses extends Controller
      */
     public function store(PersonAddressesRequest $request)
     {
-        $route = 'persons.show';
+        $route = 'people.show';
         $message = $this->messageDefault;
         if ($request->get('workflow')) {
-            $route = 'persons_contacts.create';
+            $route = 'people_contacts.create';
             $message = 'Endereço cadastro com sucesso.';
         }
 
@@ -77,8 +76,6 @@ class PersonAddresses extends Controller
         $with['message'] = $message;
         $with['workflow'] = $request->get('workflow');
 
-        return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+        return redirect()->route($route, ['person_id' => $person->id]);
     }
 }

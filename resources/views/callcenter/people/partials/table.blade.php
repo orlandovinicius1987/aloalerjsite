@@ -6,11 +6,11 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <h5>{{ __('Pesquisar pessoas') }}</h5>
+                        <h5>Pesquisar pessoas</h5>
                     </div>
 
                     <div class="col-8 text-right" v-if="form.search && (foundBy != 'cpf_cnpj')">
-                        <a v-bind:href="'{{ route('persons.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
+                        <a v-bind:href="'{{ route('people.create') }}/'+form.search" class="btn btn-primary btn-sm float-right">
                             <i class="fa fa-plus"></i>
                             Cadastrar novo cidadão
                         </a>
@@ -48,63 +48,11 @@
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <h5>{{ __('Resultado') }}</h5>
+                        <h5>Resultado</h5>
                     </div>
                 </div>
             </div>
-
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12" v-if="tables.people.length === 0">
-                        <h1 class="text-center">Nenhum resultado encontrado</h1>
-                    </div>
-
-                    <div class="col-12" v-if="tables.people.length > 0">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">CPF</th>
-                                <th scope="col">Endereços</th>
-                                <th scope="col">Contatos</th>
-                                <th scope="col">Protocolos</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="person in tables.people">
-                                <td>
-                                    <a :href="'/callcenter/persons/show/' + person.id">@{{ person.name }}</a>
-                                </td>
-
-                                <!--<td v-html="person.cpf_cnpj"></td>-->
-                                <td>
-                                    <a :href="'/callcenter/persons/show/' + person.id">@{{ person.cpf_cnpj }}</a>
-                                </td>
-
-                                <td>
-                                    <p v-for="address in person.addresses">
-                                        @{{ address.street }}
-                                    </p>
-                                </td>
-
-                                <td>
-                                    <p v-for="contact in person.contacts">
-                                        @{{ contact.contact }}
-                                    </p>
-                                </td>
-
-                                <td>
-                                    <p v-for="record in person.records">
-                                        <a :href="'/callcenter/records/show/' + record.id">@{{ record.protocol }}</a>
-                                    </p>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            @include('callcenter.people.partials.table')
         </div>
     </div>
 @endsection

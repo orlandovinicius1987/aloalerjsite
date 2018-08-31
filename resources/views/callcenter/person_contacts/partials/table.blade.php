@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Contatos') }}
+                    Contatos
                 </h5>
             </div>
 
@@ -19,6 +19,7 @@
         @include('callcenter.person_contacts.form-modal')
     </div>
 
+<<<<<<< HEAD:resources/views/callcenter/person_contacts/partials/table.blade.php
     <div class="card-body">
         <table id="contactsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
@@ -45,4 +46,7 @@
             @endforelse
         </table>
     </div>
+=======
+        @include('callcenter.person_contacts.partials.table')
+>>>>>>> upstream/master:resources/views/callcenter/person_contacts/index.blade.php
 </div>

@@ -1,10 +1,10 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\RecordRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
-use App\Data\Repositories\Vias as ViasRepository;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RecordRequest;
 
 class Records extends Controller
 {
@@ -31,7 +31,8 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' => $this->recordsRepository->findByPerson(
+            'records' => $this->recordsRepository->allWherePaginate(
+                'person_id',
                 $record->person_id
             ),
             'addresses' => $this->peopleAddressesRepository->findByPerson(
@@ -71,14 +72,12 @@ class Records extends Controller
 
         $this->showSuccessMessage($request);
 
-        return redirect()
-            ->route(
-                $request->get('workflow')
-                    ? 'persons_addresses.create'
-                    : 'persons.show',
-                ['person_id' => $record->person->id]
-            )
-            ->with('data', $this->makeViewDataFromRecord($record));
+        return redirect()->route(
+            $request->get('workflow')
+                ? 'people_addresses.create'
+                : 'people.show',
+            ['person_id' => $record->person->id]
+        );
     }
 
     /**
@@ -95,11 +94,7 @@ class Records extends Controller
             ->with($this->getComboBoxMenus())
             ->with(
                 'progresses',
-                $this->progressesRepository->allWherePaginate(
-                    'record_id',
-                    $id,
-                    15
-                )
+                $this->progressesRepository->allWherePaginate('record_id', $id)
             )
             ->with('record', $record)
             ->with('person', $person);
@@ -107,16 +102,20 @@ class Records extends Controller
 
     public function index()
     {
-        $records = $this->recordsRepository->allPaginate(15);
-        return view('callcenter.records.index')->with('records', $records);
+        return view('callcenter.records.index')->with(
+            'records',
+            $this->recordsRepository->allPaginate()
+        );
     }
 
     public function nonResolved()
     {
-        $records = $this->recordsRepository->whereIsNullPaginate(
-            'resolved_at',
-            15
-        );
-        return view('callcenter.records.index')->with('records', $records);
+        return view('callcenter.records.index')->with([
+            'records' =>
+                $records = $this->recordsRepository->whereIsNullPaginate(
+                    'resolved_at'
+                ),
+            'onlyNonResolved' => true,
+        ]);
     }
 }

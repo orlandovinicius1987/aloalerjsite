@@ -20,37 +20,41 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         computed: {
+            mask: function () {
+                let mask = "*".repeat(255)
+
+                switch (this.currentContactTypeName) {
+                    case 'mobile' :
+                    case 'whatsapp' :
+                        mask = ["(##) ####-####", "(##) #-####-####"];
+                        break;
+                    case 'phone':
+                        mask = '(##) ####-####';
+                        break;
+                }
+
+                return mask
+            },
+
+            masked() {
+                return true
+            },
+
             currentContactTypeName: function () {
                 return this.contactTypesArray[this.currentContactType]
             },
 
-            mobileSelected: function () {
-                return (this.currentContactTypeName == 'mobile')
-            },
-
-            whatsappSelected: function () {
-                return (this.currentContactTypeName == 'whatsapp')
-            },
-
-            emailSelected: function () {
-                return (this.currentContactTypeName == 'email')
-            },
-
-            phoneSelected: function () {
-                return (this.currentContactTypeName == 'phone')
-            },
-
-            facebookSelected: function () {
-                return (this.currentContactTypeName == 'facebook')
-            },
-
-            twitterSelected: function () {
-                return (this.currentContactTypeName == 'twitter')
-            },
-
-            instagramSelected: function () {
-                return (this.currentContactTypeName == 'instagram')
-            },
+            tokens() {
+                return {
+                    '*': {pattern: /.*/},
+                    '#': {pattern: /\d/},
+                    'X': {pattern: /[0-9a-zA-Z]/},
+                    'S': {pattern: /[a-zA-Z]/},
+                    'A': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleUpperCase()},
+                    'a': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase()},
+                    '!': {escape: true}
+                }
+            }
         },
 
         methods: {

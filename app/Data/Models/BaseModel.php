@@ -5,9 +5,14 @@ use Illuminate\Support\Facades\Cache;
 use App\Data\Presenters\Base;
 use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\HasPresenter;
+use OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-abstract class BaseModel extends Model implements HasPresenter
+abstract class BaseModel extends Model
+    implements HasPresenter, AuditableContract
 {
+    use AuditableTrait;
+
     /**
      * @var bool
      */

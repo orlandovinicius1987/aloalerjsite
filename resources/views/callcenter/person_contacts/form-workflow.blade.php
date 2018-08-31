@@ -5,10 +5,10 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a>
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">Nome: {{ $person->name }}</a>
                 </li>
 
-                <li>{{ __('Contatos') }}</li>
+                <li>Contatos</li>
             </ul>
         </div>
 
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('persons_contacts.store') }}" aria-label="{{ __('Contatos') }}">
+            <form method="POST" action="{{ route('people_contacts.store') }}" aria-label="Contatos">
                 @csrf
 
                 @if (isset($person))
@@ -41,12 +41,12 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
+                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">CNPJ/CPF</label>
 
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
-                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
+                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                readonly="readonly">
 
                         @if ($errors->has('cpf_cnpj'))
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
+                    <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
 
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                               name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
+                               name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
 
                         @if ($errors->has('name'))
@@ -74,13 +74,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">{{ __('Celular') }}</label>
+                    <label for="mobile" class="col-sm-4 col-form-label text-md-right">Celular</label>
 
                     <div class="col-md-6">
                         <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
                                id="mobile"
                                name="mobile"
-                               value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}" autofocus
+                               value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}" autofocus
                                v-mask='["(##)####-####", "(##)#####-####"]'
                                v-model='form.mobile'
                                v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
@@ -95,12 +95,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="whatsapp" class="col-sm-4 col-form-label text-md-right">{{ __('Whatsapp') }}</label>
+                    <label for="whatsapp" class="col-sm-4 col-form-label text-md-right">Whatsapp</label>
 
                     <div class="col-md-6">
                         <input class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
                                id="whatsapp"
-                               value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}"
+                               value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
                                autofocus
                                v-mask='["(##)#####-####"]'
                                v-model='form.whatsapp'
@@ -116,12 +116,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
+                    <label for="email" class="col-sm-4 col-form-label text-md-right">E-mail</label>
 
                     <div class="col-md-6">
                         <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                id="email"
-                               value="{{is_null(old('email')) ? $contact->email : old('email')}}"
+                               value="{{is_null(old('email')) ? $contact->email : old('email') }}"
                                autofocus>
 
                         @if ($errors->has('email'))
@@ -133,12 +133,12 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="phone" class="col-sm-4 col-form-label text-md-right">{{ __('Telefone Fixo') }}</label>
+                    <label for="phone" class="col-sm-4 col-form-label text-md-right">Telefone Fixo</label>
 
                     <div class="col-md-6">
                         <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
                                id="phone"
-                               value="{{is_null(old('phone')) ? $contact->phone : old('phone')}}"
+                               value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
                                autofocus
                                v-mask="['(##) ####-####', '(##) #####-####']"
                                v-model='form.phone'
@@ -156,7 +156,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-danger">
-                            {{ __('Gravar') }}
+                            Gravar
                         </button>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header">
-            {{ __('Protocolos') }}
+            Protocolos
                 @if(isset($person))
                     <a id="buttonAndamentos"
                        href="{{ route('records.create',['person_id'=>$person->id]) }}"

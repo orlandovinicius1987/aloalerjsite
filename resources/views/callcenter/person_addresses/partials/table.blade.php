@@ -3,13 +3,13 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Endereços') }}
+                    Endereços
                 </h5>
             </div>
 
             <div class="col-8 text-right">
                 <a id="buttonEndereços"
-                   href="{{ route('persons_addresses.create',['person_id' => $person->id]) }}"
+                   href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
                    class="btn btn-primary btn-sm pull-right"
                 >
                     <i class="fa fa-plus"></i> Novo Endereço
@@ -17,6 +17,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD:resources/views/callcenter/person_addresses/partials/table.blade.php
 
     <div class="card-body">
         <table id="addressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -51,4 +52,7 @@
             @endforelse
         </table>
     </div>
+=======
+    @include('callcenter.person_addresses.partials.table')
+>>>>>>> upstream/master:resources/views/callcenter/person_addresses/index.blade.php
 </div>

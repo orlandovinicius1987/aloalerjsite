@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Andamentos') }}
+                    Andamentos
                 </h5>
             </div>
 
@@ -17,6 +17,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD:resources/views/callcenter/progress/partials/table.blade.php
     <div class="card-body">
 
         <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -54,4 +55,7 @@
         </table>
         {{ $progresses->links() }}
     </div>
+=======
+    @include('callcenter.progress.partials.table')
+>>>>>>> upstream/master:resources/views/callcenter/progress/table.blade.php
 </div>

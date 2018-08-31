@@ -5,7 +5,7 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
-                    <a href="{{ route('persons.show', ['id' => $person->id]) }}">
+                    <a href="{{ route('people.show', ['id' => $person->id]) }}">
                         {{ $person->name }}
                     </a>
                 </li>
@@ -39,7 +39,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('records.store') }}" aria-label="{{ __('Protocolos') }}">
+            <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos">
                 @csrf
 
                 @if (isset($person))
@@ -55,11 +55,11 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">{{ __('CNPJ/CPF') }}</label>
+                    <label for="cpf_cnpj" class="col-sm-4 col-form-label text-md-right">CNPJ/CPF</label>
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
-                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj')}}"
+                               value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                readonly="readonly">
                         @if ($errors->has('cpf_cnpj'))
                         <span class="invalid-feedback" role="alert">
@@ -70,10 +70,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-4 col-form-label text-md-right">{{ __('Nome Completo') }}</label>
+                    <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                               name="name" value="{{is_null(old('name')) ? $person->name : old('name')}}"
+                               name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
@@ -85,12 +85,12 @@
 
                 @if (isset($record) and is_null($record->id))
                     <div class="form-group row">
-                        <label for="committee_id" class="col-sm-4 col-form-label text-md-right">{{ __('Origem') }}</label>
+                        <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
 
                         <div class="col-md-6">
                             <select id="committee_id" type="origin_id"
                                     class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id"
-                                    value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id')}}" required
+                                    value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id') }}" required
                                     autofocus>
                                 <option value="">SELECIONE</option>
                                 @foreach ($origins as $key => $origin)
@@ -112,13 +112,13 @@
                 @endIf
 
                 <div class="form-group row">
-                    <label for="committee_id" class="col-sm-4 col-form-label text-md-right">{{ __('Comissão') }}</label>
+                    <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Comissão</label>
 
                     <div class="col-md-6">
                         <select id="committee_id" type="committee_id"
                                 class="form-control{{ $errors->has('committee_id') ? ' is-invalid' : '' }}"
                                 name="committee_id"
-                                value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id')}}"
+                                value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
                                 required
                                 autofocus>
                             <option value="">SELECIONE</option>
@@ -140,13 +140,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
+                    <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">Tipo</label>
 
                     <div class="col-md-6">
                         <select id="record_type_id"
                                 class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }}"
                                 name="record_type_id"
-                                value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id')}}"
+                                value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id') }}"
                                 required
                                 autofocus>
                             <option value="">SELECIONE</option>
@@ -169,7 +169,7 @@
 
             @if (isset($record) and is_null($record->id))
                 <div class="form-group row">
-                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">{{ __('Assunto') }}</label>
+                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">Assuntosão</label>
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
@@ -191,12 +191,12 @@
             @endIf
 
             <div class="form-group row">
-                <label for="area_id" class="col-sm-4 col-form-label text-md-right">{{ __('Área') }}</label>
+                <label for="area_id" class="col-sm-4 col-form-label text-md-right">Área</label>
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
                                 class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }}" name="area_id"
-                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id')}}" required autofocus>
+                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
                                 @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) || (!is_null(old('area_id'))) && old('area_id') == $area->id))
@@ -217,12 +217,12 @@
 
                 @if (isset($record) and is_null($record->id))
                     <div class="form-group row">
-                        <label for="original" class="col-sm-4 col-form-label text-md-right">{{ __('Solicitação') }}</label>
+                        <label for="original" class="col-sm-4 col-form-label text-md-right">Solicitação</label>
                         <div class="col-md-6">
                                 <textarea id="original"
                                           class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
                                           name="original"
-                                          value="{{is_null(old('original')) ? $record->original : old('original')}}"
+                                          value="{{is_null(old('original')) ? $record->original : old('original') }}"
                                           required rows="15">{{$record->original}}</textarea>
                             @if ($errors->has('original'))
                             <span class="invalid-feedback" role="alert">
@@ -234,9 +234,7 @@
                 @endif
 
                 <div class="form-group row">
-                    <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">{{ __('Resposta por
-                        e-mail')
-                        }}</label>
+                    <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
                         <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
                         <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
@@ -248,9 +246,9 @@
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-danger">
                             @if ($workflow)
-                                {{ __('Próximo passo >>') }}
+                                Próximo passo >>
                             @else
-                                {{ __('Gravar') }}
+                                Gravar
                             @endif
                         </button>
                     </div>

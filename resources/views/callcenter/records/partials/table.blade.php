@@ -3,7 +3,11 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    {{ __('Protocolos') }}
+                    Protocolos
+
+                    @if (isset($onlyNonResolved))
+                        Não Resolvidos
+                    @endif
                 </h5>
             </div>
 
@@ -45,6 +49,7 @@
                 <p>Nenhum Protocolo encontrado</p>
             @endforelse
         </table>
-            {{ $records->links() }}
+
+        {{ $records->links() }}
     </div>
 </div>

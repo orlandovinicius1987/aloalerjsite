@@ -1,9 +1,9 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CallCenter;
 
-use App\Http\Requests\PersonContactsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest;
+use App\Http\Controllers\Controller;
 
 class People extends Controller
 {
@@ -23,6 +23,7 @@ class People extends Controller
             );
             if ($person) {
                 $records = $this->recordsRepository->findByPerson($person->id);
+
                 $addresses = $this->peopleAddressesRepository->findByPerson(
                     $person->id
                 );
@@ -74,7 +75,7 @@ class People extends Controller
     {
         $person_id = $this->userAlreadyRegistered($request);
 
-        $route = 'persons.show';
+        $route = 'people.show';
         $message = $this->messageDefault;
         if (!$person_id) {
             $route = 'records.create';
@@ -108,9 +109,7 @@ class People extends Controller
         $with['person'] = $person;
         $with['message'] = $message;
 
-        return redirect()
-            ->route($route, ['person_id' => $person->id])
-            ->with('data', $with);
+        return redirect()->route($route, ['person_id' => $person->id]);
     }
 
     /**
@@ -143,8 +142,8 @@ class People extends Controller
             return $view
                 ->with('person', $person)
                 ->with('records', $records)
-                ->with('addresses', $person->addresses)
-                ->with('contacts', $person->contacts)
+                ->with('addresses', $person->addresses()->paginate())
+                ->with('contacts', $person->contacts()->paginate())
                 ->with($this->getComboBoxMenus());
         }
     }

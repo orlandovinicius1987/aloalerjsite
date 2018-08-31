@@ -113,20 +113,18 @@ abstract class BaseRepository
         return $this->makeResultForSelect($this->model::all());
     }
 
-    public function allPaginate($sizeOfPage)
+    public function allPaginate($sizeOfPage = 15)
     {
         return $this->model::paginate($sizeOfPage);
     }
 
-    public function allWherePaginate($field, $value, $sizeOfPage)
+    public function allWherePaginate($field, $value, $sizeOfPage = 15)
     {
-        //        return ($this->model::paginate(15));
         return ($this->model::where($field, $value)->paginate($sizeOfPage));
     }
 
-    public function whereIsNullPaginate($field, $sizeOfPage)
+    public function whereIsNullPaginate($field, $sizeOfPage = 15)
     {
-        //        return ($this->model::paginate(15));
         return ($this->model::whereNull($field)->paginate($sizeOfPage));
     }
 
