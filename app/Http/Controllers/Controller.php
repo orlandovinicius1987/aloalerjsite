@@ -96,11 +96,14 @@ abstract class Controller extends IlluminateController
 
     public function getComboBoxMenus()
     {
+        //Filtrar as comissões aqui
+
         $committees = $this->committeesRepository->allWhereOperator(
             'bio',
             '<>',
             ''
         );
+
         $recordTypes = $this->recordTypesRepository->all();
         $areas = $this->areasRepository->all();
         $origins = $this->originsRepository->all();
