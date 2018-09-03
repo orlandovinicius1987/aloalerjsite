@@ -99,3 +99,7 @@ Artisan::command('aloalerj:update-sequences', function () {
         );
     });
 })->describe('Display an inspiring quote');
+
+Artisan::command('aloalerj:protocol', function () {
+    dd(preg_replace('/[^0-9]/', '', '2018.0903.0000.0002.1505.0150.7996'));
+})->describe('Display an inspiring quote');

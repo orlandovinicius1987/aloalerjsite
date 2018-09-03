@@ -48,4 +48,27 @@ class Record extends BaseModel
     {
         return $this->belongsTo(Person::class);
     }
+
+    public function getProtocolAttribute($protocol)
+    {
+        if (strlen($protocol) == 28 && is_numeric($protocol)) {
+            $protocol = $this->mask(
+                '####.####.####.####.####.####.####',
+                $protocol
+            );
+        }
+
+        return $protocol;
+    }
+
+    public function mask($mask, $str)
+    {
+        $str = str_replace(" ", "", $str);
+
+        for ($i = 0; $i < strlen($str); $i++) {
+            $mask[strpos($mask, "#")] = $str[$i];
+        }
+
+        return $mask;
+    }
 }
