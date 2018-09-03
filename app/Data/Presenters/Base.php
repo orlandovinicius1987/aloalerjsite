@@ -8,9 +8,7 @@ class Base extends McCoolBasePresenter
 {
     public function created_at_formatted()
     {
-        return $this->wrappedObject->created_at
-            ? $this->wrappedObject->created_at->format($this->getDateFormat())
-            : null;
+        return $this->wrappedObject->created_at->format($this->getDateFormat());
     }
 
     private function getDateFormat()
@@ -20,12 +18,13 @@ class Base extends McCoolBasePresenter
 
     public function updated_at_formatted()
     {
-        return (
-            !is_null($this->wrappedObject->created_at) &&
-                $this->wrappedObject->created_at ==
-                    $this->wrappedObject->updated_at
-        )
+        return $this->wrappedObject->created_at ==
+        $this->wrappedObject->updated_at
             ? ''
-            : $this->wrappedObject->updated_at->format($this->getDateFormat());
+            : ($this->wrappedObject->updated_at
+                ? $this->wrappedObject->updated_at->format(
+                    $this->getDateFormat()
+                )
+                : '');
     }
 }
