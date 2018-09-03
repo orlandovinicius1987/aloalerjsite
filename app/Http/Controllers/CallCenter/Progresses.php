@@ -37,9 +37,12 @@ class Progresses extends Controller
 
     public function storeAndFinish(ProgressRequest $request)
     {
-        $this->progressesRepository->createFromRequest($request);
+        $progress = $this->progressesRepository->createFromRequest($request);
 
-        $this->recordsRepository->markAsResolved($request->get('record_id'));
+        $this->recordsRepository->markAsResolved(
+            $request->get('record_id'),
+            $progress
+        );
 
         return redirect()
             ->route('records.show', ['id' => $request->get('record_id')])

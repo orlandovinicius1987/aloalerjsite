@@ -16,7 +16,7 @@
 
                 @if ($record->resolved_at)
                     <li>
-                        //TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274
+                        PROTOCOLO FINALIZADO
                     </li>
                 @endif
 
@@ -224,7 +224,7 @@
                     </div>
                 </div>
 
-                @if (!$workflow)
+                @if (!$workflow && $record->created_at_formatted)
                     <div class="form-group row">
                         <label for="identification" class="col-sm-4 col-form-label text-md-right">
                             Criado em

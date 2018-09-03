@@ -75,10 +75,11 @@ class Records extends BaseRepository
         return $record;
     }
 
-    public function markAsResolved($record_id)
+    public function markAsResolved($record_id, $progress = null)
     {
         $record = $this->model::find($record_id);
         $record->resolved_at = now();
+        $record->resolve_progress_id = $progress->id;
         $record->resolved_by_id = Auth::user()->id;
         $record->save();
     }
