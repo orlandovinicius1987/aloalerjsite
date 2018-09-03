@@ -70,10 +70,8 @@ class People extends BaseRepository
 
     protected function searchByName($string)
     {
-        $query = $this->getBaseQuery()->where(
-            'name',
-            'ILIKE',
-            '%' . $string . '%'
+        $query = $this->getBaseQuery()->whereRaw(
+            "unaccent(name) ILIKE '%'||unaccent('{$string}')||'%' "
         );
 
         if ($query->count() > static::RECORDS_COUNT_LIMIT) {
