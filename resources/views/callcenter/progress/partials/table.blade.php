@@ -1,35 +1,39 @@
-<div class="card-body">
+    <div class="card-body">
 
-    <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th>Tipo de Andamento</th>
-            <th>Origem</th>
-            <th>Área</th>
-            <th>Solicitação</th>
-        </tr>
-        </thead>
-
-        @forelse ($progresses as $progress)
+        <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <thead>
             <tr>
-                <td>
-                    <a href="{{ $progress->link }}">
-                        {{ $progress->progressType->name ?? '' }}
-                    </a>
-                </td>
-                <td>
-                    {{ $progress->origin->name ?? '' }}
-                </td>
-                <td>
-                    {{ $progress->area->name ?? '' }}
-                </td>
-                <td>
-                    {{ $progress->original }}
-                </td>
+                <th>Tipo de Andamento</th>
+                <th>Origem</th>
+                <th>Área</th>
+                <th>Solicitação</th>
+                <th>Finalizador</th>
+                <th>Criado em</th>
             </tr>
-        @empty
-            <p>Nenhum andamento encontrado.</p>
-        @endforelse
-    </table>
-    {{ $progresses->links() }}
-</div>
+            </thead>
+
+            @forelse ($progresses as $progress)
+                <tr>
+                    <td>
+                        <a href="{{ $progress->link }}">
+                            {{ $progress->progressType->name ?? '' }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ $progress->origin->name ?? '' }}
+                    </td>
+                    <td>
+                        {{ $progress->area->name ?? '' }}
+                    </td>
+                    <td>
+                        {{ $progress->original }}
+                    </td>
+                    <td>//TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274</td>
+                    <td>{{ $progress->created_at_formatted or '' }}</td>
+                </tr>
+            @empty
+                <p>Nenhum andamento encontrado.</p>
+            @endforelse
+        </table>
+        {{ $progresses->links() }}
+    </div>

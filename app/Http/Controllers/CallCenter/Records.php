@@ -42,18 +42,6 @@ class Records extends Controller
 
     /**
      * @param Request $request
-     */
-    protected function showSuccessMessage(RecordRequest $request): void
-    {
-        $this->flashMessage(
-            Workflow::started()
-                ? 'Protocolo cadastrado com sucesso.'
-                : $this->messageDefault
-        );
-    }
-
-    /**
-     * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -65,7 +53,7 @@ class Records extends Controller
             $this->progressesRepository->createFromRequest($request);
         }
 
-        $this->showSuccessMessage($request);
+        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',

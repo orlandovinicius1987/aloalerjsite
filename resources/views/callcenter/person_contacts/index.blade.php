@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        @include('callcenter.person_contacts.form-modal')
+        @include('callcenter.person_contacts.partials.form-modal')
     </div>
 
         @include('callcenter.person_contacts.partials.table')

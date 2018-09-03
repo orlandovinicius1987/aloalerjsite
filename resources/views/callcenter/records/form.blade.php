@@ -10,44 +10,26 @@
                     </a>
                 </li>
 
-                <li>Protocolo {{ $record->protocol }}</li>
+                <li>
+                    Protocolo {{ $record->protocol }}
+                </li>
+
+                @if ($record->resolved_at)
+                    <li>
+                        //TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274
+                    </li>
+                @endif
+
             </ul>
         </div>
 
         <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
-
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos">
                 @csrf
 
                 @if (isset($person))
                 <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 @if (isset($record))
@@ -242,6 +224,35 @@
                     </div>
                 </div>
 
+                @if (!$workflow)
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Criado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $record->created_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="identification" class="col-sm-4 col-form-label text-md-right">
+                            Alterado em
+                        </label>
+
+                        <div class="col-md-4">
+                            <input id="identification"
+                                   class="form-control"
+                                   value="{{ $record->updated_at_formatted ?? '' }}"
+                                   disabled
+                            >
+                        </div>
+                    </div>
+                @endif
+
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-danger">
@@ -259,6 +270,6 @@
     </div>
 
     @if (isset($progresses))
-        @include('callcenter.progress.table')
+        @include('callcenter.progress.index')
     @endif
 @endsection

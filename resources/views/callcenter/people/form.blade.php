@@ -11,39 +11,12 @@
         </div>
 
         <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
-
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('people.store') }}">
                 @csrf
 
                 @if (isset($person))
                     <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 <div class="form-group row">

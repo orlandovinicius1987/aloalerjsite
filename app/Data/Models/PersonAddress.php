@@ -25,7 +25,11 @@ class PersonAddress extends BaseModel
         'active',
     ];
 
-    protected $presenters = ['active_string'];
+    protected $presenters = [
+        'active_string',
+        'created_at_formatted',
+        'updated_at_formatted',
+    ];
 
     public function getPresenterClass()
     {

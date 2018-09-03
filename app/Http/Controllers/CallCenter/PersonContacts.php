@@ -37,8 +37,6 @@ class PersonContacts extends Controller
         $message = $this->messageDefault;
 
         if (Workflow::started()) {
-            $message = 'Protocolo cadastrado com sucesso.';
-
             $this->createPersonContact($request, 'mobile');
             $this->createPersonContact($request, 'whatsapp');
             $this->createPersonContact($request, 'email');
@@ -58,7 +56,8 @@ class PersonContacts extends Controller
         $with['records'] = $records;
         $with['addresses'] = $addresses;
         $with['contacts'] = $contacts;
-        $with['message'] = $message;
+
+        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
 
         Workflow::end();
 
@@ -114,11 +113,13 @@ class PersonContacts extends Controller
 
     public function update(PersonContactsRequest $request)
     {
+        $this->showSuccessMessage();
+
         $request->merge(['id' => $request->get('contact_id')]);
         $this->peopleContactsRepository->createFromRequest($request);
 
-        return redirect()
-            ->route('people.show', ['person_id' => $request->get('person_id')])
-            ->with($this->getSuccessMessage());
+        return redirect()->route('people.show', [
+            'person_id' => $request->get('person_id'),
+        ]);
     }
 }
