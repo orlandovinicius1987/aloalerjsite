@@ -38,8 +38,6 @@ class People extends Controller
                     ->with('addresses', $addresses)
                     ->with('contacts', $contacts)
                     ->with(['origins' => $this->originsRepository->all()]);
-            } else {
-                dd("pessoa não encontrada");
             }
         } else {
             return view('callcenter.people.index');
@@ -105,11 +103,11 @@ class People extends Controller
         }
 
         $request->merge(['id' => $person_id]);
-
         $person = $this->peopleRepository->createFromRequest($request);
 
         $with['person'] = $person;
-        $with['message'] = $message;
+
+        $this->showSuccessMessage('Usuário cadastrado com sucesso.');
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }
@@ -140,6 +138,8 @@ class People extends Controller
                     15
                 )
             );
+
+            Workflow::end();
 
             return $view
                 ->with('person', $person)
