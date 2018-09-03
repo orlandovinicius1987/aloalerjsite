@@ -14,6 +14,19 @@ class People extends BaseRepository
      */
     protected $model = Person::class;
 
+    private function addExtraInfo($people)
+    {
+        return $people;
+        return $people->map(function ($person) {
+            $person->records = $person->records->map(function ($record) {
+                $record->protocol_formatted = $record->presenter()
+                    ->protocol_formatted;
+            });
+
+            return $person;
+        });
+    }
+
     private function emptyResponse()
     {
         return $this->response([], 0);
@@ -43,7 +56,7 @@ class People extends BaseRepository
 
     protected function searchByProtocolNumber($string)
     {
-        $record = app(Records::class)->findByColumn('protocol', $string);
+        $record = app(Records::class)->findByProtocol($string);
 
         if ($record) {
             $query = $this->getBaseQuery()->where('id', $record->person_id);
@@ -65,7 +78,10 @@ class People extends BaseRepository
             only_numbers($string)
         );
 
-        return $this->response($query->get(), $query->count());
+        return $this->response(
+            $this->addExtraInfo($query->get()),
+            $query->count()
+        );
     }
 
     protected function searchByName($string)

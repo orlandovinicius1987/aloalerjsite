@@ -92,10 +92,7 @@ class Records extends Controller
     public function nonResolved()
     {
         return view('callcenter.records.index')->with([
-            'records' =>
-                $records = $this->recordsRepository->whereIsNullPaginate(
-                    'resolved_at'
-                ),
+            'records' => $records = $this->recordsRepository->allNotResolved(),
             'onlyNonResolved' => true,
         ]);
     }

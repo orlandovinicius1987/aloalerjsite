@@ -37,18 +37,17 @@ class Records extends BaseRepository
      */
     private function addProtocolNumberToRecord($person, $record): void
     {
-        $record->protocol = sprintf(
-            '%s%s%s.%s.%s%s.%s',
-            Carbon::now()->year,
-            Carbon::now()->month,
-            Carbon::now()->day,
-            $person->id,
-            Carbon::now()->hour,
-            Carbon::now()->minute,
-            $record->id
-        );
+        if (!$record->protocol) {
+            $record->protocol = sprintf(
+                '%s%s%s%s',
+                Carbon::now()->format('Ymd'),
+                str_pad(trim($person->id), 8, "0", STR_PAD_LEFT),
+                Carbon::now()->format('Hi'),
+                str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
+            );
 
-        $record->save();
+            $record->save();
+        }
     }
 
     /**
@@ -83,5 +82,24 @@ class Records extends BaseRepository
         $record->resolve_progress_id = $progress->id;
         $record->resolved_by_id = Auth::user()->id;
         $record->save();
+    }
+
+    public function findByProtocol($protocol)
+    {
+        return app(Records::class)->findByColumn('protocol', $protocol)
+            ?: app(Records::class)->findByColumn(
+                'protocol',
+                $this->cleanProtocol($protocol)
+            );
+    }
+
+    private function cleanProtocol($protocol)
+    {
+        return preg_replace('/[^0-9]/', '', $protocol);
+    }
+
+    public function allNotResolved()
+    {
+        return $this->whereIsNullPaginate('resolved_at');
     }
 }

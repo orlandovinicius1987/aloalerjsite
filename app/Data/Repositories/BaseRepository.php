@@ -82,19 +82,19 @@ abstract class BaseRepository
     }
 
     /**
-     * @param $collumn
+     * @param $column
      * @param $value
      *
      * @return mixed
      */
-    public function findByColumn($collumn, $value)
+    public function findByColumn($column, $value)
     {
-        return $this->model::where($collumn, $value)->first();
+        return $this->model::where($column, $value)->first();
     }
 
-    public function allWhereOperator($collumn, $operator, $value)
+    public function allWhereOperator($column, $operator, $value)
     {
-        return $this->model::where($collumn, $operator, $value)->get();
+        return $this->model::where($column, $operator, $value)->get();
     }
 
     /**

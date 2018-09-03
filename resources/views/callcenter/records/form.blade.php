@@ -3,24 +3,31 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header">
-            <ul class="aloalerj-breadcrumbs">
-                <li>
-                    <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                        {{ $person->name }}
-                    </a>
-                </li>
+            <div class="row">
+                <div class="col-8">
+                    <ul class="aloalerj-breadcrumbs">
+                        <li>
+                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                                {{ $person->name }}
+                            </a>
+                        </li>
 
-                <li>
-                    Protocolo {{ $record->protocol }}
-                </li>
+                        <li>
+                            Protocolo {{ $record->protocol }}
+                        </li>
+                    </ul>
+                </div>
 
-                @if ($record->resolved_at)
-                    <li>
-                        PROTOCOLO FINALIZADO
-                    </li>
-                @endif
-
-            </ul>
+                <div class="col-4">
+                        <h5 class="text-right">
+                            @if ($record->resolved_at)
+                                <span class="badge badge-danger">PROCOLO FINALIZADO</span>
+                            @else
+                                <span class="badge badge-success">PROCOLO EM ANDAMENTO</span>
+                            @endif
+                        </h5>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">
