@@ -18,8 +18,11 @@ class Base extends McCoolBasePresenter
 
     public function updated_at_formatted()
     {
-        return $this->wrappedObject->created_at ==
-        $this->wrappedObject->updated_at
+        return (
+            !is_null($this->wrappedObject->created_at) &&
+                $this->wrappedObject->created_at ==
+                    $this->wrappedObject->updated_at
+        )
             ? ''
             : $this->wrappedObject->updated_at->format($this->getDateFormat());
     }
