@@ -6,3 +6,11 @@ require('./apps/contacts.js')
 require('./apps/personal-info.js')
 require('./apps/contact-outside-workflow.js')
 require('./apps/progresses.js')
+
+$(document).ready(function() {
+    $('.select2').select2({
+        theme: "bootstrap",
+        tags: false,
+        width: "100%",
+    });
+});

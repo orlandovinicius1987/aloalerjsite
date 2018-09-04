@@ -76,7 +76,7 @@
                             name="contact_type_id_select"
                             v-model="currentContactType"
                             {{--v-init:current-contact-type="'{{is_null(old('contact_type_id')) ? $contact->contact_type_id : old('contact_type_id')}}'"--}}
-                            class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }}"
+                            class="select form-control{{ $errors->has('contact_type_id') ? ' is-invalid' : '' }} select2"
                             autofocus
                             required
                             disabled="disabled"
