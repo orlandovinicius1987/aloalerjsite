@@ -77,7 +77,7 @@
                         <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
 
                         <div class="col-md-6">
-                            <select id="committee_id" type="origin_id"
+                            <select id="origin_id"
                                     class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
                                     value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id') }}" required
                                     autofocus>
@@ -104,7 +104,7 @@
                     <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Comissão</label>
 
                     <div class="col-md-6">
-                        <select id="committee_id" type="committee_id"
+                        <select id="committee_id"
                                 class="form-control{{ $errors->has('committee_id') ? ' is-invalid' : '' }} select2"
                                 name="committee_id"
                                 value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
@@ -158,7 +158,7 @@
 
             @if (isset($record) and is_null($record->id))
                 <div class="form-group row">
-                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">Assuntosão</label>
+                    <label for="progress_type_id" class="col-sm-4 col-form-label text-md-right">Assunto</label>
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"

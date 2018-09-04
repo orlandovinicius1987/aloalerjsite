@@ -88,6 +88,7 @@
                                class="form-control"
                                value="{{ $person->created_at_formatted ?? '' }}"
                                disabled
+                               disabled
                             >
                         </div>
 
