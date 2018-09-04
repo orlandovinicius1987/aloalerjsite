@@ -1,7 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ovalenca
- * Date: 04/09/2018
- * Time: 13:39
- */
+@if(isset($model) && ! is_null($model->id))
+    <button v-on:click="" class="btn btn-danger" id="editButton">
+        Alterar
+    </button>
+@endif
