@@ -28,13 +28,13 @@
                     <td>
                         {{ $progress->original }}
                     </td>
-                    <td>
+                    <td class="text-center">
                         @if ($progress->record->resolve_progress_id == $progress->id)
                             @if($progress->finalize)
-                                <span class="badge badge-success">Finalizador</span>
+                                <h5><span class="badge badge-success">Sim</span></h5>
                             @endif
                         @else
-                            <span class="badge badge-danger">Não finalizado</span>
+                            <h5><span class="badge badge-danger">Não</span></h5>
                         @endif
                     </td>
                     <td>{{ $progress->created_at_formatted or '' }}</td>
