@@ -71,7 +71,7 @@
 
                         <div class="col-md-6">
                             <select id="committee_id" type="origin_id"
-                                    class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id"
+                                    class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
                                     value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id') }}" required
                                     autofocus>
                                 <option value="">SELECIONE</option>
@@ -98,7 +98,7 @@
 
                     <div class="col-md-6">
                         <select id="committee_id" type="committee_id"
-                                class="form-control{{ $errors->has('committee_id') ? ' is-invalid' : '' }}"
+                                class="form-control{{ $errors->has('committee_id') ? ' is-invalid' : '' }} select2"
                                 name="committee_id"
                                 value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
                                 required
@@ -126,7 +126,7 @@
 
                     <div class="col-md-6">
                         <select id="record_type_id"
-                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }}"
+                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }} select2"
                                 name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id') }}"
                                 required
@@ -155,7 +155,7 @@
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
-                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }}" name="progress_type_id"
+                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
                                 value="" required autofocus>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)
@@ -177,7 +177,7 @@
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
-                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }}" name="area_id"
+                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
                                 value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)

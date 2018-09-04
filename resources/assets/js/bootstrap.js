@@ -32,6 +32,16 @@ import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
 
 /**
+ * Select2
+ */
+
+import 'select2'
+
+import Vue from 'vue'
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+
+/**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
