@@ -47,19 +47,15 @@ class People extends Controller
     /**
      * @return $this
      */
-    public function create($search)
+    public function create()
     {
         Workflow::start();
 
         $newPerson = $this->peopleRepository->new();
 
-        if ($this->peopleRepository->validCpfCnpj($search)) {
-            $newPerson->cpf_cnpj = $search;
-        } else {
-            if (!only_numbers($search)) {
-                $newPerson->name = $search;
-            }
-        }
+        $newPerson->cpf_cnpj = request()->get('cpf_cnpj');
+
+        $newPerson->name = request()->get('name');
 
         return view('callcenter.people.form')
             ->with(['person' => $newPerson])
