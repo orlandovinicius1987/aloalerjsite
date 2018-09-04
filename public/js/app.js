@@ -53069,12 +53069,15 @@ if (jQuery("#" + appName).length > 0) {
 
             typeTimeout: null,
 
-            foundBy: null,
+            foundByCpfCnpj: null,
 
             errors: null,
 
             form: {
-                search: null
+                search: {
+                    name: null,
+                    cpf_cnpj: null
+                }
             }
         },
 
@@ -53089,12 +53092,14 @@ if (jQuery("#" + appName).length > 0) {
                 me.tables.people = null;
 
                 axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
+                    me.tables.people = [];
+                    me.errors = false;
+                    me.foundByCpfCnpj = false;
+
                     if (response.data.success) {
                         me.tables.people = response.data.data;
-                        me.foundBy = response.data.foundBy;
-                    } else {
-                        me.tables.people = [];
                         me.errors = response.data.errors;
+                        me.foundByCpfCnpj = response.data.foundByCpfCnpj;
                     }
 
                     me.refreshing = false;
@@ -53123,6 +53128,9 @@ if (jQuery("#" + appName).length > 0) {
 
                     me.tables[table] = [];
                 });
+            },
+            isSearching: function isSearching() {
+                return this.form.search.name || this.form.search.cpf_cnpj;
             }
         },
 
