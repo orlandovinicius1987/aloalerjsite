@@ -72,10 +72,9 @@ class People extends Controller
         $person_id = $this->userAlreadyRegistered($request);
 
         $route = 'people.show';
-        $message = $this->messageDefault;
+
         if (!$person_id) {
             $route = 'records.create';
-            $message = 'Usuário cadastrado com sucesso.';
         }
 
         $with = [];
