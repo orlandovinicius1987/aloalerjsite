@@ -110,7 +110,7 @@ abstract class BaseRepository
      */
     public function all()
     {
-        return $this->makeResultForSelect($this->model::all());
+        return $this->makeResultForSelect($this->model::orderBy('name')->get());
     }
 
     public function allPaginate($sizeOfPage = 15)
