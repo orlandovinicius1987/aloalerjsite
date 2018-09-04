@@ -28,7 +28,15 @@
                     <td>
                         {{ $progress->original }}
                     </td>
-                    <td>//TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274</td>
+                    <td class="text-center">
+                        @if ($progress->record->resolve_progress_id == $progress->id)
+                            @if($progress->finalize)
+                                <h5><span class="badge badge-success">Sim</span></h5>
+                            @endif
+                        @else
+                            <h5><span class="badge badge-danger">Não</span></h5>
+                        @endif
+                    </td>
                     <td>{{ $progress->created_at_formatted or '' }}</td>
                 </tr>
             @empty

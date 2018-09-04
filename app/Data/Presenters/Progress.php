@@ -10,4 +10,10 @@ class Progress extends Base
 
         return route('progresses.show', ['id' => $id]);
     }
+
+    public function finalize()
+    {
+        $finalize = $this->wrappedObject->record->resolve_progress_id;
+        return $finalize ? true : false;
+    }
 }

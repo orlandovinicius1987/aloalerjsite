@@ -25,7 +25,7 @@ class Progress extends BaseModel
         'original_history_id',
     ];
 
-    protected $presenters = ['link'];
+    protected $presenters = ['link', 'finalize'];
 
     public function getPresenterClass()
     {

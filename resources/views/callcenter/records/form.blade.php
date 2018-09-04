@@ -3,24 +3,31 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header">
-            <ul class="aloalerj-breadcrumbs">
-                <li>
-                    <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                        {{ $person->name }}
-                    </a>
-                </li>
+            <div class="row">
+                <div class="col-8">
+                    <ul class="aloalerj-breadcrumbs">
+                        <li>
+                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                                {{ $person->name }}
+                            </a>
+                        </li>
 
-                <li>
-                    Protocolo {{ $record->protocol }}
-                </li>
+                        <li>
+                            Protocolo {{ $record->protocol }}
+                        </li>
+                    </ul>
+                </div>
 
-                @if ($record->resolved_at)
-                    <li>
-                        //TODO xxxxxxxxxx Issue #274 https://github.com/alerj/aloalerjsite/issues/274
-                    </li>
-                @endif
-
-            </ul>
+                <div class="col-4">
+                        <h5 class="text-right">
+                            @if ($record->resolved_at)
+                                <span class="badge badge-danger">PROCOLO FINALIZADO</span>
+                            @else
+                                <span class="badge badge-success">PROCOLO EM ANDAMENTO</span>
+                            @endif
+                        </h5>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">
@@ -224,7 +231,7 @@
                     </div>
                 </div>
 
-                @if (!$workflow)
+                @if (!$workflow && $record->created_at_formatted)
                     <div class="form-group row">
                         <label for="identification" class="col-sm-4 col-form-label text-md-right">
                             Criado em
