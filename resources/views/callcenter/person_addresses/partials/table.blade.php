@@ -24,7 +24,7 @@
                     @else
                         <td><span class="badge badge-danger">{{$address->active_string}}</span></td>
                     @endIf
-                    <td>{{ $address->created_at_formatted or '' }}</td>
+                    <td>{{ $address->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum Endereço encontrado</p>

@@ -37,7 +37,7 @@
                             <h5><span class="badge badge-danger">Não</span></h5>
                         @endif
                     </td>
-                    <td>{{ $progress->created_at_formatted or '' }}</td>
+                    <td>{{ $progress->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum andamento encontrado.</p>
