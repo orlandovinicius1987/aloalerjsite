@@ -21,4 +21,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function committees()
+    {
+        return $this->hasMany(Committee::class);
+    }
 }

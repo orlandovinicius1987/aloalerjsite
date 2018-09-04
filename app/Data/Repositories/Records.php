@@ -97,4 +97,9 @@ class Records extends BaseRepository
     {
         return preg_replace('/[^0-9]/', '', $protocol);
     }
+
+    public function allNotResolved()
+    {
+        return $this->whereIsNullPaginate('resolved_at');
+    }
 }
