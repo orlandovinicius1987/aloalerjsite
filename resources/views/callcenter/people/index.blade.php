@@ -68,7 +68,6 @@
                         </div>
 
                         <div class="col-6 text-right">
-                            @{{ refreshing }}
                             <h5 v-if="refreshing">
                                 <i class="fa fa-spinner fa-spin text-danger"></i>
                             </h5>
