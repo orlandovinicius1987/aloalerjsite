@@ -1,7 +1,7 @@
 <div class="card-body">
     <div class="row">
         <div class="col-12" v-if="tables.people.length === 0">
-            <h1 class="text-center">Nenhum resultado encontrado</h1>
+            <h1 class="text-center text-danger">Nenhum resultado encontrado</h1>
         </div>
 
         <div class="col-12" v-if="tables.people.length > 0">
