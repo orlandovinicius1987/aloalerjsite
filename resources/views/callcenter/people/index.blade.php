@@ -9,6 +9,7 @@
                         <div class="col-4">
                             <h5>Pesquisar pessoas</h5>
                         </div>
+                    </div>
                     <div class="col-8 text-right" v-if="isSearching() && !foundByCpfCnpj">
                         <a v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+form.search.cpf_cnpj+'&name='+form.search.name" class="btn btn-primary btn-sm float-right">
                             <i class="fa fa-plus"></i>
