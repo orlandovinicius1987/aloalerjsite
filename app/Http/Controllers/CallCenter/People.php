@@ -38,8 +38,6 @@ class People extends Controller
                     ->with('addresses', $addresses)
                     ->with('contacts', $contacts)
                     ->with(['origins' => $this->originsRepository->all()]);
-            } else {
-                dd("pessoa não encontrada");
             }
         } else {
             return view('callcenter.people.index');
@@ -49,19 +47,15 @@ class People extends Controller
     /**
      * @return $this
      */
-    public function create($search)
+    public function create()
     {
         Workflow::start();
 
         $newPerson = $this->peopleRepository->new();
 
-        if ($this->peopleRepository->validCpfCnpj($search)) {
-            $newPerson->cpf_cnpj = $search;
-        } else {
-            if (!only_numbers($search)) {
-                $newPerson->name = $search;
-            }
-        }
+        $newPerson->cpf_cnpj = request()->get('cpf_cnpj');
+
+        $newPerson->name = request()->get('name');
 
         return view('callcenter.people.form')
             ->with(['person' => $newPerson])
@@ -78,10 +72,9 @@ class People extends Controller
         $person_id = $this->userAlreadyRegistered($request);
 
         $route = 'people.show';
-        $message = $this->messageDefault;
+
         if (!$person_id) {
             $route = 'records.create';
-            $message = 'Usuário cadastrado com sucesso.';
         }
 
         $with = [];
@@ -105,11 +98,11 @@ class People extends Controller
         }
 
         $request->merge(['id' => $person_id]);
-
         $person = $this->peopleRepository->createFromRequest($request);
 
         $with['person'] = $person;
-        $with['message'] = $message;
+
+        $this->showSuccessMessage('Usuário cadastrado com sucesso.');
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }
@@ -140,6 +133,8 @@ class People extends Controller
                     15
                 )
             );
+
+            Workflow::end();
 
             return $view
                 ->with('person', $person)

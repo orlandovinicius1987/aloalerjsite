@@ -22,13 +22,12 @@ class User extends Authenticatable
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function committee()
-    {
-        return $this->belongsTo(Committee::class);
-    }
-
     public function userType()
     {
         return $this->belongsTo(UserType::class);
+    }
+    public function committees()
+    {
+        return $this->hasMany(Committee::class);
     }
 }

@@ -50,7 +50,6 @@ class PersonAddresses extends Controller
         $message = $this->messageDefault;
         if (Workflow::started()) {
             $route = 'people_contacts.create';
-            $message = 'Endereço cadastro com sucesso.';
         }
 
         $request->merge(['id' => $request->get('address_id')]);
@@ -69,7 +68,8 @@ class PersonAddresses extends Controller
         $with['records'] = $records;
         $with['addresses'] = $addresses;
         $with['contacts'] = $contacts;
-        $with['message'] = $message;
+
+        $this->showSuccessMessage('Endereço cadastro com sucesso.');
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }

@@ -13,27 +13,12 @@
         </div>
 
         <div class="card-body" id="vue-contacts">
-            @if (isset($message))
-                <div class="alert alert-success">
-                    {{ $message }}
-                </div>
-            @endif
-
-            @if(session()->has('warning'))
-                <div class="alert alert-warning">
-                    {{ session()->get('warning') }}
-                </div>
-            @endif
 
             <form method="POST" action="{{ route('people_contacts.store') }}" aria-label="Contatos">
                 @csrf
 
                 @if (isset($person))
                     <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
-
-                @if (isset($workflow) || old('workflow'))
-                    <input name="workflow" type="hidden" value="{{ is_null(old('workflow')) ? $workflow : old('workflow') }}">
                 @endif
 
                 @if (isset($contact))
@@ -82,6 +67,8 @@
                                name="mobile"
                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}" autofocus
                                v-mask='["(##)####-####", "(##)#####-####"]'
+                               v-model='form.mobile'
+                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
                         >
 
                         @if ($errors->has('mobile'))
@@ -101,6 +88,8 @@
                                value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
                                autofocus
                                v-mask='["(##)#####-####"]'
+                               v-model='form.whatsapp'
+                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
                         >
 
                         @if ($errors->has('whatsapp'))
@@ -136,7 +125,10 @@
                                id="phone"
                                value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
                                autofocus
-                               v-mask="['(##) ####-####', '(##) #####-####']">
+                               v-mask="['(##) ####-####', '(##) #####-####']"
+                               v-model='form.phone'
+                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
+                        >
 
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
