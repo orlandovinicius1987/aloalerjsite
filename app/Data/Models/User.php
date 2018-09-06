@@ -22,6 +22,14 @@ class User extends Authenticatable
      */
     protected $hidden = ['password', 'remember_token'];
 
+<<<<<<< Updated upstream
+=======
+    public function committees()
+    {
+        return $this->belongsToMany(Committee::class, 'user_committees');
+    }
+
+>>>>>>> Stashed changes
     public function userType()
     {
         return $this->belongsTo(UserType::class);

@@ -1,6 +1,8 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Scope\Record as RecordScope;
+
 class Record extends BaseModel
 {
     /**
@@ -23,6 +25,13 @@ class Record extends BaseModel
         'resolved_by_id',
         'record_action_id',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new RecordScope());
+    }
 
     public function progresses()
     {

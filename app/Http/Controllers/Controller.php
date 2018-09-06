@@ -105,25 +105,21 @@ abstract class Controller extends IlluminateController
             ''
         );
 
+        //        dd($committees);
+
         $recordTypes = $this->recordTypesRepository->all();
         $areas = $this->areasRepository->all();
         $origins = $this->originsRepository->all();
         $contactTypes = $this->contactTypesRepository->all();
-        $progressTypes = $this->progressTypesRepository->all();
+        $progressTypes = $this->progressTypesRepository->allOrderBy('name');
 
         return [
-            'committees' => $this->committeesRepository->allWhereOperator(
-                'bio',
-                '<>',
-                ''
-            ),
-            'recordTypes' => $this->recordTypesRepository->all(),
-            'areas' => $this->areasRepository->all(),
-            'origins' => $this->originsRepository->all(),
-            'contactTypes' => $this->contactTypesRepository->all(),
-            'progressTypes' => $this->progressTypesRepository->allOrderBy(
-                'name'
-            ),
+            'committees' => $committees,
+            'recordTypes' => $recordTypes,
+            'areas' => $areas,
+            'origins' => $origins,
+            'contactTypes' => $contactTypes,
+            'progressTypes' => $progressTypes,
         ];
     }
 

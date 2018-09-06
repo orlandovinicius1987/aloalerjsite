@@ -193,4 +193,15 @@ abstract class BaseRepository
 
         return $this->makeResultForSelect($query->orderBy('name')->get());
     }
+
+    public function toArrayWithColumnKey($elements, $columnName)
+    {
+        $returnArray = [];
+
+        foreach ($elements as $element) {
+            $returnArray[$element->$columnName] = $element;
+        }
+
+        return $returnArray;
+    }
 }
