@@ -43,11 +43,7 @@ Route::get('/home', 'Home@index')->name('home');
 Route::group(
     [
         'prefix' => 'callcenter',
-<<<<<<< Updated upstream
-        //        'middleware' => ['auth'],
-=======
         'middleware' => ['auth', 'app.users'],
->>>>>>> Stashed changes
         'namespace' => 'CallCenter',
     ],
     function () {

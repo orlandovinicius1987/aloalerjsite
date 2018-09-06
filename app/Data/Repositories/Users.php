@@ -198,7 +198,6 @@ class Users extends Base
         return User::where('all_notifications', true)->get();
     }
 
-    //returning committees permissions array
     private function updateCurrentCommitteesViaPermissions($permissions)
     {
         $returnCommitteesPermissions = [];
@@ -225,7 +224,7 @@ class Users extends Base
                         $committee->id
                     )
                 ) {
-                    //insere
+                    //precisa inserir
                     $userCommitteesRepository->insertUserCommittee(
                         $user->id,
                         $committee->id
@@ -239,7 +238,7 @@ class Users extends Base
                         $committee->id
                     )
                 ) {
-                    //delete
+                    //precisa deletar
                     $userCommitteesRepository->deleteUserCommittee(
                         $user->id,
                         $committee->id
@@ -248,6 +247,7 @@ class Users extends Base
             }
         }
 
+        //Retorn committees permissions array
         return $returnCommitteesPermissions;
     }
 
@@ -260,14 +260,27 @@ class Users extends Base
             'name'
         );
 
-        if (
-            !is_null($this->updateCurrentCommitteesViaPermissions($permissions))
-        ) {
-            $userType = $userTypesArray['Comissao'];
-        } else {
-            foreach ($permissions as $permission) {
-                if (isset($userTypesArray[$permission['funcao']])) {
-                    $userType = $userTypesArray[$permission['funcao']];
+        $administrator = false;
+
+        foreach ($permissions as $permission) {
+            if ($permission['nomeFuncao'] == 'Administrar') {
+                $userType = $userTypesArray['Administrador'];
+                $administrator = true;
+            }
+        }
+
+        if (!$administrator) {
+            if (
+                !is_null(
+                    $this->updateCurrentCommitteesViaPermissions($permissions)
+                )
+            ) {
+                $userType = $userTypesArray['Comissao'];
+            } else {
+                foreach ($permissions as $permission) {
+                    if (isset($userTypesArray[$permission['nomeFuncao']])) {
+                        $userType = $userTypesArray[$permission['nomeFuncao']];
+                    }
                 }
             }
         }

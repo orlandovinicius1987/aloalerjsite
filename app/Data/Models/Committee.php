@@ -12,13 +12,6 @@ class Committee extends Model
      */
     protected $fillable = ['name', 'bio'];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope(new CommitteeScope());
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_committees');

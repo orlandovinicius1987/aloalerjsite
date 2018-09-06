@@ -26,13 +26,6 @@ class Record extends BaseModel
         'record_action_id',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope(new RecordScope());
-    }
-
     public function progresses()
     {
         return $this->hasMany(Progress::class);

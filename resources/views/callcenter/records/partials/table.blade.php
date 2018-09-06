@@ -39,7 +39,6 @@
             </thead>
 
             @forelse ($records as $record)
-<<<<<<< Updated upstream
                 <tr>
                     <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
                     <td>{{ $record->committee->name ?? '' }}</td>
@@ -52,25 +51,6 @@
                     @endIf
                     <td>{{ $record->created_at_formatted ?? '' }}</td>
                 </tr>
-=======
-                @if(!is_null($record->committee))
-                    @can('committee-restrict', Auth::user(), $record->committee->id)
-                        <tr>
-                            <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
-                            <td>{{ $record->committee->name or '' }}</td>
-                            <td>{{ $record->recordType->name or '' }}</td>
-                            <td>{{ $record->area->name or '' }}</td>
-                        </tr>
-                    @endcan
-                    @else
-                        <tr>
-                            <td><a href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a></td>
-                            <td>{{ $record->committee or '' }}</td>
-                            <td>{{ $record->recordType->name or '' }}</td>
-                            <td>{{ $record->area->name or '' }}</td>
-                        </tr>
-                @endIf
->>>>>>> Stashed changes
             @empty
                 <p>Nenhum Protocolo encontrado</p>
             @endforelse
