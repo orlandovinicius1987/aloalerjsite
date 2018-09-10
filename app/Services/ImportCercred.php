@@ -110,8 +110,6 @@ and historico.historico_id = ' .
 
     private function inferAndFillMissinData()
     {
-        // where('id', 1362639)
-
         Record::all()->each(function ($record) {
             $history = $record->progresses->where(
                 'original_history_id',
@@ -528,19 +526,6 @@ and historico.historico_id = ' .
             unset($allHistory);
             unset($ids);
         });
-
-        //        $this->getHistory($protocol->objeto_id)->each(function (
-        //            $history
-        //        ) use ($newProtocol, $protocol) {
-        //            $history->history_fields = $this->getHistoryFields(
-        //                $history->historico_id
-        //            );
-        //            $this->createProgress($history, $newProtocol);
-        //            $this->increment(
-        //                10,
-        //                "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-        //            );
-        //        });
     }
 
     protected function records()
@@ -595,11 +580,11 @@ and historico.historico_id = ' .
         try {
             return $this->createRecordFromProtocol($protocol);
         } catch (\Exception $exception) {
-            dump($protocol);
+            report($exception);
 
             throw $exception;
         } catch (FatalThrowableError $exception) {
-            dump($protocol);
+            report($exception);
 
             throw $exception;
         }
