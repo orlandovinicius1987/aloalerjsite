@@ -1,6 +1,8 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Scope\Record as RecordScope;
+
 class Record extends BaseModel
 {
     /**
