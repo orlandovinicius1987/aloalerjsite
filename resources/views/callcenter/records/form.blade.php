@@ -262,13 +262,25 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-danger">
-                            @if ($workflow)
-                                Próximo passo >>
-                            @else
+                        @if($workflow)
+                            <button type="submit" class="btn btn-danger">
+                                    Próximo passo >>
+                            </button>
+                        @elseif(is_null($record->committee))
+                            <button type="submit" class="btn btn-danger">
                                 Gravar
-                            @endif
-                        </button>
+                            </button>
+                        @else
+                             @foreach ($committees as $key => $committee)
+                                 @if(!is_null($record->committee) && $record->committee->id == $committee->id)
+                                     @can('committee-'.$committee->slug, \Auth::user())
+                                        <button type="submit" class="btn btn-danger">
+                                            Gravar
+                                        </button>
+                                     @endcan
+                                @endIf
+                             @endforeach
+                        @endIf
                     </div>
                 </div>
 

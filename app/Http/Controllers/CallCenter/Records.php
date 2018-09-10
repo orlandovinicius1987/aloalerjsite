@@ -19,7 +19,7 @@ class Records extends Controller
         return view('callcenter.records.form')
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus());
+            ->with($this->getComboBoxMenus('create'));
     }
 
     protected function makeViewDataFromRecord($record)

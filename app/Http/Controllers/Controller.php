@@ -95,32 +95,37 @@ abstract class Controller extends IlluminateController
         }
     }
 
-    public function getComboBoxMenus()
+    public function getComboBoxMenus($source = 'show')
     {
-        $committees = $this->committeesRepository->allWhereOperator(
-            'bio',
-            '<>',
-            ''
-        );
+        //Filtrar as comissões aqui
+
+        if ($source == 'show') {
+            $committees = $this->committeesRepository->allWhereOperator(
+                'bio',
+                '<>',
+                ''
+            );
+        } else {
+            $committees = $this->committeesRepository->comboBoxItemsWithScope(
+                'bio',
+                '<>',
+                ''
+            );
+        }
+
         $recordTypes = $this->recordTypesRepository->all();
         $areas = $this->areasRepository->all();
         $origins = $this->originsRepository->all();
         $contactTypes = $this->contactTypesRepository->all();
-        $progressTypes = $this->progressTypesRepository->all();
+        $progressTypes = $this->progressTypesRepository->allOrderBy('name');
 
         return [
-            'committees' => $this->committeesRepository->allWhereOperator(
-                'bio',
-                '<>',
-                ''
-            ),
-            'recordTypes' => $this->recordTypesRepository->all(),
-            'areas' => $this->areasRepository->all(),
-            'origins' => $this->originsRepository->all(),
-            'contactTypes' => $this->contactTypesRepository->all(),
-            'progressTypes' => $this->progressTypesRepository->allOrderBy(
-                'name'
-            ),
+            'committees' => $committees,
+            'recordTypes' => $recordTypes,
+            'areas' => $areas,
+            'origins' => $origins,
+            'contactTypes' => $contactTypes,
+            'progressTypes' => $progressTypes,
         ];
     }
 
