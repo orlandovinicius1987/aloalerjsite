@@ -42,7 +42,7 @@
 
                     <div class="col-md-6">
                         <select id="origin_id"
-                                class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }}" name="origin_id" @include('partials.disabled')
+                                class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id" @include('partials.disabled')
                                 value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id') }}" autofocus required>
                             <option value="">SELECIONE</option>
                             @foreach ($origins as $key => $origin)
@@ -68,7 +68,7 @@
 
                     <div class="col-md-6">
                         <select id="record_type_id" type="record_type_id"
-                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }}" name="record_type_id"
+                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }} select2" name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
@@ -94,7 +94,7 @@
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
-                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }}" name="area_id"
+                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
                                 value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
@@ -120,7 +120,7 @@
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
-                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }}" name="progress_type_id"
+                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
                                 value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)

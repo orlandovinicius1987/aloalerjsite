@@ -17,7 +17,7 @@
                     @else
                         <td><span class="badge badge-danger">{{$contact->active_string}}</span></td>
                     @endIf
-                    <td>{{ $contact->created_at_formatted or '' }}</td>
+                    <td>{{ $contact->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum Contato encontrado</p>

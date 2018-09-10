@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <p>Selecione o tipo de contato</p>
-                                <select v-model="currentContactType" name="contact_type_id" class="select form-control" id="contact_type_id">
+                                <select v-model="currentContactType" name="contact_type_id" class="select form-control select2" id="contact_type_id">
                                     <option value="" selected>SELECIONE</option>
                                     @foreach ($contactTypes as $key => $contactType)
                                         <option value="{{ $contactType->id }}">{{ $contactType->name }}</option>
