@@ -99,13 +99,11 @@ abstract class Controller extends IlluminateController
     {
         //Filtrar as comissões aqui
 
-        $committees = $this->committeesRepository->allWhereOperator(
+        $committees = $this->committeesRepository->comboBoxItemsWithScope(
             'bio',
             '<>',
             ''
         );
-
-        //        dd($committees);
 
         $recordTypes = $this->recordTypesRepository->all();
         $areas = $this->areasRepository->all();

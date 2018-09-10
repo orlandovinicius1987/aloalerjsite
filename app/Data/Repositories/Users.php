@@ -276,7 +276,7 @@ class Users extends Base
 
         if (!$administrator) {
             if (
-                !is_null(
+                !empty(
                     $this->updateCurrentCommitteesViaPermissions($permissions)
                 )
             ) {

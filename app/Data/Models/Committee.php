@@ -19,7 +19,7 @@ class Committee extends Model
 
     public function scopePermittedCommittees($query)
     {
-        $committees = \Auth::user()->committees();
+        $committees = \Auth::user()->committees;
 
         $idsArray = [];
         foreach ($committees as $committee) {

@@ -24,4 +24,11 @@ class Committees extends BaseRepository
     {
         return Committee::where('slug', $slug)->first();
     }
+
+    public function comboBoxItemsWithScope()
+    {
+        return $this->model::permittedCommittees()
+            ->where('bio', '<>', '')
+            ->get();
+    }
 }
