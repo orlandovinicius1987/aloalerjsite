@@ -34,6 +34,11 @@
                 <th>Tipo de Protocolo</th>
                 <th>Área</th>
                 <th>Situação</th>
+                {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
+                @if(!isset($person))
+                    <th>Nome</th>
+                @endif
+                {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                 <th>Criado em</th>
             </tr>
             </thead>
@@ -45,10 +50,17 @@
                     <td>{{ $record->recordType->name ?? '' }}</td>
                     <td>{{ $record->area->name ?? '' }}</td>
                     @if($record->active)
-                    <td><span class="badge badge-success">{{$record->active_string}}</span></td>
+                        <td><span class="badge badge-success">{{$record->active_string}}</span></td>
                     @else
                         <td><span class="badge badge-danger">{{$record->active_string}}</span></td>
                     @endIf
+                    {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
+                    @if(!isset($person))
+                        <td>
+                            <a href="{{ route('people.show',['id' => $record->person->id]) }}">{{ $record->person->name }}</a>
+                        </td>
+                    @endif
+                    {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                     <td>{{ $record->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty
