@@ -28,6 +28,6 @@ class User extends Authenticatable
     }
     public function committees()
     {
-        return $this->belongsToMany(Committee::class);
+        return $this->belongsToMany(Committee::class, 'user_committees');
     }
 }

@@ -254,6 +254,8 @@ class Users extends Base
     public function updateCurrentUserTypeViaPermissions($permissions)
     {
         $user = Auth::user();
+        $usersCommitteesRepository = app(UsersCommitteesRepository::class);
+
         $userTypesRepository = app(UserTypesRepository::class);
         $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
             $userTypesRepository->all(),
@@ -266,6 +268,9 @@ class Users extends Base
             if ($permission['nomeFuncao'] == 'Administrar') {
                 $userType = $userTypesArray['Administrador'];
                 $administrator = true;
+                $usersCommitteesRepository->syncOperatorOrAdminUser(
+                    Auth::user()->id
+                );
             }
         }
 
@@ -282,6 +287,9 @@ class Users extends Base
                         $userType = $userTypesArray[$permission['nomeFuncao']];
                     }
                 }
+                $usersCommitteesRepository->syncOperatorOrAdminUser(
+                    Auth::user()->id
+                );
             }
         }
 

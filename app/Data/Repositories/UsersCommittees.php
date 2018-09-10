@@ -2,6 +2,8 @@
 namespace App\Data\Repositories;
 
 use App\Data\Models\UserCommittee;
+use App\Data\Repositories\Users as UsersRepository;
+use App\Data\Repositories\Committees as CommitteesRepository;
 
 class UsersCommittees extends BaseRepository
 {
@@ -24,6 +26,23 @@ class UsersCommittees extends BaseRepository
                 ->where('committee_id', $committee_id)
                 ->first()
         );
+    }
+
+    public function syncOperatorOrAdminUser($user_id)
+    {
+        //Add all committees to user
+        $usersRepository = app(UsersRepository::class);
+        $committeesRepository = app(CommitteesRepository::class);
+
+        $user = $usersRepository->findById($user_id);
+        $committees = $committeesRepository->all();
+
+        $committeesIds = [];
+        foreach ($committees as $committee) {
+            $committeesIds[] = $committee->id;
+        }
+
+        $user->committees()->sync($committeesIds);
     }
 
     public function insertUserCommittee($user_id, $committee_id)
