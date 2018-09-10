@@ -48,13 +48,18 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('committees.index') }}">Comissões</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('records.nonResolved') }}">Não Resolvidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/callcenter') }}">Pesquisar</a>
                         </li>
+                        <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">Entrar</a>

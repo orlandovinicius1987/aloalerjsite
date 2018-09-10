@@ -58,5 +58,16 @@ Route::group(
         require __DIR__ . '/callcenter/progresses.php';
 
         require __DIR__ . '/callcenter/records.php';
+
+        Route::group(['prefix' => 'committees'], function () {
+            Route::get('/create', 'Committees@create')->name(
+                'committees.create'
+            );
+            Route::post('/', 'Committees@store')->name('committees.store');
+            Route::get('/show/{id}', 'Committees@details')->name(
+                'committees.details'
+            );
+            Route::get('/', 'Committees@index')->name('committees.index');
+        });
     }
 );

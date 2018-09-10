@@ -1,5 +1,5 @@
 @if(isset($model) && ! is_null($model->id))
-    <button v-on:click="" class="btn btn-danger" id="editButton">
+    <button v-on:click="editButton" class="btn btn-danger" id="vue-editButton">
         Alterar
     </button>
 @endif
