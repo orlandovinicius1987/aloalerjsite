@@ -268,14 +268,14 @@
                             </button>
                         @elseif(is_null($record->committee))
                             <button type="submit" class="btn btn-danger">
-                                Gravar(não sei se tem permissão)
+                                Gravar
                             </button>
                         @else
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
                                         <button type="submit" class="btn btn-danger">
-                                            Gravar(tem permissão)
+                                            Gravar
                                         </button>
                                      @endcan
                                 @endIf
