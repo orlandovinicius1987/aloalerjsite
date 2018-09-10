@@ -40,7 +40,6 @@ class AppServiceProvider extends ServiceProvider
 
     private function bootGates()
     {
-        //Criar um gate para cada slug
         Gate::define('use-app', function ($user) {
             $permissions = app(Authorization::class)->getUserPermissions(
                 $user->username
