@@ -96,4 +96,13 @@ class Records extends Controller
             'onlyNonResolved' => true,
         ]);
     }
+
+    public function workflow($record_id)
+    {
+        $record = $this->recordsRepository->findById($record_id);
+        $person = $this->peopleRepository->findById($record->person_id);
+        return view('callcenter.records.workflow')
+            ->with('record', $record)
+            ->with('person', $person);
+    }
 }
