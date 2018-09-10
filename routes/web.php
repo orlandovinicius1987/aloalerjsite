@@ -43,7 +43,7 @@ Route::get('/home', 'Home@index')->name('home');
 Route::group(
     [
         'prefix' => 'callcenter',
-        //        'middleware' => ['auth'],
+        'middleware' => ['auth', 'app.users'],
         'namespace' => 'CallCenter',
     ],
     function () {

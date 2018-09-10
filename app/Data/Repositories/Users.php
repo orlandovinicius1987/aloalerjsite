@@ -7,6 +7,10 @@ use App\Services\Authorization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use App\Data\Repositories\Committees as CommitteesRepository;
+use App\Data\Repositories\UsersCommittees as UsersCommitteesRepository;
+use App\Data\Repositories\UserTypes as UserTypesRepository;
+
 class Users extends Base
 {
     /**
@@ -194,17 +198,103 @@ class Users extends Base
         return User::where('all_notifications', true)->get();
     }
 
+    private function updateCurrentCommitteesViaPermissions($permissions)
+    {
+        $returnCommitteesPermissions = [];
+
+        $user = Auth::user();
+
+        $eventsArray = [];
+
+        foreach ($permissions as $permission) {
+            $eventsArray[$permission['evento']] = true;
+        }
+
+        $committeesRepository = app(CommitteesRepository::class);
+        $userCommitteesRepository = app(UsersCommitteesRepository::class);
+        $allCommittees = $committeesRepository->getCommitteeCombobox();
+
+        foreach ($allCommittees as $committee) {
+            if (isset($eventsArray[$committee->slug])) {
+                //O usuário tem permissão para a comissão $committee no SGUS
+                $returnCommitteesPermissions[] = $committee;
+                if (
+                    !$userCommitteesRepository->userHasCommittee(
+                        $user->id,
+                        $committee->id
+                    )
+                ) {
+                    //precisa inserir
+                    $userCommitteesRepository->insertUserCommittee(
+                        $user->id,
+                        $committee->id
+                    );
+                }
+            } else {
+                //O usuário não tem permissão para a comissão $committee no SGUS
+                if (
+                    $userCommitteesRepository->userHasCommittee(
+                        $user->id,
+                        $committee->id
+                    )
+                ) {
+                    //precisa deletar
+                    $userCommitteesRepository->deleteUserCommittee(
+                        $user->id,
+                        $committee->id
+                    );
+                }
+            }
+        }
+
+        //Retorn committees permissions array
+        return $returnCommitteesPermissions;
+    }
+
     public function updateCurrentUserTypeViaPermissions($permissions)
     {
         $user = Auth::user();
+        $usersCommitteesRepository = app(UsersCommitteesRepository::class);
 
-        $userType = $this->tiposUsuarios->findByName(
-            $this->getUserTypeFromPermissions($permissions)
+        $userTypesRepository = app(UserTypesRepository::class);
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
+            $userTypesRepository->all(),
+            'name'
         );
+
+        $administrator = false;
+
+        foreach ($permissions as $permission) {
+            if ($permission['nomeFuncao'] == 'Administrar') {
+                $userType = $userTypesArray['Administrador'];
+                $administrator = true;
+                $usersCommitteesRepository->syncOperatorOrAdminUser(
+                    Auth::user()->id
+                );
+            }
+        }
+
+        if (!$administrator) {
+            if (
+                !empty(
+                    $this->updateCurrentCommitteesViaPermissions($permissions)
+                )
+            ) {
+                $userType = $userTypesArray['Comissao'];
+            } else {
+                foreach ($permissions as $permission) {
+                    if (isset($userTypesArray[$permission['nomeFuncao']])) {
+                        $userType = $userTypesArray[$permission['nomeFuncao']];
+                    }
+                }
+                $usersCommitteesRepository->syncOperatorOrAdminUser(
+                    Auth::user()->id
+                );
+            }
+        }
 
         if ($userType) {
             $user->user_type_id = $userType->id;
-
             $user->save();
         }
     }
