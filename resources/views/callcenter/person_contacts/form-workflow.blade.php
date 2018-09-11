@@ -54,7 +54,7 @@
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -64,7 +64,7 @@
                     <label for="mobile" class="col-sm-4 col-form-label text-md-right">Celular</label>
 
                     <div class="col-md-6">
-                        <input class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
+                        <input class="form-control{{ $errors->getBag('validation')->has('mobile') ? ' is-invalid' : '' }}"
                                id="mobile"
                                name="mobile"
                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}" autofocus
@@ -73,9 +73,9 @@
                                v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
                         >
 
-                        @if ($errors->has('mobile'))
+                        @if ($errors->getBag('validation')->has('mobile'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->add('mobile', 'teste add') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('mobile') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -85,7 +85,7 @@
                     <label for="whatsapp" class="col-sm-4 col-form-label text-md-right">Whatsapp</label>
 
                     <div class="col-md-6">
-                        <input class="form-control{{ $errors->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
+                        <input class="form-control{{ $errors->getBag('validation')->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
                                id="whatsapp"
                                value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
                                autofocus
@@ -94,9 +94,9 @@
                                v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
                         >
 
-                        @if ($errors->has('whatsapp'))
+                        @if ($errors->getBag('validation')->has('whatsapp'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('whatsapp') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('whatsapp') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -106,14 +106,14 @@
                     <label for="email" class="col-sm-4 col-form-label text-md-right">E-mail</label>
 
                     <div class="col-md-6">
-                        <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                        <input type=email class="form-control{{ $errors->getBag('validation')->has('email') ? ' is-invalid' : '' }}" name="email"
                                id="email"
                                value="{{is_null(old('email')) ? $contact->email : old('email') }}"
                                autofocus>
 
-                        @if ($errors->has('email'))
+                        @if ($errors->getBag('validation')->has('email'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('email') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -123,7 +123,7 @@
                     <label for="phone" class="col-sm-4 col-form-label text-md-right">Telefone Fixo</label>
 
                     <div class="col-md-6">
-                        <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                        <input class="form-control{{ $errors->getBag('validation')->has('phone') ? ' is-invalid' : '' }}" name="phone"
                                id="phone"
                                value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
                                autofocus
@@ -132,9 +132,9 @@
                                v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
                         >
 
-                        @if ($errors->has('phone'))
+                        @if ($errors->getBag('validation')->has('phone'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('phone') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('phone') }}</strong>
                             </span>
                         @endif
                     </div>
