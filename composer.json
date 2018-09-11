@@ -16,6 +16,7 @@
         "mccool/laravel-auto-presenter": "^7.0",
         "owen-it/laravel-auditing": "^8.0",
         "pragmarx/coollection": "^0.5.7",
+        "pragmarx/health": "^0.9",
         "pragmarx/zipcode": "^1.5",
         "predis/predis": "^1.1"
     },
