@@ -14,7 +14,7 @@
 
         <div class="card-body" id="vue-contacts">
 
-            <form method="POST" action="{{ route('people_contacts.store') }}" aria-label="Contatos">
+            <form method="POST" action="{{ route('people_contacts.storeViaWorkflow') }}" aria-label="Contatos">
                 @csrf
 
                 @if (isset($person))
@@ -32,12 +32,13 @@
                         <input id="cpf_cnpj"
                                class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
                                value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
-                               readonly="readonly">
+                               readonly="readonly"
+                        >
 
                         @if ($errors->has('cpf_cnpj'))
                             <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('cpf_cnpj') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -48,12 +49,13 @@
                     <div class="col-md-6">
                         <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
-                               readonly="readonly">
+                               readonly="readonly"
+                        >
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -73,8 +75,8 @@
 
                         @if ($errors->has('mobile'))
                             <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('mobile') }}</strong>
-                    </span>
+                                <strong>{{ $errors->add('mobile', 'teste add') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -94,8 +96,8 @@
 
                         @if ($errors->has('whatsapp'))
                             <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('whatsapp') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('whatsapp') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -111,8 +113,8 @@
 
                         @if ($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -132,8 +134,8 @@
 
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('phone') }}</strong>
-                        </span>
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
