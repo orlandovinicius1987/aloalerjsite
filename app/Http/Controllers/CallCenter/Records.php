@@ -19,7 +19,7 @@ class Records extends Controller
         return view('callcenter.records.form')
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus());
+            ->with($this->getComboBoxMenus('create'));
     }
 
     protected function makeViewDataFromRecord($record)
@@ -95,5 +95,14 @@ class Records extends Controller
             'records' => $records = $this->recordsRepository->allNotResolved(),
             'onlyNonResolved' => true,
         ]);
+    }
+
+    public function workflow($record_id)
+    {
+        $record = $this->recordsRepository->findById($record_id);
+        $person = $this->peopleRepository->findById($record->person_id);
+        return view('callcenter.records.workflow')
+            ->with('record', $record)
+            ->with('person', $person);
     }
 }

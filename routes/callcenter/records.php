@@ -7,4 +7,7 @@ Route::group(['prefix' => 'records'], function () {
     Route::get('/non-resolved', 'Records@nonResolved')->name(
         'records.nonResolved'
     );
+    Route::get('/workflow/{record_id}', 'Records@workflow')->name(
+        'records.workflow'
+    );
 });

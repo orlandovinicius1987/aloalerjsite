@@ -36,6 +36,8 @@ class RemoteRequest
                 'allow_redirects' => true,
             ]);
         } catch (ClientException $exception) {
+            report($exception);
+
             $response = $exception->getResponse();
         }
 

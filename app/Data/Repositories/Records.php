@@ -100,6 +100,8 @@ class Records extends BaseRepository
 
     public function allNotResolved()
     {
-        return $this->whereIsNullPaginate('resolved_at');
+        return $this->model::whereNull('resolved_at')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
     }
 }
