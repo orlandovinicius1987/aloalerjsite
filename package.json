@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "select2": "^4.0.6-rc.1",
+        "select2-bootstrap-css": "^1.4.6",
         "vue-select": "^2.5.0",
         "vue-select2": "^0.2.6"
     }

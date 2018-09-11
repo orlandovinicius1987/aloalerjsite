@@ -20,5 +20,6 @@ class Committee extends Model
         'office_phone',
         'office_address',
         'public',
+        'email',
     ];
 }

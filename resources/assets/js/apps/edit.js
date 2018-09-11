@@ -5,7 +5,7 @@ if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
             methods: {
-                editButton(){
+                editButton: function (event){
                     alert('edit!!')
                 },
             },

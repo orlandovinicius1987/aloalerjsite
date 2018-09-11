@@ -4,14 +4,14 @@
     <div class="card mt-4">
         <div class="card-body">
 
-            <form method="POST" action="{{ route('committees.store') }}" aria-label="Comissões" name="formCommittee">
+            <form method="POST" action="{{ route('committees.store') }}" aria-label="Comissões" name="formCommittee" id="formCommittee" >
                 @csrf
 
                 @if (isset($committee))
                     <input name="committee_id" type="hidden" value="{{ $committee->id }}">
                 @endif
 
-                <input name="slug" type="hidden" value="">
+                <input name="slug" type="hidden" value="{{is_null(old('slug')) ? $committee->slug : old('slug') }}">
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label text-md-right">Nome</label>
                     <div class="col-md-6">
@@ -62,6 +62,21 @@
                         <input id="phone"
                                class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
                                value="{{is_null(old('phone')) ? $committee->phone : old('phone') }}"
+                        >
+                        @if ($errors->has('phone'))
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('phone') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-4 col-form-label text-md-right">E-mail</label>
+                    <div class="col-md-6">
+                        <input id="phone"
+                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                               value="{{is_null(old('email')) ? $committee->email : old('email') }}"
                         >
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
@@ -133,9 +148,10 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
+
                         @include('partials.previous-button')
 
-                        @include('partials.edit-button',['model'=>$committee, 'form' =>'formCommittee'])
+                        {{--@include('partials.edit-button',['model'=>$committee, 'form' =>'formCommittee'])--}}
 
                         <button type="submit" class="btn btn-danger">
                             @if ($workflow)
@@ -146,7 +162,6 @@
                         </button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
