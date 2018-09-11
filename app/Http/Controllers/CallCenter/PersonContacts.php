@@ -30,38 +30,23 @@ class PersonContacts extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PersonContactsWorkflowRequest $request)
+    public function storeViaWorkflow(PersonContactsWorkflowRequest $request)
     {
-        $route = 'people.show';
-
-        $message = $this->messageDefault;
-
-        if (Workflow::started()) {
-            $this->createPersonContact($request, 'mobile');
-            $this->createPersonContact($request, 'whatsapp');
-            $this->createPersonContact($request, 'email');
-            $this->createPersonContact($request, 'phone');
-        }
+        $this->createPersonContact($request, 'mobile');
+        $this->createPersonContact($request, 'whatsapp');
+        $this->createPersonContact($request, 'email');
+        $this->createPersonContact($request, 'phone');
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
         $records = $this->recordsRepository->findByPerson($person->id);
-        $addresses = $this->peopleAddressesRepository->findByPerson(
-            $person->id
-        );
-        $contacts = $this->peopleContactsRepository->findByPerson($person->id);
-
-        $with = [];
-        $with = array_merge($with, $this->getComboBoxMenus());
-        $with['person'] = $person;
-        $with['records'] = $records;
-        $with['addresses'] = $addresses;
-        $with['contacts'] = $contacts;
 
         $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
 
         Workflow::end();
 
-        return redirect()->route($route, ['person_id' => $person->id]);
+        return redirect()->route('records.workflow', [
+            'record_id' => $records->last()->id,
+        ]);
     }
 
     /**

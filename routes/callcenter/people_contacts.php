@@ -5,7 +5,9 @@ Route::group(['prefix' => 'people_contacts'], function () {
     Route::get('/create/{person_id}', 'PersonContacts@create')->name(
         'people_contacts.create'
     );
-    Route::post('/', 'PersonContacts@store')->name('people_contacts.store');
+    Route::post('/', 'PersonContacts@storeViaWorkflow')->name(
+        'people_contacts.storeViaWorkflow'
+    );
 
     Route::get('/show/{id}', 'PersonContacts@show')->name(
         'people_contacts.show'

@@ -274,6 +274,8 @@ class Users extends Base
             }
         }
 
+        $userType = null;
+
         if (!$administrator) {
             if (
                 !empty(
