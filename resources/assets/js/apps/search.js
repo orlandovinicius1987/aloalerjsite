@@ -21,7 +21,7 @@ if (jQuery("#" + appName).length > 0) {
 
             form: {
                 search: {
-                    name: null,
+                    name: '',
                     cpf_cnpj: null,
                 },
             }
