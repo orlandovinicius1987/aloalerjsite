@@ -8,7 +8,7 @@
                 @csrf
 
                 @if (isset($committee))
-                    <input name="committee_id" type="hidden" value="{{ $committee->id }}">
+                    <input name="id" type="hidden" value="{{ $committee->id }}">
                 @endif
 
                 <input name="slug" type="hidden" value="{{is_null(old('slug')) ? $committee->slug : old('slug') }}">
@@ -74,13 +74,27 @@
                 <div class="form-group row">
                     <label for="phone" class="col-sm-4 col-form-label text-md-right">E-mail</label>
                     <div class="col-md-6">
-                        <input id="phone"
+                        <input id="email"
                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                value="{{is_null(old('email')) ? $committee->email : old('email') }}"
                         >
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('phone') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="phone" class="col-sm-4 col-form-label text-md-right">Aberta ao Público</label>
+                    <div class="col-md-6">
+                        <input type="hidden" name="public" value="0">
+                        <input id="public" type="checkbox" name="public" {{old('public')
+                        || $committee->public ? 'checked="checked"' : ''}} >
+                        @if ($errors->has('public'))
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('public') }}</strong>
                         </span>
                         @endif
                     </div>
