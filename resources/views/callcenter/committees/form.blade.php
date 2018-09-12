@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card mt-4">
+    <div class="card mt-4" id="vue-committees">
         <div class="card-body">
 
             <form method="POST" action="{{ route('committees.store') }}" aria-label="Comissões" name="formCommittee" id="formCommittee" >
@@ -59,9 +59,13 @@
                 <div class="form-group row">
                     <label for="phone" class="col-sm-4 col-form-label text-md-right">Telefone</label>
                     <div class="col-md-6">
-                        <input id="phone"
-                               class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                        <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                               id="phone"
                                value="{{is_null(old('phone')) ? $committee->phone : old('phone') }}"
+                               autofocus
+                               v-mask="['(##) ####-####', '(##) #####-####']"
+                               v-model="form.phone"
+                               v-init:mobile="'{{is_null(old('phone')) ? $committee->phone : old('phone') }}'"
                         >
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
@@ -80,7 +84,7 @@
                         >
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('phone') }}</strong>
+                            <strong>{{ $errors->first('email') }}</strong>
                         </span>
                         @endif
                     </div>
@@ -105,7 +109,7 @@
                     <div class="col-md-6">
                         <input id="president"
                                class="form-control{{ $errors->has('president') ? ' is-invalid' : '' }}" name="president"
-                               value="{{is_null(old('president')) ? $committee->phone : old('president') }}"
+                               value="{{is_null(old('president')) ? $committee->president : old('president') }}"
                         >
                         @if ($errors->has('president'))
                             <span class="invalid-feedback" role="alert">

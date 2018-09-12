@@ -11,6 +11,17 @@ class CommitteeRequest extends Request
     public function rules()
     {
         return [
+            'name' => 'required',
+            'short_name' => 'required',
+            'link_caption' => 'required',
+            'phone' => 'required',
+            'bio' => 'required',
+            'president' => 'required',
+            'vice_president' => 'required',
+            'office_phone' => 'required',
+            'office_address' => 'required',
+            'public',
+            'email' => 'required|email',
             //'origin_id' => 'required',
             //'original' => 'required_without:record_id',
             // 'progress_type_id' => 'required',

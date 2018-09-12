@@ -7,6 +7,7 @@ require('./apps/personal-info.js')
 require('./apps/contact-outside-workflow.js')
 require('./apps/progresses.js')
 require('./apps/edit.js')
+require('./apps/committees.js')
 
 $(document).ready(function() {
     $('.select2').select2({

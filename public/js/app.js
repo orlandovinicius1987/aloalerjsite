@@ -13954,7 +13954,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -13970,6 +13970,7 @@ __webpack_require__(44);
 __webpack_require__(45);
 __webpack_require__(46);
 __webpack_require__(47);
+__webpack_require__(48);
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53443,6 +53444,33 @@ if (jQuery("#" + appName).length > 0) {
 
 /***/ }),
 /* 48 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-committees';
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            form: {
+                phone: null
+            }
+        },
+
+        methods: {}
+
+    });
+}
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
