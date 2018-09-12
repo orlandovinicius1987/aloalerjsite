@@ -6,6 +6,8 @@ use App\Rules\ContactWorkflow;
 
 class PersonContactsWorkflowRequest extends Request
 {
+    protected $errorBag = 'validation';
+
     public function rules()
     {
         return [
