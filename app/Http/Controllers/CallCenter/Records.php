@@ -101,7 +101,7 @@ class Records extends Controller
     {
         $record = $this->recordsRepository->findById($record_id);
         $person = $this->peopleRepository->findById($record->person_id);
-        return view('callcenter.records.workflow')
+        return view('callcenter.records.form-workflow')
             ->with('record', $record)
             ->with('person', $person);
     }

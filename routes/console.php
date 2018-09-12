@@ -1,11 +1,11 @@
 <?php
 
-use App\Data\Models\Committee;
-use App\Data\Models\Progress;
+use App\Data\Models\Area;
 use App\Data\Models\Record;
-use App\Http\Controllers\Committees;
-use App\Services\ImportCercred;
+use App\Data\Models\Progress;
+use App\Data\Models\Committee;
 use Illuminate\Support\Carbon;
+use App\Services\ImportCercred;
 
 Artisan::command('aloalerj:cercred:import', function () {
     app(ImportCercred::class)->import($this);
@@ -221,6 +221,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
         'Comissão de Redação;Redação;Coronel Jairo;SDD;;MDB;Tatiana;316',
         'Comissão de Servidores Públicos;Servidores Públicos;Nivaldo Mulim;PR;;MDB;Alexandre;316',
         'Comissão de Transportes;Transportes;Marcelo Simão;PP;Dionísio Lins;PP;Viviane;316',
+        'ALÔ ALERJ;ALÔ ALERJ;;;;;;',
     ];
 
     collect($current)->each(function ($committee) {
@@ -385,17 +386,19 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
         'Transportes' => 'Comissão de Transportes',
         'Empresa Privada' =>
             'Comissão de Defesa dos Direitos Humanos e Cidadania',
-        'Desconhecido' => '',
-        'Empresa Pública' => '',
-        'Infra-estrutura' => '',
-        'Concursos públicos' => '',
-        'Leis' => '',
-        'Multas' => '',
-        'Contribuinte' => '',
-        'Outros' => '',
-        'ALÔ-ALERJ' => '',
-        'ALÔ ALERJ' => '',
-        'Nenhum' => '',
+        'Desconhecido' => 'ALÔ ALERJ',
+        'Empresa Pública' =>
+            'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
+        'Infra-estrutura' => 'Comissão de Obras Públicas',
+        'Concursos públicos' => 'Comissão de Servidores Públicos',
+        'Leis' => 'Comissão de Constituição e Justiça',
+        'Multas' => 'Comissão de Transportes',
+        'Contribuinte' =>
+            'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
+        'Outros' => 'ALÔ ALERJ',
+        'ALÔ-ALERJ' => 'ALÔ ALERJ',
+        'ALÔ ALERJ' => 'ALÔ ALERJ',
+        'Nenhum' => 'ALÔ ALERJ',
     ];
 
     foreach (
@@ -429,4 +432,22 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
 
         increment('RECORDS', 100, "record", $current);
     }
+})->describe('fixdata');
+
+Artisan::command('aloalerj:dedup-aloalerj', function () {
+    ini_set('memory_limit', '2048M');
+
+    if (is_null($bad = Area::where('name', 'ALÔ-ALERJ')->first())) {
+        $this->info('already done');
+
+        return;
+    }
+
+    $good = Area::where('name', 'ALÔ ALERJ')->first();
+
+    Record::where('area_id', $bad->id)->update(['area_id' => $good->id]);
+
+    $bad->delete();
+
+    $this->info('done');
 })->describe('fixdata');
