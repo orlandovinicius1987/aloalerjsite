@@ -80,7 +80,8 @@
                             <select id="origin_id"
                                     class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
                                     value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id') }}" required
-                                    autofocus>
+                                    autofocus
+                            >
                                 <option value="">SELECIONE</option>
                                 @foreach ($origins as $key => $origin)
                                     @if(((!is_null($record->id)) && (!is_null($record->origin_id) && $record->origin_id === $origin->id) || (!is_null(old('origin_id'))) && old('origin_id') == $origin->id))
