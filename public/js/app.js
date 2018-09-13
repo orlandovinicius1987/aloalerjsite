@@ -13954,7 +13954,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -13969,8 +13969,8 @@ __webpack_require__(43);
 __webpack_require__(44);
 __webpack_require__(45);
 __webpack_require__(46);
-__webpack_require__(52);
-__webpack_require__(53);
+__webpack_require__(47);
+__webpack_require__(48);
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53424,16 +53424,6 @@ if (jQuery("#" + appName).length > 0) {
 /* 47 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
-/***/ (function(module, exports) {
-
 var appName = 'vue-editButton';
 
 if (jQuery("#" + appName).length > 0) {
@@ -53453,7 +53443,7 @@ if (jQuery("#" + appName).length > 0) {
 }
 
 /***/ }),
-/* 53 */
+/* 48 */
 /***/ (function(module, exports) {
 
 var appName = 'vue-committees';
@@ -53478,6 +53468,12 @@ if (jQuery("#" + appName).length > 0) {
 
     });
 }
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
