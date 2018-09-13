@@ -114,7 +114,7 @@
                         @if ($errors->has('president'))
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('president') }}</strong>
-                        </span>
+                        </span>gb
                         @endif
                     </div>
                 </div>
