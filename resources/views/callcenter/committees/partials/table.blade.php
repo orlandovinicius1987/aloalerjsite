@@ -14,13 +14,13 @@
 
             @forelse ($committees as $committe)
                 <tr>
-                    <td><a href="{{ route('committees.details',['id' => $committe->id]) }}">{{ $committe->name or '' }}</a></td>
-                    <td>{{ $committe->short_name or '' }}</td>
-                    <td>{{ $committe->phone or '' }}</td>
-                    <td>{{ $committe->office_phone or '' }}</td>
-                    <td>{{ $committe->president or '' }}</td>
-                    <td>{{ $committe->vice_president or '' }}</td>
-                    <td>{{ $committe->created_at or '' }}</td>
+                    <td><a href="{{ route('committees.details',['id' => $committe->id]) }}">{{ $committe->name ?? '' }}</a></td>
+                    <td>{{ $committe->short_name ?? '' }}</td>
+                    <td>{{ $committe->phone ?? '' }}</td>
+                    <td>{{ $committe->office_phone ?? '' }}</td>
+                    <td>{{ $committe->president ?? '' }}</td>
+                    <td>{{ $committe->vice_president ?? '' }}</td>
+                    <td>{{ $committe->created_at ?? '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum Protocolo encontrado</p>
