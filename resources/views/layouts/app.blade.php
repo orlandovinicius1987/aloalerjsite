@@ -49,9 +49,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('committees.index') }}">Comissões</a>
-                        </li>
+                        @if (app()->environment('local'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('committees.index') }}">Comissões</a>
+                            </li>
+                        @endif
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('records.nonResolved') }}">Não Resolvidos</a>
