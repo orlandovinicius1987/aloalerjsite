@@ -226,9 +226,13 @@
                 <div class="form-group row">
                     <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
-                        <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+
+                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off">
+                            <div class="handle"></div>
+
+                        {{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
                         <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                        || $record->send_answer_by_email ? 'checked="checked"' : ''}} >
+                        || $record->send_answer_by_email ? 'checked="checked"' : ''}} >--}}
                     </div>
                 </div>
 
@@ -239,6 +243,8 @@
                         </label>
 
                         <div class="col-md-4">
+
+
                             <input id="identification"
                                    class="form-control"
                                    value="{{ $record->created_at_formatted ?? '' }}"
