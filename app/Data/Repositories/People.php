@@ -63,7 +63,14 @@ class People extends BaseRepository
         $record = app(Records::class)->findByProtocol($string);
 
         if ($record) {
-            $query = $this->getBaseQuery()->where('id', $record->person_id);
+            $query = $this->model::with(['contacts', 'addresses'])
+                ->with([
+                    'records' => function ($query) use ($string) {
+                        $query->where('protocol', '=', $string);
+                    },
+                ])
+                ->take(static::RECORDS_COUNT_LIMIT + 1)
+                ->where('id', $record->person_id);
 
             return $this->response($query->get(), $query->count());
         }
