@@ -11,6 +11,10 @@
 // Select2
 @import '~select2/src/scss/core';
 
+// Fonts
+@import 'fonts';
+
+
 .navbar-laravel {
   background-color: $hard-grey;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
