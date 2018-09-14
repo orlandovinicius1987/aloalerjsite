@@ -23,17 +23,15 @@ class HomeTest extends DuskTestCase
 
     public function testLogin()
     {
-        $user = factory(User::class)->create();
+        $user = factory(User::class, 'Operador')->create();
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser
                 ->visit('/callcenter/')
                 ->type('#email', $user->username)
                 ->type('#password', 'secret')
-                ->screenshot('11')
                 ->click('#loginButton')
-                ->screenshot('12')
-                ->assertSee('Call Center');
+                ->assertSee($user->username);
         });
     }
 }

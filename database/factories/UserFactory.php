@@ -19,7 +19,7 @@ use App\Data\Repositories\UserTypes as UserTypesRepository;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $name = $faker->unique()->name;
+    $name = $faker->unique()->firstName;
 
     return [
         'name' => $name,
@@ -35,4 +35,26 @@ $factory->define(User::class, function (Faker $faker) {
                     ->toArray()
             )['id'],
     ];
+});
+
+$factory->defineAs(User::class, 'Administrador', function ($faker) use (
+    $factory
+) {
+    $issue = $factory->raw(User::class);
+    $userTypesRepository = app(UserTypesRepository::class);
+    $userType = $userTypesRepository->findByColumn('name', 'Administrador');
+
+    $issue['user_type_id'] = $userType->id;
+
+    return $issue;
+});
+
+$factory->defineAs(User::class, 'Operador', function ($faker) use ($factory) {
+    $issue = $factory->raw(User::class);
+    $userTypesRepository = app(UserTypesRepository::class);
+    $userType = $userTypesRepository->findByColumn('name', 'Operador');
+
+    $issue['user_type_id'] = $userType->id;
+
+    return $issue;
 });
