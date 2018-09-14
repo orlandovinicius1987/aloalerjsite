@@ -3,9 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\Person;
-
-use App\Data\Repositories\Persons as PersonsRepository;
+use App\Data\Models\PersonAddress;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +16,10 @@ use App\Data\Repositories\Persons as PersonsRepository;
 |
 */
 
-$factory->define(Person::class, function (Faker $faker) {
-    $faker = app('Faker');
-
-    $cpf = $faker->unique()->cpf;
-
+$factory->defineAs(PersonAddress::class, 'Workflow', function (Faker $faker) {
     return [
-        'code' => $cpf,
-        'cpf_cnpj' => $cpf,
-        'name' => $faker->name,
-        'identification' => $faker->unique()->randomNumber(8),
-        'birthdate' => $faker->date,
-        'is_anonymous' => false,
+        'zipcode' => '20560085',
+        'number' => $faker->numberBetween(10, 100),
+        'address' => 'Cotegipe',
     ];
 });
