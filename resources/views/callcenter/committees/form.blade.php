@@ -124,7 +124,7 @@
                     <div class="col-md-6">
                         <input id="vice_president"
                                class="form-control{{ $errors->has('vice_president') ? ' is-invalid' : '' }}" name="vice_president"
-                               value="{{is_null(old('vice_president')) ? $committee->phone : old('vice_president') }}"
+                               value="{{is_null(old('vice_president')) ? $committee->vice_president : old('vice_president') }}"
                         >
                         @if ($errors->has('vice_president'))
                             <span class="invalid-feedback" role="alert">
@@ -172,11 +172,7 @@
                         {{--@include('partials.edit-button',['model'=>$committee, 'form' =>'formCommittee'])--}}
 
                         <button type="submit" class="btn btn-danger">
-                            @if ($workflow)
-                                Próximo passo >>
-                            @else
                                 Gravar
-                            @endif
                         </button>
                     </div>
                 </div>

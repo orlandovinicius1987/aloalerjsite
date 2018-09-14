@@ -2,9 +2,11 @@
 namespace App\Services;
 
 use App\Data\Models\Area;
+use App\Data\Models\Committee;
 use App\Data\Models\Origin;
 use App\Data\Models\RecordAction;
 use App\Data\Models\RecordType;
+use App\Data\Repositories\Records;
 use Carbon\Carbon;
 use App\Data\Models\User;
 use App\Data\Models\Record;
@@ -101,11 +103,11 @@ and historico.historico_id = ' .
         //
         //        $this->recordActions();
 
-        //        $this->records();
+        $this->records();
 
-        // $this->firstAndLastHistories();
+        //  $this->firstAndLastHistories();
 
-        $this->inferAndFillMissinData();
+        //        $this->inferAndFillMissinData();
     }
 
     private function inferAndFillMissinData()
@@ -528,14 +530,61 @@ and historico.historico_id = ' .
         });
     }
 
+    public function importHistory($history, $record)
+    {
+        $history->history_fields = $this->getHistoryFields(
+            $history->historico_id
+        );
+
+        $this->db()->statement(
+            'update historico set imported = true where historico_id = ' .
+                $history->historico_id .
+                ';'
+        );
+
+        $progress = $this->createProgress($history, $record);
+        if ($progress && $progress->created_at < $record->created_at) {
+            $record->updated_at = $record->created_at = $progress->created_at;
+            $record->save();
+        }
+        return $progress;
+    }
+
     protected function records()
     {
+        $this->info('Deleting old records...');
+        DB::statement(
+            'update cercred.historico set imported = false where imported = true'
+        );
+
+        $this->info('Deleting old records...');
+        DB::table('public.records')
+            ->whereDate('created_at', '<=', '2018-08-27')
+            ->orWhereDate('created_at', '>', '2018-09-12')
+            ->orWhereNull('created_at')
+            ->delete();
+
+        $this->info('Deleting old progresses...');
+        DB::table('public.progresses')
+            ->whereDate('created_at', '<=', '2018-08-27')
+            ->orWhereDate('created_at', '>', '2018-09-12')
+            ->orWhereNull('created_at')
+            ->delete();
+
         $this->info('Importing RECORDS...');
 
         Person::all()->each(function ($person) {
             $person->protocols = $this->getProtocolsForPerson($person)->each(
                 function ($protocol) {
-                    $this->importProtocol($protocol);
+                    $record = $this->importProtocol($protocol);
+
+                    //PEGAR OS PRIMEIROS DA TABELA PROTOCOLO DA CERCRED
+                    $this->getHistoryFromProtocol([
+                        $record->historico_id,
+                        $record->historico_id_finalizador,
+                    ])->each(function ($history) use ($record) {
+                        $this->importHistory($history, $record);
+                    });
 
                     $this->increment(
                         'RECORDS',
@@ -545,14 +594,23 @@ and historico.historico_id = ' .
                 }
             );
 
+            $record = $this->createFixRecord($person);
+
+            $this->getHistory($person->id, 'pessoa_id')->each(function (
+                $history
+            ) use ($record) {
+                $this->importHistory($history, $record);
+            });
+
             unset($person);
 
             $this->checkMemory();
         });
 
-        //        $this->getHistory($protocol->objeto_id)->each(function (
-        //            $history
-        //        ) use ($newProtocol, $protocol) {
+        //        $this->getHistory($protocol->objeto_id)->each(function ($history) use (
+        //            $newProtocol,
+        //            $protocol
+        //        ) {
         //            $history->history_fields = $this->getHistoryFields(
         //                $history->historico_id
         //            );
@@ -564,6 +622,50 @@ and historico.historico_id = ' .
         //        });
     }
 
+    public function createFixRecord($person)
+    {
+        $record = Record::create(
+            $this->sanitize([
+                'person_id' => $person->id,
+                'record_type_id' =>
+                    RecordType::where('name', 'Outros')->first()->id,
+                'area_id' => Area::where('name', 'ALÔ ALERJ')->first()->id,
+                'committee_id' =>
+                    Committee::where('name', 'ALÔ ALERJ')->first()->id,
+            ])
+        );
+        $record->protocol = app(Records::class)->makeProtocolNumber(
+            $person,
+            $record
+        );
+        $record->save();
+        return $record;
+    }
+    public function createProgressFromHistory(
+        $history,
+        $newProtocol,
+        $protocol
+    ) {
+        $history->history_fields = $this->getHistoryFields(
+            $history->historico_id
+        );
+        $this->createProgress($history, $newProtocol);
+        $this->increment(
+            'HISTORY',
+            10,
+            "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
+        );
+    }
+    public function getHistoryFromProtocol($ids)
+    {
+        $ids = collect((array) $ids)
+            ->reject(function ($value) {
+                return empty($value);
+            })
+            ->toArray();
+
+        return $this->getHistory($ids, 'historico_id');
+    }
     /**
      * @param $this
      */
@@ -968,6 +1070,9 @@ order by protocolo.protocolo_id
     {
         $objetoId = (array) $objetoId;
 
+        if (count($objetoId) == 0) {
+            return coollect();
+        }
         return coollect(
             $this->db()->select(
                 "select 
@@ -1057,7 +1162,6 @@ where historico_id = {$historyId}"
         }
 
         $this->counter[$counterName]++;
-
         if (
             $this->counter[$counterName] == 1 ||
             $this->counter[$counterName] % $mod === 0
