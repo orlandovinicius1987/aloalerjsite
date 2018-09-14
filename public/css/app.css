@@ -11694,6 +11694,21 @@ a.text-dark:focus {
   border-top: 2px solid #172B53;
 }
 
+.navbar-light .navbar-nav .nav-item {
+  border-right: solid 2px #eff1f4;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.navbar-light .navbar-nav .nav-item i {
+  margin-right: 5px;
+}
+
+.navbar-light .navbar-nav .nav-item:last-child {
+  border-right: none;
+  margin-right: 0px;
+}
+
 .navbar-light .navbar-nav .nav-link {
   font-size: 16px;
   font-family: 'proxima_nova_altbold';

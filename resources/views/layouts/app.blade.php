@@ -62,25 +62,27 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('committees.index') }}">Comissões</a>
+                                <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-search"></i> Pesquisar </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('records.nonResolved') }}">Não Resolvidos</a>
+                                <a class="nav-link" href="{{route('committees.index') }}"><i class="fas fa-layer-group"></i> Comissões </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('/callcenter') }}">Pesquisar</a>
+                                <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
                             </li>
+
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+                                    <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-out-alt"></i> Entrar </a>
                                 </li>
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        <i class="fas fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
