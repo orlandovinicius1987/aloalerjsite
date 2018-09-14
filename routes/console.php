@@ -158,25 +158,30 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
     }
 })->describe('fixdata');
 
-function increment($counterName, $mod = 100, $message = '', &$counter)
-{
-    if (!isset($counter[$counterName])) {
-        $counter[$counterName] = 0;
-    }
+if (!function_exists('increment')) {
+    function increment($counterName, $mod = 100, $message = '', &$counter)
+    {
+        if (!isset($counter[$counterName])) {
+            $counter[$counterName] = 0;
+        }
 
-    $counter[$counterName]++;
+        $counter[$counterName]++;
 
-    if ($counter[$counterName] == 1 || $counter[$counterName] % $mod === 0) {
-        $counterX = str_pad($counter[$counterName], 8, ' ', STR_PAD_LEFT);
+        if (
+            $counter[$counterName] == 1 ||
+            $counter[$counterName] % $mod === 0
+        ) {
+            $counterX = str_pad($counter[$counterName], 8, ' ', STR_PAD_LEFT);
 
-        $memory = str_pad(
-            number_format(memory_get_peak_usage()),
-            13,
-            ' ',
-            STR_PAD_LEFT
-        );
+            $memory = str_pad(
+                number_format(memory_get_peak_usage()),
+                13,
+                ' ',
+                STR_PAD_LEFT
+            );
 
-        echo "{$counterName} - {$counterX} records {$memory} bytes = {$message} \n";
+            echo "{$counterName} - {$counterX} records {$memory} bytes = {$message} \n";
+        }
     }
 }
 

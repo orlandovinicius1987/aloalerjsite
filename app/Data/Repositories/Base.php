@@ -185,4 +185,9 @@ abstract class Base
 
         return $item;
     }
+
+    public function findByColumn($column, $value)
+    {
+        return $this->model::where($column, $value)->first();
+    }
 }
