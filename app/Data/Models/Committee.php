@@ -20,6 +20,8 @@ class Committee extends Model
         'vice_president',
         'office_phone',
         'office_address',
+        'public',
+        'email',
     ];
 
     public function users()
