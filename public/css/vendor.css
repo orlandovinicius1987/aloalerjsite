@@ -11700,6 +11700,10 @@ a.text-dark:focus {
   padding-right: 10px;
 }
 
+.navbar-light .navbar-nav .nav-item i {
+  margin-right: 5px;
+}
+
 .navbar-light .navbar-nav .nav-item:last-child {
   border-right: none;
   margin-right: 0px;
