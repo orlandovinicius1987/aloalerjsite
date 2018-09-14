@@ -34,12 +34,17 @@
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{ url('/callcenter') }}">
-                        <img src="/templates/mv/svg/logo-alerj-monocromatica.svg"
+{{--                        <img src="/templates/mv/svg/logo-alerj-monocromatica.svg"
                              class="alerj-logo img-responsive  d-none d-xl-block">
 
                         <img src="/templates/mv/svg/logo-alo-alerj-nova.svg"
                              class="alolerj-logo-home img-responsive"
-                             alt="AloAlerj"> - Call Center
+                             alt="AloAlerj"> - Call Center--}}
+
+                        <img src="/templates/mv/svg/logo-alo-alerj-callcenter.svg"
+                             class="alolerj-logo-home img-responsive"
+                             alt="AloAlerj - Callcenter">
+
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
