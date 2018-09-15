@@ -105,7 +105,7 @@ and historico.historico_id = ' .
 
         $this->records();
 
-        //  $this->firstAndLastHistories();
+        $this->firstAndLastHistories();
 
         //        $this->inferAndFillMissinData();
     }
@@ -574,35 +574,47 @@ and historico.historico_id = ' .
         $this->info('Importing RECORDS...');
 
         Person::all()->each(function ($person) {
-            $person->protocols = $this->getProtocolsForPerson($person)->each(
-                function ($protocol) {
-                    $record = $this->importProtocol($protocol);
+            $personProtocols = $this->getProtocolsForPerson($person);
 
-                    //PEGAR OS PRIMEIROS DA TABELA PROTOCOLO DA CERCRED
-                    $this->getHistoryFromProtocol([
-                        $record->historico_id,
-                        $record->historico_id_finalizador,
-                    ])->each(function ($history) use ($record) {
-                        $this->importHistory($history, $record);
-                    });
+            $personProtocols->each(function ($protocol) use (
+                $personProtocols,
+                $person
+            ) {
+                $record = $this->importProtocol($protocol);
 
-                    $this->increment(
-                        'RECORDS',
-                        100,
-                        "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record"
-                    );
-                }
-            );
+                //PEGAR OS PRIMEIROS DA TABELA PROTOCOLO DA CERCRED
+                $history =
+                    $personProtocols->count() > 1
+                        ? $this->getHistoryFromProtocol([
+                            $record->historico_id,
+                            $record->historico_id_finalizador,
+                        ])
+                        : $this->getHistory($person->id, 'pessoa_id');
 
-            $record = $this->createFixRecord($person);
+                $history->each(function ($history) use ($record) {
+                    $this->importHistory($history, $record);
+                });
 
-            $this->getHistory($person->id, 'pessoa_id')->each(function (
-                $history
-            ) use ($record) {
-                $this->importHistory($history, $record);
+                $this->increment(
+                    'RECORDS',
+                    100,
+                    "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record"
+                );
             });
 
-            unset($person);
+            if ($personProtocols->count() > 1) {
+                $record = false;
+
+                $this->getHistory($person->id, 'pessoa_id')->each(function (
+                    $history
+                ) use ($record, $person) {
+                    if (!$record) {
+                        $record = $this->createFixRecord($person);
+                    }
+
+                    $this->importHistory($history, $record);
+                });
+            }
 
             $this->checkMemory();
         });
@@ -891,9 +903,8 @@ and historico.historico_id = ' .
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' => $type == 'celular'
-                            ? $mobileId
-                            : $phoneId,
+                        'contact_type_id' =>
+                            $type == 'celular' ? $mobileId : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,
@@ -1137,6 +1148,10 @@ where historico.historico_id = {$historyId};"
 
     public function findActionByHistoryId($historyId)
     {
+        if (empty($historyId)) {
+            return;
+        }
+
         return coollect(
             $this->db()->select(
                 "select
