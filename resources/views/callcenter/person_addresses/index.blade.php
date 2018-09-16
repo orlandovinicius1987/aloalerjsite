@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-8 text-right">
-                <a id="buttonEndereços"
+                <a id="buttonNovoEndereco"
                    href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
                    class="btn btn-primary btn-sm pull-right"
                 >

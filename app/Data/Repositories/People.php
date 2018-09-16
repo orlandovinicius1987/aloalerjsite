@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Data\Repositories;
 
 use Validator;
 use App\Data\Models\Person;
-use Illuminate\Support\Facades\Cache;
 
-class People extends BaseRepository
+class People extends Base
 {
     const RECORDS_COUNT_LIMIT = 20;
 
@@ -63,7 +63,14 @@ class People extends BaseRepository
         $record = app(Records::class)->findByProtocol($string);
 
         if ($record) {
-            $query = $this->getBaseQuery()->where('id', $record->person_id);
+            $query = $this->model::with(['contacts', 'addresses'])
+                ->with([
+                    'records' => function ($query) use ($string) {
+                        $query->where('protocol', '=', $string);
+                    },
+                ])
+                ->take(static::RECORDS_COUNT_LIMIT + 1)
+                ->where('id', $record->person_id);
 
             return $this->response($query->get(), $query->count());
         }

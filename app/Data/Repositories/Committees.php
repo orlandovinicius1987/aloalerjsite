@@ -4,7 +4,7 @@ namespace App\Data\Repositories;
 use App\Data\Models\Committee;
 use App\Data\Models\ViaModel;
 
-class Committees extends BaseRepository
+class Committees extends Base
 {
     /**
      * @var $model

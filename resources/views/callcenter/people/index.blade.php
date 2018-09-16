@@ -11,7 +11,7 @@
                         </div>
 
                         <div class="col-8 text-right" v-if="isSearching() && !foundByCpfCnpj">
-                            <a v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+form.search.cpf_cnpj+'&name='+form.search.name" class="btn btn-primary btn-sm float-right">
+                            <a id="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+form.search.cpf_cnpj+'&name='+form.search.name" class="btn btn-primary btn-sm float-right">
                                 <i class="fa fa-plus"></i>
                                 Cadastrar novo cidadão
                             </a>
@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <input
-                                                type="text" class="form-control"
+                                                id="cpfCnpjSearchInput" type="text" class="form-control"
                                                 placeholder="digite CPF, CNPJ ou Protocolo"
                                                 v-model="form.search.cpf_cnpj"
                                                 @keyup="typeKeyUp"
@@ -38,6 +38,7 @@
 
                                     <div class="col-8">
                                         <input
+                                                id="nameSearchInput"
                                                 type="text" class="form-control"
                                                 placeholder="digite o nome"
                                                 v-model="form.search.name"

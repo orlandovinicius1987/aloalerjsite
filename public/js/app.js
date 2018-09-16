@@ -13969,6 +13969,8 @@ __webpack_require__(43);
 __webpack_require__(44);
 __webpack_require__(45);
 __webpack_require__(46);
+__webpack_require__(52);
+__webpack_require__(53);
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53314,8 +53316,10 @@ if (jQuery("#" + appName).length > 0) {
 
                 switch (this.currentContactTypeName) {
                     case 'mobile':
+                        mask = ['(##) #####-####'];
+                        break;
                     case 'whatsapp':
-                        mask = ["(##) ####-####", "(##) #-####-####"];
+                        mask = ['(##) #####-####'];
                         break;
                     case 'phone':
                         mask = '(##) ####-####';
@@ -53391,6 +53395,13 @@ if (jQuery("#" + appName).length > 0) {
         },
         mounted: function mounted() {
             this.initializeCurrents();
+
+            me = this;
+
+            $("#contact_type_id").on('change', function () {
+                e = document.getElementById("contact_type_id");
+                me.currentContactType = e.options[e.selectedIndex].value;
+            });
         }
     });
 }
@@ -53423,6 +53434,59 @@ if (jQuery("#" + appName).length > 0) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-editButton';
+
+if (jQuery("#" + appName).length > 0) {
+
+    var app = new Vue({
+        el: '#' + appName,
+        methods: {
+            editButton: function editButton(event) {
+                alert('edit!!');
+            }
+        },
+
+        mounted: function mounted() {
+            aler('mounted');
+        }
+    });
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-committees';
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            form: {
+                phone: null
+            }
+        },
+
+        methods: {}
+
+    });
+}
 
 /***/ })
 /******/ ]);

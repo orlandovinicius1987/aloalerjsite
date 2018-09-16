@@ -11,15 +11,77 @@
 // Select2
 @import '~select2/src/scss/core';
 
+// Fonts
+@import 'fonts';
+
+// Toggle
+@import 'toggle';
+
+
+
 .navbar-laravel {
-  background-color: $hard-grey;
+  background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  border-top: 5px solid $blue;
+  border-top: 2px solid $blue;
+}
+
+.navbar-light {
+
+
+  .navbar-nav {
+
+    .nav-item {
+      border-right: solid 2px #eff1f4;
+      margin-right: 10px;
+      padding-right: 10px;
+
+      i {
+        margin-right: 5px;
+      }
+
+
+      &:last-child {
+        border-right: none;
+        margin-right: 0px;
+      }
+
+
+
+    }
+
+
+    .nav-link {
+      font-size: 16px;
+      font-family: 'proxima_nova_altbold';
+      text-transform: uppercase;
+      color: $blue;
+    }
+  }
 }
 
 
+
+
+.login {
+  .card-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+
+
+  border-top: 5px solid $blue !important;
+  padding-bottom: 10px;
+
+}
+
+
+
+
 .card {
-  border: 1px solid rgba(199, 204, 214, 0.7);
+  border: 1px solid $grey-light02;
+  box-shadow: 0px 2px 4px $grey-light03;
 
   .card-header {
     padding: 0.75rem 1.25rem;
@@ -34,6 +96,12 @@
     }
   }
 }
+
+
+
+
+
+
 
 [v-cloak] {display: none}
 

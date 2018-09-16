@@ -1,10 +1,14 @@
 <?php
 namespace App\Data\Models;
 
+use App\Notifications\ProgressCreated;
+use Illuminate\Notifications\Notifiable;
 use App\Data\Presenters\Progress as ProgressPresenter;
 
 class Progress extends BaseModel
 {
+    use Notifiable;
+
     /**
      * @var array
      */
@@ -55,5 +59,19 @@ class Progress extends BaseModel
     public function createdBy()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function sendNotifications()
+    {
+        if ($this->wasRecentlyCreated) {
+            return $this->notify(new ProgressCreated($this));
+        }
+
+        return $this->notify(new ProgressUpdated($this));
+    }
+
+    public function getNotifiables()
+    {
+        return $this->record->person->emails;
     }
 }

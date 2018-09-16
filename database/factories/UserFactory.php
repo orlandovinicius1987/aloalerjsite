@@ -1,6 +1,11 @@
 <?php
 
+namespace Database\Factories;
+
 use Faker\Generator as Faker;
+use App\Data\Models\User;
+
+use App\Data\Repositories\UserTypes as UserTypesRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +18,36 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
+    $name = $faker->unique()->firstName;
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'name' => $name,
+        'username' => $name,
+        'email' => $name . '@alerj.rj.gov.br',
         'password' =>
             '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
+        'user_type_id' =>
+            $faker->randomElement(
+                app(UserTypesRepository::class)
+                    ->all()
+                    ->toArray()
+            )['id'],
     ];
 });
+
+foreach (app(UserTypesRepository::class)->all() as $userType) {
+    $factory->defineAs(User::class, $userType->name, function ($faker) use (
+        $factory,
+        $userType
+    ) {
+        $issue = $factory->raw(User::class);
+        $userTypesRepository = app(UserTypesRepository::class);
+        $userType = $userTypesRepository->findByColumn('name', $userType->name);
+
+        $issue['user_type_id'] = $userType->id;
+
+        return $issue;
+    });
+}

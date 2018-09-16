@@ -18,8 +18,10 @@ if (jQuery("#" + appName).length > 0) {
 
                 switch (this.currentContactTypeName) {
                     case 'mobile' :
+                        mask = ['(##) #####-####'];
+                        break;
                     case 'whatsapp' :
-                        mask = ["(##) ####-####", "(##) #-####-####"];
+                        mask = ['(##) #####-####'];
                         break;
                     case 'phone':
                         mask = '(##) ####-####';
@@ -86,7 +88,6 @@ if (jQuery("#" + appName).length > 0) {
                         this.currentContact = laravel.contact.contact
                     }
                 }
-
             }
         },
 
@@ -96,6 +97,13 @@ if (jQuery("#" + appName).length > 0) {
 
         mounted() {
             this.initializeCurrents()
+
+            me = this
+
+            $("#contact_type_id").on('change', function () {
+                e = document.getElementById("contact_type_id")
+                me.currentContactType = e.options[e.selectedIndex].value
+            })
         }
 
     })
