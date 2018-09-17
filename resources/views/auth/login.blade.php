@@ -53,9 +53,10 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary btn-block">
                                         Entrar
                                     </button>
+
 
                                     {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
                                         {{--Esqueceu a senha?--}}
@@ -68,4 +69,5 @@
             </div>
         </div>
     </div>
+
 @endsection
