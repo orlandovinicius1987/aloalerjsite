@@ -2,6 +2,8 @@
 namespace App\Services;
 
 use App\Services\Traits\RemoteRequest;
+use App\Data\Repositories\Users as UsersRepository;
+use App\Data\Repositories\UserTypes as UserTypesRepository;
 
 class Authorization
 {
@@ -23,7 +25,6 @@ class Authorization
     {
         $this->remoteRequest = $remoteRequest;
     }
-
     /**
      * @param $username
      *
@@ -35,12 +36,21 @@ class Authorization
             return $this->mockedPermissions($username);
         }
 
-        return collect(
-            $this->remoteRequest->post(static::PERMISSIONS_URL, [
-                'username' => $username,
-                'system' => static::SYSTEM_NAME,
-            ])
-        );
+        try {
+            $response = collect(
+                $this->remoteRequest->post(static::PERMISSIONS_URL, [
+                    'username' => $username,
+                    'system' => static::SYSTEM_NAME,
+                ])
+            );
+            return $response;
+        } catch (\Exception $exception) {
+            //            dump('loguei pelas permissões salvas');
+            $usersRepository = app(UsersRepository::class);
+            $user = $usersRepository->findByColumn('username', $username);
+
+            return $this->storedPermissions($user);
+        }
     }
 
     /**
@@ -51,6 +61,30 @@ class Authorization
     public function getUserProfiles($username)
     {
         return collect(['Administrador', 'Usuario']);
+    }
+
+    private function storedPermissions($user)
+    {
+        $userTypesRepostory = app(UserTypesRepository::class);
+        $userTypesArray = $userTypesRepostory->toArrayWithColumnKey(
+            $userTypesRepostory->all(),
+            'id'
+        );
+
+        $permissionsArray = [];
+        foreach ($user->committees as $committee) {
+            $permissionsArray[] = collect([
+                'nomeFuncao' => $committee->name,
+                'evento' => $committee->slug,
+            ]);
+        }
+
+        $permissionsArray[] = collect([
+            'nomeFuncao' => $userTypesArray[$user->userType->id]->name,
+            'evento' => $userTypesArray[$user->userType->id]->name,
+        ]);
+
+        return collect($permissionsArray);
     }
 
     /**

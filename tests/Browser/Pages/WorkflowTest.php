@@ -1,0 +1,77 @@
+<?php
+
+namespace Tests\Browser;
+
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+
+use App\Data\Models\User;
+use App\Data\Models\Person;
+use App\Data\Models\Record;
+use App\Data\Models\PersonAddress;
+use App\Data\Models\PersonContact;
+
+class WorkflowTest extends DuskTestCase
+{
+    public function testWorkFlow()
+    {
+        $user = factory(User::class, 'Operador')->create();
+        $person = (object) factory(Person::class)->raw();
+        $record = (object) factory(Record::class, 'Workflow')->raw();
+        $address = (object) factory(PersonAddress::class, 'Workflow')->raw();
+        $contacts = (object) factory(PersonContact::class, 'Workflow')->raw();
+
+        $faker = app('Faker');
+
+        try {
+            $this->browse(function (Browser $browser) use (
+                $user,
+                $faker,
+                $person,
+                $record,
+                $address,
+                $contacts
+            ) {
+                $browser
+                    ->loginAs($user->id)
+                    ->visit('/callcenter/')
+                    ->type('#cpfCnpjSearchInput', $person->cpf_cnpj)
+                    ->waitForText('Cadastrar novo')
+                    ->click('#cadastrarNovoCidadaoButton')
+                    ->waitForText('DADOS PESSOAIS')
+                    ->type('#identification', $person->identification)
+                    ->type('#name', $person->name)
+                    ->click('#saveButton')
+                    ->waitForText('Usuário cadastrado com sucesso')
+                    ->select('#origin_id', $record->origin_id)
+                    ->select('#committee_id', $record->committee_id)
+                    ->select('#record_type_id', $record->record_type_id)
+                    ->select('#progress_type_id', $record->progress_type_id)
+                    ->select('#area_id', $record->area_id)
+                    ->type('#original', $record->original)
+                    ->click('#saveButton')
+                    ->waitForText('Protocolo cadastrado com sucesso')
+                    ->type('#zipcode', $address->zipcode)
+                    ->type('#number', $address->number)
+                    ->waitUntil(
+                        'document.getElementById(\'street\').value == "' .
+                            $address->address .
+                            '"'
+                    )
+                    ->click('#saveButton')
+                    ->waitForText('Endereço cadastrado com sucesso')
+                    ->type('#mobile', $contacts->mobile)
+                    ->type('#whatsapp', $contacts->whatsapp)
+                    ->type('#email', $contacts->email)
+                    ->type('#phone', $contacts->phone)
+                    ->click('#saveButton')
+                    ->waitForText('Protocolo cadastrado com sucesso')
+                    ->assertSee($user->username);
+            });
+        } catch (\Exception $exception) {
+            throw $exception;
+        } catch (\Throwable $exception) {
+            throw $exception;
+        }
+    }
+}

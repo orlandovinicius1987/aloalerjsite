@@ -82,15 +82,53 @@ class Users extends Base
 
     private function getUserTypeFromPermissions($permissions)
     {
-        $type = $this->isAdministrador($permissions)
-            ? 'Administrador'
-            : studly_case(
-                $this->isType($permissions, 'Administrador')
-                    ? 'administrador'
-                    : 'usuario'
-            );
+        $other = '';
+        $admin = false;
+        $committee = false;
 
-        return app(UserTypes::class)->findByName($type);
+        $userTypesRepository = app(UserTypesRepository::class);
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
+            $userTypesRepository->all(),
+            'name'
+        );
+
+        foreach ($permissions as $permission) {
+            if (isset($userTypesArray[$permission['nomeFuncao']])) {
+                dump($permission['nomeFuncao']);
+                if ($permission['nomeFuncao'] == 'Administrador') {
+                    $admin = true;
+                } else {
+                    $other = $permission['nomeFuncao'];
+                }
+            }
+        }
+
+        if ($other == '' && !$admin) {
+            $committeesRepository = app(CommitteesRepository::class);
+            $allCommittees = $committeesRepository->getCommitteeCombobox();
+
+            $eventsArray = [];
+            foreach ($permissions as $permission) {
+                $eventsArray[$permission['evento']] = true;
+            }
+
+            foreach ($allCommittees as $committee) {
+                if (isset($eventsArray[$committee->slug])) {
+                    //O usuário tem permissão para a comissão $committee no SGUS
+                    $committee = true;
+                }
+            }
+        }
+
+        if ($admin) {
+            return app(UserTypes::class)->findByName('Administrador');
+        } elseif ($other != '') {
+            return app(UserTypes::class)->findByName($other);
+        } elseif ($committee) {
+            return app(UserTypes::class)->findByName('Comissao');
+        } else {
+            dd('Usuário sem autorização');
+        }
     }
 
     private function isAdministrador($permissions)
@@ -141,7 +179,7 @@ class Users extends Base
 
                 $user->email = $email;
 
-                $user->password = Hash::make($email);
+                $user->password = Hash::make($credentials['password']);
 
                 $user->user_type_id = $this->getUserTypeFromPermissions(
                     app(Authorization::class)->getUserPermissions(
@@ -149,6 +187,9 @@ class Users extends Base
                     )
                 )->id;
 
+                $user->save();
+            } else {
+                $user->password = Hash::make($credentials['password']);
                 $user->save();
             }
 
@@ -265,7 +306,7 @@ class Users extends Base
         $administrator = false;
 
         foreach ($permissions as $permission) {
-            if ($permission['nomeFuncao'] == 'Administrar') {
+            if ($permission['nomeFuncao'] == 'Administrador') {
                 $userType = $userTypesArray['Administrador'];
                 $administrator = true;
                 $usersCommitteesRepository->syncOperatorOrAdminUser(
@@ -273,8 +314,6 @@ class Users extends Base
                 );
             }
         }
-
-        $userType = null;
 
         if (!$administrator) {
             if (
@@ -298,6 +337,8 @@ class Users extends Base
         if ($userType) {
             $user->user_type_id = $userType->id;
             $user->save();
+        } else {
+            dd('Você não está autorizado a usar o sistema');
         }
     }
 
