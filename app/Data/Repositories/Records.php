@@ -38,14 +38,7 @@ class Records extends BaseRepository
     private function addProtocolNumberToRecord($person, $record): void
     {
         if (!$record->protocol) {
-            $record->protocol = sprintf(
-                '%s%s%s%s',
-                Carbon::now()->format('Ymd'),
-                str_pad(trim($person->id), 8, "0", STR_PAD_LEFT),
-                Carbon::now()->format('Hi'),
-                str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
-            );
-
+            $record->protocol = $this->makeProtocolNumber($person, $record);
             $record->save();
         }
     }
@@ -103,5 +96,20 @@ class Records extends BaseRepository
         return $this->model::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
+    }
+
+    /**
+     * @param $person
+     * @param $record
+     */
+    public function makeProtocolNumber($person, $record)
+    {
+        return sprintf(
+            '%s%s%s%s',
+            Carbon::now()->format('Ymd'),
+            str_pad(trim($person->id), 8, "0", STR_PAD_LEFT),
+            Carbon::now()->format('Hi'),
+            str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
+        );
     }
 }

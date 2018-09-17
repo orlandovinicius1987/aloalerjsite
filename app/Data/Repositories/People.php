@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Data\Repositories;
 
 use Validator;
 use App\Data\Models\Person;
-use Illuminate\Support\Facades\Cache;
 
 class People extends BaseRepository
 {
