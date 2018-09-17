@@ -37,4 +37,9 @@ class PersonContact extends BaseModel
     {
         return $this->belongsTo(ContactType::class);
     }
+
+    public function routeNotificationForMail($notification)
+    {
+        return $this->contact;
+    }
 }
