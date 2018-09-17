@@ -4,10 +4,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Entrar</div>
+                <div class="card login">
+                    {{--<div class="card-header">Entrar</div>--}}
 
                     <div class="card-body">
+
+                        <div class="card-title">
+                            <h3> <i class="fas fa-sign-in-alt"></i> Entrar</h3>
+                        </div>
+
+
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 

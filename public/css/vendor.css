@@ -11716,6 +11716,18 @@ a.text-dark:focus {
   color: #172B53;
 }
 
+.login {
+  border-top: 5px solid #172B53 !important;
+  padding-bottom: 10px;
+}
+
+.login .card-title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+
 .card {
   border: 1px solid #ebf1f3;
   -webkit-box-shadow: 0px 2px 4px #dae4e9;
