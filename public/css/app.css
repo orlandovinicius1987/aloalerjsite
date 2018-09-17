@@ -11759,6 +11759,27 @@ a.text-dark:focus {
   color: #2c53a0;
 }
 
+.login .form-control {
+  border: solid 1px #ebf1f3;
+  color: #546975;
+}
+
+.login .form-control::-webkit-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control:-ms-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control::-ms-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control::placeholder {
+  color: #dae4e9;
+}
+
 .card {
   border: 1px solid #ebf1f3;
   -webkit-box-shadow: 0px 2px 4px #dae4e9;

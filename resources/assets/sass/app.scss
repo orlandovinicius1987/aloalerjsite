@@ -85,6 +85,15 @@
   border-top: 5px solid $blue !important;
   padding-bottom: 10px;
 
+  .form-control {
+    border: solid 1px $grey-light02;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-light03;
+    }
+
+  }
+
 }
 
 
