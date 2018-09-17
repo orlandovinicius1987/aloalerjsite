@@ -30,7 +30,7 @@
                                 <p>Contato</p>
 
                                 <the-mask
-                                    v-if="this.currentContactType"
+                                    v-if="currentContactType"
                                     v-model="currentContact"
                                     class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
                                     :mask="mask"

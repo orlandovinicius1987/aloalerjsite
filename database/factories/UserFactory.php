@@ -37,24 +37,17 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(User::class, 'Administrador', function ($faker) use (
-    $factory
-) {
-    $issue = $factory->raw(User::class);
-    $userTypesRepository = app(UserTypesRepository::class);
-    $userType = $userTypesRepository->findByColumn('name', 'Administrador');
+foreach (app(UserTypesRepository::class)->all() as $userType) {
+    $factory->defineAs(User::class, $userType->name, function ($faker) use (
+        $factory,
+        $userType
+    ) {
+        $issue = $factory->raw(User::class);
+        $userTypesRepository = app(UserTypesRepository::class);
+        $userType = $userTypesRepository->findByColumn('name', $userType->name);
 
-    $issue['user_type_id'] = $userType->id;
+        $issue['user_type_id'] = $userType->id;
 
-    return $issue;
-});
-
-$factory->defineAs(User::class, 'Operador', function ($faker) use ($factory) {
-    $issue = $factory->raw(User::class);
-    $userTypesRepository = app(UserTypesRepository::class);
-    $userType = $userTypesRepository->findByColumn('name', 'Operador');
-
-    $issue['user_type_id'] = $userType->id;
-
-    return $issue;
-});
+        return $issue;
+    });
+}

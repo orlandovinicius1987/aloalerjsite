@@ -13,7 +13,7 @@
 
             <div class="col-8 text-right">
                 @if(isset($person))
-                    <a id="buttonAndamentos"
+                    <a id="buttonNovoProtocolo"
                        href="{{ route('records.create',['person_id'=>$person->id]) }}"
                        class="btn btn-primary btn-sm pull-right"
                     >

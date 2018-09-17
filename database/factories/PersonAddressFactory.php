@@ -20,6 +20,6 @@ $factory->defineAs(PersonAddress::class, 'Workflow', function (Faker $faker) {
     return [
         'zipcode' => '20560085',
         'number' => $faker->numberBetween(10, 100),
-        'address' => 'Cotegipe',
+        'address' => 'Rua Barão de Cotegipe',
     ];
 });
