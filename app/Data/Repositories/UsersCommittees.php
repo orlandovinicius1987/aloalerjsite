@@ -5,7 +5,7 @@ use App\Data\Models\UserCommittee;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 
-class UsersCommittees extends BaseRepository
+class UsersCommittees extends Base
 {
     /**
      * @var $model

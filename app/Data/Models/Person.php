@@ -1,6 +1,7 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Repositories\ContactTypes;
 use App\Support\Constants;
 use App\Data\Presenters\Person as PersonPresenter;
 
@@ -46,5 +47,12 @@ class Person extends BaseModel
     public function records()
     {
         return $this->hasMany(Record::class);
+    }
+
+    public function emails()
+    {
+        $type = app(ContactTypes::class)->findByName('E-mail');
+
+        return $this->contacts()->where('contact_type_id', $type->id);
     }
 }

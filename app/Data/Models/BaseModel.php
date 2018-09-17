@@ -76,6 +76,11 @@ abstract class BaseModel extends Model
         return parent::save($options);
     }
 
+    public function sendNotifications()
+    {
+        return $this;
+    }
+
     // Isso aqui está BUGADO. Não está retornando array em tudo quando se faz um ->toArray()
     //    /**
     //     * @return array
