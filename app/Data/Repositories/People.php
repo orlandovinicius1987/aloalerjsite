@@ -5,7 +5,7 @@ namespace App\Data\Repositories;
 use Validator;
 use App\Data\Models\Person;
 
-class People extends BaseRepository
+class People extends Base
 {
     const RECORDS_COUNT_LIMIT = 20;
 

@@ -3,7 +3,7 @@ namespace App\Data\Repositories;
 
 use App\Data\Models\ProgressType;
 
-class ProgressTypes extends BaseRepository
+class ProgressTypes extends Base
 {
     /**
      * @var $model
