@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button id="saveButton" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="saveButton" type="submit" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Salvar
                         </button>
                     </div>

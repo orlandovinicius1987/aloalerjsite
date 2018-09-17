@@ -12,6 +12,7 @@ use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
 
 use App\Data\Repositories\People as PeopleRepository;
+use App\Data\Repositories\ContactTypes as ContactTypesRepository;
 
 use Faker\Generator as Faker;
 
@@ -57,7 +58,7 @@ class InsertTest extends DuskTestCase
         );
         $address = (object) $address;
 
-        $contacts = factory(PersonContact::class, 'Workflow')->raw();
+        $contactsArray = factory(PersonContact::class, 'Workflow')->raw();
 
         $faker = app('Faker');
 
@@ -68,7 +69,7 @@ class InsertTest extends DuskTestCase
                 $person,
                 $record,
                 $address,
-                $contacts
+                $contactsArray
             ) {
                 $cont = 1;
                 $browser
@@ -106,18 +107,31 @@ class InsertTest extends DuskTestCase
                     ->click('#saveButton')
                     ->screenshot($cont++)
                     ->waitForText('Gravado com sucesso')
-                    ->screenshot($cont++)
-                    ->click('#buttonNovoContato')
-                    ->type('#identification', $person->identification)
-                    ->type('#name', $person->name)
-                    ->click('#saveButton')
-                    ->waitForText('Gravado com sucesso')
-                    ->type('#mobile', $contacts->mobile)
-                    ->type('#whatsapp', $contacts->whatsapp)
-                    ->type('#email', $contacts->email)
-                    ->type('#phone', $contacts->phone)
-                    ->click('#saveButton')
-                    ->assertSee($user->username);
+                    ->screenshot($cont++);
+
+                foreach ($contactsArray as $key => $contact) {
+                    $contactType = app(
+                        ContactTypesRepository::class
+                    )->findByColumn('code', $key);
+
+                    //                        ->type('#contact', $contact)
+                    //                        ->select('#contact_type_id', $contactType->id)
+                    $browser
+                        ->click('#buttonNovoContato')
+                        ->screenshot($cont++)
+                        ->screenshot($cont++)
+                        ->click('#saveButton')
+                        ->screenshot($cont++);
+                }
+
+                //                $browser
+                //                    ->waitForText('Gravado com sucesso')
+                //                    ->type('#mobile', $contacts->mobile)
+                //                    ->type('#whatsapp', $contacts->whatsapp)
+                //                    ->type('#email', $contacts->email)
+                //                    ->type('#phone', $contacts->phone)
+                //                    ->click('#saveButton')
+                //                    ->assertSee($user->username);
             });
         } catch (\Exception $exception) {
             throw $exception;

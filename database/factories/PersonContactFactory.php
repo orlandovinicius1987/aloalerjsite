@@ -21,6 +21,6 @@ $factory->defineAs(PersonContact::class, 'Workflow', function (Faker $faker) {
         'mobile' => $faker->numberBetween(10000000000, 99999999999),
         'whatsapp' => $faker->numberBetween(10000000000, 99999999999),
         'email' => $faker->email,
-        'phone' => $faker->numberBetween(10000000000, 99999999999),
+        'phone' => $faker->numberBetween(1000000000, 9999999999),
     ];
 });
