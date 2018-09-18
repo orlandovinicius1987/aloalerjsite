@@ -11716,7 +11716,7 @@ a.text-dark:focus {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  border-top: 2px solid #172B53;
+  border-top: 4px solid #172B53;
 }
 
 .navbar-light .navbar-nav .nav-item {
