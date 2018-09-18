@@ -1,7 +1,18 @@
-
 <div class="row">
-    <div class="col-12" v-if="tables.people && tables.people.length === 0">
-        <h1 class="text-center text-danger"><i class="far fa-frown"></i><br>Nenhum resultado encontrado</h1>
+    <div class="col-12" v-if="form.search.search.length > 0 && tables.people && tables.people.length === 0">
+        <h1 class="text-center text-danger" >
+            <i class="far fa-frown"></i>
+
+            <br>
+
+            <span v-if="errors">
+                @{{ errors }}
+            </span>
+
+            <span v-else>
+                Nenhum resultado encontrado
+            </span>
+        </h1>
     </div>
 
     <div class="col-12" v-if="tables.people && tables.people.length > 0">
