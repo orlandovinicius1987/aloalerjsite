@@ -31,4 +31,23 @@ class Committees extends BaseRepository
             ->where('bio', '<>', '')
             ->get();
     }
+
+    public function searchByEverything($search)
+    {
+        $result = $this->emptyResponse();
+
+        $name = $search;
+
+        $resultName = $this->searchByName($name);
+        if (!is_null($resultName)) {
+            $result['data'] = coollect($result['data'])->merge($resultName);
+        }
+
+        return $result;
+    }
+
+    public function searchByName($name)
+    {
+        return $this->model::where('name', 'ilike', '%' . $name . '%')->get();
+    }
 }

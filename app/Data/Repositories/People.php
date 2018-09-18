@@ -7,8 +7,6 @@ use App\Data\Models\Person;
 
 class People extends BaseRepository
 {
-    const RECORDS_COUNT_LIMIT = 20;
-
     /**
      * @var $model
      */
@@ -27,7 +25,7 @@ class People extends BaseRepository
         });
     }
 
-    private function emptyResponse()
+    protected function emptyResponse()
     {
         return $this->response([], 0);
     }

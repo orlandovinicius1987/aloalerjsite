@@ -10,6 +10,8 @@ abstract class BaseRepository
      */
     protected $model;
 
+    const RECORDS_COUNT_LIMIT = 20;
+
     /**
      * @param Request $request
      *
@@ -203,5 +205,20 @@ abstract class BaseRepository
         }
 
         return $returnArray;
+    }
+
+    protected function response($data, $count = 0, $messages = null)
+    {
+        return [
+            'data' => $data,
+            'success' => is_null($messages),
+            'errors' => $messages,
+            'count' => $count,
+        ];
+    }
+
+    protected function emptyResponse()
+    {
+        return $this->response([], 0);
     }
 }
