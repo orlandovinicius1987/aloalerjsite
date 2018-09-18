@@ -11780,6 +11780,28 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.search .form-control {
+  padding: 1.475rem 1.4rem;
+  font-size: 1.2rem;
+  color: #546975;
+}
+
+.search .form-control::-webkit-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control:-ms-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control::-ms-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control::placeholder {
+  color: #b8c5cc;
+}
+
 .section-title {
   margin-bottom: 15px;
   font-size: 30px;

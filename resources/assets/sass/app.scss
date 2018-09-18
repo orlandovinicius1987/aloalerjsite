@@ -111,6 +111,19 @@
 
 
 
+.search {
+  .form-control {
+    padding: 1.475rem 1.4rem;
+    font-size: 1.2rem;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-dark004;
+    }
+  }
+}
+
+
+
 //*****************************  Sections Style   *****************************
 
 
