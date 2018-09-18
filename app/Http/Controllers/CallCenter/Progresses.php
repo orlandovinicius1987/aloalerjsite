@@ -49,6 +49,20 @@ class Progresses extends Controller
             ->with($this->getSuccessMessage());
     }
 
+    public function storeAndOpen(ProgressRequest $request)
+    {
+        $progress = $this->progressesRepository->createFromRequest($request); //->sendNotifications();
+
+        $this->recordsRepository->markAsNotResolved(
+            $request->get('record_id'),
+            $progress
+        );
+
+        return redirect()
+            ->route('records.show', ['id' => $request->get('record_id')])
+            ->with($this->getSuccessMessage());
+    }
+
     /**
      * @param $id
      *
@@ -57,6 +71,11 @@ class Progresses extends Controller
     public function show($id)
     {
         $progress = $this->progressesRepository->findById($id);
+
+        if ($progress->created_at <= now()) {
+            $formDisabled = false;
+        }
+
         return view('callcenter.progress.form')
             ->with([
                 'progress' => $progress,
@@ -65,6 +84,6 @@ class Progresses extends Controller
                 ),
             ])
             ->with($this->getComboBoxMenus())
-            ->with('formDisabled', true);
+            ->with('formDisabled', $formDisabled);
     }
 }

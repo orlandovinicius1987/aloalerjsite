@@ -57,8 +57,8 @@
 
                         @if ($errors->has('origin_id'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('origin_id') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('origin_id') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -167,9 +167,15 @@
                         <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger" @include('partials.disabled')>
                             Gravar
                         </button>
-                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger" @include('partials.disabled')>
-                            Gravar e finalizar
-                        </button>
+                        @if ($record->resolved_at)
+                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger" @include('partials.disabled')>
+                                Gravar e reabrir
+                            </button>
+                        @else
+                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger" @include('partials.disabled')>
+                                Gravar e finalizar
+                            </button>
+                        @endif
                     </div>
                 </div>
             </form>

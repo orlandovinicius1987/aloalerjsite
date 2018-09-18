@@ -9,10 +9,10 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         methods: {
-            changeFormRoute(oi){
-                e = document.getElementById('formProgress')
-                e.action = oi
-                e.submit()
+            changeFormRoute(action){
+                form = document.getElementById('formProgress')
+                form.action = action
+                form.submit()
             }
         },
 
