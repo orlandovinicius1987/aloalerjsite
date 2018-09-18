@@ -19,7 +19,7 @@ use App\Data\Repositories\UserTypes as UserTypesRepository;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $name = $faker->unique()->firstName;
+    $name = strtolower($faker->unique()->firstName);
 
     return [
         'name' => $name,

@@ -79,7 +79,7 @@ class Authentication
             $usersRepository = app(UsersRepository::class);
             $user = $usersRepository->findByColumn(
                 'username',
-                extract_credentials($request)['username']
+                strtolower(extract_credentials($request)['username'])
             );
 
             if (is_null($user)) {

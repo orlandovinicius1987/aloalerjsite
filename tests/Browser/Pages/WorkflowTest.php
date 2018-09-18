@@ -66,7 +66,12 @@ class WorkflowTest extends DuskTestCase
                     ->type('#phone', $contacts->phone)
                     ->click('#saveButton')
                     ->waitForText('Protocolo cadastrado com sucesso')
-                    ->assertSee($user->username);
+                    ->waitUntil(
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                            $user->username .
+                            '\')'
+                    )
+                    ->assertPresent('#navbarDropdown');
             });
         } catch (\Exception $exception) {
             throw $exception;

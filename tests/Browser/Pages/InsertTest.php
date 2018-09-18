@@ -108,28 +108,27 @@ class InsertTest extends DuskTestCase
                     ->screenshot($cont++)
                     ->waitForText('Gravado com sucesso')
                     ->screenshot($cont++);
-
                 foreach ($contactsArray as $key => $contact) {
                     $contactType = app(
                         ContactTypesRepository::class
                     )->findByColumn('code', $key);
-
                     $browser
                         ->click('#buttonNovoContato')
                         ->screenshot($cont++)
+                        ->waitForText('Selecione o tipo de contato')
                         ->screenshot($cont++)
-                        ->click('#saveButton')
+                        ->waitUntil(
+                            'document.getElementById(\'contact_type_id\').options.length > 1'
+                        )
+                        ->select('#contact_type_id', $contactType->id)
+                        ->screenshot($cont++)
+                        ->type('#contact', $contact)
+                        ->screenshot($cont++)
+                        ->click('#saveContactButton')
+                        ->screenshot($cont++)
+                        ->assertSee($contact)
                         ->screenshot($cont++);
                 }
-
-                //                $browser
-                //                    ->waitForText('Gravado com sucesso')
-                //                    ->type('#mobile', $contacts->mobile)
-                //                    ->type('#whatsapp', $contacts->whatsapp)
-                //                    ->type('#email', $contacts->email)
-                //                    ->type('#phone', $contacts->phone)
-                //                    ->click('#saveButton')
-                //                    ->assertSee($user->username);
             });
         } catch (\Exception $exception) {
             throw $exception;
