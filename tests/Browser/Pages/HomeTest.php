@@ -25,13 +25,11 @@ class HomeTest extends DuskTestCase
     {
         $user = factory(User::class, 'Operador')->create();
 
-        $cont = 0;
-        $this->browse(function (Browser $browser) use ($user, $cont) {
+        $this->browse(function (Browser $browser) use ($user) {
             $browser
                 ->visit('/callcenter/')
                 ->type('#email', $user->username)
                 ->type('#password', 'secret')
-                ->screenshot($cont++)
                 ->click('#loginButton')
                 ->waitUntil(
                     'document.getElementById(\'navbarDropdown\').text.includes(\'' .

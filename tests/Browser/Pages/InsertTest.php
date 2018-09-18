@@ -71,18 +71,13 @@ class InsertTest extends DuskTestCase
                 $address,
                 $contactsArray
             ) {
-                $cont = 1;
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->screenshot($cont++)
                     ->type('#nameSearchInput', $person->name)
-                    ->screenshot($cont++)
                     ->waitForText($person->name)
-                    ->screenshot($cont++)
                     ->clickLink($person->name)
                     ->click('#buttonNovoProtocolo')
-                    ->screenshot($cont++)
                     ->assertPathIs($record->create_url)
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
@@ -90,12 +85,9 @@ class InsertTest extends DuskTestCase
                     ->select('#progress_type_id', $record->progress_type_id)
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
-                    ->screenshot($cont++)
                     ->click('#saveButton')
                     ->waitForText('Gravado com sucesso')
-                    ->screenshot($cont++)
                     ->click('#buttonNovoEndereco')
-                    ->screenshot($cont++)
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(
@@ -103,31 +95,22 @@ class InsertTest extends DuskTestCase
                             $address->address .
                             '"'
                     )
-                    ->screenshot($cont++)
                     ->click('#saveButton')
-                    ->screenshot($cont++)
-                    ->waitForText('Gravado com sucesso')
-                    ->screenshot($cont++);
+                    ->waitForText('Gravado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
                     $contactType = app(
                         ContactTypesRepository::class
                     )->findByColumn('code', $key);
                     $browser
                         ->click('#buttonNovoContato')
-                        ->screenshot($cont++)
                         ->waitForText('Selecione o tipo de contato')
-                        ->screenshot($cont++)
                         ->waitUntil(
                             'document.getElementById(\'contact_type_id\').options.length > 1'
                         )
                         ->select('#contact_type_id', $contactType->id)
-                        ->screenshot($cont++)
                         ->type('#contact', $contact)
-                        ->screenshot($cont++)
                         ->click('#saveContactButton')
-                        ->screenshot($cont++)
-                        ->assertSee($contact)
-                        ->screenshot($cont++);
+                        ->assertSee($contact);
                 }
             });
         } catch (\Exception $exception) {
