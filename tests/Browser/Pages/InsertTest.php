@@ -114,8 +114,6 @@ class InsertTest extends DuskTestCase
                         ContactTypesRepository::class
                     )->findByColumn('code', $key);
 
-                    //                        ->type('#contact', $contact)
-                    //                        ->select('#contact_type_id', $contactType->id)
                     $browser
                         ->click('#buttonNovoContato')
                         ->screenshot($cont++)
