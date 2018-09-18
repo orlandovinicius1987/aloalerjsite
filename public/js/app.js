@@ -15984,483 +15984,6 @@ return jQuery;
 
 /***/ }),
 
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function bind(fn, thisArg) {
-  return function wrap() {
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-    return fn.apply(thisArg, args);
-  };
-};
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-var settle = __webpack_require__(26);
-var buildURL = __webpack_require__(28);
-var parseHeaders = __webpack_require__(29);
-var isURLSameOrigin = __webpack_require__(30);
-var createError = __webpack_require__(9);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(31);
-
-module.exports = function xhrAdapter(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    var requestData = config.data;
-    var requestHeaders = config.headers;
-
-    if (utils.isFormData(requestData)) {
-      delete requestHeaders['Content-Type']; // Let the browser set it
-    }
-
-    var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ("development" !== 'test' &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
-
-    // HTTP basic authentication
-    if (config.auth) {
-      var username = config.auth.username || '';
-      var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-    }
-
-    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-
-    // Set the request timeout in MS
-    request.timeout = config.timeout;
-
-    // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
-        return;
-      }
-
-      // The request errored out and we didn't get a response, this will be
-      // handled by onerror instead
-      // With one exception: request that using file: protocol, most browsers
-      // will return status as 0 even though it's a successful request
-      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-        return;
-      }
-
-      // Prepare the response
-      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-      var response = {
-        data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-        headers: responseHeaders,
-        config: config,
-        request: request
-      };
-
-      settle(resolve, reject, response);
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle low level network errors
-    request.onerror = function handleError() {
-      // Real errors are hidden from us by the browser
-      // onerror should only fire if it's a network error
-      reject(createError('Network Error', config, null, request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle timeout
-    request.ontimeout = function handleTimeout() {
-      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
-        request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Add xsrf header
-    // This is only done if running in a standard browser environment.
-    // Specifically not if we're in a web worker, or react-native.
-    if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(32);
-
-      // Add xsrf header
-      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-          cookies.read(config.xsrfCookieName) :
-          undefined;
-
-      if (xsrfValue) {
-        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-      }
-    }
-
-    // Add headers to the request
-    if ('setRequestHeader' in request) {
-      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-          // Remove Content-Type if data is undefined
-          delete requestHeaders[key];
-        } else {
-          // Otherwise add header to the request
-          request.setRequestHeader(key, val);
-        }
-      });
-    }
-
-    // Add withCredentials to request if needed
-    if (config.withCredentials) {
-      request.withCredentials = true;
-    }
-
-    // Add responseType to request if needed
-    if (config.responseType) {
-      try {
-        request.responseType = config.responseType;
-      } catch (e) {
-        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
-        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
-        if (config.responseType !== 'json') {
-          throw e;
-        }
-      }
-    }
-
-    // Handle progress if needed
-    if (typeof config.onDownloadProgress === 'function') {
-      request.addEventListener('progress', config.onDownloadProgress);
-    }
-
-    // Not all browsers support upload events
-    if (typeof config.onUploadProgress === 'function' && request.upload) {
-      request.upload.addEventListener('progress', config.onUploadProgress);
-    }
-
-    if (config.cancelToken) {
-      // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled(cancel) {
-        if (!request) {
-          return;
-        }
-
-        request.abort();
-        reject(cancel);
-        // Clean up request
-        request = null;
-      });
-    }
-
-    if (requestData === undefined) {
-      requestData = null;
-    }
-
-    // Send the request
-    request.send(requestData);
-  });
-};
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var enhanceError = __webpack_require__(27);
-
-/**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
-module.exports = function createError(message, config, code, request, response) {
-  var error = new Error(message);
-  return enhanceError(error, config, code, request, response);
-};
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function isCancel(value) {
-  return !!(value && value.__CANCEL__);
-};
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A `Cancel` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- */
-function Cancel(message) {
-  this.message = message;
-}
-
-Cancel.prototype.toString = function toString() {
-  return 'Cancel' + (this.message ? ': ' + this.message : '');
-};
-
-Cancel.prototype.__CANCEL__ = true;
-
-module.exports = Cancel;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(13);
-module.exports = __webpack_require__(50);
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(4);
-
-__webpack_require__(41);
-__webpack_require__(42);
-__webpack_require__(43);
-__webpack_require__(44);
-__webpack_require__(45);
-__webpack_require__(46);
-__webpack_require__(47);
-__webpack_require__(48);
-__webpack_require__(49);
-
-$(document).ready(function () {
-    $('.select2').select2({
-        theme: "bootstrap",
-        tags: false,
-        width: "100%"
-    });
-});
-
-/***/ }),
-/* 14 */
 /***/ "./node_modules/lodash/lodash.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37081,9 +36604,9 @@ S2.define('select2/utils',[
 
   var id = 0;
   Utils.GetUniqueElementId = function (element) {
-    // Get a unique element Id. If element has no id,
-    // creates a new unique number, stores it in the id
-    // attribute and returns the new id.
+    // Get a unique element Id. If element has no id, 
+    // creates a new unique number, stores it in the id 
+    // attribute and returns the new id. 
     // If an id already exists, it simply returns it.
 
     var select2Id = element.getAttribute('data-select2-id');
@@ -37102,7 +36625,7 @@ S2.define('select2/utils',[
 
   Utils.StoreData = function (element, name, value) {
     // Stores an item in the cache for a specified element.
-    // name is the cache key.
+    // name is the cache key.    
     var id = Utils.GetUniqueElementId(element);
     if (!Utils.__cache[id]) {
       Utils.__cache[id] = {};
@@ -37113,19 +36636,19 @@ S2.define('select2/utils',[
 
   Utils.GetData = function (element, name) {
     // Retrieves a value from the cache by its key (name)
-    // name is optional. If no name specified, return
+    // name is optional. If no name specified, return 
     // all cache items for the specified element.
     // and for a specified element.
     var id = Utils.GetUniqueElementId(element);
     if (name) {
       if (Utils.__cache[id]) {
-        return Utils.__cache[id][name] != null ?
+        return Utils.__cache[id][name] != null ? 
 	      Utils.__cache[id][name]:
 	      $(element).data(name); // Fallback to HTML5 data attribs.
       }
       return $(element).data(name); // Fallback to HTML5 data attribs.
     } else {
-      return Utils.__cache[id];
+      return Utils.__cache[id];			   
     }
   };
 
@@ -41402,7 +40925,7 @@ S2.define('select2/options',[
 
       $e.attr('ajax--url', Utils.GetData($e[0], 'ajaxUrl'));
       Utils.StoreData($e[0], 'ajax-Url', Utils.GetData($e[0], 'ajaxUrl'));
-
+	  
     }
 
     var dataset = {};
@@ -53462,6 +52985,7 @@ __webpack_require__("./resources/assets/js/apps/contact-outside-workflow.js");
 __webpack_require__("./resources/assets/js/apps/progresses.js");
 __webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
+__webpack_require__("./resources/assets/js/apps/committees-search.js");
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53562,6 +53086,96 @@ if (jQuery("#" + appName).length > 0) {
 
         mounted: function mounted() {
             // this.refresh()
+        }
+    });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/committees-search.js":
+/***/ (function(module, exports) {
+
+var appName = 'committees-search';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            tables: {
+                committees: null
+            },
+
+            refreshing: false,
+
+            filler: false,
+
+            typeTimeout: null,
+
+            foundByCpfCnpj: null,
+
+            errors: null,
+
+            form: {
+                search: null
+            }
+        },
+
+        methods: {
+            refresh: function refresh() {
+                me = this;
+
+                me.refreshing = true;
+
+                me.errors = null;
+
+                me.tables.committees = null;
+
+                axios.post('/api/v1/committees-search', { search: this.form.search }).then(function (response) {
+                    me.tables.committees = [];
+                    me.errors = false;
+
+                    if (response.data.success) {
+                        me.tables.committees = response.data.data;
+                        me.errors = response.data.errors;
+                    }
+
+                    me.refreshing = false;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.refreshing = false;
+                });
+            },
+            typeKeyUp: function typeKeyUp() {
+                clearTimeout(this.timeout);
+
+                me = this;
+
+                this.timeout = setTimeout(function () {
+                    me.refresh();
+                }, 500);
+            },
+            refreshTable: function refreshTable(table) {
+                axios.get('/' + table).then(function (response) {
+                    me.tables[table] = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.tables[table] = [];
+                });
+            },
+            isSearching: function isSearching() {
+                return this.form.search.name || this.form.search.cpf_cnpj;
+            }
+        },
+
+        mounted: function mounted() {
+            console.log('mounted');
+
+            this.refresh();
+
+            // this.refreshTable('people')
         }
     });
 }
@@ -53842,6 +53456,7 @@ if (jQuery("#" + appName).length > 0) {
 
             form: {
                 search: {
+
                     search: '',
                     name: '',
                     cpf_cnpj: null
@@ -54016,95 +53631,6 @@ __webpack_require__("./node_modules/select2/dist/js/select2.js");
 /***/ }),
 
 /***/ "./resources/assets/sass/app.scss":
-/***/ (function(module, exports) {
-
-var appName = 'committees-search';
-
-if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
-        el: '#' + appName,
-
-        data: {
-            tables: {
-                committees: null
-            },
-
-            refreshing: false,
-
-            filler: false,
-
-            typeTimeout: null,
-
-            foundByCpfCnpj: null,
-
-            errors: null,
-
-            form: {
-                search: null
-            }
-        },
-
-        methods: {
-            refresh: function refresh() {
-                me = this;
-
-                me.refreshing = true;
-
-                me.errors = null;
-
-                me.tables.committees = null;
-
-                axios.post('/api/v1/committees-search', { search: this.form.search }).then(function (response) {
-                    me.tables.committees = [];
-                    me.errors = false;
-
-                    if (response.data.success) {
-                        me.tables.committees = response.data.data;
-                        me.errors = response.data.errors;
-                    }
-
-                    me.refreshing = false;
-                }).catch(function (error) {
-                    console.log(error);
-
-                    me.refreshing = false;
-                });
-            },
-            typeKeyUp: function typeKeyUp() {
-                clearTimeout(this.timeout);
-
-                me = this;
-
-                this.timeout = setTimeout(function () {
-                    me.refresh();
-                }, 500);
-            },
-            refreshTable: function refreshTable(table) {
-                axios.get('/' + table).then(function (response) {
-                    me.tables[table] = response.data;
-                }).catch(function (error) {
-                    console.log(error);
-
-                    me.tables[table] = [];
-                });
-            },
-            isSearching: function isSearching() {
-                return this.form.search.name || this.form.search.cpf_cnpj;
-            }
-        },
-
-        mounted: function mounted() {
-            console.log('mounted');
-
-            this.refresh();
-
-            // this.refreshTable('people')
-        }
-    });
-}
-
-/***/ }),
-/* 50 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
