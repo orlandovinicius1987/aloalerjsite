@@ -52,8 +52,8 @@
 
                         @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('name') }}</strong>
-                </span>
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>

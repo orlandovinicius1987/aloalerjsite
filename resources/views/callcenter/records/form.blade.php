@@ -74,11 +74,11 @@
 
                 @if (isset($record) and is_null($record->id))
                     <div class="form-group row">
-                        <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
+                        <label for="origin_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
 
                         <div class="col-md-6">
                             <select id="origin_id"
-                                    class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
+                                    class="form-control{{ $errors->getBag('validation')->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
                                     value="{{is_null(old('origin_id')) ? $record->origin_id : old('origin_id') }}" required
                                     autofocus
                             >
@@ -92,9 +92,9 @@
                                 @endforeach
                             </select>
 
-                            @if ($errors->has('origins_id'))
+                            @if ($errors->getBag('validation')->has('origin_id'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('origin_id') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('origin_id') }}</strong>
                             </span>
                             @endif
                         </div>
@@ -106,7 +106,7 @@
 
                     <div class="col-md-6">
                         <select id="committee_id"
-                                class="form-control{{ $errors->has('committee_id') ? ' is-invalid' : '' }} select2"
+                                class="form-control{{ $errors->getBag('validation')->has('committee_id') ? ' is-invalid' : '' }} select2"
                                 name="committee_id"
                                 value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
                                 required
@@ -121,9 +121,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('origins_id'))
+                        @if ($errors->getBag('validation')->has('committee_id'))
                         <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('committee_id') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('committee_id') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -134,7 +134,7 @@
 
                     <div class="col-md-6">
                         <select id="record_type_id"
-                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }} select2"
+                                class="form-control{{ $errors->getBag('validation')->has('record_type_id') ? ' is-invalid' : '' }} select2"
                                 name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id') }}"
                                 required
@@ -149,9 +149,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('record_type_id'))
+                        @if ($errors->getBag('validation')->has('record_type_id'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('record_type_id') }}</strong>
+                            <strong>{{ $errors->getBag('validation')->first('record_type_id') }}</strong>
                         </span>
                         @endif
                     </div>
@@ -163,7 +163,7 @@
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
-                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
+                                class="form-control{{ $errors->getBag('validation')->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
                                 value="" required autofocus>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)
@@ -171,10 +171,10 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('progress_type_id'))
+                        @if ($errors->getBag('validation')->has('progress_type_id'))
                             <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('progress_type_id') }}</strong>
-                                                    </span>
+                                <strong>{{ $errors->getBag('validation')->first('progress_type_id') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -185,7 +185,7 @@
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
-                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
+                                class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
                                 value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
@@ -197,9 +197,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('area_id'))
+                        @if ($errors->getBag('validation')->has('area_id'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('area_id') }}</strong>
+                            <strong>{{ $errors->getBag('validation')->first('area_id') }}</strong>
                         </span>
                         @endif
                     </div>
@@ -210,13 +210,13 @@
                         <label for="original" class="col-sm-4 col-form-label text-md-right">Solicitação</label>
                         <div class="col-md-6">
                                 <textarea id="original"
-                                          class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
+                                          class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
                                           name="original"
                                           value="{{is_null(old('original')) ? $record->original : old('original') }}"
                                           required rows="15">{{$record->original}}</textarea>
-                            @if ($errors->has('original'))
+                            @if ($errors->getBag('validation')->has('original'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('original') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('original') }}</strong>
                             </span>
                             @endif
                         </div>
