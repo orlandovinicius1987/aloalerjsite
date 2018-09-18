@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CallCenter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgressRequest;
+use Illuminate\Support\Facades\Auth;
 
 class Progresses extends Controller
 {
@@ -72,7 +73,11 @@ class Progresses extends Controller
     {
         $progress = $this->progressesRepository->findById($id);
 
-        if ($progress->created_at <= now()) {
+        $formDisabled = true;
+        // Se a diferença entre a Data de criação e a data atual for igual a 0 dias de diferença, então foi criado hoje
+        $isCreatedToday = date_diff($progress->created_at, now())->days == 0;
+        $isSameUser = $progress->created_by_id == Auth::user()->id;
+        if ($isCreatedToday && $isSameUser) {
             $formDisabled = false;
         }
 
