@@ -53065,18 +53065,23 @@ if (jQuery("#" + appName).length > 0) {
                 people: null
             },
 
+            response: null,
+
             refreshing: false,
 
             filler: false,
 
             typeTimeout: null,
 
-            foundByCpfCnpj: null,
+            isCpfCnpj: false,
+
+            isNumeric: false,
 
             errors: null,
 
             form: {
                 search: {
+                    search: '',
                     name: '',
                     cpf_cnpj: null
                 }
@@ -53094,14 +53099,18 @@ if (jQuery("#" + appName).length > 0) {
                 me.tables.people = null;
 
                 axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
+                    me.response = response.data;
+
                     me.tables.people = [];
                     me.errors = false;
-                    me.foundByCpfCnpj = false;
+                    me.isCpfCnpj = false;
+                    me.isNumeric = false;
 
                     if (response.data.success) {
                         me.tables.people = response.data.data;
                         me.errors = response.data.errors;
-                        me.foundByCpfCnpj = response.data.foundByCpfCnpj;
+                        me.isCpfCnpj = response.data.is_cpf_cnpj;
+                        me.isNumeric = response.data.is_numeric;
                     }
 
                     me.refreshing = false;
@@ -53132,7 +53141,16 @@ if (jQuery("#" + appName).length > 0) {
                 });
             },
             isSearching: function isSearching() {
-                return this.form.search.name || this.form.search.cpf_cnpj;
+                return this.form.search.search || this.form.search.name || this.form.search.cpf_cnpj;
+            },
+            getName: function getName() {
+                return !this.isNumeric ? this.form.search.search : '';
+            },
+            getCpfCnpj: function getCpfCnpj() {
+                return this.isCpfCnpj ? this.form.search.search : '';
+            },
+            canCreateNewPerson: function canCreateNewPerson() {
+                return this.form.search.search && (!this.isNumeric || this.response.count == 0);
             }
         },
 
