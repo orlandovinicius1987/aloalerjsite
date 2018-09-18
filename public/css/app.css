@@ -11780,6 +11780,13 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.section-title {
+  margin-bottom: 15px;
+  font-size: 30px;
+  border-bottom: solid 2px #b8c5cc;
+  color: #b8c5cc;
+}
+
 .card {
   border: 1px solid #ebf1f3;
   -webkit-box-shadow: 0px 2px 4px #dae4e9;
@@ -11797,6 +11804,10 @@ a.text-dark:focus {
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0;
+}
+
+.bg-grey-light02 {
+  background-color: #546975;
 }
 
 [v-cloak] {
