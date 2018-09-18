@@ -35,38 +35,32 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh() {
-                me = this
+                let $this = this
 
-                me.refreshing = true
+                $this.refreshing = true
 
-                me.errors = null
+                $this.errors = null
 
-                me.tables.people = null
+                $this.tables.people = null
 
                 axios.post('/api/v1/search', {search: this.form.search})
                 .then(function(response) {
-                    me.response = response.data
+                    $this.response = response.data
 
-                    me.tables.people = []
-                    me.errors = false
-                    me.isCpfCnpj = false
-                    me.isNumeric = false
+                    $this.tables.people = []
+                    $this.tables.people = $this.response.success ? $this.response.data : []
+                    $this.isCpfCnpj = $this.response.is_cpf_cnpj
+                    $this.isNumeric = $this.response.is_numeric
+                    $this.errors = $this.response.errors
 
-                    if (response.data.success) {
-                        me.tables.people = response.data.data
-                        me.errors = response.data.errors
-                        me.isCpfCnpj = response.data.is_cpf_cnpj
-                        me.isNumeric = response.data.is_numeric
-                    }
-
-                    me.refreshing = false
+                    $this.refreshing = false
                 })
                 .catch(function(error) {
                     console.log(error)
 
-                    me.tables.addresses = []
+                    $this.tables.addresses = []
 
-                    me.refreshing = false
+                    $this.refreshing = false
                 })
             },
 
@@ -103,7 +97,7 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             canCreateNewPerson() {
-                return this.form.search.search && (!this.isNumeric || (this.response.count == 0))
+                return this.form.search.search && (!this.isNumeric || (this.response && this.response.count == 0))
             }
         },
 

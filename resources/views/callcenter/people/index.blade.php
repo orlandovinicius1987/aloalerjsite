@@ -16,11 +16,11 @@
                                 <div class="form-group row search">
                                     <div class="col-12">
                                         <input
-                                                id="search"
-                                                class="form-control"
-                                                placeholder="Nome, CPF, CNPJ ou Protocolo"
-                                                v-model="form.search.search"
-                                                @keyup="typeKeyUp"
+                                            id="search"
+                                            class="form-control"
+                                            placeholder="Nome, CPF, CNPJ ou Protocolo"
+                                            v-model="form.search.search"
+                                            @keyup="typeKeyUp"
                                         >
                                     </div>
                                 </div>
@@ -33,21 +33,11 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <br>
-                                        <div class="alert alert-danger text-center" role="alert" v-if="errors">
-                                            @{{ errors }}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <div class="row align-items-center">
                 <div class="col-12 text-center">
@@ -57,12 +47,7 @@
                 </div>
             </div>
 
-
-
             @include('callcenter.people.partials.table')
-
-
-
         </div>
     </div>
 @endsection
