@@ -13954,7 +13954,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -13969,8 +13969,8 @@ __webpack_require__(43);
 __webpack_require__(44);
 __webpack_require__(45);
 __webpack_require__(46);
-__webpack_require__(52);
-__webpack_require__(53);
+__webpack_require__(47);
+__webpack_require__(48);
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53065,18 +53065,23 @@ if (jQuery("#" + appName).length > 0) {
                 people: null
             },
 
+            response: null,
+
             refreshing: false,
 
             filler: false,
 
             typeTimeout: null,
 
-            foundByCpfCnpj: null,
+            isCpfCnpj: false,
+
+            isNumeric: false,
 
             errors: null,
 
             form: {
                 search: {
+                    search: '',
                     name: '',
                     cpf_cnpj: null
                 }
@@ -53094,14 +53099,18 @@ if (jQuery("#" + appName).length > 0) {
                 me.tables.people = null;
 
                 axios.post('/api/v1/search', { search: this.form.search }).then(function (response) {
+                    me.response = response.data;
+
                     me.tables.people = [];
                     me.errors = false;
-                    me.foundByCpfCnpj = false;
+                    me.isCpfCnpj = false;
+                    me.isNumeric = false;
 
                     if (response.data.success) {
                         me.tables.people = response.data.data;
                         me.errors = response.data.errors;
-                        me.foundByCpfCnpj = response.data.foundByCpfCnpj;
+                        me.isCpfCnpj = response.data.is_cpf_cnpj;
+                        me.isNumeric = response.data.is_numeric;
                     }
 
                     me.refreshing = false;
@@ -53132,7 +53141,16 @@ if (jQuery("#" + appName).length > 0) {
                 });
             },
             isSearching: function isSearching() {
-                return this.form.search.name || this.form.search.cpf_cnpj;
+                return this.form.search.search || this.form.search.name || this.form.search.cpf_cnpj;
+            },
+            getName: function getName() {
+                return !this.isNumeric ? this.form.search.search : '';
+            },
+            getCpfCnpj: function getCpfCnpj() {
+                return this.isCpfCnpj ? this.form.search.search : '';
+            },
+            canCreateNewPerson: function canCreateNewPerson() {
+                return this.form.search.search && (!this.isNumeric || this.response.count == 0);
             }
         },
 
@@ -53433,16 +53451,6 @@ if (jQuery("#" + appName).length > 0) {
 /* 47 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
-/***/ (function(module, exports) {
-
 var appName = 'vue-editButton';
 
 if (jQuery("#" + appName).length > 0) {
@@ -53462,7 +53470,7 @@ if (jQuery("#" + appName).length > 0) {
 }
 
 /***/ }),
-/* 53 */
+/* 48 */
 /***/ (function(module, exports) {
 
 var appName = 'vue-committees';
@@ -53487,6 +53495,12 @@ if (jQuery("#" + appName).length > 0) {
 
     });
 }
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

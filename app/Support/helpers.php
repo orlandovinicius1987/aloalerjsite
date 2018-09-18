@@ -51,6 +51,11 @@ function only_numbers($string)
     return preg_replace('/\D/', '', $string);
 }
 
+function remove_punctuation($string)
+{
+    return preg_replace('/[^a-z0-9]+/i', '', $string);
+}
+
 class Timer
 {
     public static $starttime;

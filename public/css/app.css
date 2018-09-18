@@ -11687,6 +11687,31 @@ a.text-dark:focus {
   background-color: #ff8300;
 }
 
+.btn-depth {
+  -webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #305bb0;
+  border-color: #274a90;
+}
+
+.btn-primary:hover {
+  background-color: #274a90;
+  border-color: #1f3a70;
+}
+
+.btn-primary:active {
+  background-color: #1f3a70 !important;
+  border-color: #172B53 !important;
+}
+
 .navbar-laravel {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -11721,11 +11746,45 @@ a.text-dark:focus {
   padding-bottom: 10px;
 }
 
+.login .alolerj-logo-login {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
 .login .card-title {
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 30px;
-  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-top: 0px;
+  color: #2c53a0;
+}
+
+.login .form-control {
+  border: solid 1px #ebf1f3;
+  color: #546975;
+}
+
+.login .form-control::-webkit-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control:-ms-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control::-ms-input-placeholder {
+  color: #dae4e9;
+}
+
+.login .form-control::placeholder {
+  color: #dae4e9;
+}
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 30px;
+  border-bottom: solid 2px #b8c5cc;
+  color: #b8c5cc;
 }
 
 .card {
@@ -11745,6 +11804,10 @@ a.text-dark:focus {
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0;
+}
+
+.bg-grey-light02 {
+  background-color: #546975;
 }
 
 [v-cloak] {

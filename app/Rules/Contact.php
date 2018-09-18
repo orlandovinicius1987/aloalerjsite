@@ -98,7 +98,7 @@ class Contact implements Rule
                     $contact,
                     $match
                 );
-                $pass = (sizeof($match) == 1);
+                $pass = (sizeof($match[0]) == 1);
                 break;
             case 'phone':
                 $pass = $this->validatePhone($contact, 'phone');

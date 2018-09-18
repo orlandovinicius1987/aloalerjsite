@@ -18,7 +18,16 @@
 @import 'toggle';
 
 
+// Toggle
+@import 'buttons';
 
+
+
+
+
+
+
+//*****************************  Navbar Style   *****************************
 .navbar-laravel {
   background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -62,19 +71,60 @@
 
 
 
+
+
+
+
+//*****************************  Login Style   *****************************
+
 .login {
+
+  .alolerj-logo-login {
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
   .card-title {
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 30px;
-    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    color: $blue-lighter75;
   }
 
 
   border-top: 5px solid $blue !important;
   padding-bottom: 10px;
 
+  .form-control {
+    border: solid 1px $grey-light02;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-light03;
+    }
+
+  }
+
 }
+
+
+
+
+
+//*****************************  Sections Style   *****************************
+
+
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 30px;
+  border-bottom: solid 2px $grey-dark004;
+  color: $grey-dark004;
+}
+
+
+
+
 
 
 
@@ -98,6 +148,14 @@
 }
 
 
+
+
+
+
+
+.bg-grey-light02 {
+  background-color: $grey-dark01;
+}
 
 
 
@@ -131,7 +189,11 @@
 
 
 
+
+
 // Breadcrumbs
+//*****************************  Breadcrumbs Style   *****************************
+
 .aloalerj-breadcrumbs {
   padding-left: 0;
   margin: 0;

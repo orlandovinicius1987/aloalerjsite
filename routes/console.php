@@ -133,7 +133,14 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
 
     foreach (
         Record::whereNull('resolved_at')
-            ->where('created_at', '<', '2018-08-28')
+            ->where(function ($query) {
+                $query
+                    ->where('created_at', '<', '2018-08-28')
+                    ->orWhereBetween('created_at', [
+                        '2018-09-15 00:00:00',
+                        '2018-09-15 23:59:59',
+                    ]);
+            })
             ->cursor()
         as $record
     ) {
