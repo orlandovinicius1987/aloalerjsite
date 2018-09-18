@@ -13,7 +13,7 @@
                                     <label for="pesquisa"><i class="fas fa-search"></i> Pesquisar</label>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row search">
                                     <div class="col-12">
                                         <input
                                             id="search"
