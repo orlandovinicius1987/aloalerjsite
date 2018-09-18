@@ -16,11 +16,11 @@
                                 <div class="form-group row search">
                                     <div class="col-12">
                                         <input
-                                            id="search"
-                                            class="form-control"
-                                            placeholder="Nome, CPF, CNPJ ou Protocolo"
-                                            v-model="form.search.search"
-                                            @keyup="typeKeyUp"
+                                                id="search"
+                                                class="form-control"
+                                                placeholder="Nome, CPF, CNPJ ou Protocolo"
+                                                v-model="form.search.search"
+                                                @keyup="typeKeyUp"
                                         >
                                     </div>
                                 </div>
@@ -48,25 +48,21 @@
                 </div>
             </div>
 
-            <div class="card mt-4">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5>Resultado</h5>
-                        </div>
 
-                        <div class="col-6 text-right">
-                            <h5 v-if="refreshing">
-                                <i class="fa fa-spinner fa-spin text-danger"></i>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    @include('callcenter.people.partials.table')
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <h1 v-if="refreshing">
+                        <i class="fa fa-spinner fa-spin text-danger"></i>
+                    </h1>
                 </div>
             </div>
+
+
+
+            @include('callcenter.people.partials.table')
+
+
+
         </div>
     </div>
 @endsection

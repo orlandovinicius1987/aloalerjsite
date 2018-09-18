@@ -139,6 +139,47 @@
 
 
 
+.table {
+  background: $white;
+  /*border: 1px solid $grey-light02;*/
+  border: 0px;
+
+  box-shadow: 0px 2px 4px $grey-light03;
+
+  border-radius: 0.5rem;
+
+  thead {
+    background: $grey-light01;
+    border-radius: 0.5rem 0.5rem 0 0 ;
+
+    th {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid $grey-light02;
+      border-bottom: 0px !important;
+    }
+
+
+  }
+
+  th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid $grey-light02;
+  }
+
+}
+
+.table-hover{
+  tbody{
+    tr{
+      &:hover{
+        background: $grey-light01;
+      }
+    }
+  }
+
+}
 
 
 
