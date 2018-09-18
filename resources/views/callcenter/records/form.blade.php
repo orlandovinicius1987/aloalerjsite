@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card mt-4">
+    <div class="card mt-4"  id="vue-record">
         <div class="card-header">
             <div class="row">
                 <div class="col-8">
@@ -32,7 +32,7 @@
 
         <div class="card-body">
 
-            <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos">
+            <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords">
                 @csrf
 
                 @if (isset($person))
@@ -274,15 +274,21 @@
                                     Próximo passo >>
                             </button>
                         @elseif(is_null($record->committee))
-                            <button id="saveButton" type="submit" class="btn btn-danger">
+                            <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                 Gravar
+                            </button>
+                            <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
+                                Gravar e Finalizar
                             </button>
                         @else
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
-                                        <button id="saveButton" type="submit" class="btn btn-danger">
+                                        <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                             Gravar
+                                        </button>
+                                        <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
+                                            Gravar e Finalizar
                                         </button>
                                      @endcan
                                 @endIf

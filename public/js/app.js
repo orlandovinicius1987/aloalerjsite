@@ -13971,6 +13971,7 @@ __webpack_require__(45);
 __webpack_require__(46);
 __webpack_require__(47);
 __webpack_require__(48);
+__webpack_require__(54);
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53437,10 +53438,10 @@ if (jQuery("#" + appName).length > 0) {
         data: {},
 
         methods: {
-            changeFormRoute: function changeFormRoute(oi) {
-                e = document.getElementById('formProgress');
-                e.action = oi;
-                e.submit();
+            changeFormRoute: function changeFormRoute(action) {
+                form = document.getElementById('formProgress');
+                form.action = action;
+                form.submit();
             }
         }
 
@@ -53501,6 +53502,33 @@ if (jQuery("#" + appName).length > 0) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
+/***/ (function(module, exports) {
+
+var appName = 'vue-record';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {},
+
+        methods: {
+            changeFormRoute: function changeFormRoute(action) {
+                form = document.getElementById('formRecords');
+                form.action = action;
+                form.submit();
+            }
+        }
+
+    });
+}
 
 /***/ })
 /******/ ]);
