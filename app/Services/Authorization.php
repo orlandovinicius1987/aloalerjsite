@@ -47,10 +47,7 @@ class Authorization
         } catch (\Exception $exception) {
             //            dump('loguei pelas permissões salvas');
             $usersRepository = app(UsersRepository::class);
-            $user = $usersRepository->findByColumn(
-                'username',
-                strtolower($username)
-            );
+            $user = $usersRepository->findByColumn('username', $username);
 
             return $this->storedPermissions($user);
         }
