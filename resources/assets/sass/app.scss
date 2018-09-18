@@ -18,6 +18,10 @@
 @import 'toggle';
 
 
+// Toggle
+@import 'buttons';
+
+
 
 .navbar-laravel {
   background-color: $white;
@@ -63,18 +67,38 @@
 
 
 .login {
+
+  .alolerj-logo-login {
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
   .card-title {
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 30px;
-    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    color: $blue-lighter75;
   }
 
 
   border-top: 5px solid $blue !important;
   padding-bottom: 10px;
 
+  .form-control {
+    border: solid 1px $grey-light02;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-light03;
+    }
+
+  }
+
 }
+
+
+
+
 
 
 

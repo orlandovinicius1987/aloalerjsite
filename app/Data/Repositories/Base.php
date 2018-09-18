@@ -1,7 +1,6 @@
 <?php
 namespace App\Data\Repositories;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 abstract class Base
@@ -14,27 +13,31 @@ abstract class Base
     /**
      * @param Request $request
      *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function search(Request $request)
+    {
+        return $this->searchFromRequest($request->get('pesquisa'));
+    }
+
+    /**
+     * @param mixed $request
+     *
      * @return mixed
      */
-    public function createFromRequest($request)
+    public function createFromRequest($data)
     {
-        if ($request instanceof Request) {
-            $request = $request->all();
+        if ($data instanceof Request) {
+            $data = coollect($data->all());
         }
 
-        $id = isset($request['id']) ? $request['id'] : null;
-
-        is_null($id)
+        !$data->has('id') || is_null($data->id)
             ? $model = new $this->model()
-            : $model = $this->model::find($id);
+            : $model = $this->model::find($data->id);
 
-        $model->fill($request);
-        //  dump($model);
-        //  dd($request);
+        $model->fill($data->toArray());
 
         $model->save();
-
-        $this->saveTags($request, $model);
 
         return $model;
     }
@@ -53,8 +56,6 @@ abstract class Base
         $model->fill($data);
 
         $model->save();
-
-        $model->saveTags(collect($data), $model);
 
         return $model;
     }
@@ -85,9 +86,9 @@ abstract class Base
      *
      * @return mixed
      */
-    public function findById($user_id)
+    public function findById($id)
     {
-        return $this->model::where('id', $user_id)->first();
+        return $this->model::where('id', $id)->first();
     }
 
     public function maxId()
@@ -150,6 +151,46 @@ abstract class Base
     }
 
     /**
+     * @param $name
+     * @return mixed
+     */
+    public function findByName($name)
+    {
+        return $this->model::where('name', $name)->first();
+    }
+
+    /**
+     * @param $column
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function findByColumn($column, $value)
+    {
+        return $this->model::where($column, $value)->first();
+    }
+
+    public function allWhereOperator($column, $operator, $value)
+    {
+        return $this->model::where($column, $operator, $value)->get();
+    }
+
+    public function allPaginate($sizeOfPage = 15)
+    {
+        return $this->model::paginate($sizeOfPage);
+    }
+
+    public function allWherePaginate($field, $value, $sizeOfPage = 15)
+    {
+        return ($this->model::where($field, $value)->paginate($sizeOfPage));
+    }
+
+    public function whereIsNullPaginate($field, $sizeOfPage = 15)
+    {
+        return ($this->model::whereNull($field)->paginate($sizeOfPage));
+    }
+
+    /**
      * @param $result
      * @param string $label
      * @param string $value
@@ -171,6 +212,53 @@ abstract class Base
     }
 
     /**
+     * @param null|string $search
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function searchFromRequest($search = null)
+    {
+        $search = is_null($search)
+            ? collect()
+            : collect(explode(' ', $search))->map(function ($item) {
+                return strtolower($item);
+            });
+
+        $columns = collect(['name' => 'string']);
+
+        $query = $this->model::query();
+
+        $search->each(function ($item) use ($columns, $query) {
+            $columns->each(function ($type, $column) use ($query, $item) {
+                if ($type === 'string') {
+                    $query->orWhere(
+                        DB::raw("lower({$column})"),
+                        'like',
+                        '%' . $item . '%'
+                    );
+                } else {
+                    if ($this->isDate($item)) {
+                        $query->orWhere($column, '=', $item);
+                    }
+                }
+            });
+        });
+
+        return $this->makeResultForSelect($query->orderBy('name')->get());
+    }
+
+    public function toArrayWithColumnKey($elements, $columnName)
+    {
+        $returnArray = [];
+
+        foreach ($elements as $element) {
+            $returnArray[$element->$columnName] = $element;
+        }
+
+        return $returnArray;
+    }
+
+    /**
      * @param $item
      *
      * @return string|void
@@ -184,10 +272,5 @@ abstract class Base
         }
 
         return $item;
-    }
-
-    public function findByColumn($column, $value)
-    {
-        return $this->model::where($column, $value)->first();
     }
 }

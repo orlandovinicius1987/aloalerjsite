@@ -6,7 +6,7 @@ use App\Data\Models\Record;
 use App\Data\Repositories\People as PeopleRepository;
 use Illuminate\Support\Facades\Auth;
 
-class Records extends BaseRepository
+class Records extends Base
 {
     /**
      * @var $model

@@ -3,7 +3,7 @@ namespace App\Data\Repositories;
 
 use App\Data\Models\PersonContact;
 
-class PersonContacts extends BaseRepository
+class PersonContacts extends Base
 {
     /**
      * @var $model
