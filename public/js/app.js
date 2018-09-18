@@ -53150,7 +53150,7 @@ if (jQuery("#" + appName).length > 0) {
                 return this.isCpfCnpj ? this.form.search.search : '';
             },
             canCreateNewPerson: function canCreateNewPerson() {
-                return !this.isNumeric || this.response.count == 0;
+                return this.form.search.search && (!this.isNumeric || this.response.count == 0);
             }
         },
 

@@ -102,7 +102,7 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             canCreateNewPerson() {
-                return !this.isNumeric || (this.response.count == 0)
+                return this.form.search.search && (!this.isNumeric || (this.response.count == 0))
             }
         },
 
