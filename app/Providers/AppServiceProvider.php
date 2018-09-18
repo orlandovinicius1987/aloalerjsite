@@ -26,6 +26,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->bootGates();
+
+        $this->bootHorizon();
+    }
+
+    private function bootHorizon()
+    {
+        Horizon::auth(function ($request) {
+            return true;
+        });
     }
 
     /**
