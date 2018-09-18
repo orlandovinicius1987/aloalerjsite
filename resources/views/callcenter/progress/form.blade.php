@@ -164,10 +164,10 @@
 
                         {{--@include('partials.edit-button',['model'=>$progress, 'form' =>'formProgress'])--}}
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                             Gravar
                         </button>
-                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                             Gravar e finalizar
                         </button>
                     </div>

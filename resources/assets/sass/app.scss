@@ -18,11 +18,20 @@
 @import 'toggle';
 
 
+// Toggle
+@import 'buttons';
 
+
+
+
+
+
+
+//*****************************  Navbar Style   *****************************
 .navbar-laravel {
   background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  border-top: 2px solid $blue;
+  border-top: 4px solid $blue;
 }
 
 .navbar-light {
@@ -63,8 +72,120 @@
 
 
 
+
+
+
+//*****************************  Login Style   *****************************
+
+.login {
+
+  .alolerj-logo-login {
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
+  .card-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    color: $blue-lighter75;
+  }
+
+
+  border-top: 5px solid $blue !important;
+  padding-bottom: 10px;
+
+  .form-control {
+    border: solid 1px $grey-light02;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-light03;
+    }
+
+  }
+
+}
+
+
+
+
+
+.search {
+  .form-control {
+    padding: 1.475rem 1.4rem;
+    font-size: 1.2rem;
+    color: $grey-dark01;
+    &::placeholder{
+      color: $grey-dark004;
+    }
+  }
+}
+
+
+
+//*****************************  Sections Style   *****************************
+
+
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 30px;
+  border-bottom: solid 2px $grey-dark004;
+  color: $grey-dark004;
+}
+
+
+
+
+
+.table {
+  background: $white;
+  /*border: 1px solid $grey-light02;*/
+  border: 0px;
+
+  box-shadow: 0px 2px 4px $grey-light03;
+
+  border-radius: 0.5rem;
+
+  thead {
+    background: $grey-light01;
+    border-radius: 0.5rem 0.5rem 0 0 ;
+
+    th {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid $grey-light02;
+      border-bottom: 0px !important;
+    }
+
+
+  }
+
+  th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid $grey-light02;
+  }
+
+}
+
+.table-hover{
+  tbody{
+    tr{
+      &:hover{
+        background: $grey-light01;
+      }
+    }
+  }
+
+}
+
+
+
 .card {
-  border: 1px solid rgba(199, 204, 214, 0.7);
+  border: 1px solid $grey-light02;
+  box-shadow: 0px 2px 4px $grey-light03;
 
   .card-header {
     padding: 0.75rem 1.25rem;
@@ -79,6 +200,20 @@
     }
   }
 }
+
+
+
+
+
+
+
+.bg-grey-light02 {
+  background-color: $grey-dark01;
+}
+
+
+
+
 
 [v-cloak] {display: none}
 
@@ -108,7 +243,11 @@
 
 
 
+
+
 // Breadcrumbs
+//*****************************  Breadcrumbs Style   *****************************
+
 .aloalerj-breadcrumbs {
   padding-left: 0;
   margin: 0;

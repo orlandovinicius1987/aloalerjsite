@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^6.0",
         "jenssegers/date": "^3.4",
         "laravel/framework": "5.7.*",
+        "laravel/horizon": "^1.4",
         "laravel/tinker": "^1.0",
         "mccool/laravel-auto-presenter": "^7.0",
         "owen-it/laravel-auditing": "^8.0",
@@ -24,6 +25,7 @@
         "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "laravel/dusk": "^4.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"

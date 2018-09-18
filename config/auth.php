@@ -17,6 +17,8 @@ return [
         'passwords' => 'users',
     ],
 
+    'timeout' => env('AUTH_TIMEOUT'),
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

@@ -2,14 +2,14 @@
 
         <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
-            <tr>
-                <th>Tipo de Andamento</th>
-                <th>Origem</th>
-                <th>Área</th>
-                <th>Solicitação</th>
-                <th>Finalizador</th>
-                <th>Criado em</th>
-            </tr>
+                <tr>
+                    <th>Tipo de Andamento</th>
+                    <th>Origem</th>
+                    <th>Área</th>
+                    <th>Solicitação</th>
+                    <th>Finalizador</th>
+                    <th>Criado em</th>
+                </tr>
             </thead>
 
             @forelse ($progresses as $progress)
@@ -43,5 +43,6 @@
                 <p>Nenhum andamento encontrado.</p>
             @endforelse
         </table>
-        {{ $progresses->links() }}
+
+        {{ $progresses instanceof \Illuminate\Contracts\Pagination\Paginator ? $progresses->links() : '' }}
     </div>

@@ -4,7 +4,7 @@ namespace App\Data\Repositories;
 use App\Data\Models\UserType;
 use Illuminate\Support\Facades\Cache;
 
-class UserTypes extends BaseRepository
+class UserTypes extends Base
 {
     /**
      * @var string

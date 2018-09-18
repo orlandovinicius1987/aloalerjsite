@@ -270,18 +270,18 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         @if($workflow)
-                            <button type="submit" class="btn btn-danger">
+                            <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                     Próximo passo >>
                             </button>
                         @elseif(is_null($record->committee))
-                            <button type="submit" class="btn btn-danger">
+                            <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                 Gravar
                             </button>
                         @else
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
-                                        <button type="submit" class="btn btn-danger">
+                                        <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                             Gravar
                                         </button>
                                      @endcan

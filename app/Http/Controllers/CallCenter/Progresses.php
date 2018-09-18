@@ -28,7 +28,9 @@ class Progresses extends Controller
      */
     public function store(ProgressRequest $request)
     {
-        $this->progressesRepository->createFromRequest($request);
+        $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
         return redirect()
             ->route('records.show', ['id' => $request->get('record_id')])
@@ -37,7 +39,9 @@ class Progresses extends Controller
 
     public function storeAndFinish(ProgressRequest $request)
     {
-        $progress = $this->progressesRepository->createFromRequest($request);
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
         $this->recordsRepository->markAsResolved(
             $request->get('record_id'),

@@ -5,7 +5,7 @@ namespace App\Data\Repositories;
 use Validator;
 use App\Data\Models\Person;
 
-class People extends BaseRepository
+class People extends Base
 {
     /**
      * @var $model
@@ -25,14 +25,11 @@ class People extends BaseRepository
         });
     }
 
-    protected function emptyResponse()
-    {
-        return $this->response([], 0);
-    }
+
 
     protected function error($count, $messages)
     {
-        return $this->response(null, $count, $messages);
+        return $this->response(null, null, $count, $messages);
     }
 
     protected function getBaseQuery()
@@ -42,22 +39,25 @@ class People extends BaseRepository
         );
     }
 
-    protected function response($data, $count = 0, $messages = null)
+    private function isNumeric($string)
+    {
+        return is_numeric(remove_punctuation($string));
+    }
+
+    protected function response($string, $data, $count = 0, $messages = null)
     {
         return [
             'data' => $data,
             'success' => is_null($messages),
             'errors' => $messages,
             'count' => $count,
+            'is_cpf_cnpj' => $this->validCpfCnpj($string),
+            'is_numeric' => $this->isNumeric($string),
         ];
     }
 
     protected function searchByProtocolNumber($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         $record = app(Records::class)->findByProtocol($string);
 
         if ($record) {
@@ -70,20 +70,16 @@ class People extends BaseRepository
                 ->take(static::RECORDS_COUNT_LIMIT + 1)
                 ->where('id', $record->person_id);
 
-            return $this->response($query->get(), $query->count());
+            return $this->response($string, $query->get(), $query->count());
         }
 
-        return $this->response(null);
+        return $this->emptyResponse();
     }
 
     protected function searchByCpf($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         if (!$this->validCpfCnpj($string)) {
-            return $this->emptyResponse();
+            return $this->emptyResponse($string);
         }
 
         $query = $this->getBaseQuery()->where(
@@ -92,6 +88,7 @@ class People extends BaseRepository
         );
 
         return $this->response(
+            $string,
             $this->addExtraInfo($query->get()),
             $query->count()
         );
@@ -99,10 +96,6 @@ class People extends BaseRepository
 
     protected function searchByName($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         $query = $this->getBaseQuery()->whereRaw(
             "unaccent(name) ILIKE '%'||unaccent('{$string}')||'%' "
         );
@@ -114,52 +107,38 @@ class People extends BaseRepository
             );
         }
 
-        return $this->response($query->get(), $query->count());
+        return $this->response($string, $query->get(), $query->count());
     }
 
     public function searchByEverything($search)
     {
-        $result = $this->emptyResponse();
-
-        $name = $search['name'];
-
-        $cpf_cnpj = $search['cpf_cnpj'];
-
-        $search = $cpf_cnpj . $name;
-
-        if (empty(trim($search))) {
-            return $result;
+        if (empty(trim($search = $search['search']))) {
+            return $this->emptyResponse();
         }
 
-        $result['foundByCpfCnpj'] = false;
+        if ($this->isNumeric($search)) {
+            $search = remove_punctuation($search);
 
-        if ($cpf_cnpj) {
-            $foundCpfCnpj = $this->searchByCpf($cpf_cnpj);
+            $response = $this->searchByCpf($search);
 
-            if ($foundCpfCnpj['success'] && $foundCpfCnpj['count'] > 0) {
-                $foundCpfCnpj['foundByCpfCnpj'] = true;
-                return $foundCpfCnpj;
+            if ($response['success'] && $response['count'] > 0) {
+                return $response;
             }
 
-            $protocol = $this->searchByProtocolNumber($cpf_cnpj);
+            $protocol = $this->searchByProtocolNumber($search);
 
-            $result['errors'] = $result['errors'] ?: $protocol['errors'];
+            $response['errors'] = $response['errors'] ?: $protocol['errors'];
 
             if (!is_null($protocol['data'])) {
-                $result['data'] = coollect($result['data'])->merge(
+                $response['data'] = coollect($response['data'])->merge(
                     $protocol['data']
                 );
             }
+
+            return $response;
         }
 
-        $name = $this->searchByName($name);
-        $result['errors'] = $result['errors'] ?: $name['errors'];
-
-        if (!is_null($name['data'])) {
-            $result['data'] = coollect($result['data'])->merge($name['data']);
-        }
-
-        return $result;
+        return $this->searchByName($search);
     }
 
     public function validCpfCnpj($string)

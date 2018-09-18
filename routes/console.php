@@ -133,7 +133,14 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
 
     foreach (
         Record::whereNull('resolved_at')
-            ->where('created_at', '<', '2018-08-28')
+            ->where(function ($query) {
+                $query
+                    ->where('created_at', '<', '2018-08-28')
+                    ->orWhereBetween('created_at', [
+                        '2018-09-15 00:00:00',
+                        '2018-09-15 23:59:59',
+                    ]);
+            })
             ->cursor()
         as $record
     ) {
@@ -158,25 +165,30 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
     }
 })->describe('fixdata');
 
-function increment($counterName, $mod = 100, $message = '', &$counter)
-{
-    if (!isset($counter[$counterName])) {
-        $counter[$counterName] = 0;
-    }
+if (!function_exists('increment')) {
+    function increment($counterName, $mod = 100, $message = '', &$counter)
+    {
+        if (!isset($counter[$counterName])) {
+            $counter[$counterName] = 0;
+        }
 
-    $counter[$counterName]++;
+        $counter[$counterName]++;
 
-    if ($counter[$counterName] == 1 || $counter[$counterName] % $mod === 0) {
-        $counterX = str_pad($counter[$counterName], 8, ' ', STR_PAD_LEFT);
+        if (
+            $counter[$counterName] == 1 ||
+            $counter[$counterName] % $mod === 0
+        ) {
+            $counterX = str_pad($counter[$counterName], 8, ' ', STR_PAD_LEFT);
 
-        $memory = str_pad(
-            number_format(memory_get_peak_usage()),
-            13,
-            ' ',
-            STR_PAD_LEFT
-        );
+            $memory = str_pad(
+                number_format(memory_get_peak_usage()),
+                13,
+                ' ',
+                STR_PAD_LEFT
+            );
 
-        echo "{$counterName} - {$counterX} records {$memory} bytes = {$message} \n";
+            echo "{$counterName} - {$counterX} records {$memory} bytes = {$message} \n";
+        }
     }
 }
 
@@ -450,4 +462,8 @@ Artisan::command('aloalerj:dedup-aloalerj', function () {
     $bad->delete();
 
     $this->info('done');
+})->describe('fixdata');
+
+Artisan::command('aloalerj:debug', function () {
+    echo route('records.show-public', '123456');
 })->describe('fixdata');

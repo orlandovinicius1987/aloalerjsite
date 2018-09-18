@@ -69,7 +69,7 @@ class PersonAddresses extends Controller
         $with['addresses'] = $addresses;
         $with['contacts'] = $contacts;
 
-        $this->showSuccessMessage('Endereço cadastro com sucesso.');
+        $this->showSuccessMessage('Endereço cadastrado com sucesso.');
 
         return redirect()->route($route, ['person_id' => $person->id]);
     }

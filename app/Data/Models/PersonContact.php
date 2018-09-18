@@ -1,10 +1,14 @@
 <?php
+
 namespace App\Data\Models;
 
+use Illuminate\Notifications\Notifiable;
 use App\Data\Presenters\PersonContact as PersonContactPresenter;
 
 class PersonContact extends BaseModel
 {
+    use Notifiable;
+
     /**
      * @var array
      */
@@ -36,5 +40,10 @@ class PersonContact extends BaseModel
     public function contactType()
     {
         return $this->belongsTo(ContactType::class);
+    }
+
+    public function routeNotificationForMail()
+    {
+        return $this->contact;
     }
 }

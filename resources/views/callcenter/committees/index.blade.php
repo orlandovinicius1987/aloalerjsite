@@ -19,7 +19,7 @@
                             @keyup="typeKeyUp"
                     >&nbsp;&nbsp;
                     <a id="buttonEndereços" href="{{ route('committees.create') }}"
-                       class="btn btn-primary btn-sm pull-right">
+                       class="btn btn-primary btn-sm pull-right btn-depth">
                         <i class="fa fa-plus"></i>
                         Nova Commissão
                     </a>
