@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Models;
 
-use App\Data\Scope\Record as RecordScope;
+use App\Notifications\RecordCreated;
 
 class Record extends BaseModel
 {
@@ -72,5 +72,19 @@ class Record extends BaseModel
         }
 
         return $mask;
+    }
+
+    public function getNotifiables()
+    {
+        return $this->person->emails;
+    }
+
+    public function sendNotifications()
+    {
+        $this->getNotifiables()->each(function ($notifiable) {
+            $notifiable->notify(new RecordCreated($this));
+        });
+
+        return $this;
     }
 }

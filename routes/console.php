@@ -463,3 +463,7 @@ Artisan::command('aloalerj:dedup-aloalerj', function () {
 
     $this->info('done');
 })->describe('fixdata');
+
+Artisan::command('aloalerj:debug', function () {
+    echo route('records.show-public', '123456');
+})->describe('fixdata');

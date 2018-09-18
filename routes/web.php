@@ -40,6 +40,10 @@ Route::group(['prefix' => 'contact'], function () {
 
 Route::get('/home', 'Home@index')->name('home');
 
+Route::get('/protocolo/{protocolo}', 'CallCenter\Records@showPublic')->name(
+    'records.show-public'
+);
+
 Route::group(
     [
         'prefix' => 'callcenter',
