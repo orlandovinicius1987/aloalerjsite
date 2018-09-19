@@ -39,6 +39,10 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'ping' => [
+        'bin' => env('PING_BIN', '/bin/ping'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

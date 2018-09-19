@@ -1,4 +1,4 @@
-const appName = 'vue-progress'
+const appName = 'vue-record'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -10,7 +10,7 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             changeFormRoute(action){
-                form = document.getElementById('formProgress')
+                form = document.getElementById('formRecords')
                 form.action = action
                 form.submit()
             }

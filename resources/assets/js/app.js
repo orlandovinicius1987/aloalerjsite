@@ -9,6 +9,7 @@ require('./apps/progresses.js')
 require('./apps/edit.js')
 require('./apps/committees.js')
 require('./apps/committees-search.js')
+require('./apps/records.js')
 
 $(document).ready(function() {
     $('.select2').select2({
