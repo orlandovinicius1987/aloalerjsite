@@ -11,6 +11,7 @@ abstract class Base
      */
     protected $model;
 
+    const RECORDS_COUNT_LIMIT = 20;
     /**
      * @param Request $request
      *
