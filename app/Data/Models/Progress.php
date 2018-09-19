@@ -63,11 +63,11 @@ class Progress extends BaseModel
 
     public function sendNotifications()
     {
-        if ($this->wasRecentlyCreated) {
-            return $this->notify(new ProgressCreated($this));
-        }
+        $this->getNotifiables()->each(function ($notifiable) {
+            $notifiable->notify(new ProgressCreated($this));
+        });
 
-        return $this->notify(new ProgressUpdated($this));
+        return $this;
     }
 
     public function getNotifiables()

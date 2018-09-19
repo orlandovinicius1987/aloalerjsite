@@ -5,8 +5,9 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ProgressCreated extends Mailable
+class ProgressUpdated extends Mailable
 {
     use Queueable, SerializesModels;
 

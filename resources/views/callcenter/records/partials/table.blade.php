@@ -15,7 +15,7 @@
                 @if(isset($person))
                     <a id="buttonNovoProtocolo"
                        href="{{ route('records.create',['person_id'=>$person->id]) }}"
-                       class="btn btn-primary btn-sm pull-right"
+                       class="btn btn-primary btn-sm pull-right btn-depth"
                     >
                         <i class="fa fa-plus"></i>
                         Novo Protocolo
@@ -28,35 +28,43 @@
     <div class="card-body">
         <table id="recordsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
-            <tr>
-                <th>Protocolos</th>
-                @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                    <th>Nome</th>
-                @endif
-                <th>Comissão</th>
-                <th>Tipo de Protocolo</th>
-                <th>Área</th>
-                <th>Situação</th>
-                <th>Criado em</th>
-            </tr>
+                <tr>
+                    <th>Protocolos</th>
+                    @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
+                        <th>Nome</th>
+                    @endif
+                    <th>Comissão</th>
+                    <th>Tipo de Protocolo</th>
+                    <th>Área</th>
+                    <th>Situação</th>
+                    <th>Criado em</th>
+                </tr>
             </thead>
 
             @forelse ($records as $record)
                 <tr>
                     <td><a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                         <td>
                             <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
                         </td>
                     @endif
+
                     <td>{{ $record->committee->name ?? '' }}</td>
+
                     <td>{{ $record->recordType->name ?? '' }}</td>
+
                     <td>{{ $record->area->name ?? '' }}</td>
-                    @if($record->active)
-                        <td><span class="badge badge-success">{{$record->active_string}}</span></td>
-                    @else
-                        <td><span class="badge badge-danger">{{$record->active_string}}</span></td>
-                    @endIf
+
+                    <td>
+                        @if($record->resolved_at)
+                            <span class="badge badge-danger">Finalizado</span>
+                        @else
+                            <span class="badge badge-success">Em aberto</span>
+                        @endIf
+                    </td>
+
                     <td>{{ $record->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty

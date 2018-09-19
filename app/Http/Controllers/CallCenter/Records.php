@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RecordRequest;
+use App\Data\Repositories\Records as RecordsRepository;
 
 class Records extends Controller
 {
@@ -47,10 +48,15 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
-        $record = $this->recordsRepository->create(coollect($request->all()));
+        $record = $this->recordsRepository->create(
+            coollect($request->all())
+        )->sendNotifications();
+
         if (is_null($request->get('record_id'))) {
             $request->merge(['record_id' => $record->id]);
-            $this->progressesRepository->createFromRequest($request);
+            $this->progressesRepository->createFromRequest(
+                $request
+            )->sendNotifications();
         }
 
         $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
@@ -104,5 +110,16 @@ class Records extends Controller
         return view('callcenter.records.form-workflow')
             ->with('record', $record)
             ->with('person', $person);
+    }
+
+    public function showPublic($protocol)
+    {
+        if (
+            !$record = app(RecordsRepository::class)->findByProtocol($protocol)
+        ) {
+            abort(404);
+        }
+
+        return view('callcenter.records.show-public')->with('record', $record);
     }
 }
