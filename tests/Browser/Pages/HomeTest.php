@@ -17,7 +17,7 @@ class HomeTest extends DuskTestCase
     public function testHome()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/callcenter/')->assertSee('Call Center');
+            $browser->visit('/callcenter/')->assertSee('Entrar');
         });
     }
 
@@ -31,7 +31,12 @@ class HomeTest extends DuskTestCase
                 ->type('#email', $user->username)
                 ->type('#password', 'secret')
                 ->click('#loginButton')
-                ->assertSee($user->username);
+                ->waitUntil(
+                    'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                        $user->username .
+                        '\')'
+                )
+                ->assertPresent('#navbarDropdown');
         });
     }
 }

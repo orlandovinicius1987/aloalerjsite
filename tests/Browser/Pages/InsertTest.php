@@ -24,6 +24,8 @@ class InsertTest extends DuskTestCase
 
         $user = factory(User::class, 'Operador')->create();
 
+        factory(Person::class)->create();
+
         $person = $faker->randomElement(
             app(PeopleRepository::class)
                 ->all()
@@ -71,18 +73,13 @@ class InsertTest extends DuskTestCase
                 $address,
                 $contactsArray
             ) {
-                $cont = 1;
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->screenshot($cont++)
-                    ->type('#nameSearchInput', $person->name)
-                    ->screenshot($cont++)
+                    ->type('#search', $person->name)
                     ->waitForText($person->name)
-                    ->screenshot($cont++)
                     ->clickLink($person->name)
                     ->click('#buttonNovoProtocolo')
-                    ->screenshot($cont++)
                     ->assertPathIs($record->create_url)
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
@@ -90,12 +87,10 @@ class InsertTest extends DuskTestCase
                     ->select('#progress_type_id', $record->progress_type_id)
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
-                    ->screenshot($cont++)
                     ->click('#saveButton')
+                    ->screenshot('oi')
                     ->waitForText('Gravado com sucesso')
-                    ->screenshot($cont++)
                     ->click('#buttonNovoEndereco')
-                    ->screenshot($cont++)
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(
@@ -103,33 +98,23 @@ class InsertTest extends DuskTestCase
                             $address->address .
                             '"'
                     )
-                    ->screenshot($cont++)
                     ->click('#saveButton')
-                    ->screenshot($cont++)
-                    ->waitForText('Gravado com sucesso')
-                    ->screenshot($cont++);
-
+                    ->waitForText('Gravado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
                     $contactType = app(
                         ContactTypesRepository::class
                     )->findByColumn('code', $key);
-
                     $browser
                         ->click('#buttonNovoContato')
-                        ->screenshot($cont++)
-                        ->screenshot($cont++)
-                        ->click('#saveButton')
-                        ->screenshot($cont++);
+                        ->waitForText('Selecione o tipo de contato')
+                        ->waitUntil(
+                            'document.getElementById(\'contact_type_id\').options.length > 1'
+                        )
+                        ->select('#contact_type_id', $contactType->id)
+                        ->type('#contact', $contact)
+                        ->click('#saveContactButton')
+                        ->assertSee($contact);
                 }
-
-                //                $browser
-                //                    ->waitForText('Gravado com sucesso')
-                //                    ->type('#mobile', $contacts->mobile)
-                //                    ->type('#whatsapp', $contacts->whatsapp)
-                //                    ->type('#email', $contacts->email)
-                //                    ->type('#phone', $contacts->phone)
-                //                    ->click('#saveButton')
-                //                    ->assertSee($user->username);
             });
         } catch (\Exception $exception) {
             throw $exception;
