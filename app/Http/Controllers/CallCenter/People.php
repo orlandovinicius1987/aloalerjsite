@@ -1,17 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\CallCenter;
 
-use App\Data\Models\Committee;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PersonRequest;
 use App\Http\Controllers\Controller;
-
-//TEST
-use App\Data\Models\UserCommittee as UserCommitteeModel;
-use App\Data\Repositories\Users as UsersRepository;
-use App\Data\Repositories\Committees as CommitteesRepository;
-//TEST
 
 class People extends Controller
 {
