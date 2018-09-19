@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e75a9300c990556713732f421d422a51",
+    "content-hash": "0ec150e96588b11ae9106f6b8414a901",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1866,16 +1866,16 @@
         },
         {
             "name": "pragmarx/coollection",
-            "version": "v0.5.7",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/coollection.git",
-                "reference": "87405353ef1947839c7768c3b024c8ecf923ae9f"
+                "reference": "fdc6df241d7d631ffac0093378874200638f03e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/87405353ef1947839c7768c3b024c8ecf923ae9f",
-                "reference": "87405353ef1947839c7768c3b024c8ecf923ae9f",
+                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/fdc6df241d7d631ffac0093378874200638f03e4",
+                "reference": "fdc6df241d7d631ffac0093378874200638f03e4",
                 "shasum": ""
             },
             "require": {
@@ -1926,7 +1926,7 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2018-02-19T02:50:22+00:00"
+            "time": "2018-08-19T20:13:00+00:00"
         },
         {
             "name": "pragmarx/health",
