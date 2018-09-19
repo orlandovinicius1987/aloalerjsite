@@ -111,7 +111,10 @@
 
 
 
-.search {
+.form-bigger {
+  .form-group{
+
+  }
   .form-control {
     padding: 1.475rem 1.4rem;
     font-size: 1.2rem;
@@ -124,6 +127,17 @@
 
 
 
+.user-dates-alerts {
+  font-size: 1.2rem;
+  font-family: 'proxima_nova_altbold';
+  color: $grey-dark01;
+  .label {
+    opacity: 0.7;
+  }
+}
+
+
+
 //*****************************  Sections Style   *****************************
 
 
@@ -131,8 +145,8 @@
 .section-title {
   margin-bottom: 15px;
   font-size: 30px;
-  border-bottom: solid 2px $grey-dark004;
-  color: $grey-dark004;
+  border-bottom: solid 0px $grey-dark004;
+  color: $blue-lighter30;
 }
 
 
@@ -149,13 +163,13 @@
   border-radius: 0.5rem;
 
   thead {
-    background: $grey-light01;
+    background: none;
     border-radius: 0.5rem 0.5rem 0 0 ;
 
     th {
       padding: 0.75rem;
       vertical-align: top;
-      border-top: 1px solid $grey-light02;
+      border-top: 0px solid $grey-light02;
       border-bottom: 0px !important;
     }
 
