@@ -1,17 +1,15 @@
 <?php
-
 namespace App\Data\Repositories;
 
 use Validator;
 use App\Data\Models\Person;
-
 class People extends Base
 {
+    const RECORDS_COUNT_LIMIT = 20;
     /**
      * @var $model
      */
     protected $model = Person::class;
-
     private function addExtraInfo($people)
     {
         return $people;
@@ -20,46 +18,28 @@ class People extends Base
                 $record->protocol_formatted = $record->presenter()
                     ->protocol_formatted;
             });
-
             return $person;
         });
     }
 
-    protected function emptyResponse()
-    {
-        return $this->response([], 0);
-    }
-
     protected function error($count, $messages)
     {
-        return $this->response(null, $count, $messages);
+        return $this->response(null, null, $count, $messages);
     }
-
     protected function getBaseQuery()
     {
         return $this->model::with(['contacts', 'addresses', 'records'])->take(
             static::RECORDS_COUNT_LIMIT + 1
         );
     }
-
-    protected function response($data, $count = 0, $messages = null)
+    private function isNumeric($string)
     {
-        return [
-            'data' => $data,
-            'success' => is_null($messages),
-            'errors' => $messages,
-            'count' => $count,
-        ];
+        return is_numeric(remove_punctuation($string));
     }
 
     protected function searchByProtocolNumber($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         $record = app(Records::class)->findByProtocol($string);
-
         if ($record) {
             $query = $this->model::with(['contacts', 'addresses'])
                 ->with([
@@ -69,97 +49,71 @@ class People extends Base
                 ])
                 ->take(static::RECORDS_COUNT_LIMIT + 1)
                 ->where('id', $record->person_id);
-
-            return $this->response($query->get(), $query->count());
+            return $this->response($string, $query->get(), $query->count());
         }
-
-        return $this->response(null);
+        return $this->emptyResponse();
     }
-
     protected function searchByCpf($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         if (!$this->validCpfCnpj($string)) {
-            return $this->emptyResponse();
+            return $this->emptyResponse($string);
         }
-
         $query = $this->getBaseQuery()->where(
             'cpf_cnpj',
             only_numbers($string)
         );
-
         return $this->response(
+            $string,
             $this->addExtraInfo($query->get()),
             $query->count()
         );
     }
-
     protected function searchByName($string)
     {
-        if (empty(trim($string))) {
-            return null;
-        }
-
         $query = $this->getBaseQuery()->whereRaw(
             "unaccent(name) ILIKE '%'||unaccent('{$string}')||'%' "
         );
-
         if ($query->count() > static::RECORDS_COUNT_LIMIT) {
             return $this->error(
                 $query->count(),
                 'Busca resultou em mais de 20 registros'
             );
         }
-
-        return $this->response($query->get(), $query->count());
+        return $this->response($string, $query->get(), $query->count());
     }
-
     public function searchByEverything($search)
     {
-        $result = $this->emptyResponse();
-
-        $name = $search['name'];
-
-        $cpf_cnpj = $search['cpf_cnpj'];
-
-        $search = $cpf_cnpj . $name;
-
-        if (empty(trim($search))) {
-            return $result;
+        if (empty(trim($search = $search['search']))) {
+            return $this->emptyResponse();
         }
-
-        $result['foundByCpfCnpj'] = false;
-
-        if ($cpf_cnpj) {
-            $foundCpfCnpj = $this->searchByCpf($cpf_cnpj);
-
-            if ($foundCpfCnpj['success'] && $foundCpfCnpj['count'] > 0) {
-                $foundCpfCnpj['foundByCpfCnpj'] = true;
-                return $foundCpfCnpj;
+        if ($this->isNumeric($search)) {
+            $search = remove_punctuation($search);
+            $response = $this->searchByCpf($search);
+            if ($response['success'] && $response['count'] > 0) {
+                return $response;
             }
-
-            $protocol = $this->searchByProtocolNumber($cpf_cnpj);
-
-            $result['errors'] = $result['errors'] ?: $protocol['errors'];
-
+            $protocol = $this->searchByProtocolNumber($search);
+            $response['errors'] = $response['errors'] ?: $protocol['errors'];
             if (!is_null($protocol['data'])) {
-                $result['data'] = coollect($result['data'])->merge(
+                $response['data'] = coollect($response['data'])->merge(
                     $protocol['data']
                 );
             }
+            return $response;
         }
+        return $this->searchByName($search);
+    }
 
-        $name = $this->searchByName($name);
-        $result['errors'] = $result['errors'] ?: $name['errors'];
-
-        if (!is_null($name['data'])) {
-            $result['data'] = coollect($result['data'])->merge($name['data']);
-        }
-
-        return $result;
+    protected function response($string, $data, $count = 0, $messages = null)
+    {
+        return [
+            'data' => $data,
+            'success' => is_null($messages),
+            'errors' => $messages,
+            'count' => $count,
+            'is_cpf_cnpj' => $this->validCpfCnpj($string),
+            'is_numeric' => $this->isNumeric($string),
+        ];
     }
 
     public function validCpfCnpj($string)

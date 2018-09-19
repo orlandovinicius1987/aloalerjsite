@@ -274,19 +274,4 @@ abstract class Base
 
         return $item;
     }
-
-    protected function response($data, $count = 0, $messages = null)
-    {
-        return [
-            'data' => $data,
-            'success' => is_null($messages),
-            'errors' => $messages,
-            'count' => $count,
-        ];
-    }
-
-    protected function emptyResponse($search = '')
-    {
-        return $this->response($search, [], 0, null);
-    }
 }
