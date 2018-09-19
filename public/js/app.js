@@ -52985,6 +52985,7 @@ __webpack_require__("./resources/assets/js/apps/contact-outside-workflow.js");
 __webpack_require__("./resources/assets/js/apps/progresses.js");
 __webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
+__webpack_require__("./resources/assets/js/apps/records.js");
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53323,10 +53324,34 @@ if (jQuery("#" + appName).length > 0) {
         data: {},
 
         methods: {
-            changeFormRoute: function changeFormRoute(oi) {
-                e = document.getElementById('formProgress');
-                e.action = oi;
-                e.submit();
+            changeFormRoute: function changeFormRoute(action) {
+                form = document.getElementById('formProgress');
+                form.action = action;
+                form.submit();
+            }
+        }
+
+    });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/records.js":
+/***/ (function(module, exports) {
+
+var appName = 'vue-record';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {},
+
+        methods: {
+            changeFormRoute: function changeFormRoute(action) {
+                form = document.getElementById('formRecords');
+                form.action = action;
+                form.submit();
             }
         }
 

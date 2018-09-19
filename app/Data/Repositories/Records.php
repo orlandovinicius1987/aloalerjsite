@@ -77,6 +77,15 @@ class Records extends Base
         $record->save();
     }
 
+    public function markAsNotResolved($record_id)
+    {
+        $record = $this->model::find($record_id);
+        $record->resolved_at = null;
+        $record->resolve_progress_id = null;
+        $record->resolved_by_id = null;
+        $record->save();
+    }
+
     public function findByProtocol($protocol)
     {
         return app(Records::class)->findByColumn(
@@ -92,6 +101,7 @@ class Records extends Base
 
     public function allNotResolved()
     {
+        //        dd($this->model::whereNull('resolved_at'));
         return $this->model::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
