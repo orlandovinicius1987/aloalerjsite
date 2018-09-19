@@ -11780,26 +11780,36 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
-.search .form-control {
+.form-bigger .form-control {
   padding: 1.475rem 1.4rem;
   font-size: 1.2rem;
   color: #546975;
 }
 
-.search .form-control::-webkit-input-placeholder {
+.form-bigger .form-control::-webkit-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control:-ms-input-placeholder {
+.form-bigger .form-control:-ms-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control::-ms-input-placeholder {
+.form-bigger .form-control::-ms-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control::placeholder {
+.form-bigger .form-control::placeholder {
   color: #b8c5cc;
+}
+
+.user-dates-alerts {
+  font-size: 1.2rem;
+  font-family: 'proxima_nova_altbold';
+  color: #546975;
+}
+
+.user-dates-alerts .label {
+  opacity: 0.7;
 }
 
 .section-title {
