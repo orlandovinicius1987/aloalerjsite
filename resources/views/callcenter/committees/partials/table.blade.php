@@ -13,7 +13,7 @@
             </thead>
 
             <tr v-for="committee in tables.committees">
-                {{--<td><a :href="'/callcenter/committees/show/' + committee.id">@{{ committee.name }}</a></td>--}}
+                <td><a :href="'/callcenter/committees/show/' + committee.id">@{{ committee.name }}</a></td>
                 <td>@{{ committee.short_name  }}</td>
                 <td>@{{ committee.phone  }}</td>
                 <td>@{{ committee.office_phone  }}</td>

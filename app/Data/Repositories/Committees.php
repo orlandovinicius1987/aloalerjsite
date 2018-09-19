@@ -36,11 +36,23 @@ class Committees extends Base
     {
         $result = $this->emptyResponse();
 
-        $name = $search;
-
-        $resultName = $this->searchByName($name);
+        $resultName = $this->searchByName($search);
         if (!is_null($resultName)) {
             $result['data'] = coollect($result['data'])->merge($resultName);
+        }
+
+        $resultPresident = $this->searchPresident($search);
+        if (!is_null($resultPresident)) {
+            $result['data'] = coollect($result['data'])->merge(
+                $resultPresident
+            );
+        }
+
+        $resultVicePresident = $this->searchVicePresident($search);
+        if (!is_null($resultVicePresident)) {
+            $result['data'] = coollect($result['data'])->merge(
+                $resultVicePresident
+            );
         }
 
         return $result;
@@ -49,6 +61,23 @@ class Committees extends Base
     public function searchByName($name)
     {
         return $this->model::where('name', 'ilike', '%' . $name . '%')->get();
+    }
+
+    public function searchPresident($name)
+    {
+        return $this->model::where(
+            'president',
+            'ilike',
+            '%' . $name . '%'
+        )->get();
+    }
+    public function searchVicePresident($name)
+    {
+        return $this->model::where(
+            'vice_president',
+            'ilike',
+            '%' . $name . '%'
+        )->get();
     }
 
     protected function emptyResponse($search = '')
