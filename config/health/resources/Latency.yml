@@ -9,5 +9,5 @@ column_size: 3
 targets:
   - server:
       name: webserver alerj
-      hostname: alerj.rj.gov.br
+      hostname: www.alerj.rj.gov.br
       accepted_latency: 200
