@@ -52985,8 +52985,8 @@ __webpack_require__("./resources/assets/js/apps/contact-outside-workflow.js");
 __webpack_require__("./resources/assets/js/apps/progresses.js");
 __webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
-__webpack_require__("./resources/assets/js/apps/records.js");
 __webpack_require__("./resources/assets/js/apps/committees-search.js");
+__webpack_require__("./resources/assets/js/apps/records.js");
 
 $(document).ready(function () {
     $('.select2').select2({
