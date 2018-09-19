@@ -16,7 +16,15 @@ class WorkflowTest extends DuskTestCase
     public function testWorkFlow()
     {
         $user = factory(User::class, 'Operador')->create();
-        $person = (object) factory(Person::class)->raw();
+        $person = factory(Person::class)->raw();
+
+        $person = (object) array_merge($person, [
+            'cpf_cnpj_com_pontos' => preg_replace(
+                "/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/",
+                "$1.$2.$3-$4",
+                $person['cpf_cnpj']
+            ),
+        ]);
         $record = (object) factory(Record::class, 'Workflow')->raw();
         $address = (object) factory(PersonAddress::class, 'Workflow')->raw();
         $contacts = (object) factory(PersonContact::class, 'Workflow')->raw();

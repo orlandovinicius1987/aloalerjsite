@@ -21,20 +21,22 @@ use App\Data\Repositories\Persons as PersonsRepository;
 $factory->define(Person::class, function (Faker $faker) {
     $faker = app('Faker');
 
-    $cpf_com_pontos = $faker->unique()->cpf_com_pontos;
-    $cpf_sem_pontos = preg_replace(
-        "/(\d\d\d).(\d\d\d).(\d\d\d)-(\d\d)/",
-        "$1$2$3$4",
-        $cpf_com_pontos
-    );
+    $cpf = $faker->unique()->cpf_sem_pontos;
 
     return [
-        'code' => $cpf_sem_pontos,
-        'cpf_cnpj' => $cpf_sem_pontos,
-        'cpf_cnpj_com_pontos' => $cpf_com_pontos,
+        'code' => $cpf,
+        'cpf_cnpj' => $cpf,
         'name' => $faker->name,
         'identification' => $faker->unique()->randomNumber(8),
         'birthdate' => $faker->date,
         'is_anonymous' => false,
     ];
+});
+
+$factory->defineAs(Person::class, 'massInsert', function ($faker) use (
+    $factory
+) {
+    $issue = $factory->raw(Person::class);
+    $issue['name'] = 'massInsert';
+    return $issue;
 });
