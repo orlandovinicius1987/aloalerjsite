@@ -3,6 +3,8 @@ namespace App\Http\Requests;
 
 class RecordRequest extends Request
 {
+    protected $errorBag = 'validation';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -11,16 +13,12 @@ class RecordRequest extends Request
     public function rules()
     {
         return [
-            //'origin_id' => 'required',
-            //'original' => 'required_without:record_id',
-            'progress_type_id' => 'required',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'required_without' => 'O campo solicitação não pode ser vazio.',
+            'origin_id' => 'required_without:record_id', // Origem → Workflow
+            'committee_id' => 'required', // Comissão
+            'record_type_id' => 'required', //Tipo
+            'progress_type_id' => 'required_without:record_id', // Assunto → Workflow
+            'area_id' => 'required', //Area
+            'original' => 'required_without:record_id', // Solicitação  → Workflow
         ];
     }
 }

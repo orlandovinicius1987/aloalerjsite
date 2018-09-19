@@ -105,6 +105,7 @@ class People extends Controller
         }
 
         $request->merge(['id' => $person_id]);
+        $request->merge(['created_by_id' => Auth::user()->id]);
         $person = $this->peopleRepository->createFromRequest($request);
 
         $with['person'] = $person;
