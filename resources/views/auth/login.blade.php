@@ -62,7 +62,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary btn-block btn-depth">
+                                    <button id="loginButton" type="submit" class="btn btn-primary btn-block btn-depth">
                                         Entrar
                                     </button>
 

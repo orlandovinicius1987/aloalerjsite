@@ -94,7 +94,6 @@ class Users extends Base
 
         foreach ($permissions as $permission) {
             if (isset($userTypesArray[$permission['nomeFuncao']])) {
-                dump($permission['nomeFuncao']);
                 if ($permission['nomeFuncao'] == 'Administrador') {
                     $admin = true;
                 } else {
