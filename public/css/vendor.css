@@ -11805,8 +11805,8 @@ a.text-dark:focus {
 .section-title {
   margin-bottom: 15px;
   font-size: 30px;
-  border-bottom: solid 2px #b8c5cc;
-  color: #b8c5cc;
+  border-bottom: solid 0px #b8c5cc;
+  color: #9fb6e5;
 }
 
 .table {
@@ -11819,14 +11819,14 @@ a.text-dark:focus {
 }
 
 .table thead {
-  background: #f3f7f9;
+  background: none;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .table thead th {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #ebf1f3;
+  border-top: 0px solid #ebf1f3;
   border-bottom: 0px !important;
 }
 
