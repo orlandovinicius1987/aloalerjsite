@@ -1930,16 +1930,16 @@
         },
         {
             "name": "pragmarx/health",
-            "version": "v0.9.8",
+            "version": "v0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/health.git",
-                "reference": "493b39c4bae733067a9ab9f4f4e1da5454efebbc"
+                "reference": "48ac2801b42f626abe30f8e77ab33445523753dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/health/zipball/493b39c4bae733067a9ab9f4f4e1da5454efebbc",
-                "reference": "493b39c4bae733067a9ab9f4f4e1da5454efebbc",
+                "url": "https://api.github.com/repos/antonioribeiro/health/zipball/48ac2801b42f626abe30f8e77ab33445523753dc",
+                "reference": "48ac2801b42f626abe30f8e77ab33445523753dc",
                 "shasum": ""
             },
             "require": {
@@ -2005,7 +2005,7 @@
                 "pragmarx",
                 "server"
             ],
-            "time": "2018-09-19T15:37:43+00:00"
+            "time": "2018-09-19T17:06:18+00:00"
         },
         {
             "name": "pragmarx/ia-arr",
