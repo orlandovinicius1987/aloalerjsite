@@ -8,6 +8,9 @@ Route::group(['prefix' => 'progresses'], function () {
     Route::post('/finish', 'Progresses@storeAndFinish')->name(
         'progresses.storeAndFinish'
     );
+    Route::post('/open', 'Progresses@storeAndOpen')->name(
+        'progresses.storeAndOpen'
+    );
 
     Route::get('/show/{id}', 'Progresses@show')->name('progresses.show');
 });

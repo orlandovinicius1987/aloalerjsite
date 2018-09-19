@@ -10,4 +10,7 @@ Route::group(['prefix' => 'records'], function () {
     Route::get('/workflow/{record_id}', 'Records@workflow')->name(
         'records.workflow'
     );
+    Route::post('/finish', 'Records@storeAndFinish')->name(
+        'records.storeAndFinish'
+    );
 });
