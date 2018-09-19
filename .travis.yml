@@ -21,10 +21,10 @@ before_script:
   - psql -c 'create user vagrant;' -U postgres
   - psql -c "alter user vagrant with encrypted password 'vagrant'" -U postgres;
   - psql -c 'grant all privileges on database teste to vagrant'  -U postgres
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
   - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
