@@ -24,6 +24,8 @@ class InsertTest extends DuskTestCase
 
         $user = factory(User::class, 'Operador')->create();
 
+        factory(Person::class)->create();
+
         $person = $faker->randomElement(
             app(PeopleRepository::class)
                 ->all()
