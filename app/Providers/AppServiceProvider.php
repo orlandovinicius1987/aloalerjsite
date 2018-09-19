@@ -5,6 +5,7 @@ use App\Services\Authorization;
 use App\Data\Repositories\Users;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Horizon\Horizon;
 
 class AppServiceProvider extends ServiceProvider
 {
