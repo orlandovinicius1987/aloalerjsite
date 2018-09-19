@@ -32,9 +32,18 @@ class FakerServiceProvider extends ServiceProvider
                     );
                 }
 
-                public function cpf()
+                public function cpf_com_pontos()
                 {
-                    $compontos = false;
+                    return $this->cpfCalculo(true);
+                }
+
+                public function cpf_sem_pontos()
+                {
+                    return $this->cpfCalculo(false);
+                }
+
+                private function cpfCalculo($compontos)
+                {
                     $n1 = rand(0, 9);
                     $n2 = rand(0, 9);
                     $n3 = rand(0, 9);

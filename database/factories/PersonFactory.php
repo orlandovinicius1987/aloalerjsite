@@ -21,11 +21,17 @@ use App\Data\Repositories\Persons as PersonsRepository;
 $factory->define(Person::class, function (Faker $faker) {
     $faker = app('Faker');
 
-    $cpf = $faker->unique()->cpf;
+    $cpf_com_pontos = $faker->unique()->cpf_com_pontos;
+    $cpf_sem_pontos = preg_replace(
+        "/(\d\d\d).(\d\d\d).(\d\d\d)-(\d\d)/",
+        "$1$2$3$4",
+        $cpf_com_pontos
+    );
 
     return [
-        'code' => $cpf,
-        'cpf_cnpj' => $cpf,
+        'code' => $cpf_sem_pontos,
+        'cpf_cnpj' => $cpf_sem_pontos,
+        'cpf_cnpj_com_pontos' => $cpf_com_pontos,
         'name' => $faker->name,
         'identification' => $faker->unique()->randomNumber(8),
         'birthdate' => $faker->date,

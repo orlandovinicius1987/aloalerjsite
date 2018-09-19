@@ -74,7 +74,7 @@ class InsertTest extends DuskTestCase
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->type('#nameSearchInput', $person->name)
+                    ->type('#search', $person->name)
                     ->waitForText($person->name)
                     ->clickLink($person->name)
                     ->click('#buttonNovoProtocolo')
@@ -86,6 +86,7 @@ class InsertTest extends DuskTestCase
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
                     ->click('#saveButton')
+                    ->screenshot('oi')
                     ->waitForText('Gravado com sucesso')
                     ->click('#buttonNovoEndereco')
                     ->type('#zipcode', $address->zipcode)
