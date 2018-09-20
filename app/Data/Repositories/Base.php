@@ -3,14 +3,12 @@ namespace App\Data\Repositories;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 abstract class Base
 {
     /**
      * @var
      */
     protected $model;
-
     /**
      * @param Request $request
      *
@@ -20,7 +18,6 @@ abstract class Base
     {
         return $this->searchFromRequest($request->get('pesquisa'));
     }
-
     /**
      * @param mixed $request
      *
@@ -31,18 +28,13 @@ abstract class Base
         if ($data instanceof Request) {
             $data = coollect($data->all());
         }
-
         !$data->has('id') || is_null($data->id)
             ? $model = new $this->model()
             : $model = $this->model::find($data->id);
-
         $model->fill($data->toArray());
-
         $model->save();
-
         return $model;
     }
-
     /**
      * @param $data
      *
@@ -53,14 +45,10 @@ abstract class Base
         $model = is_null($id = isset($data['id']) ? $data['id'] : null)
             ? new $this->model()
             : $this->model::find($id);
-
         $model->fill($data);
-
         $model->save();
-
         return $model;
     }
-
     /**
      * @param array $search
      * @param array $attributes
@@ -71,7 +59,6 @@ abstract class Base
     {
         return $this->model::firstOrCreate($search, $attributes);
     }
-
     /**
      * @param $abreviacao
      *
@@ -81,7 +68,6 @@ abstract class Base
     {
         return $this->model::where('abreviacao', $abreviacao)->first();
     }
-
     /**
      * @param $user_id
      *
@@ -91,12 +77,10 @@ abstract class Base
     {
         return $this->model::where('id', $id)->first();
     }
-
     public function maxId()
     {
         return $this->model::max('id');
     }
-
     /**
      * @param $attribute
      * @param $sign
@@ -108,7 +92,6 @@ abstract class Base
     {
         return $this->model::whereNull($attribute);
     }
-
     /**
      * @return mixed
      */
@@ -116,7 +99,6 @@ abstract class Base
     {
         return new $this->model();
     }
-
     /**
      * @return mixed
      */
@@ -124,12 +106,10 @@ abstract class Base
     {
         return $this->makeResultForSelect($this->model::all());
     }
-
     public function allOrderBy($field)
     {
         return ($this->model::orderBy($field))->get();
     }
-
     /**
      * @param $string
      *
@@ -139,7 +119,6 @@ abstract class Base
     {
         return str_replace(["\n"], [''], $string);
     }
-
     /**
      * @param Request $request
      * @param $model
@@ -150,7 +129,6 @@ abstract class Base
             $model->syncTags($request['tags']);
         }
     }
-
     /**
      * @param $name
      * @return mixed
@@ -159,7 +137,6 @@ abstract class Base
     {
         return $this->model::where('name', $name)->first();
     }
-
     /**
      * @param $column
      * @param $value
@@ -170,27 +147,22 @@ abstract class Base
     {
         return $this->model::where($column, $value)->first();
     }
-
     public function allWhereOperator($column, $operator, $value)
     {
         return $this->model::where($column, $operator, $value)->get();
     }
-
     public function allPaginate($sizeOfPage = 15)
     {
         return $this->model::paginate($sizeOfPage);
     }
-
     public function allWherePaginate($field, $value, $sizeOfPage = 15)
     {
         return ($this->model::where($field, $value)->paginate($sizeOfPage));
     }
-
     public function whereIsNullPaginate($field, $sizeOfPage = 15)
     {
         return ($this->model::whereNull($field)->paginate($sizeOfPage));
     }
-
     /**
      * @param $result
      * @param string $label
@@ -205,13 +177,10 @@ abstract class Base
     ) {
         return $result->map(function ($row) use ($value, $label) {
             $row['text'] = empty($row->text) ? $row[$label] : $row->text;
-
             $row['value'] = $row[$value];
-
             return $row;
         });
     }
-
     /**
      * @param null|string $search
      *
@@ -224,11 +193,8 @@ abstract class Base
             : collect(explode(' ', $search))->map(function ($item) {
                 return strtolower($item);
             });
-
         $columns = collect(['name' => 'string']);
-
         $query = $this->model::query();
-
         $search->each(function ($item) use ($columns, $query) {
             $columns->each(function ($type, $column) use ($query, $item) {
                 if ($type === 'string') {
@@ -244,21 +210,16 @@ abstract class Base
                 }
             });
         });
-
         return $this->makeResultForSelect($query->orderBy('name')->get());
     }
-
     public function toArrayWithColumnKey($elements, $columnName)
     {
         $returnArray = [];
-
         foreach ($elements as $element) {
             $returnArray[$element->$columnName] = $element;
         }
-
         return $returnArray;
     }
-
     /**
      * @param $item
      *
@@ -271,10 +232,8 @@ abstract class Base
         } catch (\Exception $exception) {
             return;
         }
-
         return $item;
     }
-
     public function randomElement()
     {
         return $this->model::inRandomOrder()->first();
