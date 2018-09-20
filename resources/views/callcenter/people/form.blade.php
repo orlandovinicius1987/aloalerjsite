@@ -256,4 +256,3 @@
         @include('callcenter.person_contacts.index')
     @endif
 @stop
-
