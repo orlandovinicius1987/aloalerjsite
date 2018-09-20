@@ -44,7 +44,6 @@ class SearchTest extends DuskTestCase
                 $person1,
                 $person2
             ) {
-                $cont = 1;
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
@@ -94,26 +93,21 @@ class SearchTest extends DuskTestCase
                 $faker,
                 $record
             ) {
-                $cont = 1;
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->screenshot($cont++)
                     ->type('#search', $record->protocol)
                     ->waitForText($record->person->name)
-                    ->screenshot($cont++)
                     ->type(
                         '#search',
                         'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2'
                     )
                     ->waitForText('Nenhum resultado encontrado')
-                    ->screenshot($cont++)
                     ->waitUntil(
                         'document.getElementById(\'navbarDropdown\').text.includes(\'' .
                             $user->username .
                             '\')'
                     )
-                    ->screenshot($cont++)
                     ->assertPresent('#navbarDropdown');
             });
         } catch (\Exception $exception) {
