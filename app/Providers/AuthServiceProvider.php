@@ -2,14 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-
 use App\Data\Repositories\Committees as CommitteesRepostory;
 use App\Data\Repositories\UsersCommittees as UsersCommitteesRepostory;
 use App\Data\Repositories\UserTypes as UserTypesRepostory;
-use Illuminate\Support\Facades\Schema;
 
 class AuthServiceProvider extends ServiceProvider
 {

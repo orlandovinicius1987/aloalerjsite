@@ -23,6 +23,7 @@ before_script:
   - psql -c 'create user vagrant;' -U postgres
   - psql -c "alter user vagrant with encrypted password 'vagrant'" -U postgres;
   - psql -c 'grant all privileges on database teste to vagrant'  -U postgres
+  - psql -c 'ALTER USER vagrant WITH SUPERUSER' -U postgres
   - php artisan migrate
   - php artisan db:seed
   - export DISPLAY=:99.0
