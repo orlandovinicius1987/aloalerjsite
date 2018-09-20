@@ -81,20 +81,12 @@ abstract class BaseModel extends Model
         return $this;
     }
 
-    // Isso aqui está BUGADO. Não está retornando array em tudo quando se faz um ->toArray()
-    //    /**
-    //     * @return array
-    //     */
-    //    public function attributesToArray()
-    //    {
-    //        $attributes = parent::attributesToArray();
-    //
-    //        $decorated = AutoPresenter::decorate($this);
-    //
-    //        foreach ($this->presenters as $key) {
-    //            $attributes[$key] = $decorated->{$key};
-    //        }
-    //
-    //        return $attributes;
-    //    }
+    public function logEmailWasSent()
+    {
+        info('logEmailWasSent');
+
+        $this->email_sent_at = now();
+
+        $this->save();
+    }
 }
