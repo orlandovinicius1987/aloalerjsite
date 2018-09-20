@@ -26,11 +26,8 @@ class InsertTest extends DuskTestCase
 
         factory(Person::class)->create();
 
-        $person = $faker->randomElement(
-            app(PeopleRepository::class)
-                ->all()
-                ->toArray()
-        );
+        $person = app(PeopleRepository::class)->randomElement();
+
         $person['show_url'] = str_replace(
             \URL::to('/'),
             '',
@@ -80,7 +77,6 @@ class InsertTest extends DuskTestCase
                     ->waitForText($person->name)
                     ->clickLink($person->name)
                     ->click('#buttonNovoProtocolo')
-                    ->assertPathIs($record->create_url)
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
                     ->select('#record_type_id', $record->record_type_id)
@@ -88,7 +84,6 @@ class InsertTest extends DuskTestCase
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
                     ->click('#saveButton')
-                    ->screenshot('oi')
                     ->waitForText('Gravado com sucesso')
                     ->click('#buttonNovoEndereco')
                     ->type('#zipcode', $address->zipcode)

@@ -7,7 +7,7 @@
                 <th>Complemento</th>
                 <th>Bairro</th>
                 <th>Cidade</th>
-                <th>Status</th>
+                <th>Situação</th>
                 <th>Criado em</th>
             </tr>
             </thead>
