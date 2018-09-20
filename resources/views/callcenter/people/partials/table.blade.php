@@ -16,6 +16,19 @@
     </div>
 
     <div class="col-12" v-if="tables.people && tables.people.length > 0">
+
+        <div class="row section-header align-items-center">
+            <div class="col-4">
+                <h5>
+                    <i class="fas fa-users"></i> Cidadãos Cadastrados
+                </h5>
+            </div>
+
+            <div class="col-8 text-right">
+
+            </div>
+        </div>
+
         <table class="table table-hover">
             <thead>
             <tr>

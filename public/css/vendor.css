@@ -11792,9 +11792,16 @@ a.text-dark:focus {
   color: #9fb6e5;
 }
 
+.section-header {
+  border-top: 1px solid #ebf1f3;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: #dae4e9;
+}
+
 .form-bigger {
   margin-bottom: 10px;
-  border-bottom: solid 2px #b8c5cc;
 }
 
 .form-bigger .search {
