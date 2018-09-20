@@ -44,11 +44,6 @@
       margin-right: 10px;
       padding-right: 10px;
 
-
-
-
-
-
       i {
         margin-right: 5px;
         color: $blue-lighter35;
@@ -60,24 +55,16 @@
         margin-right: 0px;
       }
 
-
-
-
       .nav-link {
         font-size: 16px;
         font-family: 'proxima_nova_altbold';
         text-transform: uppercase;
         color: $blue-lighter50;
-        &:hover{
+
+        &:hover {
           color: $blue-lighter70;
         }
-
-
-
-    }
-
-
-
+      }
     }
   }
 }
@@ -122,12 +109,52 @@
 }
 
 
+//*****************************  Sections Style   *****************************
+
+
+
+.section-title {
+  margin-bottom: 23px;
+  font-size: 30px;
+  border-bottom: solid 0px $grey-dark004;
+  color: $blue-lighter30;
+}
+
+
+.section-header {
+  border-top: 1px solid $grey-light02;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: $grey-light03;
+
+}
+
+
+.section-principal {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 2px 4px $grey-light03;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+
+}
+
+
+
 
 
 
 .form-bigger {
+
+  margin-bottom: 10px;
+
   .form-group{
 
+
+  }
+
+  .search {
+    margin-bottom: 25px;
   }
   .form-control {
     padding: 1.475rem 1.4rem;
@@ -151,17 +178,6 @@
 }
 
 
-
-//*****************************  Sections Style   *****************************
-
-
-
-.section-title {
-  margin-bottom: 15px;
-  font-size: 30px;
-  border-bottom: solid 0px $grey-dark004;
-  color: $blue-lighter30;
-}
 
 
 
@@ -198,6 +214,11 @@
 
 }
 
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
 .table-hover{
   tbody{
     tr{
@@ -211,25 +232,35 @@
 
 
 
+
+
 .card {
-  border: 1px solid $grey-light02;
-  box-shadow: 0px 2px 4px $grey-light03;
+  border: none;
+  background: none;
+  box-shadow: none;
 
   .card-header {
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(199, 204, 214, 0.5);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: $grey-light01;
+    border-bottom: none;
+
+    border-top: 1px solid $grey-light02;
+    padding-top: 20px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    color: $grey-light03;
+
 
     h5{
-      text-transform: uppercase;
-      font-weight: 600;
+      /*text-transform: uppercase;*/
+      /*font-weight: 600;*/
       margin-bottom: 0;
     }
   }
+
+  .card-body {
+    padding: 0;
+  }
 }
-
-
 
 
 

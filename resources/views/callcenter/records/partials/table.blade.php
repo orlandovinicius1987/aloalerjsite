@@ -1,5 +1,7 @@
 <div class="mt-4">
-    <div class="row align-items-center">
+
+
+    <div class="row section-header align-items-center">
         <div class="col-4">
             <h5>
                 <i class="fas fa-list-ol"></i> Protocolos
@@ -24,7 +26,7 @@
     </div>
 
 
-    <table id="recordsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+    <table id="recordsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>Protocolos</th>

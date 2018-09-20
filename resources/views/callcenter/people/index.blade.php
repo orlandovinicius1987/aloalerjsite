@@ -9,30 +9,33 @@
                         <div class="col-md-8 offset-md-2">
                             <div class="form-group text-center">
 
-                                <div class="section-title">
-                                    <label for="pesquisa"><i class="fas fa-search"></i> Pesquisar</label>
-                                </div>
+                                <h2 class="section-title">
+                                    <i class="fas fa-search"></i> Pesquisar
+                                </h2>
 
-                                <div class="form-group row search form-bigger">
-                                    <div class="col-12">
-                                        <input
-                                            id="search"
-                                            class="form-control"
-                                            placeholder="Nome, CPF, CNPJ ou Protocolo"
-                                            v-model="form.search.search"
-                                            @keyup="typeKeyUp"
-                                        >
+                                <div class="form-bigger">
+                                    <div class="form-group row search">
+                                        <div class="col-12">
+                                            <input
+                                                    id="search"
+                                                    class="form-control"
+                                                    placeholder="Nome, CPF, CNPJ ou Protocolo"
+                                                    v-model="form.search.search"
+                                                    @keyup="typeKeyUp"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row text-center">
+                                        <div class="col-12" v-if="canCreateNewPerson()">
+                                            <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary btn-depth ">
+                                                <i class="fa fa-plus"></i>
+                                                Cadastrar novo cidadão
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group text-center row">
-                                    <div class="col-12 text-center"  v-if="canCreateNewPerson()">
-                                        <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary btn-depth ">
-                                            <i class="fa fa-plus"></i>
-                                            Cadastrar novo cidadão
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
