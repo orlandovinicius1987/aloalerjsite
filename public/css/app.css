@@ -11810,11 +11810,7 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
-.section-principal-bg {
-  background-color: #ecf2f6;
-}
-
-div#vue-personal-info {
+.section-heading-bg {
   background-color: #ecf2f6;
 }
 

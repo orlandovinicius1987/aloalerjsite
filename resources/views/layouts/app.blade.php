@@ -118,7 +118,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid section-principal-bg">
+            <div class="container-fluid section-heading-bg">
                 <div class="row justify-content-center">
                     <div class="col-md-10">
                         @include('partials.alerts')
