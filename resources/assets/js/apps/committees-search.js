@@ -1,4 +1,4 @@
-const appName = 'vue-search'
+const appName = 'committees-search'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -6,10 +6,8 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             tables: {
-                people: null,
+                committees: null,
             },
-
-            response: null,
 
             refreshing: false,
 
@@ -17,50 +15,42 @@ if (jQuery("#" + appName).length > 0) {
 
             typeTimeout: null,
 
-            isCpfCnpj: false,
-
-            isNumeric: false,
+            foundByCpfCnpj: null,
 
             errors: null,
 
             form: {
-                search: {
-                    search: '',
-                    name: '',
-                    cpf_cnpj: null,
-                },
+                search: null,
             }
         },
 
         methods: {
             refresh() {
-                let $this = this
+                me = this
 
-                $this.refreshing = true
+                me.refreshing = true
 
-                $this.errors = null
+                me.errors = null
 
-                $this.tables.people = null
+                me.tables.committees = null
 
-                axios.post('/api/v1/search', {search: this.form.search})
-                .then(function(response) {
-                    $this.response = response.data
+                axios.post('/api/v1/committees-search', {search: this.form.search})
+                    .then(function(response) {
+                        me.tables.committees = []
+                        me.errors = false
 
-                    $this.tables.people = []
-                    $this.tables.people = $this.response.success ? $this.response.data : []
-                    $this.isCpfCnpj = $this.response.is_cpf_cnpj
-                    $this.isNumeric = $this.response.is_numeric
-                    $this.errors = $this.response.errors
+                        if (response.data.success) {
+                            me.tables.committees = response.data.data
+                            me.errors = response.data.errors
+                        }
 
-                    $this.refreshing = false
-                })
-                .catch(function(error) {
-                    console.log(error)
+                        me.refreshing = false
+                    })
+                    .catch(function(error) {
+                        console.log(error)
 
-                    $this.tables.addresses = []
-
-                    $this.refreshing = false
-                })
+                        me.refreshing = false
+                    })
             },
 
             typeKeyUp() {
@@ -84,19 +74,7 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             isSearching() {
-                return this.form.search.search || this.form.search.name || this.form.search.cpf_cnpj
-            },
-
-            getName() {
-                return !this.isNumeric ? this.form.search.search : ''
-            },
-
-            getCpfCnpj() {
-                return this.isCpfCnpj ? this.form.search.search : ''
-            },
-
-            canCreateNewPerson() {
-                return this.form.search.search && (!this.isNumeric || (this.response && this.response.count == 0))
+                return this.form.search.name || this.form.search.cpf_cnpj
             }
         },
 
