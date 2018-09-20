@@ -6,7 +6,7 @@ return [
     'resources' => [
         'path' => config_path('health/resources'),
 
-        'enabled' => ['DebugMode'], //PragmaRX\Health\Support\Constants::RESOURCES_ENABLED_ALL,
+        'enabled' => PragmaRX\Health\Support\Constants::RESOURCES_ENABLED_ALL,
     ],
 
     'sort_by' => 'slug',
