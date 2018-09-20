@@ -131,6 +131,15 @@
 }
 
 
+.section-principal {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 2px 4px $grey-light03;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+
+}
+
+
 
 
 
@@ -223,6 +232,8 @@
 
 
 
+
+
 .card {
   border: none;
   background: none;
@@ -250,8 +261,6 @@
     padding: 0;
   }
 }
-
-
 
 
 

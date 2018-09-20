@@ -6,7 +6,7 @@
     <div class="mt-4" id="vue-personal-info">
 
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2 section-principal">
                 <div class="text-center">
                     <div class="section-title"><i class="fas fa-plus-circle"></i></i> Adicionar  / <i class="far fa-address-card"></i> Dados Pessoais </div>
 
@@ -79,19 +79,19 @@
 
                         @if (!$workflow)
                             <div class="form-group row form-bigger text-left user-dates-alerts">
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <i class="fas fa-user-plus"></i> Criado em
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     {{ $person->created_at_formatted ?? '' }}
                                 </div>
 
-                                <div class="col-2 label">
+                                <div class="col-3 label">
                                     <i class="fas fa-user-edit"></i> Alterado em
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-3">
                                     {{ $person->updated_at_formatted ?? '' }}
                                 </div>
 

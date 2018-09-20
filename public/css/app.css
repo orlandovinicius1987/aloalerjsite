@@ -11800,6 +11800,14 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.section-principal {
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 0px 2px 4px #dae4e9;
+          box-shadow: 0px 2px 4px #dae4e9;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
