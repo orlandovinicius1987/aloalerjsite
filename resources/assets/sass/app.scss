@@ -72,7 +72,14 @@
 
 
 
-
+.btn-danger {
+  background-color: $red;
+  border-color: darken($red,15%);
+  &:hover {
+    background-color: darken($red,10%);
+    border-color: darken($red,20%);
+  }
+}
 
 
 
@@ -131,13 +138,14 @@
 }
 
 
-.section-principal {
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 2px 4px $grey-light03;
-  border-radius: 1rem;
-  padding: 2rem 2rem;
+.section-heading-bg {
+  background-color: darken($grey-light01,02%) ;
 
+  box-shadow: inset 0px -2px 4px darken($grey-light01,08%);
+  padding-bottom: 30px;
 }
+
+
 
 
 
@@ -170,10 +178,11 @@
 
 .user-dates-alerts {
   font-size: 1.2rem;
-  font-family: 'proxima_nova_altbold';
-  color: $grey-dark01;
+  font-family: 'proxima_nova_ltsemibold';
+  color: lighten( $grey-dark01, 30% ) ;
   .label {
     opacity: 0.7;
+    font-size: 85%;
   }
 }
 
@@ -243,11 +252,11 @@
     background-color: $grey-light01;
     border-bottom: none;
 
-    border-top: 1px solid $grey-light02;
+    border-top: 0px solid $grey-light02;
     padding-top: 20px;
     margin-top: 10px;
     padding-bottom: 10px;
-    color: $grey-light03;
+    color: darken($grey-light03,15%);
 
 
     h5{

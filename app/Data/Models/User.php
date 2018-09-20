@@ -30,4 +30,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Committee::class, 'user_committees');
     }
+
+    /**
+     * Add webhook url for slack.
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function routeNotificationForSlack()
+    {
+        return config('services.slack.webhook_url');
+    }
 }

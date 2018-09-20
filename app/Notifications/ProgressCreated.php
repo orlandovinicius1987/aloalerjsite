@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Data\Models\Progress;
+use App\Data\Repositories\Progresses;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -50,6 +51,8 @@ class ProgressCreated extends Notification implements ShouldQueue
      */
     public function toMail()
     {
+        $this->progress->logEmailWasSent();
+
         $message = (new MailMessage())
             ->subject(
                 'Novo andamento para o seu protocolo ' .

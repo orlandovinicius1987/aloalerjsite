@@ -55,4 +55,14 @@ class Person extends BaseModel
 
         return $this->contacts()->where('contact_type_id', $type->id);
     }
+
+    /**
+     * Add webhook url for slack.
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function routeNotificationForSlack()
+    {
+        return config('services.slack.webhook_url');
+    }
 }

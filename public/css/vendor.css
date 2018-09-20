@@ -11746,6 +11746,16 @@ a.text-dark:focus {
   color: #305bb0;
 }
 
+.btn-danger {
+  background-color: #e3342f;
+  border-color: #ae1c17;
+}
+
+.btn-danger:hover {
+  background-color: #c51f1a;
+  border-color: #981814;
+}
+
 .login {
   border-top: 5px solid #172B53 !important;
   padding-bottom: 10px;
@@ -11800,12 +11810,11 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
-.section-principal {
-  background-color: rgba(255, 255, 255, 0.3);
-  -webkit-box-shadow: 0px 2px 4px #dae4e9;
-          box-shadow: 0px 2px 4px #dae4e9;
-  border-radius: 1rem;
-  padding: 2rem 2rem;
+.section-heading-bg {
+  background-color: #ecf2f6;
+  -webkit-box-shadow: inset 0px -2px 4px #d8e5eb;
+          box-shadow: inset 0px -2px 4px #d8e5eb;
+  padding-bottom: 30px;
 }
 
 .form-bigger {
@@ -11840,12 +11849,13 @@ a.text-dark:focus {
 
 .user-dates-alerts {
   font-size: 1.2rem;
-  font-family: 'proxima_nova_altbold';
-  color: #546975;
+  font-family: 'proxima_nova_ltsemibold';
+  color: #a4b4be;
 }
 
 .user-dates-alerts .label {
   opacity: 0.7;
+  font-size: 85%;
 }
 
 .table {
@@ -11894,11 +11904,11 @@ a.text-dark:focus {
 .card .card-header {
   background-color: #f3f7f9;
   border-bottom: none;
-  border-top: 1px solid #ebf1f3;
+  border-top: 0px solid #ebf1f3;
   padding-top: 20px;
   margin-top: 10px;
   padding-bottom: 10px;
-  color: #dae4e9;
+  color: #aac1cc;
 }
 
 .card .card-header h5 {
