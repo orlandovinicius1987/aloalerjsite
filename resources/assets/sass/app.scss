@@ -140,6 +140,9 @@
 
 .section-heading-bg {
   background-color: darken($grey-light01,02%) ;
+
+  box-shadow: inset 0px -2px 4px darken($grey-light01,08%);
+  padding-bottom: 30px;
 }
 
 

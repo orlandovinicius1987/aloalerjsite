@@ -11812,6 +11812,9 @@ a.text-dark:focus {
 
 .section-heading-bg {
   background-color: #ecf2f6;
+  -webkit-box-shadow: inset 0px -2px 4px #d8e5eb;
+          box-shadow: inset 0px -2px 4px #d8e5eb;
+  padding-bottom: 30px;
 }
 
 .form-bigger {
