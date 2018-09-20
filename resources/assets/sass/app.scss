@@ -131,6 +131,15 @@
 }
 
 
+.section-principal {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 2px 4px $grey-light03;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+
+}
+
+
 
 
 
@@ -205,6 +214,11 @@
 
 }
 
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
 .table-hover{
   tbody{
     tr{
@@ -215,6 +229,8 @@
   }
 
 }
+
+
 
 
 
@@ -245,8 +261,6 @@
     padding: 0;
   }
 }
-
-
 
 
 

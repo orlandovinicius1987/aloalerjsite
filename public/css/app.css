@@ -11800,6 +11800,14 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.section-principal {
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 0px 2px 4px #dae4e9;
+          box-shadow: 0px 2px 4px #dae4e9;
+  border-radius: 1rem;
+  padding: 2rem 2rem;
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
@@ -11866,6 +11874,10 @@ a.text-dark:focus {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #ebf1f3;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .table-hover tbody tr:hover {
