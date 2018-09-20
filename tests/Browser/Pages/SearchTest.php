@@ -74,6 +74,10 @@ class SearchTest extends DuskTestCase
         } catch (\Throwable $exception) {
             throw $exception;
         }
+
+        foreach ($persons as $person) {
+            $person->delete();
+        }
     }
 
     public function testSearchRecord()
