@@ -2,7 +2,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    Contatos
+                    <i class="fas fa-phone"></i> Contatos
                 </h5>
             </div>
 

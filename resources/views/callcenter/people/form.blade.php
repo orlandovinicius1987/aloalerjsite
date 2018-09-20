@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="text-center">
-                    <div class="section-title"><i class="fas fa-plus-circle"></i></i> Adicionar  / Dados Pessoais </div>
+                    <div class="section-title"><i class="fas fa-plus-circle"></i></i> Adicionar  / <i class="far fa-address-card"></i> Dados Pessoais </div>
 
                     {{--                    <div class="form-group row form-bigger">
                                             <div class="col-12"><input id="search" placeholder="Nome, CPF, CNPJ ou Protocolo" class="form-control"></div>
