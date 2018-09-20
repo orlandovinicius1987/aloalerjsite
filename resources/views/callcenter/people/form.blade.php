@@ -6,7 +6,7 @@
     <div class="mt-4" id="vue-personal-info">
 
         <div class="row">
-            <div class="col-md-8 offset-md-2 section-principal">
+            <div class="col-md-8 offset-md-2">
                 <div class="text-center">
                     <div class="section-title"><i class="fas fa-plus-circle"></i></i> Adicionar  / <i class="far fa-address-card"></i> Dados Pessoais </div>
 
