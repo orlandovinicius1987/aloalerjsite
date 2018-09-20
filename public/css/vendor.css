@@ -11810,12 +11810,11 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
-.section-principal-bg {
+.section-heading-bg {
   background-color: #ecf2f6;
-}
-
-div#vue-personal-info {
-  background-color: #ecf2f6;
+  -webkit-box-shadow: inset 0px -2px 4px #d8e5eb;
+          box-shadow: inset 0px -2px 4px #d8e5eb;
+  padding-bottom: 30px;
 }
 
 .form-bigger {
