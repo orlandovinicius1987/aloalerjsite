@@ -59,11 +59,13 @@
                     <td>{{ $record->area->name ?? '' }}</td>
 
                     <td>
-                        @if($record->resolved_at)
-                            <span class="badge badge-danger">Finalizado</span>
-                        @else
-                            <span class="badge badge-success">Em aberto</span>
-                        @endIf
+                        <h4>
+                            @if($record->resolved_at)
+                                <span class="badge badge-danger">Finalizado</span>
+                            @else
+                                <span class="badge badge-success">Em aberto</span>
+                            @endIf
+                        </h4>
                     </td>
 
                     <td>{{ $record->created_at_formatted ?? '' }}</td>
