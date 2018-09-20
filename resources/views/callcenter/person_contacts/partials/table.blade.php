@@ -1,5 +1,5 @@
     <div class="card-body">
-        <table id="contactsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+        <table id="contactsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Tipo de Contato</th>
