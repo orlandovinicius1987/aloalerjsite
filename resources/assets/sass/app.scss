@@ -44,8 +44,14 @@
       margin-right: 10px;
       padding-right: 10px;
 
+
+
+
+
+
       i {
         margin-right: 5px;
+        color: $blue-lighter35;
       }
 
 
@@ -56,14 +62,22 @@
 
 
 
+
+      .nav-link {
+        font-size: 16px;
+        font-family: 'proxima_nova_altbold';
+        text-transform: uppercase;
+        color: $blue-lighter50;
+        &:hover{
+          color: $blue-lighter70;
+        }
+
+
+
     }
 
 
-    .nav-link {
-      font-size: 16px;
-      font-family: 'proxima_nova_altbold';
-      text-transform: uppercase;
-      color: $blue;
+
     }
   }
 }

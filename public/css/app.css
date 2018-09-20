@@ -11727,6 +11727,7 @@ a.text-dark:focus {
 
 .navbar-light .navbar-nav .nav-item i {
   margin-right: 5px;
+  color: #8faae0;
 }
 
 .navbar-light .navbar-nav .nav-item:last-child {
@@ -11734,11 +11735,15 @@ a.text-dark:focus {
   margin-right: 0px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-item .nav-link {
   font-size: 16px;
   font-family: 'proxima_nova_altbold';
   text-transform: uppercase;
-  color: #172B53;
+  color: #5f86d3;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link:hover {
+  color: #305bb0;
 }
 
 .login {
