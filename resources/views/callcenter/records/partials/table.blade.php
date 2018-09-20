@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <div class="col-4">
             <h5>
-                Protocolos
+                <i class="fas fa-list-ol"></i> Protocolos
 
                 @if (isset($onlyNonResolved))
                     Não Resolvidos

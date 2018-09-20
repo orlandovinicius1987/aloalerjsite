@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <div class="col-4">
             <h5>
-                Endereços
+                <i class="fas fa-map-marked-alt"></i> Endereços
             </h5>
         </div>
         <div class="col-8 text-right">
