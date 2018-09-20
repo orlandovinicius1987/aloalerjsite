@@ -274,4 +274,9 @@ abstract class Base
 
         return $item;
     }
+
+    public function randomElement()
+    {
+        return $this->model::inRandomOrder()->first();
+    }
 }

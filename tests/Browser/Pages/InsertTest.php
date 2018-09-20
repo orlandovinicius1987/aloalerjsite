@@ -26,11 +26,8 @@ class InsertTest extends DuskTestCase
 
         factory(Person::class)->create();
 
-        $person = $faker->randomElement(
-            app(PeopleRepository::class)
-                ->all()
-                ->toArray()
-        );
+        $person = app(PeopleRepository::class)->randomElement();
+
         $person['show_url'] = str_replace(
             \URL::to('/'),
             '',
