@@ -18,18 +18,8 @@ use App\Data\Repositories\Records as RecordsRepository;
 
 $factory->define(ProgressModel::class, function (Faker $faker) {
     return [
-        'origin_id' =>
-            $faker->randomElement(
-                app(OriginsRepository::class)
-                    ->all()
-                    ->toArray()
-            )['id'],
-        'record_id' =>
-            $faker->randomElement(
-                app(RecordsRepository::class)
-                    ->all()
-                    ->toArray()
-            )['id'],
+        'origin_id' => app(OriginsRepository::class)->randomElement()->id,
+        'record_id' => app(RecordsRepository::class)->randomElement()->id,
         'original' => $faker->name,
     ];
 });
