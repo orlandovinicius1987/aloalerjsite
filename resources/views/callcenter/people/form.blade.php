@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
-@section('content')
-
-
+@section('heading')
     <div class="mt-4" id="vue-personal-info">
-
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="text-center">
@@ -244,7 +241,9 @@
         </div>
     </div>
 --}}
+@stop
 
+@section('content')
     @if (isset($records))
         @include('callcenter.records.partials.table')
     @endif
@@ -256,5 +255,5 @@
     @if (isset($contacts))
         @include('callcenter.person_contacts.index')
     @endif
-@endsection
+@stop
 

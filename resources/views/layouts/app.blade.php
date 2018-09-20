@@ -118,17 +118,23 @@
                 </div>
             </div>
 
-            <main class="py-4">
-                <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            @include('partials.alerts')
+            <div class="container-fluid section-principal-bg">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        @include('partials.alerts')
 
-                            @yield('content')
-                        </div>
+                        @yield('heading')
                     </div>
                 </div>
-            </main>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
