@@ -44,11 +44,6 @@
       margin-right: 10px;
       padding-right: 10px;
 
-
-
-
-
-
       i {
         margin-right: 5px;
         color: $blue-lighter35;
@@ -60,24 +55,16 @@
         margin-right: 0px;
       }
 
-
-
-
       .nav-link {
         font-size: 16px;
         font-family: 'proxima_nova_altbold';
         text-transform: uppercase;
         color: $blue-lighter50;
-        &:hover{
+
+        &:hover {
           color: $blue-lighter70;
         }
-
-
-
-    }
-
-
-
+      }
     }
   }
 }
@@ -122,12 +109,43 @@
 }
 
 
+//*****************************  Sections Style   *****************************
+
+
+
+.section-title {
+  margin-bottom: 23px;
+  font-size: 30px;
+  border-bottom: solid 0px $grey-dark004;
+  color: $blue-lighter30;
+}
+
+
+.section-header {
+  border-top: 1px solid $grey-light02;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: $grey-light03;
+
+}
+
+
+
 
 
 
 .form-bigger {
+
+  margin-bottom: 10px;
+
   .form-group{
 
+
+  }
+
+  .search {
+    margin-bottom: 25px;
   }
   .form-control {
     padding: 1.475rem 1.4rem;
@@ -151,17 +169,6 @@
 }
 
 
-
-//*****************************  Sections Style   *****************************
-
-
-
-.section-title {
-  margin-bottom: 15px;
-  font-size: 30px;
-  border-bottom: solid 0px $grey-dark004;
-  color: $blue-lighter30;
-}
 
 
 

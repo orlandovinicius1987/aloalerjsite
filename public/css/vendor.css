@@ -11785,6 +11785,29 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.section-title {
+  margin-bottom: 23px;
+  font-size: 30px;
+  border-bottom: solid 0px #b8c5cc;
+  color: #9fb6e5;
+}
+
+.section-header {
+  border-top: 1px solid #ebf1f3;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: #dae4e9;
+}
+
+.form-bigger {
+  margin-bottom: 10px;
+}
+
+.form-bigger .search {
+  margin-bottom: 25px;
+}
+
 .form-bigger .form-control {
   padding: 1.475rem 1.4rem;
   font-size: 1.2rem;
@@ -11815,13 +11838,6 @@ a.text-dark:focus {
 
 .user-dates-alerts .label {
   opacity: 0.7;
-}
-
-.section-title {
-  margin-bottom: 15px;
-  font-size: 30px;
-  border-bottom: solid 0px #b8c5cc;
-  color: #9fb6e5;
 }
 
 .table {
