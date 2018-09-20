@@ -25,29 +25,13 @@ use App\Data\Repositories\Areas as AreasRepository;
 */
 
 $factory->define(Record::class, function (Faker $faker) {
-    $committee = (object) $faker->randomElement(
-        app(CommitteesRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $committee = app(CommitteesRepository::class)->randomElement();
 
-    $recordType = (object) $faker->randomElement(
-        app(RecordTypesRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $recordType = app(RecordTypesRepository::class)->randomElement();
 
-    $area = (object) $faker->randomElement(
-        app(AreasRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $area = app(AreasRepository::class)->randomElement();
 
-    $person = (object) $faker->randomElement(
-        app(PeopleRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $person = app(PeopleRepository::class)->randomElement();
 
     return [
         'protocol' => $faker->numberBetween(1000, 1000000),
@@ -64,17 +48,9 @@ $factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use (
 ) {
     $issue = $factory->raw(Record::class);
 
-    $origin = (object) $faker->randomElement(
-        app(OriginsRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $origin = app(OriginsRepository::class)->randomElement();
 
-    $progressType = (object) $faker->randomElement(
-        app(ProgressTypesRepository::class)
-            ->all()
-            ->toArray()
-    );
+    $progressType = app(ProgressTypesRepository::class)->randomElement();
 
     $issue = array_merge($issue, [
         'progress_type_id' => $progressType->id,

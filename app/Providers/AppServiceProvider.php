@@ -54,12 +54,10 @@ class AppServiceProvider extends ServiceProvider
             $permissions = app(Authorization::class)->getUserPermissions(
                 $user->username
             );
-
             $this->usersRepository->updateCurrentUserTypeViaPermissions(
                 $permissions
             );
-
-            // If the user has any permissions in the system, it is allowed to use it.
+            //             If the user has any permissions in the system, it is allowed to use it.
             return $permissions->count() > 0;
         });
     }
