@@ -8,6 +8,7 @@
                     <th>Área</th>
                     <th>Solicitação</th>
                     <th>Finalizador</th>
+                    <th>Notificação</th>
                     <th>Criado em</th>
                 </tr>
             </thead>
@@ -19,15 +20,19 @@
                             {{ $progress->progressType->name ?? '' }}
                         </a>
                     </td>
+
                     <td>
                         {{ $progress->origin->name ?? '' }}
                     </td>
+
                     <td>
                         {{ $progress->area->name ?? '' }}
                     </td>
+
                     <td>
                         {{ $progress->original }}
                     </td>
+
                     <td class="text-center">
                         @if ($progress->record->resolve_progress_id == $progress->id)
                             @if($progress->finalize)
@@ -37,6 +42,17 @@
                             <h5><span class="badge badge-danger">Não</span></h5>
                         @endif
                     </td>
+
+                    <td class="text-center">
+                        @if ($progress->email_sent_at)
+                            <h5>
+                                <span class="badge badge-success">
+                                    E-mail
+                                </span>
+                            </h5>
+                        @endif
+                    </td>
+
                     <td>{{ $progress->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty

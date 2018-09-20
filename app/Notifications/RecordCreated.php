@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Data\Models\Record;
+use App\Data\Repositories\Records;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -50,6 +51,8 @@ class RecordCreated extends Notification implements ShouldQueue
      */
     public function toMail()
     {
+        $this->record->logEmailWasSent();
+
         $message = (new MailMessage())
             ->subject('Novo Protocolo no Alô Alerj: ' . $this->record->protocol)
             ->greeting('Olá!')
