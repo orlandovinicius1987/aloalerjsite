@@ -11873,22 +11873,30 @@ a.text-dark:focus {
 }
 
 .card {
-  border: 1px solid #ebf1f3;
-  -webkit-box-shadow: 0px 2px 4px #dae4e9;
-          box-shadow: 0px 2px 4px #dae4e9;
+  border: none;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .card .card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(199, 204, 214, 0.5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #f3f7f9;
+  border-bottom: none;
+  border-top: 1px solid #ebf1f3;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: #dae4e9;
 }
 
 .card .card-header h5 {
-  text-transform: uppercase;
-  font-weight: 600;
+  /*text-transform: uppercase;*/
+  /*font-weight: 600;*/
   margin-bottom: 0;
+}
+
+.card .card-body {
+  padding: 0;
 }
 
 .bg-grey-light02 {

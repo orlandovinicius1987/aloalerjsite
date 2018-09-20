@@ -1,5 +1,7 @@
 <div class="mt-4">
-    <div class="row align-items-center">
+
+
+    <div class="row section-header align-items-center">
         <div class="col-4">
             <h5>
                 <i class="fas fa-list-ol"></i> Protocolos
