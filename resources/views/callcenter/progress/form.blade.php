@@ -164,9 +164,10 @@
 
                         {{--@include('partials.edit-button',['model'=>$progress, 'form' =>'formProgress'])--}}
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                             Gravar
                         </button>
+
                         @if ($record->resolved_at)
                             <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger" @include('partials.disabled')>
                                 Gravar e reabrir
@@ -176,6 +177,7 @@
                                 Gravar e finalizar
                             </button>
                         @endif
+
                     </div>
                 </div>
             </form>

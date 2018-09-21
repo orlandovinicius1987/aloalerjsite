@@ -30,7 +30,9 @@ class Progresses extends Controller
     public function store(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-        $this->progressesRepository->createFromRequest($request); //->sendNotifications();
+        $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
         return redirect()
             ->route('records.show', ['id' => $request->get('record_id')])
@@ -40,7 +42,9 @@ class Progresses extends Controller
     public function storeAndFinish(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-        $progress = $this->progressesRepository->createFromRequest($request); //->sendNotifications();
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
         $this->recordsRepository->markAsResolved(
             $request->get('record_id'),
@@ -55,7 +59,9 @@ class Progresses extends Controller
     public function storeAndOpen(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-        $progress = $this->progressesRepository->createFromRequest($request); //->sendNotifications();
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
         $this->recordsRepository->markAsNotResolved(
             $request->get('record_id'),

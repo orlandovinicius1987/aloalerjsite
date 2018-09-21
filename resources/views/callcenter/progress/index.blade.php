@@ -7,13 +7,15 @@
                 </h5>
             </div>
 
-            <div class="col-8 text-right">
-                <a id="buttonNovoAndamento" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
-                   class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-plus"></i>
-                    Novo Andamento
-                </a>
-            </div>
+            @can('create-andamento')
+                <div class="col-8 text-right">
+                    <a id="buttonNovoAndamento" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
+                       class="btn btn-primary btn-sm pull-right btn-depth">
+                        <i class="fa fa-plus"></i>
+                        Novo Andamento
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 

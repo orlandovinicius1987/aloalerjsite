@@ -13,7 +13,7 @@
                                     <label for="pesquisa"><i class="fas fa-search"></i> Pesquisar</label>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row search">
                                     <div class="col-12">
                                         <input
                                             id="search"
@@ -33,40 +33,21 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <br>
-                                        <div class="alert alert-danger text-center" role="alert" v-if="errors">
-                                            @{{ errors }}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mt-4">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5>Resultado</h5>
-                        </div>
-
-                        <div class="col-6 text-right">
-                            <h5 v-if="refreshing">
-                                <i class="fa fa-spinner fa-spin text-danger"></i>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    @include('callcenter.people.partials.table')
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <h1 v-if="refreshing">
+                        <i class="fa fa-spinner fa-spin text-danger"></i>
+                    </h1>
                 </div>
             </div>
+
+            @include('callcenter.people.partials.table')
         </div>
     </div>
 @endsection

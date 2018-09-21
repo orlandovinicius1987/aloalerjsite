@@ -171,7 +171,7 @@
 
                         {{--@include('partials.edit-button',['model'=>$committee, 'form' =>'formCommittee'])--}}
 
-                        <button type="submit" class="btn btn-danger">
+                        <button type="submit" class="btn btn-danger btn-depth">
                                 Gravar
                         </button>
                     </div>

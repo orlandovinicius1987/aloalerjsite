@@ -4,17 +4,13 @@ namespace App\Notifications;
 
 use App\Data\Models\Progress;
 use Illuminate\Bus\Queueable;
-use App\Data\Repositories\Notifications;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ProgressCreated
-    extends Notification /// implements ShouldQueue
+class ProgressCreated extends Notification implements ShouldQueue
 {
     use Queueable;
-
-    protected $notificationsRepository;
 
     /**
      * @var Progress
@@ -24,16 +20,6 @@ class ProgressCreated
     public function __construct(Progress $progress)
     {
         $this->progress = $progress;
-
-        $this->notificationsRepository = app(Notifications::class);
-    }
-
-    /**
-     * @return mixed
-     */
-    private function getNotifiables()
-    {
-        return $this->progress->getNotifiables();
     }
 
     /**
@@ -64,11 +50,17 @@ class ProgressCreated
      */
     public function toMail()
     {
-        $message = (new MailMessage())->line($this->getMessage());
+        $message = (new MailMessage())
+            ->subject(
+                'Novo andamento para o seu protocolo ' .
+                    $this->progress->record->protocol
+            )
+            ->greeting('Olá!')
+            ->line($this->getMessage());
 
         $message->action(
-            'Ver andamento',
-            route('progresses.show', $this->progress->id)
+            'Clique para ver detalhes do andamento',
+            route('records.show-public', $this->progress->record->protocol)
         );
 
         return $message;

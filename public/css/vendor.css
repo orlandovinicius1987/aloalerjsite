@@ -11716,7 +11716,7 @@ a.text-dark:focus {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  border-top: 2px solid #172B53;
+  border-top: 4px solid #172B53;
 }
 
 .navbar-light .navbar-nav .nav-item {
@@ -11780,11 +11780,65 @@ a.text-dark:focus {
   color: #dae4e9;
 }
 
+.search .form-control {
+  padding: 1.475rem 1.4rem;
+  font-size: 1.2rem;
+  color: #546975;
+}
+
+.search .form-control::-webkit-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control:-ms-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control::-ms-input-placeholder {
+  color: #b8c5cc;
+}
+
+.search .form-control::placeholder {
+  color: #b8c5cc;
+}
+
 .section-title {
   margin-bottom: 15px;
   font-size: 30px;
   border-bottom: solid 2px #b8c5cc;
   color: #b8c5cc;
+}
+
+.table {
+  background: #ffffff;
+  /*border: 1px solid $grey-light02;*/
+  border: 0px;
+  -webkit-box-shadow: 0px 2px 4px #dae4e9;
+          box-shadow: 0px 2px 4px #dae4e9;
+  border-radius: 0.5rem;
+}
+
+.table thead {
+  background: #f3f7f9;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.table thead th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #ebf1f3;
+  border-bottom: 0px !important;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #ebf1f3;
+}
+
+.table-hover tbody tr:hover {
+  background: #f3f7f9;
 }
 
 .card {

@@ -88,11 +88,10 @@ class Records extends Base
 
     public function findByProtocol($protocol)
     {
-        return app(Records::class)->findByColumn('protocol', $protocol)
-            ?: app(Records::class)->findByColumn(
-                'protocol',
-                $this->cleanProtocol($protocol)
-            );
+        return app(Records::class)->findByColumn(
+            'protocol',
+            $this->cleanProtocol($protocol)
+        );
     }
 
     private function cleanProtocol($protocol)
@@ -111,6 +110,7 @@ class Records extends Base
     /**
      * @param $person
      * @param $record
+     * @return string
      */
     public function makeProtocolNumber($person, $record)
     {
