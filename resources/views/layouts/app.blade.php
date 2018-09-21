@@ -118,22 +118,24 @@
                 </div>
             </div>
 
-            @if (View::hasSection('heading'))
-                <div class="container-fluid section-heading-bg">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            @include('partials.alerts')
+            <div id="@yield('vue-app-name')">
+                @if (View::hasSection('heading'))
+                    <div class="container-fluid section-heading-bg">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                @include('partials.alerts')
 
-                            @section('heading') @show
+                                @section('heading') @show
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endif
-            
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        @yield('content')
+                @endif
+
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
             </div>
