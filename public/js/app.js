@@ -53153,7 +53153,7 @@ if (jQuery("#" + appName).length > 0) {
 /***/ "./resources/assets/js/apps/committees-search.js":
 /***/ (function(module, exports) {
 
-var appName = 'committees-search';
+var appName = 'vue-committees-search';
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
