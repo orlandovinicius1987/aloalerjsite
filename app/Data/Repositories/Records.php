@@ -26,11 +26,6 @@ class Records extends Base
         $this->peopleRepository = $personRepository;
     }
 
-    private function addProgressForRecord($record, $data)
-    {
-        // TODO
-    }
-
     /**
      * @param $person
      * @param $record
@@ -62,8 +57,6 @@ class Records extends Base
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
-
-        $this->addProgressForRecord($record, $data);
 
         return $record;
     }
@@ -101,7 +94,6 @@ class Records extends Base
 
     public function allNotResolved()
     {
-        //        dd($this->model::whereNull('resolved_at'));
         return $this->model::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);

@@ -278,9 +278,15 @@
                                 Gravar
                             </button>
 
-                            <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
-                                Gravar e Finalizar
-                            </button>
+                            @if ($record->resolved_at)
+                                <button id="openButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.openRecord') }}')" >
+                                    Reabrir
+                                </button>
+                            @else
+                                <button id="finishButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.finishRecord') }}')" >
+                                    Finalizar
+                                </button>
+                            @endif
                         @else
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
@@ -289,13 +295,25 @@
                                             Gravar
                                         </button>
 
-                                        <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
-                                            Gravar e Finalizar
-                                        </button>
+                                        @if ($record->resolved_at)
+                                            <button id="openButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.openRecord') }}')" >
+                                                Reabrir
+                                            </button>
+                                        @else
+                                            <button id="finishButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.finishRecord') }}')" >
+                                                Finalizar
+                                            </button>
+                                        @endif
                                      @endcan
                                 @endIf
                              @endforeach
                         @endIf
+
+                        @if($record && $record->id)
+                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" >
+                                Copiar link público
+                            </button>
+                        @endif
                     </div>
                 </div>
 

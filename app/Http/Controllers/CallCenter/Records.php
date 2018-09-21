@@ -13,6 +13,7 @@ use App\Data\Repositories\Records as RecordsRepository;
 class Records extends Controller
 {
     /**
+     * @param $person_id
      * @return $this
      */
     public function create($person_id)
@@ -50,9 +51,9 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
-        $record = $this->recordsRepository->create(
-            coollect($request->all())
-        )->sendNotifications();
+        $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $record->sendNotifications();
 
         if (is_null($request->get('record_id'))) {
             $request->merge(['record_id' => $record->id]);
@@ -62,6 +63,45 @@ class Records extends Controller
         }
 
         $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+
+        return redirect()->to(
+            route(
+                Workflow::started()
+                    ? 'people_addresses.create'
+                    : 'records.show-protocol',
+
+                Workflow::started() ? $record->person->id : $record->id
+            )
+        );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function finishRecord(RecordRequest $request)
+    {
+        $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $record->sendNotifications();
+
+        $progress = $this->progressesRepository->create([
+            'original' =>
+                'Protocolo finalizado sem observações em ' .
+                    $record->updated_at .
+                    ' pelo usuário ' .
+                    Auth::user()->name,
+            'record_id' => $record->id,
+        ]);
+
+        $this->recordsRepository->markAsResolved($record->id, $progress);
+        //        if (is_null($request->get('record_id'))) {
+        //            $request->merge(['record_id' => $record->id]);
+        //            $this->progressesRepository->createFromRequest($request);
+        //        }
+
+        $this->showSuccessMessage('Protocolo finalizado com sucesso.');
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',
@@ -74,24 +114,28 @@ class Records extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function storeAndFinish(RecordRequest $request)
+    public function openRecord(RecordRequest $request)
     {
         $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $record->sendNotifications();
+
         $progress = $this->progressesRepository->create([
             'original' =>
-                'Protocolo finalizado sem observações em ' .
+                'Protocolo reaberto sem observações em ' .
                     $record->updated_at .
                     ' pelo usuário ' .
                     Auth::user()->name,
             'record_id' => $record->id,
         ]);
-        $this->recordsRepository->markAsResolved($record->id, $progress);
+
+        $this->recordsRepository->markAsNotResolved($record->id, $progress);
         //        if (is_null($request->get('record_id'))) {
         //            $request->merge(['record_id' => $record->id]);
         //            $this->progressesRepository->createFromRequest($request);
         //        }
 
-        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+        $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',
@@ -100,13 +144,13 @@ class Records extends Controller
     }
 
     /**
-     * @param $cpf_cnpj
-     *
+     * @param $id
      * @return $this
      */
     public function show($id)
     {
         $record = $this->recordsRepository->findById($id);
+
         $person = $this->peopleRepository->findById($record->person_id);
 
         return view('callcenter.records.form')
@@ -135,23 +179,36 @@ class Records extends Controller
         ]);
     }
 
-    public function workflow($record_id)
+    public function showProtocol($record_id)
     {
-        $record = $this->recordsRepository->findById($record_id);
-        $person = $this->peopleRepository->findById($record->person_id);
-        return view('callcenter.records.form-workflow')
-            ->with('record', $record)
-            ->with('person', $person);
+        return view('callcenter.records.show-protocol')->with(
+            'record',
+            $this->recordsRepository->findById($record_id)
+        );
     }
 
     public function showPublic($protocol)
     {
-        if (
+        return (
             !$record = app(RecordsRepository::class)->findByProtocol($protocol)
-        ) {
-            abort(404);
-        }
+        )
+            ? abort(404)
+            : view('callcenter.records.show-public')->with('record', $record);
+    }
 
-        return view('callcenter.records.show-public')->with('record', $record);
+    public function searchProtocol()
+    {
+        return view('callcenter.records.search');
+    }
+
+    public function showByProtocolNumber(Request $request)
+    {
+        $record = app(RecordsRepository::class)->findByProtocol(
+            $request->protocol
+        );
+
+        return view('callcenter.records.search')
+            ->with('record', $record)
+            ->with('protocol', $request->protocol);
     }
 }

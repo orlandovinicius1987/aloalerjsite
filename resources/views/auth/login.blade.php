@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center login">
             <div class="col-md-4">
-                <div class="card login">
+                <div class="card">
                     {{--<div class="card-header">Entrar</div>--}}
 
                     <div class="card-body">
