@@ -89,7 +89,7 @@ class Records extends Controller
         $progress = $this->progressesRepository->create([
             'original' =>
                 'Protocolo finalizado sem observações em ' .
-                    $record->updated_at .
+                    now() .
                     ' pelo usuário ' .
                     Auth::user()->name,
             'record_id' => $record->id,
@@ -123,7 +123,7 @@ class Records extends Controller
         $progress = $this->progressesRepository->create([
             'original' =>
                 'Protocolo reaberto sem observações em ' .
-                    $record->updated_at .
+                    now() .
                     ' pelo usuário ' .
                     Auth::user()->name,
             'record_id' => $record->id,
