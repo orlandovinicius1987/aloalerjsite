@@ -11904,8 +11904,110 @@ a.text-dark:focus {
   border-top: none;
 }
 
+.table-striped tbody td a {
+  color: #4099de;
+}
+
+.table-striped tbody td a:hover {
+  color: darken #4099de, 40%;
+  text-decoration: none;
+}
+
 .table-hover tbody tr:hover {
-  background: #f8f9fb;
+  background: #eaeff5;
+}
+
+.square {
+  display: block;
+  min-height: 100px;
+}
+
+.bg-colored-blue-lighter90 {
+  background-color: #1f3a70;
+}
+
+.bg-colored-blue-lighter80 {
+  background-color: #274a90;
+}
+
+.bg-colored-blue-lighter70 {
+  background-color: #305bb0;
+}
+
+.bg-colored-blue-lighter60 {
+  background-color: #3f6dca;
+}
+
+.bg-colored-blue-lighter50 {
+  background-color: #5f86d3;
+}
+
+.bg-colored-blue-lighter40 {
+  background-color: #7f9edc;
+}
+
+.bg-colored-blue-lighter30 {
+  background-color: #9fb6e5;
+}
+
+.bg-colored-blue-lighter20 {
+  background-color: #bfceed;
+}
+
+.bg-colored-blue-lighter10 {
+  background-color: #def7f6;
+}
+
+.bg-colored-blue-lighter95 {
+  background-color: #1a3260;
+}
+
+.bg-colored-blue-lighter85 {
+  background-color: #234280;
+}
+
+.bg-colored-blue-lighter75 {
+  background-color: #2c53a0;
+}
+
+.bg-colored-blue-lighter65 {
+  background-color: #3563c0;
+}
+
+.bg-colored-blue-lighter55 {
+  background-color: #4f79cf;
+}
+
+.bg-colored-blue-lighter45 {
+  background-color: #6f92d8;
+}
+
+.bg-colored-blue-lighter35 {
+  background-color: #8faae0;
+}
+
+.bg-colored-blue-lighter25 {
+  background-color: #afc2e9;
+}
+
+.bg-colored-blue-lighter15 {
+  background-color: #cfdbf2;
+}
+
+.bg-colored-blue-darker100 {
+  background-color: #040810;
+}
+
+.bg-colored-blue-darker75 {
+  background-color: #091120;
+}
+
+.bg-colored-blue-darker50 {
+  background-color: #0d1930;
+}
+
+.bg-colored-blue-darker25 {
+  background-color: #122140;
 }
 
 .card {
