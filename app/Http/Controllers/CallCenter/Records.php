@@ -80,7 +80,7 @@ class Records extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function storeAndFinish(RecordRequest $request)
+    public function finishRecord(RecordRequest $request)
     {
         $record = $this->recordsRepository->create(coollect($request->all()));
 
@@ -101,7 +101,41 @@ class Records extends Controller
         //            $this->progressesRepository->createFromRequest($request);
         //        }
 
-        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+        $this->showSuccessMessage('Protocolo finalizado com sucesso.');
+
+        return redirect()->route(
+            Workflow::started() ? 'people_addresses.create' : 'people.show',
+            ['person_id' => $record->person->id]
+        );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function openRecord(RecordRequest $request)
+    {
+        $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $record->sendNotifications();
+
+        $progress = $this->progressesRepository->create([
+            'original' =>
+                'Protocolo reaberto sem observações em ' .
+                    $record->updated_at .
+                    ' pelo usuário ' .
+                    Auth::user()->name,
+            'record_id' => $record->id,
+        ]);
+
+        $this->recordsRepository->markAsNotResolved($record->id, $progress);
+        //        if (is_null($request->get('record_id'))) {
+        //            $request->merge(['record_id' => $record->id]);
+        //            $this->progressesRepository->createFromRequest($request);
+        //        }
+
+        $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',

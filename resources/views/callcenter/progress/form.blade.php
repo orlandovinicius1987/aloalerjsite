@@ -172,16 +172,12 @@
                             Gravar
                         </button>
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
-                            Gravar e finalizar
-                        </button>
-
                         @if ($record->resolved_at)
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button v-on:click="changeFormRoute('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button v-on:click="changeFormRoute('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e finalizar
                             </button>
                         @endif
