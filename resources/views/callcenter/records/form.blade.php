@@ -296,6 +296,12 @@
                                 @endIf
                              @endforeach
                         @endIf
+
+                        @if($record && $record->id)
+                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" >
+                                Copiar link público
+                            </button>
+                        @endif
                     </div>
                 </div>
 

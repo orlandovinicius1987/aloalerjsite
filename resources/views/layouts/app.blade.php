@@ -73,6 +73,10 @@
                                 <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="/"><i class="fas fa-headphones-alt"></i> Site do Alô Alerj</a>
+                            </li>
+
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
