@@ -16,7 +16,9 @@ Route::group(['prefix' => 'records'], function () {
         'records.show-protocol'
     );
 
-    Route::post('/finish', 'Records@storeAndFinish')->name(
-        'records.storeAndFinish'
+    Route::post('/finish', 'Records@finishRecord')->name(
+        'records.finishRecord'
     );
+
+    Route::post('/open', 'Records@openRecord')->name('records.openRecord');
 });

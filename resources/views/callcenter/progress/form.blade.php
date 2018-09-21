@@ -30,12 +30,12 @@
                     <label for="protocol" class="col-sm-4 col-form-label text-md-right">Protocolo</label>
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
-                               class="form-control{{ $errors->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
+                               class="form-control{{ $errors->getBag('validation')->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
                                value="{{is_null(old('protocol')) ? $record->protocol : old('protocol') }}"
                                readonly="readonly">
-                        @if ($errors->has('protocol'))
+                        @if ($errors->getBag('validation')->has('protocol'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('protocol') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('protocol') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -46,7 +46,7 @@
 
                     <div class="col-md-6">
                         <select id="origin_id"
-                                class="form-control{{ $errors->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id" @include('partials.disabled')
+                                class="form-control{{ $errors->getBag('validation')->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id" @include('partials.disabled')
                                 value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id') }}" autofocus required>
                             <option value="">SELECIONE</option>
                             @foreach ($origins as $key => $origin)
@@ -59,9 +59,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('origin_id'))
+                        @if ($errors->getBag('validation')->has('origin_id'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('origin_id') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('origin_id') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -72,7 +72,7 @@
 
                     <div class="col-md-6">
                         <select id="record_type_id" type="record_type_id"
-                                class="form-control{{ $errors->has('record_type_id') ? ' is-invalid' : '' }} select2" name="record_type_id"
+                                class="form-control{{ $errors->getBag('validation')->has('record_type_id') ? ' is-invalid' : '' }} select2" name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
@@ -85,9 +85,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('record_type_id'))
+                        @if ($errors->getBag('validation')->has('record_type_id'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('record_type_id') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('record_type_id') }}</strong>
                                     </span>
                         @endif
                     </div>
@@ -98,7 +98,7 @@
 
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
-                                class="form-control{{ $errors->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
+                                class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
                                 value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
@@ -111,9 +111,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('area_id'))
+                        @if ($errors->getBag('validation')->has('area_id'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('area_id') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('area_id') }}</strong>
                                     </span>
                         @endif
                     </div>
@@ -124,7 +124,7 @@
 
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
-                                class="form-control{{ $errors->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
+                                class="form-control{{ $errors->getBag('validation')->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
                                 value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id') }}" autofocus @include('partials.disabled')>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)
@@ -137,9 +137,9 @@
                             @endforeach
                         </select>
 
-                        @if ($errors->has('progress_type_id'))
+                        @if ($errors->getBag('validation')->has('progress_type_id'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('progress_type_id') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('progress_type_id') }}</strong>
                                     </span>
                         @endif
                     </div>
@@ -150,13 +150,13 @@
                     <label for="original" class="col-sm-4 col-form-label text-md-right">Solicitação</label>
                     <div class="col-md-6">
                     <textarea id="original"
-                      class="form-control{{ $errors->has('original') ? ' is-invalid' : '' }}"
+                      class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
                       name="original"
                       value="{{is_null(old('original')) ? $progress->original : old('original') }}"
                       required rows="15" @include('partials.disabled')>{{$progress->original}}</textarea>
-                        @if ($errors->has('original'))
+                        @if ($errors->getBag('validation')->has('original'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('original') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('original') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -173,11 +173,11 @@
                         </button>
 
                         @if ($record->resolved_at)
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e finalizar
                             </button>
                         @endif

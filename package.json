@@ -25,6 +25,7 @@
         "vue-the-mask": "^0.11.1"
     },
     "dependencies": {
+        "sweetalert": "^2.1.0",
         "vue-select": "^2.5.0",
         "vue-select2": "^0.2.6"
     }

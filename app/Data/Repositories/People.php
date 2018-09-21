@@ -81,6 +81,13 @@ class People extends Base
         return $this->emptyResponse();
     }
 
+    public function findByCpfCnpj($cpfCnpj)
+    {
+        return $this->getBaseQuery()
+            ->where('cpf_cnpj', only_numbers($cpfCnpj))
+            ->first();
+    }
+
     protected function searchByCpf($string)
     {
         if (!$this->validCpfCnpj($string)) {
@@ -154,5 +161,10 @@ class People extends Base
                 'string' => 'required|cpf_cnpj',
             ]
         )->passes();
+    }
+
+    public function create($data)
+    {
+        return Person::create($data);
     }
 }
