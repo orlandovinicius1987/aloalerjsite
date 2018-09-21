@@ -35,24 +35,10 @@ class Committees extends Base
     public function searchByEverything($search)
     {
         $result = $this->emptyResponse();
-        $resultName = $this->searchByName($search);
+        $resultName = $this->searchByAll($search);
 
         if (!is_null($resultName)) {
             $result['data'] = coollect($result['data'])->merge($resultName);
-        }
-        $resultPresident = $this->searchPresident($search);
-
-        if (!is_null($resultPresident)) {
-            $result['data'] = coollect($result['data'])->merge(
-                $resultPresident
-            );
-        }
-        $resultVicePresident = $this->searchVicePresident($search);
-
-        if (!is_null($resultVicePresident)) {
-            $result['data'] = coollect($result['data'])->merge(
-                $resultVicePresident
-            );
         }
 
         return $result;
@@ -61,6 +47,14 @@ class Committees extends Base
     public function searchByName($name)
     {
         return $this->model::where('name', 'ilike', '%' . $name . '%')->get();
+    }
+
+    public function searchByAll($name)
+    {
+        return $this->model::orWhere('name', 'ilike', '%' . $name . '%')
+            ->orWhere('president', 'ilike', '%' . $name . '%')
+            ->orWhere('vice_president', 'ilike', '%' . $name . '%')
+            ->get();
     }
 
     public function searchPresident($name)

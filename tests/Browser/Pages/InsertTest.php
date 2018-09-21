@@ -84,7 +84,7 @@ class InsertTest extends DuskTestCase
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
                     ->click('#saveButton')
-                    ->waitForText('Gravado com sucesso')
+                    ->waitForText('Protocolo criado com sucesso')
                     ->click('#buttonNovoEndereco')
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
