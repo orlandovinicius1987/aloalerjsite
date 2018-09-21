@@ -3,6 +3,8 @@ namespace App\Http\Requests;
 
 class PersonAddressesRequest extends Request
 {
+    protected $errorBag = 'validation';
+
     public function rules()
     {
         return [
