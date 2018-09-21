@@ -1,5 +1,11 @@
 {
+<<<<<<< Updated upstream
     "/js/app.js": "/js/app.js?id=e9f553dc09c776d5e390",
     "/css/vendor.css": "/css/vendor.css?id=99507b08acf70616583f",
     "/css/app.css": "/css/app.css?id=232d42d87a39ef4ff98c"
+=======
+    "/js/app.js": "/js/app.js?id=365d426e8367e323d1aa",
+    "/css/vendor.css": "/css/vendor.css?id=cce18151d0b694959a31",
+    "/css/app.css": "/css/app.css?id=0a2d1369a240b0a27147"
+>>>>>>> Stashed changes
 }

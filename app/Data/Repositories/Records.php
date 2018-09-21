@@ -122,4 +122,54 @@ class Records extends Base
             str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
         );
     }
+
+    public function absorbContactForm($data)
+    {
+        $person = $this->peopleRepository->findByCpfCnpj($data['cpf']);
+
+        if (!$person) {
+            $person = $this->peopleRepository->create(
+                $data = [
+                    'cpf_cnpj' => $data['cpf'],
+                    'name' => $data['name'],
+                    'identification' => trim(
+                        $data['identidade'] . ' ' . $data['expeditor']
+                    ),
+                ]
+            );
+        }
+
+        $record = $this->create([
+            'committee_id' =>
+                app(Committees::class)->findByName('ALÔ ALERJ')->id,
+            'person_id' => $person->id,
+            'record_type_id' =>
+                app(RecordTypes::class)->findByName('Outros')->id,
+            'area_id',
+            'objeto_id',
+            'record_action_id',
+        ]);
+
+        //          "_token" => "eN3JvieYFUPe0I8PVzNIMCsnQJDb8XYaPrfFCZAw"
+        //          "name" => "Antonio Carlos Ribeiro"
+        //          "email" => "acr@antoniocarlosribeiro.com"
+        //          "telephone" => "21980882233"
+        //          "cpf" => "99136880787"
+        //          "birthdate" => "31101970"
+        //          "sex_1" => "Masculino"
+        //          "sex_2" => "Masculino"
+        //          "identidade" => "066373697"
+        //          "expeditor" => "IFP"
+        //          "scholarship" => "8"
+        //          "area" => "TI"
+        //          "cep" => "20250030"
+        //          "rua" => "Professor Quintino do Vale"
+        //          "numero" => "26"
+        //          "complemento" => "apto 205"
+        //          "bairro" => "Estácio"
+        //          "cidade" => "Rio de Janeiro"
+        //          "subject" => "E"
+        //          "message" => "lindaaaaaaa"
+        //          "send" => null
+    }
 }
