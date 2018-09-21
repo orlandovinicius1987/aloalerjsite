@@ -3,6 +3,8 @@
 @section('vue-app-name', 'vue-search')
 
 @section('heading')
+    @parent
+
     <div v-cloak>
         <div class="mt-4">
             <div class="">

@@ -7,8 +7,8 @@
                 <div class="col-8">
                     <ul class="aloalerj-breadcrumbs">
                         <li>
-                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                                {{ $person->name }}
+                            <a href="{{ route('people.show', ['id' => $record->person->id]) }}">
+                                {{ $record->person->name }}
                             </a>
                         </li>
 
@@ -21,7 +21,6 @@
         </div>
 
         <div class="card-body">
-
             <h1 class="badge badge-success">
                 Protocolo criado com sucesso:
             </h1>
@@ -35,13 +34,10 @@
             <br/>
 
             <h3>
-                <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                    {{ $person->name }}
+                <a href="{{ route('people.show', ['id' => $record->person->id]) }}">
+                    {{ $record->person->name }}
                 </a>
             </h3>
-
         </div>
-
     </div>
-
 @endsection
