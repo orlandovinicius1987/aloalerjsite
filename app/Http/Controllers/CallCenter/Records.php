@@ -147,7 +147,7 @@ class Records extends Controller
 
     public function showProtocol($record_id)
     {
-        return view('records.show-protocol')->with(
+        return view('callcenter.records.show-protocol')->with(
             'record',
             $this->recordsRepository->findById($record_id)
         );

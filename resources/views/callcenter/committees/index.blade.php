@@ -3,7 +3,6 @@
 @section('content')
     <div class="card mt-4" id="committees-search">
         <div class="card-header">
-
             <div class="row align-items-center">
                 <div class="col-4">
                     <h5>
@@ -26,6 +25,7 @@
                 </div>
             </div>
         </div>
+
         @include('callcenter.committees.partials.table')
     </div>
 @endsection

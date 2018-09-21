@@ -24,7 +24,7 @@ class Contact extends Controller
 
     public function post(ContactRequest $request)
     {
-        $this->mailer->send($request);
+        //        $this->mailer->send($request);
 
         app(Records::class)->absorbContactForm($request->all());
 
