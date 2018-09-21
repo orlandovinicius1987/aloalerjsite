@@ -53509,7 +53509,6 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
-                alert(action);
                 form = document.getElementById('formRecords');
                 form.action = action;
                 form.submit();

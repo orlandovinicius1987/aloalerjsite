@@ -183,7 +183,11 @@ abstract class Base
 
     public function allWherePaginate($field, $value, $sizeOfPage = 15)
     {
-        return ($this->model::where($field, $value)->paginate($sizeOfPage));
+        return (
+            $this->model::where($field, $value)
+                ->orderBy('created_at', 'desc')
+                ->paginate($sizeOfPage)
+        );
     }
 
     public function whereIsNullPaginate($field, $sizeOfPage = 15)
