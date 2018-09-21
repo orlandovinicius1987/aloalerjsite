@@ -71,7 +71,7 @@
                                @keyup="typeKeyUp"
                                v-mask='["##.###-###"]'
                                autofocus
-                               requiredx
+                               required
                         >
 
                         @if ($errors->getBag('validation')->has('zipcode'))
@@ -92,7 +92,7 @@
                                v-init:street="'{{is_null(old('street')) ? $address->street : old('street') }}'"
                                value="{{is_null(old('street')) ? $address->street : old('street') }}"
                                class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
-                               requiredx
+                               required
                                autofocus
                         >
 
@@ -113,7 +113,7 @@
                                v-on:keypress="isNumber(event)"
                                value="{{is_null(old('number')) ? $address->number : old('number') }}"
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
-                               requiredx
+                               required
                                autofocus
                         >
 
@@ -154,7 +154,7 @@
                                v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}'"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}"
                                class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
-                               requiredx
+                               required
                                autofocus
                         >
 
@@ -176,7 +176,7 @@
                                v-init:city="'{{is_null(old('city')) ? $address->city : old('city') }}'"
                                value="{{is_null(old('city')) ? $address->city : old('city') }}"
                                class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
-                               requiredx
+                               required
                                autofocus
                         >
 
@@ -196,7 +196,7 @@
                                v-init:state="'{{is_null(old('state')) ? $address->state : old('state') }}'"
                                value="{{is_null(old('state')) ? $address->state : old('state') }}"
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
-                               requiredx
+                               required
                                autofocus
                         >
 
