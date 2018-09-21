@@ -118,15 +118,17 @@
                 </div>
             </div>
 
-            <div class="container-fluid section-heading-bg">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        @include('partials.alerts')
+            @if (View::hasSection('heading'))
+                <div class="container-fluid section-heading-bg">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            @include('partials.alerts')
 
-                        @yield('heading')
+                            @section('heading') @show
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
             <div class="container-fluid">
                 <div class="row justify-content-center">
