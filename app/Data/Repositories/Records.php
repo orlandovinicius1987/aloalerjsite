@@ -1,6 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
+use App\Data\Models\RecordAction;
 use Carbon\Carbon;
 use App\Data\Models\Record;
 use App\Data\Repositories\People as PeopleRepository;
@@ -61,6 +62,17 @@ class Records extends Base
         return $record;
     }
 
+    private function makePersonalDataInfoFromContactData($data)
+    {
+        return (
+            "Data de nascimento: {$data['birthdate']}\n" .
+            "Sexo: {$data['sex_1']}\n" .
+            "Identidade de gênero: {$data['sex_2']}\n" .
+            "Escolaridade: {$data['scholarship']}\n" .
+            "Área de atuação: {$data['area']}\n"
+        );
+    }
+
     public function markAsResolved($record_id, $progress = null)
     {
         $record = $this->model::find($record_id);
@@ -117,6 +129,60 @@ class Records extends Base
 
     public function absorbContactForm($data)
     {
+        $person = $this->peopleRepository->findByCpfCnpj($data['cpf']);
+
+        if (!$person) {
+            $person = $this->peopleRepository->create(
+                $data = [
+                    'cpf_cnpj' => $data['cpf'],
+                    'name' => $data['name'],
+                    'identification' => trim(
+                        $data['identidade'] . ' ' . $data['expeditor']
+                    ),
+                    'personal_data' => $this->makePersonalDataInfoFromContactData(
+                        $data
+                    ),
+                ]
+            );
+        }
+
+        $person->findOrCreateAddress([
+            'person_id' => $person->id,
+            'zipcode' => $data['cep'],
+            'street' => $data['rua'],
+            'number' => $data['numero'],
+            'complement' => $data['complemento'],
+            'neighbourhood' => $data['bairro'],
+            'city' => $data['cidade'],
+            'state' => $data['state'],
+            'is_mailable' => true,
+            'validated_at' => now(),
+            'active' => true,
+        ]);
+
+        $record = $this->create([
+            'committee_id' =>
+                app(Committees::class)->findByName('ALÔ ALERJ')->id,
+            'person_id' => $person->id,
+            'record_type_id' =>
+                app(RecordTypes::class)->findByName('Outros')->id,
+            'area_id' =>
+                $areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id,
+            'record_action_id' =>
+                app(RecordAction::class)->findByName('Outros')->id,
+        ]);
+
+        app(Progresses::class)->create([
+            'record_id' => $record->id,
+            'progress_type_id' =>
+                app(ProgressTypes::class)->findByName('Email')->id,
+            'progress_action_id' =>
+                app(Origins::class)->findByName('Outros')->id,
+            'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
+            'origin_id' => app(Origins::class)->findByName('E-mail')->id,
+            'area_id' => $areaId,
+        ]);
+
         //          "_token" => "eN3JvieYFUPe0I8PVzNIMCsnQJDb8XYaPrfFCZAw"
         //          "name" => "Antonio Carlos Ribeiro"
         //          "email" => "acr@antoniocarlosribeiro.com"

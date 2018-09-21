@@ -84,34 +84,36 @@ class Contact implements Rule
      */
     protected function regexRules($contactTypeCode, $contact)
     {
-        $pass = false;
-        switch ($contactTypeCode) {
-            case 'mobile':
-                $pass = $this->validatePhone($contact, 'mobile');
-                break;
-            case 'whatsapp':
-                $pass = $this->validatePhone($contact, 'mobile');
-                break;
-            case 'email':
-                preg_match_all(
-                    "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/m",
-                    $contact,
-                    $match
-                );
-                $pass = (sizeof($match[0]) == 1);
-                break;
-            case 'phone':
-                $pass = $this->validatePhone($contact, 'phone');
-                break;
-            case 'facebook':
-                $pass = true;
-                break;
-            case 'twitter':
-                $pass = true;
-                break;
-            case 'instagram':
-                $pass = true;
-                break;
+        $pass = true;
+        if (!is_null($contact)) {
+            switch ($contactTypeCode) {
+                case 'mobile':
+                    $pass = $this->validatePhone($contact, 'mobile');
+                    break;
+                case 'whatsapp':
+                    $pass = $this->validatePhone($contact, 'mobile');
+                    break;
+                case 'email':
+                    preg_match_all(
+                        "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/m",
+                        $contact,
+                        $match
+                    );
+                    $pass = (sizeof($match[0]) == 1);
+                    break;
+                case 'phone':
+                    $pass = $this->validatePhone($contact, 'phone');
+                    break;
+                case 'facebook':
+                    $pass = true;
+                    break;
+                case 'twitter':
+                    $pass = true;
+                    break;
+                case 'instagram':
+                    $pass = true;
+                    break;
+            }
         }
         return $pass;
     }
