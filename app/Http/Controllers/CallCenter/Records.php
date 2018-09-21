@@ -147,7 +147,7 @@ class Records extends Controller
 
     public function showProtocol($record_id)
     {
-        return view('records.show-protocol')->with(
+        return view('callcenter.records.show-protocol')->with(
             'record',
             $this->recordsRepository->findById($record_id)
         );
@@ -160,5 +160,21 @@ class Records extends Controller
         )
             ? abort(404)
             : view('callcenter.records.show-public')->with('record', $record);
+    }
+
+    public function searchProtocol()
+    {
+        return view('callcenter.records.search');
+    }
+
+    public function showByProtocolNumber(Request $request)
+    {
+        $record = app(RecordsRepository::class)->findByProtocol(
+            $request->protocol
+        );
+
+        return view('callcenter.records.search')
+            ->with('record', $record)
+            ->with('protocol', $request->protocol);
     }
 }

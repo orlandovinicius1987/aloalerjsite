@@ -30,7 +30,6 @@ class Progresses extends Controller
     public function store(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-
         $this->progressesRepository->createFromRequest(
             $request
         )->sendNotifications();
@@ -43,7 +42,6 @@ class Progresses extends Controller
     public function storeAndFinish(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-
         $progress = $this->progressesRepository->createFromRequest(
             $request
         )->sendNotifications();

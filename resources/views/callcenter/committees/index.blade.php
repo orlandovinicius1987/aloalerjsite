@@ -5,9 +5,9 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col-4">
-                    <h5>
-                        Comissões
-                    </h5>
+                    <h2>
+                        <i class="fas fa-layer-group"></i> Comissões
+                    </h2>
                 </div>
 
                 <div class="col-8 text-right">
@@ -25,7 +25,8 @@
                 </div>
             </div>
         </div>
-
-        @include('callcenter.committees.partials.table')
+        <div class="card-body">
+            @include('callcenter.committees.partials.table')
+        </div>
     </div>
 @endsection
