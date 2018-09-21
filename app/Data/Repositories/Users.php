@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Data\Repositories;
 
 use App\Data\Models\UserType;
@@ -94,7 +95,6 @@ class Users extends Base
 
         foreach ($permissions as $permission) {
             if (isset($userTypesArray[$permission['nomeFuncao']])) {
-                dump($permission['nomeFuncao']);
                 if ($permission['nomeFuncao'] == 'Administrador') {
                     $admin = true;
                 } else {

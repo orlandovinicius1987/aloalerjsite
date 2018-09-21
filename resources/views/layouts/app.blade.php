@@ -118,17 +118,25 @@
                 </div>
             </div>
 
-            <main class="py-4">
-                <div class="container-fluid">
+            <div id="@yield('vue-app-name')">
+                <div class="container-fluid section-heading-bg">
                     <div class="row justify-content-center">
                         <div class="col-md-10">
                             @include('partials.alerts')
 
+                            @yield('heading')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
                             @yield('content')
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </body>
 </html>

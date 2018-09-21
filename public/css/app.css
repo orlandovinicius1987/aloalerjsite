@@ -11727,6 +11727,7 @@ a.text-dark:focus {
 
 .navbar-light .navbar-nav .nav-item i {
   margin-right: 5px;
+  color: #8faae0;
 }
 
 .navbar-light .navbar-nav .nav-item:last-child {
@@ -11734,16 +11735,25 @@ a.text-dark:focus {
   margin-right: 0px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-item .nav-link {
   font-size: 16px;
   font-family: 'proxima_nova_altbold';
   text-transform: uppercase;
-  color: #172B53;
+  color: #5f86d3;
 }
 
-.login {
-  border-top: 5px solid #172B53 !important;
-  padding-bottom: 10px;
+.navbar-light .navbar-nav .nav-item .nav-link:hover {
+  color: #305bb0;
+}
+
+.btn-danger {
+  background-color: #e3342f;
+  border-color: #ae1c17;
+}
+
+.btn-danger:hover {
+  background-color: #c51f1a;
+  border-color: #981814;
 }
 
 .login .alolerj-logo-login {
@@ -11751,7 +11761,16 @@ a.text-dark:focus {
   margin-bottom: 15px;
 }
 
-.login .card-title {
+.login .card {
+  background: #ffffff;
+  border-top: 0px solid #172B53 !important;
+  padding: 2rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 2px 4px #dae4e9;
+          box-shadow: 0px 2px 4px #dae4e9;
+}
+
+.login .card .card-body .card-title {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -11759,58 +11778,92 @@ a.text-dark:focus {
   color: #2c53a0;
 }
 
-.login .form-control {
+.login .card .card-body .form-control {
   border: solid 1px #ebf1f3;
   color: #546975;
 }
 
-.login .form-control::-webkit-input-placeholder {
+.login .card .card-body .form-control::-webkit-input-placeholder {
   color: #dae4e9;
 }
 
-.login .form-control:-ms-input-placeholder {
+.login .card .card-body .form-control:-ms-input-placeholder {
   color: #dae4e9;
 }
 
-.login .form-control::-ms-input-placeholder {
+.login .card .card-body .form-control::-ms-input-placeholder {
   color: #dae4e9;
 }
 
-.login .form-control::placeholder {
+.login .card .card-body .form-control::placeholder {
   color: #dae4e9;
 }
 
-.search .form-control {
+.section-title {
+  margin-bottom: 23px;
+  font-size: 30px;
+  border-bottom: solid 0px #b8c5cc;
+  color: #9fb6e5;
+}
+
+.section-header {
+  border-top: 1px solid #ebf1f3;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: #dae4e9;
+}
+
+.section-heading-bg {
+  background-color: #ecf2f6;
+  -webkit-box-shadow: inset 0px -2px 4px #d8e5eb;
+          box-shadow: inset 0px -2px 4px #d8e5eb;
+  padding-bottom: 30px;
+}
+
+.form-bigger {
+  margin-bottom: 10px;
+}
+
+.form-bigger .search {
+  margin-bottom: 25px;
+}
+
+.form-bigger .form-control {
   padding: 1.475rem 1.4rem;
   font-size: 1.2rem;
   color: #546975;
 }
 
-.search .form-control::-webkit-input-placeholder {
+.form-bigger .form-control::-webkit-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control:-ms-input-placeholder {
+.form-bigger .form-control:-ms-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control::-ms-input-placeholder {
+.form-bigger .form-control::-ms-input-placeholder {
   color: #b8c5cc;
 }
 
-.search .form-control::placeholder {
+.form-bigger .form-control::placeholder {
   color: #b8c5cc;
 }
 
-.section-title {
-  margin-bottom: 15px;
-  font-size: 30px;
-  border-bottom: solid 2px #b8c5cc;
-  color: #b8c5cc;
+.user-dates-alerts {
+  font-size: 1.2rem;
+  font-family: 'proxima_nova_ltsemibold';
+  color: #a4b4be;
+}
+
+.user-dates-alerts .label {
+  opacity: 0.7;
+  font-size: 85%;
 }
 
 .table {
-  background: #ffffff;
+  background: #f3f7f9;
   /*border: 1px solid $grey-light02;*/
   border: 0px;
   -webkit-box-shadow: 0px 2px 4px #dae4e9;
@@ -11819,14 +11872,14 @@ a.text-dark:focus {
 }
 
 .table thead {
-  background: #f3f7f9;
+  background: none;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .table thead th {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #ebf1f3;
+  border-top: 0px solid #ebf1f3;
   border-bottom: 0px !important;
 }
 
@@ -11837,27 +11890,49 @@ a.text-dark:focus {
   border-top: 1px solid #ebf1f3;
 }
 
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: white;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.table-striped tbody td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: none;
+}
+
 .table-hover tbody tr:hover {
-  background: #f3f7f9;
+  background: #f8f9fb;
 }
 
 .card {
-  border: 1px solid #ebf1f3;
-  -webkit-box-shadow: 0px 2px 4px #dae4e9;
-          box-shadow: 0px 2px 4px #dae4e9;
+  border: none;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .card .card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(199, 204, 214, 0.5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #f3f7f9;
+  border-bottom: none;
+  border-top: 0px solid #ebf1f3;
+  padding-top: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  color: #aac1cc;
 }
 
 .card .card-header h5 {
-  text-transform: uppercase;
-  font-weight: 600;
+  /*text-transform: uppercase;*/
+  /*font-weight: 600;*/
   margin-bottom: 0;
+}
+
+.card .card-body {
+  padding: 0;
 }
 
 .bg-grey-light02 {

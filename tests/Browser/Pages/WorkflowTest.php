@@ -16,7 +16,15 @@ class WorkflowTest extends DuskTestCase
     public function testWorkFlow()
     {
         $user = factory(User::class, 'Operador')->create();
-        $person = (object) factory(Person::class)->raw();
+        $person = factory(Person::class)->raw();
+
+        $person = (object) array_merge($person, [
+            'cpf_cnpj_com_pontos' => preg_replace(
+                "/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/",
+                "$1.$2.$3-$4",
+                $person['cpf_cnpj']
+            ),
+        ]);
         $record = (object) factory(Record::class, 'Workflow')->raw();
         $address = (object) factory(PersonAddress::class, 'Workflow')->raw();
         $contacts = (object) factory(PersonContact::class, 'Workflow')->raw();
@@ -35,11 +43,14 @@ class WorkflowTest extends DuskTestCase
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->type('#cpfCnpjSearchInput', $person->cpf_cnpj)
+                    ->type('#search', $person->cpf_cnpj)
                     ->waitForText('Cadastrar novo')
-                    ->click('#cadastrarNovoCidadaoButton')
-                    ->waitForText('DADOS PESSOAIS')
-                    ->type('#identification', $person->identification)
+                    ->click('@cadastrarNovoCidadaoButton')
+                    ->type('#identification', $person->identification);
+                foreach (str_split($person->cpf_cnpj_com_pontos) as $char) {
+                    $browser->keys('#cpf_cnpj', $char)->pause(20);
+                }
+                $browser
                     ->type('#name', $person->name)
                     ->click('#saveButton')
                     ->waitForText('Usuário cadastrado com sucesso')
@@ -66,7 +77,12 @@ class WorkflowTest extends DuskTestCase
                     ->type('#phone', $contacts->phone)
                     ->click('#saveButton')
                     ->waitForText('Protocolo cadastrado com sucesso')
-                    ->assertSee($user->username);
+                    ->waitUntil(
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                            $user->username .
+                            '\')'
+                    )
+                    ->assertPresent('#navbarDropdown');
             });
         } catch (\Exception $exception) {
             throw $exception;

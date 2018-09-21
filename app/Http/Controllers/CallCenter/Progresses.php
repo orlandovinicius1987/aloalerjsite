@@ -3,8 +3,8 @@ namespace App\Http\Controllers\CallCenter;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProgressRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProgressRequest;
 
 class Progresses extends Controller
 {

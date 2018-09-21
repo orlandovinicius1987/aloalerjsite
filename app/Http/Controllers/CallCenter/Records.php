@@ -1,15 +1,13 @@
 <?php
+
 namespace App\Http\Controllers\CallCenter;
 
-use App\Data\Models\Progress;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RecordRequest;
-
 use Illuminate\Support\Facades\Auth;
-
 use App\Data\Repositories\Records as RecordsRepository;
 
 class Records extends Controller

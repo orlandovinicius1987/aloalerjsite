@@ -3,10 +3,9 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h5>
-                    Endereços
+                    <i class="fas fa-map-marked-alt"></i> Endereços
                 </h5>
             </div>
-
             <div class="col-8 text-right">
                 <a id="buttonNovoEndereco"
                    href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
@@ -17,5 +16,12 @@
             </div>
         </div>
     </div>
-    @include('callcenter.person_addresses.partials.table')
+
+    <div class="card-body">
+        @include('callcenter.person_addresses.partials.table')
+    </div>
+
+
 </div>
+
+

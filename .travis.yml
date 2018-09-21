@@ -1,0 +1,45 @@
+dist: trusty
+language: php
+
+php:
+  - 7.1
+  - 7.2
+
+services:
+    - postgresql
+
+sudo: true
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_script:
+  - cp .env.travis .env
+  - cp .env.travis .env.dusk.local
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+  - php artisan key:generate
+  - psql -c 'create database teste;' -U postgres
+  - psql -c 'create user vagrant;' -U postgres
+  - psql -c "alter user vagrant with encrypted password 'vagrant'" -U postgres;
+  - psql -c 'grant all privileges on database teste to vagrant'  -U postgres
+  - psql -c 'ALTER USER vagrant WITH SUPERUSER' -U postgres
+  - php artisan migrate
+  - php artisan db:seed
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
+  - php artisan serve &
+
+script:
+  - php artisan dusk
+
+after_script:
+  - |
+    if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then
+      wget https://scrutinizer-ci.com/ocular.phar
+      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    fi
+
+notifications:
+  email: false

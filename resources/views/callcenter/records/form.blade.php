@@ -277,6 +277,7 @@
                             <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                 Gravar
                             </button>
+
                             <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
                                 Gravar e Finalizar
                             </button>
@@ -287,6 +288,7 @@
                                         <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                             Gravar
                                         </button>
+
                                         <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
                                             Gravar e Finalizar
                                         </button>
