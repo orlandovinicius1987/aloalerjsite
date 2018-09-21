@@ -26,7 +26,7 @@ class Contact extends Controller
     {
         $this->mailer->send($request);
 
-        // app(Records::class)->absorbContactForm($request->all());
+        app(Records::class)->absorbContactForm($request->all());
 
         return view('contact.mailsent')->with('name', $request->get('name'));
     }
