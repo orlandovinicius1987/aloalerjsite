@@ -94,7 +94,6 @@ class Records extends Base
 
     public function allNotResolved()
     {
-        //        dd($this->model::whereNull('resolved_at'));
         return $this->model::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
