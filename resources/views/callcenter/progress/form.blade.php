@@ -5,6 +5,10 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
+                    <a href="{{ route('people.show', ['id' => $record->person->id]) }}">{{ $record->person->name }}</a>
+                </li>
+
+                <li>
                     <a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a>
                 </li>
 
@@ -169,18 +173,20 @@
                         </button>
 
                         @if ($record->resolved_at)
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger" @include('partials.disabled')>
+                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndOpen') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger" @include('partials.disabled')>
+                            <button v-on:click="changeFormRoute('{{route('progresses.storeAndFinish') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e finalizar
                             </button>
                         @endif
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
-                            Gravar
-                        </button>
+                        @if ($progress && $progress->id)
+                            <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary btn-depth">
+                                Notificar cidadão
+                            </a>
+                        @endif
                     </div>
                 </div>
             </form>

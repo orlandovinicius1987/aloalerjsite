@@ -5584,6 +5584,55 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/copy-text-to-clipboard/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = input => {
+	const el = document.createElement('textarea');
+
+	el.value = input;
+
+	// Prevent keyboard from showing on mobile
+	el.setAttribute('readonly', '');
+
+	el.style.contain = 'strict';
+	el.style.position = 'absolute';
+	el.style.left = '-9999px';
+	el.style.fontSize = '12pt'; // Prevent zooming on iOS
+
+	const selection = document.getSelection();
+	let originalRange = false;
+	if (selection.rangeCount > 0) {
+		originalRange = selection.getRangeAt(0);
+	}
+
+	document.body.appendChild(el);
+	el.select();
+
+	// Explicit selection workaround for iOS
+	el.selectionStart = 0;
+	el.selectionEnd = input.length;
+
+	let success = false;
+	try {
+		success = document.execCommand('copy');
+	} catch (err) {}
+
+	document.body.removeChild(el);
+
+	if (originalRange) {
+		selection.removeAllRanges();
+		selection.addRange(originalRange);
+	}
+
+	return success;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/is-buffer/index.js":
 /***/ (function(module, exports) {
 
@@ -52986,6 +53035,7 @@ __webpack_require__("./resources/assets/js/apps/progresses.js");
 __webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
 __webpack_require__("./resources/assets/js/apps/records.js");
+__webpack_require__("./resources/assets/js/apps/committees-search.js");
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53086,6 +53136,96 @@ if (jQuery("#" + appName).length > 0) {
 
         mounted: function mounted() {
             // this.refresh()
+        }
+    });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/committees-search.js":
+/***/ (function(module, exports) {
+
+var appName = 'committees-search';
+
+if (jQuery("#" + appName).length > 0) {
+    var app = new Vue({
+        el: '#' + appName,
+
+        data: {
+            tables: {
+                committees: null
+            },
+
+            refreshing: false,
+
+            filler: false,
+
+            typeTimeout: null,
+
+            foundByCpfCnpj: null,
+
+            errors: null,
+
+            form: {
+                search: null
+            }
+        },
+
+        methods: {
+            refresh: function refresh() {
+                me = this;
+
+                me.refreshing = true;
+
+                me.errors = null;
+
+                me.tables.committees = null;
+
+                axios.post('/api/v1/committees-search', { search: this.form.search }).then(function (response) {
+                    me.tables.committees = [];
+                    me.errors = false;
+
+                    if (response.data.success) {
+                        me.tables.committees = response.data.data;
+                        me.errors = response.data.errors;
+                    }
+
+                    me.refreshing = false;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.refreshing = false;
+                });
+            },
+            typeKeyUp: function typeKeyUp() {
+                clearTimeout(this.timeout);
+
+                me = this;
+
+                this.timeout = setTimeout(function () {
+                    me.refresh();
+                }, 500);
+            },
+            refreshTable: function refreshTable(table) {
+                axios.get('/' + table).then(function (response) {
+                    me.tables[table] = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+
+                    me.tables[table] = [];
+                });
+            },
+            isSearching: function isSearching() {
+                return this.form.search.name || this.form.search.cpf_cnpj;
+            }
+        },
+
+        mounted: function mounted() {
+            console.log('mounted');
+
+            this.refresh();
+
+            // this.refreshTable('people')
         }
     });
 }
@@ -53337,7 +53477,7 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/records.js":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 var appName = 'vue-record';
 
@@ -53345,16 +53485,18 @@ if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        data: {},
-
         methods: {
             changeFormRoute: function changeFormRoute(action) {
                 form = document.getElementById('formRecords');
                 form.action = action;
                 form.submit();
+            },
+            copyUrl: function copyUrl(url) {
+                var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
+
+                copy(url);
             }
         }
-
     });
 }
 

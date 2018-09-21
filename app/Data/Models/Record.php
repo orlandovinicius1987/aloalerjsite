@@ -81,10 +81,6 @@ class Record extends BaseModel
 
     public function sendNotifications()
     {
-        $this->getNotifiables()->each(function ($notifiable) {
-            $notifiable->notify(new RecordCreated($this));
-        });
-
-        return $this;
+        return $this->sendNotificationsForClass(RecordCreated::class);
     }
 }

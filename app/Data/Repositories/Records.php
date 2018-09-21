@@ -122,4 +122,9 @@ class Records extends Base
             str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
         );
     }
+
+    public function absorbContactForm($data)
+    {
+        return true;
+    }
 }
