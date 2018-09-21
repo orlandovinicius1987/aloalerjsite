@@ -44,8 +44,8 @@ class PersonContacts extends Controller
 
         Workflow::end();
 
-        return redirect()->route('records.workflow', [
-            'record_id' => $records->last()->id,
+        return redirect()->route('records.show-protocol', [
+            'id' => $records->last()->id,
         ]);
     }
 
