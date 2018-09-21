@@ -5,6 +5,10 @@
         <div class="card-header">
             <ul class="aloalerj-breadcrumbs">
                 <li>
+                    <a href="{{ route('people.show', ['id' => $record->person->id]) }}">{{ $record->person->name }}</a>
+                </li>
+
+                <li>
                     <a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a>
                 </li>
 
