@@ -26,11 +26,6 @@ class Records extends Base
         $this->peopleRepository = $personRepository;
     }
 
-    private function addProgressForRecord($record, $data)
-    {
-        // TODO
-    }
-
     /**
      * @param $person
      * @param $record
@@ -62,8 +57,6 @@ class Records extends Base
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
-
-        $this->addProgressForRecord($record, $data);
 
         return $record;
     }
@@ -101,7 +94,6 @@ class Records extends Base
 
     public function allNotResolved()
     {
-        //        dd($this->model::whereNull('resolved_at'));
         return $this->model::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
@@ -121,5 +113,30 @@ class Records extends Base
             Carbon::now()->format('Hi'),
             str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
         );
+    }
+
+    public function absorbContactForm($data)
+    {
+        //          "_token" => "eN3JvieYFUPe0I8PVzNIMCsnQJDb8XYaPrfFCZAw"
+        //          "name" => "Antonio Carlos Ribeiro"
+        //          "email" => "acr@antoniocarlosribeiro.com"
+        //          "telephone" => "21980882233"
+        //          "cpf" => "99136880787"
+        //          "birthdate" => "31101970"
+        //          "sex_1" => "Masculino"
+        //          "sex_2" => "Masculino"
+        //          "identidade" => "066373697"
+        //          "expeditor" => "IFP"
+        //          "scholarship" => "8"
+        //          "area" => "TI"
+        //          "cep" => "20250030"
+        //          "rua" => "Professor Quintino do Vale"
+        //          "numero" => "26"
+        //          "complemento" => "apto 205"
+        //          "bairro" => "Estácio"
+        //          "cidade" => "Rio de Janeiro"
+        //          "subject" => "E"
+        //          "message" => "lindaaaaaaa"
+        //          "send" => null
     }
 }

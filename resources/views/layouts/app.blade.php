@@ -73,6 +73,10 @@
                                 <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="/"><i class="fas fa-headphones-alt"></i> Site do Alô Alerj</a>
+                            </li>
+
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
@@ -119,15 +123,17 @@
             </div>
 
             <div id="@yield('vue-app-name')">
-                <div class="container-fluid section-heading-bg">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            @include('partials.alerts')
+                @if (View::hasSection('heading'))
+                    <div class="container-fluid section-heading-bg">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                @include('partials.alerts')
 
-                            @yield('heading')
+                                @section('heading') @show
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 <div class="container-fluid">
                     <div class="row justify-content-center">

@@ -44,6 +44,15 @@ Route::get('/protocolo/{protocolo}', 'CallCenter\Records@showPublic')->name(
     'records.show-public'
 );
 
+Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name(
+    'records.search'
+);
+
+Route::post(
+    '/pesquisa/protocolo',
+    'CallCenter\Records@showByProtocolNumber'
+)->name('records.search');
+
 Route::group(
     [
         'prefix' => 'callcenter',
