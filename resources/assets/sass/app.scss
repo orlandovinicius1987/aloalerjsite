@@ -92,27 +92,35 @@
     margin-bottom: 15px;
   }
 
-  .card-title {
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    margin-top: 0px;
-    color: $blue-lighter75;
-  }
+  .card{
+    background: #ffffff;
+    border-top: 0px solid $blue !important;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 4px $grey-light03;
 
 
-  border-top: 5px solid $blue !important;
-  padding-bottom: 10px;
+    .card-body {
 
-  .form-control {
-    border: solid 1px $grey-light02;
-    color: $grey-dark01;
-    &::placeholder{
-      color: $grey-light03;
+
+      .card-title {
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        margin-top: 0px;
+        color: $blue-lighter75;
+      }
+
+
+      .form-control {
+        border: solid 1px $grey-light02;
+        color: $grey-dark01;
+        &::placeholder{
+          color: $grey-light03;
+        }
+      }
     }
-
   }
-
 }
 
 
@@ -193,7 +201,7 @@
 
 
 .table {
-  background: $white;
+  background: $grey-light01;
   /*border: 1px solid $grey-light02;*/
   border: 0px;
 
@@ -224,15 +232,30 @@
 }
 
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.02);
+.table-striped {
+  tbody {
+
+    tr:nth-of-type(odd) {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    tr:nth-of-type(even) {
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: none;
+    }
+
+  }
 }
 
 .table-hover{
   tbody{
     tr{
       &:hover{
-        background: $grey-light01;
+        background: darken(#fbfcfd,01%);
       }
     }
   }
