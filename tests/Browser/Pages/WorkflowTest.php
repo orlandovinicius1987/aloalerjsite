@@ -41,6 +41,7 @@ class WorkflowTest extends DuskTestCase
                 $contacts
             ) {
                 $browser
+                    ->resize(1200, 800)
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
                     ->type('#search', $person->cpf_cnpj)
@@ -61,7 +62,9 @@ class WorkflowTest extends DuskTestCase
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
                     ->click('#saveButton')
-                    ->waitForText('Protocolo cadastrado com sucesso')
+                    ->waitForText('Protocolo cadastrado com sucesso');
+
+                $browser
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(

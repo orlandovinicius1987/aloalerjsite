@@ -45,6 +45,7 @@ class SearchTest extends DuskTestCase
                 $person2
             ) {
                 $browser
+                    ->resize(1200, 800)
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
 

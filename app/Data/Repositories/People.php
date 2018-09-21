@@ -155,4 +155,18 @@ class People extends Base
             ]
         )->passes();
     }
+
+    public function getAllEmails($person_id)
+    {
+        $person = $this->model::find($person_id);
+
+        $contacts = [];
+        foreach ($person->contacts as $contact) {
+            if ($contact->contactType->name == 'E-mail') {
+                $contacts[] = $contact;
+            }
+        }
+
+        return $contacts;
+    }
 }
