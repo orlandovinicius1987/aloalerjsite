@@ -3,6 +3,7 @@ namespace App\Http\Requests;
 
 class ProgressRequest extends Request
 {
+    protected $errorBag = 'validation';
     /**
      * Get the validation rules that apply to the request.
      *

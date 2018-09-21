@@ -53468,9 +53468,23 @@ if (jQuery("#" + appName).length > 0) {
                 form = document.getElementById('formProgress');
                 form.action = action;
                 form.submit();
+            },
+            confirm: function confirm(action) {
+                var _this = this;
+
+                swal({
+                    title: "Você tem certeza?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then(function (willDelete) {
+                    if (willDelete) {
+                        var $this = _this;
+                        $this.changeFormRoute(action);
+                    }
+                });
             }
         }
-
     });
 }
 
@@ -53487,6 +53501,7 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
+                alert(action);
                 form = document.getElementById('formRecords');
                 form.action = action;
                 form.submit();
@@ -53495,6 +53510,21 @@ if (jQuery("#" + appName).length > 0) {
                 var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
 
                 copy(url);
+            },
+            confirm: function confirm(action) {
+                var _this = this;
+
+                swal({
+                    title: "Você tem certeza?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then(function (willDelete) {
+                    if (willDelete) {
+                        var $this = _this;
+                        $this.changeFormRoute(action);
+                    }
+                });
             }
         }
     });
@@ -53696,6 +53726,7 @@ if (token) {
  * Select2
  * */
 __webpack_require__("./node_modules/select2/dist/js/select2.js");
+window.swal = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"sweetalert\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 /***/ }),
 
