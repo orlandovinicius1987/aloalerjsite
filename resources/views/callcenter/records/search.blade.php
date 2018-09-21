@@ -14,7 +14,7 @@
                             <div class="form-bigger">
                                 <div class="form-group row search">
                                     <div class="col-12">
-                                        <input id="protocol" name="protocol" value="{{$protocol ?? ''}}" class="form-control" placeholder="Protocolo" required/>
+                                        <input id="protocol" name="protocol" value="{{ $protocol ?? '' }}" class="form-control" placeholder="Protocolo" required/>
                                     </div>
                                 </div>
                             </div>

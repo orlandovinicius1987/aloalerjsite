@@ -13,9 +13,22 @@ if (jQuery("#" + appName).length > 0) {
                 form = document.getElementById('formProgress')
                 form.action = action
                 form.submit()
+            },
+
+            confirm(action){
+                swal({
+                    title: "Você tem certeza?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            let $this = this
+                            $this.changeFormRoute(action)
+                        }
+                    });
             }
         },
-
-
     })
 }
