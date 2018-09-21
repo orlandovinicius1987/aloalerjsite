@@ -1,5 +1,5 @@
     <div class="card-body">
-        <table id="recordsTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+        <table id="recordsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Nome</th>
