@@ -154,4 +154,20 @@ class Records extends Controller
 
         return view('callcenter.records.show-public')->with('record', $record);
     }
+
+    public function searchProtocol()
+    {
+        return view('callcenter.records.search');
+    }
+
+    public function showByProtocolNumber(Request $request)
+    {
+        $record = app(RecordsRepository::class)->findByProtocol(
+            $request->protocol
+        );
+
+        return view('callcenter.records.search')
+            ->with('record', $record)
+            ->with('protocol', $request->protocol);
+    }
 }
