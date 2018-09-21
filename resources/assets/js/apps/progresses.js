@@ -17,7 +17,7 @@ if (jQuery("#" + appName).length > 0) {
 
             confirm(action){
                 swal({
-                    title: "Você tem certeza?",
+                    title: " Você tem certeza? ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,

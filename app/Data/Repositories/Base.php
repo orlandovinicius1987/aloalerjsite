@@ -186,7 +186,7 @@ abstract class Base
         return (
             $this->model::where($field, $value)
                 ->orderBy('created_at', 'desc')
-                ->paginate(\)
+                ->paginate($sizeOfPage)
         );
     }
 

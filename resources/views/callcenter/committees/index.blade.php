@@ -94,7 +94,7 @@
     </div>
 
 
-    <div class="card mt-4" id="committees-search">
+    <div class="card mt-4" id="vue-committees-search">
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col-4">

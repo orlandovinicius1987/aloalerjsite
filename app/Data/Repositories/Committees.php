@@ -34,14 +34,9 @@ class Committees extends Base
 
     public function searchByEverything($search)
     {
-        $result = $this->emptyResponse();
-        $resultName = $this->searchByAll($search);
-
-        if (!is_null($resultName)) {
-            $result['data'] = coollect($result['data'])->merge($resultName);
-        }
-
-        return $result;
+        return ($result = $this->searchByAll($search))->count() == 0
+            ? $this->emptyResponse()
+            : $result;
     }
 
     public function searchByName($name)

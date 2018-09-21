@@ -1,4 +1,4 @@
-const appName = 'committees-search'
+const appName = 'vue-committees-search'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
