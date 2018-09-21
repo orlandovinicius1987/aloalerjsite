@@ -61,7 +61,10 @@ class Progresses extends Controller
     public function storeAndOpen(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
-        $progress = $this->progressesRepository->createFromRequest($request); //->sendNotifications();
+
+        $progress = $this->progressesRepository->createFromRequest($request);
+
+        $progress->sendNotifications();
 
         $this->recordsRepository->markAsNotResolved(
             $request->get('record_id'),
@@ -99,5 +102,17 @@ class Progresses extends Controller
             ])
             ->with($this->getComboBoxMenus())
             ->with('formDisabled', $formDisabled);
+    }
+
+    public function notify($id)
+    {
+        $this->progressesRepository->findById($id)->sendNotifications()
+            ? $this->flashMessage('Cidadão foi nofificado')
+            : $this->flashMessage(
+                'Este cidadão não tem nenhum endereço que possamos usar para notificá-lo',
+                'danger'
+            );
+
+        return redirect()->back();
     }
 }
