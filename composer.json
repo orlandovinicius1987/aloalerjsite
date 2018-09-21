@@ -20,7 +20,8 @@
         "pragmarx/health": "^0.9",
         "pragmarx/zipcode": "^1.5",
         "predis/predis": "^1.1",
-        "sensiolabs/security-checker": "^4.1"
+        "sensiolabs/security-checker": "^4.1",
+        "laravelcollective/html": "5.7.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
