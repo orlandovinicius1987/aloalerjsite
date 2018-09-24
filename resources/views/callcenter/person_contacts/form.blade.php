@@ -116,6 +116,7 @@
                             :tokens="tokens"
                             required
                             autofocus
+                            @include('partials.disabled',['model'=>$contact])
                         ></the-mask>
                     </div>
                 </div>
@@ -124,7 +125,7 @@
                     <label for="active" class="col-sm-4 col-form-label text-md-right">Contato Ativo</label>
                     <div class="col-md-6">
                         <input type="hidden" name="active" value="0">
-                        <input type="checkbox" name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}} >
+                        <input type="checkbox" name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}} @include('partials.disabled',['model'=>$contact])>
                     </div>
                 </div>
 
@@ -156,10 +157,12 @@
                         </div>
                     </div>
                 @endif
-
+                
+                
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-danger btn-depth">
+                        @include('partials.edit-button',['model'=>$contact, 'form' =>'formRecords'])   
+                        <button type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$contact])>
                             Gravar
                         </button>
                     </div>

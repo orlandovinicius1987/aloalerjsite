@@ -53275,13 +53275,20 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contact-outside-workflow.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-contact-outside-workflow';
+
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             laravel: laravel,
