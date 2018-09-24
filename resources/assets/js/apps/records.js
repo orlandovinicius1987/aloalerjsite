@@ -4,6 +4,10 @@ if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
+        data:{
+            disabled : true
+        },
+
         methods: {
             changeFormRoute(action){
                 form = document.getElementById('formRecords')
@@ -16,6 +20,13 @@ if (jQuery("#" + appName).length > 0) {
 
                 copy(url);
             },
+
+            
+            editButton(event){                    
+               this.disabled = !this.disabled                           
+                
+            },
+            
 
             confirm(action){
                 swal({
@@ -32,5 +43,17 @@ if (jQuery("#" + appName).length > 0) {
                     });
             }
         },
+        
+        mounted() {
+            form = document.getElementById('formRecords')           
+            
+        },
+        
+        computed: {
+            isDisabled() {
+                return this.disabled;
+            }
+          }
+    
     })
 }

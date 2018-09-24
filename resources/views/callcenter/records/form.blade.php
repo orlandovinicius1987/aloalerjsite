@@ -110,7 +110,8 @@
                                 name="committee_id"
                                 value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
                                 required
-                                autofocus>
+                                autofocus
+                                :disabled="isDisabled">
                             <option value="">SELECIONE</option>
                             @foreach ($committees as $key => $committe)
                                 @if(((!is_null($record->id)) && (!is_null($record->committee_id) && $record->committee_id === $committe->id) || (!is_null(old('committee_id'))) && old('committee_id') == $committe->id))
@@ -138,7 +139,8 @@
                                 name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id') }}"
                                 required
-                                autofocus>
+                                autofocus
+                                :disabled="isDisabled">
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
                                 @if(((!is_null($record->id)) && (!is_null($record->record_type_id) && $record->record_type_id === $recordType->id) || (!is_null(old('record_type_id'))) && old('record_type_id') == $recordType->id))
@@ -186,7 +188,8 @@
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
                                 class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
-                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus>
+                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus
+                                :disabled="isDisabled">
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
                                 @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) || (!is_null(old('area_id'))) && old('area_id') == $area->id))
@@ -227,7 +230,7 @@
                     <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
 
-                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off">
+                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off" :disabled="isDisabled">
                             <div class="handle"></div>
 
                         {{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
@@ -273,11 +276,11 @@
                             <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                     Próximo passo >>
                             </button>
-                        @elseif(is_null($record->committee))
+                        @elseif(is_null($record->committee))                            
                             
-                            @include('partials.edit-button');
+                        @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])                                     
 
-                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
+                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" :disabled="isDisabled">
                                 Gravar
                             </button>
 
@@ -295,9 +298,9 @@
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
 
-                                        @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
+                                        @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])                                        
 
-                                        <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
+                                        <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" :disabled="isDisabled" >
                                             Gravar
                                         </button>
 
