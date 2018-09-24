@@ -21,9 +21,9 @@
                 <div class="col-4">
                         <h5 class="text-right">
                             @if ($record->resolved_at)
-                                <span class="badge badge-danger">PROCOLO FINALIZADO</span>
+                                <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
                             @else
-                                <span class="badge badge-success">PROCOLO EM ANDAMENTO</span>
+                                <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
                             @endif
                         </h5>
                 </div>
