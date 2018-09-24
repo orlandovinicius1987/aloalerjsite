@@ -53056,9 +53056,13 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/addresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-addresses';
+
 
 Vue.directive('init', {
     bind: function bind(el, binding, vnode) {
@@ -53069,6 +53073,8 @@ Vue.directive('init', {
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             tables: {
@@ -53143,7 +53149,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted: function mounted() {
-            // this.refresh()
+            // this.refresh()            
         }
     });
 }
@@ -53445,15 +53451,19 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/progresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-progress';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        data: {},
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
@@ -53483,17 +53493,19 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/records.js":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-record';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        data: {
-            disabled: true
-        },
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
@@ -53505,9 +53517,6 @@ if (jQuery("#" + appName).length > 0) {
                 var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
 
                 copy(url);
-            },
-            editButton: function editButton(event) {
-                this.disabled = !this.disabled;
             },
             confirm: function confirm(action) {
                 var _this = this;
@@ -53528,15 +53537,7 @@ if (jQuery("#" + appName).length > 0) {
 
         mounted: function mounted() {
             form = document.getElementById('formRecords');
-        },
-
-
-        computed: {
-            isDisabled: function isDisabled() {
-                return this.disabled;
-            }
         }
-
     });
 }
 
@@ -53737,6 +53738,37 @@ if (token) {
  * */
 __webpack_require__("./node_modules/select2/dist/js/select2.js");
 window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min.js");
+
+/***/ }),
+
+/***/ "./resources/assets/js/mixins/edit-mixins.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            disabled: true
+        };
+    },
+
+
+    methods: {
+        example: function example() {
+            console.log('hello from example mixin!');
+        },
+        editButton: function editButton(event) {
+            this.disabled = !this.disabled;
+        }
+    },
+
+    computed: {
+        isDisabled: function isDisabled() {
+            return this.disabled;
+        }
+    }
+
+});
 
 /***/ }),
 

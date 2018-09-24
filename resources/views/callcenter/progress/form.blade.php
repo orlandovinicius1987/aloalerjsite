@@ -46,7 +46,7 @@
 
                     <div class="col-md-6">
                         <select id="origin_id"
-                                class="form-control{{ $errors->getBag('validation')->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id" @include('partials.disabled')
+                                class="form-control{{ $errors->getBag('validation')->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id" @include('partials.disabled',['model'=>$progress])
                                 value="{{is_null(old('origin_id')) ? $progress->origin_id : old('origin_id') }}" autofocus required>
                             <option value="">SELECIONE</option>
                             @foreach ($origins as $key => $origin)
@@ -73,7 +73,7 @@
                     <div class="col-md-6">
                         <select id="record_type_id" type="record_type_id"
                                 class="form-control{{ $errors->getBag('validation')->has('record_type_id') ? ' is-invalid' : '' }} select2" name="record_type_id"
-                                value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled',['model'=>$progress])>
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->record_type_id) && $progress->record_type_id === $recordType->id) ||
@@ -99,7 +99,7 @@
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
                                 class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
-                                value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled',['model'=>$progress])>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->area_id) && $progress->area_id === $area->id) ||
@@ -125,7 +125,7 @@
                     <div class="col-md-6">
                         <select id="progress_type_id" type="progress_type_id"
                                 class="form-control{{ $errors->getBag('validation')->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
-                                value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id') }}" autofocus @include('partials.disabled')>
+                                value="{{is_null(old('progress_type_id')) ? $progress->progress_type_id : old('progress_type_id') }}" autofocus  @include('partials.disabled',['model'=>$progress])>
                             <option value="">SELECIONE</option>
                             @foreach ($progressTypes as $key => $progressType)
                                 @if(((!is_null($progress->id)) && (!is_null($progress->progress_type_id) && $progress->progress_type_id === $progressType->id) ||
@@ -153,7 +153,7 @@
                       class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
                       name="original"
                       value="{{is_null(old('original')) ? $progress->original : old('original') }}"
-                      required rows="15" @include('partials.disabled')>{{$progress->original}}</textarea>
+                      required rows="15" @include('partials.disabled',['model'=>$progress])>{{$progress->original}}</textarea>
                         @if ($errors->getBag('validation')->has('original'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->getBag('validation')->first('original') }}</strong>
@@ -166,18 +166,18 @@
                     <div class="col-md-8 offset-md-4">
                         @include('partials.previous-button')
 
-                        {{--@include('partials.edit-button',['model'=>$progress, 'form' =>'formProgress'])--}}
+                        @include('partials.edit-button',['model'=>$progress, 'form' =>'formProgress'])
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth"  @include('partials.disabled',['model'=>$progress])>
                             Gravar
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$progress])>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$progress])>
                                 Gravar e finalizar
                             </button>
                         @endif

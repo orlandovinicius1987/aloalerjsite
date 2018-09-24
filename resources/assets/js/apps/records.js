@@ -1,12 +1,12 @@
 const appName = 'vue-record'
+import editMixins from '../mixins/edit-mixins'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        data:{
-            disabled : true
-        },
+        mixins: [editMixins],
+        
 
         methods: {
             changeFormRoute(action){
@@ -20,13 +20,6 @@ if (jQuery("#" + appName).length > 0) {
 
                 copy(url);
             },
-
-            
-            editButton(event){                    
-               this.disabled = !this.disabled                           
-                
-            },
-            
 
             confirm(action){
                 swal({
@@ -43,17 +36,11 @@ if (jQuery("#" + appName).length > 0) {
                     });
             }
         },
-        
+
         mounted() {
-            form = document.getElementById('formRecords')           
-            
-        },
-        
-        computed: {
-            isDisabled() {
-                return this.disabled;
-            }
-          }
-    
+            form = document.getElementById('formRecords')
+
+        },       
+
     })
 }
