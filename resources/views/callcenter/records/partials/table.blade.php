@@ -14,7 +14,7 @@
 
         <div class="col-8 text-right">
             @if(isset($person))
-                <a id="buttonNovoProtocolo"
+                <a id="button-novo-protocolo"
                    href="{{ route('records.create',['person_id'=>$person->id]) }}"
                    class="btn btn-primary btn-sm pull-right btn-depth"
                 >

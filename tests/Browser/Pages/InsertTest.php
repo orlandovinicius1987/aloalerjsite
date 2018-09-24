@@ -2,6 +2,10 @@
 
 namespace Tests\Browser;
 
+use App\Notifications\ProgressCreated;
+use App\Notifications\RecordCreated;
+use Illuminate\Support\Facades\Notification;
+
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 
@@ -13,29 +17,30 @@ use App\Data\Models\PersonContact;
 
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
+use App\Data\Repositories\Records as RecordsRepository;
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class InsertTest extends DuskTestCase
 {
     public function testInsertData()
     {
-        $faker = app('Faker');
+        //        Notification::fake();
 
         $user = factory(User::class, 'Operador')->create();
 
         factory(Person::class)->create();
 
         $person = app(PeopleRepository::class)->randomElement();
-
-        $person['show_url'] = str_replace(
+        $personShowUrl = str_replace(
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person['id'],
+                'person_id' => $person->id,
             ])
         );
-        $person = (object) $person;
 
         $record = factory(Record::class, 'Workflow')->raw();
         $record['create_url'] = str_replace(
@@ -68,24 +73,35 @@ class InsertTest extends DuskTestCase
                 $person,
                 $record,
                 $address,
-                $contactsArray
+                $contactsArray,
+                $personShowUrl
             ) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->type('#search', $person->name)
+                    ->type('@search', $person->name)
                     ->waitForText($person->name)
                     ->clickLink($person->name)
-                    ->click('#buttonNovoProtocolo')
+                    ->click('#button-novo-protocolo')
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
                     ->select('#record_type_id', $record->record_type_id)
                     ->select('#progress_type_id', $record->progress_type_id)
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
-                    ->click('#saveButton')
-                    ->waitForText('Gravado com sucesso')
-                    ->click('#buttonNovoEndereco')
+                    ->click('#saveButton');
+
+                //                if (!empty($person->emails)) {
+                //                    Notification::assertSentTo(
+                //                        $person->emails,
+                //                        RecordCreated::class
+                //                    );
+                //                }
+
+                $browser
+                    ->waitForText('Protocolo criado com sucesso')
+                    ->visit($personShowUrl)
+                    ->click('#button-novo-endereco')
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(
@@ -100,7 +116,7 @@ class InsertTest extends DuskTestCase
                         ContactTypesRepository::class
                     )->findByColumn('code', $key);
                     $browser
-                        ->click('#buttonNovoContato')
+                        ->click('#button-novo-contato')
                         ->waitForText('Selecione o tipo de contato')
                         ->waitUntil(
                             'document.getElementById(\'contact_type_id\').options.length > 1'

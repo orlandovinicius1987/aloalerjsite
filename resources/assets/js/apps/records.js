@@ -9,7 +9,6 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             changeFormRoute(action){
-                alert(action)
                 form = document.getElementById('formRecords')
                 form.action = action
                 form.submit()

@@ -77,18 +77,24 @@ class PersonContacts extends Controller
         PersonContactsWorkflowRequest $request,
         $code
     ) {
+        $contact = $request->get($code);
+        if ($code != 'email') {
+            $contact = only_numbers($contact);
+        }
         if ($request->get($code)) {
             PersonContact::create([
                 'person_id' => $request->get('person_id'),
                 'contact_type_id' =>
                     ContactType::where('code', $code)->first()->id,
-                'contact' => $request->get($code),
+                'contact' => $contact,
             ]);
         }
     }
 
     public function insertContact(PersonContactsRequest $request)
     {
+        $this->showSuccessMessage();
+
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()
