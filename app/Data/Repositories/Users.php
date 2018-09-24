@@ -85,7 +85,7 @@ class Users extends Base
     {
         $other = '';
         $admin = false;
-        $committee = false;
+        $committeeBool = false;
 
         $userTypesRepository = app(UserTypesRepository::class);
         $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
@@ -115,7 +115,7 @@ class Users extends Base
             foreach ($allCommittees as $committee) {
                 if (isset($eventsArray[$committee->slug])) {
                     //O usuário tem permissão para a comissão $committee no SGUS
-                    $committee = true;
+                    $committeeBool = true;
                 }
             }
         }
@@ -124,10 +124,10 @@ class Users extends Base
             return app(UserTypes::class)->findByName('Administrador');
         } elseif ($other != '') {
             return app(UserTypes::class)->findByName($other);
-        } elseif ($committee) {
+        } elseif ($committeeBool) {
             return app(UserTypes::class)->findByName('Comissao');
         } else {
-            dd('Usuário sem autorização');
+            return null;
         }
     }
 
@@ -181,11 +181,17 @@ class Users extends Base
 
                 $user->password = Hash::make($credentials['password']);
 
-                $user->user_type_id = $this->getUserTypeFromPermissions(
+                $userType = $this->getUserTypeFromPermissions(
                     app(Authorization::class)->getUserPermissions(
                         $user->username
                     )
-                )->id;
+                );
+
+                if (is_null($userType)) {
+                    return false;
+                } else {
+                    $user->user_type_id = $userType->id;
+                }
 
                 $user->save();
             } else {
@@ -304,6 +310,7 @@ class Users extends Base
         );
 
         $administrator = false;
+        $userType = null;
 
         foreach ($permissions as $permission) {
             if ($permission['nomeFuncao'] == 'Administrador') {
@@ -328,9 +335,11 @@ class Users extends Base
                         $userType = $userTypesArray[$permission['nomeFuncao']];
                     }
                 }
-                $usersCommitteesRepository->syncOperatorOrAdminUser(
-                    Auth::user()->id
-                );
+                if ($userType) {
+                    $usersCommitteesRepository->syncOperatorOrAdminUser(
+                        Auth::user()->id
+                    );
+                }
             }
         }
 
@@ -339,23 +348,6 @@ class Users extends Base
             $user->save();
         } else {
             dd('Você não está autorizado a usar o sistema');
-        }
-    }
-
-    /**
-     * @param $permissions
-     * @param $user
-     */
-    private function updateUserTypeFromPermissions($permissions, $user): void
-    {
-        $userType = $this->tiposUsuarios->findByName(
-            $this->getUserTypeFromPermissions($permissions)
-        );
-
-        if ($userType) {
-            $user->user_type_id = $userType->id;
-
-            $user->save();
         }
     }
 }
