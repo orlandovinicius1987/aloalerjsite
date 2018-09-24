@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Faker\Generator as Faker;
+
 class FakerServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +27,11 @@ class FakerServiceProvider extends ServiceProvider
         $this->app->singleton('Faker', function ($app) {
             $faker = \Faker\Factory::create();
             $newClass = new class($faker) extends \Faker\Provider\Base {
+                public function name_without_special_character()
+                {
+                    $faker = app(Faker::class);
+                    return preg_replace("/([^a-zA-Z])/", "", $faker->name);
+                }
                 private function mod($dividendo, $divisor)
                 {
                     return round(
