@@ -26,7 +26,7 @@ $factory->define(Person::class, function (Faker $faker) {
     return [
         'code' => $cpf,
         'cpf_cnpj' => $cpf,
-        'name' => $faker->name,
+        'name' => $faker->name_without_special_character,
         'identification' => $faker->unique()->randomNumber(8),
         'birthdate' => $faker->date,
         'is_anonymous' => false,
