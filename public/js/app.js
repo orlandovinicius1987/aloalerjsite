@@ -53040,7 +53040,6 @@ __webpack_require__("./resources/assets/js/apps/contacts.js");
 __webpack_require__("./resources/assets/js/apps/personal-info.js");
 __webpack_require__("./resources/assets/js/apps/contact-outside-workflow.js");
 __webpack_require__("./resources/assets/js/apps/progresses.js");
-__webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
 __webpack_require__("./resources/assets/js/apps/records.js");
 __webpack_require__("./resources/assets/js/apps/committees-search.js");
@@ -53424,13 +53423,6 @@ if (jQuery("#" + appName).length > 0) {
 
     });
 }
-
-/***/ }),
-
-/***/ "./resources/assets/js/apps/edit.js":
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
