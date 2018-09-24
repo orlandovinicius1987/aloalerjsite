@@ -47,7 +47,6 @@ class PersonAddresses extends Controller
     public function store(PersonAddressesRequest $request)
     {
         $route = 'people.show';
-        $message = $this->messageDefault;
         if (Workflow::started()) {
             $route = 'people_contacts.create';
         }
