@@ -1,11 +1,10 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\RecordAction;
 use Carbon\Carbon;
 use App\Data\Models\Record;
-use App\Data\Repositories\People as PeopleRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Data\Repositories\People as PeopleRepository;
 
 class Records extends Base
 {
@@ -53,7 +52,9 @@ class Records extends Base
     {
         $person = $this->peopleRepository->findById($data->person_id);
 
-        $data = $data->merge(['id' => $data->record_id]);
+        if (isset($data->record_id)) {
+            $data = $data->merge(['id' => $data->record_id]);
+        }
 
         $record = $this->createFromRequest($data);
 
@@ -127,6 +128,9 @@ class Records extends Base
         );
     }
 
+    /**
+     * @param $data
+     */
     public function absorbContactForm($data)
     {
         $person = $this->peopleRepository->findByCpfCnpj($data['cpf']);
@@ -157,30 +161,35 @@ class Records extends Base
             'complement' => $data['complemento'],
             'neighbourhood' => $data['bairro'],
             'city' => $data['cidade'],
-            'state' => $data['state'],
+            'state' => 'RJ',
             'is_mailable' => true,
             'validated_at' => now(),
             'active' => true,
         ]);
 
-        $record = $this->create([
-            'committee_id' =>
-                app(Committees::class)->findByName('ALÔ ALERJ')->id,
+        $person->findOrCreatePhone([
             'person_id' => $person->id,
-            'record_type_id' =>
-                app(RecordTypes::class)->findByName('Outros')->id,
-            'area_id' =>
-                $areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id,
-            'record_action_id' =>
-                app(RecordAction::class)->findByName('Outros')->id,
+            'contact' => $data['telephone'],
         ]);
 
-        app(Progresses::class)->create([
+        $record = $this->create(
+            coollect([
+                'committee_id' =>
+                    app(Committees::class)->findByName('ALÔ ALERJ')->id,
+                'person_id' => $person->id,
+                'record_type_id' =>
+                    app(RecordTypes::class)->findByName('Outros')->id,
+                'area_id' =>
+                    $areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id,
+                'record_action_id' =>
+                    app(RecordActions::class)->findByName('Outros')->id,
+            ])
+        );
+
+        $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
             'progress_type_id' =>
                 app(ProgressTypes::class)->findByName('Email')->id,
-            'progress_action_id' =>
-                app(Origins::class)->findByName('Outros')->id,
             'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'area_id' => $areaId,
@@ -189,26 +198,8 @@ class Records extends Base
             'record_action_id',
         ]);
 
-        //          "_token" => "eN3JvieYFUPe0I8PVzNIMCsnQJDb8XYaPrfFCZAw"
-        //          "name" => "Antonio Carlos Ribeiro"
-        //          "email" => "acr@antoniocarlosribeiro.com"
-        //          "telephone" => "21980882233"
-        //          "cpf" => "99136880787"
-        //          "birthdate" => "31101970"
-        //          "sex_1" => "Masculino"
-        //          "sex_2" => "Masculino"
-        //          "identidade" => "066373697"
-        //          "expeditor" => "IFP"
-        //          "scholarship" => "8"
-        //          "area" => "TI"
-        //          "cep" => "20250030"
-        //          "rua" => "Professor Quintino do Vale"
-        //          "numero" => "26"
-        //          "complemento" => "apto 205"
-        //          "bairro" => "Estácio"
-        //          "cidade" => "Rio de Janeiro"
-        //          "subject" => "E"
-        //          "message" => "lindaaaaaaa"
-        //          "send" => null
+        $record->sendNotifications();
+
+        $progress->sendNotifications();
     }
 }

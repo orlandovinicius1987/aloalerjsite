@@ -69,4 +69,47 @@ class Person extends BaseModel
     {
         return config('services.slack.webhook_url');
     }
+
+    public function findOrCreateAddress($data)
+    {
+        if (
+            $address = $this->addresses()
+                ->where('zipcode', only_numbers($data['zipcode']))
+                ->first()
+        ) {
+            return $address;
+        }
+
+        return $this->addresses()->create([
+            'zipcode' => only_numbers($data['cep']),
+            'street' => $data['rua'],
+            'number' => $data['numero'],
+            'complement' => $data['complemento'],
+            'neighbourhood' => $data['bairro'],
+            'city' => $data['cidade'],
+            'state' => $data['state'],
+            'is_mailable' => true,
+            'validated_at' => dow(),
+            'active' => true,
+        ]);
+    }
+
+    public function findOrCreatePhone($data)
+    {
+        if (
+            $contact = $this->contacts()
+                ->where('contact', $contact = only_numbers($data['contact']))
+                ->first()
+        ) {
+            return $contact;
+        }
+
+        return $this->addresses()->create([
+            'contact_type_id' =>
+                app(ContactTypes::class)->findByName('Celular')->id,
+            'contact' => $contact,
+            'from' => 'personal',
+            'active' => true,
+        ]);
+    }
 }
