@@ -184,6 +184,9 @@ class Records extends Base
             'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'area_id' => $areaId,
+            'area_id',
+            'objeto_id',
+            'record_action_id',
         ]);
 
         //          "_token" => "eN3JvieYFUPe0I8PVzNIMCsnQJDb8XYaPrfFCZAw"
