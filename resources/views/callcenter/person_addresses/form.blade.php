@@ -110,7 +110,7 @@
                     <div class="col-md-2">
                         <input id="number"
                                name="number"
-                               v-on:keypress="isNumber(event)"
+                               {{--v-on:keypress="isNumber(event)"--}}
                                value="{{is_null(old('number')) ? $address->number : old('number') }}"
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
                                required
