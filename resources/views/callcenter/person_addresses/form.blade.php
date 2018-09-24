@@ -30,13 +30,13 @@
 
                     <div class="col-md-6">
                         <input id="cpf_cnpj"
-                               class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
+                               class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
                                value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                readonly="readonly">
 
-                        @if ($errors->has('cpf_cnpj'))
+                        @if ($errors->getBag('validation')->has('cpf_cnpj'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('cpf_cnpj') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -46,13 +46,13 @@
                     <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
 
                     <div class="col-md-6">
-                        <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                        <input id="name" class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }}"
                                name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
 
-                        @if ($errors->has('name'))
+                        @if ($errors->getBag('validation')->has('name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('name') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -67,16 +67,16 @@
                                v-model="form.zipcode"
                                v-init:zipcode="'{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}'"
                                value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}"
-                               class="form-control{{ $errors->has('zipcode') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }}"
                                @keyup="typeKeyUp"
                                v-mask='["##.###-###"]'
                                autofocus
                                required
                         >
 
-                        @if ($errors->has('zipcode'))
+                        @if ($errors->getBag('validation')->has('zipcode'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('zipcode') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('zipcode') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -91,14 +91,14 @@
                                v-model="form.street"
                                v-init:street="'{{is_null(old('street')) ? $address->street : old('street') }}'"
                                value="{{is_null(old('street')) ? $address->street : old('street') }}"
-                               class="form-control{{ $errors->has('street') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
                                required
                                autofocus
                         >
 
-                        @if ($errors->has('street'))
+                        @if ($errors->getBag('validation')->has('street'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('street') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('street') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -112,14 +112,14 @@
                                name="number"
                                v-on:keypress="isNumber(event)"
                                value="{{is_null(old('number')) ? $address->number : old('number') }}"
-                               class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
                         >
 
-                        @if ($errors->has('number'))
+                        @if ($errors->getBag('validation')->has('number'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('number') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('number') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -131,13 +131,13 @@
                         <input id="complement"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement') }}"
-                               class="form-control{{ $errors->has('complement') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('complement') ? ' is-invalid' : '' }}"
                                autofocus
                         >
 
-                        @if ($errors->has('complement'))
+                        @if ($errors->getBag('validation')->has('complement'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('complement') }}</strong>
+                            <strong>{{ $errors->getBag('validation')->first('complement') }}</strong>
                         </span>
                         @endif
                     </div>
@@ -153,14 +153,14 @@
                                v-model="form.neighbourhood"
                                v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}'"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}"
-                               class="form-control{{ $errors->has('neighbourhood') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
                                required
                                autofocus
                         >
 
-                        @if ($errors->has('neighbourhood'))
+                        @if ($errors->getBag('validation')->has('neighbourhood'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('neighbourhood') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('neighbourhood') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -175,14 +175,14 @@
                                v-model="form.city"
                                v-init:city="'{{is_null(old('city')) ? $address->city : old('city') }}'"
                                value="{{is_null(old('city')) ? $address->city : old('city') }}"
-                               class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
                                required
                                autofocus
                         >
 
-                        @if ($errors->has('city'))
+                        @if ($errors->getBag('validation')->has('city'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('city') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('city') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -195,14 +195,14 @@
                                v-model="form.state"
                                v-init:state="'{{is_null(old('state')) ? $address->state : old('state') }}'"
                                value="{{is_null(old('state')) ? $address->state : old('state') }}"
-                               class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                               class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
                         >
 
-                        @if ($errors->has('state'))
+                        @if ($errors->getBag('validation')->has('state'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('state') }}</strong>
+                                <strong>{{ $errors->getBag('validation')->first('state') }}</strong>
                             </span>
                         @endif
                     </div>

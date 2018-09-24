@@ -83,8 +83,6 @@ abstract class BaseModel extends Model
 
     public function logEmailWasSent()
     {
-        info('logEmailWasSent');
-
         $this->email_sent_at = now();
 
         $this->save();

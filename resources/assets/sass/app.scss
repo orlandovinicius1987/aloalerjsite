@@ -246,6 +246,15 @@
       padding: 0.75rem;
       vertical-align: top;
       border-top: none;
+
+      a {
+        color: #4099de;
+
+        &:hover {
+          color: darken (#4099de,40%);
+          text-decoration: none;
+        }
+      }
     }
 
   }
@@ -255,7 +264,7 @@
   tbody{
     tr{
       &:hover{
-        background: darken(#fbfcfd,01%);
+        background: darken(#fbfcfd,05%);
       }
     }
   }
@@ -264,6 +273,86 @@
 
 
 
+
+
+
+.square{
+  display: block;
+  min-height: 100px;
+}
+
+.bg-colored-blue-lighter90 {
+  background-color: $blue-lighter90;
+}
+.bg-colored-blue-lighter80 {
+  background-color: $blue-lighter80;
+}
+.bg-colored-blue-lighter70 {
+  background-color: $blue-lighter70;
+}
+.bg-colored-blue-lighter60 {
+  background-color: $blue-lighter60;
+}
+.bg-colored-blue-lighter50 {
+  background-color: $blue-lighter50;
+}
+.bg-colored-blue-lighter40 {
+  background-color: $blue-lighter40;
+}
+.bg-colored-blue-lighter30 {
+  background-color: $blue-lighter30;
+}
+.bg-colored-blue-lighter20 {
+  background-color: $blue-lighter20;
+}
+.bg-colored-blue-lighter10 {
+   background-color: $blue-lighter10;
+}
+
+
+.bg-colored-blue-lighter95 {
+  background-color: $blue-lighter95;
+}
+.bg-colored-blue-lighter85 {
+  background-color: $blue-lighter85;
+}
+.bg-colored-blue-lighter75 {
+  background-color: $blue-lighter75;
+}
+.bg-colored-blue-lighter65 {
+  background-color: $blue-lighter65;
+}
+.bg-colored-blue-lighter55 {
+  background-color: $blue-lighter55;
+}
+.bg-colored-blue-lighter45 {
+  background-color: $blue-lighter45;
+}
+.bg-colored-blue-lighter35 {
+  background-color: $blue-lighter35;
+}
+.bg-colored-blue-lighter25 {
+  background-color: $blue-lighter25;
+}
+.bg-colored-blue-lighter15 {
+  background-color: $blue-lighter15;
+}
+
+
+
+
+.bg-colored-blue-darker100 {
+  background-color: $blue-darker100;
+}
+.bg-colored-blue-darker75 {
+  background-color: $blue-darker75;
+}
+.bg-colored-blue-darker50 {
+  background-color: $blue-darker50;
+}
+.bg-colored-blue-darker25 {
+  background-color: $blue-darker25;
+}
 
 
 .card {
@@ -279,7 +368,7 @@
     padding-top: 20px;
     margin-top: 10px;
     padding-bottom: 10px;
-    color: darken($grey-light03,15%);
+    color: $grey-dark01;
 
 
     h5{

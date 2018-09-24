@@ -51,6 +51,10 @@ class Person extends BaseModel
 
     public function emails()
     {
+        if ($this->name == 'Anônimo') {
+            return collect();
+        }
+
         $type = app(ContactTypes::class)->findByName('E-mail');
 
         return $this->contacts()->where('contact_type_id', $type->id);

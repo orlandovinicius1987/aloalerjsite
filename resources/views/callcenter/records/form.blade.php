@@ -274,24 +274,36 @@
                                     Próximo passo >>
                             </button>
                         @elseif(is_null($record->committee))
-                            <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
+                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                 Gravar
                             </button>
 
-                            <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
-                                Gravar e Finalizar
-                            </button>
+                            @if ($record->resolved_at)
+                                <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
+                                    Reabrir
+                                </button>
+                            @else
+                                <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
+                                    Finalizar
+                                </button>
+                            @endif
                         @else
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
-                                        <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
+                                        <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                             Gravar
                                         </button>
 
-                                        <button id="saveButton" type="submit" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.storeAndFinish') }}')" >
-                                            Gravar e Finalizar
-                                        </button>
+                                        @if ($record->resolved_at)
+                                            <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
+                                                Reabrir
+                                            </button>
+                                        @else
+                                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
+                                                Finalizar
+                                            </button>
+                                        @endif
                                      @endcan
                                 @endIf
                              @endforeach

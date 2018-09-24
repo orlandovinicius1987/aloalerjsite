@@ -81,6 +81,13 @@ class People extends Base
         return $this->emptyResponse();
     }
 
+    public function findByCpfCnpj($cpfCnpj)
+    {
+        return $this->getBaseQuery()
+            ->where('cpf_cnpj', only_numbers($cpfCnpj))
+            ->first();
+    }
+
     protected function searchByCpf($string)
     {
         if (!$this->validCpfCnpj($string)) {
@@ -156,17 +163,8 @@ class People extends Base
         )->passes();
     }
 
-    public function getAllEmails($person_id)
+    public function create($data)
     {
-        $person = $this->model::find($person_id);
-
-        $contacts = [];
-        foreach ($person->contacts as $contact) {
-            if ($contact->contactType->name == 'E-mail') {
-                $contacts[] = $contact;
-            }
-        }
-
-        return $contacts;
+        return Person::create($data);
     }
 }

@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section('content-main')
+
+
+
+
+
+
+
+
+
     <div class="page-name">
         <h1 class="nome-pagina">Comissões</h1>
     </div>

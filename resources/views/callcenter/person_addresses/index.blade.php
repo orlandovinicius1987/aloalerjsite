@@ -20,8 +20,6 @@
     <div class="card-body">
         @include('callcenter.person_addresses.partials.table')
     </div>
-
-
 </div>
 
 

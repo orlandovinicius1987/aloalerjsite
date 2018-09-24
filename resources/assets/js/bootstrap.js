@@ -76,3 +76,5 @@ if (token) {
  * Select2
  * */
 require('select2')
+window.swal = require('sweetalert');
+
