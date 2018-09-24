@@ -11,7 +11,7 @@ if (jQuery("#" + appName).length > 0) {
             },
 
         mounted() {
-          aler('mounted')
+          alert('mounted')
         },
     })
 

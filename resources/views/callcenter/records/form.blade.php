@@ -274,6 +274,9 @@
                                     Próximo passo >>
                             </button>
                         @elseif(is_null($record->committee))
+                            
+                            @include('partials.edit-button');
+
                             <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                 Gravar
                             </button>
@@ -291,6 +294,9 @@
                              @foreach ($committees as $key => $committee)
                                  @if(!is_null($record->committee) && $record->committee->id == $committee->id)
                                      @can('committee-'.$committee->slug, \Auth::user())
+
+                                        @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
+
                                         <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                             Gravar
                                         </button>
