@@ -139,11 +139,14 @@ class Records extends Base
                     'identification' => trim(
                         $data['identidade'] . ' ' . $data['expeditor']
                     ),
-                    'personal_data' => $this->makePersonalDataInfoFromContactData(
-                        $data
-                    ),
                 ]
             );
+        }
+
+        if (!$person->notes) {
+            $person->notes = $this->makePersonalDataInfoFromContactData($data);
+
+            $person->save();
         }
 
         $person->findOrCreateAddress([
