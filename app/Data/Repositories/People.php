@@ -109,7 +109,9 @@ class People extends Base
     protected function searchByName($string)
     {
         $query = $this->getBaseQuery()->whereRaw(
-            "unaccent(name) ILIKE '%'||unaccent('{$string}')||'%' "
+            "unaccent(name) ILIKE '%'||unaccent('" .
+                pg_escape_string($string) .
+                "')||'%' "
         );
 
         if ($query->count() > static::RECORDS_COUNT_LIMIT) {
