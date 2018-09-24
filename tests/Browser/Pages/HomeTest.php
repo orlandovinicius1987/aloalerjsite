@@ -17,10 +17,7 @@ class HomeTest extends DuskTestCase
     public function testHome()
     {
         $this->browse(function (Browser $browser) {
-            $browser
-                ->resize(1200, 800)
-                ->visit('/callcenter/')
-                ->assertSee('Entrar');
+            $browser->visit('/callcenter/')->assertSee('Entrar');
         });
     }
 
@@ -30,7 +27,6 @@ class HomeTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser
-                ->resize(1200, 800)
                 ->visit('/callcenter/')
                 ->type('#email', $user->username)
                 ->type('#password', 'secret')

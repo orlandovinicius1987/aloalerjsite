@@ -2,8 +2,9 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Support\Facades\Notification;
+use App\Notifications\ProgressCreated;
 use App\Notifications\RecordCreated;
+use Illuminate\Support\Facades\Notification;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
@@ -16,10 +17,13 @@ use App\Data\Models\PersonContact;
 
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
+use App\Data\Repositories\Records as RecordsRepository;
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Notifications\Messages\MailMessage;
+
+use App\Http\Middleware\TrimStrings;
 
 class InsertTest extends DuskTestCase
 {
@@ -32,22 +36,6 @@ class InsertTest extends DuskTestCase
         factory(Person::class)->create();
 
         $person = app(PeopleRepository::class)->randomElement();
-
-        $person['show_url'] = str_replace(
-            \URL::to('/'),
-            '',
-            route('people.show', [
-                'person_id' => $person['id'],
-            ])
-        );
-
-        $person['emails'] = app(PeopleRepository::class)->getAllEmails(
-            $person->id
-        );
-
-        $person = (object) $person;
-
-        //Checar se foram mandados emails para $person->emails
 
         $record = factory(Record::class, 'Workflow')->raw();
         $record['create_url'] = str_replace(
@@ -83,10 +71,9 @@ class InsertTest extends DuskTestCase
                 $contactsArray
             ) {
                 $browser
-                    ->resize(1200, 800)
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
-                    ->type('#search', $person->name)
+                    ->type('@search', $person->name)
                     ->waitForText($person->name)
                     ->clickLink($person->name)
                     ->click('#button-novo-protocolo')
@@ -96,7 +83,18 @@ class InsertTest extends DuskTestCase
                     ->select('#progress_type_id', $record->progress_type_id)
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
-                    ->click('#saveButton')
+                    ->screenshot('1')
+                    ->click('#saveButton');
+
+                if (!empty($person->emails)) {
+                    Notification::assertSentTo(
+                        $person->emails,
+                        RecordCreated::class
+                    );
+                }
+
+                $browser
+                    ->screenshot('2')
                     ->waitForText('Gravado com sucesso')
                     ->click('#button-novo-endereco')
                     ->type('#zipcode', $address->zipcode)
@@ -123,21 +121,6 @@ class InsertTest extends DuskTestCase
                         ->click('#saveContactButton')
                         ->assertSee($contact);
                 }
-
-                //                Mail::assertSent(MailMessage::class, function ($mail) use (
-                //                    $person
-                //                ) {
-                //                    return $mail->hasTo(dd($person->emails[0]));
-                //                });
-
-                Notification::assertSentTo(
-                    $user,
-                    RecordCreated::class,
-                    function ($notification, $channels) use ($person) {
-                        dd($notification);
-                        return $notification->person->id === $person->id;
-                    }
-                );
             });
         } catch (\Exception $exception) {
             throw $exception;

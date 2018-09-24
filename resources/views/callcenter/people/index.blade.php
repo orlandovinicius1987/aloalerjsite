@@ -20,6 +20,7 @@
                                 <div class="form-group row search">
                                     <div class="col-12">
                                         <input
+                                                dusk="search"
                                                 id="search"
                                                 class="form-control"
                                                 placeholder="Nome, CPF, CNPJ ou Protocolo"

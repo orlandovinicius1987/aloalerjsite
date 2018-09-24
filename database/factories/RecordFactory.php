@@ -35,7 +35,7 @@ $factory->define(Record::class, function (Faker $faker) {
 
     return [
         'protocol' => $faker->numberBetween(1000, 1000000),
-        'send_answer_by_email' => rand(0, 1) == 1,
+        'send_answer_by_email' => true,
         'committee_id' => $committee->id,
         'record_type_id' => $recordType->id,
         'area_id' => $area->id,

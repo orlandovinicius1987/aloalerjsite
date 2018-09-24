@@ -41,7 +41,6 @@ class WorkflowTest extends DuskTestCase
                 $contacts
             ) {
                 $browser
-                    ->resize(1200, 800)
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
                     ->type('#search', $person->cpf_cnpj)
