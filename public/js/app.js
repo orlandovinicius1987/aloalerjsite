@@ -53499,13 +53499,19 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/records.js":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_example__ = __webpack_require__("./resources/assets/js/mixins/example.js");
 var appName = 'vue-record';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_example__["a" /* default */]],
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
@@ -53734,6 +53740,27 @@ if (token) {
  * */
 __webpack_require__("./node_modules/select2/dist/js/select2.js");
 window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min.js");
+
+/***/ }),
+
+/***/ "./resources/assets/js/mixins/example.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            key: 'value'
+        };
+    },
+
+
+    methods: {
+        example: function example() {
+            console.log('hello from example mixin!');
+        }
+    }
+});
 
 /***/ }),
 

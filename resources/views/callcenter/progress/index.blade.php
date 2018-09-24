@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-8 text-right">
-                <a id="buttonNovoAndamento" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
+                <a id="button-novo-andamento" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
                    class="btn btn-primary btn-sm pull-right btn-depth">
                     <i class="fa fa-plus"></i>
                     Novo Andamento
