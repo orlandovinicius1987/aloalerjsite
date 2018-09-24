@@ -53,7 +53,7 @@ class WorkflowTest extends DuskTestCase
                 $browser
                     ->type('#name', $person->name)
                     ->click('#saveButton')
-                    ->waitForText('Usuário cadastrado com sucesso')
+                    ->waitForText('PROTOCOLO EM ANDAMENTO')
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
                     ->select('#record_type_id', $record->record_type_id)
@@ -61,8 +61,8 @@ class WorkflowTest extends DuskTestCase
                     ->select('#area_id', $record->area_id)
                     ->type('#original', $record->original)
                     ->click('#saveButton')
-                    ->waitForText('Protocolo cadastrado com sucesso');
 
+                    ->waitForText('Endereços');
                 $browser
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
@@ -72,13 +72,13 @@ class WorkflowTest extends DuskTestCase
                             '"'
                     )
                     ->click('#saveButton')
-                    ->waitForText('Endereço cadastrado com sucesso')
+                    ->waitForText('Contatos')
                     ->type('#mobile', $contacts->mobile)
                     ->type('#whatsapp', $contacts->whatsapp)
                     ->type('#email', $contacts->email)
                     ->type('#phone', $contacts->phone)
                     ->click('#saveButton')
-                    ->waitForText('Protocolo cadastrado com sucesso')
+                    ->waitForText('Protocolo criado com sucesso')
                     ->waitUntil(
                         'document.getElementById(\'navbarDropdown\').text.includes(\'' .
                             $user->username .
