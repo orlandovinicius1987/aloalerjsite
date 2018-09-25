@@ -75,7 +75,7 @@ class Authentication
             );
             return $response;
         } catch (\Exception $exception) {
-            //            dump('Timeout no login');
+            //Timeout no login
             $usersRepository = app(UsersRepository::class);
             $user = $usersRepository->findByColumn(
                 'username',
@@ -118,6 +118,18 @@ class Authentication
     {
         if ($success = $response['success']) {
             $success = $this->usersRepository->loginUser($request, $remember);
+
+            if (!$success) {
+                return false;
+            }
+
+            $permissions = app(Authorization::class)->getUserPermissions(
+                extract_credentials($request)['username']
+            );
+
+            $this->usersRepository->updateCurrentUserTypeViaPermissions(
+                $permissions
+            );
         }
 
         return $success;
