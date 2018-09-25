@@ -21,7 +21,5 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
         },
-
-
     })
 }
