@@ -172,5 +172,9 @@ return [
         'whatsapp' => 'WhatsApp',
         'mobile' => 'Celular',
         'number' => 'número',
+        'cpf' => 'CPF',
+        'telephone' => 'telefone',
+        'birthdate' => 'Data de Nascimento',
+        'message' => 'mensagem',
     ],
 ];
