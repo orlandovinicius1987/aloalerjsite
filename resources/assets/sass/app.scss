@@ -147,9 +147,9 @@
 
 
 .section-heading-bg {
-  background-color: darken($grey-light01,02%) ;
+  background-color: darken($grey-light02,02%) ;
 
-  box-shadow: inset 0px -2px 4px darken($grey-light01,08%);
+  box-shadow: inset 0px -2px 4px darken($grey-light02,08%);
   padding-bottom: 30px;
 }
 
@@ -198,78 +198,6 @@
 
 
 
-
-
-.table {
-  background: $grey-light01;
-  /*border: 1px solid $grey-light02;*/
-  border: 0px;
-
-  box-shadow: 0px 2px 4px $grey-light03;
-
-  border-radius: 0.5rem;
-
-  thead {
-    background: none;
-    border-radius: 0.5rem 0.5rem 0 0 ;
-
-    th {
-      padding: 0.75rem;
-      vertical-align: top;
-      border-top: 0px solid $grey-light02;
-      border-bottom: 0px !important;
-    }
-
-
-  }
-
-  th, td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid $grey-light02;
-  }
-
-}
-
-
-.table-striped {
-  tbody {
-
-    tr:nth-of-type(odd) {
-      background-color: rgba(255, 255, 255, 1);
-    }
-    tr:nth-of-type(even) {
-      background-color: rgba(255, 255, 255, 0.35);
-    }
-
-    td {
-      padding: 0.75rem;
-      vertical-align: top;
-      border-top: none;
-
-      a {
-        color: #4099de;
-
-        &:hover {
-          color: darken (#4099de,40%);
-          text-decoration: none;
-        }
-      }
-    }
-
-  }
-}
-
-.table-hover{
-  tbody{
-    tr{
-      &:hover{
-        background: darken(#fbfcfd,05%);
-      }
-    }
-  }
-
-}
 
 
 
@@ -355,19 +283,22 @@
 }
 
 
+
+
+
+
 .card {
   border: none;
   background: none;
   box-shadow: none;
 
   .card-header {
-    background-color: $grey-light01;
-    border-bottom: none;
-
+    background-color: $white;
+    border-bottom: 0px solid $grey-light02;
     border-top: 0px solid $grey-light02;
-    padding-top: 20px;
+    border-radius: 0.5rem 0.5rem 0 0 ;
+    padding: 15px;
     margin-top: 10px;
-    padding-bottom: 10px;
     color: $grey-dark01;
 
 
@@ -380,8 +311,86 @@
 
   .card-body {
     padding: 0;
+
+
+    .table {
+      background: $grey-light01;
+      /*border: 1px solid $grey-light02;*/
+      border: 0px;
+
+      box-shadow: 0px 2px 4px $grey-light03;
+
+      border-radius: 0 0 0.5rem 0.5rem  ;
+
+      thead {
+        background: none;
+        border-radius: 0;
+
+        th {
+          padding: 0.75rem;
+          vertical-align: top;
+          border-top: 1px solid $grey-light02;
+          border-bottom: 1px solid $grey-light02;
+        }
+
+
+      }
+
+      th, td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid $grey-light02;
+      }
+
+    }
+
+
+    .table-striped {
+      tbody {
+
+        tr:nth-of-type(odd) {
+          background-color: rgba(255, 255, 255, 1);
+        }
+        tr:nth-of-type(even) {
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        td {
+          padding: 0.75rem;
+          vertical-align: top;
+          border-top: none;
+
+          a {
+            color: #4099de;
+            font-weight: 600;
+
+            &:hover {
+              color: #2077ba;
+              text-decoration: none;
+            }
+          }
+        }
+
+      }
+    }
+
+    .table-hover{
+      tbody{
+        tr{
+          &:hover{
+            background: darken(#fbfcfd,05%);
+          }
+        }
+      }
+
+    }
   }
 }
+
+
+
+
+
 
 
 

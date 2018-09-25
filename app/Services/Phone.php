@@ -11,6 +11,6 @@ class Phone
         } else {
             $pattern = "/(\d\d)(\d\d\d\d)(\d\d\d\d)/";
         }
-        return preg_replace($pattern, "($1)$2-$3", $phoneNumber);
+        return preg_replace($pattern, "($1) $2-$3", $phoneNumber);
     }
 }

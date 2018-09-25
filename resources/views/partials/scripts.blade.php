@@ -41,7 +41,6 @@
     });
 </script>
 
-
 <script>
     $('#collapseOne').on('chatOnline.bs.collapse', function () {
         $('.panel-heading').animate({}, 500);
@@ -188,7 +187,7 @@
 
 </script>
 
-{{--<!-- JavaScrip Search Plugin -->--}}
+{{--<!-- JavaScript Search Plugin -->--}}
 {{--<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>--}}
 {{--<!-- Plugin JavaScript -->--}}
 {{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>--}}

@@ -2,11 +2,11 @@
 
 @section('content-main')
     {!! Form::open(['url' => '/contact', 'class' => 'form-horizontal']) !!}
-        <div id="vue-contact">
-        <fieldset >
+        <div id="vue-contact-form">
+        <fieldset>
             <!-- Form Name -->
             <h1 class="form-intro">
-                Preencha os campos e envie sua mensagem para que possamos iniciar o seu atendimento. 12
+                Preencha os campos e envie sua mensagem para que possamos iniciar o seu atendimento.
             </h1>
 
             <!-- Text input-->
