@@ -49,11 +49,13 @@ class AuthServiceProvider extends ServiceProvider
                     if (
                         $userTypesArray['Comissao']->id == $user->userType->id
                     ) {
+                        //Se é usuário de comissão, verifica as comissões que tem acesso
                         return $usersCommitteesRepository->userHasCommittee(
                             $user->id,
                             $committee->id
                         );
                     } else {
+                        //Se é qualquer outro tipo de usuário, aceita
                         return true;
                     }
                 });
