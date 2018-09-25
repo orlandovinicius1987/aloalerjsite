@@ -45,7 +45,7 @@ class Authorization
             );
             return $response;
         } catch (\Exception $exception) {
-            //            dump('loguei pelas permissões salvas');
+            //Logando com as permissões salvas
             $usersRepository = app(UsersRepository::class);
             $user = $usersRepository->findByColumn('username', $username);
 
