@@ -19,20 +19,22 @@ class ConvertProtocolAndPhoneOnlyNumber extends Migration
      */
     public function up()
     {
-        PersonContact::whereIn(
+        $contacts = PersonContact::whereIn(
             'contact_type_id',
             ContactType::whereIn('code', ['mobile', 'whatsapp', 'phone'])
                 ->get()
                 ->pluck('id')
-        )->each(function ($c) {
-            $c->contact = only_numbers($c->contact);
-            $c->save();
-        });
+        )->cursor();
 
-        Record::all()->each(function ($p) {
-            $p->protocol = only_numbers($p->protocol);
-            $p->save();
-        });
+        foreach ($contacts as $contact) {
+            $contact->contact = only_numbers($contact->contact);
+            $contact->save();
+        }
+
+        foreach (Record::cursor() as $record) {
+            $record->protocol = only_numbers($record->protocol);
+            $record->save();
+        }
     }
 
     /**
