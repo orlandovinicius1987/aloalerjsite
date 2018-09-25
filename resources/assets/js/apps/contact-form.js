@@ -1,10 +1,6 @@
-const appName = 'vue-contact'
+const appName = 'vue-contact-form'
 
-Vue.directive('init', {
-    bind: function(el, binding, vnode) {
-        vnode.context.form[binding.arg] = binding.value;
-    }
-})
+console.log('vue-contact-form');
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({

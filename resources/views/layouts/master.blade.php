@@ -23,6 +23,9 @@
         <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?breno={{rand(0,5000)}}">
 
         <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
 
     <body id="vue-app">
