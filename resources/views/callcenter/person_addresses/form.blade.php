@@ -269,15 +269,21 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
+                    @if ((isset($workflow) && $workflow) || old('workflow'))
+                    <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
+                                Próximo Passo >>>
+                    </button>
+                                
+                    @else
                         @include('partials.edit-button',['model'=>$address, 'form' =>'formAddress'])
-
                         <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
-                            @if ((isset($workflow) && $workflow) || old('workflow'))
-                                Próximo passo >>
-                            @else
-                                Gravar
-                            @endif
+                            Gravar
                         </button>
+
+                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                            Cancelar
+                        </button>
+                    @endif                        
                     </div>
                 </div>
             </form>

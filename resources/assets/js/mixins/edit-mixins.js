@@ -1,24 +1,31 @@
 export default {
     data() {
         return {
-            disabled: true,
+            mode: 'show',
         }
     },   
 
-    methods: {
-        example() {
-            console.log('hello from example mixin!')
-        },
+    methods: {       
 
         editButton(event){
-            this.disabled = !this.disabled
+            this.mode = 'edit'
+         },
+
+         cancel(event){
+            location.reload()
          },
     },
 
     computed: {
-        isDisabled() {
-            return this.disabled;
-        }
+        isShowing() {
+            return this.mode === 'show'
+        },        
+        isEditing() {
+            return this.mode === 'edit'
+        },
+        isCreating() {
+            return this.mode === 'create'
+        },
       }
 
     

@@ -282,14 +282,14 @@
 
                             <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @include('partials.disabled',['model'=>$record])>
                                 Gravar
-                            </button>
+                            </button>                           
 
                             @if ($record->resolved_at)
                                 <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
                                     Reabrir
                                 </button>
-                            @else
-                                <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
+                            @elseif(!is_null($record->id))
+                                <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false' }}" >
                                     Finalizar
                                 </button>
                             @endif
@@ -304,22 +304,25 @@
                                             Gravar
                                         </button>
 
-                                        @if ($record->resolved_at)
-                                            <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
-                                                Reabrir
-                                            </button>
-                                        @else
-                                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
-                                                Finalizar
-                                            </button>
-                                        @endif
+                                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                                            Cancelar
+                                        </button>
+                                        
+                                        <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'false':'true' }}">
+                                            Reabrir
+                                        </button>
+
                                      @endcan
                                 @endIf
                              @endforeach
                         @endIf
 
                         @if($record && $record->id)
-                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" >
+                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false' }}" >
+                                Finalizar
+                            </button>
+
+                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
                                 Copiar link público
                             </button>
                         @endif

@@ -172,6 +172,10 @@
                             Gravar
                         </button>
 
+                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                                    Cancelar
+                        </button>
+
                         @if ($record->resolved_at)
                             <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$progress])>
                                 Gravar e reabrir

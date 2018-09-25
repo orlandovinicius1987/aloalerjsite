@@ -165,6 +165,10 @@
                         <button type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$contact])>
                             Gravar
                         </button>
+
+                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                            Cancelar
+                        </button>
                     </div>
                 </div>
             </form>

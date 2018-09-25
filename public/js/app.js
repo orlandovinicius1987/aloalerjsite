@@ -53532,10 +53532,6 @@ if (jQuery("#" + appName).length > 0) {
                     }
                 });
             }
-        },
-
-        mounted: function mounted() {
-            form = document.getElementById('formRecords');
         }
     });
 }
@@ -53747,23 +53743,29 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            disabled: true
+            mode: 'show'
         };
     },
 
 
     methods: {
-        example: function example() {
-            console.log('hello from example mixin!');
-        },
         editButton: function editButton(event) {
-            this.disabled = !this.disabled;
+            this.mode = 'edit';
+        },
+        cancel: function cancel(event) {
+            location.reload();
         }
     },
 
     computed: {
-        isDisabled: function isDisabled() {
-            return this.disabled;
+        isShowing: function isShowing() {
+            return this.mode === 'show';
+        },
+        isEditing: function isEditing() {
+            return this.mode === 'edit';
+        },
+        isCreating: function isCreating() {
+            return this.mode === 'create';
         }
     }
 

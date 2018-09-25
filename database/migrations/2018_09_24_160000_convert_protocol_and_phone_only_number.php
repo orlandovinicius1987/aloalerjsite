@@ -26,7 +26,7 @@ class ConvertProtocolAndPhoneOnlyNumber extends Migration
                 ->pluck('id')
         )->each(function ($c) {
             $c->contact = only_numbers($c->contact);
-            $c->save();
+            
         });
 
         Record::all()->each(function ($p) {

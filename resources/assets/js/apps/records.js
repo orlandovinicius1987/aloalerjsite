@@ -36,11 +36,5 @@ if (jQuery("#" + appName).length > 0) {
                     });
             }
         },
-
-        mounted() {
-            form = document.getElementById('formRecords')
-
-        },       
-
     })
 }
