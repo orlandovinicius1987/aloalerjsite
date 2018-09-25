@@ -15,6 +15,8 @@ use App\Data\Models\Record;
 use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
 
+use App\Services\Phone;
+
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
 use App\Data\Repositories\Records as RecordsRepository;
@@ -28,6 +30,9 @@ class InsertTest extends DuskTestCase
     public function testInsertData()
     {
         //        Notification::fake();
+        $contactTypesArrayIsMobile['mobile'] = true;
+        $contactTypesArrayIsMobile['whatsapp'] = true;
+        $contactTypesArrayIsMobile['phone'] = false;
 
         $user = factory(User::class, 'Operador')->create();
 
@@ -74,7 +79,8 @@ class InsertTest extends DuskTestCase
                 $record,
                 $address,
                 $contactsArray,
-                $personShowUrl
+                $personShowUrl,
+                $contactTypesArrayIsMobile
             ) {
                 $browser
                     ->loginAs($user->id)
@@ -123,8 +129,14 @@ class InsertTest extends DuskTestCase
                         )
                         ->select('#contact_type_id', $contactType->id)
                         ->type('#contact', $contact)
-                        ->click('#saveContactButton')
-                        ->assertSee($contact);
+                        ->click('#saveContactButton');
+                    if (isset($contactTypesArrayIsMobile[$contactType->code])) {
+                        $contact = Phone::addPhoneMask(
+                            $contact,
+                            $contactTypesArrayIsMobile[$contactType->code]
+                        );
+                    }
+                    $browser->assertSee($contact);
                 }
             });
         } catch (\Exception $exception) {
