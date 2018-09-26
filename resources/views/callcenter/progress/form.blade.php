@@ -185,11 +185,11 @@
 
                         @if ($record->resolved_at)
                             <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                                Gravar e reabrir
+                                Gravar e reabrir protocolo
                             </button>
                         @else
                             <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                                Gravar e finalizar
+                                Gravar e finalizar protocolo
                             </button>
                         @endif
 
