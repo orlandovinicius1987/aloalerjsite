@@ -42,6 +42,7 @@ class Progresses extends Controller
     public function finishRecord(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
+
         $progress = $this->progressesRepository->createFromRequest(
             $request
         )->sendNotifications();
