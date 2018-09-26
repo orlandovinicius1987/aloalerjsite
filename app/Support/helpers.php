@@ -56,6 +56,16 @@ function remove_punctuation($string)
     return preg_replace('/[^a-z0-9]+/i', '', $string);
 }
 
+function validate_cpf_cnpj($string)
+{
+    return Validator::make(
+        ['string' => $string],
+        [
+            'string' => 'required|cpf_cnpj',
+        ]
+    )->passes();
+}
+
 class Timer
 {
     public static $starttime;

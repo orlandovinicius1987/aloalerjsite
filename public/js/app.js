@@ -53307,7 +53307,7 @@ if (jQuery("#" + appName).length > 0) {
 
                 me.refreshing = true;
 
-                axios.get('/api/v1/zipcode/' + this.form.zipcode).then(function (response) {
+                axios.get('/api/v1/zipcode/' + this.form.cep).then(function (response) {
                     me.tables.addresses = response.data;
 
                     if (response.data.addresses[0].street_name) {
