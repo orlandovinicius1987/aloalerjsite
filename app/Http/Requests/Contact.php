@@ -23,10 +23,10 @@ class Contact extends Request
     {
         return [
             'name' => 'required', //ok
-            'email' => 'required', //ok
+            'email' => 'required|email', //ok
             'telephone' => 'required', //ok
-            'cpf' => 'required', //ok
-            'birthdate' => 'required', //ok
+            'cpf' => 'required|cpf_cnpj', //ok
+            'birthdate' => 'required|date', //ok
             'identidade' => 'required', //ok
             'expeditor' => 'required', //ok
             'cep' => 'required', //ok

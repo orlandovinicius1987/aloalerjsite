@@ -33,7 +33,7 @@ if (jQuery("#" + appName).length > 0) {
 
                 me.refreshing = true
 
-                axios.get('/api/v1/zipcode/'+this.form.zipcode)
+                axios.get('/api/v1/zipcode/'+this.form.cep)
                 .then(function(response) {
                     me.tables.addresses = response.data
 
