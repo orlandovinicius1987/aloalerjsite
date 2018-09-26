@@ -1,11 +1,12 @@
 const appName = 'vue-record'
-import exampleMixin from '../mixins/example'
+import editMixins from '../mixins/edit-mixins'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        mixins: [exampleMixin],
+        mixins: [editMixins],
+        
 
         methods: {
             changeFormRoute(action){

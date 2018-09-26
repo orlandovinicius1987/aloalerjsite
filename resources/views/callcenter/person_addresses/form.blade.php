@@ -72,6 +72,7 @@
                                v-mask='["##.###-###"]'
                                autofocus
                                required
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('zipcode'))
@@ -94,6 +95,7 @@
                                class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
                                required
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('street'))
@@ -115,6 +117,7 @@
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('number'))
@@ -133,6 +136,7 @@
                                value="{{is_null(old('complement')) ? $address->complement : old('complement') }}"
                                class="form-control{{ $errors->getBag('validation')->has('complement') ? ' is-invalid' : '' }}"
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('complement'))
@@ -156,6 +160,7 @@
                                class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
                                required
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('neighbourhood'))
@@ -178,6 +183,7 @@
                                class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
                                required
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('city'))
@@ -198,6 +204,7 @@
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
                                required
                                autofocus
+                               @include('partials.disabled',['model'=>$address])
                         >
 
                         @if ($errors->getBag('validation')->has('state'))
@@ -212,7 +219,8 @@
                     <label for="is_mailable" class="col-sm-4 col-form-label text-md-right">Endereço Validado</label>
                     <div class="col-md-6">
                         <input type="hidden" name="is_mailable" value="0">
-                        <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}} >
+                        <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}} 
+                        @include('partials.disabled',['model'=>$address])>
                     </div>
                 </div>
 
@@ -221,7 +229,8 @@
                         <label for="active" class="col-sm-4 col-form-label text-md-right">Endereço Ativo</label>
                         <div class="col-md-6">
                             <input type="hidden" name="active" value="0">
-                            <input type="checkbox" name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}} >
+                            <input type="checkbox" name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}} 
+                            @include('partials.disabled',['model'=>$address])>
                         </div>
                     </div>
                 @else
@@ -260,13 +269,21 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
-                            @if ((isset($workflow) && $workflow) || old('workflow'))
-                                Próximo passo >>
-                            @else
-                                Gravar
-                            @endif
+                    @if ((isset($workflow) && $workflow) || old('workflow'))
+                    <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
+                                Próximo Passo >>>
+                    </button>
+                                
+                    @else
+                        @include('partials.edit-button',['model'=>$address, 'form' =>'formAddress'])
+                        <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
+                            Gravar
                         </button>
+
+                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                            Cancelar
+                        </button>
+                    @endif                        
                     </div>
                 </div>
             </form>

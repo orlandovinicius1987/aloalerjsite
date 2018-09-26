@@ -110,7 +110,8 @@
                                 name="committee_id"
                                 value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}"
                                 required
-                                autofocus>
+                                autofocus
+                                @include('partials.disabled',['model'=>$record])>
                             <option value="">SELECIONE</option>
                             @foreach ($committees as $key => $committe)
                                 @if(((!is_null($record->id)) && (!is_null($record->committee_id) && $record->committee_id === $committe->id) || (!is_null(old('committee_id'))) && old('committee_id') == $committe->id))
@@ -138,7 +139,8 @@
                                 name="record_type_id"
                                 value="{{is_null(old('record_type_id')) ? $record->record_type_id : old('record_type_id') }}"
                                 required
-                                autofocus>
+                                autofocus
+                                @include('partials.disabled',['model'=>$record])>
                             <option value="">SELECIONE</option>
                             @foreach ($recordTypes as $key => $recordType)
                                 @if(((!is_null($record->id)) && (!is_null($record->record_type_id) && $record->record_type_id === $recordType->id) || (!is_null(old('record_type_id'))) && old('record_type_id') == $recordType->id))
@@ -186,7 +188,8 @@
                     <div class="col-md-6">
                         <select id="area_id" type="area_id"
                                 class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
-                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus>
+                                value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus
+                                @include('partials.disabled',['model'=>$record])>
                             <option value="">SELECIONE</option>
                             @foreach ($areas as $key => $area)
                                 @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) || (!is_null(old('area_id'))) && old('area_id') == $area->id))
@@ -227,7 +230,7 @@
                     <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
 
-                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off">
+                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off" @include('partials.disabled',['model'=>$record])>
                             <div class="handle"></div>
 
                         {{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
@@ -268,13 +271,18 @@
                 @endif
 
                 <div class="form-group row mb-0">
+                
                     <div class="col-md-8 offset-md-4">
-                        @if($workflow)
+
+                        @if($workflow)                        
                             <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                     Próximo passo >>
                             </button>
-                        @elseif(is_null($record->committee))
-                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
+                        @elseif(is_null($record->committee))                            
+                            
+                            @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])                                     
+                            
+                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @include('partials.disabled',['model'=>$record])>
                                 Gravar
                             </button>
 
@@ -282,35 +290,41 @@
                                 <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
                                     Reabrir
                                 </button>
-                            @else
-                                <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
-                                    Finalizar
+                            @elseif(!is_null($record->id))                            
+                                <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}} && @can('committee-'.$record->committee->slug, \Auth::user()) 'true' @else 'false' @endcan" >
+                                        Finalizar
                                 </button>
                             @endif
-                        @else
-                             @foreach ($committees as $key => $committee)
-                                 @if(!is_null($record->committee) && $record->committee->id == $committee->id)
-                                     @can('committee-'.$committee->slug, \Auth::user())
-                                        <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
-                                            Gravar
-                                        </button>
+                        @else                                                        
+                                
+                            @if(isset($record) && ! is_null($record->id))
 
-                                        @if ($record->resolved_at)
-                                            <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
-                                                Reabrir
-                                            </button>
-                                        @else
-                                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
-                                                Finalizar
-                                            </button>
-                                        @endif
-                                     @endcan
-                                @endIf
-                             @endforeach
-                        @endIf
+                                    <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id, \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
+                                        Alterar
+                                    </button>
 
-                        @if($record && $record->id)
-                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" >
+                            @endIf
+                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @can('committee-canEdit', $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$record]) @else disabled @endcan>
+                                Gravar
+                            </button>
+
+                            <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                                Cancelar
+                            </button>
+                            
+                            <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')"  @can('committee-canEdit', $record->committee->id, \Auth::user()) :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'false':'true' }}" @else disabled @endcan>
+                                Reabrir
+                            </button>
+
+                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" @can('committee-canEdit', $record->committee->id, \Auth::user()) :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}}" @else disabled @endcan>
+                                Finalizar
+                            </button>
+
+                            @endif
+
+                        @if($record && $record->id)                            
+
+                            <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
                                 Copiar link público
                             </button>
                         @endif

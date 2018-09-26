@@ -1,12 +1,11 @@
 const appName = 'vue-progress'
+import editMixins from '../mixins/edit-mixins'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        data: {
-
-        },
+        mixins: [editMixins],
 
         methods: {
             changeFormRoute(action){
