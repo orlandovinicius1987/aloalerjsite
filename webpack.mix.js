@@ -6,3 +6,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'public/css/vendor.css',
         'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.css'
     ], 'public/css/app.css').version();
+
+/*
+ |--------------------------------------------------------------------------
+ | Plugins
+ |--------------------------------------------------------------------------
+ */
+
+const LiveReloadPlugin = require('webpack-livereload-plugin')
+
+mix.webpackConfig({
+    plugins: [new LiveReloadPlugin()],
+})

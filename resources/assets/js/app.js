@@ -11,6 +11,9 @@ require('./apps/committees.js')
 require('./apps/records.js')
 require('./apps/committees-search.js')
 require('./apps/contact-form.js')
+require('./apps/chat.js')
+require('./apps/home-slider.js')
+require('./apps/phones.js')
 
 $(document).ready(function() {
     $('.select2').select2({

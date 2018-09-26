@@ -1,11 +1,5 @@
 const appName = 'vue-addresses'
 
-Vue.directive('init', {
-    bind: function(el, binding, vnode) {
-        vnode.context.form[binding.arg] = binding.value;
-    }
-})
-
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
