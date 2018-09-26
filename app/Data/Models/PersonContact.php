@@ -68,7 +68,9 @@ class PersonContact extends BaseModel
         $str = str_replace(" ", "", $str);
 
         for ($i = 0; $i < strlen($str); $i++) {
-            $mask[strpos($mask, "#")] = $str[$i];
+            if (($pos = strpos($mask, "#")) !== false) {
+                $mask[$pos] = $str[$i];
+            }
         }
 
         return $mask;
