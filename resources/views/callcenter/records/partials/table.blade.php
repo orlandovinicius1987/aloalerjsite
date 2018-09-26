@@ -25,57 +25,57 @@
     </div>
 
     <div class="card-body">
-        <div class="card-body">
-            <table id="recordsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
-                <thead>
+
+        <table id="recordsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Protocolos</th>
+                @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
+                <th>Nome</th>
+                @endif
+                <th>Comissão</th>
+                <th>Tipo de Protocolo</th>
+                <th>Área</th>
+                <th>Situação</th>
+                <th>Criado em</th>
+            </tr>
+            </thead>
+
+            @forelse ($records as $record)
                 <tr>
-                    <th>Protocolos</th>
+                    <td><a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                    <th>Nome</th>
+                    <td>
+                        <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
+                    </td>
                     @endif
-                    <th>Comissão</th>
-                    <th>Tipo de Protocolo</th>
-                    <th>Área</th>
-                    <th>Situação</th>
-                    <th>Criado em</th>
+
+                    <td>{{ $record->committee->name ?? '' }}</td>
+
+                    <td>{{ $record->recordType->name ?? '' }}</td>
+
+                    <td>{{ $record->area->name ?? '' }}</td>
+
+                    <td>
+                        <h4>
+                            @if($record->resolved_at)
+                                <span class="badge badge-danger">Finalizado</span>
+                            @else
+                                <span class="badge badge-success">Em aberto</span>
+                                @endIf
+                        </h4>
+                    </td>
+
+                    <td>{{ $record->created_at_formatted ?? '' }}</td>
                 </tr>
-                </thead>
+            @empty
+                <p>Nenhum Protocolo encontrado</p>
+            @endforelse
+        </table>
 
-                @forelse ($records as $record)
-                    <tr>
-                        <td><a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+        {{ $records->links() }}
 
-                        @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                        <td>
-                            <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
-                        </td>
-                        @endif
-
-                        <td>{{ $record->committee->name ?? '' }}</td>
-
-                        <td>{{ $record->recordType->name ?? '' }}</td>
-
-                        <td>{{ $record->area->name ?? '' }}</td>
-
-                        <td>
-                            <h4>
-                                @if($record->resolved_at)
-                                    <span class="badge badge-danger">Finalizado</span>
-                                @else
-                                    <span class="badge badge-success">Em aberto</span>
-                                    @endIf
-                            </h4>
-                        </td>
-
-                        <td>{{ $record->created_at_formatted ?? '' }}</td>
-                    </tr>
-                @empty
-                    <p>Nenhum Protocolo encontrado</p>
-                @endforelse
-            </table>
-
-            {{ $records->links() }}
-        </div>
     </div>
 </div>
 
