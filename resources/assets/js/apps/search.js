@@ -66,20 +66,22 @@ if (jQuery("#" + appName).length > 0) {
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                me = this
+                let $this = this
 
-                this.timeout = setTimeout(function () { me.refresh() }, 500)
+                this.timeout = setTimeout(function () { $this.refresh() }, 500)
             },
 
             refreshTable(table) {
+                let $this = this
+
                 axios.get('/'+table)
                     .then(function(response) {
-                        me.tables[table] = response.data
+                        $this.tables[table] = response.data
                     })
                     .catch(function(error) {
                         console.log(error)
 
-                        me.tables[table] = []
+                        $this.tables[table] = []
                     })
             },
 

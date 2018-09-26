@@ -9,12 +9,6 @@ if (jQuery("#" + appName).length > 0) {
         
 
         methods: {
-            changeFormRoute(action){
-                form = document.getElementById('formRecords')
-                form.action = action
-                form.submit()
-            },
-
             copyUrl(url) {
                 const copy = require('copy-text-to-clipboard');
 
@@ -28,10 +22,9 @@ if (jQuery("#" + appName).length > 0) {
                     buttons: true,
                     dangerMode: true,
                 })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            let $this = this
-                            $this.changeFormRoute(action)
+                    .then((confirmed) => {
+                        if (confirmed) {
+                            window.location.href = action
                         }
                     });
             }

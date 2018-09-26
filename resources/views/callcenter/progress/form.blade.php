@@ -180,11 +180,11 @@
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                                    Cancelar
+                            Cancelar
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.reopen', $record->id) }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Gravar e reabrir
                             </button>
                         @else

@@ -16,7 +16,7 @@
                     <input id="name" placeholder="Digite seu nome completo"
                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} input-md"
                            name="name" value="{{is_null(old('name')) ? '' : old('name') }}"
-                           requiredx
+                           required
                     >
 
                     @if ($errors->has('name'))
@@ -34,7 +34,7 @@
                     <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            id="email"
                            value="{{is_null(old('email')) ? '' : old('email') }}"
-                           requiredx
+                           required
                            placeholder = 'Digite seu e-mail'
                     >
 
@@ -58,7 +58,7 @@
                            v-model='form.telephone'
                            v-init:telephone="'{{is_null(old('telephone')) ? '' : old('telephone')}}'"
                            placeholder="Digite seu telefone"
-                           requiredx
+                           required
                     >
 
                     @if ($errors->has('telephone'))
@@ -78,8 +78,8 @@
                                class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }} input-md "
                                name="cpf"
                                value="{{is_null(old('cpf')) ? '' : old('cpf') }}"
-                               requiredx
-                               v-mask='["###.###.###-##", "##.###.###/####-##"]'
+                               required
+                               v-mask='["###.###.###-##"]'
                         >
 
                         @if ($errors->has('cpf'))
@@ -105,7 +105,7 @@
                                v-model='form.telephone'
                                v-init:telephone="'{{is_null(old('birthdate')) ? '' : old('birthdate')}}'"
                                placeholder="Nascimento"
-                               requiredx
+                               required
                         >
 
                         @if ($errors->has('birthdate'))
@@ -151,7 +151,7 @@
                                    class="form-control{{ $errors->has('identidade') ? ' is-invalid' : '' }}  input-md"
                                    name="identidade"
                                    value="{{is_null(old('identidade')) ? '' : old('identidade') }}"
-                                   requiredx
+                                   required
                             >
 
                             @if ($errors->has('identidade'))
@@ -169,7 +169,7 @@
                                    class="form-control{{ $errors->has('expeditor') ? ' is-invalid' : '' }}  input-md"
                                    name="expeditor"
                                    value="{{is_null(old('expeditor')) ? '' : old('expeditor') }}"
-                                   requiredx
+                                   required
                                    placeholder = 'Orgão Expeditor'
                             >
 
@@ -216,7 +216,7 @@
                            @keyup="typeKeyUp"
                            v-mask='["##.###-###"]'
                            placeholder="CEP"
-                           requiredx
+                           required
                     >
 
                     @if ($errors->has('cep'))
@@ -237,7 +237,7 @@
                            v-init:rua="'{{is_null(old('rua')) ? '' : old('rua') }}'"
                            value="{{is_null(old('rua')) ? '' : old('rua') }}"
                            class="form-control{{ $errors->has('rua') ? ' is-invalid' : '' }} input-md"
-                           requiredx
+                           required
                            placeholder="Rua"
                     >
 
@@ -276,7 +276,7 @@
                            v-init:bairro="'{{is_null(old('bairro')) ? '' : old('bairro') }}'"
                            value="{{is_null(old('bairro')) ? '' : old('bairro') }}"
                            class="form-control{{ $errors->has('bairro') ? ' is-invalid' : '' }}  input-md"
-                           requiredx
+                           required
                            placeholder="Bairro"
                     >
 
@@ -298,7 +298,7 @@
                            v-init:cidade="'{{is_null(old('cidade')) ? '' : old('cidade') }}'"
                            value="{{is_null(old('cidade')) ? '' : old('cidade') }}"
                            class="form-control{{ $errors->has('cidade') ? ' is-invalid' : '' }}"
-                           requiredx
+                           required
                            placeholder="Cidade"
                     >
 
@@ -328,7 +328,7 @@
                            class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}"
                            name="message"
                            value="{{is_null(old('message')) ? '' : old('message') }}"
-                           requiredx
+                           required
                            cols="50"
                            rows="10"
                     >
