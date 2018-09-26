@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\Gate;
+
 class RecordRequest extends Request
 {
     protected $errorBag = 'validation';
@@ -20,5 +22,13 @@ class RecordRequest extends Request
             'area_id' => 'required', //Area
             'original' => 'required_without:record_id', // Solicitação  → Workflow
         ];
+    }
+
+    public function authorize()
+    {
+        return \Gate::allows('committee-canEdit', [
+            $this->request->get('committee_id'),
+            $this->user()->id,
+        ]);
     }
 }
