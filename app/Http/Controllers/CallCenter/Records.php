@@ -62,13 +62,15 @@ class Records extends Controller
             )->sendNotifications();
         }
 
-        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+        $this->showSuccessMessage('Protocolo gravado com sucesso.');
 
         return redirect()->to(
             route(
                 Workflow::started()
-                    ? 'people_addresses.create'
-                    : 'records.show-protocol',
+                        ? 'people_addresses.create'
+                        : $record->wasRecentlyCreated
+                    ? 'records.show-protocol'
+                    : 'records.show',
 
                 Workflow::started() ? $record->person->id : $record->id
             )
