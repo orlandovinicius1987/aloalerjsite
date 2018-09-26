@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);/*$blue: #3490dc;*/
 
+/*
+
+$grey-light01: #f3f7f9;
+$grey-light02: #ebf1f3;
+$grey-light03: #dae4e9;
+
+*/
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -79,7 +87,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f3f7f9;
+  background-color: #e8eff3;
 }
 
 [tabindex="-1"]:focus {
@@ -522,7 +530,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f3f7f9;
+  background-color: #e8eff3;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -1944,7 +1952,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #f3f7f9;
+  background-color: #e8eff3;
 }
 
 .table-sm th,
@@ -2117,7 +2125,7 @@ pre code {
 }
 
 .table .thead-dark th {
-  color: #f3f7f9;
+  color: #e8eff3;
   background-color: #212529;
   border-color: #32383e;
 }
@@ -2129,7 +2137,7 @@ pre code {
 }
 
 .table-dark {
-  color: #f3f7f9;
+  color: #e8eff3;
   background-color: #212529;
 }
 
@@ -2521,8 +2529,8 @@ textarea.form-control {
 
 .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before,
 .custom-control-input.is-valid:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
-          box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
+          box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
 }
 
 .was-validated .custom-file-input:valid ~ .custom-file-label,
@@ -2645,8 +2653,8 @@ textarea.form-control {
 
 .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before,
 .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
-          box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
+          box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
 }
 
 .was-validated .custom-file-input:invalid ~ .custom-file-label,
@@ -4124,8 +4132,8 @@ input[type="button"].btn-block {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
-          box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+          box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
 }
 
 .custom-control-input:active ~ .custom-control-label::before {
@@ -4359,16 +4367,16 @@ input[type="button"].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  -webkit-box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
-          box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+          box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+  box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f3f7f9, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
+  box-shadow: 0 0 0 1px #e8eff3, 0 0 0 0.2rem rgba(23, 43, 83, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4565,8 +4573,8 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f3f7f9;
-  border-color: #dee2e6 #dee2e6 #f3f7f9;
+  background-color: #e8eff3;
+  border-color: #dee2e6 #dee2e6 #e8eff3;
 }
 
 .nav-tabs .dropdown-menu {
@@ -11766,8 +11774,8 @@ a.text-dark:focus {
   border-top: 0px solid #172B53 !important;
   padding: 2rem;
   border-radius: 1rem;
-  -webkit-box-shadow: 0px 2px 4px #dae4e9;
-          box-shadow: 0px 2px 4px #dae4e9;
+  -webkit-box-shadow: 0px 2px 4px #dce8ee;
+          box-shadow: 0px 2px 4px #dce8ee;
 }
 
 .login .card .card-body .card-title {
@@ -11779,24 +11787,24 @@ a.text-dark:focus {
 }
 
 .login .card .card-body .form-control {
-  border: solid 1px #ebf1f3;
+  border: solid 1px #e8eff3;
   color: #546975;
 }
 
 .login .card .card-body .form-control::-webkit-input-placeholder {
-  color: #dae4e9;
+  color: #dce8ee;
 }
 
 .login .card .card-body .form-control:-ms-input-placeholder {
-  color: #dae4e9;
+  color: #dce8ee;
 }
 
 .login .card .card-body .form-control::-ms-input-placeholder {
-  color: #dae4e9;
+  color: #dce8ee;
 }
 
 .login .card .card-body .form-control::placeholder {
-  color: #dae4e9;
+  color: #dce8ee;
 }
 
 .section-title {
@@ -11807,17 +11815,17 @@ a.text-dark:focus {
 }
 
 .section-header {
-  border-top: 1px solid #ebf1f3;
+  border-top: 1px solid #e8eff3;
   padding-top: 20px;
   margin-top: 10px;
   padding-bottom: 10px;
-  color: #dae4e9;
+  color: #dce8ee;
 }
 
 .section-heading-bg {
-  background-color: #ecf2f6;
-  -webkit-box-shadow: inset 0px -2px 4px #d8e5eb;
-          box-shadow: inset 0px -2px 4px #d8e5eb;
+  background-color: #e1eaf0;
+  -webkit-box-shadow: inset 0px -2px 4px #cddce5;
+          box-shadow: inset 0px -2px 4px #cddce5;
   padding-bottom: 30px;
 }
 
@@ -11866,20 +11874,20 @@ a.text-dark:focus {
   background: #f3f7f9;
   /*border: 1px solid $grey-light02;*/
   border: 0px;
-  -webkit-box-shadow: 0px 2px 4px #dae4e9;
-          box-shadow: 0px 2px 4px #dae4e9;
-  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 2px 4px #dce8ee;
+          box-shadow: 0px 2px 4px #dce8ee;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .table thead {
   background: none;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0;
 }
 
 .table thead th {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 0px solid #ebf1f3;
+  border-top: 0px solid #e8eff3;
   border-bottom: 0px !important;
 }
 
@@ -11887,7 +11895,7 @@ a.text-dark:focus {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #ebf1f3;
+  border-top: 1px solid #e8eff3;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -12018,9 +12026,10 @@ a.text-dark:focus {
 }
 
 .card .card-header {
-  background-color: #f3f7f9;
+  background-color: #ffffff;
   border-bottom: none;
-  border-top: 0px solid #ebf1f3;
+  border-top: 0px solid #e8eff3;
+  border-radius: 0.5rem 0.5rem 0 0;
   padding-top: 20px;
   margin-top: 10px;
   padding-bottom: 10px;
