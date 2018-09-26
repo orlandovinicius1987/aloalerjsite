@@ -1,8 +1,12 @@
 const appName = 'vue-addresses'
+import editMixins from '../mixins/edit-mixins'
+
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
+
+        mixins: [editMixins],
 
         data: {
             tables: {
@@ -77,7 +81,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
-            // this.refresh()
+            // this.refresh()            
         },
     })
 }

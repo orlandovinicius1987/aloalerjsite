@@ -53054,7 +53054,6 @@ __webpack_require__("./resources/assets/js/apps/contacts.js");
 __webpack_require__("./resources/assets/js/apps/personal-info.js");
 __webpack_require__("./resources/assets/js/apps/contact-outside-workflow.js");
 __webpack_require__("./resources/assets/js/apps/progresses.js");
-__webpack_require__("./resources/assets/js/apps/edit.js");
 __webpack_require__("./resources/assets/js/apps/committees.js");
 __webpack_require__("./resources/assets/js/apps/records.js");
 __webpack_require__("./resources/assets/js/apps/committees-search.js");
@@ -53074,13 +53073,19 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/addresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-addresses';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             tables: {
@@ -53155,7 +53160,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted: function mounted() {
-            // this.refresh()
+            // this.refresh()            
         }
     });
 }
@@ -53431,13 +53436,20 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contact-outside-workflow.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-contact-outside-workflow';
+
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             laravel: laravel,
@@ -53570,29 +53582,6 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         methods: {}
-    });
-}
-
-/***/ }),
-
-/***/ "./resources/assets/js/apps/edit.js":
-/***/ (function(module, exports) {
-
-var appName = 'vue-editButton';
-
-if (jQuery("#" + appName).length > 0) {
-
-    var app = new Vue({
-        el: '#' + appName,
-        methods: {
-            editButton: function editButton(event) {
-                alert('edit!!');
-            }
-        },
-
-        mounted: function mounted() {
-            aler('mounted');
-        }
     });
 }
 
@@ -54018,15 +54007,19 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/progresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-progress';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        data: {},
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
@@ -54060,7 +54053,7 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_example__ = __webpack_require__("./resources/assets/js/mixins/example.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-record';
 
 
@@ -54068,7 +54061,7 @@ if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_example__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
@@ -54299,23 +54292,39 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 /***/ }),
 
-/***/ "./resources/assets/js/mixins/example.js":
+/***/ "./resources/assets/js/mixins/edit-mixins.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            key: 'value'
+            mode: 'show'
         };
     },
 
 
     methods: {
-        example: function example() {
-            console.log('hello from example mixin!');
+        editButton: function editButton(event) {
+            this.mode = 'edit';
+        },
+        cancel: function cancel(event) {
+            location.reload();
+        }
+    },
+
+    computed: {
+        isShowing: function isShowing() {
+            return this.mode === 'show';
+        },
+        isEditing: function isEditing() {
+            return this.mode === 'edit';
+        },
+        isCreating: function isCreating() {
+            return this.mode === 'create';
         }
     }
+
 });
 
 /***/ }),
