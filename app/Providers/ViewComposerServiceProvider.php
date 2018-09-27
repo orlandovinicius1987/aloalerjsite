@@ -16,13 +16,22 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            if (!isset($view->laravel)) {
-                $view->with('laravel', []);
-            }
+            $this->mergeLaravel($view, [
+                'files_upload_url' => dd(route('files.upload')),
+            ]);
 
             if (!isset($view->workflow)) {
                 $view->with('workflow', Workflow::started());
             }
         });
+    }
+
+    public function mergeLaravel($view, $laravel)
+    {
+        if (isset($view->laravel)) {
+            $laravel = array_merge($view->laravel, $laravel);
+        }
+
+        $view->with('laravel', $laravel);
     }
 }

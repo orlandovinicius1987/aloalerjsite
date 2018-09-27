@@ -288,9 +288,8 @@
                                 </button>
                             @endif
                         @else
-                             @foreach ($committees as $key => $committee)
-                                 @if(!is_null($record->committee) && $record->committee->id == $committee->id)
-                                     @can('committee-'.$committee->slug, \Auth::user())
+                                     @can('committee-canEdit', $record->committee->id, \Auth::user())
+                                         OI
                                         <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
                                             Gravar
                                         </button>
@@ -305,8 +304,6 @@
                                             </button>
                                         @endif
                                      @endcan
-                                @endIf
-                             @endforeach
                         @endIf
 
                         @if($record && $record->id)

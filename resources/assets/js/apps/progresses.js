@@ -1,11 +1,20 @@
 const appName = 'vue-progress'
 
+import vueDropzone from "vue2-dropzone"
+
 if (jQuery("#" + appName).length > 0) {
+
     const app = new Vue({
         el: '#'+appName,
 
-        data: {
+        components: {
+            vueDropzone
+        },
 
+        data: {
+            dropOptions: {
+                url: laravel.files_upload_url
+            }
         },
 
         methods: {

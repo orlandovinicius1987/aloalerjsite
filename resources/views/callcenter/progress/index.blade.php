@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<div class="card mt-4" id="vue-progress">
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-4">
