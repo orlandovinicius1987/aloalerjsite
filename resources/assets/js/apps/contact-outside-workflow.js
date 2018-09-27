@@ -1,13 +1,12 @@
 const appName = 'vue-contact-outside-workflow'
-import helperMixin from '../mixins/helper'
-
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        mixins: [editMixins],
+        mixins: [editMixin, helpersMixin],
 
         data: {
             laravel: laravel,
@@ -17,7 +16,7 @@ if (jQuery("#" + appName).length > 0) {
             refreshing: false,
         },
 
-        mixins: [helperMixin],
+        mixins: [helpersMixin],
 
         computed: {
             mask: function () {

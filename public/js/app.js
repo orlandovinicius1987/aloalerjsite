@@ -53077,15 +53077,23 @@ $(document).ready(function () {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
 var appName = 'vue-addresses';
 
+
+
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]],
 
         data: {
             tables: {
@@ -53160,7 +53168,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted: function mounted() {
-            // this.refresh()            
+            // this.refresh()
         }
     });
 }
@@ -53440,12 +53448,11 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var appName = 'vue-contact-outside-workflow';
-
 
 
 
@@ -53455,7 +53462,7 @@ if (jQuery("#" + appName).length > 0) {
     var app = new Vue((_ref = {
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]],
 
         data: {
             laravel: laravel,
@@ -53465,7 +53472,7 @@ if (jQuery("#" + appName).length > 0) {
             refreshing: false
         }
 
-    }, _defineProperty(_ref, 'mixins', [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]), _defineProperty(_ref, 'computed', {
+    }, _defineProperty(_ref, 'mixins', [__WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]]), _defineProperty(_ref, 'computed', {
         mask: function mask() {
             var mask = "*".repeat(255);
 
@@ -53562,7 +53569,7 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
 var appName = 'vue-contacts';
 
 
@@ -53576,7 +53583,7 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {},
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helpers__["a" /* default */]]
     });
 }
 
@@ -54006,15 +54013,17 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
 var appName = 'vue-progress';
+
 
 
 if (jQuery("#" + appName).length > 0) {
     new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]]
     });
 }
 
@@ -54025,15 +54034,17 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
 var appName = 'vue-record';
+
 
 
 if (jQuery("#" + appName).length > 0) {
     new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]]
     });
 }
 
@@ -54238,7 +54249,7 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 /***/ }),
 
-/***/ "./resources/assets/js/mixins/edit-mixins.js":
+/***/ "./resources/assets/js/mixins/edit.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54310,7 +54321,7 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 /***/ }),
 
-/***/ "./resources/assets/js/mixins/helper.js":
+/***/ "./resources/assets/js/mixins/helpers.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

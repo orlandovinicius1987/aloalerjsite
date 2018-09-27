@@ -1,5 +1,5 @@
 const appName = 'vue-contacts'
-import helperMixin from '../mixins/helper'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -14,6 +14,6 @@ if (jQuery("#" + appName).length > 0) {
         methods: {
         },
 
-        mixins: [helperMixin],
+        mixins: [helpersMixin],
     })
 }

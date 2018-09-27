@@ -16,7 +16,7 @@
                             @if (!$record->id)
                                 Novo
                             @endif
-                            
+
                             Protocolo {{ $record->protocol }}
                         </li>
                     </ul>
