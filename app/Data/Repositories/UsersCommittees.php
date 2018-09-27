@@ -55,7 +55,8 @@ class UsersCommittees extends Base
 
     public function deleteUserCommittee($user_id, $committee_id)
     {
-        $row = $this->searchByUserAndCommittee($user_id, $committee_id);
-        $row->delete();
+        if ($row = $this->searchByUserAndCommittee($user_id, $committee_id)) {
+            $row->delete();
+        }
     }
 }
