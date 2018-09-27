@@ -1,4 +1,4 @@
-    <div class="card-body">
+    <div class="card-body" id="vue-progress">
 
         <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
@@ -14,11 +14,9 @@
             </thead>
 
             @forelse ($progresses as $progress)
-                <tr>
+                <tr v-on:click='detail("{{$progress->link}}")' style="cursor: pointer;">
                     <td>
-                        <a href="{{ $progress->link }}">
-                            {{ $progress->progressType->name ?? '' }}
-                        </a>
+                        {{ $progress->progressType->name ?? '' }}
                     </td>
 
                     <td>

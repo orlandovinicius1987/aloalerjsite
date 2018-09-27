@@ -168,16 +168,16 @@
 
                         {{--@include('partials.edit-button',['model'=>$progress, 'form' =>'formProgress'])--}}
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}', 'formProgress')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                             Gravar
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.openRecord') }}', 'formProgress')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @include('partials.disabled')>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}', 'formProgress')" class="btn btn-danger btn-depth" @include('partials.disabled')>
                                 Gravar e finalizar
                             </button>
                         @endif

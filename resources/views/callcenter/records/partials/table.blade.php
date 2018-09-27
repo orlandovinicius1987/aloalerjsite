@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<div class="card mt-4"  id="vue-record">
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-4">
@@ -42,8 +42,8 @@
             </thead>
 
             @forelse ($records as $record)
-                <tr>
-                    <td><a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+                <tr v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer;">
+                    <td>{{ $record->protocol }}</td>
 
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                     <td>

@@ -1,4 +1,5 @@
 const appName = 'vue-addresses'
+import helperMixin from "../mixins/helper";
 
 Vue.directive('init', {
     bind: function(el, binding, vnode) {
@@ -9,6 +10,8 @@ Vue.directive('init', {
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
+
+        mixins: [helperMixin],
 
         data: {
             tables: {

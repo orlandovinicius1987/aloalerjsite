@@ -53057,9 +53057,13 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/addresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-addresses';
+
 
 Vue.directive('init', {
     bind: function bind(el, binding, vnode) {
@@ -53070,6 +53074,8 @@ Vue.directive('init', {
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
 
         data: {
             tables: {
@@ -53348,9 +53354,13 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contact-outside-workflow.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-contact-outside-workflow';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
@@ -53363,6 +53373,8 @@ if (jQuery("#" + appName).length > 0) {
             contactTypesArray: [],
             refreshing: false
         },
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
 
         computed: {
             mask: function mask() {
@@ -53463,30 +53475,25 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contacts.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-contacts';
 
-Vue.directive('init', {
-    bind: function bind(el, binding, vnode) {
-        console.info(binding.arg);
-        vnode.context.form[binding.arg] = binding.value;
-    }
-});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
         data: {
-            form: {
-                mobile: null,
-                whatsapp: null,
-                phone: null
-            }
+            form: {}
         },
 
-        methods: {}
+        methods: {},
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]
     });
 }
 
@@ -53539,9 +53546,13 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/progresses.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-progress';
+
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
@@ -53549,28 +53560,9 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {},
 
-        methods: {
-            changeFormRoute: function changeFormRoute(action) {
-                form = document.getElementById('formProgress');
-                form.action = action;
-                form.submit();
-            },
-            confirm: function confirm(action) {
-                var _this = this;
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
 
-                swal({
-                    title: " Você tem certeza? ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (willDelete) {
-                    if (willDelete) {
-                        var $this = _this;
-                        $this.changeFormRoute(action);
-                    }
-                });
-            }
-        }
+        methods: {}
     });
 }
 
@@ -53581,7 +53573,7 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_example__ = __webpack_require__("./resources/assets/js/mixins/example.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-record';
 
 
@@ -53589,33 +53581,13 @@ if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_example__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
 
         methods: {
-            changeFormRoute: function changeFormRoute(action) {
-                form = document.getElementById('formRecords');
-                form.action = action;
-                form.submit();
-            },
             copyUrl: function copyUrl(url) {
                 var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
 
                 copy(url);
-            },
-            confirm: function confirm(action) {
-                var _this = this;
-
-                swal({
-                    title: "Você tem certeza?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (willDelete) {
-                    if (willDelete) {
-                        var $this = _this;
-                        $this.changeFormRoute(action);
-                    }
-                });
             }
         }
     });
@@ -53821,7 +53793,7 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 /***/ }),
 
-/***/ "./resources/assets/js/mixins/example.js":
+/***/ "./resources/assets/js/mixins/helper.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53834,8 +53806,28 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 
     methods: {
-        example: function example() {
-            console.log('hello from example mixin!');
+        detail: function detail(router) {
+            window.location.href = router;
+        },
+        changeFormRoute: function changeFormRoute(action, formId) {
+            var form = document.getElementById(formId);
+            form.action = action;
+            form.submit();
+        },
+        confirm: function confirm(action, formId) {
+            var _this = this;
+
+            swal({
+                title: " Você tem certeza? ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    var $this = _this;
+                    $this.changeFormRoute(action, formId);
+                }
+            });
         }
     }
 });

@@ -1,11 +1,5 @@
 const appName = 'vue-contacts'
-
-Vue.directive('init', {
-    bind: function(el, binding, vnode) {
-        console.info(binding.arg);
-        vnode.context.form[binding.arg] = binding.value;
-    }
-})
+import helperMixin from '../mixins/helper'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -13,13 +7,13 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             form: {
-                mobile: null,
-                whatsapp: null,
-                phone: null,
+
             }
         },
 
         methods: {
         },
+
+        mixins: [helperMixin],
     })
 }

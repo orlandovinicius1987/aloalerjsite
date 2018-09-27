@@ -1,4 +1,5 @@
 const appName = 'vue-progress'
+import helperMixin from '../mixins/helper'
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
@@ -8,27 +9,10 @@ if (jQuery("#" + appName).length > 0) {
 
         },
 
-        methods: {
-            changeFormRoute(action){
-                form = document.getElementById('formProgress')
-                form.action = action
-                form.submit()
-            },
+        mixins: [helperMixin],
 
-            confirm(action){
-                swal({
-                    title: " Você tem certeza? ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            let $this = this
-                            $this.changeFormRoute(action)
-                        }
-                    });
-            }
+        methods: {
+
         },
     })
 }
