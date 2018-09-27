@@ -74,10 +74,10 @@
             @endforelse
         </table>
 
-        <div class="row">
-            <div class="col align-items-center">
+        <div class="d-flex justify-content-center">
+
                 {{ $records->links() }}
-            </div>
+
         </div>
 
 
