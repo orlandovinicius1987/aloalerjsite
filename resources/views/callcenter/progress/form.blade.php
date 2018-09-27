@@ -168,13 +168,13 @@
                         @include('partials.previous-button')
                         
                         @if(isset($progress) && ! is_null($progress->id))
-                            <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id , \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
+                            <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
                                 Alterar
                             </button>
 
                         @endIf
 
-                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan
+                        <button v-on:click="changeFormRoute('{{route('progresses.store') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan
                          >                        
                             Gravar
                         </button>
@@ -184,17 +184,17 @@
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.reopen', $record->id) }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.reopen', $record->id) }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Gravar e reabrir
                             </button>
                         @else
-                            <button onclick="return false;" v-on:click="confirm('{{route('progresses.finishRecord') }}')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-mark-as-resolved') }}', 'formProgress')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Gravar e finalizar
                             </button>
                         @endif
 
                         @if ($progress && $progress->id)
-                            <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Notificar cidadão
                             </a>
                         @endif

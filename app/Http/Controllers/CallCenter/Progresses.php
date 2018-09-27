@@ -35,12 +35,14 @@ class Progresses extends Controller
             $request
         )->sendNotifications();
 
+        $this->showSuccessMessage();
+
         return redirect()
             ->route('records.show', ['id' => $request->get('record_id')])
             ->with($this->getSuccessMessage());
     }
 
-    public function finishRecord(ProgressRequest $request)
+    public function storeAndMarkAsResolved(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
 
@@ -52,6 +54,8 @@ class Progresses extends Controller
             $request->get('record_id'),
             $progress
         );
+
+        $this->showSuccessMessage();
 
         return redirect()
             ->route('records.show', ['id' => $request->get('record_id')])

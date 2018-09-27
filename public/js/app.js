@@ -53551,33 +53551,10 @@ var appName = 'vue-progress';
 
 
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
-
-        methods: {
-            changeFormRoute: function changeFormRoute(action) {
-                form = document.getElementById('formProgress');
-                form.action = action;
-                form.submit();
-            },
-            confirm: function confirm(action) {
-                var _this = this;
-
-                swal({
-                    title: " Você tem certeza? ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (willDelete) {
-                    if (willDelete) {
-                        var $this = _this;
-                        $this.changeFormRoute(action);
-                    }
-                });
-            }
-        }
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
     });
 }
 
@@ -53593,30 +53570,10 @@ var appName = 'vue-record';
 
 
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
-
-        methods: {
-            copyUrl: function copyUrl(url) {
-                var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
-
-                copy(url);
-            },
-            confirm: function confirm(action) {
-                swal({
-                    title: "Você tem certeza?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (confirmed) {
-                    if (confirmed) {
-                        window.location.href = action;
-                    }
-                });
-            }
-        }
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
     });
 }
 
@@ -53835,11 +53792,47 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 
     methods: {
-        editButton: function editButton(event) {
+        copyUrl: function copyUrl(url) {
+            var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
+
+            copy(url);
+        },
+        editButton: function editButton() {
             this.mode = 'edit';
         },
-        cancel: function cancel(event) {
+        cancel: function cancel() {
             location.reload();
+        },
+        submitForm: function submitForm(action, formId) {
+            var form = document.getElementById(formId);
+
+            form.action = action;
+
+            form.submit();
+        },
+        confirmQuestion: function confirmQuestion() {
+            return swal({
+                title: "Você tem certeza?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            });
+        },
+        confirm: function confirm(action) {
+            this.confirmQuestion().then(function (confirmed) {
+                if (confirmed) {
+                    window.location.href = action;
+                }
+            });
+        },
+        confirmForPost: function confirmForPost(action, formId) {
+            var _this = this;
+
+            this.confirmQuestion().then(function (confirmed) {
+                if (confirmed) {
+                    _this.submitForm(action, formId);
+                }
+            });
         }
     },
 
@@ -53854,7 +53847,6 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
             return this.mode === 'create';
         }
     }
-
 });
 
 /***/ }),

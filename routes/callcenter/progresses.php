@@ -9,9 +9,10 @@ Route::group(['prefix' => 'progresses'], function () {
 
     Route::post('/', 'Progresses@store')->name('progresses.store');
 
-    Route::post('/finish', 'Progresses@finishRecord')->name(
-        'progresses.finishRecord'
-    );
+    Route::post(
+        '/store-and-mark-as-resolved',
+        'Progresses@storeAndMarkAsResolved'
+    )->name('progresses.store-and-mark-as-resolved');
 
     Route::post('/open', 'Progresses@openRecord')->name(
         'progresses.openRecord'
