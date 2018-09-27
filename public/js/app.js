@@ -53371,16 +53371,22 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var appName = 'vue-contact-outside-workflow';
 
 
 
+
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    var _ref;
+
+    var app = new Vue((_ref = {
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             laravel: laravel,
@@ -53388,131 +53394,120 @@ if (jQuery("#" + appName).length > 0) {
             currentContact: '',
             contactTypesArray: [],
             refreshing: false
-        },
+        }
 
-        computed: {
-            mask: function mask() {
-                var mask = "*".repeat(255);
+    }, _defineProperty(_ref, 'mixins', [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]), _defineProperty(_ref, 'computed', {
+        mask: function mask() {
+            var mask = "*".repeat(255);
 
-                switch (this.currentContactTypeName) {
-                    case 'mobile':
-                        mask = ['(##) #####-####'];
-                        break;
-                    case 'whatsapp':
-                        mask = ['(##) #####-####'];
-                        break;
-                    case 'phone':
-                        mask = '(##) ####-####';
-                        break;
-                }
-
-                return mask;
-            },
-
-            masked: function masked() {
-                return true;
-            },
-
-
-            currentContactTypeName: function currentContactTypeName() {
-                return this.contactTypesArray[this.currentContactType];
-            },
-
-            tokens: function tokens() {
-                return {
-                    '*': { pattern: /.*/ },
-                    '#': { pattern: /\d/ },
-                    'X': { pattern: /[0-9a-zA-Z]/ },
-                    'S': { pattern: /[a-zA-Z]/ },
-                    'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                            return v.toLocaleUpperCase();
-                        } },
-                    'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                            return v.toLocaleLowerCase();
-                        } },
-                    '!': { escape: true }
-                };
+            switch (this.currentContactTypeName) {
+                case 'mobile':
+                    mask = ['(##) #####-####'];
+                    break;
+                case 'whatsapp':
+                    mask = ['(##) #####-####'];
+                    break;
+                case 'phone':
+                    mask = '(##) ####-####';
+                    break;
             }
+
+            return mask;
         },
 
-        methods: {
-            refresh: function refresh() {
-                this.refreshContactTypesArray();
-            },
-            refreshContactTypesArray: function refreshContactTypesArray() {
-                var $this = this;
-
-                $this.refreshing = true;
-
-                axios.get('/callcenter/contact_types/array').then(function (response) {
-                    $this.contactTypesArray = response.data;
-
-                    $this.refreshing = false;
-                }).catch(function (error) {
-                    console.log(error);
-
-                    $this.contactTypesArray = [];
-
-                    $this.refreshing = false;
-                });
-            },
-            initializeCurrents: function initializeCurrents() {
-                this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
-                if (laravel.length == 0) {
-                    this.currentContact = '';
-                } else {
-                    if (laravel.old.contact != null) {
-                        this.currentContact = laravel.old.contact;
-                    } else {
-                        this.currentContact = laravel.contact.contact;
-                    }
-                }
-            }
+        masked: function masked() {
+            return true;
         },
 
-        beforeMount: function beforeMount() {
-            this.refresh();
-        },
-        mounted: function mounted() {
-            this.initializeCurrents();
 
+        currentContactTypeName: function currentContactTypeName() {
+            return this.contactTypesArray[this.currentContactType];
+        },
+
+        tokens: function tokens() {
+            return {
+                '*': { pattern: /.*/ },
+                '#': { pattern: /\d/ },
+                'X': { pattern: /[0-9a-zA-Z]/ },
+                'S': { pattern: /[a-zA-Z]/ },
+                'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                        return v.toLocaleUpperCase();
+                    } },
+                'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                        return v.toLocaleLowerCase();
+                    } },
+                '!': { escape: true }
+            };
+        }
+    }), _defineProperty(_ref, 'methods', {
+        refresh: function refresh() {
+            this.refreshContactTypesArray();
+        },
+        refreshContactTypesArray: function refreshContactTypesArray() {
             var $this = this;
 
-            $("#contact_type_id").on('change', function () {
-                e = document.getElementById("contact_type_id");
-                $this.currentContactType = e.options[e.selectedIndex].value;
+            $this.refreshing = true;
+
+            axios.get('/callcenter/contact_types/array').then(function (response) {
+                $this.contactTypesArray = response.data;
+
+                $this.refreshing = false;
+            }).catch(function (error) {
+                console.log(error);
+
+                $this.contactTypesArray = [];
+
+                $this.refreshing = false;
             });
+        },
+        initializeCurrents: function initializeCurrents() {
+            this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
+            if (laravel.length == 0) {
+                this.currentContact = '';
+            } else {
+                if (laravel.old.contact != null) {
+                    this.currentContact = laravel.old.contact;
+                } else {
+                    this.currentContact = laravel.contact.contact;
+                }
+            }
         }
-    });
+    }), _defineProperty(_ref, 'beforeMount', function beforeMount() {
+        this.refresh();
+    }), _defineProperty(_ref, 'mounted', function mounted() {
+        this.initializeCurrents();
+
+        var $this = this;
+
+        $("#contact_type_id").on('change', function () {
+            e = document.getElementById("contact_type_id");
+            $this.currentContactType = e.options[e.selectedIndex].value;
+        });
+    }), _ref));
 }
 
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contacts.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-contacts';
 
-Vue.directive('init', {
-    bind: function bind(el, binding, vnode) {
-        console.info(binding.arg);
-        vnode.context.form[binding.arg] = binding.value;
-    }
-});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
         data: {
-            form: {
-                mobile: null,
-                whatsapp: null,
-                phone: null
-            }
+            form: {}
         },
 
-        methods: {}
+        methods: {},
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]
     });
 }
 
@@ -53845,6 +53840,47 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
         },
         isCreating: function isCreating() {
             return this.mode === 'create';
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/js/mixins/helper.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            key: 'value'
+        };
+    },
+
+
+    methods: {
+        detail: function detail(router) {
+            window.location.href = router;
+        },
+        changeFormRoute: function changeFormRoute(action, formId) {
+            var form = document.getElementById(formId);
+            form.action = action;
+            form.submit();
+        },
+        confirm: function confirm(action, formId) {
+            var _this = this;
+
+            swal({
+                title: " Você tem certeza? ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    var $this = _this;
+                    $this.changeFormRoute(action, formId);
+                }
+            });
         }
     }
 });

@@ -1,4 +1,5 @@
 const appName = 'vue-contact-outside-workflow'
+import helperMixin from '../mixins/helper'
 
 import editMixins from '../mixins/edit-mixins'
 
@@ -15,6 +16,8 @@ if (jQuery("#" + appName).length > 0) {
             contactTypesArray: [],
             refreshing: false,
         },
+
+        mixins: [helperMixin],
 
         computed: {
             mask: function () {

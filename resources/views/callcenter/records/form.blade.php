@@ -36,11 +36,11 @@
                 @csrf
 
                 @if (isset($person))
-                <input name="person_id" type="hidden" value="{{ $person->id }}">
+                    <input name="person_id" type="hidden" value="{{ $person->id }}">
                 @endif
 
                 @if (isset($record))
-                <input name="record_id" type="hidden" value="{{ $record->id }}">
+                    <input name="record_id" type="hidden" value="{{ $record->id }}">
                 @endif
 
                 <div class="form-group row">
@@ -274,37 +274,37 @@
                             <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
                                     Próximo passo >>
                             </button>
-                        @elseif(is_null($record->committee))                            
+                        @elseif(is_null($record->committee))
                             @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
-                            
-                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @include('partials.disabled',['model'=>$record])>
+
+                            <button id="saveButton" class="btn btn-danger" @include('partials.disabled',['model'=>$record])>
                                 Gravar
                             </button>
 
                             @if ($record->resolved_at)
-                                <a href="#" id="openButton" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}')" >
+                                <a href="#" id="openButton" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" >
                                     Reabrir
                                 </a>
-                            @elseif(!is_null($record->id))                            
-                                <a href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.mark-as-resolved', $record->id) }}')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}} && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
+                            @elseif(!is_null($record->id))
+                                <a href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}} && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
                                     Finalizar
                                 </a>
                             @endif
-                        @else                                                        
+                        @else
                             @if(isset($record) && ! is_null($record->id))
                                 <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
                                     Alterar
                                 </button>
                             @endif
 
-                            <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) @include('partials.disabled',['model'=>$record]) @else disabled @endcan>
+                            <button id="saveButton" class="btn btn-danger" v-on:click="confirmForPost('{{route('records.store') }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) @include('partials.disabled',['model'=>$record]) @else disabled @endcan>
                                 Gravar
                             </button>
 
                             <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
                                 Cancelar
                             </button>
-                            
+
                             <a href="#" id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}')"  @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'false':'true' }}" @else disabled @endcan>
                                 Reabrir
                             </a>
@@ -314,7 +314,7 @@
                             </a>
                         @endif
 
-                        @if($record && $record->id)                            
+                        @if($record && $record->id)
                             <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
                                 Copiar link público
                             </button>
