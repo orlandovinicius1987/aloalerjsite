@@ -162,7 +162,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         @include('partials.edit-button',['model'=>$contact, 'form' =>'formRecords'])   
-                        <button type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$contact])>
+                        <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$contact])>
                             Gravar
                         </button>
 
