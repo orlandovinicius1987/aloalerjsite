@@ -13,20 +13,26 @@
                         </li>
 
                         <li>
+                            @if (!$record->id)
+                                Novo
+                            @endif
+                            
                             Protocolo {{ $record->protocol }}
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-4">
+                @if ($record->id)
+                    <div class="col-4">
                         <h5 class="text-right">
-                            @if ($record->resolved_at)
-                                <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
-                            @else
-                                <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
-                            @endif
+                                @if ($record->resolved_at)
+                                    <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
+                                @else
+                                    <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
+                                @endif
                         </h5>
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
 

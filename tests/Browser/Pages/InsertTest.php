@@ -107,6 +107,7 @@ class InsertTest extends DuskTestCase
                 $browser
                     ->waitForText('Protocolo criado com sucesso')
                     ->visit($personShowUrl)
+                    ->scrollTo('button-novo-endereco')
                     ->click('#button-novo-endereco')
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
@@ -116,7 +117,7 @@ class InsertTest extends DuskTestCase
                             '"'
                     )
                     ->click('#saveButton')
-                    ->waitForText('Gravado com sucesso');
+                    ->waitForText('Endereço cadastrado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
                     $contactType = app(
                         ContactTypesRepository::class
