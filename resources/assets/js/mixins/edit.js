@@ -6,12 +6,6 @@ export default {
     },   
 
     methods: {
-        copyUrl(url) {
-            const copy = require('copy-text-to-clipboard');
-
-            copy(url);
-        },
-
         editButton() {
             this.mode = 'edit'
          },
@@ -21,6 +15,8 @@ export default {
          },
 
         submitForm(action, formId) {
+            console.log('submitForm');
+
             let form = document.getElementById(formId)
 
             form.action = action
@@ -29,6 +25,8 @@ export default {
         },
 
         confirmQuestion() {
+            console.log('confirmQuestion');
+
             return swal({
                 title: "Você tem certeza?",
                 icon: "warning",
@@ -38,15 +36,18 @@ export default {
         },
 
         confirm(action) {
+            console.log('confirm');
             this.confirmQuestion()
                 .then((confirmed) => {
                     if (confirmed) {
-                        window.location.href = action
+                        window.location = action
                     }
                 });
         },
 
         confirmForPost(action, formId) {
+            console.log('confirmForPost');
+
             this.confirmQuestion()
                 .then((confirmed) => {
                     if (confirmed) {

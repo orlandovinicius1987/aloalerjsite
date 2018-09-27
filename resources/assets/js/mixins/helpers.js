@@ -7,28 +7,13 @@ export default {
 
     methods: {
         detail(router) {
-            window.location.href = router;
+            window.location = router;
         },
 
-        changeFormRoute(action, formId){
-            let form = document.getElementById(formId)
-            form.action = action
-            form.submit()
-        },
+        copyUrl(url) {
+            const copy = require('copy-text-to-clipboard');
 
-        confirm(action, formId){
-            swal({
-                title: " Você tem certeza? ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        let $this = this
-                        $this.changeFormRoute(action, formId)
-                    }
-                });
+            copy(url);
         },
     }
 }

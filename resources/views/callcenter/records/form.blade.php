@@ -37,7 +37,6 @@
         </div>
 
         <div class="card-body">
-
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords">
                 @csrf
 
@@ -278,46 +277,26 @@
                     <div class="col-md-8 offset-md-4">
                         @if($workflow)
                             <button id="saveButton" type="submit" class="btn btn-danger">
-                                    Próximo passo >>
+                                Próximo passo >>
                             </button>
-                        @elseif(is_null($record->committee))
+                        @else
                             @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
 
-                            <button id="saveButton" class="btn btn-danger" @include('partials.disabled',['model'=>$record])>
+                            <button id="saveButton" class="btn btn-danger" :disabled="!(isEditing || isCreating)">
                                 Gravar
                             </button>
 
-                            @if ($record->resolved_at)
-                                <a href="#" id="openButton" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" >
-                                    Reabrir
-                                </a>
-                            @elseif(!is_null($record->id))
-                                <a href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}} && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
-                                    Finalizar
-                                </a>
-                            @endif
-                        @else
-                            @if(isset($record) && ! is_null($record->id))
-                                <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                    Alterar
-                                </button>
-                            @endif
+                            <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}})">
+                                Reabrir
+                            </button>
 
-                            <button id="saveButton" class="btn btn-danger" v-on:click="confirmForPost('{{route('records.store') }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) @include('partials.disabled',['model'=>$record]) @else disabled @endcan>
-                                Gravar
+                            <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}) && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
+                                Finalizar
                             </button>
 
                             <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
                                 Cancelar
                             </button>
-
-                            <a href="#" id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}')"  @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="{{$record->resolved_at ? 'true':'false' }} && (isEditing || isCreating)" @else disabled @endcan>
-                                Reabrir
-                            </a>
-
-                            <a href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{ route('records.mark-as-resolved', $record->id) }}')" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="{{$record->resolved_at ? 'false': 'true'}} && (isEditing || isCreating)" @else disabled @endcan>
-                                Finalizar
-                            </a>
                         @endif
 
                         @if($record && $record->id)
