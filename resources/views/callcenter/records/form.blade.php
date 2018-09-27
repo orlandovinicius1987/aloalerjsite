@@ -277,7 +277,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         @if($workflow)
-                            <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
+                            <button id="saveButton" type="submit" class="btn btn-danger">
                                     Próximo passo >>
                             </button>
                         @elseif(is_null($record->committee))

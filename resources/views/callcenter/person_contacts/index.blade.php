@@ -9,7 +9,7 @@
 
             <div class="col-8 text-right">
                 <a id="button-novo-contato" href="#" data-toggle="modal" data-target="#contactsModal"
-                   class="btn btn-primary btn-sm pull-right btn-depth">
+                   class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-plus"></i>
                     Novo Contato
                 </a>
@@ -37,7 +37,7 @@
 
             <div class="col-8 text-right">
                 <a id="button-novo-contato" href="#" data-toggle="modal" data-target="#contactsModal"
-                   class="btn btn-primary btn-sm pull-right btn-depth">
+                   class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-plus"></i>
                     Novo Contato
                 </a>

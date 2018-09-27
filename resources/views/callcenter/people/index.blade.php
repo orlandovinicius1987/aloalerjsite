@@ -32,7 +32,7 @@
 
                                 <div class="form-group row text-center">
                                     <div class="col-12" v-if="canCreateNewPerson()">
-                                        <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary btn-depth ">
+                                        <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary ">
                                             <i class="fa fa-plus"></i>
                                             Cadastrar novo cidadão
                                         </a>

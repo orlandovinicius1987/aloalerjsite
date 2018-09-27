@@ -1,16 +1,3 @@
-.btn-depth {
-  -webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
-  border-top-width: .0625rem;
-  border-bottom-width: calc(.2rem + .0625rem);
-}
-
-
-
-
-
 
 .btn-primary {
   color: #ffffff;
@@ -27,4 +14,13 @@
     background-color: $blue-lighter90 !important;
     border-color: $blue  !important;
   }
+}
+
+.btn {
+    -webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
+    transition: color .1s ease-in-out,background-color .1s ease-in-out;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+    border-top-width: .0625rem;
+    border-bottom-width: calc(.2rem + .0625rem);
 }

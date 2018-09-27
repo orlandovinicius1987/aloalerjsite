@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button id="searchButton" type="submit" class="btn btn-danger btn-depth">
+                                <button id="searchButton" type="submit" class="btn btn-danger">
                                     Buscar
                                 </button>
                             </div>
