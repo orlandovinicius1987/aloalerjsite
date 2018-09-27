@@ -53450,116 +53450,118 @@ if (jQuery("#" + appName).length > 0) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__ = __webpack_require__("./resources/assets/js/mixins/helpers.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var appName = 'vue-contact-outside-workflow';
 
 
 
 if (jQuery("#" + appName).length > 0) {
-    var _ref;
-
-    var app = new Vue((_ref = {
+    new Vue({
         el: '#' + appName,
 
         mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]],
 
         data: {
-            laravel: laravel,
-            currentContactType: '',
-            currentContact: '',
+            currentContactType: null,
+            currentContact: null,
             contactTypesArray: [],
             refreshing: false
-        }
+        },
 
-    }, _defineProperty(_ref, 'mixins', [__WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]]), _defineProperty(_ref, 'computed', {
-        mask: function mask() {
-            var mask = "*".repeat(255);
+        computed: {
+            mask: function mask() {
+                var mask = "*".repeat(255);
 
-            switch (this.currentContactTypeName) {
-                case 'mobile':
-                    mask = ['(##) #####-####'];
-                    break;
-                case 'whatsapp':
-                    mask = ['(##) #####-####'];
-                    break;
-                case 'phone':
-                    mask = '(##) ####-####';
-                    break;
+                switch (this.currentContactTypeName) {
+                    case 'mobile':
+                        mask = ['(##) #####-####'];
+                        break;
+                    case 'whatsapp':
+                        mask = ['(##) #####-####'];
+                        break;
+                    case 'phone':
+                        mask = '(##) ####-####';
+                        break;
+                }
+
+                return mask;
+            },
+
+            masked: function masked() {
+                return true;
+            },
+
+
+            currentContactTypeName: function currentContactTypeName() {
+                return this.contactTypesArray[this.currentContactType];
+            },
+
+            tokens: function tokens() {
+                return {
+                    '*': { pattern: /.*/ },
+                    '#': { pattern: /\d/ },
+                    'X': { pattern: /[0-9a-zA-Z]/ },
+                    'S': { pattern: /[a-zA-Z]/ },
+                    'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                            return v.toLocaleUpperCase();
+                        } },
+                    'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                            return v.toLocaleLowerCase();
+                        } },
+                    '!': { escape: true }
+                };
             }
-
-            return mask;
         },
 
-        masked: function masked() {
-            return true;
-        },
+        methods: {
+            refresh: function refresh() {
+                this.refreshContactTypesArray();
+            },
+            refreshContactTypesArray: function refreshContactTypesArray() {
+                var $this = this;
 
+                $this.refreshing = true;
 
-        currentContactTypeName: function currentContactTypeName() {
-            return this.contactTypesArray[this.currentContactType];
-        },
+                axios.get('/callcenter/contact_types/array').then(function (response) {
+                    $this.contactTypesArray = response.data;
 
-        tokens: function tokens() {
-            return {
-                '*': { pattern: /.*/ },
-                '#': { pattern: /\d/ },
-                'X': { pattern: /[0-9a-zA-Z]/ },
-                'S': { pattern: /[a-zA-Z]/ },
-                'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                        return v.toLocaleUpperCase();
-                    } },
-                'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                        return v.toLocaleLowerCase();
-                    } },
-                '!': { escape: true }
-            };
-        }
-    }), _defineProperty(_ref, 'methods', {
-        refresh: function refresh() {
-            this.refreshContactTypesArray();
-        },
-        refreshContactTypesArray: function refreshContactTypesArray() {
-            var $this = this;
+                    $this.refreshing = false;
+                }).catch(function (error) {
+                    console.log(error);
 
-            $this.refreshing = true;
+                    $this.contactTypesArray = [];
 
-            axios.get('/callcenter/contact_types/array').then(function (response) {
-                $this.contactTypesArray = response.data;
-
-                $this.refreshing = false;
-            }).catch(function (error) {
-                console.log(error);
-
-                $this.contactTypesArray = [];
-
-                $this.refreshing = false;
-            });
-        },
-        initializeCurrents: function initializeCurrents() {
-            this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
-            if (laravel.length == 0) {
-                this.currentContact = '';
-            } else {
-                if (laravel.old.contact != null) {
-                    this.currentContact = laravel.old.contact;
+                    $this.refreshing = false;
+                });
+            },
+            initializeCurrents: function initializeCurrents() {
+                if (!laravel) {
+                    this.currentContact = '';
                 } else {
-                    this.currentContact = laravel.contact.contact;
+                    this.currentContactType = laravel && laravel.contact ? laravel.contact.contact_type_id : null;
+
+                    if (laravel.old && laravel.old.contact != null) {
+                        this.currentContact = laravel.old.contact;
+                    } else {
+                        this.currentContact = laravel.contact ? laravel.contact.contact : null;
+                    }
                 }
             }
+        },
+
+        beforeMount: function beforeMount() {
+            this.refresh();
+        },
+        mounted: function mounted() {
+            this.initializeCurrents();
+
+            var $this = this;
+
+            $("#contact_type_id").on('change', function () {
+                e = document.getElementById("contact_type_id");
+                $this.currentContactType = e.options[e.selectedIndex].value;
+            });
         }
-    }), _defineProperty(_ref, 'beforeMount', function beforeMount() {
-        this.refresh();
-    }), _defineProperty(_ref, 'mounted', function mounted() {
-        this.initializeCurrents();
-
-        var $this = this;
-
-        $("#contact_type_id").on('change', function () {
-            e = document.getElementById("contact_type_id");
-            $this.currentContactType = e.options[e.selectedIndex].value;
-        });
-    }), _ref));
+    });
 }
 
 /***/ }),
@@ -54262,11 +54264,6 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 
     methods: {
-        copyUrl: function copyUrl(url) {
-            var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
-
-            copy(url);
-        },
         editButton: function editButton() {
             this.mode = 'edit';
         },
@@ -54274,6 +54271,8 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
             location.reload();
         },
         submitForm: function submitForm(action, formId) {
+            console.log('submitForm');
+
             var form = document.getElementById(formId);
 
             form.action = action;
@@ -54281,6 +54280,8 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
             form.submit();
         },
         confirmQuestion: function confirmQuestion() {
+            console.log('confirmQuestion');
+
             return swal({
                 title: "Você tem certeza?",
                 icon: "warning",
@@ -54289,14 +54290,17 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
             });
         },
         confirm: function confirm(action) {
+            console.log('confirm');
             this.confirmQuestion().then(function (confirmed) {
                 if (confirmed) {
-                    window.location.href = action;
+                    window.location = action;
                 }
             });
         },
         confirmForPost: function confirmForPost(action, formId) {
             var _this = this;
+
+            console.log('confirmForPost');
 
             this.confirmQuestion().then(function (confirmed) {
                 if (confirmed) {
@@ -54335,27 +54339,12 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
     methods: {
         detail: function detail(router) {
-            window.location.href = router;
+            window.location = router;
         },
-        changeFormRoute: function changeFormRoute(action, formId) {
-            var form = document.getElementById(formId);
-            form.action = action;
-            form.submit();
-        },
-        confirm: function confirm(action, formId) {
-            var _this = this;
+        copyUrl: function copyUrl(url) {
+            var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
 
-            swal({
-                title: " Você tem certeza? ",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true
-            }).then(function (willDelete) {
-                if (willDelete) {
-                    var $this = _this;
-                    $this.changeFormRoute(action, formId);
-                }
-            });
+            copy(url);
         }
     }
 });
