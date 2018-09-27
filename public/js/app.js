@@ -53061,21 +53061,15 @@ $(document).ready(function () {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
+throw new Error("Cannot find module \"../mixins/edit-mixins\"");
 var appName = 'vue-addresses';
 
-
-Vue.directive('init', {
-    bind: function bind(el, binding, vnode) {
-        vnode.context.form[binding.arg] = binding.value;
-    }
-});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins___default.a],
 
         data: {
             tables: {
@@ -53101,39 +53095,39 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh: function refresh() {
-                me = this;
+                var $this = this;
 
-                me.refreshing = true;
+                $this.refreshing = true;
 
                 axios.get('/api/v1/zipcode/' + this.form.zipcode).then(function (response) {
-                    me.tables.addresses = response.data;
+                    $this.tables.addresses = response.data;
 
                     if (response.data.addresses[0].street_name) {
-                        me.form.zipcode = response.data.addresses[0].zip;
-                        me.form.street = response.data.addresses[0].street_name;
-                        me.form.neighbourhood = response.data.addresses[0].neighborhood;
-                        me.form.city = response.data.addresses[0].city;
-                        me.form.state = response.data.addresses[0].state_id;
-                        me.form.country = 'Brasil';
+                        $this.form.zipcode = response.data.addresses[0].zip;
+                        $this.form.street = response.data.addresses[0].street_name;
+                        $this.form.neighbourhood = response.data.addresses[0].neighborhood;
+                        $this.form.city = response.data.addresses[0].city;
+                        $this.form.state = response.data.addresses[0].state_id;
+                        $this.form.country = 'Brasil';
                         document.getElementById("number").focus();
                     }
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables.addresses = [];
+                    $this.tables.addresses = [];
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 });
             },
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             },
 
@@ -53358,13 +53352,15 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
+throw new Error("Cannot find module \"../mixins/edit-mixins\"");
 var appName = 'vue-contact-outside-workflow';
 
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins___default.a],
 
         data: {
             laravel: laravel,
@@ -53373,8 +53369,6 @@ if (jQuery("#" + appName).length > 0) {
             contactTypesArray: [],
             refreshing: false
         },
-
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]],
 
         computed: {
             mask: function mask() {
