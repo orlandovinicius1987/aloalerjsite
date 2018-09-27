@@ -14,7 +14,7 @@
                 @if(isset($person))
                     <a id="button-novo-protocolo"
                        href="{{ route('records.create',['person_id'=>$person->id]) }}"
-                       class="btn btn-primary btn-sm pull-right btn-depth"
+                       class="btn btn-primary btn-sm pull-right"
                     >
                         <i class="fa fa-plus"></i>
                         Novo Protocolo
@@ -74,7 +74,12 @@
             @endforelse
         </table>
 
-        {{ $records->links() }}
+        <div class="d-flex justify-content-center">
+
+                {{ $records->links() }}
+
+        </div>
+
 
     </div>
 </div>

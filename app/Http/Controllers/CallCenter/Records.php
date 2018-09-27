@@ -21,6 +21,7 @@ class Records extends Controller
         $person = $this->peopleRepository->findById($person_id);
 
         return view('callcenter.records.form')
+            ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus('create'));
@@ -62,13 +63,19 @@ class Records extends Controller
             )->sendNotifications();
         }
 
-        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+        $this->showSuccessMessage(
+            'Protocolo ' .
+                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
+                ' com sucesso.'
+        );
 
         return redirect()->to(
             route(
                 Workflow::started()
                     ? 'people_addresses.create'
-                    : 'records.show-protocol',
+                    : ($record->wasRecentlyCreated
+                        ? 'records.show-protocol'
+                        : 'records.show'),
 
                 Workflow::started() ? $record->person->id : $record->id
             )
@@ -76,13 +83,12 @@ class Records extends Controller
     }
 
     /**
-     * @param Request $request
-     *
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function finishRecord(RecordRequest $request)
+    public function markAsResolved($id)
     {
-        $record = $this->recordsRepository->create(coollect($request->all()));
+        $record = $this->recordsRepository->findById($id);
 
         $record->sendNotifications();
 
@@ -96,10 +102,6 @@ class Records extends Controller
         ]);
 
         $this->recordsRepository->markAsResolved($record->id, $progress);
-        //        if (is_null($request->get('record_id'))) {
-        //            $request->merge(['record_id' => $record->id]);
-        //            $this->progressesRepository->createFromRequest($request);
-        //        }
 
         $this->showSuccessMessage('Protocolo finalizado com sucesso.');
 
@@ -110,30 +112,12 @@ class Records extends Controller
     }
 
     /**
-     * @param Request $request
-     *
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function openRecord(RecordRequest $request)
+    public function reopen($id)
     {
-        $record = $this->recordsRepository->create(coollect($request->all()));
-
-        $record->sendNotifications();
-
-        $progress = $this->progressesRepository->create([
-            'original' =>
-                'Protocolo reaberto sem observações em ' .
-                    now() .
-                    ' pelo usuário ' .
-                    Auth::user()->name,
-            'record_id' => $record->id,
-        ]);
-
-        $this->recordsRepository->markAsNotResolved($record->id, $progress);
-        //        if (is_null($request->get('record_id'))) {
-        //            $request->merge(['record_id' => $record->id]);
-        //            $this->progressesRepository->createFromRequest($request);
-        //        }
+        $record = $this->recordsRepository->findById($id)->reopen();
 
         $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 

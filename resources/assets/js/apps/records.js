@@ -1,18 +1,11 @@
 const appName = 'vue-record'
-import helperMixin from '../mixins/helper'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
-    const app = new Vue({
+    new Vue({
         el: '#'+appName,
 
-        mixins: [helperMixin],
-
-        methods: {
-            copyUrl(url) {
-                const copy = require('copy-text-to-clipboard');
-
-                copy(url);
-            },
-        },
+        mixins: [editMixin, helpersMixin],
     })
 }

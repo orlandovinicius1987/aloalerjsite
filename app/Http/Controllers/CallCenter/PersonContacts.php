@@ -40,7 +40,7 @@ class PersonContacts extends Controller
         $person = $this->peopleRepository->findById($request->get('person_id'));
         $records = $this->recordsRepository->findByPerson($person->id);
 
-        $this->showSuccessMessage('Protocolo cadastrado com sucesso.');
+        $this->showSuccessMessage('Protocolo criado com sucesso.');
 
         Workflow::end();
 

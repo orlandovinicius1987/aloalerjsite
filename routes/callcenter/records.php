@@ -16,9 +16,9 @@ Route::group(['prefix' => 'records'], function () {
         'records.show-protocol'
     );
 
-    Route::post('/finish', 'Records@finishRecord')->name(
-        'records.finishRecord'
+    Route::get('/mark-as-resolved/{id}', 'Records@markAsResolved')->name(
+        'records.mark-as-resolved'
     );
 
-    Route::post('/open', 'Records@openRecord')->name('records.openRecord');
+    Route::get('/reopen/{id}', 'Records@reopen')->name('records.reopen');
 });

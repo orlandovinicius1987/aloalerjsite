@@ -21,9 +21,13 @@
         </div>
 
         <div class="card-body">
-            <h1 class="badge badge-success">
-                Protocolo criado com sucesso:
-            </h1>
+            <div class="row">
+                <div class="col bg-success mt-8">
+                    <h1 class="text-center">
+                        Anote o número do novo Protocolo
+                    </h1>
+                </div>
+            </div>
 
             <br/>
 

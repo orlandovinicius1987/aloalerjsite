@@ -1,7 +1,5 @@
 const appName = 'vue-contact-form'
 
-console.log('vue-contact-form');
-
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
@@ -29,40 +27,40 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh() {
-                me = this
+                let $this = this
 
-                me.refreshing = true
+                $this.refreshing = true
 
                 axios.get('/api/v1/zipcode/'+this.form.cep)
                 .then(function(response) {
-                    me.tables.addresses = response.data
+                    $this.tables.addresses = response.data
 
                     if (response.data.addresses[0].street_name) {
-                        me.form.cep = response.data.addresses[0].zip
-                        me.form.rua = response.data.addresses[0].street_name
-                        me.form.bairro = response.data.addresses[0].neighborhood
-                        me.form.cidade = response.data.addresses[0].city
-                        me.form.country = 'Brasil'
+                        $this.form.cep = response.data.addresses[0].zip
+                        $this.form.rua = response.data.addresses[0].street_name
+                        $this.form.bairro = response.data.addresses[0].neighborhood
+                        $this.form.cidade = response.data.addresses[0].city
+                        $this.form.country = 'Brasil'
                         document.getElementById("number").focus();
                     }
 
-                    me.refreshing = false
+                    $this.refreshing = false
                 })
                 .catch(function(error) {
                     console.log(error)
 
-                    me.tables.addresses = []
+                    $this.tables.addresses = []
 
-                    me.refreshing = false
+                    $this.refreshing = false
                 })
             },
 
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                me = this
+                let $this = this
 
-                this.timeout = setTimeout(function () { me.refresh() }, 500)
+                this.timeout = setTimeout(function () { $this.refresh() }, 500)
             },
         },
 

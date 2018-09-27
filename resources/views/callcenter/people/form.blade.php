@@ -90,7 +90,7 @@
 
                         <div class="form-group text-center row">
                             <div class="col-12 text-center">
-                                <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
+                                <button id="saveButton" type="submit" class="btn btn-danger">
                                     @if ($workflow)
                                         Próximo passo >>
                                     @else

@@ -1,18 +1,11 @@
 const appName = 'vue-progress'
-import helperMixin from '../mixins/helper'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
-    const app = new Vue({
+    new Vue({
         el: '#'+appName,
 
-        data: {
-
-        },
-
-        mixins: [helperMixin],
-
-        methods: {
-
-        },
-    })
+        mixins: [editMixin, helpersMixin],
+})
 }

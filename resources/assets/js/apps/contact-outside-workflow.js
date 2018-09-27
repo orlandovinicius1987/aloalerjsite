@@ -1,16 +1,16 @@
 const appName = 'vue-contact-outside-workflow'
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
-    const app = new Vue({
+    new Vue({
         el: '#'+appName,
 
-        mixins: [editMixins],
+        mixins: [editMixin, helpersMixin],
 
         data: {
-            laravel: laravel,
-            currentContactType: '' ,
-            currentContact:  '',
+            currentContactType: null,
+            currentContact:  null,
             contactTypesArray: [],
             refreshing: false,
         },
@@ -61,34 +61,35 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             refreshContactTypesArray() {
-                me = this
+                let $this = this
 
-                me.refreshing = true
+                $this.refreshing = true
 
                 axios.get('/callcenter/contact_types/array')
                     .then(function(response) {
-                        me.contactTypesArray = response.data
+                        $this.contactTypesArray = response.data
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
                     .catch(function(error) {
                         console.log(error)
 
-                        me.contactTypesArray = []
+                        $this.contactTypesArray = []
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
             },
 
             initializeCurrents() {
-                this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id
-                if(laravel.length == 0) {
+                if(!laravel) {
                     this.currentContact = ''
                 } else {
-                    if(laravel.old.contact != null) {
+                    this.currentContactType = laravel && laravel.contact ? laravel.contact.contact_type_id : null
+
+                    if(laravel.old && laravel.old.contact != null) {
                         this.currentContact = laravel.old.contact
                     } else {
-                        this.currentContact = laravel.contact.contact
+                        this.currentContact = laravel.contact ? laravel.contact.contact : null
                     }
                 }
             }
@@ -101,11 +102,11 @@ if (jQuery("#" + appName).length > 0) {
         mounted() {
             this.initializeCurrents()
 
-            me = this
+            let $this = this
 
             $("#contact_type_id").on('change', function () {
                 e = document.getElementById("contact_type_id")
-                me.currentContactType = e.options[e.selectedIndex].value
+                $this.currentContactType = e.options[e.selectedIndex].value
             })
         }
 
