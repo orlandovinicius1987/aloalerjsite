@@ -74,7 +74,12 @@
             @endforelse
         </table>
 
-        {{ $records->links() }}
+        <div class="row">
+            <div class="col align-items-center">
+                {{ $records->links() }}
+            </div>
+        </div>
+
 
     </div>
 </div>
