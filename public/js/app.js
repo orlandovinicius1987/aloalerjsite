@@ -53586,9 +53586,8 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             changeFormRoute: function changeFormRoute(action) {
-                form = document.getElementById('formRecords');
-                form.action = action;
-                form.submit();
+                document.getElementById('formRecords').action = action;
+                document.getElementById('formRecords').submit();
             },
             copyUrl: function copyUrl(url) {
                 var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");

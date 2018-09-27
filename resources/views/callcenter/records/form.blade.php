@@ -299,9 +299,9 @@
                                 
                             @if(isset($record) && ! is_null($record->id))
 
-                                    <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id, \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                        Alterar
-                                    </button>
+                            <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id, \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
+                                Alterar
+                            </button>
 
                             @endIf
                             <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" @can('committee-canEdit', $record->committee->id, \Auth::user()) @include('partials.disabled',['model'=>$record]) @else disabled @endcan>
