@@ -14,6 +14,7 @@ class Progresses extends Controller
     public function create($record_id)
     {
         return view('callcenter.progress.form')
+            ->with('laravel', ['mode' => 'create'])
             ->with([
                 'progress' => $this->progressesRepository->new(),
                 'record' => $this->recordsRepository->findById($record_id),
@@ -62,7 +63,7 @@ class Progresses extends Controller
             ->with($this->getSuccessMessage());
     }
 
-    public function openRecord(ProgressRequest $request)
+    public function storeAndReopen(ProgressRequest $request)
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
 

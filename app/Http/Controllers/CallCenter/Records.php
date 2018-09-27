@@ -21,6 +21,7 @@ class Records extends Controller
         $person = $this->peopleRepository->findById($person_id);
 
         return view('callcenter.records.form')
+            ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus('create'));

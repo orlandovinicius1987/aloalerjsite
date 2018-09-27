@@ -16,15 +16,23 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            if (!isset($view->laravel)) {
-                $view->with('laravel', [
-                    'chat' => config('chat'),
-                ]);
-            }
+            $this->mergeLaravel($view, [
+                'chat' => config('chat'),
+                'mode' => 'show',
+            ]);
 
             if (!isset($view->workflow)) {
                 $view->with('workflow', Workflow::started());
             }
         });
+    }
+
+    private function mergeLaravel($view, array $laravel = [])
+    {
+        if (isset($view->laravel)) {
+            $laravel = array_merge($laravel, $view->laravel);
+        }
+
+        $view->laravel = $laravel;
     }
 }
