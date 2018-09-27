@@ -6,7 +6,7 @@ export default {
     },
 
     methods: {
-        detail(router){
+        detail(router) {
             window.location.href = router;
         },
 

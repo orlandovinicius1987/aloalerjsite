@@ -1,12 +1,18 @@
 const appName = 'vue-addresses'
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
+Vue.directive('init', {
+    bind: function(el, binding, vnode) {
+        vnode.context.form[binding.arg] = binding.value;
+    }
+})
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        mixins: [editMixins],
+        mixins: [editMixin, helpersMixin],
 
         data: {
             tables: {
@@ -55,18 +61,18 @@ if (jQuery("#" + appName).length > 0) {
                 .catch(function(error) {
                     console.log(error)
 
-                    $this.tables.addresses = []
+                    me.tables.addresses = []
 
-                    $this.refreshing = false
+                    me.refreshing = false
                 })
             },
 
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                let $this = this
+                me = this
 
-                this.timeout = setTimeout(function () { $this.refresh() }, 500)
+                this.timeout = setTimeout(function () { me.refresh() }, 500)
             },
 
             isNumber: function(evt) {
@@ -81,7 +87,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
-            // this.refresh()            
+            // this.refresh()
         },
     })
 }
