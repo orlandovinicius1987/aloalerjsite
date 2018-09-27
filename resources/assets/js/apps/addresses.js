@@ -2,12 +2,6 @@ const appName = 'vue-addresses'
 import editMixins from '../mixins/edit-mixins'
 
 
-Vue.directive('init', {
-    bind: function(el, binding, vnode) {
-        vnode.context.form[binding.arg] = binding.value;
-    }
-})
-
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,

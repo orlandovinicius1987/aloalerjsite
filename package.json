@@ -16,17 +16,17 @@
         "copy-text-to-clipboard": "^1.0.4",
         "cross-env": "^5.1",
         "jquery": "^3.2",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
-        "popper.js": "^1.12",
+        "laravel-mix": "^2.1.14",
+        "lodash": "^4.17.11",
+        "popper.js": "^1.14.4",
         "select2": "^4.0.6-rc.1",
         "select2-bootstrap-theme": "0.1.0-beta.10",
-        "vue": "^2.5.17",
-        "vue-the-mask": "^0.11.1"
-    },
-    "dependencies": {
         "sweetalert": "^2.1.0",
-        "vue-select": "^2.5.0",
-        "vue-select2": "^0.2.6"
-    }
+        "vue": "^2.5.17",
+        "vue-select": "^2.5.1",
+        "vue-select2": "^0.2.6",
+        "vue-the-mask": "^0.11.1",
+        "webpack-livereload-plugin": "^1.2.0"
+    },
+    "dependencies": {}
 }

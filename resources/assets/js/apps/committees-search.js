@@ -79,8 +79,6 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
-            console.log('mounted');
-
             this.refresh()
 
             // this.refreshTable('people')

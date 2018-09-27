@@ -17,7 +17,9 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             if (!isset($view->laravel)) {
-                $view->with('laravel', []);
+                $view->with('laravel', [
+                    'chat' => config('chat'),
+                ]);
             }
 
             if (!isset($view->workflow)) {

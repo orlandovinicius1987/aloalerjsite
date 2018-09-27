@@ -1,7 +1,5 @@
 const appName = 'vue-contact-form'
 
-console.log('vue-contact-form');
-
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
