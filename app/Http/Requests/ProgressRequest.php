@@ -17,4 +17,12 @@ class ProgressRequest extends Request
             'progress_type_id' => 'required',
         ];
     }
+
+    public function authorize()
+    {
+        return \Gate::allows('committee-canEdit', [
+            $this->request->get('committee_id'),
+            $this->user()->id,
+        ]);
+    }
 }
