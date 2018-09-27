@@ -14,6 +14,7 @@ class Progresses extends Controller
     public function create($record_id)
     {
         return view('callcenter.progress.form')
+            ->with('laravel', ['mode' => 'create'])
             ->with([
                 'progress' => $this->progressesRepository->new(),
                 'record' => $this->recordsRepository->findById($record_id),

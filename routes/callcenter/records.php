@@ -20,5 +20,5 @@ Route::group(['prefix' => 'records'], function () {
         'records.mark-as-resolved'
     );
 
-    Route::get('/open/{id}', 'Records@reopen')->name('records.reopen');
+    Route::get('/reopen/{id}', 'Records@reopen')->name('records.reopen');
 });

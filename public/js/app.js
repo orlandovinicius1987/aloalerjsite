@@ -54258,7 +54258,7 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            mode: 'show'
+            mode: laravel.mode
         };
     },
 
