@@ -1,4 +1,5 @@
 const appName = 'vue-contact-outside-workflow'
+import helperMixin from '../mixins/helper'
 
 import editMixins from '../mixins/edit-mixins'
 
@@ -15,6 +16,8 @@ if (jQuery("#" + appName).length > 0) {
             contactTypesArray: [],
             refreshing: false,
         },
+
+        mixins: [helperMixin],
 
         computed: {
             mask: function () {
@@ -62,22 +65,22 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             refreshContactTypesArray() {
-                me = this
+                let $this = this
 
-                me.refreshing = true
+                $this.refreshing = true
 
                 axios.get('/callcenter/contact_types/array')
                     .then(function(response) {
-                        me.contactTypesArray = response.data
+                        $this.contactTypesArray = response.data
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
                     .catch(function(error) {
                         console.log(error)
 
-                        me.contactTypesArray = []
+                        $this.contactTypesArray = []
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
             },
 
@@ -102,11 +105,11 @@ if (jQuery("#" + appName).length > 0) {
         mounted() {
             this.initializeCurrents()
 
-            me = this
+            let $this = this
 
             $("#contact_type_id").on('change', function () {
                 e = document.getElementById("contact_type_id")
-                me.currentContactType = e.options[e.selectedIndex].value
+                $this.currentContactType = e.options[e.selectedIndex].value
             })
         }
 

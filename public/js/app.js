@@ -16050,7 +16050,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.10';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -16314,7 +16314,7 @@ return jQuery;
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -17260,20 +17260,6 @@ return jQuery;
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -19733,7 +19719,7 @@ return jQuery;
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -22654,6 +22640,22 @@ return jQuery;
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -33154,7 +33156,7 @@ return jQuery;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.14.3
+ * @version 1.14.4
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -33491,10 +33493,10 @@ function getBordersSize(styles, axis) {
 }
 
 function getSize(axis, body, html, computedStyle) {
-  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? parseInt(html['offset' + axis]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]) : 0);
 }
 
-function getWindowSizes() {
+function getWindowSizes(document) {
   var body = document.body;
   var html = document.documentElement;
   var computedStyle = isIE(10) && getComputedStyle(html);
@@ -33611,7 +33613,7 @@ function getBoundingClientRect(element) {
   };
 
   // subtract scrollbar size from sizes
-  var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
+  var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
   var width = sizes.width || element.clientWidth || result.right - result.left;
   var height = sizes.height || element.clientHeight || result.bottom - result.top;
 
@@ -33646,7 +33648,7 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
   var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
   // In cases where the parent is fixed, we must ignore negative scroll in offset calc
-  if (fixedPosition && parent.nodeName === 'HTML') {
+  if (fixedPosition && isHTML) {
     parentRect.top = Math.max(parentRect.top, 0);
     parentRect.left = Math.max(parentRect.left, 0);
   }
@@ -33784,7 +33786,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
 
     // In case of HTML, we need a different computation
     if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-      var _getWindowSizes = getWindowSizes(),
+      var _getWindowSizes = getWindowSizes(popper.ownerDocument),
           height = _getWindowSizes.height,
           width = _getWindowSizes.width;
 
@@ -33799,10 +33801,12 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
   }
 
   // Add paddings
-  boundaries.left += padding;
-  boundaries.top += padding;
-  boundaries.right -= padding;
-  boundaries.bottom -= padding;
+  padding = padding || 0;
+  var isPaddingNumber = typeof padding === 'number';
+  boundaries.left += isPaddingNumber ? padding : padding.left || 0;
+  boundaries.top += isPaddingNumber ? padding : padding.top || 0;
+  boundaries.right -= isPaddingNumber ? padding : padding.right || 0;
+  boundaries.bottom -= isPaddingNumber ? padding : padding.bottom || 0;
 
   return boundaries;
 }
@@ -34127,7 +34131,7 @@ function getSupportedPropertyName(property) {
 }
 
 /**
- * Destroy the popper
+ * Destroys the popper.
  * @method
  * @memberof Popper
  */
@@ -34234,7 +34238,7 @@ function removeEventListeners(reference, state) {
 
 /**
  * It will remove resize/scroll events and won't recalculate popper position
- * when they are triggered. It also won't trigger onUpdate callback anymore,
+ * when they are triggered. It also won't trigger `onUpdate` callback anymore,
  * unless you call `update` method manually.
  * @method
  * @memberof Popper
@@ -34411,12 +34415,22 @@ function computeStyle(data, options) {
   var left = void 0,
       top = void 0;
   if (sideA === 'bottom') {
-    top = -offsetParentRect.height + offsets.bottom;
+    // when offsetParent is <html> the positioning is relative to the bottom of the screen (excluding the scrollbar)
+    // and not the bottom of the html element
+    if (offsetParent.nodeName === 'HTML') {
+      top = -offsetParent.clientHeight + offsets.bottom;
+    } else {
+      top = -offsetParentRect.height + offsets.bottom;
+    }
   } else {
     top = offsets.top;
   }
   if (sideB === 'right') {
-    left = -offsetParentRect.width + offsets.right;
+    if (offsetParent.nodeName === 'HTML') {
+      left = -offsetParent.clientWidth + offsets.right;
+    } else {
+      left = -offsetParentRect.width + offsets.right;
+    }
   } else {
     left = offsets.left;
   }
@@ -34525,7 +34539,7 @@ function arrow(data, options) {
 
   //
   // extends keepTogether behavior making sure the popper and its
-  // reference have enough pixels in conjuction
+  // reference have enough pixels in conjunction
   //
 
   // top/left side
@@ -34595,7 +34609,7 @@ function getOppositeVariation(variation) {
  * - `top-end` (on top of reference, right aligned)
  * - `right-start` (on right of reference, top aligned)
  * - `bottom` (on bottom, centered)
- * - `auto-right` (on the side with more space available, alignment depends by placement)
+ * - `auto-end` (on the side with more space available, alignment depends by placement)
  *
  * @static
  * @type {Array}
@@ -35137,7 +35151,7 @@ var modifiers = {
    * The `offset` modifier can shift your popper on both its axis.
    *
    * It accepts the following units:
-   * - `px` or unitless, interpreted as pixels
+   * - `px` or unit-less, interpreted as pixels
    * - `%` or `%r`, percentage relative to the length of the reference element
    * - `%p`, percentage relative to the length of the popper element
    * - `vw`, CSS viewport width unit
@@ -35145,7 +35159,7 @@ var modifiers = {
    *
    * For length is intended the main axis relative to the placement of the popper.<br />
    * This means that if the placement is `top` or `bottom`, the length will be the
-   * `width`. In case of `left` or `right`, it will be the height.
+   * `width`. In case of `left` or `right`, it will be the `height`.
    *
    * You can provide a single value (as `Number` or `String`), or a pair of values
    * as `String` divided by a comma or one (or more) white spaces.<br />
@@ -35166,7 +35180,7 @@ var modifiers = {
    * ```
    * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
    * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
-   * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
+   * > You can read more on this at this [issue](https://github.com/FezVrasta/popper.js/issues/373).
    *
    * @memberof modifiers
    * @inner
@@ -35187,7 +35201,7 @@ var modifiers = {
   /**
    * Modifier used to prevent the popper from being positioned outside the boundary.
    *
-   * An scenario exists where the reference itself is not within the boundaries.<br />
+   * A scenario exists where the reference itself is not within the boundaries.<br />
    * We can say it has "escaped the boundaries" — or just "escaped".<br />
    * In this case we need to decide whether the popper should either:
    *
@@ -35217,23 +35231,23 @@ var modifiers = {
     /**
      * @prop {number} padding=5
      * Amount of pixel used to define a minimum distance between the boundaries
-     * and the popper this makes sure the popper has always a little padding
+     * and the popper. This makes sure the popper always has a little padding
      * between the edges of its container
      */
     padding: 5,
     /**
      * @prop {String|HTMLElement} boundariesElement='scrollParent'
-     * Boundaries used by the modifier, can be `scrollParent`, `window`,
+     * Boundaries used by the modifier. Can be `scrollParent`, `window`,
      * `viewport` or any DOM element.
      */
     boundariesElement: 'scrollParent'
   },
 
   /**
-   * Modifier used to make sure the reference and its popper stay near eachothers
-   * without leaving any gap between the two. Expecially useful when the arrow is
-   * enabled and you want to assure it to point to its reference element.
-   * It cares only about the first axis, you can still have poppers with margin
+   * Modifier used to make sure the reference and its popper stay near each other
+   * without leaving any gap between the two. Especially useful when the arrow is
+   * enabled and you want to ensure that it points to its reference element.
+   * It cares only about the first axis. You can still have poppers with margin
    * between the popper and its reference element.
    * @memberof modifiers
    * @inner
@@ -35251,7 +35265,7 @@ var modifiers = {
    * This modifier is used to move the `arrowElement` of the popper to make
    * sure it is positioned between the reference element and its popper element.
    * It will read the outer size of the `arrowElement` node to detect how many
-   * pixels of conjuction are needed.
+   * pixels of conjunction are needed.
    *
    * It has no effect if no `arrowElement` is provided.
    * @memberof modifiers
@@ -35290,7 +35304,7 @@ var modifiers = {
      * @prop {String|Array} behavior='flip'
      * The behavior used to change the popper's placement. It can be one of
      * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
-     * placements (with optional variations).
+     * placements (with optional variations)
      */
     behavior: 'flip',
     /**
@@ -35300,9 +35314,9 @@ var modifiers = {
     padding: 5,
     /**
      * @prop {String|HTMLElement} boundariesElement='viewport'
-     * The element which will define the boundaries of the popper position,
-     * the popper will never be placed outside of the defined boundaries
-     * (except if keepTogether is enabled)
+     * The element which will define the boundaries of the popper position.
+     * The popper will never be placed outside of the defined boundaries
+     * (except if `keepTogether` is enabled)
      */
     boundariesElement: 'viewport'
   },
@@ -35366,8 +35380,8 @@ var modifiers = {
     fn: computeStyle,
     /**
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3d transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties.
+     * If true, it uses the CSS 3D transformation to position the popper.
+     * Otherwise, it will use the `top` and `left` properties
      */
     gpuAcceleration: true,
     /**
@@ -35394,7 +35408,7 @@ var modifiers = {
    * Note that if you disable this modifier, you must make sure the popper element
    * has its position set to `absolute` before Popper.js can do its work!
    *
-   * Just disable this modifier and define you own to achieve the desired effect.
+   * Just disable this modifier and define your own to achieve the desired effect.
    *
    * @memberof modifiers
    * @inner
@@ -35411,27 +35425,27 @@ var modifiers = {
     /**
      * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
      * @prop {Boolean} gpuAcceleration=true
-     * If true, it uses the CSS 3d transformation to position the popper.
-     * Otherwise, it will use the `top` and `left` properties.
+     * If true, it uses the CSS 3D transformation to position the popper.
+     * Otherwise, it will use the `top` and `left` properties
      */
     gpuAcceleration: undefined
   }
 };
 
 /**
- * The `dataObject` is an object containing all the informations used by Popper.js
- * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
+ * The `dataObject` is an object containing all the information used by Popper.js.
+ * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
  * @name dataObject
  * @property {Object} data.instance The Popper.js instance
  * @property {String} data.placement Placement applied to popper
  * @property {String} data.originalPlacement Placement originally defined on init
  * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
- * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
+ * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
  * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
- * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
- * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
+ * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
+ * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
  * @property {Object} data.boundaries Offsets of the popper boundaries
- * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
+ * @property {Object} data.offsets The measurements of popper, reference and arrow elements
  * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
  * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
  * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
@@ -35439,9 +35453,9 @@ var modifiers = {
 
 /**
  * Default options provided to Popper.js constructor.<br />
- * These can be overriden using the `options` argument of Popper.js.<br />
- * To override an option, simply pass as 3rd argument an object with the same
- * structure of this object, example:
+ * These can be overridden using the `options` argument of Popper.js.<br />
+ * To override an option, simply pass an object with the same
+ * structure of the `options` object, as the 3rd argument. For example:
  * ```
  * new Popper(ref, pop, {
  *   modifiers: {
@@ -35455,7 +35469,7 @@ var modifiers = {
  */
 var Defaults = {
   /**
-   * Popper's placement
+   * Popper's placement.
    * @prop {Popper.placements} placement='bottom'
    */
   placement: 'bottom',
@@ -35467,7 +35481,7 @@ var Defaults = {
   positionFixed: false,
 
   /**
-   * Whether events (resize, scroll) are initially enabled
+   * Whether events (resize, scroll) are initially enabled.
    * @prop {Boolean} eventsEnabled=true
    */
   eventsEnabled: true,
@@ -35481,17 +35495,17 @@ var Defaults = {
 
   /**
    * Callback called when the popper is created.<br />
-   * By default, is set to no-op.<br />
+   * By default, it is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onCreate}
    */
   onCreate: function onCreate() {},
 
   /**
-   * Callback called when the popper is updated, this callback is not called
+   * Callback called when the popper is updated. This callback is not called
    * on the initialization/creation of the popper, but only on subsequent
    * updates.<br />
-   * By default, is set to no-op.<br />
+   * By default, it is set to no-op.<br />
    * Access Popper.js instance with `data.instance`.
    * @prop {onUpdate}
    */
@@ -35499,7 +35513,7 @@ var Defaults = {
 
   /**
    * List of modifiers used to modify the offsets before they are applied to the popper.
-   * They provide most of the functionalities of Popper.js
+   * They provide most of the functionalities of Popper.js.
    * @prop {modifiers}
    */
   modifiers: modifiers
@@ -35519,10 +35533,10 @@ var Defaults = {
 // Methods
 var Popper = function () {
   /**
-   * Create a new Popper.js instance
+   * Creates a new Popper.js instance.
    * @class Popper
    * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-   * @param {HTMLElement} popper - The HTML element used as popper.
+   * @param {HTMLElement} popper - The HTML element used as the popper
    * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
    * @return {Object} instance - The generated Popper.js instance
    */
@@ -35618,7 +35632,7 @@ var Popper = function () {
     }
 
     /**
-     * Schedule an update, it will run on the next UI update available
+     * Schedules an update. It will run on the next UI update available.
      * @method scheduleUpdate
      * @memberof Popper
      */
@@ -35655,7 +35669,7 @@ var Popper = function () {
  * new Popper(referenceObject, popperNode);
  * ```
  *
- * NB: This feature isn't supported in Internet Explorer 10
+ * NB: This feature isn't supported in Internet Explorer 10.
  * @name referenceObject
  * @property {Function} data.getBoundingClientRect
  * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
@@ -53044,6 +53058,9 @@ __webpack_require__("./resources/assets/js/apps/committees.js");
 __webpack_require__("./resources/assets/js/apps/records.js");
 __webpack_require__("./resources/assets/js/apps/committees-search.js");
 __webpack_require__("./resources/assets/js/apps/contact-form.js");
+__webpack_require__("./resources/assets/js/apps/chat.js");
+__webpack_require__("./resources/assets/js/apps/home-slider.js");
+__webpack_require__("./resources/assets/js/apps/phones.js");
 
 $(document).ready(function () {
     $('.select2').select2({
@@ -53063,12 +53080,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
 var appName = 'vue-addresses';
 
-
-Vue.directive('init', {
-    bind: function bind(el, binding, vnode) {
-        vnode.context.form[binding.arg] = binding.value;
-    }
-});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
@@ -53100,39 +53111,39 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh: function refresh() {
-                me = this;
+                var $this = this;
 
-                me.refreshing = true;
+                $this.refreshing = true;
 
                 axios.get('/api/v1/zipcode/' + this.form.zipcode).then(function (response) {
-                    me.tables.addresses = response.data;
+                    $this.tables.addresses = response.data;
 
                     if (response.data.addresses[0].street_name) {
-                        me.form.zipcode = response.data.addresses[0].zip;
-                        me.form.street = response.data.addresses[0].street_name;
-                        me.form.neighbourhood = response.data.addresses[0].neighborhood;
-                        me.form.city = response.data.addresses[0].city;
-                        me.form.state = response.data.addresses[0].state_id;
-                        me.form.country = 'Brasil';
+                        $this.form.zipcode = response.data.addresses[0].zip;
+                        $this.form.street = response.data.addresses[0].street_name;
+                        $this.form.neighbourhood = response.data.addresses[0].neighborhood;
+                        $this.form.city = response.data.addresses[0].city;
+                        $this.form.state = response.data.addresses[0].state_id;
+                        $this.form.country = 'Brasil';
                         document.getElementById("number").focus();
                     }
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables.addresses = [];
+                    $this.tables.addresses = [];
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 });
             },
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             },
 
@@ -53150,6 +53161,82 @@ if (jQuery("#" + appName).length > 0) {
 
         mounted: function mounted() {
             // this.refresh()            
+        }
+    });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/chat.js":
+/***/ (function(module, exports) {
+
+var appName = 'vue-chat';
+
+if (jQuery("#" + appName).length > 0) {
+    new Vue({
+        el: '#' + appName,
+
+        data: {
+            chatOnline: false,
+
+            clientChatSocket: null
+        },
+
+        methods: {
+            __checkOnline: function __checkOnline() {
+                var url = laravel.chat.client.base_url + '/api/v1/chat/client/operators/online/for/client/' + laravel.chat.client.id;
+
+                console.log('looking for online users...');
+
+                var self = this;
+
+                jQuery.ajax({
+                    url: url,
+
+                    jsonp: "callback",
+
+                    dataType: "jsonp",
+
+                    success: function success(response) {
+                        self.chatOnline = response.length > 0;
+                    }
+                });
+            },
+
+            __bootSocketListeners: function __bootSocketListeners() {
+                this.clientChatSocket.on('chat-channel:UserAuthenticated', function (data) {
+                    this.__checkOnlineInAWhile();
+                }.bind(this));
+
+                this.clientChatSocket.on('chat-channel:UserLoggedOut', function (data) {
+                    this.__checkOnlineInAWhile();
+                }.bind(this));
+            },
+
+            __checkOnlineInAWhile: function __checkOnlineInAWhile() {
+                setTimeout(function () {
+                    this.__checkOnline();
+                }.bind(this), 1500);
+            },
+
+            __instantiateIO: function __instantiateIO() {
+                this.clientChatSocket = io(laravel.chat.client.socket_url);
+            },
+            __boot: function __boot() {
+                this.__checkOnline();
+
+                this.__bootSocketListeners();
+
+                setInterval(function () {
+                    this.__checkOnline();
+                }.bind(this), 40 * 1000);
+            }
+        },
+
+        mounted: function mounted() {
+            this.__instantiateIO();
+
+            this.__boot();
         }
     });
 }
@@ -53187,46 +53274,46 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh: function refresh() {
-                me = this;
+                var $this = this;
 
-                me.refreshing = true;
+                $this.refreshing = true;
 
-                me.errors = null;
+                $this.errors = null;
 
-                me.tables.committees = null;
+                $this.tables.committees = null;
 
                 axios.post('/api/v1/committees-search', { search: this.form.search }).then(function (response) {
-                    me.tables.committees = [];
-                    me.errors = false;
+                    $this.tables.committees = [];
+                    $this.errors = false;
 
                     if (response.data.success) {
-                        me.tables.committees = response.data.data;
-                        me.errors = response.data.errors;
+                        $this.tables.committees = response.data.data;
+                        $this.errors = response.data.errors;
                     }
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 });
             },
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             },
             refreshTable: function refreshTable(table) {
                 axios.get('/' + table).then(function (response) {
-                    me.tables[table] = response.data;
+                    $this.tables[table] = response.data;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables[table] = [];
+                    $this.tables[table] = [];
                 });
             },
             isSearching: function isSearching() {
@@ -53235,8 +53322,6 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted: function mounted() {
-            console.log('mounted');
-
             this.refresh();
 
             // this.refreshTable('people')
@@ -53279,8 +53364,6 @@ if (jQuery("#" + appName).length > 0) {
 
 var appName = 'vue-contact-form';
 
-console.log('vue-contact-form');
-
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
@@ -53308,38 +53391,38 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh: function refresh() {
-                me = this;
+                var $this = this;
 
-                me.refreshing = true;
+                $this.refreshing = true;
 
-                axios.get('/api/v1/zipcode/' + this.form.zipcode).then(function (response) {
-                    me.tables.addresses = response.data;
+                axios.get('/api/v1/zipcode/' + this.form.cep).then(function (response) {
+                    $this.tables.addresses = response.data;
 
                     if (response.data.addresses[0].street_name) {
-                        me.form.cep = response.data.addresses[0].zip;
-                        me.form.rua = response.data.addresses[0].street_name;
-                        me.form.bairro = response.data.addresses[0].neighborhood;
-                        me.form.cidade = response.data.addresses[0].city;
-                        me.form.country = 'Brasil';
+                        $this.form.cep = response.data.addresses[0].zip;
+                        $this.form.rua = response.data.addresses[0].street_name;
+                        $this.form.bairro = response.data.addresses[0].neighborhood;
+                        $this.form.cidade = response.data.addresses[0].city;
+                        $this.form.country = 'Brasil';
                         document.getElementById("number").focus();
                     }
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables.addresses = [];
+                    $this.tables.addresses = [];
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 });
             },
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             }
         },
@@ -53357,16 +53440,22 @@ if (jQuery("#" + appName).length > 0) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__ = __webpack_require__("./resources/assets/js/mixins/edit-mixins.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var appName = 'vue-contact-outside-workflow';
 
 
 
+
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    var _ref;
+
+    var app = new Vue((_ref = {
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_edit_mixins__["a" /* default */]],
 
         data: {
             laravel: laravel,
@@ -53374,131 +53463,189 @@ if (jQuery("#" + appName).length > 0) {
             currentContact: '',
             contactTypesArray: [],
             refreshing: false
-        },
-
-        computed: {
-            mask: function mask() {
-                var mask = "*".repeat(255);
-
-                switch (this.currentContactTypeName) {
-                    case 'mobile':
-                        mask = ['(##) #####-####'];
-                        break;
-                    case 'whatsapp':
-                        mask = ['(##) #####-####'];
-                        break;
-                    case 'phone':
-                        mask = '(##) ####-####';
-                        break;
-                }
-
-                return mask;
-            },
-
-            masked: function masked() {
-                return true;
-            },
-
-
-            currentContactTypeName: function currentContactTypeName() {
-                return this.contactTypesArray[this.currentContactType];
-            },
-
-            tokens: function tokens() {
-                return {
-                    '*': { pattern: /.*/ },
-                    '#': { pattern: /\d/ },
-                    'X': { pattern: /[0-9a-zA-Z]/ },
-                    'S': { pattern: /[a-zA-Z]/ },
-                    'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                            return v.toLocaleUpperCase();
-                        } },
-                    'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
-                            return v.toLocaleLowerCase();
-                        } },
-                    '!': { escape: true }
-                };
-            }
-        },
-
-        methods: {
-            refresh: function refresh() {
-                this.refreshContactTypesArray();
-            },
-            refreshContactTypesArray: function refreshContactTypesArray() {
-                me = this;
-
-                me.refreshing = true;
-
-                axios.get('/callcenter/contact_types/array').then(function (response) {
-                    me.contactTypesArray = response.data;
-
-                    me.refreshing = false;
-                }).catch(function (error) {
-                    console.log(error);
-
-                    me.contactTypesArray = [];
-
-                    me.refreshing = false;
-                });
-            },
-            initializeCurrents: function initializeCurrents() {
-                this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
-                if (laravel.length == 0) {
-                    this.currentContact = '';
-                } else {
-                    if (laravel.old.contact != null) {
-                        this.currentContact = laravel.old.contact;
-                    } else {
-                        this.currentContact = laravel.contact.contact;
-                    }
-                }
-            }
-        },
-
-        beforeMount: function beforeMount() {
-            this.refresh();
-        },
-        mounted: function mounted() {
-            this.initializeCurrents();
-
-            me = this;
-
-            $("#contact_type_id").on('change', function () {
-                e = document.getElementById("contact_type_id");
-                me.currentContactType = e.options[e.selectedIndex].value;
-            });
         }
-    });
+
+    }, _defineProperty(_ref, 'mixins', [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]), _defineProperty(_ref, 'computed', {
+        mask: function mask() {
+            var mask = "*".repeat(255);
+
+            switch (this.currentContactTypeName) {
+                case 'mobile':
+                    mask = ['(##) #####-####'];
+                    break;
+                case 'whatsapp':
+                    mask = ['(##) #####-####'];
+                    break;
+                case 'phone':
+                    mask = '(##) ####-####';
+                    break;
+            }
+
+            return mask;
+        },
+
+        masked: function masked() {
+            return true;
+        },
+
+
+        currentContactTypeName: function currentContactTypeName() {
+            return this.contactTypesArray[this.currentContactType];
+        },
+
+        tokens: function tokens() {
+            return {
+                '*': { pattern: /.*/ },
+                '#': { pattern: /\d/ },
+                'X': { pattern: /[0-9a-zA-Z]/ },
+                'S': { pattern: /[a-zA-Z]/ },
+                'A': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                        return v.toLocaleUpperCase();
+                    } },
+                'a': { pattern: /[a-zA-Z]/, transform: function transform(v) {
+                        return v.toLocaleLowerCase();
+                    } },
+                '!': { escape: true }
+            };
+        }
+    }), _defineProperty(_ref, 'methods', {
+        refresh: function refresh() {
+            this.refreshContactTypesArray();
+        },
+        refreshContactTypesArray: function refreshContactTypesArray() {
+            var $this = this;
+
+            $this.refreshing = true;
+
+            axios.get('/callcenter/contact_types/array').then(function (response) {
+                $this.contactTypesArray = response.data;
+
+                $this.refreshing = false;
+            }).catch(function (error) {
+                console.log(error);
+
+                $this.contactTypesArray = [];
+
+                $this.refreshing = false;
+            });
+        },
+        initializeCurrents: function initializeCurrents() {
+            this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id;
+            if (laravel.length == 0) {
+                this.currentContact = '';
+            } else {
+                if (laravel.old.contact != null) {
+                    this.currentContact = laravel.old.contact;
+                } else {
+                    this.currentContact = laravel.contact.contact;
+                }
+            }
+        }
+    }), _defineProperty(_ref, 'beforeMount', function beforeMount() {
+        this.refresh();
+    }), _defineProperty(_ref, 'mounted', function mounted() {
+        this.initializeCurrents();
+
+        var $this = this;
+
+        $("#contact_type_id").on('change', function () {
+            e = document.getElementById("contact_type_id");
+            $this.currentContactType = e.options[e.selectedIndex].value;
+        });
+    }), _ref));
 }
 
 /***/ }),
 
 /***/ "./resources/assets/js/apps/contacts.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_helper__ = __webpack_require__("./resources/assets/js/mixins/helper.js");
 var appName = 'vue-contacts';
 
-Vue.directive('init', {
-    bind: function bind(el, binding, vnode) {
-        console.info(binding.arg);
-        vnode.context.form[binding.arg] = binding.value;
-    }
-});
 
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
         data: {
-            form: {
-                mobile: null,
-                whatsapp: null,
-                phone: null
+            form: {}
+        },
+
+        methods: {},
+
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_helper__["a" /* default */]]
+    });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/home-slider.js":
+/***/ (function(module, exports) {
+
+var appName = 'vue-home-slide';
+
+if (jQuery("#" + appName).length > 0) {
+    new Vue({
+        el: '#' + appName,
+
+        computed: {
+            slideWidth: function slideWidth() {
+                return jQuery('#slider ul li').width();
+            },
+            slideCount: function slideCount() {
+                return jQuery('#slider ul li').length;
+            },
+            slideHeight: function slideHeight() {
+                return jQuery('#slider ul li').height();
+            },
+            sliderUlWidth: function sliderUlWidth() {
+                return this.slideCount * this.slideWidth;
             }
         },
 
-        methods: {}
+        methods: {
+            __bootSlider: function __bootSlider() {
+                var $this = this;
+
+                setInterval(function () {
+                    $this.moveRight();
+                }, 3000);
+
+                jQuery('#slider').css({ width: this.slideWidth, height: this.slideHeight });
+
+                jQuery('#slider ul').css({ width: this.sliderUlWidth, marginLeft: -this.slideWidth });
+
+                jQuery('#slider ul li:last-child').prependTo('#slider ul');
+
+                jQuery('a.control_prev').click(function () {
+                    $this.moveLeft();
+                });
+            },
+            moveLeft: function moveLeft() {
+                jQuery('#slider ul').animate({
+                    left: +this.slideWidth
+                }, 200, function () {
+                    jQuery('#slider ul li:last-child').prependTo('#slider ul');
+                    jQuery('#slider ul').css('left', '');
+                });
+            },
+            moveRight: function moveRight() {
+                jQuery('#slider ul').animate({
+                    left: -this.slideWidth
+                }, 200, function () {
+                    jQuery('#slider ul li:first-child').appendTo('#slider ul');
+
+                    jQuery('#slider ul').css('left', '');
+                });
+            }
+        },
+
+        mounted: function mounted() {
+            // this.__bootSlider()
+        }
     });
 }
 
@@ -53527,6 +53674,333 @@ if (jQuery("#" + appName).length > 0) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/apps/phones.js":
+/***/ (function(module, exports) {
+
+var appName = 'vue-phones';
+
+if (jQuery("#" + appName).length > 0) {
+    new Vue({
+        el: '#' + appName,
+
+        data: {
+            phones: [],
+
+            filter: ''
+        },
+
+        computed: {
+            filteredPhones: function filteredPhones() {
+                var _this = this;
+
+                if (!this.filter) {
+                    return this.phones;
+                }
+
+                return _.filter(this.phones, function (phone) {
+                    return new RegExp(_this.filter, 'i').test(phone.name + phone.label);
+                });
+            }
+        },
+
+        methods: {
+            __loadData: function __loadData() {
+                return [{
+                    'label': 'ABAM',
+                    'name': 'Associação Brasileira de Auxílio Mútuo ao Servidor Público',
+                    'phones': ['2232-4580']
+                }, {
+                    'label': 'Aerobarcas',
+                    'name': '',
+                    'phones': ['2533-4343']
+                }, {
+                    'label': 'Aeroporto Internacional',
+                    'name': '',
+                    'phones': ['2432-7070']
+                }, {
+                    'label': 'Aeroporto de Jacarepaguá',
+                    'name': '',
+                    'phones': ['2620-8589']
+                }, {
+                    'label': 'Aeroporto Santos Dumont',
+                    'name': '',
+                    'phones': ['3398-5050']
+                }, {
+                    'label': 'AFDM - BRASIL',
+                    'name': '',
+                    'phones': ['3398-4526']
+                }, {
+                    'label': 'Agência Nacional de Saúde',
+                    'name': '',
+                    'phones': ['3398-4527']
+                }, {
+                    'label': 'Água e esgoto',
+                    'name': 'Cedae (Companhia Estadual de Águas e Esgotos)',
+                    'phones': ['0800-2821-195']
+                }, {
+                    'label': 'Al-Anon',
+                    'name': '',
+                    'phones': ['2507-4558']
+                }, {
+                    'label': 'Alcoólicos Anônimos',
+                    'name': '',
+                    'phones': ['2507-5830']
+                }, {
+                    'label': 'Alô Rio',
+                    'name': '',
+                    'phones': ['2542-8080, 2542-8004']
+                }, {
+                    'label': 'Ambulância',
+                    'name': 'Serviço Público de Remoção de Doentes - SAMU',
+                    'phones': ['192']
+                }, {
+                    'label': 'Ampla',
+                    'name': 'Iluminação e energia',
+                    'phones': ['0800-2821-195']
+                }, {
+                    'label': 'ANATEL',
+                    'name': '',
+                    'phones': ['0800-282-1195']
+                }, {
+                    'label': 'Animais',
+                    'name': 'Suipa (Sociedade União Internacional Protetora dos Animais)',
+                    'phones': ['2501-1529, 2501-9954, 2261-6875, 2501-8691, 2261-9405, 2501-1085']
+                }, {
+                    'label': 'Anjos do Asfalto',
+                    'name': '',
+                    'phones': ['2590-2121']
+                }, {
+                    'label': 'ASEP',
+                    'name': 'Agência Reguladora de Serviços Públicos do Rio de Janeiro',
+                    'phones': ['2253-4813']
+                }, {
+                    'label': 'Atendimento ao Turista',
+                    'name': 'Centro Integrado de Atendimento ao Turista',
+                    'phones': ['2541-7522, 2542-8004, 2542-8080']
+                }, {
+                    'label': 'APAE',
+                    'name': '',
+                    'phones': ['2220-5065']
+                }, {
+                    'label': 'Banco Central',
+                    'name': '',
+                    'phones': ['2253-9283']
+                }, {
+                    'label': 'Banco de Sangue',
+                    'name': '',
+                    'phones': ['0800-280-0120']
+                }, {
+                    'label': 'BPTur',
+                    'name': 'Batalhão de Policiamento em Áreas Turísticas',
+                    'phones': ['2332-7932']
+                }, {
+                    'label': 'Barcas',
+                    'name': '',
+                    'phones': ['133']
+                }, {
+                    'label': 'Caixa Econômica Federal',
+                    'name': '',
+                    'phones': ['3978-8827']
+                }, {
+                    'label': 'CAS',
+                    'name': '',
+                    'phones': ['3978-8829']
+                }, {
+                    'label': 'Cedae',
+                    'name': '',
+                    'phones': ['0800-24-9040']
+                }, {
+                    'label': 'CEG',
+                    'name': 'Gás',
+                    'phones': ['0800-24-7766, 0800-282-0205, 0800-979-2345']
+                }, {
+                    'label': 'Central de Atendimento à Mulher',
+                    'name': '',
+                    'phones': ['180']
+                }, {
+                    'label': 'Central de Atendimento ao Cidadão',
+                    'name': '',
+                    'phones': ['1746']
+                }, {
+                    'label': 'CET-Rio',
+                    'name': 'Trânsito',
+                    'phones': ['2226-5566, 0800-282-0708']
+                }, {
+                    'label': 'Comlurb',
+                    'name': 'Companhia Municipal de Limpeza Urbana',
+                    'phones': ['2204-9999, 2214-7073']
+                }, {
+                    'label': 'Corpo de Bombeiros',
+                    'name': '',
+                    'phones': ['193']
+                }, {
+                    'label': 'Correios',
+                    'name': '',
+                    'phones': ['0800-570-0100']
+                }, {
+                    'label': 'Crianças desaparecidas',
+                    'name': '',
+                    'phones': ['2286-8337, 2226-6375, 2286-7631']
+                }, {
+                    'label': 'CVV',
+                    'name': 'Centro de Valorização da Vida',
+                    'phones': ['0800-726-0101']
+                }, {
+                    'label': 'Defesa Civil',
+                    'name': '',
+                    'phones': ['199']
+                }, {
+                    'label': 'Defesa Civil Estadual',
+                    'name': '',
+                    'phones': ['3399-4302, 3399-4301, 2293-1713']
+                }, {
+                    'label': 'Defesa Civil Municipal',
+                    'name': '',
+                    'phones': ['199']
+                }, {
+                    'label': 'Delegacia de Atendimento ao Turista',
+                    'name': '',
+                    'phones': ['0800-282-1195']
+                }, {
+                    'label': 'Delegacia da Mulher',
+                    'name': '',
+                    'phones': ['142']
+                }, {
+                    'label': 'Detran',
+                    'name': '',
+                    'phones': ['0800-20-4040, 0800-24-7766']
+                }, {
+                    'label': 'Direitos Humanos',
+                    'name': '',
+                    'phones': ['2508-5500']
+                }, {
+                    'label': 'Disque-Aids',
+                    'name': '',
+                    'phones': ['0800-570-0100']
+                }, {
+                    'label': 'Disque-Amamentação',
+                    'name': '',
+                    'phones': ['141']
+                }, {
+                    'label': 'Disque Barulho',
+                    'name': '',
+                    'phones': ['2503-2795']
+                }, {
+                    'label': 'Disque Denúncia',
+                    'name': '',
+                    'phones': ['2253-1177']
+                }, {
+                    'label': 'Disque Intoxicação',
+                    'name': '',
+                    'phones': ['0800 722 6001']
+                }, {
+                    'label': 'Disque Procon',
+                    'name': 'Defesa do consumidor',
+                    'phones': ['1512']
+                }, {
+                    'label': 'Disque Sinal',
+                    'name': '',
+                    'phones': ['2508-5500']
+                }, {
+                    'label': 'Disque Transportes',
+                    'name': 'Trânsito',
+                    'phones': ['2286-8010']
+                }, {
+                    'label': 'Disque Verde',
+                    'name': 'Patrulha ambiental',
+                    'phones': ['2498-1001']
+                }, {
+                    'label': 'GAT',
+                    'name': 'Grupamento de Apoio ao Turista',
+                    'phones': ['2535-3780, 2535-2385']
+                }, {
+                    'label': 'Disque Sangue HEMORIO',
+                    'name': '',
+                    'phones': ['0800 2820708']
+                }, {
+                    'label': 'INCA',
+                    'name': '',
+                    'phones': ['3207-1000']
+                }, {
+                    'label': 'Instituto Benjamin Constant',
+                    'name': '',
+                    'phones': ['3478-4442']
+                }, {
+                    'label': 'Light',
+                    'name': 'Iluminação e energia',
+                    'phones': ['0800-282-0120']
+                }, {
+                    'label': 'Moradores de rua',
+                    'name': 'Secretaria de Estado de Assistência Social e Direitos Humanos',
+                    'phones': ['2299-5451, 2299-5697']
+                }, {
+                    'label': 'Nar-Anon',
+                    'name': '',
+                    'phones': ['2263-6595']
+                }, {
+                    'label': 'Narcóticos Anônimos',
+                    'name': '',
+                    'phones': ['2533-5015']
+                }, {
+                    'label': 'Polícia Civil',
+                    'name': '',
+                    'phones': ['197']
+                }, {
+                    'label': 'Polícia Federal',
+                    'name': '',
+                    'phones': ['194']
+                }, {
+                    'label': 'Polícia Militar',
+                    'name': '',
+                    'phones': ['190']
+                }, {
+                    'label': 'Poda ou remoção de árvores',
+                    'name': '',
+                    'phones': ['2221-2574']
+                }, {
+                    'label': 'Praças abandonadas',
+                    'name': 'Fundação Parques e Jardins',
+                    'phones': ['2323-3500']
+                }, {
+                    'label': 'RioLuz',
+                    'name': 'Iluminação e energia',
+                    'phones': ['3907-5600, 2535-5151']
+                }, {
+                    'label': 'Rodoviária Novo Rio',
+                    'name': '',
+                    'phones': ['2263-4857, 3213-1800, R 397']
+                }, {
+                    'label': 'Secretaria Municipal de Assistência Social',
+                    'name': '',
+                    'phones': ['3973-3800']
+                }, {
+                    'label': 'Tapa buraco',
+                    'name': '',
+                    'phones': ['2589-1234']
+                }, {
+                    'label': 'Telefonia',
+                    'name': '',
+                    'phones': ['10331']
+                }, {
+                    'label': 'TURISRIO',
+                    'name': 'Companhia de Turismo do Estado do Rio de Janeiro',
+                    'phones': ['0800 282 2007, 2333-1037']
+                }, {
+                    'label': 'Vigilância sanitária',
+                    'name': '',
+                    'phones': ['2503-2280, 2215-0690']
+                }];
+            }
+        },
+
+        mounted: function mounted() {
+            this.phones = this.__loadData();
+        }
+    });
+}
+
+/***/ }),
+
 /***/ "./resources/assets/js/apps/progresses.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53537,33 +54011,10 @@ var appName = 'vue-progress';
 
 
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
-
-        methods: {
-            changeFormRoute: function changeFormRoute(action) {
-                form = document.getElementById('formProgress');
-                form.action = action;
-                form.submit();
-            },
-            confirm: function confirm(action) {
-                var _this = this;
-
-                swal({
-                    title: " Você tem certeza? ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (willDelete) {
-                    if (willDelete) {
-                        var $this = _this;
-                        $this.changeFormRoute(action);
-                    }
-                });
-            }
-        }
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
     });
 }
 
@@ -53579,37 +54030,10 @@ var appName = 'vue-record';
 
 
 if (jQuery("#" + appName).length > 0) {
-    var app = new Vue({
+    new Vue({
         el: '#' + appName,
 
-        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]],
-
-        methods: {
-            changeFormRoute: function changeFormRoute(action) {
-                document.getElementById('formRecords').action = action;
-                document.getElementById('formRecords').submit();
-            },
-            copyUrl: function copyUrl(url) {
-                var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
-
-                copy(url);
-            },
-            confirm: function confirm(action) {
-                var _this = this;
-
-                swal({
-                    title: "Você tem certeza?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                }).then(function (willDelete) {
-                    if (willDelete) {
-                        var $this = _this;
-                        $this.changeFormRoute(action);
-                    }
-                });
-            }
-        }
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit_mixins__["a" /* default */]]
     });
 }
 
@@ -53683,19 +54107,21 @@ if (jQuery("#" + appName).length > 0) {
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             },
             refreshTable: function refreshTable(table) {
+                var $this = this;
+
                 axios.get('/' + table).then(function (response) {
-                    me.tables[table] = response.data;
+                    $this.tables[table] = response.data;
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables[table] = [];
+                    $this.tables[table] = [];
                 });
             },
             isSearching: function isSearching() {
@@ -53713,8 +54139,6 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted: function mounted() {
-            console.log('mounted');
-
             this.refresh();
 
             // this.refreshTable('people')
@@ -53731,6 +54155,7 @@ if (jQuery("#" + appName).length > 0) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask__ = __webpack_require__("./node_modules/vue-the-mask/dist/vue-the-mask.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_the_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_the_mask__);
+
 
 window._ = __webpack_require__("./node_modules/lodash/lodash.js");
 window.Popper = __webpack_require__("./node_modules/popper.js/dist/esm/popper.js").default;
@@ -53826,11 +54251,47 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 
 
     methods: {
-        editButton: function editButton(event) {
+        copyUrl: function copyUrl(url) {
+            var copy = __webpack_require__("./node_modules/copy-text-to-clipboard/index.js");
+
+            copy(url);
+        },
+        editButton: function editButton() {
             this.mode = 'edit';
         },
-        cancel: function cancel(event) {
+        cancel: function cancel() {
             location.reload();
+        },
+        submitForm: function submitForm(action, formId) {
+            var form = document.getElementById(formId);
+
+            form.action = action;
+
+            form.submit();
+        },
+        confirmQuestion: function confirmQuestion() {
+            return swal({
+                title: "Você tem certeza?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            });
+        },
+        confirm: function confirm(action) {
+            this.confirmQuestion().then(function (confirmed) {
+                if (confirmed) {
+                    window.location.href = action;
+                }
+            });
+        },
+        confirmForPost: function confirmForPost(action, formId) {
+            var _this = this;
+
+            this.confirmQuestion().then(function (confirmed) {
+                if (confirmed) {
+                    _this.submitForm(action, formId);
+                }
+            });
         }
     },
 
@@ -53845,7 +54306,47 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
             return this.mode === 'create';
         }
     }
+});
 
+/***/ }),
+
+/***/ "./resources/assets/js/mixins/helper.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            key: 'value'
+        };
+    },
+
+
+    methods: {
+        detail: function detail(router) {
+            window.location.href = router;
+        },
+        changeFormRoute: function changeFormRoute(action, formId) {
+            var form = document.getElementById(formId);
+            form.action = action;
+            form.submit();
+        },
+        confirm: function confirm(action, formId) {
+            var _this = this;
+
+            swal({
+                title: " Você tem certeza? ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    var $this = _this;
+                    $this.changeFormRoute(action, formId);
+                }
+            });
+        }
+    }
 });
 
 /***/ }),
