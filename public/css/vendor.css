@@ -11974,7 +11974,7 @@ a.text-dark:focus {
   background-color: #ffffff;
   border-bottom: 0px solid #e8eff3;
   border-top: 0px solid #e8eff3;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0.8rem 0.8rem 0 0;
   padding: 15px;
   margin-top: 10px;
   color: #546975;
@@ -11988,15 +11988,20 @@ a.text-dark:focus {
 
 .card .card-body {
   padding: 0;
+  background-color: #ffffff;
+  border-radius: 0 0 0.8rem 0.8rem;
+  -webkit-box-shadow: 0px 2px 4px #dce8ee;
+          box-shadow: 0px 2px 4px #dce8ee;
+  padding: 0 5px 0 5px;
 }
 
 .card .card-body .table {
   background: #f3f7f9;
   /*border: 1px solid $grey-light02;*/
   border: 0px;
-  -webkit-box-shadow: 0px 2px 4px #dce8ee;
-          box-shadow: 0px 2px 4px #dce8ee;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-bottom: 1px solid #e8eff3;
+  /*box-shadow: 0px 2px 4px $grey-light03;*/
+  /*border-radius: 0 0 0.5rem 0.5rem  ;*/
 }
 
 .card .card-body .table thead {
