@@ -62,7 +62,11 @@ class Records extends Controller
             )->sendNotifications();
         }
 
-        $this->showSuccessMessage('Protocolo gravado com sucesso.');
+        $this->showSuccessMessage(
+            'Protocolo ' .
+                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
+                ' com sucesso.'
+        );
 
         return redirect()->to(
             route(

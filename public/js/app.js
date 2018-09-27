@@ -53140,18 +53140,18 @@ if (jQuery("#" + appName).length > 0) {
                 }).catch(function (error) {
                     console.log(error);
 
-                    me.tables.addresses = [];
+                    $this.tables.addresses = [];
 
-                    me.refreshing = false;
+                    $this.refreshing = false;
                 });
             },
             typeKeyUp: function typeKeyUp() {
                 clearTimeout(this.timeout);
 
-                me = this;
+                var $this = this;
 
                 this.timeout = setTimeout(function () {
-                    me.refresh();
+                    $this.refresh();
                 }, 500);
             },
 

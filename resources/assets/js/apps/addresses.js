@@ -61,18 +61,18 @@ if (jQuery("#" + appName).length > 0) {
                 .catch(function(error) {
                     console.log(error)
 
-                    me.tables.addresses = []
+                    $this.tables.addresses = []
 
-                    me.refreshing = false
+                    $this.refreshing = false
                 })
             },
 
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                me = this
+                const $this = this
 
-                this.timeout = setTimeout(function () { me.refresh() }, 500)
+                this.timeout = setTimeout(function () { $this.refresh() }, 500)
             },
 
             isNumber: function(evt) {

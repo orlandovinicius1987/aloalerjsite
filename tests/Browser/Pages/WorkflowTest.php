@@ -47,13 +47,16 @@ class WorkflowTest extends DuskTestCase
                     ->waitForText('Cadastrar novo')
                     ->click('@cadastrarNovoCidadaoButton')
                     ->type('#identification', $person->identification);
+
                 foreach (str_split($person->cpf_cnpj_com_pontos) as $char) {
                     $browser->keys('#cpf_cnpj', $char)->pause(20);
                 }
+
                 $browser
                     ->type('#name', $person->name)
                     ->click('#saveButton')
-                    ->waitForText('PROTOCOLO EM ANDAMENTO')
+                    ->waitForText('Novo Protocolo')
+                    ->assertSee('Usuário cadastrado com sucesso')
                     ->select('#origin_id', $record->origin_id)
                     ->select('#committee_id', $record->committee_id)
                     ->select('#record_type_id', $record->record_type_id)
