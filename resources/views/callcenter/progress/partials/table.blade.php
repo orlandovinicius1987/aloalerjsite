@@ -1,6 +1,6 @@
     <div class="card-body" id="vue-progress">
 
-        <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+        <table id="progressesTable" class="table table-striped table-hover table-progress" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Tipo de Andamento</th>

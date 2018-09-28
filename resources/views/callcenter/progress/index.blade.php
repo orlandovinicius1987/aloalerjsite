@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <h3>
-                    Andamentos
+                    <i class="fas fa-tasks"></i> Andamentos
                 </h3>
             </div>
 

@@ -12093,6 +12093,20 @@ a.text-dark:focus {
   background: #eaeff5;
 }
 
+@media only screen and (min-width: 992px) {
+  .card .card-body .table-progress td {
+    min-width: 100px;
+  }
+
+  .card .card-body .table-progress td:first-child {
+    min-width: 180px;
+  }
+
+  .card .card-body .table-progress td:last-child {
+    min-width: 180px;
+  }
+}
+
 .card .card-body .pagination {
   padding-top: 15px;
 }

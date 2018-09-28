@@ -436,6 +436,29 @@
 
     }
 
+    @media only screen and (min-width: 992px) {
+
+      .table-progress {
+
+        td {
+          min-width: 100px;
+        }
+
+        td {
+          &:first-child {
+            min-width: 180px;
+          }
+          &:last-child {
+            min-width: 180px;
+          }
+        }
+      }
+
+
+    }
+
+
+
 
     .pagination {
       padding-top: 15px;
