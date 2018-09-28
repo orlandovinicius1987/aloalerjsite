@@ -11185,7 +11185,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle {
-  margin: 0 4rem 0 4rem;
+  margin: 0 4rem;
   padding: 0;
   position: relative;
   border: none;
@@ -11224,7 +11224,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle:after {
-  content: 'sim';
+  content: 'On';
   right: -4rem;
   opacity: 0.5;
 }
@@ -11447,7 +11447,7 @@ a.text-dark:focus {
 
 .btn-toggle.btn-sm,
 .btn-group-sm > .btn-toggle.btn {
-  margin: -3px 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
   padding: 0;
   position: relative;
   border: none;
@@ -11573,7 +11573,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle.btn-xs {
-  margin: -2px 0 0 0;
+  margin: 0 0;
   padding: 0;
   position: relative;
   border: none;
@@ -11845,6 +11845,10 @@ a.text-dark:focus {
 
 .login .card .card-body .form-check .form-check-label {
   color: #546975;
+}
+
+.login .card .card-body .btn.btn-toggle {
+  margin-top: -3px;
 }
 
 .section-title {
