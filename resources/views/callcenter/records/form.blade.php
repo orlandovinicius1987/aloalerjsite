@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
-@section('content')
+
+@section('heading')
+    @parent
+
+
+
+
+
+
+
+
     <div class="card mt-4"  id="vue-record">
         <div class="card-header">
             <div class="row">
@@ -311,6 +321,11 @@
             </form>
         </div>
     </div>
+
+@endsection
+
+
+@section('content')
 
     @if (isset($progresses))
         @include('callcenter.progress.index')

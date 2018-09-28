@@ -11878,6 +11878,10 @@ a.text-dark:focus {
   padding-bottom: 30px;
 }
 
+.no-results {
+  margin-top: 50px;
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
