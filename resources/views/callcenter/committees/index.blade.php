@@ -6,7 +6,7 @@
 
 
 
-
+{{--
     <div class="row">
 
         <div class="col-1 bg-colored-blue-darker100 square">
@@ -86,12 +86,7 @@
         <div class="col-1 bg-colored-blue-lighter10 square">
 
         </div>
-
-
-
-
-
-    </div>
+    </div>--}}
 
 
     <div class="card mt-4" id="vue-committees-search">

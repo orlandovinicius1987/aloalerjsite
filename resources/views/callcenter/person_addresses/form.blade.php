@@ -271,7 +271,7 @@
                     <div class="col-md-8 offset-md-4">
                     @if ((isset($workflow) && $workflow) || old('workflow'))
                     <button id="saveButton" type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$address])>
-                                Próximo Passo >>>
+                                Próximo Passo  <i class="fas fa-forward"></i>
                     </button>
                                 
                     @else
@@ -281,7 +281,7 @@
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
                     @endif                        
                     </div>
