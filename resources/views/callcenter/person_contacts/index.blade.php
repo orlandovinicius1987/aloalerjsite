@@ -30,9 +30,9 @@
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-4">
-                <h5>
+                <h3>
                     <i class="fas fa-phone"></i> Contatos
-                </h5>
+                </h3>
             </div>
 
             <div class="col-8 text-right">

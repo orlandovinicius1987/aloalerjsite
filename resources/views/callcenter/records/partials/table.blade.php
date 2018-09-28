@@ -2,13 +2,13 @@
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-4">
-                <h5>
+                <h3>
                     <i class="fas fa-list-ol"></i> Protocolos
 
                     @if (isset($onlyNonResolved))
                         Não Resolvidos
                     @endif
-                </h5>
+                </h3>
             </div>
             <div class="col-8 text-right">
                 @if(isset($person))
@@ -60,11 +60,12 @@
                     <td>
 
                             @if($record->resolved_at)
-                                <span class="badge badge-danger">Finalizado</span>
+
+                            <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Finalizado</span>
+
                             @else
                                 {{--<span class="badge badge-success">Em aberto</span>--}}
-                                <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">Em Aberto</span>
-                                <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Finalizado</span>
+                            <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">Em Aberto</span>
 
                             @endIf
 

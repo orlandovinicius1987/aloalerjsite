@@ -303,9 +303,11 @@
   background: none;
   box-shadow: none;
 
-  .card-header {
 
-    background-color: $grey-light01;
+
+  .card-header {
+    background: none;
+    /*background-color: $grey-light01;*/
     border-bottom: 0px solid $grey-light02;
     border-top: 0px solid $grey-light02;
     border-radius: 0.8rem 0.8rem 0 0 ;
@@ -336,7 +338,7 @@
       border: 0px;
 
       box-shadow: 0px 2px 4px $grey-light03;
-      border-radius: 3rem 0.8rem 0.8rem 0.8rem  ;
+      border-radius: 0.8rem 0.8rem 0.8rem 0.8rem  ;
 
       thead {
         background: none;
@@ -432,6 +434,11 @@
         }
       }
 
+    }
+
+
+    .pagination {
+      padding-top: 15px;
     }
   }
 }
