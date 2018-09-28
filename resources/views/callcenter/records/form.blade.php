@@ -281,7 +281,7 @@
                             </button>
                         @else
                             <button id="saveButton" class="btn btn-danger" :disabled="!(isEditing || isCreating)">
-                                Gravar
+                                <i class="far fa-save"></i> Gravar
                             </button>
 
                             @if ($record->id)

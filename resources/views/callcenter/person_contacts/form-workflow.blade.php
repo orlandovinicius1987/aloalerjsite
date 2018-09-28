@@ -143,7 +143,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button id="saveButton" type="submit" class="btn btn-danger">
-                            Gravar
+                            <i class="far fa-save"></i> Gravar
                         </button>
                     </div>
                 </div>

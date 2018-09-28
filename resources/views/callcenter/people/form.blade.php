@@ -94,7 +94,7 @@
                                     @if ($workflow)
                                         Próximo passo >>
                                     @else
-                                        Gravar
+                                        <i class="far fa-save"></i> Gravar
                                     @endif
                                 </button>
                             </div>

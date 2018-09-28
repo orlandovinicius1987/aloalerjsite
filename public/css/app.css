@@ -11825,7 +11825,7 @@ a.text-dark:focus {
   margin-bottom: 23px;
   font-size: 30px;
   border-bottom: solid 0px #b8c5cc;
-  color: #9fb6e5;
+  color: #98bbcc;
 }
 
 .section-header {
@@ -11837,7 +11837,7 @@ a.text-dark:focus {
 }
 
 .section-heading-bg {
-  background-color: #e1eaf0;
+  background-color: #f3f7f9;
   -webkit-box-shadow: inset 0px -2px 4px #cddce5;
           box-shadow: inset 0px -2px 4px #cddce5;
   padding-bottom: 30px;

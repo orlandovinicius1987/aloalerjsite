@@ -277,7 +277,7 @@
                     @else
                         @include('partials.edit-button',['model'=>$address, 'form' =>'formAddress'])
                         <button id="saveButton" type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$address])>
-                            Gravar
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
