@@ -277,7 +277,7 @@
                     <div class="col-md-8 offset-md-4">
                         @if($workflow)
                             <button id="saveButton" type="submit" class="btn btn-danger">
-                                Próximo passo >>
+                                Próximo passo <i class="fas fa-forward"></i>
                             </button>
                         @else
                             <button id="saveButton" class="btn btn-danger" :disabled="!(isEditing || isCreating)">
@@ -288,22 +288,22 @@
                                 @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
 
                                 <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}})">
-                                    Reabrir
+                                    <i class="fas fa-redo"></i> Reabrir
                                 </button>
 
                                 <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}) && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
-                                    Finalizar
+                                    <i class="fas fa-flag-checkered"></i> Finalizar
                                 </button>
                             @endif
 
                             <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                                Cancelar
+                                <i class="fas fa-ban"></i> Cancelar
                             </button>
                         @endif
 
                         @if($record && $record->id)
                             <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
-                                Copiar link público
+                                <i class="far fa-copy"></i> Copiar link público
                             </button>
                         @endif
                     </div>

@@ -175,7 +175,7 @@
 
                         @if(isset($progress) && ! is_null($progress->id))
                             <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                Alterar
+                                <i class="fas fa-pencil-alt"></i> Alterar
                             </button>
                         @endIf
 
@@ -184,7 +184,7 @@
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
 
                         @if ($record->resolved_at)
@@ -193,13 +193,13 @@
                             </button>
                         @else
                             <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-mark-as-resolved') }}', 'formProgress')" class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                                Gravar e finalizar
+                                <i class="far fa-file-check"></i> Gravar e finalizar
                             </button>
                         @endif
 
                         @if ($progress && $progress->id)
                             <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary"  @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                                Notificar cidadão
+                                <i class="fas fa-mail-bulk"></i> Notificar cidadão
                             </a>
                         @endif
                     </div>
