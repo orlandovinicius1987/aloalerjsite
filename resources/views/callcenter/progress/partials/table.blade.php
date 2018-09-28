@@ -37,7 +37,8 @@
                                 <h5><span class="badge badge-success">Sim</span></h5>
                             @endif
                         @else
-                            <h5><span class="badge badge-danger">Não</span></h5>
+                            <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Não</span>
+                            {{--<h5><span class="badge badge-danger">Não</span></h5>--}}
                         @endif
                     </td>
 
