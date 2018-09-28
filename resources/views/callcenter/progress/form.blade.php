@@ -175,7 +175,7 @@
 
                         @if(isset($progress) && ! is_null($progress->id))
                             <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                Alterar
+                                <i class="fas fa-pencil-alt"></i> Alterar
                             </button>
                         @endIf
 
