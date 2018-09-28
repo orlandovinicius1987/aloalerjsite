@@ -26,10 +26,13 @@
     border-top-width: .0625rem;
     border-bottom-width: calc(.2rem + .0625rem);
 
+  i {
+    margin-right: 5px;
+    font-size: 120%;
+  }
+
   &:disabled {
     opacity: 0.35;
-
-
     &:hover{
       b-webkit-transition: none;
       transition: none;
@@ -39,6 +42,8 @@
       border-bottom-width: calc(.2rem + .0625rem);
     }
   }
+
+
 }
 
 

@@ -11722,6 +11722,11 @@ a.text-dark:focus {
   border-bottom-width: calc(.2rem + .0625rem);
 }
 
+.btn i {
+  margin-right: 5px;
+  font-size: 120%;
+}
+
 .btn:disabled {
   opacity: 0.35;
 }
