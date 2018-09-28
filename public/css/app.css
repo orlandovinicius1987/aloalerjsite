@@ -12067,10 +12067,12 @@ a.text-dark:focus {
 }
 
 .label-group .label:first-child {
+  border-right: rgba(0, 0, 0, 0.05) solid 1px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-right: 0;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  padding-left: 8px;
 }
 
 .label-group .label:nth-child(2) {
@@ -12081,6 +12083,7 @@ a.text-dark:focus {
   opacity: 0.8;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  padding: .3em 8px .3em;
 }
 
 .label-group .label i {
