@@ -15,13 +15,15 @@
                 <td>{{ $contact->contact }}</td>
 
                 <td>
-                    <h4>
+
                         @if($contact->active)
-                            <span class="badge badge-success">{{$contact->active_string}}</span>
+                            {{--<span class="badge badge-success">{{$contact->active_string}}</span>--}}
+                        <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">{{$contact->active_string}}</span>
                         @else
-                            <span class="badge badge-danger">{{$contact->active_string}}</span>
+                            {{--<span class="badge badge-danger">{{$contact->active_string}}</span>--}}
+                                <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">{{$contact->active_string}}</span>
                         @endif
-                    </h4>
+
                 </td>
 
                 <td>{{ $contact->created_at_formatted ?? '' }}</td>
