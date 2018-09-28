@@ -72,16 +72,6 @@
 
 
 
-.btn-danger {
-  background-color: $red;
-  border-color: darken($red,15%);
-  &:hover {
-    background-color: darken($red,10%);
-    border-color: darken($red,20%);
-  }
-}
-
-
 
 //*****************************  Login Style   *****************************
 
@@ -101,10 +91,7 @@
 
 
     .card-body {
-
       background: $white;
-
-
       .card-title {
         text-align: center;
         text-transform: uppercase;
@@ -112,8 +99,6 @@
         margin-top: 0px;
         color: $blue-lighter75;
       }
-
-
       .form-control {
         border: solid 1px $grey-light02;
         color: $grey-dark01;
@@ -121,14 +106,14 @@
           color: $grey-light03;
         }
       }
-
       .form-check {
         padding-left: 0;
-
         .form-check-label {
           color: $grey-dark01;
         }
-
+      }
+      .btn.btn-toggle {
+        margin-top: -3px;
       }
     }
   }
@@ -435,6 +420,29 @@
       }
 
     }
+
+    @media only screen and (min-width: 992px) {
+
+      .table-progress {
+
+        td {
+          min-width: 100px;
+        }
+
+        td {
+          &:first-child {
+            min-width: 180px;
+          }
+          &:last-child {
+            min-width: 180px;
+          }
+        }
+      }
+
+
+    }
+
+
 
 
     .pagination {
