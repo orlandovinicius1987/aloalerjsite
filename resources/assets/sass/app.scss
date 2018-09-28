@@ -102,6 +102,8 @@
 
     .card-body {
 
+      background: $white;
+
 
       .card-title {
         text-align: center;
@@ -118,6 +120,15 @@
         &::placeholder{
           color: $grey-light03;
         }
+      }
+
+      .form-check {
+        padding-left: 0;
+
+        .form-check-label {
+          color: $grey-dark01;
+        }
+
       }
     }
   }

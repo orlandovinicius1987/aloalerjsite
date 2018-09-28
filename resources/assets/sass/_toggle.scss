@@ -3,7 +3,7 @@
 
 
 .btn-toggle {
-  margin: 0 4rem;
+  margin: 0 4rem 0 4rem;
   padding: 0;
   position: relative;
   border: none;
@@ -33,11 +33,11 @@
   transition: opacity 0.25s;
 }
 .btn-toggle:before {
-  content: 'Off';
+  content: 'não';
   left: -4rem;
 }
 .btn-toggle:after {
-  content: 'On';
+  content: 'sim';
   right: -4rem;
   opacity: 0.5;
 }
@@ -125,11 +125,11 @@
   transition: opacity 0.25s;
 }
 .btn-toggle.btn-lg:before {
-  content: 'Off';
+  content: 'não';
   left: -5rem;
 }
 .btn-toggle.btn-lg:after {
-  content: 'On';
+  content: 'sim';
   right: -5rem;
   opacity: 0.5;
 }
@@ -182,7 +182,7 @@
   display: none;
 }
 .btn-toggle.btn-sm {
-  margin: 0 0.5rem;
+  margin: -3px 0.5rem 0 0.5rem;
   padding: 0;
   position: relative;
   border: none;
@@ -210,11 +210,11 @@
   transition: opacity 0.25s;
 }
 .btn-toggle.btn-sm:before {
-  content: 'Off';
+  content: 'não';
   left: -0.5rem;
 }
 .btn-toggle.btn-sm:after {
-  content: 'On';
+  content: 'sim';
   right: -0.5rem;
   opacity: 0.5;
 }
@@ -267,7 +267,7 @@
   display: none;
 }
 .btn-toggle.btn-xs {
-  margin: 0 0;
+  margin: -2px 0 0 0;
   padding: 0;
   position: relative;
   border: none;
@@ -295,11 +295,11 @@
   transition: opacity 0.25s;
 }
 .btn-toggle.btn-xs:before {
-  content: 'Off';
+  content: 'não';
   left: 0;
 }
 .btn-toggle.btn-xs:after {
-  content: 'On';
+  content: 'sim';
   right: 0;
   opacity: 0.5;
 }

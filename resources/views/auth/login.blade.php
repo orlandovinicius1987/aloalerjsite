@@ -49,13 +49,18 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
+                                       {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
                                         <label class="form-check-label" for="remember">
                                             Lembrar de mim
                                         </label>
+
+                                        <button type="button" class="btn btn-xs btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off" >
+                                            <div class="handle"></div>
+                                        </button>
+
+
                                     </div>
                                 </div>
                             </div>
