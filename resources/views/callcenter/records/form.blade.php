@@ -234,7 +234,7 @@
                 <div class="form-group row">
                     <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off" @include('partials.disabled',['model'=>$record])>
+                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
                             <div class="handle"></div>
                         </button>
 
@@ -281,7 +281,7 @@
                             </button>
                         @else
                             <button id="saveButton" class="btn btn-danger" :disabled="!(isEditing || isCreating)">
-                                Gravar
+                                <i class="far fa-save"></i> Gravar
                             </button>
 
                             @if ($record->id)

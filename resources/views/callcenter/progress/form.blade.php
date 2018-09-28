@@ -180,7 +180,7 @@
                         @endIf
 
                         <button class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                            Gravar
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
