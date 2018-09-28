@@ -12070,6 +12070,7 @@ a.text-dark:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-right: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .label-group .label:nth-child(2) {
@@ -12079,6 +12080,7 @@ a.text-dark:focus {
   filter: alpha(opacity=80);
   opacity: 0.8;
   text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
 .label-group .label i {

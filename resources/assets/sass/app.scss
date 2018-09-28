@@ -419,10 +419,13 @@
 
     letter-spacing: 0.055em;
 
+
+
     &:first-child{
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       margin-right: 0;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
 
     }
 
@@ -433,6 +436,7 @@
       filter: alpha(opacity=80);
       opacity: 0.8;
       text-transform: uppercase;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
     }
 
     i {
