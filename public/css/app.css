@@ -11722,6 +11722,38 @@ a.text-dark:focus {
   border-bottom-width: calc(.2rem + .0625rem);
 }
 
+.btn:disabled:hover {
+  b-webkit-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0), 0 1px 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0), 0 1px 1px rgba(0, 0, 0, 0);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+}
+
+.btn-danger {
+  background-color: #e3342f;
+  border-color: #ae1c17;
+}
+
+.btn-danger:hover {
+  background-color: #c51f1a;
+  border-color: #981814;
+}
+
+.btn-danger:disabled:hover {
+  background-color: #e3342f;
+  border-color: #e3342f;
+  b-webkit-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0), 0 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0), 0 0px 0px rgba(0, 0, 0, 0);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+}
+
 .navbar-laravel {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -11754,16 +11786,6 @@ a.text-dark:focus {
 
 .navbar-light .navbar-nav .nav-item .nav-link:hover {
   color: #305bb0;
-}
-
-.btn-danger {
-  background-color: #e3342f;
-  border-color: #ae1c17;
-}
-
-.btn-danger:hover {
-  background-color: #c51f1a;
-  border-color: #981814;
 }
 
 .login .alolerj-logo-login {
