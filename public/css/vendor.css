@@ -11722,6 +11722,10 @@ a.text-dark:focus {
   border-bottom-width: calc(.2rem + .0625rem);
 }
 
+.btn:disabled {
+  opacity: 0.35;
+}
+
 .btn:disabled:hover {
   b-webkit-transition: none;
   -webkit-transition: none;

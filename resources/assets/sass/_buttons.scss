@@ -27,6 +27,9 @@
     border-bottom-width: calc(.2rem + .0625rem);
 
   &:disabled {
+    opacity: 0.35;
+
+
     &:hover{
       b-webkit-transition: none;
       transition: none;
@@ -59,6 +62,4 @@
     }
   }
 }
-
-
 
