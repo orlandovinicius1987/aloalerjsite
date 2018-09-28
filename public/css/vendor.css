@@ -11985,7 +11985,8 @@ a.text-dark:focus {
 }
 
 .card .card-header {
-  background-color: #f3f7f9;
+  background: none;
+  /*background-color: $grey-light01;*/
   border-bottom: 0px solid #e8eff3;
   border-top: 0px solid #e8eff3;
   border-radius: 0.8rem 0.8rem 0 0;
@@ -12014,7 +12015,7 @@ a.text-dark:focus {
   border: 0px;
   -webkit-box-shadow: 0px 2px 4px #dce8ee;
           box-shadow: 0px 2px 4px #dce8ee;
-  border-radius: 3rem 0.8rem 0.8rem 0.8rem;
+  border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
 }
 
 .card .card-body .table thead {
@@ -12090,6 +12091,10 @@ a.text-dark:focus {
 
 .card .card-body .table-hover tbody tr:hover {
   background: #eaeff5;
+}
+
+.card .card-body .pagination {
+  padding-top: 15px;
 }
 
 .label-group .label {

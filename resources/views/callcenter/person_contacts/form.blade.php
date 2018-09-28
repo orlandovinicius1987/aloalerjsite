@@ -167,7 +167,7 @@
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
                     </div>
                 </div>
