@@ -305,7 +305,7 @@
 
   .card-header {
 
-    background-color: #edf2f6;
+    background-color: $grey-light01;
     border-bottom: 0px solid $grey-light02;
     border-top: 0px solid $grey-light02;
     border-radius: 0.8rem 0.8rem 0 0 ;
@@ -323,7 +323,7 @@
 
   .card-body {
     padding: 0;
-    background-color: #edf2f6;
+    background-color: $grey-light01;
 /*    border-radius: 0 0 0.8rem 0.8rem ;*/
     /*box-shadow: 0px 2px 4px $grey-light03;*/
 
@@ -334,21 +334,28 @@
       background: $grey-light01;
       /*border: 1px solid $grey-light02;*/
       border: 0px;
-      border-bottom: 1px solid $grey-light02;
 
-
-      /*box-shadow: 0px 2px 4px $grey-light03;*/
-      /*border-radius: 0 0 0.5rem 0.5rem  ;*/
+      box-shadow: 0px 2px 4px $grey-light03;
+      border-radius: 3rem 0.8rem 0.8rem 0.8rem  ;
 
       thead {
         background: none;
         border-radius: 0;
 
         th {
-          padding: 0.75rem;
+          padding: 0.6rem 0.4rem;
           vertical-align: top;
-          border-top: 1px solid $grey-light02;
+          border-top: 0px solid $grey-light02;
           border-bottom: 1px solid $grey-light02;
+          background: $grey-light02;
+
+          &:first-child {
+            border-radius: 0.8rem 0 0 0;
+            padding-left: 1.5rem;
+          }
+          &:last-child {
+            border-radius: 0 0.8rem 0 0;
+          }
 
 
         }
@@ -360,6 +367,7 @@
         padding: 0.75rem;
         vertical-align: top;
         border-top: 1px solid $grey-light02;
+
       }
 
     }
@@ -371,16 +379,35 @@
         tr:nth-of-type(odd) {
           /*background-color: rgba(255, 255, 255, 1);*/
           background-color: rgba(255, 255, 255, 0.8);
+
+          &:last-child {
+            border-radius: 0 0 0.8rem 0.8rem;
+
+            td {
+              &:first-child {
+                border-radius: 0 0 0 0.8rem;
+              }
+              &:last-child {
+                border-radius: 0 0 0.8rem 0;
+              }
+
+            }
+          }
         }
         tr:nth-of-type(even) {
           /*background-color: rgba(255, 255, 255, 0.35);*/
           background-color: rgba(255, 255, 255, 0.2);
         }
 
+
         td {
           padding: 0.40rem;
           vertical-align: top;
           border-top: none;
+
+          &:first-child {
+            padding-left: 1.5rem;
+          }
 
           a {
             color: #4099de;
