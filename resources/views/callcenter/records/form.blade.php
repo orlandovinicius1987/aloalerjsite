@@ -14,7 +14,78 @@
     <div class="card mt-4"  id="vue-record">
         <div class="card-header">
             <div class="row">
-                <div class="col-8">
+
+
+
+                <div class="col-md-8 offset-md-2">
+                    <div class="text-center">
+                        <div class="section-title">
+                            {{--<i class="fas fa-plus-circle"></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais <br>
+--}}
+                            <ul class="aloalerj-breadcrumbs">
+                                <li>
+                                    <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                                        {{ $person->name }}
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-list-ol"></i>
+                                    @if (!$record->id)
+                                        Novo
+                                    @endif
+
+                                    Protocolo {{ $record->protocol }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="protocolo-andamento">
+                            @if ($record->id)
+                                <div class="col-4">
+                                    <h5 class="text-right">
+                                        @if ($record->resolved_at)
+                                            <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
+                                        @else
+                                            <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
+                                        @endif
+                                    </h5>
+                                </div>
+                            @endif
+                        </div>
+
+                        <form method="POST" action="http://aloalerjsite.test/callcenter/people">
+                            <input type="hidden" name="_token" value="Aemw09RJRkNmHySWeDcmqlfFLDROGQwOLplrWROm"> <input name="person_id" type="hidden" value="3123">
+                            <div class="form-group row form-bigger">
+                                <div class="col-6"><input id="cpf_cnpj" placeholder="CNPJ / CPF" name="cpf_cnpj" value="" required="required" disabled="disabled" class="form-control"></div>
+                                <div class="col-6"><input id="identification" placeholder="RG" name="identification" value="54654654645" required="required" class="form-control"></div>
+                            </div>
+                            <div class="form-group row form-bigger">
+                                <div class="col-12"><input id="name" placeholder="Nome Completo" name="name" value="Breno Sales Dos Santos" required="required" class="form-control"></div>
+                            </div>
+                            <div class="form-group row form-bigger text-left user-dates-alerts">
+                                <div class="col-2 label"><i class="fas fa-user-plus"></i> Criado em
+                                </div>
+                                <div class="col-4">
+                                    25 agosto 2015 - 19h10
+                                </div>
+                                <div class="col-2 label"><i class="fas fa-user-edit"></i> Alterado em
+                                </div>
+                                <div class="col-4">
+                                    28 setembro 2018 - 14h22
+                                </div>
+                            </div>
+                            <div class="form-group text-center row">
+                                <div class="col-12 text-center"><button id="saveButton" type="submit" class="btn btn-danger"><i class="far fa-save"></i> Gravar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="col-md-8 offset-md-2">
                     <ul class="aloalerj-breadcrumbs">
                         <li>
                             <a href="{{ route('people.show', ['id' => $person->id]) }}">
