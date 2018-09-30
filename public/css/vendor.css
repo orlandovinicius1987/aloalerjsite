@@ -11904,7 +11904,11 @@ a.text-dark:focus {
   margin-bottom: 10px;
 }
 
-.form-bigger .form-group .form-twolines {
+.form-bigger .form-with-labels .form-group {
+  margin-bottom: 7px;
+}
+
+.form-bigger .form-with-labels .form-group .form-twolines {
   margin: 11px 0 0 -8px;
   padding-bottom: 0;
 }
@@ -11981,10 +11985,6 @@ a.text-dark:focus {
 .user-dates-alerts .label {
   opacity: 0.7;
   font-size: 85%;
-}
-
-.protocolo-andamento {
-  margin-bottom: 30px;
 }
 
 .square {

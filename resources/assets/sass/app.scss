@@ -178,14 +178,19 @@
 
 .form-bigger {
   margin-bottom: 10px;
-  .form-group {
 
-    .form-twolines {
-      margin: 11px 0 0 -8px;
-      padding-bottom: 0;
+
+  .form-with-labels {
+    .form-group {
+      margin-bottom: 7px;
+
+      .form-twolines {
+        margin: 11px 0 0 -8px;
+        padding-bottom: 0;
+      }
     }
-
   }
+
 
   .search {
     margin-bottom: 25px;
@@ -265,11 +270,6 @@
 
 
 
-
-
-.protocolo-andamento {
-  margin-bottom: 30px;
-}
 
 
 

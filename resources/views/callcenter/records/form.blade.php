@@ -24,19 +24,19 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="protocolo-andamento">
-                        @if ($record->id)
-                            <div class="offset-md-4 col-4">
-                                <h4>
-                                    @if ($record->resolved_at)
-                                        <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
-                                            @else
-                                                <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">PROTOCOLO EM ANDAMENTO</span>
-                                    @endif
-                                </h4>
-                            </div>
-                        @endif
-                    </div>
+
+                    @if ($record->id)
+                        <div class="offset-md-4 col-4 mb-4">
+                            <h4>
+                                @if ($record->resolved_at)
+                                    <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
+                                        @else
+                                            <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">PROTOCOLO EM ANDAMENTO</span>
+                                @endif
+                            </h4>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2 form-bigger">
 
-                <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords">
+                <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords" class="form-with-labels">
                     @csrf
                     @if (isset($person))
                         <input name="person_id" type="hidden" value="{{ $person->id }}">
@@ -224,11 +224,11 @@
 
                             <div class="col-md-6">
                                 <label for="original" class="col-form-label">Solicitação</label>
-               <textarea id="original"
-                         class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
-                         name="original"
-                         value="{{is_null(old('original')) ? $record->original : old('original') }}"
-                         required rows="15">{{$record->original}}</textarea>
+                                <textarea id="original"
+                                          class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
+                                          name="original"
+                                          value="{{is_null(old('original')) ? $record->original : old('original') }}"
+                                          required rows="15">{{$record->original}}</textarea>
                                 @if ($errors->getBag('validation')->has('original'))
                                     <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
                                 @endif
@@ -237,17 +237,17 @@
                     @endif
 
 
-{{--                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
-                            <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
-                                <div class="handle"></div>
-                            </button>
-                            --}}{{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                            <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                            || $record->send_answer_by_email ? 'checked="checked"' : ''}} >--}}{{--
-                        </div>
-                    </div>--}}
+                    {{--                    <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
+                                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
+                                                    <div class="handle"></div>
+                                                </button>
+                                                --}}{{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+                                                <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
+                                                || $record->send_answer_by_email ? 'checked="checked"' : ''}} >--}}{{--
+                                            </div>
+                                        </div>--}}
 
                     @if (!$workflow && $record->created_at_formatted)
                         <div class="form-group row">
@@ -272,7 +272,7 @@
 
                         </div>
                     @endif
-                    <div class="form-group row mb-0">
+                    <div class="form-group row mb-4 mt-5">
                         <div class="col-md-12 text-center">
                             @if($workflow)
                                 <button id="saveButton" type="submit" class="btn btn-danger">
