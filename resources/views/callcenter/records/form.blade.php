@@ -2,42 +2,40 @@
 @section('heading')
     @parent
     <div class="mt-4"  id="vue-record">
-
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="text-center">
-                    <div class="section-title">
-                        {{--<i class="fas fa-plus-circle"></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais <br>
-                        --}}
-                        <ul class="aloalerj-breadcrumbs">
-                            <li>
-                                <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                                    {{ $person->name }}
-                                </a>
-                            </li>
-                            <li>
-                                <i class="fas fa-list-ol"></i>
-                                @if (!$record->id)
-                                    Novo
-                                @endif
-                                Protocolo {{ $record->protocol }}
-                            </li>
-                        </ul>
-                    </div>
-
-                    @if ($record->id)
-                        <div class="offset-md-4 col-4 mb-4">
-                            <h4>
-                                @if ($record->resolved_at)
-                                    <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
-                                        @else
-                                            <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">PROTOCOLO EM ANDAMENTO</span>
-                                @endif
-                            </h4>
-                        </div>
-                    @endif
-
+            <div class="col-md-8 offset-md-2 text-center">
+                <div class="section-title">
+                    {{--<i class="fas fa-plus-circle"></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais <br>
+                    --}}
+                    <ul class="aloalerj-breadcrumbs">
+                        <li>
+                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                                {{ $person->name }}
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-list-ol"></i>
+                            @if (!$record->id)
+                                Novo
+                            @endif
+                            Protocolo {{ $record->protocol }}
+                        </li>
+                    </ul>
                 </div>
+
+                @if ($record->id)
+                    <div class="offset-md-4 col-4 mb-4">
+                        <h4>
+                            @if ($record->resolved_at)
+                                <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
+                                    @else
+                                        <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">PROTOCOLO EM ANDAMENTO</span>
+                            @endif
+                        </h4>
+                    </div>
+                @endif
+
+
             </div>
         </div>
 

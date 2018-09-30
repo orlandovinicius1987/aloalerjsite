@@ -3,6 +3,8 @@
 @section('heading')
     @parent
 
+
+
     <div class="mt-4" id="vue-personal-info">
         <div class="row">
             <div class="col-md-8 offset-md-2 form-bigger">
