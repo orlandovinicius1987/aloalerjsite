@@ -11883,8 +11883,30 @@ a.text-dark:focus {
   margin-top: 50px;
 }
 
+/*
+.search-spinner{
+  margin-top: 50px;
+
+  i {
+    .fa-spinner{
+      font-size: 250%;
+
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+
+  }
+}
+*/
+
 .form-bigger {
   margin-bottom: 10px;
+}
+
+.form-bigger .form-group .form-twolines {
+  margin: 11px 0 0 -8px;
+  padding-bottom: 0;
 }
 
 .form-bigger .search {
@@ -11913,6 +11935,43 @@ a.text-dark:focus {
   color: #b8c5cc;
 }
 
+.form-bigger .select2-container--bootstrap.select2-container--disabled .select2-selection,
+.form-bigger .select2-container--bootstrap.select2-container--disabled .select2-selection--multiple .select2-selection__choice {
+  /*padding: 0.6rem 1.4rem 2.3rem 1.4rem;*/
+  font-size: 1.2rem;
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  color: #546975;
+}
+
+.form-bigger .select2-container--bootstrap .select2-selection--single {
+  height: 47px;
+  line-height: 1.42857143;
+  padding: 0.6rem 1.4rem 2.3rem 1.4rem;
+}
+
+.form-bigger .select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
+  font-size: 1.2rem;
+}
+
+.form-bigger .select2-container--bootstrap .select2-selection--single .select2-selection__arrow b {
+  border-color: #999 transparent transparent transparent;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  height: 0;
+  left: 0;
+  margin-left: -10px;
+  margin-top: -4px;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+
+.select2-container--bootstrap.select2-container--open .select2-selection .select2-selection__arrow b {
+  border-color: transparent transparent #999 transparent;
+  border-width: 0 6px 6px 6px;
+}
+
 .user-dates-alerts {
   font-size: 1.2rem;
   font-family: 'proxima_nova_ltsemibold';
@@ -11922,6 +11981,10 @@ a.text-dark:focus {
 .user-dates-alerts .label {
   opacity: 0.7;
   font-size: 85%;
+}
+
+.protocolo-andamento {
+  margin-bottom: 30px;
 }
 
 .square {
