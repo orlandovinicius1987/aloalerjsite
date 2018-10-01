@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('heading')
+
+<div id="vue-addresses">
     @parent
+
+
+
     <div class="row mt-4">
         <div class="col-md-8 offset-md-2 text-center">
             <div class="section-title">
@@ -235,6 +240,7 @@
             </form>
         </div>
     </div>
+</div>
 @endsection
 @section('content')
 @endsection
