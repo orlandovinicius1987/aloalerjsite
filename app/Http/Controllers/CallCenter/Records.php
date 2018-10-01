@@ -21,6 +21,7 @@ class Records extends Controller
         $person = $this->peopleRepository->findById($person_id);
 
         return view('callcenter.records.form')
+            ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus('create'));
@@ -62,7 +63,11 @@ class Records extends Controller
             )->sendNotifications();
         }
 
-        $this->showSuccessMessage('Protocolo gravado com sucesso.');
+        $this->showSuccessMessage(
+            'Protocolo ' .
+                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
+                ' com sucesso.'
+        );
 
         return redirect()->to(
             route(

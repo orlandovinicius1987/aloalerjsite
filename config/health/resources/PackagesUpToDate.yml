@@ -2,7 +2,7 @@ name: Packages up to date
 abbreviation: pkgupdtd
 checker: PragmaRX\Health\Checkers\Composer
 notify: true
-binary: "composer outdated --format=json"
+binary: "composer outdated --format=json --minor-only"
 should_count_at_most: 0
 json_result: true
 root_item: "installed"

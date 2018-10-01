@@ -89,9 +89,9 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col-4">
-                    <h5>
-                        Andamentos
-                    </h5>
+                    <h3>
+                        <i class="fas fa-tasks"></i> Andamentos
+                    </h3>
                 </div>
             </div>
         </div>

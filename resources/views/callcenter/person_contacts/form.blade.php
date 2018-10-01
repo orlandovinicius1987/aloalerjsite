@@ -162,12 +162,12 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         @include('partials.edit-button',['model'=>$contact, 'form' =>'formRecords'])   
-                        <button type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$contact])>
-                            Gravar
+                        <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$contact])>
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
                     </div>
                 </div>

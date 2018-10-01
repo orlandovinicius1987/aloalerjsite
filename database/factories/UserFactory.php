@@ -35,8 +35,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $name,
         'username' => $name,
         'email' => $name . '@alerj.rj.gov.br',
-        'password' =>
-            '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => bcrypt('secret'),
         'remember_token' => str_random(10),
         'user_type_id' => app(UserTypesRepository::class)->randomElement(),
     ];

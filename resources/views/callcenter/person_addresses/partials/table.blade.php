@@ -25,13 +25,13 @@
                 <td>{{$address->city}}</td>
 
                 <td>
-                    <h4>
-                        @if($address->active)
-                            <span class="badge badge-success">{{$address->active_string}}</span>
-                        @else
-                            <span class="badge badge-danger">{{$address->active_string}}</span>
-                        @endif
-                    </h4>
+                    @if($address->active)
+                        {{--<span class="badge badge-success">{{$address->active_string}}</span>--}}
+                        <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">{{$address->active_string}}</span>
+                    @else
+                        {{--<span class="badge badge-danger">{{$address->active_string}}</span>--}}
+                        <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">{{$address->active_string}}</span>
+                    @endif
                 </td>
 
                 <td>{{ $address->created_at_formatted ?? '' }}</td>

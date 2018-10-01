@@ -90,11 +90,11 @@
 
                         <div class="form-group text-center row">
                             <div class="col-12 text-center">
-                                <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
+                                <button id="saveButton" type="submit" class="btn btn-danger">
                                     @if ($workflow)
-                                        Próximo passo >>
+                                        Próximo passo  <i class="fas fa-forward"></i>
                                     @else
-                                        Gravar
+                                        <i class="far fa-save"></i> Gravar
                                     @endif
                                 </button>
                             </div>

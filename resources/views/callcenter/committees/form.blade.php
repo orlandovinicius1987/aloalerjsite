@@ -171,8 +171,8 @@
 
                         @include('partials.edit-button',['model'=>$committee])
 
-                        <button type="submit" class="btn btn-danger btn-depth">
-                                Gravar
+                        <button type="submit" class="btn btn-danger">
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">

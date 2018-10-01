@@ -14,8 +14,8 @@ Route::group(['prefix' => 'progresses'], function () {
         'Progresses@storeAndMarkAsResolved'
     )->name('progresses.store-and-mark-as-resolved');
 
-    Route::post('/open', 'Progresses@openRecord')->name(
-        'progresses.openRecord'
+    Route::post('/store-and-reopen', 'Progresses@storeAndReopen')->name(
+        'progresses.store-and-reopen'
     );
 
     Route::get('/show/{id}', 'Progresses@show')->name('progresses.show');

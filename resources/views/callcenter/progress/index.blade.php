@@ -2,14 +2,14 @@
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-4">
-                <h5>
-                    Andamentos
-                </h5>
+                <h3>
+                    <i class="fas fa-tasks"></i> Andamentos
+                </h3>
             </div>
 
             <div class="col-8 text-right">
                 <a id="button-novo-andamento" href="{{ route('progresses.create',['record_id' => $record->id]) }}"
-                   class="btn btn-primary btn-sm pull-right btn-depth">
+                   class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-plus"></i>
                     Novo Andamento
                 </a>

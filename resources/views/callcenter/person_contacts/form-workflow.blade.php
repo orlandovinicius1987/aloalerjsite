@@ -142,8 +142,8 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
-                        <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
-                            Gravar
+                        <button id="saveButton" type="submit" class="btn btn-danger">
+                            <i class="far fa-save"></i> Gravar
                         </button>
                     </div>
                 </div>

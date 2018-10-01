@@ -1,12 +1,13 @@
 const appName = 'vue-addresses'
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 
 if (jQuery("#" + appName).length > 0) {
     const app = new Vue({
         el: '#'+appName,
 
-        mixins: [editMixins],
+        mixins: [editMixin, helpersMixin],
 
         data: {
             tables: {
@@ -64,7 +65,7 @@ if (jQuery("#" + appName).length > 0) {
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                let $this = this
+                const $this = this
 
                 this.timeout = setTimeout(function () { $this.refresh() }, 500)
             },
@@ -81,7 +82,7 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
-            // this.refresh()            
+            // this.refresh()
         },
     })
 }

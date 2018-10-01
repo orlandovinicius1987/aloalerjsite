@@ -19,6 +19,8 @@ class ViewComposerServiceProvider extends ServiceProvider
             $this->mergeLaravel($view, [
                 'files_upload_url' => route('files.upload'),
                 'csrf_token' => csrf_token(),
+                'chat' => config('chat'),
+                'mode' => 'show',
             ]);
 
             if (!isset($view->workflow)) {
@@ -27,7 +29,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         });
     }
 
-    public function mergeLaravel($view, $laravel)
+    private function mergeLaravel($view, $laravel)
     {
         if (isset($view->laravel)) {
             $laravel = array_merge($view->laravel, $laravel);

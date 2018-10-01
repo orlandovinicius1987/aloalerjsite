@@ -1,5 +1,6 @@
 const appName = 'vue-progress'
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 import vueDropzone from "vue2-dropzone"
 
@@ -7,7 +8,7 @@ if (jQuery("#" + appName).length > 0) {
 
     const app = new Vue({
         el: '#' + appName,
-        mixins: [editMixins],
+        mixins: [editMixins, helpersMixin],
 
         components: {
             vueDropzone

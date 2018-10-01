@@ -1,23 +1,19 @@
 const appName = 'vue-contact-outside-workflow'
-import helperMixin from '../mixins/helper'
-
-import editMixins from '../mixins/edit-mixins'
+import editMixin from '../mixins/edit'
+import helpersMixin from '../mixins/helpers'
 
 if (jQuery("#" + appName).length > 0) {
-    const app = new Vue({
+    new Vue({
         el: '#'+appName,
 
-        mixins: [editMixins],
+        mixins: [editMixin, helpersMixin],
 
         data: {
-            laravel: laravel,
-            currentContactType: '' ,
-            currentContact:  '',
+            currentContactType: null,
+            currentContact:  null,
             contactTypesArray: [],
             refreshing: false,
         },
-
-        mixins: [helperMixin],
 
         computed: {
             mask: function () {
@@ -85,14 +81,15 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             initializeCurrents() {
-                this.currentContactType = laravel.length == 0 ? '' : laravel.contact.contact_type_id
-                if(laravel.length == 0) {
+                if(!laravel) {
                     this.currentContact = ''
                 } else {
-                    if(laravel.old.contact != null) {
+                    this.currentContactType = laravel && laravel.contact ? laravel.contact.contact_type_id : null
+
+                    if(laravel.old && laravel.old.contact != null) {
                         this.currentContact = laravel.old.contact
                     } else {
-                        this.currentContact = laravel.contact.contact
+                        this.currentContact = laravel.contact ? laravel.contact.contact : null
                     }
                 }
             }

@@ -270,18 +270,18 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                     @if ((isset($workflow) && $workflow) || old('workflow'))
-                    <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
-                                Próximo Passo >>>
+                    <button id="saveButton" type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$address])>
+                                Próximo Passo  <i class="fas fa-forward"></i>
                     </button>
                                 
                     @else
                         @include('partials.edit-button',['model'=>$address, 'form' =>'formAddress'])
-                        <button id="saveButton" type="submit" class="btn btn-danger btn-depth" @include('partials.disabled',['model'=>$address])>
-                            Gravar
+                        <button id="saveButton" type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$address])>
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
                     @endif                        
                     </div>

@@ -6,7 +6,7 @@
 
 
 
-
+{{--
     <div class="row">
 
         <div class="col-1 bg-colored-blue-darker100 square">
@@ -86,12 +86,7 @@
         <div class="col-1 bg-colored-blue-lighter10 square">
 
         </div>
-
-
-
-
-
-    </div>
+    </div>--}}
 
 
     <div class="card mt-4" id="vue-committees-search">
@@ -111,7 +106,7 @@
                             @keyup="typeKeyUp"
                     >&nbsp;&nbsp;
                     <a id="buttonEndereços" href="{{ route('committees.create') }}"
-                       class="btn btn-primary btn-sm pull-right btn-depth">
+                       class="btn btn-primary btn-sm pull-right">
                         <i class="fa fa-plus"></i>
                         Nova Commissão
                     </a>

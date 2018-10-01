@@ -1,6 +1,6 @@
     <div class="card-body" id="vue-progress">
 
-        <table id="progressesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+        <table id="progressesTable" class="table table-striped table-hover table-progress" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Tipo de Andamento</th>
@@ -37,7 +37,8 @@
                                 <h5><span class="badge badge-success">Sim</span></h5>
                             @endif
                         @else
-                            <h5><span class="badge badge-danger">Não</span></h5>
+                            <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Não</span>
+                            {{--<h5><span class="badge badge-danger">Não</span></h5>--}}
                         @endif
                     </td>
 

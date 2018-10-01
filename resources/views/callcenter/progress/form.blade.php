@@ -21,7 +21,13 @@
                 @csrf
 
                 @if (isset($progress))
-                    <input name="id" type="hidden" value="{{ $progress->id }}">
+                    {{--<input name="id" type="hidden" value="{{ $progress->id }}">--}}
+                @endif
+
+                @if(!is_null($progress->id))
+{{--                    <input name="committee_id" type="hidden" value="{{ $progress->committee->id }}">--}}
+                @else
+{{--                    <input name="committee_id" type="hidden" value="{{ $record->committee->id }}">--}}
                 @endif
 
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
@@ -168,16 +174,16 @@
 
                         @if(isset($progress) && ! is_null($progress->id))
                             <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                Alterar
+                                <i class="fas fa-pencil-alt"></i> Alterar
                             </button>
                         @endIf
 
-                        <button class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                            Gravar
+                        <button class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <i class="far fa-save"></i> Gravar
                         </button>
 
                         <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                            Cancelar
+                            <i class="fas fa-ban"></i> Cancelar
                         </button>
 
                         @if ($record->resolved_at)
@@ -185,9 +191,9 @@
                                 Gravar e reabrir
                             </button>
                         @else
-                            {{--<button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.finishRecord') }}', 'formProgress')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>--}}
-                                {{--Gravar e finalizar--}}
-                            {{--</button>--}}
+                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-mark-as-resolved') }}', 'formProgress')" class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                                <i class="fas fa-clipboard-check"></i> Gravar e finalizar
+                            </button>
                         @endif
 
                         @if ($progress && $progress->id)

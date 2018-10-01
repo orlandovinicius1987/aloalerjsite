@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
-@section('content')
+
+@section('heading')
+    @parent
+
+
+
+
+
+
+
+
     <div class="card mt-4"  id="vue-record">
         <div class="card-header">
             <div class="row">
@@ -13,25 +23,30 @@
                         </li>
 
                         <li>
+                            @if (!$record->id)
+                                Novo
+                            @endif
+
                             Protocolo {{ $record->protocol }}
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-4">
+                @if ($record->id)
+                    <div class="col-4">
                         <h5 class="text-right">
-                            @if ($record->resolved_at)
-                                <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
-                            @else
-                                <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
-                            @endif
+                                @if ($record->resolved_at)
+                                    <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
+                                @else
+                                    <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
+                                @endif
                         </h5>
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
 
         <div class="card-body">
-
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords">
                 @csrf
 
@@ -229,7 +244,7 @@
                 <div class="form-group row">
                     <label for="send_answer_by_email" class="col-sm-4 col-form-label text-md-right">Resposta por e-mail</label>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off" @include('partials.disabled',['model'=>$record])>
+                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
                             <div class="handle"></div>
                         </button>
 
@@ -271,53 +286,34 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         @if($workflow)
-                            <button id="saveButton" type="submit" class="btn btn-danger btn-depth">
-                                    Próximo passo >>
+                            <button id="saveButton" type="submit" class="btn btn-danger">
+                                Próximo passo <i class="fas fa-forward"></i>
                             </button>
-                        @elseif(is_null($record->committee))
-                            @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
-
-                            <button id="saveButton" class="btn btn-danger" @include('partials.disabled',['model'=>$record])>
-                                Gravar
-                            </button>
-
-                            @if ($record->resolved_at)
-                                <a href="#" id="openButton" class="btn btn-danger" v-on:click="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" >
-                                    Reabrir
-                                </a>
-                            @elseif(!is_null($record->id))
-                                <a href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating) || {{$record->resolved_at ? 'true':'false'}} && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
-                                    Finalizar
-                                </a>
-                            @endif
                         @else
-                            @if(isset($record) && ! is_null($record->id))
-                                <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton" @can('committee-canEdit', $record->committee->id ?? '', \Auth::user()) :disabled="isEditing || isCreating" @else disabled @endcan>
-                                    Alterar
+                            <button id="saveButton" class="btn btn-danger" :disabled="!(isEditing || isCreating)">
+                                <i class="far fa-save"></i> Gravar
+                            </button>
+
+                            @if ($record->id)
+                                @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
+
+                                <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}})">
+                                    <i class="fas fa-redo"></i> Reabrir
+                                </button>
+
+                                <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}) && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
+                                    <i class="fas fa-flag-checkered"></i> Finalizar
                                 </button>
                             @endif
-                        @else
-                                     @can('committee-canEdit', $record->committee->id, \Auth::user())
-                                         OI
-                                        <button id="saveButton" class="btn btn-danger" v-on:click="changeFormRoute('{{route('records.store') }}')" >
-                                            Gravar
-                                        </button>
 
-                                        @if ($record->resolved_at)
-                                            <button id="openButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.openRecord') }}')" >
-                                                Reabrir
-                                            </button>
-                                        @else
-                                            <button id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click="confirm('{{route('records.finishRecord') }}')" >
-                                                Finalizar
-                                            </button>
-                                        @endif
-                                     @endcan
-                        @endIf
+                            <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                                <i class="fas fa-ban"></i> Cancelar
+                            </button>
+                        @endif
 
                         @if($record && $record->id)
                             <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
-                                Copiar link público
+                                <i class="far fa-copy"></i> Copiar link público
                             </button>
                         @endif
                     </div>
@@ -325,6 +321,11 @@
             </form>
         </div>
     </div>
+
+@endsection
+
+
+@section('content')
 
     @if (isset($progresses))
         @include('callcenter.progress.index')
