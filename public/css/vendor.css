@@ -11185,7 +11185,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle {
-  margin: 0 4rem 0 4rem;
+  margin: 0 4rem;
   padding: 0;
   position: relative;
   border: none;
@@ -11224,7 +11224,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle:after {
-  content: 'sim';
+  content: 'On';
   right: -4rem;
   opacity: 0.5;
 }
@@ -11447,7 +11447,7 @@ a.text-dark:focus {
 
 .btn-toggle.btn-sm,
 .btn-group-sm > .btn-toggle.btn {
-  margin: -3px 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
   padding: 0;
   position: relative;
   border: none;
@@ -11573,7 +11573,7 @@ a.text-dark:focus {
 }
 
 .btn-toggle.btn-xs {
-  margin: -2px 0 0 0;
+  margin: 0 0;
   padding: 0;
   position: relative;
   border: none;
@@ -11722,6 +11722,47 @@ a.text-dark:focus {
   border-bottom-width: calc(.2rem + .0625rem);
 }
 
+.btn i {
+  margin-right: 5px;
+  font-size: 120%;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+}
+
+.btn:disabled:hover {
+  b-webkit-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0), 0 1px 1px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0), 0 1px 1px rgba(0, 0, 0, 0);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+}
+
+.btn-danger {
+  background-color: #e3342f;
+  border-color: #ae1c17;
+}
+
+.btn-danger:hover {
+  background-color: #c51f1a;
+  border-color: #981814;
+}
+
+.btn-danger:disabled:hover {
+  background-color: #e3342f;
+  border-color: #e3342f;
+  b-webkit-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0), 0 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0px 0 rgba(255, 255, 255, 0), 0 0px 0px rgba(0, 0, 0, 0);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+}
+
 .navbar-laravel {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -11754,16 +11795,6 @@ a.text-dark:focus {
 
 .navbar-light .navbar-nav .nav-item .nav-link:hover {
   color: #305bb0;
-}
-
-.btn-danger {
-  background-color: #e3342f;
-  border-color: #ae1c17;
-}
-
-.btn-danger:hover {
-  background-color: #c51f1a;
-  border-color: #981814;
 }
 
 .login .alolerj-logo-login {
@@ -11821,6 +11852,10 @@ a.text-dark:focus {
   color: #546975;
 }
 
+.login .card .card-body .btn.btn-toggle {
+  margin-top: -3px;
+}
+
 .section-title {
   margin-bottom: 23px;
   font-size: 30px;
@@ -11841,6 +11876,10 @@ a.text-dark:focus {
   -webkit-box-shadow: inset 0px -2px 4px #cddce5;
           box-shadow: inset 0px -2px 4px #cddce5;
   padding-bottom: 30px;
+}
+
+.no-results {
+  margin-top: 50px;
 }
 
 .form-bigger {
@@ -12091,6 +12130,20 @@ a.text-dark:focus {
 
 .card .card-body .table-hover tbody tr:hover {
   background: #eaeff5;
+}
+
+@media only screen and (min-width: 992px) {
+  .card .card-body .table-progress td {
+    min-width: 100px;
+  }
+
+  .card .card-body .table-progress td:first-child {
+    min-width: 180px;
+  }
+
+  .card .card-body .table-progress td:last-child {
+    min-width: 180px;
+  }
 }
 
 .card .card-body .pagination {

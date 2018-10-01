@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12" v-if="form.search.search.length > 0 && tables.people && tables.people.length === 0">
-        <h1 class="text-center text-danger" >
+        <h1 class="text-center text-danger no-results" >
             <i class="far fa-frown"></i>
 
             <br>
