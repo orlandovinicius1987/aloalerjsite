@@ -5,7 +5,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Data\Models\Progress as ProgressModel;
 use App\Data\Models\File as FileModel;
 
-class ProgressFile extends BaseModel
+class AttachedFile extends BaseModel
 {
     use Notifiable;
 

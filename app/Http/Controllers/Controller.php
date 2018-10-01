@@ -123,12 +123,8 @@ abstract class Controller extends IlluminateController
         session()->flash("alerts", $alerts);
     }
 
-    protected function showSuccessMessage($message = null): void
+    protected function showSuccessMessage($message = null)
     {
-        $message = $message ?: $this->messageDefault;
-
-        $this->flashMessage(
-            Workflow::started() ? $message : $this->messageDefault
-        );
+        $this->flashMessage($message ?? $this->messageDefault);
     }
 }

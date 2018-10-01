@@ -4,7 +4,7 @@ namespace App\Data\Models;
 use App\Notifications\ProgressCreated;
 use Illuminate\Notifications\Notifiable;
 use App\Data\Presenters\Progress as ProgressPresenter;
-use App\Data\Models\ProgressFile as ProgressFileModel;
+use App\Data\Models\AttachedFile as AttachedFileModel;
 
 class Progress extends BaseModel
 {
@@ -59,7 +59,7 @@ class Progress extends BaseModel
 
     public function progressFiles()
     {
-        return $this->belongsToMany(ProgressFileModel::class);
+        return $this->hasMany(AttachedFileModel::class);
     }
 
     public function createdBy()

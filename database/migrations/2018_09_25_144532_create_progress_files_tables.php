@@ -13,10 +13,10 @@ class CreateProgressFilesTables extends Migration
      */
     public function up()
     {
-        Schema::create('progress_files', function (Blueprint $table) {
+        Schema::create('attached_files', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->text('description');
+            $table->text('description')->nullable();
             $table
                 ->integer('file_id')
                 ->unsigned()
@@ -46,7 +46,7 @@ class CreateProgressFilesTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('progress_files');
+        Schema::dropIfExists('attached_files');
         Schema::dropIfExists('files');
     }
 }

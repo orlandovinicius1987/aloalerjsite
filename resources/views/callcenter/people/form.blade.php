@@ -18,18 +18,18 @@
 
                         <div class="form-group row form-bigger">
                             <div class="col-6">
-                                <input id="cpf_cnpj" type="cpf_cnpj" placeholder="CNPJ / CPF"
-                                       class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}"
+                                <input id="cpf_cnpj" placeholder="CNPJ / CPF"
+                                       class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                                        name="cpf_cnpj"
                                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
-                                       required autofocus
+                                       required
                                        v-mask='["###.###.###-##", "##.###.###/####-##"]'
-                                        {{$person->id ? 'disabled="disabled"' : '' }}
+                                       {{$person->id ? 'disabled="disabled"' : '' }}
                                 >
 
-                                @if ($errors->has('cpf_cnpj'))
+                                @if ($errors->getBag('validation')->has('cpf_cnpj'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('cpf_cnpj') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('cpf_cnpj') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -37,15 +37,15 @@
                             <div class="col-6">
 
                                 <input id="identification" placeholder="RG"
-                                       class="form-control{{ $errors->has('identification') ? ' is-invalid' : '' }}"
+                                       class="form-control{{ $errors->getBag('validation')->has('identification') ? ' is-invalid' : '' }}"
                                        name="identification"
                                        value="{{is_null(old('identification')) ? $person->identification : old('identification') }}"
-                                       required autofocus
+                                       required
                                 >
 
-                                @if ($errors->has('identification'))
+                                @if ($errors->getBag('validation')->has('identification'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('identification') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('identification') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -54,14 +54,14 @@
                         <div class="form-group row form-bigger">
                             <div class="col-12">
                                 <input id="name" placeholder="Nome Completo"
-                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                       class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }}"
                                        name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
-                                       required autofocus
+                                       required
                                 >
 
-                                @if ($errors->has('name'))
+                                @if ($errors->getBag('validation')->has('name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->getBag('validation')->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>

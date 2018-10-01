@@ -17,8 +17,6 @@
         </div>
 
         @include('callcenter.progress_files.partials.form-modal')
-        <vue-dropzone id="drop1" :options="dropOptions"></vue-dropzone>
-
 
     </div>
     <div class="card-body">

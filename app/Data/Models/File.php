@@ -2,7 +2,7 @@
 namespace App\Data\Models;
 
 use Illuminate\Notifications\Notifiable;
-use App\Data\Models\ProgressFile as ProgressFileModel;
+use App\Data\Models\AttachedFile as ProgressFileModel;
 
 class File extends BaseModel
 {

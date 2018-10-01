@@ -1,11 +1,13 @@
 const appName = 'vue-progress'
+import editMixins from '../mixins/edit-mixins'
 
 import vueDropzone from "vue2-dropzone"
 
 if (jQuery("#" + appName).length > 0) {
 
     const app = new Vue({
-        el: '#'+appName,
+        el: '#' + appName,
+        mixins: [editMixins],
 
         components: {
             vueDropzone
@@ -13,18 +15,27 @@ if (jQuery("#" + appName).length > 0) {
 
         data: {
             dropOptions: {
-                url: laravel.files_upload_url
-            }
+                url: laravel.files_upload_url,
+                maxFiles: 1,
+                headers: {
+                    "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
+                }
+            },
+
+            filesArray:[],
+
+            file_id:null,
+            description:'',
         },
 
         methods: {
-            changeFormRoute(action){
+            changeFormRoute(action) {
                 form = document.getElementById('formProgress')
                 form.action = action
                 form.submit()
             },
 
-            confirm(action){
+            confirm(action) {
                 swal({
                     title: " Você tem certeza? ",
                     icon: "warning",
@@ -37,6 +48,23 @@ if (jQuery("#" + appName).length > 0) {
                             $this.changeFormRoute(action)
                         }
                     });
+            },
+
+            'fileUploaded': function (file, response){
+                this.file_id = response['file_id']
+                console.info(response)
+            },
+
+            addToFilesArray: function(){
+                var arrayItem = {file_id:this.file_id, description:this.description}
+                this.filesArray.push(arrayItem)
+
+                document.getElementById('drop1').dropzone.removeAllFiles()
+
+                $('#ProgressFilesModal').modal('hide');
+
+                this.file_id = null
+                this.description = ''
             }
         },
     })

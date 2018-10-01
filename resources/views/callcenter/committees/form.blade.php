@@ -169,11 +169,16 @@
 
                         @include('partials.previous-button')
 
-                        {{--@include('partials.edit-button',['model'=>$committee, 'form' =>'formCommittee'])--}}
+                        @include('partials.edit-button',['model'=>$committee])
 
                         <button type="submit" class="btn btn-danger btn-depth">
                                 Gravar
                         </button>
+
+                        <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                            Cancelar
+                        </button>
+                        
                     </div>
                 </div>
             </form>

@@ -17,7 +17,8 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $this->mergeLaravel($view, [
-                'files_upload_url' => dd(route('files.upload')),
+                'files_upload_url' => route('files.upload'),
+                'csrf_token' => csrf_token(),
             ]);
 
             if (!isset($view->workflow)) {

@@ -26,6 +26,8 @@ class Record extends BaseModel
         'record_action_id',
     ];
 
+    protected $with = ['committee'];
+
     public function progresses()
     {
         return $this->hasMany(Progress::class);
@@ -82,5 +84,16 @@ class Record extends BaseModel
     public function sendNotifications()
     {
         return $this->sendNotificationsForClass(RecordCreated::class);
+    }
+
+    public function reopen()
+    {
+        $this->resolved_at = null;
+
+        $this->resolved_by_id = null;
+
+        $this->save();
+
+        return $this;
     }
 }

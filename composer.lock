@@ -552,16 +552,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3"
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/54859fabea8b3beecbb1a282888d5c990036b9e3",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0578b32b30b22de3e8664f797cf846fc9246f786",
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786",
                 "shasum": ""
             },
             "require": {
@@ -605,7 +605,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-08-16T20:49:45+00:00"
+            "time": "2018-09-25T20:47:26+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -1081,16 +1081,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.5",
+            "version": "v5.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ddb87a87471b452456fbbe1365e1b9ae55483515"
+                "reference": "93e761bb5367166ce98ba908d5eb0edd6be76792"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ddb87a87471b452456fbbe1365e1b9ae55483515",
-                "reference": "ddb87a87471b452456fbbe1365e1b9ae55483515",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/93e761bb5367166ce98ba908d5eb0edd6be76792",
+                "reference": "93e761bb5367166ce98ba908d5eb0edd6be76792",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1218,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-09-20T14:03:45+00:00"
+            "time": "2018-09-25T14:29:00+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -1934,16 +1934,16 @@
         },
         {
             "name": "pragmarx/coollection",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/coollection.git",
-                "reference": "fdc6df241d7d631ffac0093378874200638f03e4"
+                "reference": "3a155ded3186f723774e65c9ea2d79ab439c4a84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/fdc6df241d7d631ffac0093378874200638f03e4",
-                "reference": "fdc6df241d7d631ffac0093378874200638f03e4",
+                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/3a155ded3186f723774e65c9ea2d79ab439c4a84",
+                "reference": "3a155ded3186f723774e65c9ea2d79ab439c4a84",
                 "shasum": ""
             },
             "require": {
@@ -1994,34 +1994,35 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2018-08-19T20:13:00+00:00"
+            "time": "2018-09-26T21:11:58+00:00"
         },
         {
             "name": "pragmarx/health",
-            "version": "v0.9.9",
+            "version": "v0.9.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/health.git",
-                "reference": "48ac2801b42f626abe30f8e77ab33445523753dc"
+                "reference": "eadabd530df23c1a2a6cce022662da7c4d5f346a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/health/zipball/48ac2801b42f626abe30f8e77ab33445523753dc",
-                "reference": "48ac2801b42f626abe30f8e77ab33445523753dc",
+                "url": "https://api.github.com/repos/antonioribeiro/health/zipball/eadabd530df23c1a2a6cce022662da7c4d5f346a",
+                "reference": "eadabd530df23c1a2a6cce022662da7c4d5f346a",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "5.5.*|5.6.*|5.7.*",
                 "php": ">=7.0",
-                "phpunit/php-timer": "^2.0",
-                "pragmarx/yaml": "^0.1"
+                "phpunit/php-timer": "^1.0|^2.0",
+                "pragmarx/yaml": "^0.1.7"
             },
             "require-dev": {
                 "docusign/esign-client": "^2.0",
                 "guzzlehttp/guzzle": "~6.0",
                 "laravel/laravel": "^5.5",
+                "nesbot/carbon": ">=1.34",
                 "orchestra/testbench": "~3.5",
-                "phpunit/phpunit": "~7.3",
+                "phpunit/phpunit": "~6.5|~7.3",
                 "predis/predis": "^1.0",
                 "sensiolabs/security-checker": "^4.1"
             },
@@ -2046,9 +2047,7 @@
                     "src/Support/helpers.php"
                 ],
                 "psr-4": {
-                    "PragmaRX\\Health\\": "src/",
-                    "PragmaRX\\Health\\tests\\phpunit\\": "tests/phpunit/",
-                    "PragmaRX\\Health\\Tests\\PhpUnit\\": "tests/PhpUnit/"
+                    "PragmaRX\\Health\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2073,7 +2072,7 @@
                 "pragmarx",
                 "server"
             ],
-            "time": "2018-09-19T17:06:18+00:00"
+            "time": "2018-09-25T19:08:16+00:00"
         },
         {
             "name": "pragmarx/ia-arr",
@@ -2334,22 +2333,22 @@
         },
         {
             "name": "pragmarx/yaml",
-            "version": "v0.1.6",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/yaml.git",
-                "reference": "c07aef85a0b5ee1fb9f545f974210fd6cfdd63f0"
+                "reference": "0c704b622ce276904eda7f09dd43f756ddc89910"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/yaml/zipball/c07aef85a0b5ee1fb9f545f974210fd6cfdd63f0",
-                "reference": "c07aef85a0b5ee1fb9f545f974210fd6cfdd63f0",
+                "url": "https://api.github.com/repos/antonioribeiro/yaml/zipball/0c704b622ce276904eda7f09dd43f756ddc89910",
+                "reference": "0c704b622ce276904eda7f09dd43f756ddc89910",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": ">=5.5.33",
                 "php": "^7.0",
-                "symfony/yaml": "^3.3|^4.0"
+                "symfony/yaml": "^3.4|^4.0"
             },
             "require-dev": {
                 "orchestra/testbench": "3.5|^3.6",
@@ -2390,7 +2389,7 @@
                 "laravel",
                 "yaml"
             ],
-            "time": "2018-02-10T17:38:21+00:00"
+            "time": "2018-09-22T17:12:12+00:00"
         },
         {
             "name": "pragmarx/zipcode",
@@ -4323,16 +4322,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "5facdb15f5952ed28c711e89b30adce74fa388c7"
+                "reference": "3e98dc496a1408b6a8211ee019f65dfb1da71299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/5facdb15f5952ed28c711e89b30adce74fa388c7",
-                "reference": "5facdb15f5952ed28c711e89b30adce74fa388c7",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/3e98dc496a1408b6a8211ee019f65dfb1da71299",
+                "reference": "3e98dc496a1408b6a8211ee019f65dfb1da71299",
                 "shasum": ""
             },
             "require": {
@@ -4380,7 +4379,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2018-08-12T01:53:48+00:00"
+            "time": "2018-09-20T20:04:55+00:00"
         },
         {
             "name": "maximebf/debugbar",

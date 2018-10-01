@@ -19,39 +19,9 @@
                     <td>
                         {{ $progressFile->description ?? '' }}
                     </td>
-
-                    <td>
-                        {{ $progress->area->name ?? '' }}
-                    </td>
-
-                    <td>
-                        {{ $progress->original }}
-                    </td>
-
-                    <td class="text-center">
-                        @if ($progress->record->resolve_progress_id == $progress->id)
-                            @if($progress->finalize)
-                                <h5><span class="badge badge-success">Sim</span></h5>
-                            @endif
-                        @else
-                            <h5><span class="badge badge-danger">Não</span></h5>
-                        @endif
-                    </td>
-
-                    <td class="text-center">
-                        @if ($progress->email_sent_at)
-                            <h5>
-                                <span class="badge badge-success">
-                                    E-mail
-                                </span>
-                            </h5>
-                        @endif
-                    </td>
-
-                    <td>{{ $progress->created_at_formatted ?? '' }}</td>
                 </tr>
             @empty
-                <p>Nenhum andamento encontrado.</p>
+                <p>Nenhum arquivo encontrado.</p>
             @endforelse
         </table>
 

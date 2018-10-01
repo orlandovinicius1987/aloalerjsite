@@ -2,55 +2,70 @@
 namespace App\Http\Controllers\CallCenter;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProgressRequest;
+use App\Data\Repositories\Files as FilesRepository;
 
 use Illuminate\Support\Facades\Response;
+use Mockery\Exception;
 
 class Files extends Controller
 {
     /**
-     * @return $this
+     * @return JsonResponse
      */
     public function upload(Request $request)
     {
-        info('oi');
-        $photos = $request->file('file');
+        try {
+            $filesRepository = app(FilesRepository::class);
 
-        if (!is_array($photos)) {
-            $photos = [$photos];
+            if (!isset($request->allFiles()['file'])) {
+                throw new Exception();
+            }
+
+            $file = $request->allFiles()['file'];
+
+            $hash = hash('sha1', file_get_contents($file->getPathName()));
+            $file->move(
+                storage_path(),
+                $hash . '.' . $file->getClientOriginalExtension()
+            );
+
+            $request->merge([
+                'url' =>
+                    storage_path() .
+                        '/' .
+                        $hash .
+                        '.' .
+                        $file->getClientOriginalExtension(),
+                'sha1_hash' => $hash,
+            ]);
+
+            $row = $filesRepository->findByColumn('sha1_hash', $hash);
+            if (!$row) {
+                $row = $filesRepository->createFromRequest($request);
+            }
+
+            return Response::json(
+                [
+                    'message' => 'File saved Successfully',
+                    'fileName' => $row->sha1_hash,
+                    'url' => $row->url,
+                    'file_id' => $row->id,
+                    'hashContent' => $row->sha1_hash,
+                    'extension' => $file->getClientOriginalExtension(),
+                ],
+                200
+            );
+        } catch (Exception $e) {
+            return Response::json(
+                [
+                    'message' => 'Exception',
+                ],
+                500
+            );
         }
-
-        if (!is_dir($this->photos_path)) {
-            mkdir($this->photos_path, 0777);
-        }
-
-        for ($i = 0; $i < count($photos); $i++) {
-            $photo = $photos[$i];
-            $name = sha1(date('YmdHis') . str_random(30));
-            $save_name = $name . '.' . $photo->getClientOriginalExtension();
-            $resize_name =
-                $name .
-                str_random(2) .
-                '.' .
-                $photo->getClientOriginalExtension();
-
-            Image::make($photo)
-                ->resize(250, null, function ($constraints) {
-                    $constraints->aspectRatio();
-                })
-                ->save($this->photos_path . '/' . $resize_name);
-
-            $photo->move($this->photos_path, $save_name);
-
-            $upload = new Upload();
-            $upload->filename = $save_name;
-            $upload->resized_name = $resize_name;
-            $upload->original_name = basename($photo->getClientOriginalName());
-            $upload->save();
-        }
-
-        return $this;
     }
 }

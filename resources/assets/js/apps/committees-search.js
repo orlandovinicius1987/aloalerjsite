@@ -26,50 +26,50 @@ if (jQuery("#" + appName).length > 0) {
 
         methods: {
             refresh() {
-                me = this
+                let $this = this
 
-                me.refreshing = true
+                $this.refreshing = true
 
-                me.errors = null
+                $this.errors = null
 
-                me.tables.committees = null
+                $this.tables.committees = null
 
                 axios.post('/api/v1/committees-search', {search: this.form.search})
                     .then(function(response) {
-                        me.tables.committees = []
-                        me.errors = false
+                        $this.tables.committees = []
+                        $this.errors = false
 
                         if (response.data.success) {
-                            me.tables.committees = response.data.data
-                            me.errors = response.data.errors
+                            $this.tables.committees = response.data.data
+                            $this.errors = response.data.errors
                         }
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
                     .catch(function(error) {
                         console.log(error)
 
-                        me.refreshing = false
+                        $this.refreshing = false
                     })
             },
 
             typeKeyUp() {
                 clearTimeout(this.timeout)
 
-                me = this
+                let $this = this
 
-                this.timeout = setTimeout(function () { me.refresh() }, 500)
+                this.timeout = setTimeout(function () { $this.refresh() }, 500)
             },
 
             refreshTable(table) {
                 axios.get('/'+table)
                     .then(function(response) {
-                        me.tables[table] = response.data
+                        $this.tables[table] = response.data
                     })
                     .catch(function(error) {
                         console.log(error)
 
-                        me.tables[table] = []
+                        $this.tables[table] = []
                     })
             },
 
@@ -79,8 +79,6 @@ if (jQuery("#" + appName).length > 0) {
         },
 
         mounted() {
-            console.log('mounted');
-
             this.refresh()
 
             // this.refreshTable('people')

@@ -46,4 +46,33 @@ class PersonContact extends BaseModel
     {
         return $this->contact;
     }
+
+    public function getContactAttribute($contact)
+    {
+        switch ($this->contactType->code) {
+            case 'mobile':
+                return $contact = $this->mask('(##) #####-####', $contact);
+                break;
+            case 'whatsapp':
+                return $contact = $this->mask('(##) #####-####', $contact);
+                break;
+            case 'phone':
+                return $contact = $this->mask('(##) ####-####', $contact);
+                break;
+        }
+        return $contact;
+    }
+
+    public function mask($mask, $str)
+    {
+        $str = str_replace(" ", "", $str);
+
+        for ($i = 0; $i < strlen($str); $i++) {
+            if (($pos = strpos($mask, "#")) !== false) {
+                $mask[$pos] = $str[$i];
+            }
+        }
+
+        return $mask;
+    }
 }

@@ -16,16 +16,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                    <input id="description" class="form-control{{ $errors->getBag('validation')->has('description') ? ' is-invalid' : '' }}"
+                    <input v-model="description" id="description" class="form-control{{ $errors->getBag('validation')->has('description') ? ' is-invalid' : '' }}"
                            name="description" value="">
                     </div>
                 </div>
-                <vue-dropzone id="drop1" :options="dropOptions"></vue-dropzone>
+
+                <input name="file_id" type="hidden" v-model="file_id">
+
+                <vue-dropzone v-on:vdropzone-success="fileUploaded" id="drop1" :options="dropOptions"></vue-dropzone>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" v-on:click="addToFilesArray">Salvar</button>
             </div>
         </div>
     </div>

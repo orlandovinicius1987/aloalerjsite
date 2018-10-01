@@ -2,7 +2,6 @@
 
 namespace App\Data\Repositories;
 
-use Validator;
 use App\Data\Models\Person;
 
 class People extends Base
@@ -56,7 +55,7 @@ class People extends Base
             'success' => is_null($messages),
             'errors' => $messages,
             'count' => $count,
-            'is_cpf_cnpj' => $this->validCpfCnpj($string),
+            'is_cpf_cnpj' => validate_cpf_cnpj($string),
             'is_numeric' => $this->isNumeric($string),
         ];
     }
@@ -90,7 +89,7 @@ class People extends Base
 
     protected function searchByCpf($string)
     {
-        if (!$this->validCpfCnpj($string)) {
+        if (!validate_cpf_cnpj($string)) {
             return $this->emptyResponse($string);
         }
 
@@ -153,16 +152,6 @@ class People extends Base
         }
 
         return $this->searchByName($search);
-    }
-
-    public function validCpfCnpj($string)
-    {
-        return Validator::make(
-            ['string' => $string],
-            [
-                'string' => 'required|cpf_cnpj',
-            ]
-        )->passes();
     }
 
     public function create($data)

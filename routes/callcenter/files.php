@@ -1,5 +1,8 @@
 <?php
 
 Route::group(['prefix' => 'files'], function () {
-    Route::post('/', 'Files@upload')->name('files.upload');
+    Route::post('/upload', 'Files@upload')->name('files.upload');
+    Route::post('/attach', 'AttachedFiles@attach')->name(
+        'attachedFiles.attach'
+    );
 });

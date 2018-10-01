@@ -29,7 +29,6 @@
         </script>
     </head>
     <body>
-
         <div id="app">
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container-fluid">
@@ -122,13 +121,13 @@
                 </div>
             </div>
 
+            @include('partials.alerts')
+
             <div id="@yield('vue-app-name')">
                 @if (View::hasSection('heading'))
                     <div class="container-fluid section-heading-bg">
                         <div class="row justify-content-center">
                             <div class="col-md-10">
-                                @include('partials.alerts')
-
                                 @section('heading') @show
                             </div>
                         </div>

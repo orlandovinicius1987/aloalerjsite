@@ -3,6 +3,8 @@ namespace App\Http\Requests;
 
 class PersonRequest extends Request
 {
+    protected $errorBag = 'validation';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -13,6 +15,7 @@ class PersonRequest extends Request
         return [
             'cpf_cnpj' => 'required_if:person_id,null|cpf_cnpj',
             'name' => 'required',
+            'identification' => 'required',
         ];
     }
 
