@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProgressRequest;
+use App\Data\Repositories\AttachedFiles as AttachedFilesRepository;
 
 class Progresses extends Controller
 {
@@ -18,6 +19,7 @@ class Progresses extends Controller
             ->with([
                 'progress' => $this->progressesRepository->new(),
                 'record' => $this->recordsRepository->findById($record_id),
+                'progressFiles' => [],
             ])
             ->with($this->getComboBoxMenus())
             ->with('formDisabled', false);
@@ -30,11 +32,26 @@ class Progresses extends Controller
      */
     public function store(ProgressRequest $request)
     {
+        $attachedFilesRepository = app(AttachedFilesRepository::class);
         $request->merge(['created_by_id' => Auth::user()->id]);
 
-        $this->progressesRepository->createFromRequest(
-            $request
-        )->sendNotifications();
+        if (is_null($request->get('progress_id'))) {
+            $progress = $this->progressesRepository->createFromRequest(
+                $request
+            )->sendNotifications();
+        } else {
+            $progress = $this->progressesRepository->findById(
+                $request->get('progress_id')
+            );
+        }
+
+        //Attach files
+        foreach ($request->get('files_array') as $file) {
+            $file = (array) $file;
+            $file['progress_id'] = $progress->id;
+
+            $attachedFilesRepository->createFromArray($file);
+        }
 
         $this->showSuccessMessage();
 
@@ -104,6 +121,7 @@ class Progresses extends Controller
                 'record' => $this->recordsRepository->findById(
                     $progress->record_id
                 ),
+                'progressFiles' => $progress->progressFiles,
             ])
             ->with($this->getComboBoxMenus())
             ->with('formDisabled', $formDisabled);
