@@ -3,9 +3,6 @@
 
 <div id="vue-addresses">
     @parent
-
-
-
     <div class="row mt-4">
         <div class="col-md-8 offset-md-2 text-center">
             <div class="section-title">
@@ -55,7 +52,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-3">
-                        <label for="zipcode" class="col-form-label">CEP {{old('zipcode') }}</label>
+                        <label for="zipcode" class="col-form-label">CEP</label>
                         <input id="zipcode"
                                name="zipcode"
                                v-model="form.zipcode"
@@ -64,7 +61,6 @@
                                class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }}"
                                @keyup="typeKeyUp"
                                v-mask='["##.###-###"]'
-                               autofocus
                                required
                                 @include('partials.disabled',['model'=>$address])
                         >
