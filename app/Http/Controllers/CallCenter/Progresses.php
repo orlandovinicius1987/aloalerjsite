@@ -35,9 +35,15 @@ class Progresses extends Controller
     {
         $request->merge(['created_by_id' => Auth::user()->id]);
 
-        $newProgress = $this->progressesRepository->createFromRequest(
-            $request
-        )->sendNotifications();
+        if (is_null($request->get('progress_id'))) {
+            $progress = $this->progressesRepository->createFromRequest(
+                $request
+            )->sendNotifications();
+        } else {
+            $progress = $this->progressesRepository->findById(
+                $request->get('progress_id')
+            );
+        }
 
         //Attach files
         foreach ($request->get('files_array') as $file) {
@@ -47,16 +53,16 @@ class Progresses extends Controller
             $attachedFileRequest->setMethod('POST');
 
             $requestArray = [];
-            foreach ($attachedFileRequest->all() as $key => $item) {
+            foreach ($file as $key => $item) {
                 $requestArray[$key] = $item;
             }
 
             $attachedFileRequest->request->add($requestArray);
             $attachedFileRequest->request->add([
-                'progress_id' => $newProgress->id,
+                'progress_id' => $progress->id,
             ]);
 
-            //Anexa os arquivos
+            //Anexa o arquivo
             $attachedFilesRepository->createFromRequest($attachedFileRequest);
         }
 

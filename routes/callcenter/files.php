@@ -5,4 +5,8 @@ Route::group(['prefix' => 'files'], function () {
     Route::post('/attach', 'AttachedFiles@attach')->name(
         'attachedFiles.attach'
     );
+
+    Route::get('/{id}', 'AttachedFiles@download')->name(
+        'attachedFiles.download'
+    );
 });

@@ -13,9 +13,9 @@ use Mockery\Exception;
 
 class AttachedFiles extends Controller
 {
-    public function attach(AttachedFileRequest $request)
+    public function download($id)
     {
-        $attachedFilesRepository = app(AttachedFilesRepository::class);
-        $attachedFile = $attachedFilesRepository->createFromRequest($request);
+        $attachedFile = app(AttachedFilesRepository::class)->findById($id);
+        return response()->download($attachedFile->file->url);
     }
 }

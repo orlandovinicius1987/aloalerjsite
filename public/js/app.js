@@ -53482,7 +53482,7 @@ if (jQuery("#" + appName).length > 0) {
 
     var app = new Vue({
         el: '#' + appName,
-        mixins: [editMixins, __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]],
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__mixins_helpers__["a" /* default */]],
 
         components: {
             vueDropzone: __WEBPACK_IMPORTED_MODULE_2_vue2_dropzone___default.a
@@ -53497,10 +53497,16 @@ if (jQuery("#" + appName).length > 0) {
                 }
             },
 
-            filesArray: [],
+            filesJson: JSON.constructor([]),
 
             file_id: null,
             description: ''
+        },
+
+        computed: {
+            filesJsonString: function filesJsonString() {
+                return JSON.stringify(this.filesJson);
+            }
         },
 
         methods: {
@@ -53532,8 +53538,15 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             addToFilesArray: function addToFilesArray() {
-                var arrayItem = { file_id: this.file_id, description: this.description };
-                this.filesArray.push(arrayItem);
+                this.filesJson.push({ "file_id": this.file_id, "description": this.description });
+
+                // console.log(this.filesArray)
+                // var aux = JSON.parse(this.filesArray)
+                // console.log('j1 = ' + j1)
+                // aux.push({"file_id":this.file_id, "description":this.description})
+                // console.log('j1 = ' + j1)
+                // this.filesArray = JSON.stringify(aux)
+                // console.log('j3 = ' + j3)
 
                 document.getElementById('drop1').dropzone.removeAllFiles();
 

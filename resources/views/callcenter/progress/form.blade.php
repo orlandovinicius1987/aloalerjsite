@@ -187,7 +187,7 @@
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.reopen') }}', 'formProgress')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-reopen') }}', 'formProgress')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Gravar e reabrir
                             </button>
                         @else
@@ -203,6 +203,8 @@
                         @endif
                     </div>
                 </div>
+
+                <input name="files_array" type="hidden" v-model="filesJsonString">
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
