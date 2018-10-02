@@ -102,13 +102,13 @@ if (jQuery("#" + appName).length > 0) {
         mounted() {
             this.initializeCurrents()
 
-            let $this = this
+            const $this = this
 
             $("#contact_type_id").on('change', function () {
-                e = document.getElementById("contact_type_id")
+                const e = document.getElementById("contact_type_id")
+
                 $this.currentContactType = e.options[e.selectedIndex].value
             })
         }
-
     })
 }
