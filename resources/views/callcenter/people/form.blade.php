@@ -3,20 +3,22 @@
 @section('heading')
     @parent
 
+
+
     <div class="mt-4" id="vue-personal-info">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2 form-bigger">
                 <div class="text-center">
                     <div class="section-title"><i class="fas fa-plus-circle"></i></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais </div>
 
-                    <form method="POST" action="{{ route('people.store') }}">
+                    <form method="POST" action="{{ route('people.store') }}" >
                         @csrf
 
                         @if (isset($person))
                             <input name="person_id" type="hidden" value="{{ $person->id }}">
                         @endif
 
-                        <div class="form-group row form-bigger">
+                        <div class="form-group row">
                             <div class="col-6">
                                 <input id="cpf_cnpj" placeholder="CNPJ / CPF"
                                        class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj') ? ' is-invalid' : '' }}"
@@ -51,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row form-bigger">
+                        <div class="form-group row">
                             <div class="col-12">
                                 <input id="name" placeholder="Nome Completo"
                                        class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }}"
@@ -68,7 +70,7 @@
                         </div>
 
                         @if (!$workflow)
-                            <div class="form-group row form-bigger text-left user-dates-alerts">
+                            <div class="form-group row text-left user-dates-alerts">
                                 <div class="col-2 label">
                                     <i class="fas fa-user-plus"></i> Criado em
                                 </div>
