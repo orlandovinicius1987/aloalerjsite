@@ -53083,6 +53083,13 @@ var appName = 'vue-addresses';
 
 
 
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
@@ -53551,7 +53558,8 @@ if (jQuery("#" + appName).length > 0) {
             var $this = this;
 
             $("#contact_type_id").on('change', function () {
-                e = document.getElementById("contact_type_id");
+                var e = document.getElementById("contact_type_id");
+
                 $this.currentContactType = e.options[e.selectedIndex].value;
             });
         }
