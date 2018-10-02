@@ -53413,7 +53413,8 @@ if (jQuery("#" + appName).length > 0) {
             var $this = this;
 
             $("#contact_type_id").on('change', function () {
-                e = document.getElementById("contact_type_id");
+                var e = document.getElementById("contact_type_id");
+
                 $this.currentContactType = e.options[e.selectedIndex].value;
             });
         }

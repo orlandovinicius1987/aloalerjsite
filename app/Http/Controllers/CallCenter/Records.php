@@ -133,7 +133,9 @@ class Records extends Controller
      */
     public function show($id)
     {
-        $record = $this->recordsRepository->findById($id);
+        if (!$record = $this->recordsRepository->findById($id)) {
+            abort(404);
+        }
 
         $person = $this->peopleRepository->findById($record->person_id);
 
