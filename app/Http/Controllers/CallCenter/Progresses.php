@@ -107,13 +107,13 @@ class Progresses extends Controller
         $formDisabled = true;
         // Se a diferença entre a Data de criação e a data atual for igual a 0 dias de diferença, então foi criado hoje
 
-        //        $isCreatedToday = date_diff($progress->created_at, now())->days == 0;
+        $isCreatedToday = date_diff($progress->created_at, now())->days == 0;
 
-        //        $isSameUser = $progress->created_by_id == Auth::user()->id;
+        $isSameUser = $progress->created_by_id == Auth::user()->id;
 
-        //        if ($isCreatedToday && $isSameUser) {
-        //            $formDisabled = false;
-        //        }
+        if ($isCreatedToday && $isSameUser) {
+            $formDisabled = false;
+        }
 
         return view('callcenter.progress.form')
             ->with([

@@ -32,7 +32,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     private function mergeLaravel($view, $laravel)
     {
         if (isset($view->laravel)) {
-            $laravel = array_merge($view->laravel, $laravel);
+            $laravel = array_merge($laravel, $view->laravel);
         }
 
         $view->with('laravel', $laravel);
