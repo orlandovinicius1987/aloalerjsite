@@ -53506,8 +53506,11 @@ if (jQuery("#" + appName).length > 0) {
 
             filesJson: JSON.constructor([]),
 
-            file_id: null,
-            description: ''
+            currentFile: {
+                id: null,
+                description: '',
+                extension: ''
+            }
         },
 
         computed: {
@@ -53540,27 +53543,20 @@ if (jQuery("#" + appName).length > 0) {
 
 
             'fileUploaded': function fileUploaded(file, response) {
-                this.file_id = response['file_id'];
-                console.info(response);
+                this.currentFile.id = response['file_id'];
+                this.currentFile.extension = response['extension'];
             },
 
             addToFilesArray: function addToFilesArray() {
-                this.filesJson.push({ "file_id": this.file_id, "description": this.description });
-
-                // console.log(this.filesArray)
-                // var aux = JSON.parse(this.filesArray)
-                // console.log('j1 = ' + j1)
-                // aux.push({"file_id":this.file_id, "description":this.description})
-                // console.log('j1 = ' + j1)
-                // this.filesArray = JSON.stringify(aux)
-                // console.log('j3 = ' + j3)
+                this.filesJson.push({ "file_id": this.currentFile.id, "description": this.currentFile.description, "extension": this.currentFile.extension });
 
                 document.getElementById('drop1').dropzone.removeAllFiles();
 
                 $('#ProgressFilesModal').modal('hide');
 
-                this.file_id = null;
-                this.description = '';
+                this.currentFile.id = null;
+                this.currentFile.description = '';
+                this.currentFile.extension = '';
             }
         }
     });

@@ -2,13 +2,13 @@
 
 namespace App\Data\Presenters;
 
-class AttachedFile extends Base
+class File extends Base
 {
     public function download_link()
     {
         $id = $this->wrappedObject->id;
 
-        return route('attachedFiles.download', [
+        return route('files.download', [
             'id' => $id,
         ]);
     }

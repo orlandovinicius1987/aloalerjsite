@@ -9,4 +9,6 @@ Route::group(['prefix' => 'files'], function () {
     Route::get('/{id}', 'AttachedFiles@download')->name(
         'attachedFiles.download'
     );
+
+    Route::get('/{id}', 'Files@download')->name('files.download');
 });

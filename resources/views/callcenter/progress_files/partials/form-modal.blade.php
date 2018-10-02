@@ -16,12 +16,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                    <input v-model="description" id="description" class="form-control{{ $errors->getBag('validation')->has('description') ? ' is-invalid' : '' }}"
+                    <input v-model="currentFile.description" id="description" class="form-control{{ $errors->getBag('validation')->has('description') ? ' is-invalid' : '' }}"
                            name="description" value="">
                     </div>
                 </div>
 
-                <input name="file_id" type="hidden" v-model="file_id">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="drop1" class="col-sm-0 col-form-label text-md-left">Arquivo</label>
+                    </div>
+                </div>
+
+                <input id="file_id" name="file_id" type="hidden" v-model="currentFile.id">
 
                 <vue-dropzone v-on:vdropzone-success="fileUploaded" id="drop1" :options="dropOptions"></vue-dropzone>
 

@@ -68,4 +68,10 @@ class Files extends Controller
             );
         }
     }
+
+    public function download($id)
+    {
+        $file = app(FilesRepository::class)->findById($id);
+        return response()->download($file->url);
+    }
 }

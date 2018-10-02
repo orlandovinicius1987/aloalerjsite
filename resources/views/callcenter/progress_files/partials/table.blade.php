@@ -1,34 +1,5 @@
     <div class="card-body">
 
-        <div class="hidden-lg">
-            <div class="row">
-                Anexos pendentes de envio
-            </div>
-                <div v-if="filesJson.length == 0" class="col-xs-12">
-                    Nenhum arquivo anexado
-                </div>
-                <div v-if="filesJson.length > 0" class="col-xs-12" v-for="file in filesJson">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <strong>Id do arquivo</strong>&nbsp
-                                </div>
-                                <div class="col-xs-9">
-                                    @{{ file.file_id }}
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <strong>Descrição</strong>&nbsp
-                                </div>
-                                <div class="col-xs-9">
-                                    @{{ file.description }}
-                                </div>
-                </div>
-            </div>
-        </div>
-
-
         <table id="filesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -40,7 +11,7 @@
             @forelse ($progressFiles as $progressFile)
                 <tr>
                     <td>
-                        <a href="{{ $progressFile->download_link }}">
+                        <a href="{{ $progressFile->file->download_link }}">
                             Visualizar
                         </a>
                     </td>
@@ -50,9 +21,37 @@
                     </td>
                 </tr>
             @empty
-                <p>Nenhum arquivo encontrado.</p>
+                <p>Nenhum anexo encontrado.</p>
             @endforelse
         </table>
 
         {{ $progressFiles instanceof \Illuminate\Contracts\Pagination\Paginator ? $progressFiles->links() : '' }}
+    </div>
+
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col-8">
+                <h5>
+                    Anexos pendentes de envio
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-lg">
+        <div v-if="filesJson.length == 0" class="col-xs-12">
+            Nenhum anexo pendente de envio.
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th></th>
+                <th>Descrição</th>
+            </thead>
+            <tbody>
+                <tr v-if="filesJson.length > 0" class="col-xs-12" v-for="file in filesJson">
+                        <td>@{{ file.ext }}</td>
+                        <td>@{{ file.description }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
