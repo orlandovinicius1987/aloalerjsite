@@ -72,6 +72,8 @@ Route::group(
 
         require __DIR__ . '/callcenter/records.php';
 
+        require __DIR__ . '/callcenter/files.php';
+
         Route::group(['prefix' => 'committees'], function () {
             Route::get('/create', 'Committees@create')->name(
                 'committees.create'
