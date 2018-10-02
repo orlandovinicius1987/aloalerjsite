@@ -1,99 +1,243 @@
-hr {
-  width: 100%;
-  margin: 1.5em 0;
-  border: 0;
-  border-bottom: 1px dashed $grey-dark004;
+@mixin center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.hr--invisible {
-  border-bottom-color: transparent;
-}
 
-/* Boarding Pass */
-.boardingPass {
-  width: 400px;
-  box-shadow: -3px 3px 5px rgba(0, 0, 0, .3);
-  border-radius: 4px;
-}
 
-/* Section */
-/** Label **/
-.section-label {
-  display: block;
+/*--------------------
+Boarding Pass
+--------------------*/
+.records {
+  @include center;
+  width: 350px;
+  /*height: 382px;*/
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+  overflow: hidden;
   text-transform: uppercase;
-  font-size: .8rem;
-  color: #ff00ff;
-}
 
-/** Icon **/
-.boardingPass-icon {
-  flex-grow: .5;
-  color: #00ff00;
-}
+  @media only screen and (min-width: 992px) {
+    width: 500px;
+  }
 
-/* Header */
-.boardingPass-header {
-  padding: .5em 2em;
-  background: linear-gradient(60deg,
-          darken(#00ff00, 10%),
-          lighten(#00ff00, 10%)
-  );
-  border-radius: inherit;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  color: $white;
-}
 
-.boardingPass-airline {
-  margin: 0;
-  font-style: italic;
-}
+  small {
+    display: block;
+    font-size: 11px;
+    color: #A2A9B3;
+    margin-bottom: 2px;
+  }
 
-/* Main */
-.boardingPass-main {
-  padding: 2em;
-  background: $white;
-}
+  strong {
+    font-size: 15px;
+    display: block;
+  }
 
-.boardingPass-departur-IATA,
-.boardingPass-arrival-IATA {
-  display: inline-block;
-  line-height: 1;
-  font-size: 4rem;
-}
+  /*--------------------
+  Header
+  --------------------*/
+  & header {
+    background: linear-gradient(to bottom, #36475f, #2c394f);
+    padding: 12px 20px;
+    height: 53px;
 
-.boardingPass-transport {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    @media only screen and (min-width: 992px) {
+      height: 80px;
+      padding: 25px 20px;
+    }
 
-.boardingPass-transport-icon {
-  transform: rotate(90deg);
-  color: #00a400;
-  font-size: 36px;
-}
+    .logo {
+      float: left;
+      width: 104px;
+      height: 31px;
+    }
 
-/* Footer */
-.boardingPass-footer {
-  padding: 0 2em 2em;
-  background: $white;
-  border-radius: inherit;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
+    .flight {
+      float: right;
+      color: #fff;
+      text-align: right;
 
-.boardingPass-qrCode {
-  height: 40px;
-  width: 100%;
-  background: repeating-linear-gradient(to right,
-          $black, $black 2%,
-          transparent 2%, transparent 3%,
-          $black 3%, $black 4%,
-          transparent 4%, transparent 6%,
-          $black 6%, $black 7%,
-          transparent 7%, transparent 8%,
-          $black 8%, $black 10%,
-          transparent 10%, transparent 11%
-  );
+      small {
+        font-size: 8px;
+        margin-bottom: 2px;
+        opacity: 0.8;
+      }
+
+      strong {
+        font-size: 18px;
+      }
+
+    }
+  }
+
+
+  /*--------------------
+  Progress
+  --------------------*/
+
+  .records-progress {
+    text-align: center;
+  }
+
+  /*--------------------
+  Personal Data
+  --------------------*/
+  .personal-data {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .name {
+      padding: 20px 18px;
+
+     strong {
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      small {
+        margin-bottom: 0px;
+        margin-left: 3px;
+      }
+    }
+
+    .airplane {
+      position: absolute;
+      width: 30px;
+      height: 25px;
+      top: 57%;
+      left: 30%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      animation: move 3s infinite;
+    }
+
+    @keyframes move {
+      40% {
+        left: 50%;
+        opacity: 1;
+      }
+      100% {
+        left: 70%;
+        opacity: 0;
+      }
+    }
+  }
+
+
+  /*--------------------
+  Infos
+  --------------------*/
+  .infos {
+    display: flex;
+    border-top: 1px solid $grey-light02;
+
+    .places,
+    .times {
+      width: 50%;
+      padding: 10px 0;
+
+      &::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+
+    .times {
+
+      strong {
+        transform: scale(0.9);
+        transform-origin: left bottom;
+      }
+    }
+
+    .places {
+      /*background: #ECECEC;*/
+      border-right: 1px solid $grey-light02;
+
+      small {
+        color: #97A1AD;
+      }
+
+      strong {
+        color: $blue-darker75;
+      }
+    }
+
+    .box {
+      padding: 10px 20px 10px;
+      width: 100%;
+      float: left;
+
+      small {
+        font-size: 10px;
+      }
+    }
+  }
+
+
+
+
+  /*--------------------
+  Strap
+  --------------------*/
+  .strap {
+    clear: both;
+    position: relative;
+    border-top: 1px solid $grey-light02;
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .box {
+      padding: 23px 0 20px 20px;
+
+      & div {
+        margin-bottom: 15px;
+
+        small {
+          font-size: 10px;
+        }
+
+        strong {
+          font-size: 13px;
+        }
+      }
+
+      sup {
+        font-size: 8px;
+        position: relative;
+        top: -5px;
+      }
+
+      .date02 {
+        margin-bottom: 0;
+      }
+    }
+    .qrcode {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+
+      @media only screen and (min-width: 992px) {
+        width: 95px;
+        height: 95px;
+      }
+    }
+  }
 }
