@@ -11764,6 +11764,111 @@ a.text-dark:focus {
   border-bottom-width: calc(.2rem + .0625rem);
 }
 
+hr {
+  width: 100%;
+  margin: 1.5em 0;
+  border: 0;
+  border-bottom: 1px dashed #b8c5cc;
+}
+
+.hr--invisible {
+  border-bottom-color: transparent;
+}
+
+/* Boarding Pass */
+
+.boardingPass {
+  width: 400px;
+  -webkit-box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+/* Section */
+
+/** Label **/
+
+.section-label {
+  display: block;
+  text-transform: uppercase;
+  font-size: .8rem;
+  color: #ff00ff;
+}
+
+/** Icon **/
+
+.boardingPass-icon {
+  -webkit-box-flex: .5;
+      -ms-flex-positive: .5;
+          flex-grow: .5;
+  color: #00ff00;
+}
+
+/* Header */
+
+.boardingPass-header {
+  padding: .5em 2em;
+  background: linear-gradient(60deg, #00cc00, #33ff33);
+  border-radius: inherit;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: #ffffff;
+}
+
+.boardingPass-airline {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Main */
+
+.boardingPass-main {
+  padding: 2em;
+  background: #ffffff;
+}
+
+.boardingPass-departur-IATA,
+.boardingPass-arrival-IATA {
+  display: inline-block;
+  line-height: 1;
+  font-size: 4rem;
+}
+
+.boardingPass-transport {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.boardingPass-transport-icon {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: #00a400;
+  font-size: 36px;
+}
+
+/* Footer */
+
+.boardingPass-footer {
+  padding: 0 2em 2em;
+  background: #ffffff;
+  border-radius: inherit;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.boardingPass-qrCode {
+  height: 40px;
+  width: 100%;
+  background: repeating-linear-gradient(to right, #000, #000 2%, transparent 2%, transparent 3%, #000 3%, #000 4%, transparent 4%, transparent 6%, #000 6%, #000 7%, transparent 7%, transparent 8%, #000 8%, #000 10%, transparent 10%, transparent 11%);
+}
+
 .navbar-laravel {
   background-color: #ffffff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
