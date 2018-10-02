@@ -50,7 +50,7 @@
 
 @section('content')
     <div v-cloak>
-        <div class="row align-items-center">
+        <div class="row align-items-center search-spinner">
             <div class="col-12 text-center">
                 <h1 v-if="refreshing">
                     <i class="fa fa-spinner fa-spin text-danger"></i>

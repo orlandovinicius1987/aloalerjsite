@@ -53090,6 +53090,13 @@ var appName = 'vue-addresses';
 
 
 
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,

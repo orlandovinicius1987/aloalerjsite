@@ -21,13 +21,13 @@
                 @csrf
 
                 @if (isset($progress))
-                    {{--<input name="id" type="hidden" value="{{ $progress->id }}">--}}
+                    <input name="id" type="hidden" value="{{ $progress->id }}">
                 @endif
 
                 @if(!is_null($progress->id))
-{{--                    <input name="committee_id" type="hidden" value="{{ $progress->committee->id }}">--}}
+                    <input name="committee_id" type="hidden" value="{{ $progress->committee->id }}">
                 @else
-{{--                    <input name="committee_id" type="hidden" value="{{ $record->committee->id }}">--}}
+                    <input name="committee_id" type="hidden" value="{{ $record->committee->id }}">
                 @endif
 
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
