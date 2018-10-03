@@ -31,11 +31,11 @@
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span v-if="refreshing">
-                                                        <i class="fa fa-spinner fa-spin text-danger"></i>
+                                                        <i class="fa fa-lg fa-spinner fa-spin text-danger"></i>
                                                     </span>
 
                                                     <span v-else>
-                                                        @
+                                                        &nbsp;&nbsp;&nbsp;
                                                     </span>
                                                 </div>
                                             </div>
