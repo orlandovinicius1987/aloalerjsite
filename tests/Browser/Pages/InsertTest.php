@@ -146,31 +146,4 @@ class InsertTest extends DuskTestCase
             throw $exception;
         }
     }
-
-    public function testInsertProgress(){
-
-        $user = factory(User::class, 'Operador')->create();
-
-        try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $person,
-                $record,
-                $address,
-                $contactsArray,
-                $personShowUrl,
-                $contactTypesArrayIsMobile
-            ) {
-
-
-            }
-
-            } catch (\Exception $exception) {
-                throw $exception;
-            } catch (\Throwable $exception) {
-                throw $exception;
-            }
-
-    }
 }
