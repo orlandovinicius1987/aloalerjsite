@@ -19,14 +19,27 @@
                             <div class="form-bigger">
                                 <div class="form-group row search">
                                     <div class="col-12">
-                                        <input
+                                        <div class="input-group">
+                                            <input
                                                 dusk="search"
                                                 id="search"
                                                 class="form-control"
                                                 placeholder="Nome, CPF, CNPJ ou Protocolo"
                                                 v-model="form.search.search"
                                                 @keyup="typeKeyUp"
-                                        >
+                                            >
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span v-if="refreshing">
+                                                        <i class="fa fa-spinner fa-spin text-danger"></i>
+                                                    </span>
+
+                                                    <span v-else>
+                                                        @
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -50,14 +63,6 @@
 
 @section('content')
     <div v-cloak>
-        <div class="row align-items-center search-spinner">
-            <div class="col-12 text-center">
-                <h1 v-if="refreshing">
-                    <i class="fa fa-spinner fa-spin text-danger"></i>
-                </h1>
-            </div>
-        </div>
-
         @include('callcenter.people.partials.table')
     </div>
 @endsection

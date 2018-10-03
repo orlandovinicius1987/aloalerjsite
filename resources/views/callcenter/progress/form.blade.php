@@ -22,7 +22,6 @@
 
                 @if (isset($progress))
                     <input name="id" type="hidden" value="{{ $progress->id }}">
-
                 @endif
 
                 @if((!is_null($progress)) && !is_null($progress->id))
@@ -188,7 +187,7 @@
                         </button>
 
                         @if ($record->resolved_at)
-                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-reopen') }}', 'formProgress')" class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-reopen') }}', 'formProgress')" class="btn btn-danger btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 Gravar e reabrir
                             </button>
                         @else
@@ -198,10 +197,18 @@
                         @endif
 
                         @if ($progress && $progress->id)
-                            <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary"  @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
-                                <i class="fas fa-mail-bulk"></i> Notificar cidadão
+                            <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary btn-depth"  @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? ''), \Auth::user()) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                                Notificar cidadão
                             </a>
                         @endif
+                    </div>
+                </div>
+
+                <input name="files_array" type="hidden" v-model="filesJsonString">
+
+                <div class="form-group row mb-0">
+                    <div class="col-md-8 offset-md-4">
+                        @include('callcenter.progress_files.index')
                     </div>
                 </div>
             </form>

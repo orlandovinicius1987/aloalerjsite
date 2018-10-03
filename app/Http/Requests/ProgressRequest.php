@@ -25,4 +25,19 @@ class ProgressRequest extends Request
             $this->user()->id,
         ]);
     }
+
+    /**
+     * @return array
+     */
+    public function sanitize()
+    {
+        if (!empty($this->get('files_array'))) {
+            $input = $this->all();
+
+            $input['files_array'] = json_decode($this->get('files_array'));
+
+            $this->replace($input);
+        }
+        return $this->all();
+    }
 }
