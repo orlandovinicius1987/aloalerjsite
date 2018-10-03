@@ -79,7 +79,7 @@ class WorkflowTest extends Base
                     ->type('#email', $contacts->email)
                     ->type('#phone', $contacts->phone)
                     ->click('#saveButton')
-                    ->waitForText('Protocolo criado com sucesso')
+                    ->waitForText('Anote o número do novo Protocolo')
                     ->waitUntil(
                         'document.getElementById(\'navbarDropdown\').text.includes(\'' .
                             $user->username .

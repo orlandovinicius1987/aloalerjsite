@@ -104,7 +104,7 @@ class InsertTest extends Base
                 //                }
 
                 $browser
-                    ->waitForText('Protocolo criado com sucesso')
+                    ->waitForText('Anote o número do novo Protocolo')
                     ->visit($personShowUrl)
                     ->scrollTo('button-novo-endereco')
                     ->click('#button-novo-endereco')
