@@ -19,13 +19,13 @@ class CommitteesTest extends Base
                 ->assertSee('Nome Resumido')
                 ->type('#search', 'Defesa do Consumidor')
                 ->waitUntil(
-                    'document.getElementById(\'committeesTable\').rows.length === 2'
+                    "document.getElementById('committeesTable').rows.length === 2"
                 )
                 ->assertSee('0800 282-7060')
                 ->assertDontSee('Idoso')
                 ->type('#search', 'Esta comissao não existe')
                 ->waitUntil(
-                    'document.getElementById(\'committeesTable\').rows.length === 1'
+                    "document.getElementById('committeesTable').rows.length === 1"
                 )
                 ->type('#search', 'Idoso')
                 ->waitForText('Idoso')
