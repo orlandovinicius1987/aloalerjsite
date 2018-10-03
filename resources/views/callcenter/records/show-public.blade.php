@@ -12,7 +12,7 @@
                     <header>
                         <img src="/templates/mv/svg/logo-alo-alerj-callcenter-bgwhite.svg" class="logo img-responsive" alt="AloAlerj - Callcenter">
 
-                        <div class="flight">
+                        <div class="record">
                             <small>Protocolo nº</small>
                             <strong>{{ $record->protocol }}</strong>
 
@@ -37,7 +37,7 @@
                     </section>
 
                     <section class="infos text-left">
-                        <div class="places">
+                        <div class="record-data01">
                             <div class="box">
                                 <small>Origem</small>
                                 <strong>{{ $record->origin->name ?? '' }}</strong>
@@ -47,7 +47,7 @@
                                 <strong>{{ $record->committee->name  ?? '' }}</strong>
                             </div>
                         </div>
-                        <div class="times">
+                        <div class="record-data02">
                             <div class="box">
                                 <small>Tipo</small>
                                 <strong> {{ $record->recordType->name ?? '' }}</strong>

@@ -12199,19 +12199,19 @@ Boarding Pass
   height: 31px;
 }
 
-.records header .flight {
+.records header .record {
   float: right;
   color: #fff;
   text-align: right;
 }
 
-.records header .flight small {
+.records header .record small {
   font-size: 8px;
   margin-bottom: 2px;
   opacity: 0.8;
 }
 
-.records header .flight strong {
+.records header .record strong {
   font-size: 18px;
 }
 
@@ -12288,20 +12288,20 @@ Boarding Pass
   border-top: 1px solid #e8eff3;
 }
 
-.records .infos .places,
-.records .infos .times {
+.records .infos .record-data01,
+.records .infos .record-data02 {
   width: 50%;
   padding: 10px 0;
 }
 
-.records .infos .places::after,
-.records .infos .times::after {
+.records .infos .record-data01::after,
+.records .infos .record-data02::after {
   content: '';
   display: table;
   clear: both;
 }
 
-.records .infos .times strong {
+.records .infos .record-data02 strong {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transform-origin: left bottom;
