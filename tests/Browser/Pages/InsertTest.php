@@ -105,7 +105,7 @@ class InsertTest extends DuskTestCase
                 //                }
 
                 $browser
-                    ->waitForText('Protocolo criado com sucesso')
+                    ->waitForText('Anote o número do novo Protocolo')
                     ->visit($personShowUrl)
                     ->scrollTo('button-novo-endereco')
                     ->click('#button-novo-endereco')
@@ -145,5 +145,32 @@ class InsertTest extends DuskTestCase
         } catch (\Throwable $exception) {
             throw $exception;
         }
+    }
+
+    public function testInsertProgress(){
+
+        $user = factory(User::class, 'Operador')->create();
+
+        try {
+            $this->browse(function (Browser $browser) use (
+                $user,
+                $faker,
+                $person,
+                $record,
+                $address,
+                $contactsArray,
+                $personShowUrl,
+                $contactTypesArrayIsMobile
+            ) {
+
+
+            }
+
+            } catch (\Exception $exception) {
+                throw $exception;
+            } catch (\Throwable $exception) {
+                throw $exception;
+            }
+
     }
 }
