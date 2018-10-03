@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Data\Repositories;
 
-use App\Data\Models\Committee;
 use App\Data\Models\ViaModel;
+use App\Data\Models\Committee;
 
 class Committees extends Base
 {
@@ -36,7 +37,7 @@ class Committees extends Base
     {
         return ($result = $this->searchByAll($search))->count() == 0
             ? $this->emptyResponse()
-            : $result;
+            : $this->response($result);
     }
 
     public function searchByName($name)
