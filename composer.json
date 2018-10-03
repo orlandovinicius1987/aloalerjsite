@@ -14,14 +14,15 @@
         "laravel/framework": "5.7.*",
         "laravel/horizon": "^1.4",
         "laravel/tinker": "^1.0",
+        "laravelcollective/html": "5.7.*",
         "mccool/laravel-auto-presenter": "^7.0",
         "owen-it/laravel-auditing": "^8.0",
         "pragmarx/coollection": "^0.6",
         "pragmarx/health": "^0.9",
         "pragmarx/zipcode": "^1.5",
         "predis/predis": "^1.1",
-        "sensiolabs/security-checker": "^4.1",
-        "laravelcollective/html": "5.7.*"
+        "ralouphie/mimey": "^2.0",
+        "sensiolabs/security-checker": "^4.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

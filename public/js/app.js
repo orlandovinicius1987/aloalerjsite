@@ -53558,6 +53558,16 @@ if (jQuery("#" + appName).length > 0) {
                 this.currentFile.id = null;
                 this.currentFile.description = '';
                 this.currentFile.extension = '';
+            },
+
+            cancelModal: function cancelModal() {
+                document.getElementById('drop1').dropzone.removeAllFiles();
+
+                $('#ProgressFilesModal').modal('hide');
+
+                this.currentFile.id = null;
+                this.currentFile.description = '';
+                this.currentFile.extension = '';
             }
         }
     });

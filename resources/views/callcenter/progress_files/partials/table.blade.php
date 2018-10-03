@@ -1,9 +1,9 @@
     <div class="card-body">
-
         <table id="filesTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Visualizar</th>
+                    <th>Ícone</th>
                     <th>Descrição</th>
                 </tr>
             </thead>
@@ -15,7 +15,9 @@
                             Visualizar
                         </a>
                     </td>
-
+                    <td>
+                        <i class="{{$progressFile->file->icon ?? ''}}"></i>
+                    </td>
                     <td>
                         {{ $progressFile->description ?? '' }}
                     </td>
@@ -44,12 +46,12 @@
         </div>
         <table class="table table-striped">
             <thead>
-                <th></th>
+                <th>Ícone</th>
                 <th>Descrição</th>
             </thead>
             <tbody>
                 <tr v-if="filesJson.length > 0" class="col-xs-12" v-for="file in filesJson">
-                        <td>@{{ file.ext }}</td>
+                        <td>@{{ file.extension }}</td>
                         <td>@{{ file.description }}</td>
                 </tr>
             </tbody>
