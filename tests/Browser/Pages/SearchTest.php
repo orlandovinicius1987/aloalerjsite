@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Browser;
+namespace Tests\Browser\Pages;
 
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 
 use App\Data\Models\User;
@@ -16,7 +15,7 @@ use App\Data\Repositories\ContactTypes as ContactTypesRepository;
 
 use Faker\Generator as Faker;
 
-class SearchTest extends DuskTestCase
+class SearchTest extends Base
 {
     public function testSearchPerson()
     {

@@ -25,9 +25,9 @@
                 @endif
 
                 @if((!is_null($progress)) && !is_null($progress->id))
-                    <input name="committee_id" type="hidden" value="{{ $progress->record->committee->id }}">
+                    <input name="committee_id" type="hidden" value="{{ $progress->record->committee->id ?? '' }}">
                 @else
-                    <input name="committee_id" type="hidden" value="{{ $record->committee->id }}">
+                    <input name="committee_id" type="hidden" value="{{ $record->committee->id ?? '' }}">
                 @endif
 
                 <input name="record_id" type="hidden" value="{{ $record->id }}">

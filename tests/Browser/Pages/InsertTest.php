@@ -1,13 +1,12 @@
 <?php
 
-namespace Tests\Browser;
+namespace Tests\Browser\Pages;
+
+use Laravel\Dusk\Browser;
 
 use App\Notifications\ProgressCreated;
 use App\Notifications\RecordCreated;
 use Illuminate\Support\Facades\Notification;
-
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 
 use App\Data\Models\User;
 use App\Data\Models\Person;
@@ -25,7 +24,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class InsertTest extends DuskTestCase
+class InsertTest extends Base
 {
     public function testInsertData()
     {

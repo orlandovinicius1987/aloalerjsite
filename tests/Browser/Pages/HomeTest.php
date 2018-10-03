@@ -1,13 +1,11 @@
 <?php
 
-namespace Tests\Browser;
-
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
+namespace Tests\Browser\Pages;
 
 use App\Data\Models\User;
+use Laravel\Dusk\Browser;
 
-class HomeTest extends DuskTestCase
+class HomeTest extends Base
 {
     /**
      * A basic browser test example.
