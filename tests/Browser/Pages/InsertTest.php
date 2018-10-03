@@ -2,11 +2,11 @@
 
 namespace Tests\Browser\Pages;
 
+use Laravel\Dusk\Browser;
+
 use App\Notifications\ProgressCreated;
 use App\Notifications\RecordCreated;
 use Illuminate\Support\Facades\Notification;
-
-use Laravel\Dusk\Browser;
 
 use App\Data\Models\User;
 use App\Data\Models\Person;

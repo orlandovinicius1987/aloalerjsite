@@ -3,7 +3,6 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
-
 use App\Data\Models\User;
 use App\Data\Models\Person;
 use App\Data\Models\Record;

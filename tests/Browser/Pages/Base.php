@@ -4,7 +4,7 @@ namespace Tests\Browser\Pages;
 
 use Tests\DuskTestCase;
 use App\Data\Models\User;
-use Faker\Generator as Faker;
+use Faker\Factory as Faker;
 
 class Base extends DuskTestCase
 {
@@ -16,7 +16,7 @@ class Base extends DuskTestCase
     {
         parent::__construct();
 
-        $this->faker = new Faker();
+        $this->faker = Faker::create();
     }
 
     public function user($type = 'Operador')
