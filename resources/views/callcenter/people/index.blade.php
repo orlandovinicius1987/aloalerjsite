@@ -35,7 +35,7 @@
                                                     </span>
 
                                                     <span v-else>
-                                                        &nbsp;&nbsp;&nbsp;
+                                                        <i class="fa fa-lg fa-search"></i>
                                                     </span>
                                                 </div>
                                             </div>
