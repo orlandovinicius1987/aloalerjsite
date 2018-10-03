@@ -11,7 +11,6 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group text-center">
-
                             <h2 class="section-title">
                                 <i class="fas fa-search"></i> Pesquisar
                             </h2>
