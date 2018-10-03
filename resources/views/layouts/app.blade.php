@@ -60,28 +60,28 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-search"></i> Pesquisar </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('committees.index') }}"><i class="fas fa-layer-group"></i> Comissões </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/"><i class="fas fa-headphones-alt"></i> Site do Alô Alerj</a>
-                            </li>
-
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-out-alt"></i> Entrar </a>
                                 </li>
                             @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-search"></i> Pesquisar </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('committees.index') }}"><i class="fas fa-layer-group"></i> Comissões </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/"><i class="fas fa-headphones-alt"></i> Site do Alô Alerj</a>
+                                </li>
+
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
