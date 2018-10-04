@@ -44,9 +44,7 @@
                                name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
                                readonly="readonly">
                         @if ($errors->getBag('validation')->has('name'))
-                            <span class="invalid-feedback" role="alert">
-               <strong>{{ $errors->getBag('validation')->first('name') }}</strong>
-               </span>
+                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('name') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -113,6 +111,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <div class="col-md-4">
                         <label for="neighbourhood" class="col-form-label">Bairro</label>
@@ -175,8 +174,8 @@
                         @include('partials.disabled',['model'=>$address])>--}}
                     </div>
                 </div>
-                <div class="form-group row">
 
+                <div class="form-group row">
                     @if (!((isset($workflow) && $workflow) || old('workflow')) && isset($address->zipcode))
                         <div class="col-md-2">
                             <label for="active" class="col-form-label">Endereço Ativo</label>
@@ -197,7 +196,6 @@
                         <input type="hidden" name="active" value="1">
                     @endIf
                     @if (!$workflow)
-
                         <div class="col-md-4">
                             <label for="identification" class="col-form-label">Criado em </label>
                             <input id="identification"
@@ -206,7 +204,6 @@
                                    disabled
                             >
                         </div>
-
                     <div class="col-md-4">
                         <label for="identification" class="col-form-label">Alterado em</label>
                         <input id="identification"
@@ -215,10 +212,13 @@
                                disabled
                         >
                     </div>
+                    @endif
                 </div>
-                @endif
+
+
+
                 <div class="form-group row mb-0 mt-5 text-center">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         @if ((isset($workflow) && $workflow) || old('workflow'))
                             <button id="saveButton" type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$address])>
                                 Próximo Passo  <i class="fas fa-forward"></i>
@@ -234,6 +234,8 @@
                         @endif
                     </div>
                 </div>
+
+
             </form>
         </div>
     </div>
