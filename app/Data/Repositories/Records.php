@@ -65,11 +65,13 @@ class Records extends Base
 
     private function makePersonalDataInfoFromContactData($data)
     {
-        return "Data de nascimento: {$data['birthdate']}\n" .
+        return (
+            "Data de nascimento: {$data['birthdate']}\n" .
             "Sexo: {$data['sex_1']}\n" .
             "Identidade de gênero: {$data['sex_2']}\n" .
             "Escolaridade: {$data['scholarship']}\n" .
-            "Área de atuação: {$data['area']}\n";
+            "Área de atuação: {$data['area']}\n"
+        );
     }
 
     public function markAsResolved($record_id, $progress = null)
@@ -135,13 +137,15 @@ class Records extends Base
 
         if (!$person) {
             $person = $this->peopleRepository->create(
-                ($data = [
-                    'cpf_cnpj' => $data['cpf'],
-                    'name' => $data['name'],
-                    'identification' => trim(
-                        $data['identidade'] . ' ' . $data['expeditor']
-                    ),
-                ])
+                (
+                    $data = [
+                        'cpf_cnpj' => $data['cpf'],
+                        'name' => $data['name'],
+                        'identification' => trim(
+                            $data['identidade'] . ' ' . $data['expeditor']
+                        ),
+                    ]
+                )
             );
         }
 
@@ -172,26 +176,22 @@ class Records extends Base
 
         $record = $this->create(
             coollect([
-                'committee_id' => app(Committees::class)->findByName(
-                    'ALÔ ALERJ'
-                )->id,
+                'committee_id' =>
+                    app(Committees::class)->findByName('ALÔ ALERJ')->id,
                 'person_id' => $person->id,
-                'record_type_id' => app(RecordTypes::class)->findByName(
-                    'Outros'
-                )->id,
-                'area_id' => ($areaId = app(Areas::class)->findByName(
-                    'ALÔ ALERJ'
-                )->id),
-                'record_action_id' => app(RecordActions::class)->findByName(
-                    'Outros'
-                )->id,
+                'record_type_id' =>
+                    app(RecordTypes::class)->findByName('Outros')->id,
+                'area_id' =>
+                    ($areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id),
+                'record_action_id' =>
+                    app(RecordActions::class)->findByName('Outros')->id,
             ])
         );
 
         $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
-            'progress_type_id' => app(ProgressTypes::class)->findByName('Email')
-                ->id,
+            'progress_type_id' =>
+                app(ProgressTypes::class)->findByName('Email')->id,
             'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'area_id' => $areaId,

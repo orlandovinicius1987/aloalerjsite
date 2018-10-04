@@ -18,7 +18,8 @@ class People extends Base
         return $people;
         return $people->map(function ($person) {
             $person->records = $person->records->map(function ($record) {
-                $record->protocol_formatted = $record->presenter()->protocol_formatted;
+                $record->protocol_formatted = $record->presenter()
+                    ->protocol_formatted;
             });
 
             return $person;
