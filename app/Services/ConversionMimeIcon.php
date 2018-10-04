@@ -35,6 +35,6 @@ class ConversionMimeIcon
                 return $icon;
             }
         }
-        return 'fa-file-o';
+        return 'fas fa-file';
     }
 }

@@ -51,7 +51,7 @@
             </thead>
             <tbody>
                 <tr v-if="filesJson.length > 0" class="col-xs-12" v-for="file in filesJson">
-                        <td>@{{ file.extension }}</td>
+                        <td><i :class="file.icon"></i></td>
                         <td>@{{ file.description }}</td>
                 </tr>
             </tbody>
