@@ -67,7 +67,7 @@
                     <div class="form-group row" >
 
 
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="mobile" class="col-form-label">Tipo de Contato</label>
                             <input
                                     id="contact_type_id"
@@ -103,7 +103,7 @@
                             @endif
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label for="mobile" class="col-form-label">Contato</label>
                             <the-mask
                                     v-if="this.currentContactType"
@@ -122,23 +122,22 @@
                             ></the-mask>
                         </div>
 
-                    </div>
-
-
-                    <div class="form-group row">
-
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="active" class="col-form-label">Contato Ativo</label>
                             <input type="hidden" name="active" value="0">
-{{--                            <input type="checkbox" name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}} @include('partials.disabled',['model'=>$contact])>--}}
-
                             <p class="form-twolines">
                                 <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$contact])>
                                     <div class="handle"></div>
                                 </button>
                             </p>
-
                         </div>
+
+                    </div>
+
+
+                    <div class="form-group row">
+
+
                     </div>
 
                     @if (!$workflow)
