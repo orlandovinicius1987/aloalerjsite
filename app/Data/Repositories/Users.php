@@ -77,9 +77,8 @@ class Users extends Base
      */
     private function getUserType($username)
     {
-        return
-            // $this->authorization->getUserProfiles($username)->first()
-            UserType::where('name', 'Usuario')->first();
+        return // $this->authorization->getUserProfiles($username)->first()
+        UserType::where('name', 'Usuario')->first();
     }
 
     private function getUserTypeFromPermissions($permissions)
@@ -145,11 +144,13 @@ class Users extends Base
      */
     private function isType($permissions, $type)
     {
-        return $permissions
+        return (
+            $permissions
                 ->filter(function ($user) use ($type) {
                     return starts_with($user['nomeFuncao'], $type);
                 })
-                ->count() > 0;
+                ->count() > 0
+        );
     }
 
     /**
@@ -165,9 +166,15 @@ class Users extends Base
 
             if (
                 is_null(
-                    ($user = $this->findUserByEmail(
-                        ($email = "{$credentials['username']}@alerj.rj.gov.br")
-                    ))
+                    (
+                        $user = $this->findUserByEmail(
+                            (
+                                $email = "{$credentials[
+                                    'username'
+                                ]}@alerj.rj.gov.br"
+                            )
+                        )
+                    )
                 )
             ) {
                 $user = new User();
