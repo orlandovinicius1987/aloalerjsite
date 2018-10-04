@@ -14,7 +14,7 @@ class File extends Controller
     public function convertExtensionToIcon(Request $request)
     {
         $extension = $request->get('extension');
-        $mimes = new MimeTypes;
+        $mimes = new MimeTypes();
 
         $mime = $mimes->getMimeType($extension);
         $icon = ConversionMimeIcon::mimeToClass($mime);
@@ -26,7 +26,7 @@ class File extends Controller
             'errors' => $messages,
             'extension' => $extension,
             'mime' => $mime,
-            'iconClass' => $icon
+            'iconClass' => $icon,
         ];
     }
 }

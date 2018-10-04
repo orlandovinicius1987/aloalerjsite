@@ -9,7 +9,8 @@ Route::group(['prefix' => 'v1'], function () {
         'api.commiteesSearch.execute'
     );
 
-    Route::post('convert-extension-to-icon/', 'Api\File@convertExtensionToIcon')->name(
-        'api.file.convertExtensionToIcon'
-    );
+    Route::post(
+        'convert-extension-to-icon/',
+        'Api\File@convertExtensionToIcon'
+    )->name('api.file.convertExtensionToIcon');
 });

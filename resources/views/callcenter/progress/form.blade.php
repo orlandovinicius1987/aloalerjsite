@@ -1,22 +1,25 @@
 @extends('layouts.app')
+
+@section('vue-app-name', 'vue-progress')
+
 @section('heading')
     @parent
 
-
-    <div class="mt-4" id="vue-progress">
+    <div class="mt-4">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
                 <div class="section-title">
                     <ul class="aloalerj-breadcrumbs">
-
                         <li>
                             <a href="{{ route('people.show', ['id' => $record->person->id]) }}">{{ $record->person->name }}</a>
                         </li>
+
                         <br>
 
                         <li>
                             <a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a>
                         </li>
+
                         <br>
 
                         <li>Andamentos</li>
@@ -204,15 +207,12 @@
                     </div>
 
                     <input name="files_array" type="hidden" v-model="filesJsonString">
-
                 </form>
             </div>
         </div>
     </div>
-
 @endsection
+
 @section('content')
-
     @include('callcenter.progress_files.index')
-
 @endsection
