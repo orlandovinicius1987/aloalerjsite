@@ -35,7 +35,7 @@ class FakerServiceProvider extends ServiceProvider
                 private function mod($dividendo, $divisor)
                 {
                     return round(
-                        $dividendo - (floor($dividendo / $divisor) * $divisor)
+                        $dividendo - floor($dividendo / $divisor) * $divisor
                     );
                 }
 
@@ -70,7 +70,7 @@ class FakerServiceProvider extends ServiceProvider
                         $n3 * 8 +
                         $n2 * 9 +
                         $n1 * 10;
-                    $d1 = 11 - ($this->mod($d1, 11));
+                    $d1 = 11 - $this->mod($d1, 11);
                     if ($d1 >= 10) {
                         $d1 = 0;
                     }
@@ -85,7 +85,7 @@ class FakerServiceProvider extends ServiceProvider
                         $n3 * 9 +
                         $n2 * 10 +
                         $n1 * 11;
-                    $d2 = 11 - ($this->mod($d2, 11));
+                    $d2 = 11 - $this->mod($d2, 11);
                     if ($d2 >= 10) {
                         $d2 = 0;
                     }
@@ -153,7 +153,7 @@ class FakerServiceProvider extends ServiceProvider
                         $n3 * 3 +
                         $n2 * 4 +
                         $n1 * 5;
-                    $d1 = 11 - ($this->mod($d1, 11));
+                    $d1 = 11 - $this->mod($d1, 11);
                     if ($d1 >= 10) {
                         $d1 = 0;
                     }
@@ -171,7 +171,7 @@ class FakerServiceProvider extends ServiceProvider
                         $n3 * 4 +
                         $n2 * 5 +
                         $n1 * 6;
-                    $d2 = 11 - ($this->mod($d2, 11));
+                    $d2 = 11 - $this->mod($d2, 11);
                     if ($d2 >= 10) {
                         $d2 = 0;
                     }

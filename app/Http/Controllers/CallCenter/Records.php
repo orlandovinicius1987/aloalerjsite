@@ -133,7 +133,7 @@ class Records extends Controller
      */
     public function show($id)
     {
-        if (!$record = $this->recordsRepository->findById($id)) {
+        if (!($record = $this->recordsRepository->findById($id))) {
             abort(404);
         }
 
@@ -160,7 +160,7 @@ class Records extends Controller
     public function nonResolved()
     {
         return view('callcenter.records.index')->with([
-            'records' => $records = $this->recordsRepository->allNotResolved(),
+            'records' => ($records = $this->recordsRepository->allNotResolved()),
             'onlyNonResolved' => true,
         ]);
     }
@@ -175,9 +175,9 @@ class Records extends Controller
 
     public function showPublic($protocol)
     {
-        return (
-            !$record = app(RecordsRepository::class)->findByProtocol($protocol)
-        )
+        return !($record = app(RecordsRepository::class)->findByProtocol(
+            $protocol
+        ))
             ? abort(404)
             : view('callcenter.records.show-public')->with('record', $record);
     }

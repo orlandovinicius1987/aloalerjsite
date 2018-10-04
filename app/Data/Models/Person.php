@@ -98,15 +98,15 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-                ->where('contact', $contact = only_numbers($data['contact']))
+                ->where('contact', ($contact = only_numbers($data['contact'])))
                 ->first()
         ) {
             return $contact;
         }
 
         return $this->addresses()->create([
-            'contact_type_id' =>
-                app(ContactTypes::class)->findByName('Celular')->id,
+            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')
+                ->id,
             'contact' => $contact,
             'from' => 'personal',
             'active' => true,

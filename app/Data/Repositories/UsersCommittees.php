@@ -14,18 +14,16 @@ class UsersCommittees extends Base
 
     public function userHasCommittee($user_id, $committee_id)
     {
-        return (
-            !is_null($this->searchByUserAndCommittee($user_id, $committee_id))
+        return !is_null(
+            $this->searchByUserAndCommittee($user_id, $committee_id)
         );
     }
 
     public function searchByUserAndCommittee($user_id, $committee_id)
     {
-        return (
-            $this->model::where('user_id', $user_id)
-                ->where('committee_id', $committee_id)
-                ->first()
-        );
+        return $this->model::where('user_id', $user_id)
+            ->where('committee_id', $committee_id)
+            ->first();
     }
 
     public function syncOperatorOrAdminUser($user_id)

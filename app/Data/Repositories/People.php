@@ -18,8 +18,7 @@ class People extends Base
         return $people;
         return $people->map(function ($person) {
             $person->records = $person->records->map(function ($record) {
-                $record->protocol_formatted = $record->presenter()
-                    ->protocol_formatted;
+                $record->protocol_formatted = $record->presenter()->protocol_formatted;
             });
 
             return $person;
@@ -125,7 +124,7 @@ class People extends Base
 
     public function searchByEverything($search)
     {
-        if (empty(trim($search = $search['search']))) {
+        if (empty(trim(($search = $search['search'])))) {
             return $this->emptyResponse();
         }
 
