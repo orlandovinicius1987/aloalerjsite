@@ -15,10 +15,12 @@ function endTimer()
 
 function toBoolean($boolean)
 {
-    return $boolean === 'true' ||
+    return (
+        $boolean === 'true' ||
         $boolean === '1' ||
         $boolean === 1 ||
-        $boolean === true;
+        $boolean === true
+    );
 }
 
 function extract_credentials($request)

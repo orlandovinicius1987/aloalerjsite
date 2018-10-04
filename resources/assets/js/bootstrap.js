@@ -78,3 +78,8 @@ if (token) {
  * */
 require('select2')
 window.swal = require('sweetalert');
+
+/**
+ * Toggle
+ */
+require('bootstrap-toggle')
