@@ -41,6 +41,7 @@ class Files extends Controller
                         '.' .
                         $file->getClientOriginalExtension(),
                 'sha1_hash' => $hash,
+                'extension' => $file->getClientOriginalExtension(),
             ]);
 
             $row = $filesRepository->findByColumn('sha1_hash', $hash);

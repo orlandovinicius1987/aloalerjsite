@@ -29,7 +29,11 @@ if (jQuery("#" + appName).length > 0) {
                 id: null,
                 description:'',
                 extension:'',
+                icon:'',
+                refreshing:false
             },
+
+            errors:null
         },
 
         computed:{
@@ -65,17 +69,50 @@ if (jQuery("#" + appName).length > 0) {
                 this.currentFile.extension = response['extension']
             },
 
+            resetFile(){
+                this.currentFile.id = null
+                this.currentFile.description = ''
+                this.currentFile.extension = ''
+                this.currentFile.icon = ''
+            },
+
             addToFilesArray: function(){
-                this.filesJson.push({"file_id":this.currentFile.id, "description":this.currentFile.description, "extension":this.currentFile.extension})
+                this.refreshIconAndPushArray()
 
                 document.getElementById('drop1').dropzone.removeAllFiles()
 
                 $('#ProgressFilesModal').modal('hide');
+            },
 
-                this.currentFile.id = null
-                this.currentFile.description = ''
-                this.currentFile.extension = ''
+            cancelModal: function(){
+                document.getElementById('drop1').dropzone.removeAllFiles()
+
+                $('#ProgressFilesModal').modal('hide');
+
+                this.resetFile()
+            },
+
+            refreshIconAndPushArray() {
+                let $this = this
+
+                $this.errors = null
+
+                axios.post('/api/v1/convert-extension-to-icon', {extension: $this.currentFile.extension})
+                    .then(function(response) {
+                        console.log(response)
+
+                        if (response.data.success) {
+                            $this.filesJson.push({"file_id":$this.currentFile.id, "description":$this.currentFile.description, "extension":$this.currentFile.extension, "icon":response.data.iconClass})
+
+                            $this.errors = response.data.errors
+                        }
+                    }).then(function () {
+                        $this.resetFile()
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    })
             }
-        },
+        }
     })
 }
