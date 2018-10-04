@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="neighbourhood" class="col-form-label">Bairro</label>
                         <input id="neighbourhood"
                                name="neighbourhood"
@@ -130,7 +130,7 @@
                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('neighbourhood') }}</strong></span>
                         @endif
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="city" class="col-form-label">Cidade</label>
                         <input id="city"
                                name="city"
@@ -162,8 +162,6 @@
                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('state') }}</strong></span>
                         @endif
                     </div>
-                </div>
-                <div class="form-group row">
                     <div class="col-md-2">
                         <label for="is_mailable" class="col-form-label">Endereço Validado</label>
                         <input type="hidden" name="is_mailable" value="0">
@@ -176,6 +174,9 @@
                         {{-- <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}}
                         @include('partials.disabled',['model'=>$address])>--}}
                     </div>
+                </div>
+                <div class="form-group row">
+
                     @if (!((isset($workflow) && $workflow) || old('workflow')) && isset($address->zipcode))
                         <div class="col-md-2">
                             <label for="active" class="col-form-label">Endereço Ativo</label>
