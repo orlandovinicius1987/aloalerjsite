@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Data\Presenters;
+
 use Mimey\MimeTypes;
 use App\Services\ConversionMimeIcon;
 
@@ -18,7 +19,7 @@ class File extends Base
     public function icon()
     {
         $extension = $this->wrappedObject->extension;
-        $mimes = new MimeTypes;
+        $mimes = new MimeTypes();
 
         return ConversionMimeIcon::mimeToClass($mimes->getMimeType($extension));
     }

@@ -14,9 +14,7 @@ class AddExtensionColumnToFilesTable extends Migration
     public function up()
     {
         Schema::table('files', function (Blueprint $table) {
-            $table
-                ->string('extension')
-                ->nullable();
+            $table->string('extension')->nullable();
         });
     }
 
