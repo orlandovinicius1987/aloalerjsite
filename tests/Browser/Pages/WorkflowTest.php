@@ -1,17 +1,15 @@
 <?php
 
-namespace Tests\Browser;
+namespace Tests\Browser\Pages;
 
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-
 use App\Data\Models\User;
 use App\Data\Models\Person;
 use App\Data\Models\Record;
 use App\Data\Models\PersonAddress;
 use App\Data\Models\PersonContact;
 
-class WorkflowTest extends DuskTestCase
+class WorkflowTest extends Base
 {
     public function testWorkFlow()
     {

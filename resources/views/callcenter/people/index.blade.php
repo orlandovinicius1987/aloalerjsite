@@ -11,7 +11,6 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group text-center">
-
                             <h2 class="section-title">
                                 <i class="fas fa-search"></i> Pesquisar
                             </h2>
@@ -31,11 +30,11 @@
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span v-if="refreshing">
-                                                        <i class="fa fa-spinner fa-spin text-danger"></i>
+                                                        <i class="fa fa-lg fa-spinner fa-spin text-danger"></i>
                                                     </span>
 
                                                     <span v-else>
-                                                        @
+                                                        <i class="fa fa-lg fa-search"></i>
                                                     </span>
                                                 </div>
                                             </div>
