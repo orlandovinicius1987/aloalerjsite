@@ -124,12 +124,21 @@
 
                         <div class="col-md-3">
                             <label for="active" class="col-form-label">Contato Ativo</label>
+
+                            {{--<input type="hidden" name="active" value="0">--}}
+                            {{--<p class="form-twolines">--}}
+                                {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$contact])>--}}
+                                    {{--<div class="handle"></div>--}}
+                                {{--</button>--}}
+                            {{--</p>--}}
+
                             <input type="hidden" name="active" value="0">
-                            <p class="form-twolines">
-                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$contact])>
-                                    <div class="handle"></div>
-                                </button>
-                            </p>
+                            <input
+                                type="checkbox"
+                                name="active" {{old('active') || $contact->active ? 'checked="checked"' : ''}}
+                                @include('partials.disabled',['model'=>$contact])
+                            >
+
                         </div>
 
                     </div>

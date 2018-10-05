@@ -184,15 +184,15 @@
                         </div>
                         <div class="col-md-3">
                             <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
-                            <p class="form-twolines">
-                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
-                                    <div class="handle"></div>
-                                </button>
-                            </p>
+                            {{--<p class="form-twolines">--}}
+                                {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>--}}
+                                    {{--<div class="handle"></div>--}}
+                                {{--</button>--}}
+                            {{--</p>--}}
 
-                            {{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+                            <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
                             <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                            || $record->send_answer_by_email ? 'checked="checked"' : ''}} >--}}
+                            || $record->send_answer_by_email ? 'checked="checked"' : ''}} >
                         </div>
 
                     </div>
