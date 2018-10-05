@@ -29,13 +29,13 @@ class Files extends Controller
 
             $hash = hash('sha1', file_get_contents($file->getPathName()));
             $file->move(
-                storage_path(),
+                storage_path('app/files'),
                 $hash . '.' . $file->getClientOriginalExtension()
             );
 
             $request->merge([
                 'url' =>
-                    storage_path() .
+                    storage_path('app/files') .
                         '/' .
                         $hash .
                         '.' .

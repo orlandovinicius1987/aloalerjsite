@@ -3,10 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Data\Repositories\Committees as CommitteesRepostory;
 use App\Data\Repositories\UsersCommittees as UsersCommitteesRepostory;
-use App\Data\Repositories\UserTypes as UserTypesRepostory;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,14 +28,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('committee-canEdit', function ($user, $committee_id) {
             if ($user->userType->name == 'Comissao') {
-                $userCommitteesRepository = app(
-                    UsersCommitteesRepostory::class
-                );
-
-                return $userCommitteesRepository->userHasCommittee(
-                    $user->id,
-                    $committee_id
-                );
+                return !$committee_id
+                    ? false
+                    : app(UsersCommitteesRepostory::class)->userHasCommittee(
+                        $user->id,
+                        $committee_id
+                    );
             } else {
                 return true;
             }

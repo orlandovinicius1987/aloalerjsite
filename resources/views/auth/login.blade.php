@@ -58,18 +58,18 @@
                                                     </label>
 
                                                     <input
-                                                        type="checkbox"
-                                                        name="remember"
-                                                        id="remember"
-                                                        {{ old('remember') ? 'checked' : '' }}
-                                                        data-toggle="toggle"
-                                                        data-on="Sim"
-                                                        data-off="Não"
+                                                            type="checkbox"
+                                                            name="remember"
+                                                            id="remember"
+                                                            {{ old('remember') ? 'checked' : '' }}
+                                                            data-togglex="toggle"
+                                                            data-on="Sim"
+                                                            data-off="Não"
                                                     >
 
-                                                    <button type="button" class="btn btn-xs btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off"  {{ old('remember') ? 'checked' : '' }}>
-                                                        <div class="handle"></div>
-                                                    </button>
+                                                    {{--<button type="button" class="btn btn-xs btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off"  {{ old('remember') ? 'checked' : '' }}>--}}
+                                                        {{--<div class="handle"></div>--}}
+                                                    {{--</button>--}}
                                                 </div>
                                             </div>
                                         </div>
