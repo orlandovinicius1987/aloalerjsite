@@ -133,7 +133,7 @@ class Users extends Base
 
     private function isAdministrador($permissions)
     {
-        return ($this->isType($permissions, 'Administrador'));
+        return $this->isType($permissions, 'Administrador');
     }
 
     /**
@@ -166,8 +166,14 @@ class Users extends Base
 
             if (
                 is_null(
-                    $user = $this->findUserByEmail(
-                        $email = "{$credentials['username']}@alerj.rj.gov.br"
+                    (
+                        $user = $this->findUserByEmail(
+                            (
+                                $email = "{$credentials[
+                                    'username'
+                                ]}@alerj.rj.gov.br"
+                            )
+                        )
                     )
                 )
             ) {

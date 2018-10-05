@@ -9,6 +9,17 @@ use App\Data\Repositories\AttachedFiles as AttachedFilesRepository;
 
 class Progresses extends Controller
 {
+    private function attachFilesFromRequest($request, $progress_id)
+    {
+        $attachedFilesRepository = app(AttachedFilesRepository::class);
+        foreach ($request->get('files_array') as $file) {
+            $file = (array) $file;
+            $file['progress_id'] = $progress_id;
+
+            $attachedFilesRepository->createFromArray($file);
+        }
+    }
+
     /**
      * @return $this
      */
@@ -32,26 +43,15 @@ class Progresses extends Controller
      */
     public function store(ProgressRequest $request)
     {
-        $attachedFilesRepository = app(AttachedFilesRepository::class);
-        $request->merge(['created_by_id' => Auth::user()->id]);
-
-        if (is_null($request->get('progress_id'))) {
-            $progress = $this->progressesRepository->createFromRequest(
-                $request
-            )->sendNotifications();
-        } else {
-            $progress = $this->progressesRepository->findById(
-                $request->get('progress_id')
-            );
+        if (is_null($request->get('id'))) {
+            $request->merge(['created_by_id' => Auth::user()->id]);
         }
 
-        //Attach files
-        foreach ($request->get('files_array') as $file) {
-            $file = (array) $file;
-            $file['progress_id'] = $progress->id;
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
-            $attachedFilesRepository->createFromArray($file);
-        }
+        $this->attachFilesFromRequest($request, $progress->id);
 
         $this->showSuccessMessage();
 
@@ -62,11 +62,15 @@ class Progresses extends Controller
 
     public function storeAndMarkAsResolved(ProgressRequest $request)
     {
-        $request->merge(['created_by_id' => Auth::user()->id]);
+        if (is_null($request->get('id'))) {
+            $request->merge(['created_by_id' => Auth::user()->id]);
+        }
 
-        $progress = $this->progressesRepository->createFromRequest($request);
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
-        $progress->sendNotifications();
+        $this->attachFilesFromRequest($request, $progress->id);
 
         $this->recordsRepository->markAsResolved(
             $request->get('record_id'),
@@ -82,11 +86,17 @@ class Progresses extends Controller
 
     public function storeAndReopen(ProgressRequest $request)
     {
-        $request->merge(['created_by_id' => Auth::user()->id]);
+        if (is_null($request->get('id'))) {
+            $request->merge(['created_by_id' => Auth::user()->id]);
+        }
 
-        $progress = $this->progressesRepository->createFromRequest($request);
+        $progress = $this->progressesRepository->createFromRequest(
+            $request
+        )->sendNotifications();
 
-        $progress->sendNotifications();
+        $this->attachFilesFromRequest($request, $progress->id);
+
+        $this->showSuccessMessage();
 
         $this->recordsRepository->markAsNotResolved($request->get('record_id'));
 

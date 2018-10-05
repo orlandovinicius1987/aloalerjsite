@@ -125,7 +125,7 @@ class People extends Base
 
     public function searchByEverything($search)
     {
-        if (empty(trim($search = $search['search']))) {
+        if (empty(trim(($search = $search['search'])))) {
             return $this->emptyResponse();
         }
 

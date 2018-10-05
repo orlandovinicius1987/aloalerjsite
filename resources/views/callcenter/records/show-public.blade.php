@@ -1,89 +1,93 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="card mt-4">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-8">
-                    <ul class="aloalerj-breadcrumbs">
-                        <li>
-                            Protocolo {{ $record->protocol }}
-                        </li>
-                    </ul>
+
+@section('heading')
+    @parent
+
+
+    <div class="mt-4">
+        <div class="row text-center">
+            <div class="col-md-8 offset-md-2">
+                <div class="records">
+                    <header>
+                        <img src="/templates/mv/svg/logo-alo-alerj-callcenter-bgwhite.svg" class="logo img-responsive" alt="AloAlerj - Callcenter">
+
+                        <div class="record">
+                            <small>Protocolo nº</small>
+                            <strong>{{ $record->protocol }}</strong>
+
+                        </div>
+                    </header>
+
+                    <section class="records-progress mt-3">
+                        <h5>
+                            @if ($record->resolved_at)
+                                <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
+                            @else
+                                 <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">PROTOCOLO EM ANDAMENTO</span>
+                            @endif
+                        </h5>
+                    </section>
+
+                    <section class="personal-data">
+                        <div class="name">
+                            <small>Nome Completo</small>
+                            <strong>{{ $record->person->name ?? '' }}</strong>
+                        </div>
+                    </section>
+
+                    <section class="infos text-left">
+                        <div class="record-data01">
+                            <div class="box">
+                                <small>Origem</small>
+                                <strong>{{ $record->origin->name ?? '' }}</strong>
+                            </div>
+                            <div class="box">
+                                <small>Comissão</small>
+                                <strong>{{ $record->committee->name  ?? '' }}</strong>
+                            </div>
+                        </div>
+                        <div class="record-data02">
+                            <div class="box">
+                                <small>Tipo</small>
+                                <strong> {{ $record->recordType->name ?? '' }}</strong>
+                            </div>
+                            <div class="box">
+                                <small>Área</small>
+                                <strong>{{ $record->area->name ?? '' }}</strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="strap">
+                        <div class="box text-left">
+                            <div class="date01">
+                                <small>Criado em</small>
+                                <strong>{{ $record->created_at_formatted ?? '' }}</strong>
+                            </div>
+                            <div class="date02">
+                                <small>Alterado em</small>
+                                <strong>{{ $record->updated_at_formatted ?? '' }}</strong>
+                            </div>
+                        </div>
+                        <svg class="qrcode">
+                            <use xlink:href="#qrcode"></use>
+                        </svg>
+                    </section>
                 </div>
 
-                <div class="col-4">
-                    <h5 class="text-right">
-                        @if ($record->resolved_at)
-                            <span class="badge badge-danger">PROTOCOLO FINALIZADO</span>
-                        @else
-                            <span class="badge badge-success">PROTOCOLO EM ANDAMENTO</span>
-                        @endif
-                    </h5>
-                </div>
-            </div>
-        </div>
+                @include('callcenter.records.qrcode')
 
-        <div class="card-body">
-            <div class="form-group row">
-                <label for="name" class="col-sm-4 col-form-label text-md-right">Nome Completo</label>
-                <div class="col-md-6">
-                    {{ $record->person->name ?? '' }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Origem</label>
-
-                <div class="col-md-6">
-                    {{ $record->origin->name ?? '' }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="committee_id" class="col-sm-4 col-form-label text-md-right">Comissão</label>
-
-                <div class="col-md-6">
-                    {{ $record->committee->name  ?? '' }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="record_type_id" class="col-sm-4 col-form-label text-md-right">Tipo</label>
-
-                <div class="col-md-6">
-                    {{ $record->recordType->name ?? '' }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="area_id" class="col-sm-4 col-form-label text-md-right">Área</label>
-
-                <div class="col-md-6">
-                    {{ $record->area->name ?? '' }}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="identification" class="col-sm-4 col-form-label text-md-right">
-                    Criado em
-                </label>
-
-                <div class="col-md-4">
-                    {{ $record->created_at_formatted ?? '' }}
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="identification" class="col-sm-4 col-form-label text-md-right">
-                    Alterado em
-                </label>
-
-                <div class="col-md-4">
-                    {{ $record->updated_at_formatted ?? '' }}
-                </div>
             </div>
         </div>
     </div>
+
+
+
+
+@endsection
+
+@section('content')
 
     <div class="card mt-4">
         <div class="card-header">
@@ -95,7 +99,7 @@
                 </div>
             </div>
         </div>
-
         @include('callcenter.progress.partials.table', ['progresses' => $record->progresses])
     </div>
+
 @endsection

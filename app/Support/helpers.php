@@ -39,7 +39,7 @@ function subsystem_is($subsystem)
 
 function is_administrator()
 {
-    if (!$user = Auth::user()) {
+    if (!($user = Auth::user())) {
         return false;
     }
 

@@ -137,13 +137,15 @@ class Records extends Base
 
         if (!$person) {
             $person = $this->peopleRepository->create(
-                $data = [
-                    'cpf_cnpj' => $data['cpf'],
-                    'name' => $data['name'],
-                    'identification' => trim(
-                        $data['identidade'] . ' ' . $data['expeditor']
-                    ),
-                ]
+                (
+                    $data = [
+                        'cpf_cnpj' => $data['cpf'],
+                        'name' => $data['name'],
+                        'identification' => trim(
+                            $data['identidade'] . ' ' . $data['expeditor']
+                        ),
+                    ]
+                )
             );
         }
 
@@ -180,7 +182,7 @@ class Records extends Base
                 'record_type_id' =>
                     app(RecordTypes::class)->findByName('Outros')->id,
                 'area_id' =>
-                    $areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id,
+                    ($areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id),
                 'record_action_id' =>
                     app(RecordActions::class)->findByName('Outros')->id,
             ])

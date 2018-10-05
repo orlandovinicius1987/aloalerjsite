@@ -288,7 +288,8 @@ and historico.historico_id = ' .
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
-                'created_at' => $date = $this->inferDateFromProtocol($protocol),
+                'created_at' =>
+                    ($date = $this->inferDateFromProtocol($protocol)),
                 'updated_at' => $date,
             ])
         );
@@ -409,7 +410,7 @@ and historico.historico_id = ' .
 
     private function inferOriginFromHistory($history)
     {
-        if (!$history = $this->getAllHistory($history->historico_id)) {
+        if (!($history = $this->getAllHistory($history->historico_id))) {
             return null;
         }
 

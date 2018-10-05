@@ -34,8 +34,6 @@
                         </h4>
                     </div>
                 @endif
-
-
             </div>
         </div>
 
@@ -50,8 +48,9 @@
                     @if (isset($record))
                         <input name="record_id" type="hidden" value="{{ $record->id }}">
                     @endif
+
                     <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="cpf_cnpj" class="col-form-label">CNPJ/CPF</label>
                             <input id="cpf_cnpj"
                                    class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj"
@@ -62,7 +61,7 @@
                             @endif
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <label for="name" class="col-form-label">Nome Completo</label>
                             <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                    name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
@@ -73,10 +72,9 @@
                         </div>
                     </div>
 
-                    @if (isset($record) and is_null($record->id))
-                        <div class="form-group row">
-
-                            <div class="col-md-6">
+                    <div class="form-group row">
+                        @if (isset($record) and is_null($record->id))
+                            <div class="col-md-4">
                                 <label for="origin_id" class="col-form-label">Origem</label>
                                 <select id="origin_id"
                                         class="form-control{{ $errors->getBag('validation')->has('origin_id') ? ' is-invalid' : '' }} select2" name="origin_id"
@@ -96,12 +94,9 @@
                                     <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('origin_id') }}</strong></span>
                                 @endif
                             </div>
-                        </div>
-                    @endIf
+                        @endIf
 
-                    <div class="form-group row">
-
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="committee_id" class="col-form-label">Comissão</label>
                             <select id="committee_id"
                                     class="form-control{{ $errors->getBag('validation')->has('committee_id') ? ' is-invalid' : '' }} select2"
@@ -124,8 +119,7 @@
                             @endif
                         </div>
 
-
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="record_type_id" class="col-form-label">Tipo</label>
                             <select id="record_type_id"
                                     class="form-control{{ $errors->getBag('validation')->has('record_type_id') ? ' is-invalid' : '' }} select2"
@@ -147,20 +141,12 @@
                                 <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('record_type_id') }}</strong>M/span>
                             @endif
                         </div>
-
-
                     </div>
 
                     <div class="form-group row">
 
-
-
-                    </div>
-
-                    @if (isset($record) and is_null($record->id))
-                        <div class="form-group row">
-
-                            <div class="col-md-6">
+                        @if (isset($record) and is_null($record->id))
+                            <div class="col-md-5">
                                 <label for="progress_type_id" class="col-form-label">Assunto</label>
                                 <select id="progress_type_id" type="progress_type_id"
                                         class="form-control{{ $errors->getBag('validation')->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"
@@ -174,15 +160,10 @@
                                     <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('progress_type_id') }}</strong></span>
                                 @endif
                             </div>
+                        @endIf
 
 
-                        </div>
-                    @endIf
-
-
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="area_id" class="col-form-label">Área</label>
                             <select id="area_id" type="area_id"
                                     class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
@@ -201,7 +182,7 @@
                                 <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('area_id') }}</strong></span>
                             @endif
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
                             <p class="form-twolines">
                                 <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
@@ -217,38 +198,26 @@
                     </div>
 
 
-                    @if (isset($record) and is_null($record->id))
-                        <div class="form-group row">
 
-                            <div class="col-md-6">
-                                <label for="original" class="col-form-label">Solicitação</label>
-                                <textarea id="original"
-                                          class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
-                                          name="original"
-                                          value="{{is_null(old('original')) ? $record->original : old('original') }}"
-                                          required rows="15">{{$record->original}}</textarea>
-                                @if ($errors->getBag('validation')->has('original'))
-                                    <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
-                                @endif
-                            </div>
+                    <div class="form-group row">
+                        @if (isset($record) and is_null($record->id))
+                        <div class="col-md-12">
+                            <label for="original" class="col-form-label">Solicitação</label>
+                            <textarea id="original"
+                                      class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}"
+                                      name="original"
+                                      value="{{is_null(old('original')) ? $record->original : old('original') }}"
+                                      required rows="15">{{$record->original}}</textarea>
+                            @if ($errors->getBag('validation')->has('original'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
+                            @endif
                         </div>
-                    @endif
+                        @endif
+                    </div>
 
 
-                    {{--                    <div class="form-group row">
-                                            <div class="col-md-6">
-                                                <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
-                                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>
-                                                    <div class="handle"></div>
-                                                </button>
-                                                --}}{{--<input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                                                <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                                                || $record->send_answer_by_email ? 'checked="checked"' : ''}} >--}}{{--
-                                            </div>
-                                        </div>--}}
-
-                    @if (!$workflow && $record->created_at_formatted)
-                        <div class="form-group row">
+                    <div class="form-group row">
+                        @if (!$workflow && $record->created_at_formatted)
                             <div class="col-md-6">
                                 <label for="identification" class="col-form-label">Criado em</label>
                                 <input id="identification"
@@ -265,11 +234,9 @@
                                        disabled
                                 >
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        @endif
+                    </div>
 
-                        </div>
-                    @endif
                     <div class="form-group row mb-4 mt-5">
                         <div class="col-md-12 text-center">
                             @if($workflow)
@@ -300,11 +267,10 @@
                             @endif
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
-
-
     </div>
 
 @endsection

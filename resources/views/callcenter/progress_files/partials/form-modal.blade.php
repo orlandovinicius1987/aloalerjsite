@@ -33,7 +33,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" v-on:click="cancelModal">Cancelar</button>
                 <button type="button" class="btn btn-primary" v-on:click="addToFilesArray">Salvar</button>
             </div>
         </div>

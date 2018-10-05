@@ -9,7 +9,7 @@ class File extends BaseModel
 {
     use Notifiable;
 
-    protected $presenters = ['download_link'];
+    protected $presenters = ['download_link', 'icon'];
 
     public function getPresenterClass()
     {
@@ -19,7 +19,7 @@ class File extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = ['url', 'sha1_hash'];
+    protected $fillable = ['url', 'sha1_hash', 'extension'];
 
     public function progressFile()
     {

@@ -53510,8 +53510,12 @@ if (jQuery("#" + appName).length > 0) {
             currentFile: {
                 id: null,
                 description: '',
-                extension: ''
-            }
+                extension: '',
+                icon: '',
+                refreshing: false
+            },
+
+            errors: null
         },
 
         computed: {
@@ -53548,16 +53552,48 @@ if (jQuery("#" + appName).length > 0) {
                 this.currentFile.extension = response['extension'];
             },
 
+            resetFile: function resetFile() {
+                this.currentFile.id = null;
+                this.currentFile.description = '';
+                this.currentFile.extension = '';
+                this.currentFile.icon = '';
+            },
+
+
             addToFilesArray: function addToFilesArray() {
-                this.filesJson.push({ "file_id": this.currentFile.id, "description": this.currentFile.description, "extension": this.currentFile.extension });
+                this.refreshIconAndPushArray();
 
                 document.getElementById('drop1').dropzone.removeAllFiles();
 
                 $('#ProgressFilesModal').modal('hide');
+            },
 
-                this.currentFile.id = null;
-                this.currentFile.description = '';
-                this.currentFile.extension = '';
+            cancelModal: function cancelModal() {
+                document.getElementById('drop1').dropzone.removeAllFiles();
+
+                $('#ProgressFilesModal').modal('hide');
+
+                this.resetFile();
+            },
+
+            refreshIconAndPushArray: function refreshIconAndPushArray() {
+                var $this = this;
+
+                $this.errors = null;
+
+                axios.post('/api/v1/convert-extension-to-icon', { extension: $this.currentFile.extension }).then(function (response) {
+                    console.log(response);
+
+                    if (response.data.success) {
+                        $this.filesJson.push({ "file_id": $this.currentFile.id, "description": $this.currentFile.description, "extension": $this.currentFile.extension, "icon": response.data.iconClass });
+
+                        $this.errors = response.data.errors;
+                    }
+                }).then(function () {
+                    $this.resetFile();
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
         }
     });
@@ -53783,6 +53819,11 @@ if (token) {
 __webpack_require__("./node_modules/select2/dist/js/select2.js");
 window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min.js");
 
+/**
+ * Toggle
+ */
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"bootstrap-toggle\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 /***/ }),
 
 /***/ "./resources/assets/js/mixins/edit.js":
@@ -53888,7 +53929,7 @@ window.swal = __webpack_require__("./node_modules/sweetalert/dist/sweetalert.min
 /***/ "./resources/assets/sass/app.scss":
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleNotFoundError: Module not found: Error: Can't resolve 'bootstrap-toggle/css/bootstrap-toggle.css' in 'C:\\code\\alerj\\aloalerjsite\\resources\\assets\\sass'\n    at factoryCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\webpack\\lib\\Compilation.js:282:40)\n    at factory (C:\\code\\alerj\\aloalerjsite\\node_modules\\webpack\\lib\\NormalModuleFactory.js:237:20)\n    at resolver (C:\\code\\alerj\\aloalerjsite\\node_modules\\webpack\\lib\\NormalModuleFactory.js:60:20)\n    at asyncLib.parallel (C:\\code\\alerj\\aloalerjsite\\node_modules\\webpack\\lib\\NormalModuleFactory.js:127:20)\n    at C:\\code\\alerj\\aloalerjsite\\node_modules\\async\\dist\\async.js:3888:9\n    at C:\\code\\alerj\\aloalerjsite\\node_modules\\async\\dist\\async.js:473:16\n    at iteratorCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\async\\dist\\async.js:1062:13)\n    at C:\\code\\alerj\\aloalerjsite\\node_modules\\async\\dist\\async.js:969:16\n    at C:\\code\\alerj\\aloalerjsite\\node_modules\\async\\dist\\async.js:3885:13\n    at resolvers.normal.resolve (C:\\code\\alerj\\aloalerjsite\\node_modules\\webpack\\lib\\NormalModuleFactory.js:119:22)\n    at onError (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:65:10)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at runAfter (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:158:4)\n    at innerCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:146:3)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\code\\alerj\\aloalerjsite\\node_modules\\tapable\\lib\\Tapable.js:252:11)\n    at C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:40:4\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at runAfter (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:158:4)\n    at innerCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:146:3)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\code\\alerj\\aloalerjsite\\node_modules\\tapable\\lib\\Tapable.js:252:11)\n    at innerCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:144:11)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\code\\alerj\\aloalerjsite\\node_modules\\tapable\\lib\\Tapable.js:249:35)\n    at resolver.doResolve.createInnerCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:44:6)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at afterInnerCallback (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\Resolver.js:166:11)\n    at loggingCallbackWrapper (C:\\code\\alerj\\aloalerjsite\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\code\\alerj\\aloalerjsite\\node_modules\\tapable\\lib\\Tapable.js:249:35)");
 
 /***/ }),
 

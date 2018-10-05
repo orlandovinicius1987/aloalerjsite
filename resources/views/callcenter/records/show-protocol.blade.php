@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="card-body text-center">
             <div class="row">
                 <div class="col bg-success mt-8">
                     <h1 class="text-center">
@@ -32,7 +32,14 @@
             <br/>
 
             <h1>
-                <a dusk="protocol-number" id="protocol-number" href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+                <a dusk="protocol-number" id="protocol-number" href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>
+                <p>
+                    @if($record && $record->id)
+                        <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
+                            <i class="far fa-copy"></i> Copiar link público
+                        </button>
+                    @endif
+                </p>
             </h1>
 
             <br/>
