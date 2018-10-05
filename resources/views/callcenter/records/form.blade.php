@@ -190,9 +190,11 @@
                                 {{--</button>--}}
                             {{--</p>--}}
 
-                            <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                            <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
+                            <p class="checkbox">
+                                <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+                                <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
                             || $record->send_answer_by_email ? 'checked="checked"' : ''}} >
+                            </p>
                         </div>
 
                     </div>

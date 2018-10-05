@@ -11943,6 +11943,16 @@ a.text-dark:focus {
   padding-bottom: 0;
 }
 
+.form-bigger .form-with-labels .form-group p.checkbox {
+  margin-bottom: 0;
+}
+
+.form-bigger .form-with-labels .form-group p.checkbox input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+}
+
 .form-bigger .search {
   margin-bottom: 25px;
 }
