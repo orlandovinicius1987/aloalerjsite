@@ -249,10 +249,34 @@
                                 </button>
                                 @if ($record->id)
                                     @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
-                                    <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}})">
+                                    <button
+                                        href="#"
+                                        id="openButton"
+                                        class="btn btn-danger"
+                                        v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')"
+
+                                        @can('committee-canEdit', $record->committee->id ?? '')
+                                            :disabled="isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}}"
+                                        @else
+                                            disabled
+                                        @endcan
+                                    >
                                         <i class="fas fa-redo"></i> Reabrir
                                     </button>
-                                    <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" :disabled="(isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}) && @can('committee-'.($record->committee->slug ?? ''), \Auth::user()) 'true' @else 'false' @endcan" >
+
+                                    <button
+                                        href="#"
+                                        id="finishButton"
+                                        onclick="return false;"
+                                        class="btn btn-danger"
+                                        v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')"
+
+                                        @can('committee-canEdit', $record->committee->id ?? '')
+                                            :disabled="isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}"
+                                        @else
+                                            disabled
+                                        @endcan
+                                    >
                                         <i class="fas fa-flag-checkered"></i> Finalizar
                                     </button>
                                 @endif
