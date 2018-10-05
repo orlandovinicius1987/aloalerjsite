@@ -1,0 +1,205 @@
+
+
+.card {
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  .card-header {
+    background: none;
+    /*background-color: $grey-light01;*/
+    border-bottom: 0px solid $grey-light02;
+    border-top: 0px solid $grey-light02;
+    border-radius: 0.8rem 0.8rem 0 0 ;
+    padding: 15px;
+    margin-top: 10px;
+    color: $grey-dark01;
+
+
+    h5{
+      /*text-transform: uppercase;*/
+      /*font-weight: 600;*/
+      margin-bottom: 0;
+    }
+  }
+
+  .card-body {
+    padding: 0;
+    background-color: $grey-light01;
+    /*    border-radius: 0 0 0.8rem 0.8rem ;*/
+    /*box-shadow: 0px 2px 4px $grey-light03;*/
+
+    padding: 0 5px 0 5px;
+
+
+    .table {
+      background: $grey-light01;
+      /*border: 1px solid $grey-light02;*/
+      border: 0px;
+
+      box-shadow: 0px 2px 4px $grey-light03;
+      border-radius: 0.8rem 0.8rem 0.8rem 0.8rem  ;
+
+      thead {
+        background: none;
+        border-radius: 0;
+
+        th {
+          padding: 0.6rem 0.4rem;
+          vertical-align: top;
+          border-top: 0px solid $grey-light02;
+          border-bottom: 1px solid $grey-light02;
+          background: $grey-light02;
+
+          &:first-child {
+            border-radius: 0.8rem 0 0 0;
+            padding-left: 1.5rem;
+          }
+          &:last-child {
+            border-radius: 0 0.8rem 0 0;
+          }
+        }
+      }
+
+      th, td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid $grey-light02;
+      }
+    }
+
+    .table-striped {
+      tbody {
+
+        tr:nth-of-type(odd) {
+          /*background-color: rgba(255, 255, 255, 1);*/
+          background-color: rgba(255, 255, 255, 0.8);
+
+          &:last-child {
+            border-radius: 0 0 0.8rem 0.8rem;
+
+            td {
+              &:first-child {
+                border-radius: 0 0 0 0.8rem;
+              }
+              &:last-child {
+                border-radius: 0 0 0.8rem 0;
+              }
+
+            }
+          }
+        }
+        tr:nth-of-type(even) {
+          /*background-color: rgba(255, 255, 255, 0.35);*/
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+
+
+        td {
+          padding: 0.40rem;
+          vertical-align: top;
+          border-top: none;
+
+          &:first-child {
+            padding-left: 1.5rem;
+          }
+
+          a {
+            color: #4099de;
+            font-weight: 600;
+
+            &:hover {
+              color: #2077ba;
+              text-decoration: none;
+            }
+          }
+        }
+
+      }
+    }
+
+    .table-hover{
+      tbody{
+        tr{
+          &:hover{
+            background: darken(#fbfcfd,05%);
+          }
+        }
+      }
+
+    }
+
+    @media only screen and (min-width: 992px) {
+
+      .table-progress {
+
+        td {
+          min-width: 100px;
+        }
+
+        td {
+          &:first-child {
+            min-width: 180px;
+          }
+          &:last-child {
+            min-width: 180px;
+          }
+        }
+      }
+    }
+    .pagination {
+      padding-top: 15px;
+    }
+  }
+}
+
+
+.label-group {
+
+  .label {
+    display: inline;
+    padding: .3em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    letter-spacing: 0.055em;
+
+    &:first-child{
+      border-right: rgba(0, 0, 0, 0.05) solid 1px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-right: 0;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+      padding-left: 8px;
+    }
+
+    &:nth-child(2) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: 0;
+      filter: alpha(opacity=80);
+      opacity: 0.8;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+      padding: .3em 8px .3em;
+    }
+
+    i {
+      padding-top: 5px;
+    }
+  }
+}
+
+.label-primary {
+  background-color: $green;
+}
+
+.label-danger {
+  background-color: $red;
+}
+
