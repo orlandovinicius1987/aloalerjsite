@@ -32,7 +32,7 @@
             <br/>
 
             <h1>
-                <a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
+                <a dusk="protocol-number" id="protocol-number" href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a></td>
             </h1>
 
             <br/>
