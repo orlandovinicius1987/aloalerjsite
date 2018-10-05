@@ -12,8 +12,10 @@ class Progresses extends Controller
     private function attachFilesFromRequest($request, $progress_id)
     {
         $attachedFilesRepository = app(AttachedFilesRepository::class);
+
         foreach ($request->get('files_array') as $file) {
             $file = (array) $file;
+
             $file['progress_id'] = $progress_id;
 
             $attachedFilesRepository->createFromArray($file);
@@ -47,9 +49,9 @@ class Progresses extends Controller
             $request->merge(['created_by_id' => Auth::user()->id]);
         }
 
-        $progress = $this->progressesRepository->createFromRequest(
-            $request
-        )->sendNotifications();
+        $progress = $this->progressesRepository->createFromRequest($request);
+
+        $progress->sendNotifications();
 
         $this->attachFilesFromRequest($request, $progress->id);
 
@@ -66,9 +68,9 @@ class Progresses extends Controller
             $request->merge(['created_by_id' => Auth::user()->id]);
         }
 
-        $progress = $this->progressesRepository->createFromRequest(
-            $request
-        )->sendNotifications();
+        $progress = $this->progressesRepository->createFromRequest($request);
+
+        $progress->sendNotifications();
 
         $this->attachFilesFromRequest($request, $progress->id);
 
@@ -90,9 +92,9 @@ class Progresses extends Controller
             $request->merge(['created_by_id' => Auth::user()->id]);
         }
 
-        $progress = $this->progressesRepository->createFromRequest(
-            $request
-        )->sendNotifications();
+        $progress = $this->progressesRepository
+            ->createFromRequest($request)
+            ->sendNotifications();
 
         $this->attachFilesFromRequest($request, $progress->id);
 
