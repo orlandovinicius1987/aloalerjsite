@@ -161,37 +161,46 @@
                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('state') }}</strong></span>
                         @endif
                     </div>
-                    <div class="col-md-2">
-                        <label for="is_mailable" class="col-form-label">Endereço Validado</label>
-                        <input type="hidden" name="is_mailable" value="0">
-                        <p class="form-twolines">
-                            <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não"{{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}}
-                                    @include('partials.disabled',['model'=>$address])>
-                                <div class="handle"></div>
-                            </button>
-                        </p>
-                        {{-- <input type="checkbox" name="is_mailable" {{old('send_answer_by_email') || $address->send_answer_by_email ? 'checked="checked"' : ''}}
-                        @include('partials.disabled',['model'=>$address])>--}}
-                    </div>
+
+                    {{--DESLIGADO PARA REVERMOS A LÓGICA, PORQUE NÃO DÁ PRA FAZER ENDEREÇO VALIDADO COM CHECKBOX A MENOS QUE TENHA CÓDIGO PRA ISSO--}}
+                    {{--<div class="col-md-2">--}}
+                        {{--<label for="is_mailable" class="col-form-label">Endereço Validado</label>--}}
+
+                        {{--<input type="hidden" name="is_mailable" value="0">--}}
+                        {{--<p class="form-twolines">--}}
+                            {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não"{{old('is_mailable') || $address->is_mailable ? 'checked="checked"' : ''}}--}}
+                                    {{--@include('partials.disabled',['model'=>$address])>--}}
+                                {{--<div class="handle"></div>--}}
+                            {{--</button>--}}
+                        {{--</p>--}}
+
+                        {{--<input type="hidden" name="is_mailable" value="0">--}}
+                        {{--<input--}}
+                            {{--type="checkbox"--}}
+                            {{--name="is_mailable" {{old('send_answer_by_email') || $address->is_mailable ? 'checked="checked"' : ''}}--}}
+                            {{--@include('partials.disabled',['model'=>$address])--}}
+                        {{-->--}}
+                    {{--</div>--}}
                 </div>
 
                 <div class="form-group row">
                     @if (!((isset($workflow) && $workflow) || old('workflow')) && isset($address->zipcode))
                         <div class="col-md-2">
                             <label for="active" class="col-form-label">Endereço Ativo</label>
-                            <input type="hidden" name="active" value="0">
-                            <p class="form-twolines">
-                                <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não"  {{old('active') || $address->active ? 'checked="checked"' : ''}}
-                                        @include('partials.disabled',['model'=>$address])>
-                                    <div class="handle"></div>
-                                </button>
-                            </p>
-                            {{--
-                            <input type="checkbox" name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}}
-                            @include('partials.disabled',['model'=>$address])>
-                            --}}
-                        </div>
+                            {{--<p class="form-twolines">--}}
+                                {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não"  {{old('active') || $address->active ? 'checked="checked"' : ''}}--}}
+                                        {{--@include('partials.disabled',['model'=>$address])>--}}
+                                    {{--<div class="handle"></div>--}}
+                                {{--</button>--}}
+                            {{--</p>--}}
 
+                            <input type="hidden" name="active" value="0">
+                            <input
+                                type="checkbox"
+                                name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}}
+                                        @include('partials.disabled',['model'=>$address])
+                            >
+                        </div>
                     @else
                         <input type="hidden" name="active" value="1">
                     @endIf
