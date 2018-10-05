@@ -28,14 +28,15 @@ class Files extends Controller
             $file = $request->allFiles()['file'];
 
             $hash = hash('sha1', file_get_contents($file->getPathName()));
+
             $file->move(
-                storage_path('app/files'),
+                ($path = $this->path($hash, storage_path('app/files'))),
                 $hash . '.' . $file->getClientOriginalExtension()
             );
 
             $request->merge([
                 'url' =>
-                    storage_path('app/files') .
+                    $path .
                         '/' .
                         $hash .
                         '.' .
@@ -68,6 +69,13 @@ class Files extends Controller
                 500
             );
         }
+    }
+
+    protected function path($sha1, $directory)
+    {
+        $parts = array_slice(str_split($sha1, 2), 0, 2);
+
+        return $directory . '/' . implode('/', $parts) . '/';
     }
 
     public function download($id)
