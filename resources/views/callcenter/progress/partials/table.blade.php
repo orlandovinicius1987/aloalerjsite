@@ -31,7 +31,7 @@
                         {{ $progress->original }}
                     </td>
 
-                    <td class="text-center">
+                    <td class="">
                         @if ($progress->record->resolve_progress_id == $progress->id)
                             @if($progress->finalize)
                                 <h5><span class="badge badge-success">Sim</span></h5>
@@ -42,7 +42,7 @@
                         @endif
                     </td>
 
-                    <td class="text-center">
+                    <td class="">
                         @if ($progress->email_sent_at)
                             <h5>
                                 <span class="badge badge-success">
