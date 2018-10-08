@@ -30,6 +30,8 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - php artisan serve &
+  - cat storage/logs/laravel.log
+  - ls -la tests/Browser/screenshots
 
 script:
   - php artisan dusk
