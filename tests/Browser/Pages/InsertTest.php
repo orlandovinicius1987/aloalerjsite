@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\Pages;
 
+use App\Data\Models\Committee;
 use Laravel\Dusk\Browser;
 
 use App\Notifications\ProgressCreated;
@@ -251,6 +252,65 @@ class InsertTest extends Base
                     ->click('#saveButton')
                     ->waitForText('Gravado com sucesso');
                 $browser->assertSee('Gravado com sucesso');
+            });
+        } catch (\Exception $exception) {
+            throw $exception;
+        } catch (\Throwable $exception) {
+            throw $exception;
+        }
+    }
+
+    public function testInsertCommittee()
+    {
+        $contactTypesArrayIsMobile['mobile'] = true;
+        $contactTypesArrayIsMobile['whatsapp'] = true;
+        $contactTypesArrayIsMobile['phone'] = false;
+
+        $user = factory(User::class, 'Operador')->create();
+
+        factory(Person::class)->create();
+
+        $person = app(PeopleRepository::class)->randomElement();
+        $personShowUrl = str_replace(
+            \URL::to('/'),
+            '',
+            route('people.show', [
+                'person_id' => $person->id,
+            ])
+        );
+
+        $committee = factory(Committee::class, 'dusk')->raw();
+
+        $committee = (object) $committee;
+
+        $faker = app('Faker');
+
+        try {
+            $this->browse(function (Browser $browser) use (
+                $user,
+                $faker,
+                $person,
+                $committee
+            ) {
+                $browser
+                    ->loginAs($user->id)
+                    ->screenshot('01')
+                    ->visit('/callcenter/committees')
+                    ->screenshot('02')
+                    ->click('#buttonNovaComissao')
+                    ->screenshot('03')
+                    ->type('#name', $committee->name)
+                    ->type('#short_name', $committee->short_name)
+                    ->type('#phone', $committee->phone)
+                    ->type('#office_phone', $committee->office_phone)
+                    ->type('#email', $committee->email)
+                    ->type('#president', $committee->president)
+                    ->type('#vice_president', $committee->vicePresident)
+                    ->type('#office_address', $committee->office_address)
+                    ->type('#bio', $committee->bio)
+                    ->click('#save_button')
+                    ->waitForText('Comissão cadastrada com sucesso.');
+                $browser->assertSee('Comissão cadastrada com sucesso.');
             });
         } catch (\Exception $exception) {
             throw $exception;
