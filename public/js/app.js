@@ -53459,9 +53459,14 @@ if (jQuery("#" + appName).length > 0) {
 /***/ }),
 
 /***/ "./resources/assets/js/apps/committees.js":
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_edit__ = __webpack_require__("./resources/assets/js/mixins/edit.js");
 var appName = 'vue-committees';
+
+
 Vue.directive('init', {
     bind: function bind(el, binding, vnode) {
         console.info(binding.arg);
@@ -53472,6 +53477,7 @@ Vue.directive('init', {
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
+        mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_edit__["a" /* default */]],
 
         data: {
             form: {
