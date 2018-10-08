@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="zipcode" class="col-form-label">CEP</label>
                         <input id="zipcode"
                                name="zipcode"
@@ -66,7 +66,7 @@
                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('zipcode') }}</strong></span>
                         @endif
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <label for="street" class="col-form-label">Endereço</label>
                         <input id="street"
                                name="street"
@@ -194,12 +194,14 @@
                                 {{--</button>--}}
                             {{--</p>--}}
 
-                            <input type="hidden" name="active" value="0">
-                            <input
-                                type="checkbox"
-                                name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}}
+                            <p class="checkbox">
+                                <input type="hidden" name="active" value="0">
+                                <input
+                                        type="checkbox"
+                                        name="active" {{old('active') || $address->active ? 'checked="checked"' : ''}}
                                         @include('partials.disabled',['model'=>$address])
-                            >
+                                >
+                            </p>
                         </div>
                     @else
                         <input type="hidden" name="active" value="1">
