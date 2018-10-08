@@ -8,7 +8,7 @@
 
 
 /*--------------------
-Boarding Pass
+Protocolo
 --------------------*/
 .records {
   @include center;
@@ -221,6 +221,10 @@ Boarding Pass
         font-size: 8px;
         position: relative;
         top: -5px;
+      }
+
+      .date01 {
+        min-height: 35px;
       }
 
       .date02 {

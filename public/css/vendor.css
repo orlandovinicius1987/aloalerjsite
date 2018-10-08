@@ -12608,7 +12608,7 @@ a.text-dark:focus {
 }
 
 /*--------------------
-Boarding Pass
+Protocolo
 --------------------*/
 
 .records {
@@ -12844,6 +12844,10 @@ Boarding Pass
   font-size: 8px;
   position: relative;
   top: -5px;
+}
+
+.records .strap .box .date01 {
+  min-height: 35px;
 }
 
 .records .strap .box .date02 {
