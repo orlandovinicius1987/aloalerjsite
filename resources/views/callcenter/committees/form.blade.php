@@ -138,6 +138,8 @@
                     <label for="phone" class="col-sm-4 col-form-label text-md-right">Telefone do Gabinete</label>
                     <div class="col-md-6">
                         <input id="office_phone"
+                               autofocus
+                               v-mask="['(##) ####-####', '(##) #####-####']"
                                class="form-control{{ $errors->has('office_phone') ? ' is-invalid' : '' }}" name="office_phone"
                                value="{{is_null(old('office_phone')) ? $committee->office_phone : old('office_phone') }}"
                         >

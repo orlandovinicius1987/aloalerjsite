@@ -13,7 +13,6 @@ class CommitteeRequest extends Request
         return [
             'name' => 'required',
             'short_name' => 'required',
-            'link_caption' => 'required',
             'phone' => 'required',
             'bio' => 'required',
             'president' => 'required',
