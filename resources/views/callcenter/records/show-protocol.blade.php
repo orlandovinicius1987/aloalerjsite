@@ -35,8 +35,15 @@
             <br/>
 
             <h2>
-                <a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>   <i class="far fa-copy"></i>
-
+                <a dusk="protocol-number" id="protocol-number" href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>
+                <i class="far fa-copy"></i>
+                <p>
+                    @if($record && $record->id)
+                        <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
+                            <i class="far fa-copy"></i> Copiar link público
+                        </button>
+                    @endif
+                </p>
             </h2>
 
             <br/>

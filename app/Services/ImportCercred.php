@@ -904,8 +904,9 @@ and historico.historico_id = ' .
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' =>
-                            $type == 'celular' ? $mobileId : $phoneId,
+                        'contact_type_id' => $type == 'celular'
+                            ? $mobileId
+                            : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,

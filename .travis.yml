@@ -35,6 +35,10 @@ script:
   - php artisan dusk
 
 after_script:
+  - touch storage/logs/laravel.log
+  - cat storage/logs/laravel.log
+  - mkdir -p tests/Browser/screenshots
+  - ls -la tests/Browser/screenshots
   - |
     if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
