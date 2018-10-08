@@ -73,9 +73,11 @@ class Person extends BaseModel
     public function findOrCreateAddress($data)
     {
         if (
-            ($address = $this->addresses()
-                ->where('zipcode', only_numbers($data['zipcode']))
-                ->first())
+            (
+                $address = $this->addresses()
+                    ->where('zipcode', only_numbers($data['zipcode']))
+                    ->first()
+            )
         ) {
             return $address;
         }
@@ -97,16 +99,21 @@ class Person extends BaseModel
     public function findOrCreatePhone($data)
     {
         if (
-            ($contact = $this->contacts()
-                ->where('contact', ($contact = only_numbers($data['contact'])))
-                ->first())
+            (
+                $contact = $this->contacts()
+                    ->where(
+                        'contact',
+                        ($contact = only_numbers($data['contact']))
+                    )
+                    ->first()
+            )
         ) {
             return $contact;
         }
 
         return $this->addresses()->create([
-            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')
-                ->id,
+            'contact_type_id' =>
+                app(ContactTypes::class)->findByName('Celular')->id,
             'contact' => $contact,
             'from' => 'personal',
             'active' => true,

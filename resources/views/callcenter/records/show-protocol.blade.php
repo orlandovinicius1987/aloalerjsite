@@ -32,7 +32,7 @@
             <br/>
 
             <h1>
-                <a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>
+                <a dusk="protocol-number" id="protocol-number" href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>
                 <p>
                     @if($record && $record->id)
                         <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
