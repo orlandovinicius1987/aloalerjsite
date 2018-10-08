@@ -53619,12 +53619,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var appName = 'vue-contacts';
 
 
+Vue.directive('init', {
+    bind: function bind(el, binding, vnode) {
+        console.info(binding.arg);
+        vnode.context.form[binding.arg] = binding.value;
+    }
+});
+
 if (jQuery("#" + appName).length > 0) {
     var app = new Vue({
         el: '#' + appName,
 
         data: {
-            form: {}
+            form: {
+                mobile: null,
+                whatsapp: null,
+                phone: null
+            }
         },
 
         methods: {},
