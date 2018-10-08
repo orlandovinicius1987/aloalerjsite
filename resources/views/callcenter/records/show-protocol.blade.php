@@ -22,25 +22,22 @@
 
         <div class="card-body text-center">
             <div class="row">
-                <div class="col bg-success mt-8">
-                    <h1 class="text-center">
+                <div class="col mt-8">
+                    <p>
+                        O protocolo foi criado com sucesso
+                    </p>
+                    <h3 class="text-center">
                         Anote o número do novo Protocolo
-                    </h1>
+                    </h3>
                 </div>
             </div>
 
             <br/>
 
-            <h1>
-                <a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>
-                <p>
-                    @if($record && $record->id)
-                        <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
-                            <i class="far fa-copy"></i> Copiar link público
-                        </button>
-                    @endif
-                </p>
-            </h1>
+            <h2>
+                <a href="{{ route('records.show',['id' => $record->id]) }}" >{{ $record->protocol }}</a>   <i class="far fa-copy"></i>
+
+            </h2>
 
             <br/>
 
@@ -49,6 +46,16 @@
                     {{ $record->person->name }}
                 </a>
             </h3>
+
+            <p>
+                @if($record && $record->id)
+                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
+                        <i class="far fa-copy"></i> Copiar link público
+                    </button>
+                @endif
+            </p>
+
+
         </div>
     </div>
 @endsection
