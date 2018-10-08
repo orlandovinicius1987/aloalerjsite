@@ -171,7 +171,7 @@
                             <input id="office_address"
                                    class="form-control{{ $errors->has('office_address') ? ' is-invalid' : '' }}" name="office_address"
                                    value="{{is_null(old('office_address')) ? $committee->office_address : old('office_address') }}"
-                                    @include('partials.disabled',['model'=>$committee])>>
+                                    @include('partials.disabled',['model'=>$committee])>
                             @if ($errors->has('office_address'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('office_address') }}</strong>
