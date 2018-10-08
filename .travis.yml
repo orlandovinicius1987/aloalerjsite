@@ -30,7 +30,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - php artisan serve &
+  - touch storage/logs/laravel.log
   - cat storage/logs/laravel.log
+  - mkdir -p tests/Browser/screenshots
   - ls -la tests/Browser/screenshots
 
 script:
