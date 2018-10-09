@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card mt-4">
+    <div class="card mt-4" id="vue-record">
         <div class="card-header">
             <div class="row">
                 <div class="col-8">

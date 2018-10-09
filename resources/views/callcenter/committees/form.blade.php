@@ -85,8 +85,8 @@
                                    autofocus
                                    v-mask="['(##) ####-####', '(##) #####-####']"
                                    v-model="form.phone"
-                                   v-init:mobile="'{{is_null(old('phone')) ? $committee->phone : old('phone') }}'"
-                                    @include('partials.disabled',['model'=>$committee])>
+                                   v-init:phone="'{{is_null(old('phone')) ? $committee->phone : old('phone') }}'"
+                                   @include('partials.disabled',['model'=>$committee])>
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('phone') }}</strong>
@@ -159,7 +159,9 @@
                                    v-mask="['(##) ####-####', '(##) #####-####']"
                                    class="form-control{{ $errors->has('office_phone') ? ' is-invalid' : '' }}" name="office_phone"
                                    value="{{is_null(old('office_phone')) ? $committee->office_phone : old('office_phone') }}"
-                                    @include('partials.disabled',['model'=>$committee])>
+                                   v-mask="['(##) ####-####', '(##) #####-####']"
+                                   v-init:office_phone="'{{is_null(old('office_phone')) ? $committee->office_phone : old('office_phone') }}'"
+                                   @include('partials.disabled',['model'=>$committee])>
                             @if ($errors->has('office_phone'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('office_phone') }}</strong>
