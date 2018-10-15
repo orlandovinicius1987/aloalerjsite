@@ -146,7 +146,7 @@
                         @endif
                     </div>
                     <div class="col-md-2">
-                        <label for="state" class="col-sm-1 col-form-label text-md-right">Estado</label>
+                        <label for="state" class="col-form-label text-md-right">Estado</label>
                         <input id="state"
                                name="state"
                                v-model="form.state"
