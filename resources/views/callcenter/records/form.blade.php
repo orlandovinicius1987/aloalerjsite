@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('heading')
     @parent
-    <div class="mt-4"  id="vue-record">
+    <div class="mt-4" id="vue-record">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
                 <div class="section-title">

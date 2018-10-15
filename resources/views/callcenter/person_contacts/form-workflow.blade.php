@@ -2,7 +2,7 @@
 @section('heading')
     @parent
 
-    <div class="row mt-4" id="vue-contacts">
+    <div class="row mt-4">
         <div class="col-md-8 offset-md-2 text-center">
             <div class="section-title">
                 <ul class="aloalerj-breadcrumbs">
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="vue-contacts">
         <div class="col-md-8 offset-md-2 form-bigger">
             <form method="POST" action="{{ route('people_contacts.storeViaWorkflow') }}" aria-label="Contatos">
                 @csrf
