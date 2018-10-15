@@ -11979,6 +11979,13 @@ a.text-dark:focus {
   color: #b8c5cc;
 }
 
+@media screen and (max-width: 479px) {
+  .form-bigger .form-control {
+    /* start of phone styles */
+    font-size: 1rem;
+  }
+}
+
 .form-bigger .select2-container--bootstrap.select2-container--disabled .select2-selection,
 .form-bigger .select2-container--bootstrap.select2-container--disabled .select2-selection--multiple .select2-selection__choice {
   /*padding: 0.6rem 1.4rem 2.3rem 1.4rem;*/

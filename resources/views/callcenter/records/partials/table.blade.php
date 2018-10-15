@@ -1,7 +1,7 @@
 <div class="card mt-4"  id="vue-record">
     <div class="card-header">
         <div class="row align-items-center">
-            <div class="col-4">
+            <div class="col-7 col-md-4">
                 <h3>
                     <i class="fas fa-list-ol"></i> Protocolos
 
@@ -10,7 +10,7 @@
                     @endif
                 </h3>
             </div>
-            <div class="col-8 text-right">
+            <div class="col-5 col-md-8 text-right">
                 @if(isset($person))
                     <a id="button-novo-protocolo"
                        href="{{ route('records.create',['person_id'=>$person->id]) }}"
