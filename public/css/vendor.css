@@ -11642,6 +11642,20 @@ a.text-dark:focus {
   padding-right: 10px;
 }
 
+@media screen and (max-width: 479px) {
+  .navbar-light .navbar-nav .nav-item {
+    /* start of phone styles */
+    border-right: solid 0px #eff1f4;
+    margin-right: 0px;
+    padding-right: 0px;
+    border-bottom: solid 1px #eff1f4;
+  }
+
+  .navbar-light .navbar-nav .nav-item:last-child {
+    border: none;
+  }
+}
+
 .navbar-light .navbar-nav .nav-item i {
   margin-right: 5px;
   color: #8faae0;
