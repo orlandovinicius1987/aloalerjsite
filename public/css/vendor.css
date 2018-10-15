@@ -11666,6 +11666,14 @@ a.text-dark:focus {
   margin-right: 0px;
 }
 
+@media screen and (max-width: 479px) {
+  .navbar-light .navbar-nav .nav-item:first-child {
+    border-top: solid 2px #eff1f4;
+    margin-top: 15px;
+    padding-top: 10px;
+  }
+}
+
 .navbar-light .navbar-nav .nav-item .nav-link {
   font-size: 16px;
   font-family: 'proxima_nova_altbold';
