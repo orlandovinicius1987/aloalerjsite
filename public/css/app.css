@@ -11796,6 +11796,12 @@ a.text-dark:focus {
   color: #546975;
 }
 
+@media (max-width: 575.98px) {
+  .card .card-header h3 {
+    font-size: 1.4rem;
+  }
+}
+
 .card .card-header h5 {
   /*text-transform: uppercase;*/
   /*font-weight: 600;*/
