@@ -22,7 +22,7 @@
 
             <div class="card-header">
                 <div class="row align-items-center">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <h3>
                             <i class="fas fa-users"></i> Cidadãos Cadastrados
                         </h3>

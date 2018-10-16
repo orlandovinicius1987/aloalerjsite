@@ -98,7 +98,7 @@
                         @endif
                     </div>
                     <div class="col-md-2">
-                        <label for="complement" class="col-sm-2 col-form-label text-md-right">Complemento</label>
+                        <label for="complement" class="col-form-label text-md-right">Complemento</label>
                         <input id="complement"
                                name="complement"
                                value="{{is_null(old('complement')) ? $address->complement : old('complement') }}"
@@ -146,7 +146,7 @@
                         @endif
                     </div>
                     <div class="col-md-2">
-                        <label for="state" class="col-sm-1 col-form-label text-md-right">Estado</label>
+                        <label for="state" class="col-form-label text-md-right">Estado</label>
                         <input id="state"
                                name="state"
                                v-model="form.state"
