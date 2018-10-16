@@ -13295,6 +13295,12 @@ Protocolo - Link Publico
   /*        min-height: 35px;*/
 }
 
+@media (max-width: 575.98px) {
+  .new-record .strap .box {
+    padding: 10px 0 15px 0;
+  }
+}
+
 .no-results {
   margin-top: 50px;
 }
