@@ -35,12 +35,12 @@
 </div>
 
 
+
+
 <!-------------------- Start of MOBILE VERSION -------------------->
-
-
 <div class="card-body d-block d-sm-none" id="vue-contacts">
     @forelse ($contacts as $contact)
-        <div class="mobile-contacts" v-on:click='detail("{{route('people_contacts.show',['id' => $contact->id])}}")' style="cursor: pointer;">
+        <div class="mobile-tables" v-on:click='detail("{{route('people_contacts.show',['id' => $contact->id])}}")' style="cursor: pointer;">
             <div class="contact-line"><span class="mobile-label">Tipo de Contato:</span> {{ $contact->contactType->name }}</div>
 
             <div class="contact-line"><span class="mobile-label">Contato:</span> {{ $contact->contact }}</div>
@@ -64,5 +64,4 @@
     @endforelse
 
 </div>
-
 <!-------------------- END of MOBILE VERSION -------------------->
