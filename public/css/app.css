@@ -11996,6 +11996,12 @@ a.text-dark:focus {
   border-bottom: 0px solid #ffffff;
 }
 
+@media (max-width: 575.98px) {
+  .mobile-form-field {
+    margin-bottom: 15px;
+  }
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
@@ -13021,7 +13027,7 @@ Protocolo - Link Publico
   background: -webkit-gradient(linear, left top, left bottom, from(#36475f), to(#2c394f));
   background: linear-gradient(to bottom, #36475f, #2c394f);
   padding: 12px 20px;
-  height: 53px;
+  height: 60px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -13037,10 +13043,23 @@ Protocolo - Link Publico
   height: 31px;
 }
 
+@media (max-width: 575.98px) {
+  .new-record header .logo {
+    display: none;
+  }
+}
+
 .new-record header .record {
   float: right;
   color: #fff;
   text-align: right;
+}
+
+@media (max-width: 575.98px) {
+  .new-record header .record {
+    text-align: center;
+    float: none;
+  }
 }
 
 .new-record header .record small {
@@ -13055,6 +13074,12 @@ Protocolo - Link Publico
 
 .new-record .records-progress {
   text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .new-record .records-progress .label-group {
+    font-size: 1rem;
+  }
 }
 
 .new-record .personal-data {
@@ -13077,6 +13102,13 @@ Protocolo - Link Publico
   line-height: 1;
 }
 
+@media (max-width: 575.98px) {
+  .new-record .personal-data .name strong {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
 .new-record .personal-data .name small {
   margin-bottom: 0px;
   margin-left: 3px;
@@ -13090,6 +13122,13 @@ Protocolo - Link Publico
   font-size: 30px;
   font-weight: 300;
   line-height: 1;
+}
+
+@media (max-width: 575.98px) {
+  .new-record .personal-data .number strong {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 .new-record .personal-data .number small {
@@ -13337,6 +13376,10 @@ Protocolo - Link Publico
   .alolerj-logo-home {
     height: 60px;
   }
+}
+
+.alolerj-logo-home {
+  min-width: 80px;
 }
 
 .aloalerj-breadcrumbs {

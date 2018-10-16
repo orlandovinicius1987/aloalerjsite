@@ -19,7 +19,7 @@
                         @endif
 
                         <div class="form-group row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 mobile-form-field">
                                 <input id="cpf_cnpj" placeholder="CNPJ / CPF"
                                        class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                                        name="cpf_cnpj"
@@ -36,8 +36,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-6">
-
+                            <div class="col-12 col-md-6">
                                 <input id="identification" placeholder="RG"
                                        class="form-control{{ $errors->getBag('validation')->has('identification') ? ' is-invalid' : '' }}"
                                        name="identification"
