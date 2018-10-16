@@ -26,7 +26,10 @@
                                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                        required
                                        v-mask='["###.###.###-##", "##.###.###/####-##"]'
-                                       {{$person->id ? 'disabled="disabled"' : '' }}
+                                        @cannot('committee-canEdit','')
+                                            {{$person->id ? 'disabled="disabled"' : '' }}
+                                        @endcan
+
                                 >
 
                                 @if ($errors->getBag('validation')->has('cpf_cnpj'))
