@@ -11840,6 +11840,7 @@ a.text-dark:focus {
 @media (max-width: 575.98px) {
   .card .card-header h3 {
     font-size: 1.4rem;
+    padding-top: 10px;
   }
 }
 
