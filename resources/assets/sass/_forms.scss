@@ -35,7 +35,12 @@
     color: $grey-dark01;
     &::placeholder {
       color: $grey-dark004;
+    }
 
+    @media screen and (max-width: 479px) {
+      /* start of phone styles */
+
+      font-size:1rem;
 
     }
   }

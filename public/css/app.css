@@ -11642,6 +11642,20 @@ a.text-dark:focus {
   padding-right: 10px;
 }
 
+@media screen and (max-width: 479px) {
+  .navbar-light .navbar-nav .nav-item {
+    /* start of phone styles */
+    border-right: solid 0px #eff1f4;
+    margin-right: 0px;
+    padding-right: 0px;
+    border-bottom: solid 1px #eff1f4;
+  }
+
+  .navbar-light .navbar-nav .nav-item:last-child {
+    border: none;
+  }
+}
+
 .navbar-light .navbar-nav .nav-item i {
   margin-right: 5px;
   color: #8faae0;
@@ -11650,6 +11664,14 @@ a.text-dark:focus {
 .navbar-light .navbar-nav .nav-item:last-child {
   border-right: none;
   margin-right: 0px;
+}
+
+@media screen and (max-width: 479px) {
+  .navbar-light .navbar-nav .nav-item:first-child {
+    border-top: solid 2px #eff1f4;
+    margin-top: 15px;
+    padding-top: 10px;
+  }
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {
@@ -11977,6 +11999,13 @@ a.text-dark:focus {
 
 .form-bigger .form-control::placeholder {
   color: #b8c5cc;
+}
+
+@media screen and (max-width: 479px) {
+  .form-bigger .form-control {
+    /* start of phone styles */
+    font-size: 1rem;
+  }
 }
 
 .form-bigger .select2-container--bootstrap.select2-container--disabled .select2-selection,
