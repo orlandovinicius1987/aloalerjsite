@@ -12100,6 +12100,12 @@ a.text-dark:focus {
   font-size: 85%;
 }
 
+@media (max-width: 575.98px) {
+  .user-dates-alerts {
+    font-size: 1rem;
+  }
+}
+
 .btn-toggle {
   margin: 0 4rem;
   padding: 0;
