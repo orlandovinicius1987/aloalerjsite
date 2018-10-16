@@ -11757,6 +11757,12 @@ a.text-dark:focus {
   color: #98bbcc;
 }
 
+@media (max-width: 575.98px) {
+  .section-title {
+    font-size: 24px;
+  }
+}
+
 .section-header {
   border-top: 1px solid #e8eff3;
   padding-top: 20px;
@@ -11976,11 +11982,15 @@ a.text-dark:focus {
 }
 
 .mobile-tables:nth-of-type(1) {
-  border-radius: 0.8rem 0.8rem 0rem 0rem;
+  /*border-radius: 0.8rem 0.8rem 0rem 0rem;*/
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
 }
 
 .mobile-tables:nth-last-of-type(1) {
-  border-radius: 0rem 0rem 0.8rem 0.8rem;
+  /*border-radius: 0rem 0rem 0.8rem 0.8rem ;*/
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
   margin-bottom: 30px;
 }
 
