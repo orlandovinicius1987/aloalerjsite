@@ -53681,7 +53681,6 @@ if (jQuery("#" + appName).length > 0) {
 
 var appName = 'vue-phones';
 
-console.log('vue-phones');
 if (jQuery("#" + appName).length > 0) {
     new Vue({
         el: '#' + appName,

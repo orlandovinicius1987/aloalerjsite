@@ -11952,6 +11952,56 @@ a.text-dark:focus {
   background-color: #e3342f;
 }
 
+.mobile-tables {
+  background: #ffffff;
+  padding: 20px;
+  /*margin-bottom: 15px;*/
+  -webkit-box-shadow: 0px 2px 4px #dce8ee;
+  box-shadow: 0px 2px 4px #dce8ee;
+  /*border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;*/
+}
+
+.mobile-tables .contact-line {
+  border-bottom: 1px solid #f5f9fa;
+  padding: 5px 0;
+}
+
+.mobile-tables .contact-line:last-child {
+  border-bottom: 0px solid #ffffff;
+}
+
+.mobile-tables .mobile-label {
+  margin-right: 10px;
+  opacity: 0.5;
+}
+
+.mobile-tables:nth-of-type(1) {
+  border-radius: 0.8rem 0.8rem 0rem 0rem;
+}
+
+.mobile-tables:nth-last-of-type(1) {
+  border-radius: 0rem 0rem 0.8rem 0.8rem;
+  margin-bottom: 30px;
+}
+
+.mobile-tables:nth-of-type(even) {
+  background: #f5f9fa;
+}
+
+.mobile-tables:nth-of-type(even) .contact-line {
+  border-bottom: 1px solid #ffffff;
+}
+
+.mobile-tables:nth-of-type(even) .contact-line:last-child {
+  border-bottom: 0px solid #ffffff;
+}
+
+@media (max-width: 575.98px) {
+  .mobile-form-field {
+    margin-bottom: 15px;
+  }
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
@@ -12054,6 +12104,12 @@ a.text-dark:focus {
 .user-dates-alerts .label {
   opacity: 0.7;
   font-size: 85%;
+}
+
+@media (max-width: 575.98px) {
+  .user-dates-alerts {
+    font-size: 1rem;
+  }
 }
 
 .btn-toggle {
@@ -12971,7 +13027,7 @@ Protocolo - Link Publico
   background: -webkit-gradient(linear, left top, left bottom, from(#36475f), to(#2c394f));
   background: linear-gradient(to bottom, #36475f, #2c394f);
   padding: 12px 20px;
-  height: 53px;
+  height: 60px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -12987,10 +13043,23 @@ Protocolo - Link Publico
   height: 31px;
 }
 
+@media (max-width: 575.98px) {
+  .new-record header .logo {
+    display: none;
+  }
+}
+
 .new-record header .record {
   float: right;
   color: #fff;
   text-align: right;
+}
+
+@media (max-width: 575.98px) {
+  .new-record header .record {
+    text-align: center;
+    float: none;
+  }
 }
 
 .new-record header .record small {
@@ -13005,6 +13074,12 @@ Protocolo - Link Publico
 
 .new-record .records-progress {
   text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .new-record .records-progress .label-group {
+    font-size: 1rem;
+  }
 }
 
 .new-record .personal-data {
@@ -13027,6 +13102,13 @@ Protocolo - Link Publico
   line-height: 1;
 }
 
+@media (max-width: 575.98px) {
+  .new-record .personal-data .name strong {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
 .new-record .personal-data .name small {
   margin-bottom: 0px;
   margin-left: 3px;
@@ -13040,6 +13122,13 @@ Protocolo - Link Publico
   font-size: 30px;
   font-weight: 300;
   line-height: 1;
+}
+
+@media (max-width: 575.98px) {
+  .new-record .personal-data .number strong {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 .new-record .personal-data .number small {
@@ -13287,6 +13376,10 @@ Protocolo - Link Publico
   .alolerj-logo-home {
     height: 60px;
   }
+}
+
+.alolerj-logo-home {
+  min-width: 80px;
 }
 
 .aloalerj-breadcrumbs {

@@ -19,7 +19,7 @@
                         @endif
 
                         <div class="form-group row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 mobile-form-field">
                                 <input id="cpf_cnpj" placeholder="CNPJ / CPF"
                                        class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj') ? ' is-invalid' : '' }}"
                                        name="cpf_cnpj"
@@ -39,8 +39,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-6">
-
+                            <div class="col-12 col-md-6">
                                 <input id="identification" placeholder="RG"
                                        class="form-control{{ $errors->getBag('validation')->has('identification') ? ' is-invalid' : '' }}"
                                        name="identification"
@@ -74,19 +73,19 @@
 
                         @if (!$workflow)
                             <div class="form-group row text-left user-dates-alerts">
-                                <div class="col-2 label">
+                                <div class="col-4 col-md-2 label">
                                     <i class="fas fa-user-plus"></i> Criado em
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-8 col-md-4 text-left">
                                     {{ $person->created_at_formatted ?? '' }}
                                 </div>
 
-                                <div class="col-2 label">
+                                <div class="col-4 col-md-2 label">
                                     <i class="fas fa-user-edit"></i> Alterado em
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-8 col-md-4 text-left">
                                     {{ $person->updated_at_formatted ?? '' }}
                                 </div>
 

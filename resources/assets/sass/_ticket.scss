@@ -285,6 +285,7 @@ Protocolo - Link Publico
   }
 
 
+
   small {
     display: block;
     font-size: 11px;
@@ -303,7 +304,7 @@ Protocolo - Link Publico
   & header {
     background: linear-gradient(to bottom, #36475f, #2c394f);
     padding: 12px 20px;
-    height: 53px;
+    height: 60px;
 
     @media only screen and (min-width: 992px) {
       height: 80px;
@@ -314,12 +315,21 @@ Protocolo - Link Publico
       float: left;
       width: 104px;
       height: 31px;
+      @media (max-width: 575.98px) {
+        display: none;
+      }
+
     }
 
     .record {
       float: right;
       color: #fff;
       text-align: right;
+
+      @media (max-width: 575.98px) {
+        text-align: center;
+        float: none;
+      }
 
       small {
         font-size: 8px;
@@ -340,6 +350,13 @@ Protocolo - Link Publico
 
   .records-progress {
     text-align: center;
+
+
+    .label-group {
+      @media (max-width: 575.98px) {
+        font-size: 1rem;
+      }
+    }
   }
 
   /*--------------------
@@ -361,6 +378,11 @@ Protocolo - Link Publico
         font-size: 24px;
         font-weight: 300;
         line-height: 1;
+
+        @media (max-width: 575.98px) {
+          font-size: 16px;
+          font-weight: 600;
+        }
       }
 
       small {
@@ -376,6 +398,11 @@ Protocolo - Link Publico
         font-size: 30px;
         font-weight: 300;
         line-height: 1;
+
+        @media (max-width: 575.98px) {
+          font-size: 18px;
+          font-weight: 600;
+        }
       }
 
       small {

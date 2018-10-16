@@ -49,6 +49,4 @@
     <div class="card-body">
         @include('callcenter.person_contacts.partials.table')
     </div>
-
-
 </div>

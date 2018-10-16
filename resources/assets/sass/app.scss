@@ -29,6 +29,11 @@
 // Cards & Tables
 @import 'cards-tables';
 
+// Mobile Cards & Tables
+@import 'mobile-cards-tables';
+
+
+
 // Forms
 @import 'forms';
 
@@ -205,6 +210,11 @@
     height: 60px;
   }
 }
+
+.alolerj-logo-home {
+  min-width: 80px;
+}
+
 
 
 
