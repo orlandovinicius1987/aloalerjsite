@@ -11952,6 +11952,50 @@ a.text-dark:focus {
   background-color: #e3342f;
 }
 
+.mobile-contacts {
+  background: #ffffff;
+  padding: 20px;
+  /*margin-bottom: 15px;*/
+  -webkit-box-shadow: 0px 2px 4px #dce8ee;
+  box-shadow: 0px 2px 4px #dce8ee;
+  /*border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;*/
+}
+
+.mobile-contacts .contact-line {
+  border-bottom: 1px solid #f5f9fa;
+  padding: 5px 0;
+}
+
+.mobile-contacts .contact-line:last-child {
+  border-bottom: 0px solid #ffffff;
+}
+
+.mobile-contacts .mobile-label {
+  margin-right: 10px;
+  opacity: 0.5;
+}
+
+.mobile-contacts:nth-of-type(1) {
+  border-radius: 0.8rem 0.8rem 0rem 0rem;
+}
+
+.mobile-contacts:nth-last-of-type(1) {
+  border-radius: 0rem 0rem 0.8rem 0.8rem;
+  margin-bottom: 30px;
+}
+
+.mobile-contacts:nth-of-type(even) {
+  background: #f5f9fa;
+}
+
+.mobile-contacts:nth-of-type(even) .contact-line {
+  border-bottom: 1px solid #ffffff;
+}
+
+.mobile-contacts:nth-of-type(even) .contact-line:last-child {
+  border-bottom: 0px solid #ffffff;
+}
+
 .form-bigger {
   margin-bottom: 10px;
 }
