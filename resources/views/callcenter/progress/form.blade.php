@@ -43,7 +43,7 @@
                         <input name="committee_id" type="hidden" value="{{ $record->committee->id ?? '' }}">
                     @endif
 
-                    <input name="record_id" type="hidden" value="{{ $record->id }}">
+                    <input name="record_id" id="record_id"type="hidden" value="{{ $record->id }}">
 
                     <div class="form-group row">
                         <div class="col-md-6">
@@ -180,7 +180,7 @@
                                 </button>
                             @endIf
 
-                            <button class="btn btn-danger" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button class="btn btn-danger" id="saveButton" name="saveButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 <i class="far fa-save"></i> Gravar
                             </button>
 

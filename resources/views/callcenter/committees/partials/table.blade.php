@@ -6,8 +6,8 @@
             <th>Nome Resumido</th>
             <th>Telefone</th>
             <th>Telefone Gabinete</th>
-            <th>President</th>
-            <th>Vice-President</th>
+            <th>Presidente</th>
+            <th>Vice-Presidente</th>
             <th>Criado em</th>
         </tr>
     </thead>
