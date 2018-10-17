@@ -73,19 +73,21 @@
 
                         @if (!$workflow)
                             <div class="form-group row text-left user-dates-alerts">
-                                <div class="col-4 col-md-2 label">
-                                    <i class="fas fa-user-plus"></i> Criado em
+                                <div class="col-1 col-md-2 col-lg-2 col-xl-1 icon text-center">
+                                    <i class="fas fa-user-plus"></i>
                                 </div>
 
-                                <div class="col-8 col-md-4 text-left">
+                                <div class="col-5 col-md-4 col-lg-4 col-xl-2 text-left dates">
+                                    <div class="label">Criado em</div>
                                     {{ $person->created_at_formatted ?? '' }}
                                 </div>
 
-                                <div class="col-4 col-md-2 label">
-                                    <i class="fas fa-user-edit"></i> Alterado em
+                                <div class="col-1 col-md-2 col-lg-2 col-xl-1 icon text-center">
+                                    <i class="fas fa-user-edit"></i>
                                 </div>
 
-                                <div class="col-8 col-md-4 text-left">
+                                <div class="col-5 col-md-4 col-lg-4 col-xl-1 text-left dates">
+                                    <div class="label">Alterado em </div>
                                     {{ $person->updated_at_formatted ?? '' }}
                                 </div>
 

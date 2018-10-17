@@ -12154,9 +12154,14 @@ a.text-dark:focus {
 }
 
 .user-dates-alerts {
-  font-size: 1.2rem;
+  font-size: 0.85rem;
   font-family: 'proxima_nova_ltsemibold';
   color: #a4b4be;
+}
+
+.user-dates-alerts .icon {
+  font-size: 28px;
+  /*padding-top: 5px*/
 }
 
 .user-dates-alerts .label {
@@ -12164,9 +12169,26 @@ a.text-dark:focus {
   font-size: 85%;
 }
 
+@media only screen and (min-width: 992px) {
+  .user-dates-alerts .dates {
+    margin-left: -25px;
+    line-height: 1.2rem;
+  }
+}
+
 @media (max-width: 575.98px) {
   .user-dates-alerts {
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .user-dates-alerts .icon {
+    font-size: 22px;
+    padding-top: 4px;
+  }
+
+  .user-dates-alerts .dates {
+    margin-left: 0px;
+    line-height: 1.2rem;
   }
 }
 
