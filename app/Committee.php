@@ -131,14 +131,14 @@ class Committee
             'texto' => '<p>A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.</p>',
             'president' => 'Deputada Mônica Francisco',
             'vice-president' => 'Deputado Bruno Dauaire',
-            'office-phone' => '(21) 2588-1569',
+            'office-phone' => '(21) 2588-1298',
             'office-address' => 'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
         ],
 
-        'criancaadolescenteidoso' => [
+        'disqueidoso' => [
             'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
-            'link_caption' => 'Crianca Adolescente Idoso',
-            'short_name' => 'Assuntos da Criança do Adolescente e do Idoso',
+            'link_caption' => 'Dique Idoso',
+            'short_name' => 'Dique Idoso',
             'phone' => '0800-023-9191',
             'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
             'president' => 'Deputada Rosane Félix',
@@ -148,17 +148,15 @@ class Committee
         ],
 
         'disquecrianca' => [
-            'name' => 'Disque Criança (?????????????????)',
-            'link_caption' => 'linha2',
-            'short_name' =>    'line3',
+            'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+            'link_caption' => 'Dique Criança e Adolescente',
+            'short_name' => 'Dique Criança e Adolescente',
             'phone' => '0800-023-0007',
-            'texto' => '<p>
-            Crianca Adolescente Idoso DISQUE CRIANÇA
-            <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
-            'president' => 'Deputada Tia Jú',
-            'vice-president' => 'Deputada Daniele Guerreiro',
-            'office-phone' => '(21) 2588-1308 / (21) 2588-1309',
-            'office-address' => 'Rua Dom Manuel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+            'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
+            'president' => 'Deputada Rosane Félix',
+            'vice-president' => 'Deputado Fábio Silva',
+            'office-phone' => '(21) 2588-1243 / (21) 2588-1669',
+            'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
 
         'direitoshumanos' => [

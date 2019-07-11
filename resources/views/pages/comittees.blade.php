@@ -8,7 +8,8 @@
         <p>O Alô Alerj é um canal de comunicação entre você e a Assembleia Legislativa do Estado do Rio de Janeiro (Alerj). Aqui você pode registrar reclamações, solicitações e sugestões sobre os temas tratados nas nossas comissões:</p>
 
         <div class="comissoes">
-            <p><a href="/comissoes/criancaadolescenteidoso">Assuntos da Criança do Adolescente e do Idoso</a></p>
+            <p><a href="/comissoes/disquecrianca">Disque Criança e Adolescente</a></p>
+            <p><a href="/comissoes/disqueidoso">Disque Idoso</a></p>
             <p><a href="/comissoes/preconceitos">Combate às Discriminações e Preconceitos</a></p>
             <p><a href="/comissoes/defesadoconsumidor">Defesa do Consumidor</a></p>
             <p><a href="/comissoes/sosmulher">Defesa dos Direitos da Mulher</a></p>
