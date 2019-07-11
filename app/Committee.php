@@ -143,7 +143,7 @@ class Committee
             'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
             'president' => 'Deputada Estadual Jucélia Oliveira Freitas (Tia Ju)',
             'vice-president' => 'Joao B. Nascimento',
-            'office-phone' => '(21) 2588-1243 / (21) 2588-1669',
+            'office-phone' => '(21) 2588-1219',
             'office-address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
         ],
 
