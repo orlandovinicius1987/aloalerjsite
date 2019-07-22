@@ -182,7 +182,7 @@ class Committee
             <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
             'president' => 'Deputado Flávio Serafini',
             'vice-president' => 'Deputado Léo Vieira',
-            'office-phone' => '(21) 2588-1394',
+            'office-phone' => '(21) 2588-1356',
             'office-address' => 'Gabinete T 02 Anexo',
         ],
 
@@ -244,7 +244,7 @@ class Committee
             'texto' => '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
             'president' => 'Deputado Renato Zaca',
             'vice-president' => 'Deputada Alana Passos',
-            'office-phone' => '(21) 2588-1000',
+            'office-phone' => '(21) 2588-1206',
             'office-address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
         ],
 
