@@ -13,11 +13,10 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Defesa do Consumidor',
                 'short_name' => 'Defesa do Consumidor',
                 'phone' => '0800-282-7060',
-                'texto' =>
-                    '<p>A Comissão de Defesa dos Direitos do Consumidor zela pelos seus direitos enquanto consumidor, seja de serviços ou produtos. Ela se manifesta aos assuntos referentes à economia popular; à composição, qualidade, apresentação, publicidade e distribuição de bens e serviços; às relações de consumo e medidas de defesa do consumidor; e ao acolhimento e investigação de denúncias relacionados aos direitos do consumidor.</p>
+                'texto' => '<p>A Comissão de Defesa dos Direitos do Consumidor zela pelos seus direitos enquanto consumidor, seja de serviços ou produtos. Ela se manifesta aos assuntos referentes à economia popular; à composição, qualidade, apresentação, publicidade e distribuição de bens e serviços; às relações de consumo e medidas de defesa do consumidor; e ao acolhimento e investigação de denúncias relacionados aos direitos do consumidor.</p>
      <p>Existem várias formas de entrar em contato com a comissão. Os atendimentos são feitos pelos canais do Alô Alerj ou presencialmente, na sala localizada no térreo do prédio da Alerj, na Rua da Alfândega, número 8. A comissão também vai até você por meio do Ônibus Itinerante, que faz rotas por todo o Estado. Para solicitar a presença do Ônibus da Defesa do Consumidor em seu bairro e conferir os itinerários já programados, <a href="http://www.alerj.rj.gov.br/cdc/" target="_blank"><strong>clique aqui</strong></a>.</p>',
-                'president' => 'Deputado Luiz Martins',
-                'vice_president' => 'Deputado Jânio Mendes',
+                'president' => 'Deputado Fábio Silva',
+                'vice-president' => 'Deputado Thiago Pampolha',
                 'public' => true,
                 'office_phone' => '0800 282-7060',
                 'office_address' =>
@@ -31,10 +30,10 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-282-0230',
                 'texto' =>
                     '<p>A Comissão de Defesa de Meio Ambiente cuida da proteção dos recursos naturais e zela pelo desenvolvimento sustentável do Estado. É um meio não só de prevenção, mas também de alerta para os maus-tratos à natureza. O registro das reclamações de temas relacionados à defesa do meio ambiente podem ser feitos anonimamente para garantir a segurança do denunciante. A comissão se manifesta aos assuntos referentes: à política e sistema regionais do meio ambiente; à legislação de defesa ecológica; aos recursos naturais renováveis; à fauna, flora e ao solo; aos processos de edafologia e desertificação, ao incentivo ao reflorestamento; à preservação e proteção das culturas populares e étnicas do Estado.</p>',
-                'president' => 'Deputado Pedro Fernandes',
-                'vice_president' => 'Deputado Carlos Minc',
+                'president' => 'Deputado Thiago Pampolha',
+                'vice-president' => 'Deputado Jorge Felippe Neto',
                 'public' => true,
-                'office_phone' => '(21) 2588-1360',
+                'office-phone' => '(21) 2588-1360',
                 'office_address' =>
                     'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
             ],
@@ -48,7 +47,7 @@ class CommitteesSeeder extends Seeder
                 'texto' =>
                     '<p>A Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional recebe e investiga denúncias de preconceito. Para lutar contra a discriminação, a comissão conta com a colaboração de várias entidades que se destinam a esse tipo de combate. Compete à comissão acompanhar e se manifestar sobre todos os assuntos pertinentes às ideologias racistas e práticas discriminatórias em geral.</p>',
                 'president' => 'Deputado Carlos Minc',
-                'vice_president' => 'Deputado Gerson Bergher',
+                'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
                 'office_address' =>
@@ -65,8 +64,8 @@ class CommitteesSeeder extends Seeder
                     '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
             
             Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
-                'president' => 'Deputado Dionísio Lins',
-                'vice_president' => 'Deputado Jânio Mendes',
+                'president' => 'Deputado Subtenente Bernardo',
+                'vice_president' => 'Deputado Anderson Moraes',
                 'public' => true,
                 'office_phone' => '(21) 2588-1732',
                 'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01',
@@ -79,8 +78,8 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-285-5005',
                 'texto' =>
                     '<p>A Comissão da Pessoa com Deficiência tem como objetivo assegurar os direitos de todas as pessoas com algum tipo de deficiência. Ela recebe e investiga denúncias relacionas ao tema, por meio do Alô Alerj.  A comissão conta com a colaboração de entidades que estão relacionadas à causa. Compete a ela se manifestar sobre todas as proposições referentes à Pessoa com Deficiência, bem como à legislação pertinente.</p>',
-                'president' => 'Deputado Márcio Pacheco',
-                'vice_president' => 'Carlos Diniz',
+                'president' => 'Deputado Gil Vianna',
+                'vice_president' => 'Deputada Franciane Motta',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
                 'office_address' => 'Palácio Tiradentes, sala 112',
@@ -91,8 +90,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Saneamento Ambiental',
                 'short_name' => 'Saneamento Ambiental',
                 'phone' => '0800-282-8815',
-                'texto' =>
-                    '
+                'texto' => '
                 <p>A Comissão de Saneamento ambiental atua em ações técnicas e socioeconômicas fundamentadas na busca de melhorias da saúde pública, tendo por objetivo monitorar, fiscalizar e acompanhar níveis crescentes de salubridade ambiental no Estado do Rio de Janeiro.</p>
                 
                 <br>
@@ -123,7 +121,7 @@ class CommitteesSeeder extends Seeder
                   <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos.</li>
                 </ol>
             ',
-                'president' => 'Deputada Cidinha Campos',
+                'president' => 'Deputado Gustavo Schmidt',
                 'vice_president' => 'Deputada Lucinha',
                 'public' => true,
                 'office_phone' => '(21) 2588-1309',
@@ -137,8 +135,8 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-282-3135',
                 'texto' =>
                     '<p>A Comissão de Segurança Pública e Assuntos de Polícia, além de trabalhar em prol da segurança dos cidadãos, é um importante canal de denúncias, que podem ser registradas anonimamente pelo Alô Alerj, garantindo a proteção do denunciante. Compete à comissão se manifestar sobre assuntos referentes ao sistema de segurança pública em geral, planos e programas de segurança da população do Estado, bem como sobre qualquer proposição que se refira à segurança pública.</p>',
-                'president' => 'Deputada Martha Rocha',
-                'vice_president' => 'Deputado Bruno Dallari',
+                'president' => 'Deputado Delegado Carlos Augusto',
+                'vice_president' => 'Deputado Coronel Salema',
                 'public' => true,
                 'office_phone' => '(21) 2588-1219',
                 'office_address' =>
@@ -154,30 +152,43 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-282-3596',
                 'texto' =>
                     '<p>A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.</p>',
-                'president' => 'Deputado Paulo Ramos',
-                'vice_president' => 'Deputado Edson Albertassi',
+                'president' => 'Deputada Mônica Francisco',
+                'vice_president' => 'Deputado Bruno Dauaire',
                 'public' => true,
-                'office_phone' => '(21) 2588-1569',
+                'office_phone' => '(21) 2588-1298',
                 'office_address' =>
                     'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
             ],
-            'criancaadolescenteidoso' => [
-                'slug' => 'criancaadolescenteidoso',
-                'name' =>
-                    'Comissão de Assuntos da Criança do Adolescente e do Idoso',
-                'link_caption' => 'Crianca Adolescente Idoso',
-                'short_name' => 'Assuntos da Criança do Adolescente e do Idoso',
+
+            'disqueidoso' => [
+                'slug' => 'disqueidoso',
+                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'link_caption' => 'Dique Idoso',
+                'short_name' => 'Dique Idoso',
                 'phone' => '0800-023-9191',
-                'texto' =>
-                    '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
-                'president' =>
-                    'Deputada Estadual Jucélia Oliveira Freitas (Tia Ju)',
-                'vice_president' => 'Joao B. Nascimento',
+                'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
+                'president' => 'Deputada Rosane Félix',
+                'vice_president' => 'Deputado Fábio Silva',
+                'public' => true,
+                'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+            ],
+
+            'disquecrianca' => [
+                'slug' => 'disquecrianca',
+                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'link_caption' => 'Dique Criança e Adolescente',
+                'short_name' => 'Dique Criança e Adolescente',
+                'phone' => '0800-023-0007',
+                'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
+                'president' => 'Deputada Rosane Félix',
+                'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
                 'office_address' =>
                     'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
             ],
+
             'direitoshumanos' => [
                 'slug' => 'direitoshumanos',
                 'name' => 'Comissão de Defesa dos Direitos Humanos e Cidadania',
@@ -188,13 +199,14 @@ class CommitteesSeeder extends Seeder
                     '<p>A Comissão de Defesa dos Direitos Humanos e Cidadania tem como tarefa acompanhar e se manifestar sobre proposições e assuntos ligados aos direitos inerentes ao ser humano, tendo em vista as condições mínimas à sua sobrevivência digna e o exercício pleno das garantias individuais e coletivas. A Comissão prioriza a articulação de canais efetivos, institucionalizados ou não, para a intermediação entre sociedade e poder público, a fim de alterar a fórmula tradicional de elaboração e implementação de políticas públicas.</p>
     <p>O objetivo principal é acompanhar e se manifestar sobre programas e ações relacionadas a todos os direitos humanos e, se necessário, agir em caso de violações. Dessa forma, assume uma postura de estabelecer uma arena de diálogo entre as diferentes esferas governamentais e a sociedade civil, bem como dar voz aos movimentos sociais.</p>
     <p>Diante das denúncias, solicitações de auxílio e acompanhamentos de casos, a Comissão pode tomar medidas com o intuito de esclarecer ou solucionar fatos reportados sobre violações de direitos humanos, a partir dos seguintes mecanismos: acolhimento das famílias vítimas de violações de direitos; requerimento de informações mediante ofício às instituições públicas envolvidas na denúncia; encaminhamento do usuário para órgãos responsáveis pelos diferentes setores governamentais; articulação com as demais comissões permanentes da casa com o intuito de buscar solucionar as demandas; realização de audiência pública para convocar instituições públicas a prestar esclarecimentos, promovendo a discussão sobre o tema para, assim, avançar na qualidade das políticas públicas.</p>',
-                'president' => 'Deputado Estadual Marcelo Freixo',
-                'vice_president' => '',
+                'president' => 'Deputada Renata Souza',
+                'vice_president' => 'Deputado Márcio Gualberto',
                 'public' => true,
                 'office_phone' => '(21) 2588-1555',
                 'office_address' =>
                     'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
             ],
+
             'educacao' => [
                 'slug' => 'educacao',
                 'name' => 'Comissão de Educação',
@@ -204,12 +216,13 @@ class CommitteesSeeder extends Seeder
                 'texto' =>
                     '<p>A Comissão de Educação cuida dos assuntos relacionados ao sistema educacional. Compete a ela opinar e dar seguimento às proposições e assuntos relativos à educação e à instrução pública e particular. A Comissão realiza semanalmente audiências públicas para debater assuntos relevantes para todas as etapas do ensino, da educação infantil à universidade. As reuniões contam com presença de entidades, sindicatos e representantes das comunidades escolares, além de representantes do Poder Executivo, criando um canal de diálogo entre as instituições e esferas de poder.</p>
             <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
-                'president' => 'Deputado Comte Bittencourt',
-                'vice_president' => '',
+                'president' => 'Deputado Flávio Serafini',
+                'vice_president' => 'Deputado Léo Vieira',
                 'public' => true,
-                'office_phone' => '(21) 2588-1394',
+                'office_phone' => '(21) 2588-1356',
                 'office_address' => 'Gabinete T 02 Anexo',
             ],
+
             'segurancaalimentar' => [
                 'slug' => 'segurancaalimentar',
                 'name' => 'Comissão de Segurança Alimentar',
@@ -220,11 +233,12 @@ class CommitteesSeeder extends Seeder
                     '<p>A Comissão de Segurança Alimentar cuida para que os alimentos comercializados estejam adequados para consumo, seguindo as normas de produção, transporte e armazenamento. Compete à Comissão manifestar-se sobre a elaboração, coordenação e execução de programas e projetos ligados à segurança alimentar e combate à fome no Estado do Rio de Janeiro; políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte integrante dos direitos humanos; projetos e programas de geração de emprego e renda; e políticas públicas de assistência social.</p>
     <p>A Comissão atua com o objetivo de desenvolver estudos relacionados à garantia de alimentação e nutrição da população; fiscalizar e acompanhar projetos e ações governamentais na área de segurança alimentar; estudar e fiscalizar as ações das entidades da sociedade civil organizada voltadas para o combate à fome; estimular ações da sociedade civil voltadas para o combate à fome no Estado do Rio de Janeiro; e promover e coordenar campanhas de conscientização quanto ao desperdício de alimentos.</p>',
                 'president' => 'Deputada Lucinha',
-                'vice_president' => 'Deputado Waguinho',
+                'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
                 'office_address' => 'Palácio Tiradentes, sala 317',
             ],
+
             'sosmulher' => [
                 'slug' => 'sosmulher',
                 'name' => 'Comissão de Defesa dos Direitos da Mulher',
@@ -235,12 +249,13 @@ class CommitteesSeeder extends Seeder
                     '<p>A missão da Comissão de Defesa dos Direitos da Mulher é lutar pela igualdade entre homens e mulheres, e prestar apoio e acolhimento amigável às mulheres. A Comissão combate ideias preconceituosas, o machismo e  o patrimonialismo, que geram desigualdade nas relações de trabalho, assédio sexual e moral, além de violência à mulher, que a cada 14 minutos faz uma vítima no Brasil.</p>
     <p>A Comissão se utiliza de redes de atendimento e serviços jurídicos voltados para a mulher, criados por políticas públicas e espaços de solidariedade conquistadas na luta por respeito e igualdade, para fazer seu trabalho.  O "SOS MULHER", como é chamado o 0800 da Comissão, funciona de segunda a sexta, das 9h às 18h, com um atendimento especializado e feito apenas por mulheres preparadas.</p>',
                 'president' => 'Deputada Enfermeira Rejane',
-                'vice_president' => '',
+                'vice_president' => 'Deputada Dani Monteiro',
                 'public' => true,
                 'office_phone' => '0800 282-0119',
                 'office_address' =>
                     'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
             ],
+
             'tributacao' => [
                 'slug' => 'tributacao',
                 'name' =>
@@ -263,12 +278,13 @@ class CommitteesSeeder extends Seeder
                 <li>Opinar sobre quaisquer proposições de implicações orçamentárias, bem como empréstimos públicos, fixação de subsídios do Governador, do Vice-Governador do Estado e dos Deputados.</li>
                 </ul></p>',
                 'president' => 'Deputado Luiz Paulo',
-                'vice_president' => 'Orlando Júnior',
+                'vice_president' => 'Alexandre Freitas',
                 'public' => true,
                 'office_phone' => '(21) 2588-1259',
                 'office_address' =>
                     'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo',
             ],
+
             'animais' => [
                 'slug' => 'animais',
                 'name' => 'Comissão de Proteção ao Direito dos Animais',
@@ -277,13 +293,14 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-282-3595',
                 'texto' =>
                     '<p>A Comissão de Defesa dos Animais cuida dos assuntos relacionados às políticas públicas de proteção aos animais.  Seu objetivo principal é avançar na conscientização sobre o tratamento dos animais domésticos e silvestres, coordenando esforços para protegê-los e ampará-los. A Comissão está à disposição da sociedade para o recebimento de denúncias e sugestões.</p>',
-                'president' => 'Deputado Carlos Osório',
-                'vice_president' => 'Carlos Diniz',
+                'president' => 'Deputado Renato Zaca',
+                'vice_president' => 'Deputada Alana Passos',
                 'public' => true,
-                'office_phone' => '(21) 2588-1000',
+                'office_phone' => '(21) 2588-1206',
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'defesa-civil' => [
                 'slug' => 'defesa-civil',
                 'name' => 'Comissão de Defesa Civil',
@@ -299,6 +316,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'ciencia-tecnologia' => [
                 'slug' => 'ciencia-tecnologia',
                 'name' => 'Comissão de Comissão de Ciência e Tecnologia',
@@ -314,6 +332,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'constituicao-justica' => [
                 'slug' => 'constituicao-justica',
                 'name' => 'Comissão de Constituição e Justiça',
@@ -329,6 +348,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'cultura' => [
                 'slug' => 'cultura',
                 'name' => 'Comissão de Cultura',
@@ -344,6 +364,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'meio-ambiente' => [
                 'slug' => 'meio-ambiente',
                 'name' => '	Comissão de Defesa do Meio Ambiente',
@@ -359,6 +380,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'economia' => [
                 'slug' => 'economia',
                 'name' => 'Comissão de Economia Indústria e Comércio',
@@ -374,6 +396,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'esporte-lazer' => [
                 'slug' => 'esporte-lazer',
                 'name' => 'Comissão de Esporte e Lazer',
@@ -389,6 +412,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'indicacoes-legislativas' => [
                 'slug' => 'indicacoes-legislativas',
                 'name' => 'Comissão de Indicações Legislativas',
@@ -404,6 +428,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'orcamento-financas' => [
                 'slug' => 'orcamento-financas',
                 'name' =>
@@ -422,6 +447,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'politica-urbana' => [
                 'slug' => 'politica-urbana',
                 'name' =>
@@ -440,6 +466,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'drogas' => [
                 'slug' => 'drogas',
                 'name' =>
@@ -458,6 +485,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'turismo' => [
                 'slug' => 'turismo',
                 'name' => 'Comissão de Turismo',
@@ -474,6 +502,7 @@ class CommitteesSeeder extends Seeder
                 'office_address' =>
                     'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
+
             'agricultura' => [
                 'slug' => 'agricultura',
                 'name' =>
