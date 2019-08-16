@@ -534,19 +534,26 @@ class CommitteesSeeder extends Seeder
         Committee::truncate();
 
         $this->getData()->each(function ($committee) {
+            dump($this->sanitize($committee->name));
+
             Committee::create([
-                'slug' => $committee->slug,
-                'name' => $committee->name,
-                'link_caption' => $committee->link_caption,
-                'short_name' => $committee->short_name,
-                'phone' => $committee->phone,
-                'bio' => $committee->texto,
-                'president' => $committee->president,
-                'vice_president' => $committee->vice_president,
+                'slug' => $this->sanitize($committee->slug),
+                'name' => $this->sanitize($committee->name),
+                'link_caption' => $this->sanitize($committee->link_caption),
+                'short_name' => $this->sanitize($committee->short_name),
+                'phone' => $this->sanitize($committee->phone),
+                'bio' => $this->sanitize($committee->texto),
+                'president' => $this->sanitize($committee->president),
+                'vice_president' => $this->sanitize($committee->vice_president),
                 'public' => true,
-                'office_phone' => $committee->office_phone,
-                'office_address' => $committee->office_address,
+                'office_phone' => $this->sanitize($committee->office_phone),
+                'office_address' => $this->sanitize($committee->office_address),
             ]);
         });
+    }
+
+    private function sanitize($string)
+    {
+        return trim(str_replace("\t", '', $string));
     }
 }
