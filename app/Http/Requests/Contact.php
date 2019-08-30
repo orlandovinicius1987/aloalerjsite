@@ -22,7 +22,50 @@ class Contact extends Request
     public function rules()
     {
         return [
-            //
+            'name' => 'required', //ok
+            'email' => 'required|email', //ok
+            'telephone' => 'required', //ok
+            'cpf' => 'required|cpf_cnpj', //ok
+            'birthdate' => 'required|date', //ok
+            'identidade' => 'required', //ok
+            'expeditor' => 'required', //ok
+            'cep' => 'required', //ok
+            'rua' => 'required', //ok
+            'bairro' => 'required', //ok
+            'cidade' => 'required', //ok
+            'message' => 'required', //ok
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function sanitize()
+    {
+        if (!empty($this->get('cpf'))) {
+            $input = $this->all();
+
+            $input['cpf'] = only_numbers($input['cpf']);
+
+            $this->replace($input);
+        }
+
+        if (!empty($this->get('identidade'))) {
+            $input = $this->all();
+
+            $input['identidade'] = only_numbers($input['identidade']);
+
+            $this->replace($input);
+        }
+
+        if (!empty($this->get('telephone'))) {
+            $input = $this->all();
+
+            $input['telephone'] = only_numbers($input['telephone']);
+
+            $this->replace($input);
+        }
+
+        return $this->all();
     }
 }

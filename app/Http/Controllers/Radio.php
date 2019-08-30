@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 class Radio extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('radio.index');
     }
 }

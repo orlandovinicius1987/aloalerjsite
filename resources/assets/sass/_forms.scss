@@ -1,0 +1,147 @@
+
+
+.form-bigger {
+  margin-bottom: 10px;
+
+  .form-with-labels {
+    .form-group {
+      margin-bottom: 7px;
+
+      .form-twolines {
+        margin: 11px 0 0 -8px;
+        padding-bottom: 0;
+      }
+
+      p.checkbox {
+        margin-bottom: 0;
+
+        input[type="checkbox"] {
+          width: 30px;
+          height: 30px;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+
+
+  .search {
+    margin-bottom: 25px;
+  }
+
+  .form-control {
+    padding: 1.475rem 1.4rem;
+    font-size: 1.2rem;
+    color: $grey-dark01;
+    &::placeholder {
+      color: $grey-dark004;
+    }
+
+    @media screen and (max-width: 479px) {
+      /* start of phone styles */
+
+      font-size:1rem;
+
+    }
+  }
+
+  .select2-container--bootstrap.select2-container--disabled .select2-selection, .select2-container--bootstrap.select2-container--disabled .select2-selection--multiple .select2-selection__choice {
+    /*padding: 0.6rem 1.4rem 2.3rem 1.4rem;*/
+    font-size: 1.2rem;
+    background: #e9ecef;
+    border: 1px solid #ced4da;
+    color: #546975;
+  }
+
+  .select2-container--bootstrap {
+    .select2-selection--single {
+      height: 47px;
+      line-height: 1.42857143;
+      padding: 0.6rem 1.4rem 2.3rem 1.4rem;
+
+      .select2-selection__rendered {
+        font-size: 1.2rem;
+      }
+
+      .select2-selection__arrow {
+        b {
+          border-color: #999 transparent transparent transparent;
+          border-style: solid;
+          border-width: 6px 6px 0 6px;
+          height: 0;
+          left: 0;
+          margin-left: -10px;
+          margin-top: -4px;
+          position: absolute;
+          top: 50%;
+          width: 0;
+        }
+      }
+    }
+  }
+}
+
+
+.select2-container--bootstrap.select2-container--open {
+  .select2-selection {
+    .select2-selection__arrow {
+      b {
+        border-color: transparent transparent #999 transparent;
+        border-width: 0 6px 6px 6px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.user-dates-alerts {
+  font-size: 0.85rem;
+  font-family: 'proxima_nova_ltsemibold';
+  color: lighten( $grey-dark01, 30% ) ;
+
+
+  .icon {
+    font-size: 28px;
+    /*padding-top: 5px*/;
+  }
+  .label {
+    opacity: 0.7;
+    font-size: 85%;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .dates {
+      margin-left: -25px;
+      line-height: 1.2rem;
+    }
+  }
+
+
+
+  @media (max-width: 575.98px) {
+    font-size: 0.8rem;
+
+    .icon {
+      font-size: 22px;
+      padding-top: 4px;
+    }
+
+    .dates {
+      margin-left: 0px;
+      line-height: 1.2rem;
+    }
+  }
+
+
+
+}
+
+

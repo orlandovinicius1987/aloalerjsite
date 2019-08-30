@@ -1,18 +1,31 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Committee as CommitteeData;
+use App\Data\Repositories\Committees as CommitteesRepository;
 
 class Committees extends Controller
 {
-    public function view($pageName) {
+    /**
+     * @var CommitteeRepository
+     */
+    private $committeeRepository;
+
+    public function __construct(CommitteesRepository $committeeRepository)
+    {
+        $this->committeeRepository = $committeeRepository;
+    }
+
+    public function view($pageName)
+    {
         return view("committees.$pageName")->with('css', 'comissoes/comissao');
     }
 
     public function show($committeeName)
     {
-        $committee_data = new CommitteeData();
-        return view('committees.show', ['committee' => $committee_data->find($committeeName)]);
+        return view('committees.show', [
+            'committee' => $this->committeeRepository->findBySlug(
+                $committeeName
+            ),
+        ]);
     }
 }

@@ -1,9 +1,221 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$font-stack:    Helvetica, sans-serif;
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-.home {
-  color: #000;
-  background-color: white;
-  transform: translate3d(0, 0, 0);
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Bootstrap-Toggle
+@import '~bootstrap-toggle/css/bootstrap-toggle.css';
+
+// Select2
+@import '~select2/src/scss/core';
+
+// Fonts
+@import 'fonts';
+
+// Navbar
+@import 'navbar';
+
+// Login
+@import 'login';
+
+// Sections
+@import 'sections';
+
+// Breadcrumbs
+@import 'breadcrumbs';
+
+// Cards & Tables
+@import 'cards-tables';
+
+// Mobile Cards & Tables
+@import 'mobile-cards-tables';
+
+
+
+// Forms
+@import 'forms';
+
+
+
+
+// Toggle
+@import 'toggle';
+
+// Buttons
+@import 'buttons';
+
+// Ticket
+@import 'ticket';
+
+@import '~vue2-dropzone/dist/vue2Dropzone.css';
+
+
+
+
+
+
+
+
+
+
+
+.no-results {
+  margin-top: 50px;
 }
+
+
+/*
+.search-spinner{
+  margin-top: 50px;
+
+  i {
+    .fa-spinner{
+      font-size: 250%;
+
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+
+  }
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+.square{
+  display: block;
+  min-height: 100px;
+}
+
+.bg-colored-blue-lighter90 {
+  background-color: $blue-lighter90;
+}
+.bg-colored-blue-lighter80 {
+  background-color: $blue-lighter80;
+}
+.bg-colored-blue-lighter70 {
+  background-color: $blue-lighter70;
+}
+.bg-colored-blue-lighter60 {
+  background-color: $blue-lighter60;
+}
+.bg-colored-blue-lighter50 {
+  background-color: $blue-lighter50;
+}
+.bg-colored-blue-lighter40 {
+  background-color: $blue-lighter40;
+}
+.bg-colored-blue-lighter30 {
+  background-color: $blue-lighter30;
+}
+.bg-colored-blue-lighter20 {
+  background-color: $blue-lighter20;
+}
+.bg-colored-blue-lighter10 {
+   background-color: $blue-lighter10;
+}
+
+
+.bg-colored-blue-lighter95 {
+  background-color: $blue-lighter95;
+}
+.bg-colored-blue-lighter85 {
+  background-color: $blue-lighter85;
+}
+.bg-colored-blue-lighter75 {
+  background-color: $blue-lighter75;
+}
+.bg-colored-blue-lighter65 {
+  background-color: $blue-lighter65;
+}
+.bg-colored-blue-lighter55 {
+  background-color: $blue-lighter55;
+}
+.bg-colored-blue-lighter45 {
+  background-color: $blue-lighter45;
+}
+.bg-colored-blue-lighter35 {
+  background-color: $blue-lighter35;
+}
+.bg-colored-blue-lighter25 {
+  background-color: $blue-lighter25;
+}
+.bg-colored-blue-lighter15 {
+  background-color: $blue-lighter15;
+}
+
+
+
+
+.bg-colored-blue-darker100 {
+  background-color: $blue-darker100;
+}
+.bg-colored-blue-darker75 {
+  background-color: $blue-darker75;
+}
+.bg-colored-blue-darker50 {
+  background-color: $blue-darker50;
+}
+.bg-colored-blue-darker25 {
+  background-color: $blue-darker25;
+}
+
+
+
+
+
+
+
+.bg-grey-light02 {
+  background-color: $grey-dark01;
+}
+
+
+
+
+
+[v-cloak] {display: none}
+
+
+
+
+@media only screen and (min-width: 992px) {
+  .alerj-logo {
+    height: 80px !important;
+    /* margin-bottom: 10px; */
+    border: none;
+    margin-top: -13px;
+    margin-left: 45px;
+    margin-right: 30px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    float: left;
+  }
+
+  .alolerj-logo-home {
+    height: 60px;
+  }
+}
+
+.alolerj-logo-home {
+  min-width: 80px;
+}
+
+
