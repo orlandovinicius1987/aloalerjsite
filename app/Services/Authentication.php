@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Data\Repositories\Users;
 use App\Services\Traits\RemoteRequest;
 use App\Data\Repositories\Users as UsersRepository;
+use Illuminate\Support\Facades\Log;
 
 class Authentication
 {
@@ -84,9 +85,8 @@ class Authentication
 
             if (is_null($user)) {
                 //Sistema de login fora do ar e usuário novo
-                dd(
-                    'Não é possível logar pois o sistema de login está fora do ar e o seu usuário é novo'
-                );
+                Log::error('O usuário '.extract_credentials($request)['username'].' tentou fazer login, mas não foi possível pois o SGUS está fora do ar e não há histórico do usuário no banco de dados');
+                abort(403);
             } else {
                 //Usuário já cadastrado
                 if (
