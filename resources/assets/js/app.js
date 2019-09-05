@@ -12,6 +12,7 @@ require('./apps/records.js')
 require('./apps/committees-search.js')
 require('./apps/committees-search.js')
 require('./apps/phones.js')
+require('./apps/chat.js')
 
 $(document).ready(function() {
     $('.select2').select2({
