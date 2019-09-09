@@ -26,6 +26,7 @@ if (jQuery("#" + appName).length > 0) {
                     dataType: "jsonp",
 
                     success: function (response) {
+                        console.log(response.length);
                         self.chatOnline = response.length > 0;
                     }
                 });
