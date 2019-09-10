@@ -83,15 +83,15 @@ class Person extends BaseModel
         }
 
         return $this->addresses()->create([
-            'zipcode' => only_numbers($data['cep']),
-            'street' => $data['rua'],
-            'number' => $data['numero'],
-            'complement' => $data['complemento'],
-            'neighbourhood' => $data['bairro'],
-            'city' => $data['cidade'],
+            'zipcode' => only_numbers($data['zipcode']),
+            'street' => $data['street'],
+            'number' => $data['number'],
+            'complement' => $data['complement'],
+            'neighbourhood' => $data['neighbourhood'],
+            'city' => $data['city'],
             'state' => $data['state'],
             'is_mailable' => true,
-            'validated_at' => dow(),
+            'validated_at' => now(),
             'active' => true,
         ]);
     }
