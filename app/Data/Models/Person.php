@@ -111,12 +111,37 @@ class Person extends BaseModel
             return $contact;
         }
 
-        return $this->addresses()->create([
+        return $this->contacts()->create([
             'contact_type_id' =>
                 app(ContactTypes::class)->findByName('Celular')->id,
-            'contact' => $contact,
+            'contact' => only_numbers($data['contact']),
             'from' => 'personal',
             'active' => true,
         ]);
     }
+
+    public function findOrCreateEmail($data)
+    {
+        if (
+        (
+        $contact = $this->contacts()
+            ->where(
+                'contact',
+                ($contact = $data['contact'])
+            )
+            ->first()
+        )
+        ) {
+            return $contact;
+        }
+
+        return $this->contacts()->create([
+            'contact_type_id' =>
+                app(ContactTypes::class)->findByName('E-mail')->id,
+            'contact' => $data['contact'],
+            'from' => 'personal',
+            'active' => true,
+        ]);
+    }
+
 }
