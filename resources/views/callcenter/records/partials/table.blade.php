@@ -79,9 +79,7 @@
             @endforelse
         </table>
 
-        <div class="d-flex justify-content-center">
-                {{ $records->links() }}
-        </div>
+
     </div>
 
     <!-------------------- Start of MOBILE VERSION -------------------->
@@ -113,17 +111,13 @@
             @endforelse
         </div>
 
-
-            <div class="d-flex justify-content-center">
-                {{ $records->links() }}
-            </div>
     </div>
-
-
 
     <!-------------------- END of MOBILE VERSION -------------------->
 
-
+    <div class="d-flex justify-content-center">
+        {{ $records->links() }}
+    </div>
 
 </div>
 
