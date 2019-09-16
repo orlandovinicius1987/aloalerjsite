@@ -27,7 +27,7 @@
                                         <div class="form-group row">
                                             <div class="col-md-12">
                                                 <label for="email" class="col-form-label">Login Alerj</label>
-                                                <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                                                <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Login Alerj" required autofocus>
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
