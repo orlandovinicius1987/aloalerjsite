@@ -60,7 +60,7 @@ class Records extends Controller
             $request->merge(['record_id' => $record->id]);
             $this->progressesRepository->createFromRequest(
                 $request
-            )->sendNotifications();
+            );
         }
 
         $this->showSuccessMessage(
