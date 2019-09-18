@@ -65,6 +65,7 @@ class Records extends Base
 
     private function makePersonalDataInfoFromContactData($data)
     {
+
         return (
             "Data de nascimento: {$data['birthdate']}\n" .
             "Sexo: {$data['sex_1']}\n" .
@@ -138,13 +139,13 @@ class Records extends Base
         if (!$person) {
             $person = $this->peopleRepository->create(
                 (
-                    $data = [
+                    $data = array_merge($data,[
                         'cpf_cnpj' => $data['cpf'],
                         'name' => $data['name'],
                         'identification' => trim(
                             $data['identidade'] . ' ' . $data['expeditor']
                         ),
-                    ]
+                    ])
                 )
             );
         }
@@ -174,6 +175,10 @@ class Records extends Base
             'contact' => $data['telephone'],
         ]);
 
+        $person->findOrCreateEmail([
+            'person_id' => $person->id,
+            'contact' => $data['email'],]);
+
         $record = $this->create(
             coollect([
                 'committee_id' =>
@@ -201,7 +206,10 @@ class Records extends Base
         ]);
 
         $record->sendNotifications();
+    }
 
-        $progress->sendNotifications();
+    public function getLastRecordFromPerson($person_id) : Record
+    {
+        return Record::where('person_id', $person_id)->orderBy('created_at', 'asc')->first();
     }
 }

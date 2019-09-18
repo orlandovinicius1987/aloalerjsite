@@ -60,7 +60,7 @@ class Records extends Controller
             $request->merge(['record_id' => $record->id]);
             $this->progressesRepository->createFromRequest(
                 $request
-            )->sendNotifications();
+            );
         }
 
         $this->showSuccessMessage(
@@ -90,8 +90,6 @@ class Records extends Controller
     {
         $record = $this->recordsRepository->findById($id);
 
-        $record->sendNotifications();
-
         $progress = $this->progressesRepository->create([
             'original' =>
                 'Protocolo finalizado sem observações em ' .
@@ -103,7 +101,10 @@ class Records extends Controller
 
         $this->recordsRepository->markAsResolved($record->id, $progress);
 
+        $record->sendNotifications();
+
         $this->showSuccessMessage('Protocolo finalizado com sucesso.');
+
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',
