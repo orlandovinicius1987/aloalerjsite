@@ -209,4 +209,9 @@ class Records extends Base
 
         $progress->sendNotifications();
     }
+
+    public function getLastRecordFromPerson($person_id) : Record
+    {
+        return Record::where('person_id', $person_id)->orderBy('created_at', 'asc')->first();
+    }
 }

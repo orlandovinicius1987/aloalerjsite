@@ -57,7 +57,7 @@ class Person extends BaseModel
 
         $type = app(ContactTypes::class)->findByName('E-mail');
 
-        return $this->contacts()->where('contact_type_id', $type->id);
+        return $this->contacts()->where('contact_type_id', $type->id)->where('active',true);
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Data\Models\ContactType;
 use App\Data\Models\PersonContact;
+use App\Data\Repositories\Records as RecordsRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PersonRequest;
 use App\Http\Requests\PersonContactsRequest;
@@ -38,14 +39,16 @@ class PersonContacts extends Controller
         $this->createPersonContact($request, 'phone');
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
-        $records = $this->recordsRepository->findByPerson($person->id);
+
+        $record = app(RecordsRepository::class)->getLastRecordFromPerson($person->id);
+        $record->sendNotifications();
 
         $this->showSuccessMessage('Protocolo criado com sucesso.');
 
         Workflow::end();
 
         return redirect()->route('records.show-protocol', [
-            'id' => $records->last()->id,
+            'id' => $record->id,
         ]);
     }
 
