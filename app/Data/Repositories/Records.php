@@ -206,8 +206,6 @@ class Records extends Base
         ]);
 
         $record->sendNotifications();
-
-        $progress->sendNotifications();
     }
 
     public function getLastRecordFromPerson($person_id) : Record
