@@ -33,10 +33,6 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-chart-bar"></i> Relatórios </a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-search"></i> Pesquisar </a>
                     </li>
 
