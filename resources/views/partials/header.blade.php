@@ -33,7 +33,7 @@
                             <a href="/pages/aloalerj">O Alô Alerj</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="/pages/comittees">Comissões</a>
+                            <a href="/pages/committees">Comissões</a>
                         </li>
 {{--                        <li class="page-scroll">
                             <a href="#contact">Contatos</a>

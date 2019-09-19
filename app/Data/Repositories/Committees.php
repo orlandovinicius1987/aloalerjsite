@@ -23,6 +23,7 @@ class Committees extends Base
 
     public function findBySlug($slug)
     {
+        //dd($slug);
         return Committee::where('slug', $slug)->first();
     }
 

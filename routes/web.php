@@ -10,16 +10,24 @@ Route::get('comissoes/{name}', [
     'uses' => 'Committees@show',
 ]);
 
-Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
+Route::group(['prefix' => 'pages'], function () {
+    //Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
+    Route::get('/committees', ['as' => 'pages.committees', 'uses' => 'Pages@committees']);
+    Route::get('/aloalerj', ['as' => 'pages.aloalerj', 'uses' => 'Pages@aloalerj']);
+    Route::get('/telefones', ['as' => 'pages.telefones', 'uses' => 'Pages@telefones']);
+    Route::get('/protocolo', ['as' => 'pages.protocolo', 'uses' => 'Pages@protocolo']);
+    Route::get('/contact', ['as' => 'pages.contact', 'uses' => 'Pages@contact']);
 
-Route::group(['prefix' => 'chat'], function () {
-    Route::get('index', ['as' => 'chat.index', 'uses' => 'Chat@index']);
-    Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
-    Route::get('terminated', [
-        'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated',
-    ]);
 });
+    Route::group(['prefix' => 'chat'], function () {
+        Route::get('index', ['as' => 'chat.index', 'uses' => 'Chat@index']);
+        Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
+        Route::get('terminated', [
+            'as' => 'chat.terminated',
+            'uses' => 'Chat@terminated',
+        ]);
+    });
+
 
 Route::group(['prefix' => 'tv'], function () {
     Route::get('/', ['as' => 'tv.index', 'uses' => 'Tv@index']);
