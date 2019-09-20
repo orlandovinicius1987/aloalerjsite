@@ -21,6 +21,8 @@ class CommitteeRequest extends Request
             'office_address' => 'required',
             'public',
             'email' => 'required|email',
+            'link_caption' => 'required',
+            'slug' => 'required',
         ];
     }
 

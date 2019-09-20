@@ -11,7 +11,6 @@ Route::get('comissoes/{name}', [
 ]);
 
 Route::group(['prefix' => 'pages'], function () {
-    //Route::get('pages/{name}', ['as' => 'pages.show', 'uses' => 'Pages@show']);
     Route::get('/committees', ['as' => 'pages.committees', 'uses' => 'Pages@committees']);
     Route::get('/aloalerj', ['as' => 'pages.aloalerj', 'uses' => 'Pages@aloalerj']);
     Route::get('/telefones', ['as' => 'pages.telefones', 'uses' => 'Pages@telefones']);
