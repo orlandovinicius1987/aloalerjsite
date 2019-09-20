@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="name" class="col-form-label">Nome Resumido</label>
+                            <label for="short_name" class="col-form-label">Nome Resumido</label>
                             <input id="short_name"
                                    class="form-control{{ $errors->has('short_name') ? ' is-invalid' : '' }}" name="short_name"
                                    value="{{is_null(old('short_name')) ? $committee->short_name : old('short_name') }}"
@@ -95,11 +95,11 @@
                         </div>
 
                         <div class="col-md-5">
-                            <label for="phone" class="col-form-label">E-mail</label>
+                            <label for="email" class="col-form-label">E-mail</label>
                             <input id="email"
                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                    value="{{is_null(old('email')) ? $committee->email : old('email') }}"
-                                    @include('partials.disabled',['model'=>$committee])>
+                                   @include('partials.disabled',['model'=>$committee])>
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <label for="phone" class="col-form-label">Aberta ao Público</label>
+                            <label for="public" class="col-form-label">Aberta ao Público</label>
 
                             <p class="checkbox">
                                 <input type="hidden" name="public" value="0">
@@ -125,7 +125,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="phone" class="col-form-label">Presidente</label>
+                            <label for="president" class="col-form-label">Presidente</label>
                             <input id="president"
                                    class="form-control{{ $errors->has('president') ? ' is-invalid' : '' }}" name="president"
                                    value="{{is_null(old('president')) ? $committee->president : old('president') }}"
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="phone" class="col-form-label">Vice-Presidente</label>
+                            <label for="vice_president" class="col-form-label">Vice-Presidente</label>
                             <input id="vice_president"
                                    class="form-control{{ $errors->has('vice_president') ? ' is-invalid' : '' }}" name="vice_president"
                                    value="{{is_null(old('vice_president')) ? $committee->vice_president : old('vice_president') }}"
@@ -153,7 +153,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="phone" class="col-form-label">Telefone do Gabinete</label>
+                            <label for="office_phone" class="col-form-label">Telefone do Gabinete</label>
                             <input id="office_phone"
                                    autofocus
                                    v-mask="['(##) ####-####', '(##) #####-####']"
@@ -161,7 +161,7 @@
                                    value="{{is_null(old('office_phone')) ? $committee->office_phone : old('office_phone') }}"
                                    v-mask="['(##) ####-####', '(##) #####-####']"
                                    v-init:office_phone="'{{is_null(old('office_phone')) ? $committee->office_phone : old('office_phone') }}'"
-                                   @include('partials.disabled',['model'=>$committee])>
+                                    @include('partials.disabled',['model'=>$committee])>
                             @if ($errors->has('office_phone'))
                                 <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('office_phone') }}</strong>
@@ -169,7 +169,7 @@
                             @endif
                         </div>
                         <div class="col-md-6">
-                            <label for="phone" class="col-form-label">Endereço</label>
+                            <label for="office_address" class="col-form-label">Endereço</label>
                             <input id="office_address"
                                    class="form-control{{ $errors->has('office_address') ? ' is-invalid' : '' }}" name="office_address"
                                    value="{{is_null(old('office_address')) ? $committee->office_address : old('office_address') }}"
