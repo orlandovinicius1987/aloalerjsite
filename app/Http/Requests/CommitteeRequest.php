@@ -19,8 +19,8 @@ class CommitteeRequest extends Request
             'vice_president' => 'required',
             'office_phone' => 'required',
             'office_address' => 'required',
-            'public',
-            'email' => 'required|email',
+            'public' => 'required',
+            'email' => 'sometimes|nullable|email',
             'link_caption' => 'required',
             'slug' => 'required',
         ];
@@ -31,5 +31,20 @@ class CommitteeRequest extends Request
         return [
             'required_without' => 'O campo solicitação não pode ser vazio.',
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function sanitize()
+    {
+        $input = $this->all();
+
+        $input['public'] =
+            !empty($this->get('public')) && $input['public'] ? true : false;
+
+        $this->replace($input);
+
+        return $this->all();
     }
 }
