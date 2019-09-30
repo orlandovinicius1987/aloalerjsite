@@ -87,6 +87,9 @@ class Committees extends Base
 
     public function getPublicCommittees()
     {
-        return $this->model::where('public', true)->get();
+        return $this->model
+            ::where('public', true)
+            ->orderBy('link_caption', 'asc')
+            ->get();
     }
 }
