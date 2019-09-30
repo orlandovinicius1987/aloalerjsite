@@ -41,15 +41,6 @@ class Committees extends Controller
 
     public function store(CommitteeRequest $request)
     {
-        $request->merge([
-            'slug' => str_slug($request->input('name'), ""),
-            'link_caption' => str_replace(
-                'Comissão de',
-                "",
-                $request->input('name')
-            ),
-        ]);
-
         $this->committeeRepository->createFromRequest($request);
 
         $this->showSuccessMessage('Comissão cadastrada com sucesso.');

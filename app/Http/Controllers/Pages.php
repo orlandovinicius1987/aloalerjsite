@@ -28,9 +28,4 @@ class Pages extends Controller
     private function getPublicCommittees(){
         return $this->committeesRepository->findByColumn('public',true)->get();
     }
-
-
-//Route::get('pages/telefones', ['as' => 'pages.telefones', 'uses' => 'Pages@telefones']);
-//Route::get('pages/protocolo', ['as' => 'pages.protocolo', 'uses' => 'Pages@protocolo']);
-//Route::get('pages/contact', ['as' => 'pages.contact', 'uses' => 'Pages@contact']);
 }
