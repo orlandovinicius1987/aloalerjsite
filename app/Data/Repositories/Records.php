@@ -5,7 +5,6 @@ use Carbon\Carbon;
 use App\Data\Models\Record;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\People as PeopleRepository;
-use Illuminate\Support\Facades\DB;
 
 class Records extends Base
 {
@@ -208,16 +207,8 @@ class Records extends Base
 
     public function advancedSearch($data){
 
-//        'protocol',
-//        'committee_id',
-//        'person_id',
-//        'resolved_at',
-
-
         $records = (new Record)->newQuery();
 
-
-        //$query = DB::table('records');
         foreach ($data as $key =>$collumn){
             if(!is_null($collumn)){
                 if($key == 'created_at' || $key=='resolved_at') {
