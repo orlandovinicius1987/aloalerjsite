@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\CallCenter;
 
+use App\Data\Repositories\Areas;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
@@ -9,6 +10,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RecordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\Records as RecordsRepository;
+use App\Data\Repositories\Committees as CommittesRepository;
+use App\Data\Repositories\Areas as AreasRepository;
+use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 
 class Records extends Controller
 {
@@ -197,5 +201,21 @@ class Records extends Controller
         return view('callcenter.records.search')
             ->with('record', $record)
             ->with('protocol', $request->protocol);
+    }
+
+    public function advancedSearch(Request $request)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        $records = app(RecordsRepository::class)->advancedSearch($data);
+        $committees = app(CommittesRepository::class)->all();
+        $areas = app(AreasRepository::class)->all();
+        $recordTypes = app(RecordTypesRepository::class)->all();
+        return view('callcenter.records.advanced-search')
+            ->with('records',$records)
+            ->with('committees',$committees)
+            ->with('areas',$areas)
+            ->with('recordTypes',$recordTypes);
+
     }
 }

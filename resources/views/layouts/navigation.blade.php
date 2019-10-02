@@ -33,7 +33,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-chart-bar"></i> Relatórios </a>
+                        <a class="nav-link" href="{{route('records.advanced-search')}}"><i class="fab fa-searchengin"></i>Busca Avançada </a>
                     </li>
 
                     <li class="nav-item">
