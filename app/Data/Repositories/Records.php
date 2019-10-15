@@ -212,4 +212,28 @@ class Records extends Base
     {
         return Record::where('person_id', $person_id)->orderBy('created_at', 'asc')->first();
     }
+
+    public function advancedSearch($data){
+
+        $records = (new Record)->newQuery();
+
+        foreach ($data as $key =>$collumn){
+            if(!is_null($collumn)){
+                if($key == 'created_at' || $key=='resolved_at') {
+                    $records->whereDate($key, $collumn);
+                }elseif($key == 'person_name') {
+                    $records->join('people', 'people.id', '=', 'records.person_id')
+                        ->where('people.name', 'ilike', '%' . $collumn . '%');
+                }else{
+                    $records->where($key,$collumn);
+                }
+
+            }
+        }
+
+        $records->orderBy('records.created_at');
+
+        return $records->paginate(10);
+
+    }
 }
