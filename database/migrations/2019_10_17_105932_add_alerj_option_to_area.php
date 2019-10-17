@@ -25,6 +25,6 @@ class AddAlerjOptionToArea extends Migration
      */
     public function down()
     {
-//        \App\Data\Models\Area::delete(['name' => 'Alerj']);
+
     }
 }
