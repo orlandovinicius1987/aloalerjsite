@@ -12,6 +12,14 @@ Route::group(['prefix' => 'records'], function () {
         'records.nonResolved'
     );
 
+    Route::get('/advanced-search', 'Records@advancedSearch')->name(
+        'records.advanced-search'
+    );
+
+    Route::post('/advanced-search', 'Records@advancedSearch')->name(
+        'records.advanced-search'
+    );
+
     Route::get('/show-protocol/{id}', 'Records@showProtocol')->name(
         'records.show-protocol'
     );

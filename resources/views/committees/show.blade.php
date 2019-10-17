@@ -36,6 +36,9 @@
 
             <div class="comissao-dados">
                 <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committee->office_phone !!}</div>
+                @if($committee->email)
+                    <b><div class="comissao-email"><span class="emails">E-mail:</span>{!! $committee->email !!}</div></b>
+                @endif
                 <div class="comissao-endereco">{!! $committee->office_address !!}</div>
             </div>
         </div>

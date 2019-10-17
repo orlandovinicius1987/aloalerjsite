@@ -8,6 +8,7 @@
                     @if (isset($onlyNonResolved))
                         Não Resolvidos
                     @endif
+                    ({{$records->total()}} encontrados)
                 </h3>
             </div>
             <div class="col-5 col-md-8 text-right">
