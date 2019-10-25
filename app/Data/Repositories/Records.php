@@ -141,7 +141,7 @@ class Records extends Base
                     'name' => $data['name'],
                     'identification' => trim(
                         $data['identidade'] . ' ' . $data['expeditor']
-                    ),
+                    )
                 ])
             );
         }
@@ -163,17 +163,17 @@ class Records extends Base
             'state' => 'RJ',
             'is_mailable' => true,
             'validated_at' => now(),
-            'active' => true,
+            'active' => true
         ]);
 
         $person->findOrCreatePhone([
             'person_id' => $person->id,
-            'contact' => $data['telephone'],
+            'contact' => $data['telephone']
         ]);
 
         $person->findOrCreateEmail([
             'person_id' => $person->id,
-            'contact' => $data['email'],
+            'contact' => $data['email']
         ]);
 
         $record = $this->create(
@@ -190,7 +190,7 @@ class Records extends Base
                 )->id),
                 'record_action_id' => app(RecordActions::class)->findByName(
                     'Outros'
-                )->id,
+                )->id
             ])
         );
 
@@ -203,7 +203,7 @@ class Records extends Base
             'area_id' => $areaId,
             'area_id',
             'objeto_id',
-            'record_action_id',
+            'record_action_id'
         ]);
 
         $record->sendNotifications();
@@ -218,8 +218,51 @@ class Records extends Base
 
     public function isSearchColumn($term)
     {
-        $notSearchingTerms = collect(['page', '_token']);
+        $notSearchingTerms = collect([
+            'page',
+            '_token',
+            'created_at_start',
+            'created_at_end',
+            'resolved_at_start',
+            'resolved_at_end'
+        ]);
         return !$notSearchingTerms->contains($term);
+    }
+
+    public function createdAtBetweenDate($data, $query)
+    {
+        if (
+            isset($data['created_at_start']) &&
+            !is_null($data['created_at_start'])
+        ) {
+            $query->whereDate('created_at', '>=', $data['created_at_start']);
+        }
+        if (
+            isset($data['created_at_end']) &&
+            !is_null($data['created_at_end'])
+        ) {
+            $query->whereDate('created_at', '<=', $data['created_at_end']);
+        }
+
+        return $query;
+    }
+
+    public function resolvedAtBetweenDate($data, $query)
+    {
+        if (
+            isset($data['resolved_at_start']) &&
+            !is_null($data['resolved_at_start'])
+        ) {
+            $query->whereDate('resolved_at', '>=', $data['resolved_at_start']);
+        }
+        if (
+            isset($data['resolved_at_end']) &&
+            !is_null($data['resolved_at_end'])
+        ) {
+            $query->whereDate('resolved_at', '<=', $data['resolved_at_end']);
+        }
+
+        return $query;
     }
 
     public function advancedSearch($data)
@@ -228,9 +271,9 @@ class Records extends Base
 
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
-                if ($key == 'created_at' || $key == 'resolved_at') {
-                    $records->whereDate($key, $collumn);
-                } elseif ($key == 'person_name') {
+                //                if ($key == 'created_at' || $key == 'resolved_at') {
+                //                    $records->whereDate($key, $collumn);
+                if ($key == 'person_name') {
                     $records
                         ->join('people', 'people.id', '=', 'records.person_id')
                         ->where('people.name', 'ilike', '%' . $collumn . '%');
@@ -238,6 +281,9 @@ class Records extends Base
                     $records->where($key, $collumn);
                 }
             }
+
+            $this->createdAtBetweenDate($data, $records);
+            $this->resolvedAtBetweenDate($data, $records);
         }
 
         $records->orderBy('records.created_at');
