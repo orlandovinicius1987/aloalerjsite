@@ -141,7 +141,7 @@ class Records extends Base
                     'name' => $data['name'],
                     'identification' => trim(
                         $data['identidade'] . ' ' . $data['expeditor']
-                    )
+                    ),
                 ])
             );
         }
@@ -163,17 +163,17 @@ class Records extends Base
             'state' => 'RJ',
             'is_mailable' => true,
             'validated_at' => now(),
-            'active' => true
+            'active' => true,
         ]);
 
         $person->findOrCreatePhone([
             'person_id' => $person->id,
-            'contact' => $data['telephone']
+            'contact' => $data['telephone'],
         ]);
 
         $person->findOrCreateEmail([
             'person_id' => $person->id,
-            'contact' => $data['email']
+            'contact' => $data['email'],
         ]);
 
         $record = $this->create(
@@ -190,7 +190,7 @@ class Records extends Base
                 )->id),
                 'record_action_id' => app(RecordActions::class)->findByName(
                     'Outros'
-                )->id
+                )->id,
             ])
         );
 
@@ -203,7 +203,7 @@ class Records extends Base
             'area_id' => $areaId,
             'area_id',
             'objeto_id',
-            'record_action_id'
+            'record_action_id',
         ]);
 
         $record->sendNotifications();
@@ -224,7 +224,7 @@ class Records extends Base
             'created_at_start',
             'created_at_end',
             'resolved_at_start',
-            'resolved_at_end'
+            'resolved_at_end',
         ]);
         return !$notSearchingTerms->contains($term);
     }
@@ -235,13 +235,21 @@ class Records extends Base
             isset($data['created_at_start']) &&
             !is_null($data['created_at_start'])
         ) {
-            $query->whereDate('created_at', '>=', $data['created_at_start']);
+            $query->whereDate(
+                'records.created_at',
+                '>=',
+                $data['created_at_start']
+            );
         }
         if (
             isset($data['created_at_end']) &&
             !is_null($data['created_at_end'])
         ) {
-            $query->whereDate('created_at', '<=', $data['created_at_end']);
+            $query->whereDate(
+                'records.created_at',
+                '<=',
+                $data['created_at_end']
+            );
         }
 
         return $query;
@@ -253,13 +261,21 @@ class Records extends Base
             isset($data['resolved_at_start']) &&
             !is_null($data['resolved_at_start'])
         ) {
-            $query->whereDate('resolved_at', '>=', $data['resolved_at_start']);
+            $query->whereDate(
+                'records.resolved_at',
+                '>=',
+                $data['resolved_at_start']
+            );
         }
         if (
             isset($data['resolved_at_end']) &&
             !is_null($data['resolved_at_end'])
         ) {
-            $query->whereDate('resolved_at', '<=', $data['resolved_at_end']);
+            $query->whereDate(
+                'records.resolved_at',
+                '<=',
+                $data['resolved_at_end']
+            );
         }
 
         return $query;
