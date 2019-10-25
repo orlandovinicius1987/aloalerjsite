@@ -62,9 +62,7 @@ class Records extends Controller
 
         if (is_null($request->get('record_id'))) {
             $request->merge(['record_id' => $record->id]);
-            $this->progressesRepository->createFromRequest(
-                $request
-            );
+            $this->progressesRepository->createFromRequest($request);
         }
 
         $this->showSuccessMessage(
@@ -97,9 +95,9 @@ class Records extends Controller
         $progress = $this->progressesRepository->create([
             'original' =>
                 'Protocolo finalizado sem observações em ' .
-                    now() .
-                    ' pelo usuário ' .
-                    Auth::user()->name,
+                now() .
+                ' pelo usuário ' .
+                Auth::user()->name,
             'record_id' => $record->id,
         ]);
 
@@ -108,7 +106,6 @@ class Records extends Controller
         $record->sendNotifications();
 
         $this->showSuccessMessage('Protocolo finalizado com sucesso.');
-
 
         return redirect()->route(
             Workflow::started() ? 'people_addresses.create' : 'people.show',
@@ -165,8 +162,7 @@ class Records extends Controller
     public function nonResolved()
     {
         return view('callcenter.records.index')->with([
-            'records' =>
-                ($records = $this->recordsRepository->allNotResolved()),
+            'records' => ($records = $this->recordsRepository->allNotResolved()),
             'onlyNonResolved' => true,
         ]);
     }
@@ -181,9 +177,9 @@ class Records extends Controller
 
     public function showPublic($protocol)
     {
-        return !(
-            $record = app(RecordsRepository::class)->findByProtocol($protocol)
-        )
+        return !($record = app(RecordsRepository::class)->findByProtocol(
+            $protocol
+        ))
             ? abort(404)
             : view('callcenter.records.show-public')->with('record', $record);
     }
@@ -204,19 +200,22 @@ class Records extends Controller
             ->with('protocol', $request->protocol);
     }
 
+    public function getRecordsData()
+    {
+        return [
+            'committees' => app(CommittesRepository::class)->all(),
+            'areas' => app(AreasRepository::class)->all(),
+            'recordTypes' => app(RecordTypesRepository::class)->all(),
+        ];
+    }
+
     public function advancedSearch(Request $request)
     {
         $data = $request->all();
-        unset($data['_token']);
         $records = app(RecordsRepository::class)->advancedSearch($data);
-        $committees = app(CommittesRepository::class)->all();
-        $areas = app(AreasRepository::class)->all();
-        $recordTypes = app(RecordTypesRepository::class)->all();
         return view('callcenter.records.advanced-search')
-            ->with('records',$records)
-            ->with('committees',$committees)
-            ->with('areas',$areas)
-            ->with('recordTypes',$recordTypes);
-
+            ->with('records', $records)
+            ->with($this->getRecordsData())
+            ->with($data);
     }
 }

@@ -1,10 +1,21 @@
-# Configurar o Supervisor pra manter rodando:
-    'php artisan horizon'
+# ALÔ ALERJ
 
+### Atualizando a aplicação
 
-# Para alterar os dados das comissões.
+- Entrar na `<pasta-onde-o-site-foi-instalado>`
+- Baixar as atualizações de código fonte usando Git (git pull ou git fetch + git merge, isso depende de como operador prefere trabalhar com Git)
+- Executar, no mínimo, os comandos:
 
-- Alterar o arquivo
-aloalerjsite/database/seeds/CommitteesSeeder.php
+```
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+php artisan migrate --force
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
 
-- Rodar php artisan migrate —seed
+- Reiniciar o horizon
+
+### Supervisor:
+- Configurar o supervisor para manter rodando o Horizon a partr `php artisan horizon`

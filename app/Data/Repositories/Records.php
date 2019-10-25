@@ -65,14 +65,11 @@ class Records extends Base
 
     private function makePersonalDataInfoFromContactData($data)
     {
-
-        return (
-            "Data de nascimento: {$data['birthdate']}\n" .
+        return "Data de nascimento: {$data['birthdate']}\n" .
             "Sexo: {$data['sex_1']}\n" .
             "Identidade de gênero: {$data['sex_2']}\n" .
             "Escolaridade: {$data['scholarship']}\n" .
-            "Área de atuação: {$data['area']}\n"
-        );
+            "Área de atuação: {$data['area']}\n";
     }
 
     public function markAsResolved($record_id, $progress = null)
@@ -108,7 +105,8 @@ class Records extends Base
 
     public function allNotResolved()
     {
-        return $this->model::whereNull('resolved_at')
+        return $this->model
+            ::whereNull('resolved_at')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
     }
@@ -123,9 +121,9 @@ class Records extends Base
         return sprintf(
             '%s%s%s%s',
             Carbon::now()->format('Ymd'),
-            str_pad(trim($person->id), 8, "0", STR_PAD_LEFT),
+            str_pad(trim($person->id), 8, '0', STR_PAD_LEFT),
             Carbon::now()->format('Hi'),
-            str_pad(trim($record->id), 8, "0", STR_PAD_LEFT)
+            str_pad(trim($record->id), 8, '0', STR_PAD_LEFT)
         );
     }
 
@@ -138,15 +136,13 @@ class Records extends Base
 
         if (!$person) {
             $person = $this->peopleRepository->create(
-                (
-                    $data = array_merge($data,[
-                        'cpf_cnpj' => $data['cpf'],
-                        'name' => $data['name'],
-                        'identification' => trim(
-                            $data['identidade'] . ' ' . $data['expeditor']
-                        ),
-                    ])
-                )
+                $data = array_merge($data, [
+                    'cpf_cnpj' => $data['cpf'],
+                    'name' => $data['name'],
+                    'identification' => trim(
+                        $data['identidade'] . ' ' . $data['expeditor']
+                    ),
+                ])
             );
         }
 
@@ -177,26 +173,31 @@ class Records extends Base
 
         $person->findOrCreateEmail([
             'person_id' => $person->id,
-            'contact' => $data['email'],]);
+            'contact' => $data['email'],
+        ]);
 
         $record = $this->create(
             coollect([
-                'committee_id' =>
-                    app(Committees::class)->findByName('ALÔ ALERJ')->id,
+                'committee_id' => app(Committees::class)->findByName(
+                    'ALÔ ALERJ'
+                )->id,
                 'person_id' => $person->id,
-                'record_type_id' =>
-                    app(RecordTypes::class)->findByName('Outros')->id,
-                'area_id' =>
-                    ($areaId = app(Areas::class)->findByName('ALÔ ALERJ')->id),
-                'record_action_id' =>
-                    app(RecordActions::class)->findByName('Outros')->id,
+                'record_type_id' => app(RecordTypes::class)->findByName(
+                    'Outros'
+                )->id,
+                'area_id' => ($areaId = app(Areas::class)->findByName(
+                    'ALÔ ALERJ'
+                )->id),
+                'record_action_id' => app(RecordActions::class)->findByName(
+                    'Outros'
+                )->id,
             ])
         );
 
         $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
-            'progress_type_id' =>
-                app(ProgressTypes::class)->findByName('Email')->id,
+            'progress_type_id' => app(ProgressTypes::class)->findByName('Email')
+                ->id,
             'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'area_id' => $areaId,
@@ -208,32 +209,39 @@ class Records extends Base
         $record->sendNotifications();
     }
 
-    public function getLastRecordFromPerson($person_id) : Record
+    public function getLastRecordFromPerson($person_id): Record
     {
-        return Record::where('person_id', $person_id)->orderBy('created_at', 'asc')->first();
+        return Record::where('person_id', $person_id)
+            ->orderBy('created_at', 'asc')
+            ->first();
     }
 
-    public function advancedSearch($data){
+    public function isSearchColumn($term)
+    {
+        $notSearchingTerms = collect(['page', '_token']);
+        return !$notSearchingTerms->contains($term);
+    }
 
-        $records = (new Record)->newQuery();
+    public function advancedSearch($data)
+    {
+        $records = (new Record())->newQuery();
 
-        foreach ($data as $key =>$collumn){
-            if(!is_null($collumn)){
-                if($key == 'created_at' || $key=='resolved_at') {
+        foreach ($data as $key => $collumn) {
+            if (!is_null($collumn) && $this->isSearchColumn($key)) {
+                if ($key == 'created_at' || $key == 'resolved_at') {
                     $records->whereDate($key, $collumn);
-                }elseif($key == 'person_name') {
-                    $records->join('people', 'people.id', '=', 'records.person_id')
+                } elseif ($key == 'person_name') {
+                    $records
+                        ->join('people', 'people.id', '=', 'records.person_id')
                         ->where('people.name', 'ilike', '%' . $collumn . '%');
-                }else{
-                    $records->where($key,$collumn);
+                } else {
+                    $records->where($key, $collumn);
                 }
-
             }
         }
 
         $records->orderBy('records.created_at');
 
         return $records->paginate(10);
-
     }
 }
