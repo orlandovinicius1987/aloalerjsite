@@ -117,7 +117,7 @@
     <!-------------------- END of MOBILE VERSION -------------------->
 
     <div class="d-flex justify-content-center">
-        {{ $records->links() }}
+        {{ $records->appends(Request::except('page'))->links() }}
     </div>
 
 </div>
