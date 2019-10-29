@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CallCenter;
 
 use App\Data\Repositories\Areas;
+use App\Http\Requests\AdvancedSearchRequest;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
 use App\Http\Requests\ViaRequest;
@@ -45,7 +46,7 @@ class Records extends Controller
             ),
             'contacts' => $this->peopleContactsRepository->findByPerson(
                 $record->person_id
-            ),
+            )
         ]);
     }
 
@@ -98,7 +99,7 @@ class Records extends Controller
                 now() .
                 ' pelo usuário ' .
                 Auth::user()->name,
-            'record_id' => $record->id,
+            'record_id' => $record->id
         ]);
 
         $this->recordsRepository->markAsResolved($record->id, $progress);
@@ -163,7 +164,7 @@ class Records extends Controller
     {
         return view('callcenter.records.index')->with([
             'records' => ($records = $this->recordsRepository->allNotResolved()),
-            'onlyNonResolved' => true,
+            'onlyNonResolved' => true
         ]);
     }
 
@@ -205,11 +206,11 @@ class Records extends Controller
         return [
             'committees' => app(CommittesRepository::class)->all(),
             'areas' => app(AreasRepository::class)->all(),
-            'recordTypes' => app(RecordTypesRepository::class)->all(),
+            'recordTypes' => app(RecordTypesRepository::class)->all()
         ];
     }
 
-    public function advancedSearch(Request $request)
+    public function advancedSearch(AdvancedSearchRequest $request)
     {
         $data = $request->all();
         $records = app(RecordsRepository::class)->advancedSearch($data);
