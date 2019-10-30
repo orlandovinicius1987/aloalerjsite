@@ -8,6 +8,7 @@ class DateBetween implements Rule
 {
     protected $initialDate;
     protected $finalDate;
+    protected $fieldName;
 
     /**
      * Create a new rule instance.
@@ -15,10 +16,11 @@ class DateBetween implements Rule
      * @return void
      */
 
-    public function __construct($initialDate, $finalDate)
+    public function __construct($initialDate, $finalDate, $fieldName)
     {
         $this->initialDate = $initialDate;
         $this->finalDate = $finalDate;
+        $this->fieldName = $fieldName;
     }
 
     /**
@@ -40,6 +42,8 @@ class DateBetween implements Rule
      */
     public function message()
     {
-        return 'A data inicial não pode ser maior que a data final.';
+        return 'A data inicial ' .
+            ($this->fieldName ? 'de ' . $this->fieldName . ' ' : ' ') .
+            'não pode ser maior que a data final.';
     }
 }
