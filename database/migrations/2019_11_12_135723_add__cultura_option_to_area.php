@@ -15,8 +15,7 @@ class AddCulturaOptionToArea extends Migration
     public function up()
     {
         \App\Data\Models\Area::insert([
-            'name' => 'Cultura',
-            'created_at' => Carbon::now()
+            'name' => 'Cultura'
         ]);
     }
 
