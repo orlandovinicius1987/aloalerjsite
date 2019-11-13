@@ -205,7 +205,7 @@ class Records extends Controller
     {
         return [
             'committees' => app(CommittesRepository::class)->all(),
-            'areas' => app(AreasRepository::class)->all(),
+            'areas' => app(AreasRepository::class)->allOrderBy('name'),
             'recordTypes' => app(RecordTypesRepository::class)->all()
         ];
     }
