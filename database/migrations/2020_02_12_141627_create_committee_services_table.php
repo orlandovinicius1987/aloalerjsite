@@ -17,8 +17,9 @@ class CreateCommitteeServicesTable extends Migration
             $table->increments('id');
             $table->integer('committee_id');
             $table->string('short_name');
-            $table->string('link_caption');
-            $table->string('bio');
+            $table->string('link_caption')->nullable();
+            $table->text('bio');
+            $table->string('public')->default(false);
 
             $table->timestamps();
         });

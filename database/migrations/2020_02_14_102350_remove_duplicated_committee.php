@@ -11,14 +11,18 @@ class RemoveDuplicatedCommittee extends Migration
      *
      * @return void
      */
-    static $duplicateRecords =  [1740857,1740542,1740514,1740447,1740357,1740241];
 
     public function up()
     {
-        //create backup, if fallback
+
         DB::table('records')
                     ->where('committee_id',40)
                     ->update(['committee_id'=> 9]);
+
+        DB::table('records')
+            ->where('committee_id',20)
+            ->update(['committee_id'=> 2]);
+
 
         DB::table('user_committees')
             ->where('committee_id',40)
@@ -27,6 +31,14 @@ class RemoveDuplicatedCommittee extends Migration
         DB::table('committees')
             ->where('id',40)
             ->delete();
+
+        DB::table('committees')
+            ->where('id',20)
+            ->delete();
+
+        DB::table('committee_services')
+            ->where('committee_id',40)
+            ->update(['committee_id'=> 9]);
     }
 
     /**

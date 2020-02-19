@@ -10,10 +10,14 @@ class CommitteeService extends Model
      */
 
     protected $fillable = [
+        'committee_id',
         'short_name',
         'link_caption',
         'bio',
+        'public',
     ];
+
+      protected $with = ['committee'];
 
     public function committee()
     {

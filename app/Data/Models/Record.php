@@ -2,6 +2,7 @@
 namespace App\Data\Models;
 
 use App\Notifications\RecordCreated;
+use App\Data\Scopes\Record as RecordScope;
 
 class Record extends BaseModel
 {
@@ -95,5 +96,12 @@ class Record extends BaseModel
         $this->save();
 
         return $this;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new RecordScope());
     }
 }
