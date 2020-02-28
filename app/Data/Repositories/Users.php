@@ -289,18 +289,18 @@ class Users extends Base
                 }
             } else {
                 //O usuário não tem permissão para a comissão $committee no SGUS
-//                if (
-//                    $userCommitteesRepository->userHasCommittee(
-//                        $user->id,
-//                        $committee->id
-//                    )
-//                ) {
+                if (
+                    $userCommitteesRepository->userHasCommittee(
+                        $user->id,
+                        $committee->id
+                    )
+                ) {
                     //precisa deletar
                     $userCommitteesRepository->deleteUserCommittee(
                         $user->id,
                         $committee->id
                     );
-//                }
+                }
             }
         }
 

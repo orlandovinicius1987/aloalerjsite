@@ -24,15 +24,4 @@ class CommitteeService extends Model
         return $this->belongsTo(Committee::class);
     }
 
-    public function scopePermittedCommittees($query)
-    {
-        $committees = \Auth::user()->committees;
-
-        $idsArray = [];
-        foreach ($committees as $committee) {
-            $idsArray[] = $committee->id;
-        }
-
-        return $query->whereIn('id', $idsArray);
-    }
 }
