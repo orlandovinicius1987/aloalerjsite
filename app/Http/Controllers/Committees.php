@@ -20,11 +20,11 @@ class Committees extends Controller
         return view("committees.$pageName")->with('css', 'comissoes/comissao');
     }
 
-    public function show($committeeName)
+    public function show($id)
     {
         return view('committees.show', [
-            'committee' => $this->committeeRepository->findBySlug(
-                $committeeName
+            'committee' => $this->committeeRepository->findById(
+                $id
             ),
         ]);
     }

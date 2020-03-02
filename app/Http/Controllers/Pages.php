@@ -1,15 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Repositories\Committees as CommitteesRepository;
+use App\Data\Repositories\CommitteeServices as CommitteeServicesRepository;
 
 class Pages extends Controller
 {
     public function committees()
     {
         return view('pages.committees')->with(
-            'committees',
-            app(CommitteesRepository::class)->getPublicCommittees()
+            'committeeServices',
+            app(CommitteeServicesRepository::class)->getPublicServices()
         );
     }
 
