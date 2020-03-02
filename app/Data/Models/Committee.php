@@ -12,21 +12,24 @@ class Committee extends Model
     protected $fillable = [
         'name',
         'slug',
-        'short_name',
-        'link_caption',
         'phone',
         'bio',
         'president',
         'vice_president',
         'office_phone',
         'office_address',
-        'public',
         'email',
     ];
+
 
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_committees');
+    }
+
+    public function committeeServices()
+    {
+        return $this->hasMany(CommitteeService::class);
     }
 
     public function scopePermittedCommittees($query)
@@ -40,4 +43,5 @@ class Committee extends Model
 
         return $query->whereIn('id', $idsArray);
     }
+
 }

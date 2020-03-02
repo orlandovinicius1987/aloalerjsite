@@ -19,7 +19,7 @@
         <td>@{{ committee.office_phone  }}</td>
         <td>@{{ committee.president  }}</td>
         <td>@{{ committee.vice_president  }}</td>
-        <td></td>
+        <td>@{{ committee.created_at  }}</td>
     </tr>
 </table>
 

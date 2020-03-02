@@ -267,8 +267,12 @@ class Users extends Base
         $userCommitteesRepository = app(UsersCommitteesRepository::class);
         $allCommittees = $committeesRepository->getCommitteeCombobox();
 
+
+
         foreach ($allCommittees as $committee) {
             if (isset($eventsArray[$committee->slug])) {
+
+
                 //O usuário tem permissão para a comissão $committee no SGUS
                 $returnCommitteesPermissions[] = $committee;
                 if (
@@ -319,6 +323,7 @@ class Users extends Base
         $userType = null;
 
         foreach ($permissions as $permission) {
+
             if ($permission['nomeFuncao'] == 'Administrador') {
                 $userType = $userTypesArray['Administrador'];
                 $administrator = true;
@@ -327,7 +332,6 @@ class Users extends Base
                 );
             }
         }
-
         if (!$administrator) {
             if (
                 !empty(
