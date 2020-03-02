@@ -1,5 +1,5 @@
 
-<table id="committeesServiceTable" class="table table-striped table-hover d-none d-sm-block" cellspacing="0" width="100%">
+<table id="committeesServiceTable" class="table table-striped table-hover" cellspacing="0" width="100%" height=100%">
     <thead>
         <tr>
             <th>Serviço</th>

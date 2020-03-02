@@ -185,35 +185,27 @@
         </div>
     </div>
 
-    <div class="row mt-4" >
-        <div class="col-lg-8 offset-lg-2 text-center">
-            <div class="section-title">
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="card mt-4">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-7 col-md-4">
+                        <h3>
+                            <i class="far fa-window-maximize"></i> Serviços
+                        </h3>
+                    </div>
 
-                <ul class="aloalerj-breadcrumbs">
-                    <h2>
-                        <i class="fas fa-cogs"></i> Serviços
-                    </h2>
-                </ul>
-            </div>
-
-            <div class="col-12 col-md-8 text-right">
-                <a id="buttonNovaComissao" href="{{ route('committee_services.create',['id'=>$committee->id]) }}"
-                   class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-plus"></i>
-                    Novo Serviço
-                </a>
-            </div>
-
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2 form-bigger">
-            <div class="form-group row">
-                <div class="col-md-4">
-                    @include('callcenter.committee_services.partials.table', ['committeeServices'=>$committee->committeeServices])
+                    <div class="col-12 col-md-8 text-right">
+                        <a id="buttonNovaComissao" href="{{ route('committee_services.create',['id'=>$committee->id]) }}"
+                           class="btn btn-primary btn-sm pull-right">
+                            <i class="fa fa-plus"></i>
+                            Novo Serviço
+                        </a>
+                    </div>
                 </div>
+            </div>
+            <div class="card-body">
+                @include('callcenter.committee_services.partials.table', ['committeeServices'=>$committee->committeeServices])
             </div>
         </div>
     </div>
