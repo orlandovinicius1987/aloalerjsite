@@ -10,7 +10,7 @@ class Authentication
 {
     const LOGIN_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/login';
 
-    const USER_INFO_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/d6fFGg5h4jui1k5loFG3p7d6fg5h4j3kDS8HJ/user';
+    const USER_INFO_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/user';
 
     const PERMISSIONS_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/adm-user/K7k8H95loFpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jOG3pd61F4d6fg584Gg5h4DSjui1k/permissions';
 
@@ -85,7 +85,11 @@ class Authentication
 
             if (is_null($user)) {
                 //Sistema de login fora do ar e usuário novo
-                Log::error('O usuário '.extract_credentials($request)['username'].' tentou fazer login, mas não foi possível pois o SGUS está fora do ar e não há histórico do usuário no banco de dados');
+                Log::error(
+                    'O usuário ' .
+                        extract_credentials($request)['username'] .
+                        ' tentou fazer login, mas não foi possível pois o SGUS está fora do ar e não há histórico do usuário no banco de dados'
+                );
                 abort(403);
             } else {
                 //Usuário já cadastrado
@@ -151,10 +155,10 @@ class Authentication
                 'email' => [$credentials['username'] . '@alerj.rj.gov.br'],
                 'memberof' => [
                     'CN=ProjEsp,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
-                    'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
+                    'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br'
                 ],
-                'description' => ['matricula: N/C'],
-            ],
+                'description' => ['matricula: N/C']
+            ]
         ];
     }
 
@@ -168,7 +172,7 @@ class Authentication
             'success' => false,
             'code' => 401,
             'message' => 'Attempt failed.',
-            'data' => [],
+            'data' => []
         ];
     }
 }

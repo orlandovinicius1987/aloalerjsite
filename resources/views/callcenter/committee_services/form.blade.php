@@ -10,7 +10,7 @@
                     <ul class="aloalerj-breadcrumbs">
                         <li>
                             <h2>
-                                <i class="fas fa-cogs"></i> Serviços
+                                <i class="far fa-window-maximize"></i> Serviços
                             </h2>
                         </li>
                         <li>

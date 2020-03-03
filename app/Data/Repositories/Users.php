@@ -78,7 +78,7 @@ class Users extends Base
     private function getUserType($username)
     {
         return // $this->authorization->getUserProfiles($username)->first()
-        UserType::where('name', 'Usuario')->first();
+            UserType::where('name', 'Usuario')->first();
     }
 
     private function getUserTypeFromPermissions($permissions)
@@ -144,13 +144,11 @@ class Users extends Base
      */
     private function isType($permissions, $type)
     {
-        return (
-            $permissions
-                ->filter(function ($user) use ($type) {
-                    return starts_with($user['nomeFuncao'], $type);
-                })
-                ->count() > 0
-        );
+        return $permissions
+            ->filter(function ($user) use ($type) {
+                return starts_with($user['nomeFuncao'], $type);
+            })
+            ->count() > 0;
     }
 
     /**
@@ -166,14 +164,8 @@ class Users extends Base
 
             if (
                 is_null(
-                    (
-                        $user = $this->findUserByEmail(
-                            (
-                                $email = "{$credentials[
-                                    'username'
-                                ]}@alerj.rj.gov.br"
-                            )
-                        )
+                    $user = $this->findUserByEmail(
+                        $email = "{$credentials['username']}@alerj.rj.gov.br"
                     )
                 )
             ) {
@@ -186,24 +178,21 @@ class Users extends Base
                 $user->email = $email;
 
                 $user->password = Hash::make($credentials['password']);
-
-                $userType = $this->getUserTypeFromPermissions(
-                    app(Authorization::class)->getUserPermissions(
-                        $user->username
-                    )
-                );
-
-                if (is_null($userType)) {
-                    return false;
-                } else {
-                    $user->user_type_id = $userType->id;
-                }
-
-                $user->save();
-            } else {
-                $user->password = Hash::make($credentials['password']);
-                $user->save();
             }
+
+            $user->password = Hash::make($credentials['password']);
+
+            $userType = $this->getUserTypeFromPermissions(
+                app(Authorization::class)->getUserPermissions($user->username)
+            );
+
+            if (is_null($userType)) {
+                return false;
+            } else {
+                $user->user_type_id = $userType->id;
+            }
+
+            $user->save();
 
             Auth::login($user, $remember);
         } catch (\Exception $exception) {
@@ -263,16 +252,14 @@ class Users extends Base
             $eventsArray[$permission['evento']] = true;
         }
 
+        //['animais' => true];
+
         $committeesRepository = app(CommitteesRepository::class);
         $userCommitteesRepository = app(UsersCommitteesRepository::class);
-        $allCommittees = $committeesRepository->getCommitteeCombobox();
-
-
+        $allCommittees = $committeesRepository->all();
 
         foreach ($allCommittees as $committee) {
             if (isset($eventsArray[$committee->slug])) {
-
-
                 //O usuário tem permissão para a comissão $committee no SGUS
                 $returnCommitteesPermissions[] = $committee;
                 if (
@@ -323,7 +310,6 @@ class Users extends Base
         $userType = null;
 
         foreach ($permissions as $permission) {
-
             if ($permission['nomeFuncao'] == 'Administrador') {
                 $userType = $userTypesArray['Administrador'];
                 $administrator = true;
