@@ -85,8 +85,8 @@
                             <p class="checkbox">
                                 <input type="hidden" name="public" value="0">
                                 <input id="public" type="checkbox" name="public" {{old('public')
-                            || $committee->public ? 'checked="checked"' : ''}}
-                                    @include('partials.disabled',['model'=>$committee])>
+                            || $committeeService->public ? 'checked="checked"' : ''}}
+                                    @include('partials.disabled',['model'=>$committeeService])>
                                 @if ($errors->has('public'))
                                     <span class="invalid-feedback" role="alert"> <strong>{{ $errors->first('public') }}</strong> </span>
                                 @endif
@@ -109,22 +109,19 @@
                         </div>
                     </div>
 
-                                                @include('partials.edit-button',['model'=>$committeeService])
+                    @include('partials.edit-button',['model'=>$committeeService])
 
-                            <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$committeeService]) id="save_button">
-                                <i class="far fa-save"></i> Gravar
-                            </button>
+                    <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$committeeService]) id="save_button">
+                        <i class="far fa-save"></i> Gravar
+                    </button>
 
-                            <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
-                                Cancelar
-                            </button>
+                    <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                        Cancelar
+                    </button>
 
                 </form>
+            </div>
         </div>
-
-
-        </div>
-
     </div>
 
 @endsection

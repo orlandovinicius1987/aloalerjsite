@@ -14,11 +14,11 @@ if (jQuery("#" + appName).length > 0) {
         mixins: [editMixin],
 
         data: {
-            tables: {
-              committeeServices:[],
-            },
             form: {
                 phone: null,
+            },
+            tables: {
+                committeeServices:[],
             }
         },
 
