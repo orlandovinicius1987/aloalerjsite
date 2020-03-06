@@ -539,8 +539,6 @@ class CommitteesSeeder extends Seeder
             Committee::create([
                 'slug' => $this->sanitize($committee->slug),
                 'name' => $this->sanitize($committee->name),
-                'link_caption' => $this->sanitize($committee->link_caption),
-                'short_name' => $this->sanitize($committee->short_name),
                 'phone' => $this->sanitize($committee->phone),
                 'bio' => $this->sanitize($committee->texto),
                 'president' => $this->sanitize($committee->president),
