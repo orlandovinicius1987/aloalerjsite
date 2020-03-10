@@ -60,13 +60,48 @@ if (jQuery("#" + appName).length > 0) {
                 setInterval(function () {
                     this.__checkOnline();
                 }.bind(this), 40 * 1000);
-            }
+            },
+
+
+        __instatiatePurechat() {
+
+                const $this = this
+            window.purechatApi = { l: [], t: [], on:
+                    function () {
+                        this.l.push(arguments);
+                    }};
+
+            var f = (function () {
+                var done = false;
+                var script = document.createElement('script');
+                script.async = true;
+                script.type = 'text/javascript';
+                script.src =laravel.chat.client.url;
+                document.getElementsByTagName('HEAD').item(0).appendChild(script);
+                script.onreadystatechange = script.onload = function (e) {
+                    if (!done && (!this.readyState || this.readyState == 'loaded'
+                        || this.readyState == 'complete')) {
+
+                        var w = new PCWidget({c: laravel.chat.client.id, f: true });
+                        done = true;
+                    }
+                };
+            })();
+
+
+
+            purechatApi.on('chatbox.available:change', function (args) {
+                console.log(args.available)
+                $this.chatOnline = args.available
+            });
         },
-
+        },
         mounted() {
-            this.__instantiateIO()
+            this.__instatiatePurechat()
+            //this.__instantiateIO()
 
-            this.__boot()
+           // this.__boot()
+
         },
     })
 }
