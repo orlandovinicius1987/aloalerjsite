@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Data\Repositories\Committees as CommitteesRepository;
 use App\Data\Repositories\UsersCommittees as UsersCommitteesRepository;
 use App\Data\Repositories\UserTypes as UserTypesRepository;
+use Illuminate\Support\Str;
 
 class Users extends Base
 {
@@ -178,6 +179,8 @@ class Users extends Base
                 $user->email = $email;
 
                 $user->password = Hash::make($credentials['password']);
+
+                $user->api_token = Str::random(60);
             }
 
             $user->password = Hash::make($credentials['password']);

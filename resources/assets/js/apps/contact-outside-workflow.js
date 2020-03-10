@@ -2,33 +2,33 @@ const appName = 'vue-contact-outside-workflow'
 import editMixin from '../mixins/edit'
 import helpersMixin from '../mixins/helpers'
 
-if (jQuery("#" + appName).length > 0) {
+if (jQuery('#' + appName).length > 0) {
     new Vue({
-        el: '#'+appName,
+        el: '#' + appName,
 
         mixins: [editMixin, helpersMixin],
 
         data: {
             currentContactType: null,
-            currentContact:  null,
+            currentContact: null,
             contactTypesArray: [],
             refreshing: false,
         },
 
         computed: {
-            mask: function () {
-                let mask = "*".repeat(255)
+            mask: function() {
+                let mask = '*'.repeat(255)
 
                 switch (this.currentContactTypeName) {
-                    case 'mobile' :
-                        mask = ['(##) #####-####'];
-                        break;
-                    case 'whatsapp' :
-                        mask = ['(##) #####-####'];
-                        break;
+                    case 'mobile':
+                        mask = ['(##) #####-####']
+                        break
+                    case 'whatsapp':
+                        mask = ['(##) #####-####']
+                        break
                     case 'phone':
-                        mask = '(##) ####-####';
-                        break;
+                        mask = '(##) ####-####'
+                        break
                 }
 
                 return mask
@@ -38,21 +38,27 @@ if (jQuery("#" + appName).length > 0) {
                 return true
             },
 
-            currentContactTypeName: function () {
+            currentContactTypeName: function() {
                 return this.contactTypesArray[this.currentContactType]
             },
 
             tokens() {
                 return {
-                    '*': {pattern: /.*/},
-                    '#': {pattern: /\d/},
-                    'X': {pattern: /[0-9a-zA-Z]/},
-                    'S': {pattern: /[a-zA-Z]/},
-                    'A': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleUpperCase()},
-                    'a': {pattern: /[a-zA-Z]/, transform: v => v.toLocaleLowerCase()},
-                    '!': {escape: true}
+                    '*': { pattern: /.*/ },
+                    '#': { pattern: /\d/ },
+                    X: { pattern: /[0-9a-zA-Z]/ },
+                    S: { pattern: /[a-zA-Z]/ },
+                    A: {
+                        pattern: /[a-zA-Z]/,
+                        transform: v => v.toLocaleUpperCase(),
+                    },
+                    a: {
+                        pattern: /[a-zA-Z]/,
+                        transform: v => v.toLocaleLowerCase(),
+                    },
+                    '!': { escape: true },
                 }
-            }
+            },
         },
 
         methods: {
@@ -65,7 +71,8 @@ if (jQuery("#" + appName).length > 0) {
 
                 $this.refreshing = true
 
-                axios.get('/callcenter/contact_types/array')
+                axios
+                    .get('/callcenter/contact_types/array')
                     .then(function(response) {
                         $this.contactTypesArray = response.data
 
@@ -81,18 +88,23 @@ if (jQuery("#" + appName).length > 0) {
             },
 
             initializeCurrents() {
-                if(!laravel) {
+                if (!laravel) {
                     this.currentContact = ''
                 } else {
-                    this.currentContactType = laravel && laravel.contact ? laravel.contact.contact_type_id : null
+                    this.currentContactType =
+                        laravel && laravel.contact
+                            ? laravel.contact.contact_type_id
+                            : null
 
-                    if(laravel.old && laravel.old.contact != null) {
+                    if (laravel.old && laravel.old.contact != null) {
                         this.currentContact = laravel.old.contact
                     } else {
-                        this.currentContact = laravel.contact ? laravel.contact.contact : null
+                        this.currentContact = laravel.contact
+                            ? laravel.contact.contact
+                            : null
                     }
                 }
-            }
+            },
         },
 
         beforeMount() {
@@ -104,11 +116,11 @@ if (jQuery("#" + appName).length > 0) {
 
             const $this = this
 
-            $("#contact_type_id").on('change', function () {
-                const e = document.getElementById("contact_type_id")
+            $('#contact_type_id').on('change', function() {
+                const e = document.getElementById('contact_type_id')
 
                 $this.currentContactType = e.options[e.selectedIndex].value
             })
-        }
+        },
     })
 }
