@@ -2,16 +2,15 @@ const appName = 'vue-progress'
 import editMixin from '../mixins/edit'
 import helpersMixin from '../mixins/helpers'
 
-import vueDropzone from "vue2-dropzone"
+import vueDropzone from 'vue2-dropzone'
 
-if (jQuery("#" + appName).length > 0) {
-
+if (jQuery('#' + appName).length > 0) {
     const app = new Vue({
         el: '#' + appName,
         mixins: [editMixin, helpersMixin],
 
         components: {
-            vueDropzone
+            vueDropzone,
         },
 
         data: {
@@ -19,27 +18,29 @@ if (jQuery("#" + appName).length > 0) {
                 url: laravel.files_upload_url,
                 maxFiles: 1,
                 headers: {
-                    "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
-                }
+                    'X-CSRF-TOKEN': document.head.querySelector(
+                        '[name=csrf-token]',
+                    ).content,
+                },
             },
 
-            filesJson:JSON.constructor([]),
+            filesJson: JSON.constructor([]),
 
-            currentFile:{
+            currentFile: {
                 id: null,
-                description:'',
-                extension:'',
-                icon:'',
-                refreshing:false
+                description: '',
+                extension: '',
+                icon: '',
+                refreshing: false,
             },
 
-            errors:null
+            errors: null,
         },
 
-        computed:{
-            filesJsonString(){
+        computed: {
+            filesJsonString() {
                 return JSON.stringify(this.filesJson)
-            }
+            },
         },
 
         methods: {
@@ -51,43 +52,42 @@ if (jQuery("#" + appName).length > 0) {
 
             confirm(action) {
                 swal({
-                    title: " Você tem certeza? ",
-                    icon: "warning",
+                    title: ' Você tem certeza? ',
+                    icon: 'warning',
                     buttons: true,
                     dangerMode: true,
+                }).then(willDelete => {
+                    if (willDelete) {
+                        let $this = this
+                        $this.changeFormRoute(action)
+                    }
                 })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            let $this = this
-                            $this.changeFormRoute(action)
-                        }
-                    });
             },
 
-            'fileUploaded': function (file, response){
+            fileUploaded: function(file, response) {
                 this.currentFile.id = response['file_id']
                 this.currentFile.extension = response['extension']
             },
 
-            resetFile(){
+            resetFile() {
                 this.currentFile.id = null
                 this.currentFile.description = ''
                 this.currentFile.extension = ''
                 this.currentFile.icon = ''
             },
 
-            addToFilesArray: function(){
+            addToFilesArray: function() {
                 this.refreshIconAndPushArray()
 
                 document.getElementById('drop1').dropzone.removeAllFiles()
 
-                $('#ProgressFilesModal').modal('hide');
+                $('#ProgressFilesModal').modal('hide')
             },
 
-            cancelModal: function(){
+            cancelModal: function() {
                 document.getElementById('drop1').dropzone.removeAllFiles()
 
-                $('#ProgressFilesModal').modal('hide');
+                $('#ProgressFilesModal').modal('hide')
 
                 this.resetFile()
             },
@@ -97,22 +97,32 @@ if (jQuery("#" + appName).length > 0) {
 
                 $this.errors = null
 
-                axios.post('/api/v1/convert-extension-to-icon', {extension: $this.currentFile.extension})
+                axios
+                    .post('/api/v1/convert-extension-to-icon', {
+                        api_token: laravel.api_token,
+                        extension: $this.currentFile.extension,
+                    })
                     .then(function(response) {
                         console.log(response)
 
                         if (response.data.success) {
-                            $this.filesJson.push({"file_id":$this.currentFile.id, "description":$this.currentFile.description, "extension":$this.currentFile.extension, "icon":response.data.iconClass})
+                            $this.filesJson.push({
+                                file_id: $this.currentFile.id,
+                                description: $this.currentFile.description,
+                                extension: $this.currentFile.extension,
+                                icon: response.data.iconClass,
+                            })
 
                             $this.errors = response.data.errors
                         }
-                    }).then(function () {
+                    })
+                    .then(function() {
                         $this.resetFile()
                     })
                     .catch(function(error) {
                         console.log(error)
                     })
-            }
-        }
+            },
+        },
     })
 }

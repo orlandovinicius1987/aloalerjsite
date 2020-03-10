@@ -18,8 +18,7 @@ class People extends Base
         return $people;
         return $people->map(function ($person) {
             $person->records = $person->records->map(function ($record) {
-                $record->protocol_formatted = $record->presenter()
-                    ->protocol_formatted;
+                $record->protocol_formatted = $record->presenter()->protocol_formatted;
             });
 
             return $person;
@@ -38,9 +37,9 @@ class People extends Base
 
     protected function getBaseQuery()
     {
-        return $this->model::with(['contacts', 'addresses', 'records'])->take(
-            static::RECORDS_COUNT_LIMIT + 1
-        );
+        return $this->model
+            ::with(['contacts', 'addresses', 'records'])
+            ->take(static::RECORDS_COUNT_LIMIT + 1);
     }
 
     private function isNumeric($string)
@@ -56,7 +55,7 @@ class People extends Base
             'errors' => $messages,
             'count' => $count,
             'is_cpf_cnpj' => validate_cpf_cnpj($string),
-            'is_numeric' => $this->isNumeric($string),
+            'is_numeric' => $this->isNumeric($string)
         ];
     }
 
@@ -65,11 +64,12 @@ class People extends Base
         $record = app(Records::class)->findByProtocol($string);
 
         if ($record) {
-            $query = $this->model::with(['contacts', 'addresses'])
+            $query = $this->model
+                ::with(['contacts', 'addresses'])
                 ->with([
                     'records' => function ($query) use ($string) {
                         $query->where('protocol', '=', $string);
-                    },
+                    }
                 ])
                 ->take(static::RECORDS_COUNT_LIMIT + 1)
                 ->where('id', $record->person_id);
@@ -125,7 +125,7 @@ class People extends Base
 
     public function searchByEverything($search)
     {
-        if (empty(trim(($search = $search['search'])))) {
+        if (empty(trim($search = $search['search']))) {
             return $this->emptyResponse();
         }
 

@@ -1,8 +1,8 @@
 const appName = 'vue-contact-form'
 
-if (jQuery("#" + appName).length > 0) {
+if (jQuery('#' + appName).length > 0) {
     const app = new Vue({
-        el: '#'+appName,
+        el: '#' + appName,
 
         data: {
             tables: {
@@ -22,7 +22,7 @@ if (jQuery("#" + appName).length > 0) {
                 rua: null,
                 bairro: null,
                 cidade: null,
-            }
+            },
         },
 
         methods: {
@@ -31,28 +31,35 @@ if (jQuery("#" + appName).length > 0) {
 
                 $this.refreshing = true
 
-                axios.get('/api/v1/zipcode/'+this.form.cep)
-                .then(function(response) {
-                    $this.tables.addresses = response.data
+                axios
+                    .get('/api/v1/zipcode/' + this.form.cep, {
+                        params: {
+                            api_token: laravel.api_token,
+                        },
+                    })
+                    .then(function(response) {
+                        $this.tables.addresses = response.data
 
-                    if (response.data.addresses[0].street_name) {
-                        $this.form.cep = response.data.addresses[0].zip
-                        $this.form.rua = response.data.addresses[0].street_name
-                        $this.form.bairro = response.data.addresses[0].neighborhood
-                        $this.form.cidade = response.data.addresses[0].city
-                        $this.form.country = 'Brasil'
-                        document.getElementById("number").focus();
-                    }
+                        if (response.data.addresses[0].street_name) {
+                            $this.form.cep = response.data.addresses[0].zip
+                            $this.form.rua =
+                                response.data.addresses[0].street_name
+                            $this.form.bairro =
+                                response.data.addresses[0].neighborhood
+                            $this.form.cidade = response.data.addresses[0].city
+                            $this.form.country = 'Brasil'
+                            document.getElementById('number').focus()
+                        }
 
-                    $this.refreshing = false
-                })
-                .catch(function(error) {
-                    console.log(error)
+                        $this.refreshing = false
+                    })
+                    .catch(function(error) {
+                        console.log(error)
 
-                    $this.tables.addresses = []
+                        $this.tables.addresses = []
 
-                    $this.refreshing = false
-                })
+                        $this.refreshing = false
+                    })
             },
 
             typeKeyUp() {
@@ -60,7 +67,9 @@ if (jQuery("#" + appName).length > 0) {
 
                 let $this = this
 
-                this.timeout = setTimeout(function () { $this.refresh() }, 500)
+                this.timeout = setTimeout(function() {
+                    $this.refresh()
+                }, 500)
             },
         },
 
