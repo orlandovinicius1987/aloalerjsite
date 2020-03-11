@@ -1,8 +1,8 @@
 const appName = 'vue-committees-search'
 
-if (jQuery("#" + appName).length > 0) {
+if (jQuery('#' + appName).length > 0) {
     const app = new Vue({
-        el: '#'+appName,
+        el: '#' + appName,
 
         data: {
             tables: {
@@ -21,7 +21,7 @@ if (jQuery("#" + appName).length > 0) {
 
             form: {
                 search: null,
-            }
+            },
         },
 
         methods: {
@@ -34,7 +34,11 @@ if (jQuery("#" + appName).length > 0) {
 
                 $this.tables.committees = null
 
-                axios.post('/api/v1/committees-search', {search: this.form.search})
+                axios
+                    .post('/api/v1/committees-search', {
+                        api_token: laravel.api_token,
+                        search: this.form.search,
+                    })
                     .then(function(response) {
                         $this.tables.committees = []
                         $this.errors = false
@@ -58,11 +62,14 @@ if (jQuery("#" + appName).length > 0) {
 
                 let $this = this
 
-                this.timeout = setTimeout(function () { $this.refresh() }, 500)
+                this.timeout = setTimeout(function() {
+                    $this.refresh()
+                }, 500)
             },
 
             refreshTable(table) {
-                axios.get('/'+table)
+                axios
+                    .get('/' + table)
                     .then(function(response) {
                         $this.tables[table] = response.data
                     })
@@ -75,7 +82,7 @@ if (jQuery("#" + appName).length > 0) {
 
             isSearching() {
                 return this.form.search.name || this.form.search.cpf_cnpj
-            }
+            },
         },
 
         mounted() {
@@ -84,5 +91,4 @@ if (jQuery("#" + appName).length > 0) {
             // this.refreshTable('people')
         },
     })
-
 }

@@ -14,7 +14,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'users'
     ],
 
     'timeout' => env('AUTH_TIMEOUT', 2),
@@ -39,13 +39,13 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'users'
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
-        ],
+            'provider' => 'users'
+        ]
     ],
 
     /*
@@ -68,8 +68,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Data\Models\User::class,
-        ],
+            'model' => App\Data\Models\User::class
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,7 +96,7 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
+            'expire' => 60
+        ]
+    ]
 ];
