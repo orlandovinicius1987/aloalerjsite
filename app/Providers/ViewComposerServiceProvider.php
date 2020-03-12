@@ -19,8 +19,9 @@ class ViewComposerServiceProvider extends ServiceProvider
             $this->mergeLaravel($view, [
                 'files_upload_url' => route('files.upload'),
                 'csrf_token' => csrf_token(),
+                'api_token' => \Auth::user()->api_token ?? '',
                 'chat' => config('chat'),
-                'mode' => 'show',
+                'mode' => 'show'
             ]);
 
             if (!isset($view->workflow)) {

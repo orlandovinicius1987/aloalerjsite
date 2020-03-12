@@ -66,6 +66,20 @@ function validate_cpf_cnpj($string)
     )->passes();
 }
 
+function is_committee_user()
+{
+    return auth()->user() && auth()->user()->userType &&
+        auth()->user()->userType->name == 'Comissao';
+}
+
+function get_user_committee_ids(){
+    $ids = [];
+    foreach (auth()->user()->committees as $committee) {
+        array_push($ids,$committee->id);
+    }
+    return $ids;
+}
+
 class Timer
 {
     public static $starttime;

@@ -1,5 +1,5 @@
 
-<table id="committeesTable" class="table table-striped table-hover d-none d-sm-block" cellspacing="0" width="100%">
+<table id="committeesTable" class="table table-striped table-hover" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Nome</th>
@@ -19,7 +19,7 @@
         <td>@{{ committee.office_phone  }}</td>
         <td>@{{ committee.president  }}</td>
         <td>@{{ committee.vice_president  }}</td>
-        <td></td>
+        <td>@{{ committee.created_at  }}</td>
     </tr>
 </table>
 

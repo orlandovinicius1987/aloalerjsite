@@ -5,7 +5,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
-Route::get('comissoes/{name}', [
+Route::get('comissoes/{id}', [
     'as' => 'committees.show',
     'uses' => 'Committees@show',
 ]);
@@ -90,6 +90,21 @@ Route::group(
                 'committees.details'
             );
             Route::get('/', 'Committees@index')->name('committees.index');
+
+            Route::group(['prefix' => 'committee-service'], function () {
+
+                Route::get('/create/{id}', 'CommitteeServices@create')->name(
+                    'committee_services.create'
+                );
+
+                Route::post('/', 'CommitteeServices@store')->name('committee_services.store');
+
+                Route::get('/show/{id}', 'CommitteeServices@details')->name(
+                    'committee_services.details'
+                );
+
+            });
+
         });
     }
 );

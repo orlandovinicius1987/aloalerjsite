@@ -14,14 +14,18 @@
     <div class="hidden-xs hidden-sm hidden-md">
         @include('partials.slider-desktop')
 
-        <div class="row row-eq-height blocos">
-            <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
-                @include('partials.form-chat')
+        <div class="row row-eq-height blocos" id="vue-chat">
+            <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md" v-show="! chatOnline">
+                <div class="row row-eq-height blocos" >
+                    <div class="boxshadow">
+                        @include('partials.form-chat-offline')
+                    </div>
+                </div>
             </div>
             <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
                 @include('partials.telegram')
             </div>
-            <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
+            <div :class="'col-xs-12 col-lg-'+(chatOnline ? 8: 4)+' hidden-xs hidden-sm hidden-md'">
                 @include('partials.protocolo-login')
             </div>
         </div>

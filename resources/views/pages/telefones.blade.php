@@ -31,6 +31,7 @@
                                                 <p class="info-contato">@{{ phone.name }}</p>
                                                 <span class="tel-contato" v-for="number in phone.phones">
                                                     <span class="glyphicon glyphicon-earphone c-info"></span><strong>@{{ number }}</strong>
+                                                    <span> @{{ phone.obs }} </span>
                                                 </span>
                                             </div>
                                             <div class="clearfix"></div>
