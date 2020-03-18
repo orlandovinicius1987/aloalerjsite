@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller as IlluminateController;
 use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
+use App\Data\Repositories\CommitteeServices as CommitteeServicesRepository;
 use App\Data\Repositories\PersonAddresses as PersonAddressesRepository;
 use App\Data\Repositories\PersonContacts as PersonContactsRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
@@ -33,6 +34,7 @@ abstract class Controller extends IlluminateController
     protected $peopleContactsRepository;
     protected $originsRepository;
     protected $committeesRepository;
+    protected $committeeServicesRepository;
     protected $recordTypesRepository;
     protected $areasRepository;
     protected $contactTypesRepository;
@@ -62,6 +64,7 @@ abstract class Controller extends IlluminateController
         PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
+        CommitteeServicesRepository  $committeeServicesRepository,
         RecordTypesRepository $recordTypesRepository,
         AreasRepository $areasRepository,
         ContactTypesRepository $contactTypesRepository,
@@ -79,6 +82,7 @@ abstract class Controller extends IlluminateController
         $this->contactTypesRepository = $contactTypesRepository;
         $this->progressesRepository = $progressesRepository;
         $this->progressTypesRepository = $progressTypesRepository;
+        $this->committeeServicesRepository = $committeeServicesRepository;
     }
 
     /**
@@ -126,5 +130,9 @@ abstract class Controller extends IlluminateController
     protected function showSuccessMessage($message = null)
     {
         $this->flashMessage($message ?? $this->messageDefault);
+    }
+
+    protected function getPublicCommitteeServices(){
+        return app(CommitteeServicesRepository::class)->getPublicServices();
     }
 }
