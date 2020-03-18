@@ -19,7 +19,10 @@ class Contact extends Controller
 
     public function index()
     {
-        return view('contact.index');
+        return view('contact.index')->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 
     public function post(ContactRequest $request)
@@ -28,7 +31,10 @@ class Contact extends Controller
 
         app(Records::class)->absorbContactForm($request->all());
 
-        return view('contact.mailsent')->with('name', $request->get('name'));
+        return view('contact.mailsent')->with('name', $request->get('name'))->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 
     public function pretend()

@@ -9,27 +9,39 @@ class Pages extends Controller
     {
         return view('pages.committees')->with(
             'committeeServices',
-            app(CommitteeServicesRepository::class)->getPublicServices()
+            $this->getPublicCommitteeServices()
         );
     }
 
     public function aloalerj()
     {
-        return view('pages.aloalerj');
+        return view('pages.aloalerj')->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 
     public function telefones()
     {
-        return view('pages.telefones');
+        return view('pages.telefones')->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 
     public function protocolo()
     {
-        return view('pages.telefones');
+        return view('pages.telefones')->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 
     public function contact()
     {
-        return view('pages.contact');
+        return view('pages.contact')->with(
+            'committeeServices',
+            $this->getPublicCommitteeServices()
+        );
     }
 }
