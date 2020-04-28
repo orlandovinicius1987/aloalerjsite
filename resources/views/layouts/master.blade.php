@@ -15,16 +15,16 @@ E
         <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="/templates/mv/css/carousel.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?breno={{rand(0,5000)}}">
+        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?cache={{rand(0,5000)}}">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if (Session::get('client') == 'app')
-            <link rel="stylesheet" href="/templates/mv/app.css?breno={{rand(0,5000)}}">
+            <link rel="stylesheet" href="/templates/mv/app.css?cache={{rand(0,5000)}}">
         @endif
 
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?breno={{rand(0,5000)}}">
+        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?cache={{rand(0,5000)}}">
 
         <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
 
