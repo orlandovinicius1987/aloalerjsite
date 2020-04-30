@@ -16,7 +16,7 @@
         "bootstrap-toggle": "^2.2.2",
         "copy-text-to-clipboard": "^1.0.4",
         "cross-env": "^5.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "laravel-mix": "^5.0.4",
         "lodash": "^4.17.15",
         "popper.js": "^1.14.4",
