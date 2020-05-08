@@ -22,4 +22,4 @@ php artisan view:clear
 
 ### Configuração do PostgreSQL
 - A aplicação usa a extension `unaccent` do PostgreSQL. Portanto, antes que de executar o `php artisan migrate`, deve-se instalar a extensão, executando:
-`psql -d <nome_do_banco> -u <usuario_superuser> -c "CREATE EXTENSION unnacent IF NOT EXISTS;"`
+`psql -d aloalerjsite -U vagrant -c "CREATE EXTENSION IF NOT EXISTS unaccent;"`
