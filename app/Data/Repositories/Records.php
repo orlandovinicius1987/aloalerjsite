@@ -119,10 +119,8 @@ class Records extends Base
     public function makeProtocolNumber($person, $record)
     {
         return sprintf(
-            '%s%s%s%s',
-            Carbon::now()->format('Ymd'),
-            str_pad(trim($person->id), 8, '0', STR_PAD_LEFT),
-            Carbon::now()->format('Hi'),
+            '%s%s',
+            str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT),
             str_pad(trim($record->id), 8, '0', STR_PAD_LEFT)
         );
     }

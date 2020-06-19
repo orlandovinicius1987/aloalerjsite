@@ -56,9 +56,9 @@ class Record extends BaseModel
 
     public function getProtocolAttribute($protocol)
     {
-        if (strlen($protocol) == 28 && is_numeric($protocol)) {
+        if (strlen($protocol) == 12 && is_numeric($protocol)) {
             $protocol = $this->mask(
-                '####.####.####.####.####.####.####',
+                '####.####.####',
                 $protocol
             );
         }
