@@ -48,10 +48,10 @@ class Records extends Base
         return $this->model::where('person_id', $person_id)->get();
     }
 
-    public function create($data)
-    {
+    public function create($data){
+        
         $person = $this->peopleRepository->findById($data->person_id);
-
+        
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
         }
@@ -59,7 +59,7 @@ class Records extends Base
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
-
+    
         return $record;
     }
 
@@ -119,11 +119,9 @@ class Records extends Base
     public function makeProtocolNumber($person, $record)
     {
         return sprintf(
-            '%s%s%s%s',
-            Carbon::now()->format('Ymd'),
-            str_pad(trim($person->id), 8, '0', STR_PAD_LEFT),
-            Carbon::now()->format('Hi'),
-            str_pad(trim($record->id), 8, '0', STR_PAD_LEFT)
+            '%s%s',
+            str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT),
+            str_pad(trim($record->id), 9, '0', STR_PAD_LEFT)
         );
     }
 
