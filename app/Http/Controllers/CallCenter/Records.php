@@ -21,9 +21,25 @@ class Records extends Controller
      * @param $person_id
      * @return $this
      */
+
+
+
     public function create($person_id)
     {
         $person = $this->peopleRepository->findById($person_id);
+        request()->session()->forget('workflow');
+
+        return view('callcenter.records.form')
+            ->with('laravel', ['mode' => 'create'])
+            ->with('person', $person)
+            ->with('record', $this->recordsRepository->new())
+            ->with($this->getComboBoxMenus('create'));
+    }
+
+    public function createFromWorkflow($person_id)
+    {
+        $person = $this->peopleRepository->findById($person_id);
+
 
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
@@ -95,7 +111,7 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-                'Protocolo finalizado sem observações em ' .
+            'Protocolo finalizado sem observações em ' .
                 now() .
                 ' pelo usuário ' .
                 Auth::user()->name,

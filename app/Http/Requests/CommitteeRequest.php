@@ -12,7 +12,7 @@ class CommitteeRequest extends Request
     {
         return [
             'name' => 'required',
-            'short_name' => 'required',
+            //'short_name' => 'required',
             'phone' => 'required',
             'bio' => 'required',
             'president' => 'required',
@@ -21,7 +21,7 @@ class CommitteeRequest extends Request
             'office_address' => 'required',
             'public' => 'required',
             'email' => 'sometimes|nullable|email',
-            'link_caption' => 'required',
+            //'link_caption' => 'required',
             'slug' => 'required',
         ];
     }

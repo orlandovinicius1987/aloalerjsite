@@ -3,6 +3,7 @@
 namespace App\Data\Repositories;
 
 use App\Data\Models\Person;
+use Illuminate\Support\Facades\Cache;
 
 class People extends Base
 {
@@ -12,6 +13,16 @@ class People extends Base
      * @var $model
      */
     protected $model = Person::class;
+
+    public function getAnonymousModel()
+    {
+
+        return Cache::remember('getAnonymousModel', 15, function () {
+            return  \App\Data\Models\Person::where('is_anonymous', true)->first();
+        });
+    }
+
+
 
     private function addExtraInfo($people)
     {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtensionUnaccent extends Migration
+class AddLoginFieldsToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class CreateExtensionUnaccent extends Migration
      */
     public function up()
     {
-        DB::statement('CREATE EXTENSION IF NOT EXISTS unaccent;');
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('last_login_at')->nullable();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class CreateExtensionUnaccent extends Migration
      */
     public function down()
     {
-        DB::statement('DROP EXTENSION IF EXISTS unaccent');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('last_login_at');
+        });
     }
 }

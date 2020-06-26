@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtensionUnaccent extends Migration
+class CreateAnonymousProfile extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,14 @@ class CreateExtensionUnaccent extends Migration
      */
     public function up()
     {
-        DB::statement('CREATE EXTENSION IF NOT EXISTS unaccent;');
+
+        \App\Data\Models\Person::insert([
+            'cpf_cnpj' => 'Não se aplica',
+            'name' => 'Anônimo',
+            'identification' => 'Não se aplica',
+            'is_anonymous' => true
+
+        ]);
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateExtensionUnaccent extends Migration
      */
     public function down()
     {
-        DB::statement('DROP EXTENSION IF EXISTS unaccent');
+        \App\Data\Models\Person::where('is_anonymous', true)->first()->delete();
     }
 }
