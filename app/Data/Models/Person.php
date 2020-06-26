@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Data\Models;
 
 use App\Data\Repositories\ContactTypes;
@@ -51,9 +52,6 @@ class Person extends BaseModel
 
     public function emails()
     {
-        if ($this->name == 'Anônimo') {
-            return collect();
-        }
 
         $type = app(ContactTypes::class)->findByName('E-mail');
 
@@ -76,8 +74,8 @@ class Person extends BaseModel
     {
         if (
             $address = $this->addresses()
-                ->where('zipcode', only_numbers($data['zipcode']))
-                ->first()
+            ->where('zipcode', only_numbers($data['zipcode']))
+            ->first()
         ) {
             return $address;
         }
@@ -100,8 +98,8 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-                ->where('contact', $contact = only_numbers($data['contact']))
-                ->first()
+            ->where('contact', $contact = only_numbers($data['contact']))
+            ->first()
         ) {
             return $contact;
         }
@@ -119,8 +117,8 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-                ->where('contact', $contact = $data['contact'])
-                ->first()
+            ->where('contact', $contact = $data['contact'])
+            ->first()
         ) {
             return $contact;
         }
