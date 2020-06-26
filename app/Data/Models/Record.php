@@ -61,6 +61,11 @@ class Record extends BaseModel
                 '####.####.####.####.####.####.####',
                 $protocol
             );
+        } elseif (strlen($protocol) == 12 && is_numeric($protocol)) {
+            $protocol = $this->mask(
+                '####.####.####',
+                $protocol
+            );
         }
 
         return $protocol;

@@ -19,3 +19,7 @@ php artisan view:clear
 
 ### Supervisor:
 - Configurar o supervisor para manter rodando o Horizon a partr `php artisan horizon`
+
+### Configuração do PostgreSQL
+- A aplicação usa a extension `unaccent` do PostgreSQL. Portanto, antes que de executar o `php artisan migrate`, deve-se instalar a extensão, executando:
+`psql -d <nome_do_banco> -U <nome_do_superuser_de_banco> -c "CREATE EXTENSION IF NOT EXISTS unaccent;"`
