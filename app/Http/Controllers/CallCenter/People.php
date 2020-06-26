@@ -42,7 +42,8 @@ class People extends Controller
                     ->with(['origins' => $this->originsRepository->all()]);
             }
         } else {
-            return view('callcenter.people.index');
+            return view('callcenter.people.index')
+                ->with('anonymous_id', get_anonymous_person()->id);
         }
     }
 
@@ -76,7 +77,7 @@ class People extends Controller
         $route = 'people.show';
 
         if (!$person_id) {
-            $route = 'records.create';
+            $route = 'records.create-workflow';
         }
 
         $with = [];
@@ -129,13 +130,11 @@ class People extends Controller
             return $view;
         } else {
             $person = $this->peopleRepository->findById($person_id);
-            $records = (
-                $this->recordsRepository->allWherePaginate(
-                    'person_id',
-                    $person_id,
-                    15
-                )
-            );
+            $records = ($this->recordsRepository->allWherePaginate(
+                'person_id',
+                $person_id,
+                15
+            ));
 
             Workflow::end();
 

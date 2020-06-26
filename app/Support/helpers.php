@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 
 function startTimer()
@@ -15,12 +16,10 @@ function endTimer()
 
 function toBoolean($boolean)
 {
-    return (
-        $boolean === 'true' ||
+    return ($boolean === 'true' ||
         $boolean === '1' ||
         $boolean === 1 ||
-        $boolean === true
-    );
+        $boolean === true);
 }
 
 function extract_credentials($request)
@@ -72,12 +71,19 @@ function is_committee_user()
         auth()->user()->userType->name == 'Comissao';
 }
 
-function get_user_committee_ids(){
+function get_user_committee_ids()
+{
     $ids = [];
     foreach (auth()->user()->committees as $committee) {
-        array_push($ids,$committee->id);
+        array_push($ids, $committee->id);
     }
     return $ids;
+}
+
+function get_anonymous_person()
+{
+
+    return app(\App\Data\Repositories\People::class)->getAnonymousModel();
 }
 
 class Timer
