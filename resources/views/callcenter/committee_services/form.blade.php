@@ -96,6 +96,33 @@
                     </div>
 
                     <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="phone" class="col-form-label">Telefone</label>
+                            <input id="phone"
+                                   class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                                   value="{{is_null(old('phone')) ? $committeeService->phone : old('phone') }}"
+                                @include('partials.disabled',['model'=>$committeeService])>
+                            @if ($errors->has('phone'))
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('phone') }}</strong>
+                        </span>
+                            @endif
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="col-form-label">E-mail</label>
+                            <input id="email"
+                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                                   value="{{is_null(old('email')) ? $committeeService->email : old('email') }}"
+                                @include('partials.disabled',['model'=>$committeeService])>
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                            @endif
+                        </div>
+                    </div>    
+
+                    <div class="form-group row">
                         <div class="col-md-12">
                             <label for="bio" class="col-form-label">Descrição</label>
                         <textarea id="bio" class="form-control{{ $errors->has('bio') ? ' is-invalid' : '' }}"
