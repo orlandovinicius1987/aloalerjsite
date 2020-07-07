@@ -14,8 +14,8 @@ class AddCollumnsPhoneAndEmailToCommitteeService extends Migration
     public function up()
     {
         Schema::table('committee_services', function (Blueprint $table) {
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
         });
     }
     /**
