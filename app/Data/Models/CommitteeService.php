@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,13 +16,14 @@ class CommitteeService extends Model
         'link_caption',
         'bio',
         'public',
+        'phone',
+        'email'
     ];
 
-      protected $with = ['committee'];
+    protected $with = ['committee'];
 
     public function committee()
     {
         return $this->belongsTo(Committee::class);
     }
-
 }
