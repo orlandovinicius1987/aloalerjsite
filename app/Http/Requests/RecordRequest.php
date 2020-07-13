@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests;
 
-use Illuminate\Auth\Access\Gate;
+use App\Rules\AuthorizedCommitteeUser;
 
 class RecordRequest extends Request
 {
@@ -16,19 +16,11 @@ class RecordRequest extends Request
     {
         return [
             'origin_id' => 'required_without:record_id', // Origem → Workflow
-            'committee_id' => 'required', // Comissão
+            'committee_id' => ['required', new AuthorizedCommitteeUser()], // Comissão
             'record_type_id' => 'required', //Tipo
             'progress_type_id' => 'required_without:record_id', // Assunto → Workflow
             'area_id' => 'required', //Area
-            'original' => 'required_without:record_id', // Solicitação  → Workflow
+            'original' => 'required_without:record_id' // Solicitação  → Workflow
         ];
-    }
-
-    public function authorize()
-    {
-        return \Gate::allows('committee-canEdit', [
-            $this->request->get('committee_id'),
-            $this->user()->id,
-        ]);
     }
 }
