@@ -16,14 +16,15 @@ class UpdateProtocolsSetOldsProtocolsToAloalerj extends Migration
     public function up()
     {
 
-        $records = Record::all();
-        $commitee = app(Committee::class)->where('slug','alo-alerj')->first();
 
-        foreach ($records as $record) {
-            dump('Atualzando o protocolo: ' . $record->protocol);
-            $record->committee_id = $commitee->id;
-            $record->save();
+        $committee = app(Committee::class)->where('slug','alo-alerj')->first();
 
+        if(!is_null($committee)) {
+
+           $var =  DB::update('update records set committee_id = ? where id=id',[$committee->id]);
+           dump('Atualizado ' . $var . ' protocolos.');
+        }else{
+            dump('Não foi Encontrada a comissão do alo-alerj');
         }
 
     }
