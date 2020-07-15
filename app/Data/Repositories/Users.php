@@ -199,6 +199,7 @@ class Users extends Base
 
             Auth::login($user, $remember);
         } catch (\Exception $exception) {
+            \Log::error($exception);
             return false;
         }
 
