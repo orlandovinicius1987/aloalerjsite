@@ -106,7 +106,7 @@ class Users extends Base
 
         if ($other == '' && !$admin) {
             $committeesRepository = app(CommitteesRepository::class);
-            $allCommittees = $committeesRepository->getCommitteeCombobox();
+            $allCommittees = $committeesRepository->all();
 
             $eventsArray = [];
             foreach ($permissions as $permission) {
