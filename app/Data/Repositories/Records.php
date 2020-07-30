@@ -48,10 +48,10 @@ class Records extends Base
         return $this->model::where('person_id', $person_id)->get();
     }
 
-    public function create($data){
-        
+    public function create($data)
+    {
         $person = $this->peopleRepository->findById($data->person_id);
-        
+
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
         }
@@ -59,7 +59,7 @@ class Records extends Base
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
-    
+
         return $record;
     }
 
@@ -285,8 +285,6 @@ class Records extends Base
 
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
-                //                if ($key == 'created_at' || $key == 'resolved_at') {
-                //                    $records->whereDate($key, $collumn);
                 if ($key == 'person_name') {
                     $records
                         ->join('people', 'people.id', '=', 'records.person_id')
@@ -300,7 +298,7 @@ class Records extends Base
             $this->resolvedAtBetweenDate($data, $records);
         }
 
-        $records->orderBy('records.created_at');
+        $records->orderBy('records.created_at', 'desc');
 
         return $records->paginate(10);
     }

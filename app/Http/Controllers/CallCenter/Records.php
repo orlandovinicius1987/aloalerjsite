@@ -22,12 +22,12 @@ class Records extends Controller
      * @return $this
      */
 
-
-
     public function create($person_id)
     {
         $person = $this->peopleRepository->findById($person_id);
-        request()->session()->forget('workflow');
+        request()
+            ->session()
+            ->forget('workflow');
 
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
@@ -39,7 +39,6 @@ class Records extends Controller
     public function createFromWorkflow($person_id)
     {
         $person = $this->peopleRepository->findById($person_id);
-
 
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
@@ -111,7 +110,7 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-            'Protocolo finalizado sem observações em ' .
+                'Protocolo finalizado sem observações em ' .
                 now() .
                 ' pelo usuário ' .
                 Auth::user()->name,
@@ -220,9 +219,11 @@ class Records extends Controller
     public function getRecordsData()
     {
         return [
-            'committees' => app(CommittesRepository::class)->all(),
+            'committees' => app(CommittesRepository::class)->allOrderBy('name'),
             'areas' => app(AreasRepository::class)->allOrderBy('name'),
-            'recordTypes' => app(RecordTypesRepository::class)->all()
+            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy(
+                'name'
+            )
         ];
     }
 
