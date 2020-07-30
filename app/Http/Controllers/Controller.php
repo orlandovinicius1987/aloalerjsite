@@ -64,7 +64,7 @@ abstract class Controller extends IlluminateController
         PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
-        CommitteeServicesRepository  $committeeServicesRepository,
+        CommitteeServicesRepository $committeeServicesRepository,
         RecordTypesRepository $recordTypesRepository,
         AreasRepository $areasRepository,
         ContactTypesRepository $contactTypesRepository,
@@ -101,11 +101,11 @@ abstract class Controller extends IlluminateController
 
     public function getComboBoxMenus()
     {
-        $committees = $this->committeesRepository->all();
-        $recordTypes = $this->recordTypesRepository->all();
-        $areas = $this->areasRepository->all();
-        $origins = $this->originsRepository->all();
-        $contactTypes = $this->contactTypesRepository->all();
+        $committees = $this->committeesRepository->allOrderBy('name');
+        $recordTypes = $this->recordTypesRepository->allOrderBy('name');
+        $areas = $this->areasRepository->allOrderBy('name');
+        $origins = $this->originsRepository->allOrderBy('name');
+        $contactTypes = $this->contactTypesRepository->allOrderBy('name');
         $progressTypes = $this->progressTypesRepository->allOrderBy('name');
 
         return [
@@ -114,7 +114,7 @@ abstract class Controller extends IlluminateController
             'areas' => $areas,
             'origins' => $origins,
             'contactTypes' => $contactTypes,
-            'progressTypes' => $progressTypes,
+            'progressTypes' => $progressTypes
         ];
     }
 
@@ -124,7 +124,7 @@ abstract class Controller extends IlluminateController
 
         $alerts[] = ['type' => $type, 'message' => $message];
 
-        session()->flash("alerts", $alerts);
+        session()->flash('alerts', $alerts);
     }
 
     protected function showSuccessMessage($message = null)
@@ -132,7 +132,8 @@ abstract class Controller extends IlluminateController
         $this->flashMessage($message ?? $this->messageDefault);
     }
 
-    protected function getPublicCommitteeServices(){
+    protected function getPublicCommitteeServices()
+    {
         return app(CommitteeServicesRepository::class)->getPublicServices();
     }
 }
