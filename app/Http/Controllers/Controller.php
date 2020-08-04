@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Data\Models\ProgressType as ProgressTypeModel;
 use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
@@ -99,14 +100,21 @@ abstract class Controller extends IlluminateController
         }
     }
 
-    public function getComboBoxMenus()
+    public function getComboBoxMenus($model = null)
     {
+        $progressTypes = ProgressTypeModel::active()->orderBy('name');
         $committees = $this->committeesRepository->allOrderBy('name');
         $recordTypes = $this->recordTypesRepository->allOrderBy('name');
         $areas = $this->areasRepository->allOrderBy('name');
         $origins = $this->originsRepository->allOrderBy('name');
         $contactTypes = $this->contactTypesRepository->allOrderBy('name');
-        $progressTypes = $this->progressTypesRepository->allOrderBy('name');
+
+        //Adiciona o relacionamento atual ao combobox, mesmo que não esteja ativo
+        if ($model) {
+            if (isset($model->progress_type_id)) {
+                $progressTypes->orWhere('id', $model->progress_type_id);
+            }
+        }
 
         return [
             'committees' => $committees,
@@ -114,7 +122,7 @@ abstract class Controller extends IlluminateController
             'areas' => $areas,
             'origins' => $origins,
             'contactTypes' => $contactTypes,
-            'progressTypes' => $progressTypes
+            'progressTypes' => $progressTypes->get()
         ];
     }
 
