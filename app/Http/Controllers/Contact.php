@@ -22,7 +22,7 @@ class Contact extends Controller
     {
         return view('contact.index')
             ->with('committeeServices', $this->getPublicCommitteeServices())
-            ->with('recordTypes', RecordType::all()->pluck('name', 'id')); //Trocar isso. Colocar só os ativos
+            ->with('recordTypes', RecordType::active()->pluck('name', 'id')); //Trocar isso. Colocar só os ativos
     }
 
     public function post(ContactRequest $request)
