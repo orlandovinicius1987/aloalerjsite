@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Data\Models\ProgressType as ProgressTypeModel;
 use App\Data\Models\RecordType as RecordTypeModel;
+use App\Data\Models\Origin as OriginModel;
 use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
@@ -107,7 +108,7 @@ abstract class Controller extends IlluminateController
         $committees = $this->committeesRepository->allOrderBy('name');
         $recordTypes = RecordTypeModel::active()->orderBy('name');
         $areas = $this->areasRepository->allOrderBy('name');
-        $origins = $this->originsRepository->allOrderBy('name');
+        $origins = OriginModel::active()->orderBy('name');
         $contactTypes = $this->contactTypesRepository->allOrderBy('name');
 
         //Adiciona o relacionamento atual ao combobox, mesmo que não esteja ativo
@@ -117,7 +118,11 @@ abstract class Controller extends IlluminateController
             }
 
             if (isset($model->record_type_id)) {
-                $progressTypes->orWhere('id', $model->record_type_id);
+                $recordTypes->orWhere('id', $model->record_type_id);
+            }
+
+            if (isset($model->origin_id)) {
+                $origins->orWhere('id', $model->origin_id);
             }
         }
 
@@ -125,7 +130,7 @@ abstract class Controller extends IlluminateController
             'committees' => $committees,
             'recordTypes' => $recordTypes->get(),
             'areas' => $areas,
-            'origins' => $origins,
+            'origins' => $origins->get(),
             'contactTypes' => $contactTypes,
             'progressTypes' => $progressTypes->get()
         ];
