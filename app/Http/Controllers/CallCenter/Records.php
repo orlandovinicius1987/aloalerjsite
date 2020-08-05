@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CallCenter;
 
 use App\Data\Repositories\Areas;
+use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
@@ -77,7 +78,13 @@ class Records extends Controller
         $record->sendNotifications();
 
         if (is_null($request->get('record_id'))) {
+            //Se é um protocolo novo
             $request->merge(['record_id' => $record->id]);
+            $request->merge([
+                'progress_type_id' => app(
+                    ProgressTypesRepository::class
+                )->findByName('Entrada')->id
+            ]);
             $this->progressesRepository->createFromRequest($request);
         }
 
