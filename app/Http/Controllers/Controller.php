@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\Models\ProgressType as ProgressTypeModel;
+use App\Data\Models\RecordType as RecordTypeModel;
 use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
@@ -104,7 +105,7 @@ abstract class Controller extends IlluminateController
     {
         $progressTypes = ProgressTypeModel::active()->orderBy('name');
         $committees = $this->committeesRepository->allOrderBy('name');
-        $recordTypes = $this->recordTypesRepository->allOrderBy('name');
+        $recordTypes = RecordTypeModel::active()->orderBy('name');
         $areas = $this->areasRepository->allOrderBy('name');
         $origins = $this->originsRepository->allOrderBy('name');
         $contactTypes = $this->contactTypesRepository->allOrderBy('name');
@@ -114,11 +115,15 @@ abstract class Controller extends IlluminateController
             if (isset($model->progress_type_id)) {
                 $progressTypes->orWhere('id', $model->progress_type_id);
             }
+
+            if (isset($model->record_type_id)) {
+                $progressTypes->orWhere('id', $model->record_type_id);
+            }
         }
 
         return [
             'committees' => $committees,
-            'recordTypes' => $recordTypes,
+            'recordTypes' => $recordTypes->get(),
             'areas' => $areas,
             'origins' => $origins,
             'contactTypes' => $contactTypes,

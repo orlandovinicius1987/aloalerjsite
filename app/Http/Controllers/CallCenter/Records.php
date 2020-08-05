@@ -20,7 +20,6 @@ class Records extends Controller
 {
     /**
      * @param $person_id
-     * @return $this
      */
 
     public function create($person_id)
@@ -34,7 +33,7 @@ class Records extends Controller
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus('create'));
+            ->with($this->getComboBoxMenus());
     }
 
     public function createFromWorkflow($person_id)
@@ -45,7 +44,7 @@ class Records extends Controller
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus('create'));
+            ->with($this->getComboBoxMenus());
     }
 
     protected function makeViewDataFromRecord($record)
@@ -154,7 +153,6 @@ class Records extends Controller
 
     /**
      * @param $id
-     * @return $this
      */
     public function show($id)
     {
@@ -165,7 +163,7 @@ class Records extends Controller
         $person = $this->peopleRepository->findById($record->person_id);
 
         return view('callcenter.records.form')
-            ->with($this->getComboBoxMenus())
+            ->with($this->getComboBoxMenus($record))
             ->with(
                 'progresses',
                 $this->progressesRepository->allWherePaginate('record_id', $id)
