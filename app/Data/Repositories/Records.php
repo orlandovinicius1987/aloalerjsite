@@ -179,27 +179,18 @@ class Records extends Base
                 'committee_id' => app(Committees::class)->findByName(
                     'ALÔ ALERJ'
                 )->id,
-                'person_id' => $person->id,
-                'record_type_id' => app(RecordTypes::class)->findByName(
-                    'Outros'
-                )->id,
-                'area_id' => ($areaId = app(Areas::class)->findByName(
-                    'ALÔ ALERJ'
-                )->id),
-                'record_action_id' => app(RecordActions::class)->findByName(
-                    'Outros'
-                )->id
+                'record_type_id' => $data['record_type_id'],
+                'person_id' => $person->id
             ])
         );
 
         $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
-            'progress_type_id' => app(ProgressTypes::class)->findByName('Email')
-                ->id,
-            'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
+            'progress_type_id' => app(ProgressTypes::class)->findByName(
+                'Entrada'
+            )->id,
+            'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
-            'area_id' => $areaId,
-            'area_id',
             'objeto_id',
             'record_action_id'
         ]);

@@ -315,7 +315,7 @@
                 <label class="col-md-3 control-label  sr-only" for="assunto">Assunto</label>
                 <div class="col-md-12">
                     {!!
-                        Form::select('subject', \App\Services\Subject::all(), null, ['class' => 'form-control'])
+                        Form::select('record_type_id', $recordTypes, null, ['class' => 'form-control'])
                     !!}
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Data\Models\RecordType;
 use App\Data\Repositories\Records;
 use App\Http\Requests\Contact as ContactRequest;
 use App\Services\Mailer;
@@ -19,10 +20,9 @@ class Contact extends Controller
 
     public function index()
     {
-        return view('contact.index')->with(
-            'committeeServices',
-            $this->getPublicCommitteeServices()
-        );
+        return view('contact.index')
+            ->with('committeeServices', $this->getPublicCommitteeServices())
+            ->with('recordTypes', RecordType::all()->pluck('name', 'id')); //Trocar isso. Colocar só os ativos
     }
 
     public function post(ContactRequest $request)
@@ -31,10 +31,9 @@ class Contact extends Controller
 
         app(Records::class)->absorbContactForm($request->all());
 
-        return view('contact.mailsent')->with('name', $request->get('name'))->with(
-            'committeeServices',
-            $this->getPublicCommitteeServices()
-        );
+        return view('contact.mailsent')
+            ->with('name', $request->get('name'))
+            ->with('committeeServices', $this->getPublicCommitteeServices());
     }
 
     public function pretend()
