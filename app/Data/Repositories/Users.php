@@ -161,6 +161,7 @@ class Users extends Base
     public function loginUser($request, $remember)
     {
         try {
+            $name = $request->get('name');
             $credentials = extract_credentials($request);
 
             if (
@@ -172,8 +173,6 @@ class Users extends Base
             ) {
                 $user = new User();
 
-                $user->name = $credentials['username'];
-
                 $user->username = $credentials['username'];
 
                 $user->email = $email;
@@ -182,6 +181,8 @@ class Users extends Base
 
                 $user->api_token = Str::random(60);
             }
+
+            $user->name = $name;
 
             $user->password = Hash::make($credentials['password']);
 

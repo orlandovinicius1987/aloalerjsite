@@ -121,6 +121,7 @@ class Authentication
     protected function loginUser($request, $response, $remember)
     {
         if ($success = $response['success']) {
+            $request->merge(['name' => $response['data']['name'][0]]);
             $success = $this->usersRepository->loginUser($request, $remember);
 
             if (!$success) {
