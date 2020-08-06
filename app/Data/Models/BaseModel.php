@@ -8,10 +8,14 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-abstract class BaseModel extends Model
-    implements HasPresenter, AuditableContract
+abstract class BaseModel extends Model implements
+    HasPresenter,
+    AuditableContract
 {
     use AuditableTrait;
+
+    protected $controlCreatedBy = false;
+    protected $controlUpdatedBy = false;
 
     /**
      * @var bool
@@ -99,5 +103,26 @@ abstract class BaseModel extends Model
         });
 
         return $this;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($model) {
+            if ($model->controlUpdatedBy) {
+                $model->updated_by_id = ($user = auth()->user())
+                    ? $user->id
+                    : 1;
+            }
+        });
+
+        static::creating(function ($model) {
+            if ($model->controlCreatedBy) {
+                $model->created_by_id = ($user = auth()->user())
+                    ? $user->id
+                    : 1;
+            }
+        });
     }
 }

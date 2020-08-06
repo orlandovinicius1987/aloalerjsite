@@ -24,7 +24,7 @@ class Record extends BaseModel
         'send_answer_by_email',
         'resolved_at',
         'resolved_by_id',
-        'record_action_id',
+        'record_action_id'
     ];
 
     protected $with = ['committee'];
@@ -62,10 +62,7 @@ class Record extends BaseModel
                 $protocol
             );
         } elseif (strlen($protocol) == 12 && is_numeric($protocol)) {
-            $protocol = $this->mask(
-                '####.####.####',
-                $protocol
-            );
+            $protocol = $this->mask('####.####.####', $protocol);
         }
 
         return $protocol;
@@ -73,10 +70,10 @@ class Record extends BaseModel
 
     public function mask($mask, $str)
     {
-        $str = str_replace(" ", "", $str);
+        $str = str_replace(' ', '', $str);
 
         for ($i = 0; $i < strlen($str); $i++) {
-            $mask[strpos($mask, "#")] = $str[$i];
+            $mask[strpos($mask, '#')] = $str[$i];
         }
 
         return $mask;
@@ -103,7 +100,7 @@ class Record extends BaseModel
         return $this;
     }
 
-    protected static function boot()
+    public static function boot()
     {
         parent::boot();
 
