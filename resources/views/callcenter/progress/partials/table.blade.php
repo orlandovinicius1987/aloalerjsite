@@ -10,6 +10,7 @@
                     <th>Finalizador</th>
                     <th>Notificação</th>
                     <th>Criado em</th>
+                    <th>Atendente</th>
                 </tr>
             </thead>
 
@@ -53,6 +54,8 @@
                     </td>
 
                     <td>{{ $progress->created_at_formatted ?? '' }}</td>
+
+                    <td>{{ $progress->creator->name ?? '' }}</td>
                 </tr>
             @empty
                 <p>Nenhum andamento encontrado.</p>
@@ -90,7 +93,7 @@
             </div>
             <div class="contact-line"><span class="mobile-label">Criado em :</span> {{ $progress->created_at_formatted ?? '' }}</div>
 
-
+            <div class="contact-line"><span class="mobile-label">Atendente :</span> {{ $progress->creator->name ?? '' }}</div>
         </div>
         @empty
             <p>Nenhum andamento encontrado.</p>
