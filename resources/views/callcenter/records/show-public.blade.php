@@ -43,7 +43,7 @@
                                 <strong>{{ $record->origin->name ?? '' }}</strong>
                             </div>
                             <div class="box">
-                                <small>Comissão</small>
+                                <small>Departamento Responsável</small>
                                 <strong>{{ $record->committee->name  ?? '' }}</strong>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <strong> {{ $record->recordType->name ?? '' }}</strong>
                             </div>
                             <div class="box">
-                                <small>Área</small>
+                                <small>Assunto</small>
                                 <strong>{{ $record->area->name ?? '' }}</strong>
                             </div>
                         </div>

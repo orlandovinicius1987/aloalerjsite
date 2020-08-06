@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-8 offset-lg-2 form-bigger">
                 <form id="formProgress" method="POST" action="{{ route('progresses.store') }}" class="form-with-labels">
                     @csrf
@@ -46,10 +46,10 @@
                     <input name="record_id" id="record_id"type="hidden" value="{{ $record->id }}">
 
                     <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             <label for="protocol" class="col-form-label">Protocolo</label>
                             <input id="cpf_cnpj"
-                                   class="form-control{{ $errors->getBag('validation')->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
+                                   class=" form-control{{ $errors->getBag('validation')->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
                                    value="{{is_null(old('protocol')) ? $record->protocol : old('protocol') }}"
                                    readonly="readonly">
                             @if ($errors->getBag('validation')->has('protocol'))
@@ -82,33 +82,9 @@
                                 <strong>{{ $errors->getBag('validation')->first('origin_id') }}</strong>
                             </span>
                             @endif
-                        </div>
+                        </div>    
+                    
 
-                        <div class="col-md-6">
-                            <label for="area_id" class="col-form-label">Área</label>
-                            <select id="area_id" type="area_id"
-                                    class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
-                                    value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled',['model'=>$progress])>
-                                <option value="">SELECIONE</option>
-                                @foreach ($areas as $key => $area)
-                                    @if(((!is_null($progress->id)) && (!is_null($progress->area_id) && $progress->area_id === $area->id) ||
-                                    (!is_null(old('area_id'))) && old('area_id') == $area->id))
-                                        <option value="{{ $area->id }}" selected="selected">{{ $area->name }}</option>
-                                    @else
-                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-
-                            @if ($errors->getBag('validation')->has('area_id'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->getBag('validation')->first('area_id') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <div class="col-md-6">
                             <label for="progress_type_id" class="col-form-label">Tipo de Andamento</label>
                             <select id="progress_type_id" type="progress_type_id"
