@@ -35,9 +35,9 @@
                 @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                 <th>Nome</th>
                 @endif
-                <th>Comissão</th>
+                <th>Departamento Responsável</th>
                 <th>Tipo de Protocolo</th>
-                <th>Área</th>
+                <th>Assunto</th>
                 <th>Situação</th>
                 <th>Criado em</th>
             </tr>
@@ -94,9 +94,9 @@
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                     <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a> </div>
                     @endif
-                    <div class="contact-line"><span class="mobile-label">Comissão : </span>{{ $record->committee->name ?? '' }} </div>
+                    <div class="contact-line"><span class="mobile-label">Departamento Responsável : </span>{{ $record->committee->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Tipo de Protocolo : </span>{{ $record->recordType->name ?? '' }} </div>
-                    <div class="contact-line"><span class="mobile-label">Área : </span>{{ $record->area->name ?? '' }} </div>
+                    <div class="contact-line"><span class="mobile-label">Assunto : </span>{{ $record->area->name ?? '' }} </div>
                     <div class="contact-line">
                         <span class="mobile-label">Situação : </span>
                         @if($record->resolved_at)

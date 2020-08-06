@@ -5,7 +5,6 @@
                 <tr>
                     <th>Tipo de Andamento</th>
                     <th>Origem</th>
-                    <th>Área</th>
                     <th>Solicitação</th>
                     <th>Finalizador</th>
                     <th>Notificação</th>
@@ -23,9 +22,6 @@
                         {{ $progress->origin->name ?? '' }}
                     </td>
 
-                    <td>
-                        {{ $progress->area->name ?? '' }}
-                    </td>
 
                     <td>
                         {{ $progress->original }}
@@ -71,7 +67,7 @@
 
             <div class="contact-line"><span class="mobile-label">Tipo de Andamento :</span> {{ $progress->progressType->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Origem :</span> {{ $progress->origin->name ?? '' }}</div>
-            <div class="contact-line"><span class="mobile-label">Área :</span> {{ $progress->area->name ?? '' }}</div>
+            <div class="contact-line"><span class="mobile-label">Assunto :</span> {{ $progress->area->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Solicitação :</span> {{ $progress->original }}</div>
             <div class="contact-line"><span class="mobile-label">Finalizador :</span>
                 @if ($progress->record->resolve_progress_id == $progress->id)
