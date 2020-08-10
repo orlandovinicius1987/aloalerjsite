@@ -122,7 +122,6 @@ class Person extends BaseModel
         ) {
             return $contact;
         }
-
         return $this->contacts()->create([
             'contact_type_id' => app(ContactTypes::class)->findByName('E-mail')
                 ->id,
