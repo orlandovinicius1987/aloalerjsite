@@ -4,12 +4,16 @@
         v-on:click.prevent="editButton"
         class="btn btn-danger"
         id="vue-editButton"
-
-        @can('committee-canEdit', $record->committee->id ?? '')
-            :disabled="isEditing || isCreating"
+        @if(isset($record))
+            @can('committee-canEdit', $record->committee->id ?? '')
+                :disabled="isEditing || isCreating"
+            @else
+                disabled
+            @endcan
         @else
-            disabled
-        @endcan
+                :disabled="isEditing || isCreating"
+        @endIf
+
     >
         <i class="fas fa-pencil-alt"></i> Alterar
     </button>
