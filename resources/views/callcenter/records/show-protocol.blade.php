@@ -41,8 +41,7 @@
                     <div class="box">
                         <div class="date01">
                             <small>Protocolo criado em</small>
-                            <strong><a
-                                    href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->created_at->format('d/m/Y H:i:s') }}</a>
+                            <strong>{{ $record->created_at->format('d/m/Y H:i:s') }}
                             </strong>
                         </div>
                     </div>
