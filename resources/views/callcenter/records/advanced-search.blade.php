@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('heading')
-        <div class="mt-4">
+        <div class="mt-4 d-print-none">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group text-center">
@@ -121,10 +121,13 @@
                             <div class="form-group row">
 
 
-                                <div class="col-md-10" >
-                                    <button type="submit" class="btn btn-danger"  id="save_button">
-                                        <i class="far fa-save"></i> buscar
+                                <div class="col-md-12" >
+                                    <button type="submit" class="btn btn-primary"  id="search_button">
+                                        <i class="fa fa-search"></i> buscar
                                     </button>
+                                    <a href="javascript: print()" type="submit" class="btn btn-secondary" id="print_button">
+                                        <i class="fa fa-print"></i> imprimir
+                                    </a>
                                 </div>
                             </div>
                         </form>

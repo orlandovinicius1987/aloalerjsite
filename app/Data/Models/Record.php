@@ -29,6 +29,8 @@ class Record extends BaseModel
 
     protected $with = ['committee'];
 
+    protected $appends = ['first_progress_original'];
+
     public function progresses()
     {
         return $this->hasMany(Progress::class);
@@ -77,6 +79,14 @@ class Record extends BaseModel
         }
 
         return $mask;
+    }
+
+    public function getFirstProgressOriginalAttribute()
+    {
+        return $this->progresses()
+            ->orderBy('created_at', 'asc')
+            ->first()
+            ->toArray()['original'];
     }
 
     public function getNotifiables()
