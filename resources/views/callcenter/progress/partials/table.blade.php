@@ -24,7 +24,7 @@
                     </td>
 
 
-                    <td>
+                    <td style="word-wrap: break-word; width: 40%; max-width: 20px;">
                         {{ $progress->original }}
                     </td>
 
