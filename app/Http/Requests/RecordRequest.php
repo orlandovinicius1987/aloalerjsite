@@ -21,7 +21,10 @@ class RecordRequest extends Request
             'record_type_id' => 'required', //Tipo
             //'progress_type_id' => 'required_without:record_id', // Assunto → Workflow
             'area_id' => 'required', //Area
-            'original' => 'required_without:record_id' // Solicitação  → Workflow
+            'cpf_cnpj'=>'required_if:is_anonymous,==,false',
+            'name'=>'required_if:is_anonymous,==,false',
+            'original' => 'required_without:record_id', // Solicitação  → Workflow
+            'mobile' => ['required_without_all:is_anonymous,record_id'],
         ];
     }
 }

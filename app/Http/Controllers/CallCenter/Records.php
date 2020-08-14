@@ -22,7 +22,7 @@ class Records extends Controller
      * @param $person_id
      */
 
-    public function create($person_id)
+    public function create($person_id = null)
     {
         $person = $this->peopleRepository->findById($person_id);
         request()
@@ -32,6 +32,7 @@ class Records extends Controller
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
+            ->with('anonymous_id',get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -72,7 +73,14 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
+
         $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $this->peopleContactsRepository->createContact($request->get('mobile'), $record->person_id,'mobile');
+        $this->peopleContactsRepository->createContact($request->get('whatsapp'),$record->person_id, 'whatsapp');
+        $this->peopleContactsRepository->createContact($request->get('email'),$record->person_id, 'email');
+        $this->peopleContactsRepository->createContact($request->get('phone'),$record->person_id, 'phone');
+
 
         $record->sendNotifications();
 
@@ -92,6 +100,19 @@ class Records extends Controller
                 ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
                 ' com sucesso.'
         );
+
+        /**
+         * significa que no formulário de criação do protocolo o nome informado
+         * não é o nome cadastrado, será iniciado uma nova tela para acerto do cadastro.
+         *
+         */
+        if(($request->get('is_anonymous') == 'false') &&
+            $request->get('name') != $record->person->name){
+         return view('callcenter.people.diverge')->with(
+            ['newName'=>$request->get('name'),
+                'record'=>$record]);
+        }
+
 
         return redirect()->to(
             route(

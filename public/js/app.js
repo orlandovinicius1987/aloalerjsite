@@ -55457,7 +55457,23 @@ var appName = 'vue-record';
 if (jQuery("#" + appName).length > 0) {
   new Vue({
     el: '#' + appName,
-    mixins: [_mixins_edit__WEBPACK_IMPORTED_MODULE_0__["default"], _mixins_helpers__WEBPACK_IMPORTED_MODULE_1__["default"]]
+    mixins: [_mixins_edit__WEBPACK_IMPORTED_MODULE_0__["default"], _mixins_helpers__WEBPACK_IMPORTED_MODULE_1__["default"]],
+    data: {
+      is_anonymous: false
+    },
+    methods: {
+      toggleAnonymous: function toggleAnonymous(event) {
+        console.log(event);
+        this.is_anonymous = !this.is_anonymous;
+        console.log(this.is_anonymous);
+        $('#cpf_cnpj').prop('disabled', this.is_anonymous);
+        $('#name').prop('disabled', this.is_anonymous);
+        $('#mobile').prop('disabled', this.is_anonymous);
+        $('#whatsapp').prop('disabled', this.is_anonymous);
+        $('#email').prop('disabled', this.is_anonymous);
+        $('#phone').prop('disabled', this.is_anonymous);
+      }
+    }
   });
 }
 

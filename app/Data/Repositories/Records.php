@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Data\Repositories;
 
 use Carbon\Carbon;
 use App\Data\Models\Record;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\People as PeopleRepository;
+use App\Data\Repositories\PersonContacts as PersonContactRepository;
 
 class Records extends Base
 {
@@ -16,15 +16,20 @@ class Records extends Base
 
     protected $peopleRepository;
 
+    protected $personContactRepository;
+
     /**
      * Records constructor.
      *
      * @param PeopleRepository $personRepository
+     * @param PersonContactRepository $personContactRepository
      * @internal param Repository $repository
      */
-    public function __construct(PeopleRepository $personRepository)
+    public function __construct(PeopleRepository $personRepository,
+                                PersonContactRepository $personContactRepository)
     {
         $this->peopleRepository = $personRepository;
+        $this->personContactRepository = $personContactRepository;
     }
 
     /**
@@ -51,7 +56,23 @@ class Records extends Base
 
     public function create($data)
     {
-        $person = $this->peopleRepository->findById($data->person_id);
+
+        if($data->is_anonymous == 'true'){
+            $person = get_anonymous_person();
+        }else if(isset($data->person_id)) {
+
+            $person = $this->peopleRepository->findById($data->person_id);
+        }else if($data->cpf_cnpj){
+
+            $person = $this->peopleRepository->findByCpfCnpj($data->cpf_cnpj);
+
+        }
+
+        if(is_null($person)){
+            $data->cpf_cnpj = only_numbers($data->cpf_cnpj);
+            $person = $this->peopleRepository->create($data->toArray());
+        }
+        $data = $data->merge(['person_id' => $person->id]);
 
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
@@ -170,12 +191,10 @@ class Records extends Base
             'contact' => $data['telephone']
         ]);
 
-        if ($data['email']) {
-            $person->findOrCreateEmail([
-                'person_id' => $person->id,
-                'contact' => $data['email']
-            ]);
-        }
+        $person->findOrCreateEmail([
+            'person_id' => $person->id,
+            'contact' => $data['email']
+        ]);
 
         $record = $this->create(
             coollect([

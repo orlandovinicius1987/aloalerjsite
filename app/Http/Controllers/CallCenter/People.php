@@ -147,6 +147,18 @@ class People extends Controller
         }
     }
 
+    public function storeDiverge(Request $request)
+    {
+        $request->merge(['id' => $request->get('person_id')]);
+
+        $this->peopleRepository->createFromRequest($request);
+
+        $record = $this->recordsRepository->findById($request->get('record_id'));
+
+
+        return redirect()->to(route('records.show-protocol',$record->id));
+    }
+
     /**
      * @param PersonRequest $request
      * @return $person_id
