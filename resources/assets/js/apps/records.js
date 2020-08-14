@@ -22,8 +22,7 @@ if (jQuery("#" + appName).length > 0) {
                 $('#whatsapp').prop('disabled', this.is_anonymous)
                 $('#email').prop('disabled', this.is_anonymous)
                 $('#phone').prop('disabled', this.is_anonymous)
-
-
+                $('#send_answer_by_email_checkbox').prop('disabled', this.is_anonymous)
             }
         },
 

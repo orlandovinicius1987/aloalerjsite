@@ -191,10 +191,12 @@ class Records extends Base
             'contact' => $data['telephone']
         ]);
 
-        $person->findOrCreateEmail([
-            'person_id' => $person->id,
-            'contact' => $data['email']
-        ]);
+        if ($data['email']) {
+            $person->findOrCreateEmail([
+                'person_id' => $person->id,
+                'contact' => $data['email']
+            ]);
+        }
 
         $record = $this->create(
             coollect([
