@@ -23,17 +23,9 @@ class Contact extends Request
     {
         return [
             'name' => 'required', //ok
-            'email' => 'required|email', //ok
             'telephone' => 'required', //ok
             'cpf' => 'required|cpf_cnpj', //ok
-            'birthdate' => 'required|date', //ok
-            'identidade' => 'required', //ok
-            'expeditor' => 'required', //ok
-            'cep' => 'required', //ok
-            'rua' => 'required', //ok
-            'bairro' => 'required', //ok
-            'cidade' => 'required', //ok
-            'message' => 'required', //ok
+            'message' => 'required' //ok
         ];
     }
 

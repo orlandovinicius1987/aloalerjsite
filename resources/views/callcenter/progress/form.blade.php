@@ -85,52 +85,6 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="record_type_id" class="col-form-label">Tipo</label>
-                            <select id="record_type_id" type="record_type_id"
-                                    class="form-control{{ $errors->getBag('validation')->has('record_type_id') ? ' is-invalid' : '' }} select2" name="record_type_id"
-                                    value="{{is_null(old('record_type_id')) ? $progress->record_type_id : old('record_type_id') }}" autofocus @include('partials.disabled',['model'=>$progress])>
-                                <option value="">SELECIONE</option>
-                                @foreach ($recordTypes as $key => $recordType)
-                                    @if(((!is_null($progress->id)) && (!is_null($progress->record_type_id) && $progress->record_type_id === $recordType->id) ||
-                                    (!is_null(old('record_type_id'))) && old('record_type_id') == $recordType->id))
-                                        <option value="{{ $recordType->id }}" selected="selected">{{ $recordType->name }}</option>
-                                    @else
-                                        <option value="{{ $recordType->id }}">{{ $recordType->name }}</option>
-                                    @endif                                @endforeach
-                            </select>
-
-                            @if ($errors->getBag('validation')->has('record_type_id'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->getBag('validation')->first('record_type_id') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="area_id" class="col-form-label">Área</label>
-                            <select id="area_id" type="area_id"
-                                    class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id"
-                                    value="{{is_null(old('area_id')) ? $progress->area_id : old('area_id') }}" autofocus @include('partials.disabled',['model'=>$progress])>
-                                <option value="">SELECIONE</option>
-                                @foreach ($areas as $key => $area)
-                                    @if(((!is_null($progress->id)) && (!is_null($progress->area_id) && $progress->area_id === $area->id) ||
-                                    (!is_null(old('area_id'))) && old('area_id') == $area->id))
-                                        <option value="{{ $area->id }}" selected="selected">{{ $area->name }}</option>
-                                    @else
-                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-
-                            @if ($errors->getBag('validation')->has('area_id'))
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->getBag('validation')->first('area_id') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                        <div class="col-md-6">
                             <label for="progress_type_id" class="col-form-label">Tipo de Andamento</label>
                             <select id="progress_type_id" type="progress_type_id"
                                     class="form-control{{ $errors->getBag('validation')->has('progress_type_id') ? ' is-invalid' : '' }} select2" name="progress_type_id"

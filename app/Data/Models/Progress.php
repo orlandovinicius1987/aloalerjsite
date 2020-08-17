@@ -10,6 +10,8 @@ class Progress extends BaseModel
 {
     use Notifiable;
 
+    protected $controlCreatedBy = true;
+
     /**
      * @var array
      */
@@ -27,14 +29,21 @@ class Progress extends BaseModel
         'area_id',
         'created_at',
         'updated_at',
-        'original_history_id',
+        'original_history_id'
     ];
 
     protected $presenters = ['link', 'finalize'];
 
+    protected $with = ['creator'];
+
     public function getPresenterClass()
     {
         return ProgressPresenter::class;
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
     }
 
     public function record()

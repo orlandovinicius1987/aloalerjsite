@@ -16,13 +16,13 @@ class People extends Base
 
     public function getAnonymousModel()
     {
-
         return Cache::remember('getAnonymousModel', 15, function () {
-            return  \App\Data\Models\Person::where('is_anonymous', true)->first();
+            return \App\Data\Models\Person::where(
+                'is_anonymous',
+                true
+            )->first();
         });
     }
-
-
 
     private function addExtraInfo($people)
     {

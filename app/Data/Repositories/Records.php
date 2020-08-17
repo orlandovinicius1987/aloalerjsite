@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use App\Data\Models\Record;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\People as PeopleRepository;
+use App\Data\Repositories\PersonContacts as PersonContactRepository;
 
 class Records extends Base
 {
@@ -15,15 +16,20 @@ class Records extends Base
 
     protected $peopleRepository;
 
+    protected $personContactRepository;
+
     /**
      * Records constructor.
      *
      * @param PeopleRepository $personRepository
+     * @param PersonContactRepository $personContactRepository
      * @internal param Repository $repository
      */
-    public function __construct(PeopleRepository $personRepository)
+    public function __construct(PeopleRepository $personRepository,
+                                PersonContactRepository $personContactRepository)
     {
         $this->peopleRepository = $personRepository;
+        $this->personContactRepository = $personContactRepository;
     }
 
     /**
@@ -48,10 +54,26 @@ class Records extends Base
         return $this->model::where('person_id', $person_id)->get();
     }
 
-    public function create($data){
-        
-        $person = $this->peopleRepository->findById($data->person_id);
-        
+    public function create($data)
+    {
+
+        if($data->is_anonymous == 'true'){
+            $person = get_anonymous_person();
+        }else if(isset($data->person_id)) {
+
+            $person = $this->peopleRepository->findById($data->person_id);
+        }else if($data->cpf_cnpj){
+
+            $person = $this->peopleRepository->findByCpfCnpj($data->cpf_cnpj);
+
+        }
+
+        if(is_null($person)){
+            $data->cpf_cnpj = only_numbers($data->cpf_cnpj);
+            $person = $this->peopleRepository->create($data->toArray());
+        }
+        $data = $data->merge(['person_id' => $person->id]);
+
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
         }
@@ -59,7 +81,7 @@ class Records extends Base
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
-    
+
         return $record;
     }
 
@@ -169,37 +191,30 @@ class Records extends Base
             'contact' => $data['telephone']
         ]);
 
-        $person->findOrCreateEmail([
-            'person_id' => $person->id,
-            'contact' => $data['email']
-        ]);
+        if ($data['email']) {
+            $person->findOrCreateEmail([
+                'person_id' => $person->id,
+                'contact' => $data['email']
+            ]);
+        }
 
         $record = $this->create(
             coollect([
                 'committee_id' => app(Committees::class)->findByName(
                     'ALÔ ALERJ'
                 )->id,
-                'person_id' => $person->id,
-                'record_type_id' => app(RecordTypes::class)->findByName(
-                    'Outros'
-                )->id,
-                'area_id' => ($areaId = app(Areas::class)->findByName(
-                    'ALÔ ALERJ'
-                )->id),
-                'record_action_id' => app(RecordActions::class)->findByName(
-                    'Outros'
-                )->id
+                'record_type_id' => $data['record_type_id'],
+                'person_id' => $person->id
             ])
         );
 
         $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
-            'progress_type_id' => app(ProgressTypes::class)->findByName('Email')
-                ->id,
-            'original' => "Assunto: {$data['subject']}\n\n{$data['message']}",
+            'progress_type_id' => app(ProgressTypes::class)->findByName(
+                'Entrada'
+            )->id,
+            'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
-            'area_id' => $areaId,
-            'area_id',
             'objeto_id',
             'record_action_id'
         ]);
@@ -285,8 +300,6 @@ class Records extends Base
 
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
-                //                if ($key == 'created_at' || $key == 'resolved_at') {
-                //                    $records->whereDate($key, $collumn);
                 if ($key == 'person_name') {
                     $records
                         ->join('people', 'people.id', '=', 'records.person_id')
@@ -300,7 +313,7 @@ class Records extends Base
             $this->resolvedAtBetweenDate($data, $records);
         }
 
-        $records->orderBy('records.created_at');
+        $records->orderBy('records.created_at', 'desc');
 
         return $records->paginate(10);
     }

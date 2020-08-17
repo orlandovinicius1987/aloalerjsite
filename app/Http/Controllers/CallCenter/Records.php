@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CallCenter;
 
 use App\Data\Repositories\Areas;
+use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
@@ -19,33 +20,32 @@ class Records extends Controller
 {
     /**
      * @param $person_id
-     * @return $this
      */
 
-
-
-    public function create($person_id)
+    public function create($person_id = null)
     {
         $person = $this->peopleRepository->findById($person_id);
-        request()->session()->forget('workflow');
+        request()
+            ->session()
+            ->forget('workflow');
 
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
+            ->with('anonymous_id',get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus('create'));
+            ->with($this->getComboBoxMenus());
     }
 
     public function createFromWorkflow($person_id)
     {
         $person = $this->peopleRepository->findById($person_id);
 
-
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('record', $this->recordsRepository->new())
-            ->with($this->getComboBoxMenus('create'));
+            ->with($this->getComboBoxMenus());
     }
 
     protected function makeViewDataFromRecord($record)
@@ -73,12 +73,25 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
+
         $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $this->peopleContactsRepository->createContact($request->get('mobile'), $record->person_id,'mobile');
+        $this->peopleContactsRepository->createContact($request->get('whatsapp'),$record->person_id, 'whatsapp');
+        $this->peopleContactsRepository->createContact($request->get('email'),$record->person_id, 'email');
+        $this->peopleContactsRepository->createContact($request->get('phone'),$record->person_id, 'phone');
+
 
         $record->sendNotifications();
 
         if (is_null($request->get('record_id'))) {
+            //Se é um protocolo novo
             $request->merge(['record_id' => $record->id]);
+            $request->merge([
+                'progress_type_id' => app(
+                    ProgressTypesRepository::class
+                )->findByName('Entrada')->id
+            ]);
             $this->progressesRepository->createFromRequest($request);
         }
 
@@ -87,6 +100,19 @@ class Records extends Controller
                 ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
                 ' com sucesso.'
         );
+
+        /**
+         * significa que no formulário de criação do protocolo o nome informado
+         * não é o nome cadastrado, será iniciado uma nova tela para acerto do cadastro.
+         *
+         */
+        if(($request->get('is_anonymous') == 'false') &&
+            $request->get('name') != $record->person->name){
+         return view('callcenter.people.diverge')->with(
+            ['newName'=>$request->get('name'),
+                'record'=>$record]);
+        }
+
 
         return redirect()->to(
             route(
@@ -111,7 +137,7 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-            'Protocolo finalizado sem observações em ' .
+                'Protocolo finalizado sem observações em ' .
                 now() .
                 ' pelo usuário ' .
                 Auth::user()->name,
@@ -148,7 +174,6 @@ class Records extends Controller
 
     /**
      * @param $id
-     * @return $this
      */
     public function show($id)
     {
@@ -159,7 +184,7 @@ class Records extends Controller
         $person = $this->peopleRepository->findById($record->person_id);
 
         return view('callcenter.records.form')
-            ->with($this->getComboBoxMenus())
+            ->with($this->getComboBoxMenus($record))
             ->with(
                 'progresses',
                 $this->progressesRepository->allWherePaginate('record_id', $id)
@@ -220,9 +245,11 @@ class Records extends Controller
     public function getRecordsData()
     {
         return [
-            'committees' => app(CommittesRepository::class)->all(),
+            'committees' => app(CommittesRepository::class)->allOrderBy('name'),
             'areas' => app(AreasRepository::class)->allOrderBy('name'),
-            'recordTypes' => app(RecordTypesRepository::class)->all()
+            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy(
+                'name'
+            )
         ];
     }
 

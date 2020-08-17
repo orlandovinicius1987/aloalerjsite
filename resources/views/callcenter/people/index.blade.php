@@ -19,7 +19,14 @@
                             <div class="form-group row search">
                                 <div class="col-12">
                                     <div class="input-group">
-                                        <input dusk="search" id="search" class="form-control" placeholder="Nome, CPF, CNPJ ou Protocolo" v-model="form.search.search" @keyup="typeKeyUp">
+                                        <input
+                                            dusk="search"
+                                            id="search"
+                                            class="form-control"
+                                            placeholder="Nome, CPF, CNPJ ou Protocolo"
+                                            v-model="form.search.search"
+                                            @keyup="typeKeyUp"
+                                        >
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span v-if="refreshing">
@@ -36,23 +43,12 @@
                             </div>
 
                             <div class="form-group row text-center">
-                                <div :class="'col-' + (canCreateNewPerson() ? '6' : '12')">
-                                    <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('records.create', ['person_id' => $anonymous_id]) }}'" class="btn btn-primary ">
+                                <div class="col-12" >
+                                    <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('records.create') }}'" class="btn btn-primary ">
                                         <i class="fa fa-plus"></i>
-                                        Protocolo Anônimo
+                                        Cadastrar protocolo/cidadão
                                     </a>
                                 </div>
-
-
-
-
-                                <div :class="'col-' + (canCreateNewPerson() ? '6' : '12')" v-if="canCreateNewPerson()">
-                                    <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('people.create') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary ">
-                                        <i class="fa fa-plus"></i>
-                                        Cadastrar novo cidadão
-                                    </a>
-                                </div>
-
                             </div>
                         </div>
 

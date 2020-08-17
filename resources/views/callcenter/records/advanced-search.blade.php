@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('heading')
-        <div class="mt-4">
+        <div class="mt-4 d-print-none">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group text-center">
@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="committee_id" class="col-form-label">Comissão</label>
+                                    <label for="committee_id" class="col-form-label">Departamento</label>
                                     <select id="committee_id"
                                             class="form-control select2" name="committee_id"
                                             autofocus>
@@ -57,7 +57,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-3">
-                                    <label for="area_id" class="col-form-label">Área</label>
+                                    <label for="area_id" class="col-form-label">Assunto</label>
                                     <select id="area_id"
                                             class="form-control select2" name="area_id"
                                             autofocus>
@@ -121,10 +121,13 @@
                             <div class="form-group row">
 
 
-                                <div class="col-md-10" >
-                                    <button type="submit" class="btn btn-danger"  id="save_button">
-                                        <i class="far fa-save"></i> buscar
+                                <div class="col-md-12" >
+                                    <button type="submit" class="btn btn-primary"  id="search_button">
+                                        <i class="fa fa-search"></i> buscar
                                     </button>
+                                    <a href="javascript: print()" type="submit" class="btn btn-secondary" id="print_button">
+                                        <i class="fa fa-print"></i> imprimir
+                                    </a>
                                 </div>
                             </div>
                         </form>

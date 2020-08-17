@@ -5,11 +5,11 @@
                 <tr>
                     <th>Tipo de Andamento</th>
                     <th>Origem</th>
-                    <th>Área</th>
                     <th>Solicitação</th>
                     <th>Finalizador</th>
                     <th>Notificação</th>
                     <th>Criado em</th>
+                    {!! (Auth::user() ? '<th>Atendente</th>' : '') !!}
                 </tr>
             </thead>
 
@@ -23,11 +23,8 @@
                         {{ $progress->origin->name ?? '' }}
                     </td>
 
-                    <td>
-                        {{ $progress->area->name ?? '' }}
-                    </td>
 
-                    <td>
+                    <td style="word-wrap: break-word; width: 40%; max-width: 20px;">
                         {{ $progress->original }}
                     </td>
 
@@ -53,6 +50,8 @@
                     </td>
 
                     <td>{{ $progress->created_at_formatted ?? '' }}</td>
+
+                    {!!Auth::user() ? '<td>'.($progress->creator->name ?? '').'</td>' : ''!!}
                 </tr>
             @empty
                 <p>Nenhum andamento encontrado.</p>
@@ -71,7 +70,7 @@
 
             <div class="contact-line"><span class="mobile-label">Tipo de Andamento :</span> {{ $progress->progressType->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Origem :</span> {{ $progress->origin->name ?? '' }}</div>
-            <div class="contact-line"><span class="mobile-label">Área :</span> {{ $progress->area->name ?? '' }}</div>
+            <div class="contact-line"><span class="mobile-label">Assunto :</span> {{ $progress->area->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Solicitação :</span> {{ $progress->original }}</div>
             <div class="contact-line"><span class="mobile-label">Finalizador :</span>
                 @if ($progress->record->resolve_progress_id == $progress->id)
@@ -90,7 +89,7 @@
             </div>
             <div class="contact-line"><span class="mobile-label">Criado em :</span> {{ $progress->created_at_formatted ?? '' }}</div>
 
-
+            <div class="contact-line"><span class="mobile-label">Atendente :</span> {{ $progress->creator->name ?? '' }}</div>
         </div>
         @empty
             <p>Nenhum andamento encontrado.</p>

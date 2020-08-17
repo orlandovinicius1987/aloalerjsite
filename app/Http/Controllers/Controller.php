@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Data\Models\ProgressType as ProgressTypeModel;
+use App\Data\Models\RecordType as RecordTypeModel;
+use App\Data\Models\Origin as OriginModel;
+use App\Data\Models\Area as AreaModel;
 use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
@@ -64,7 +68,7 @@ abstract class Controller extends IlluminateController
         PersonContactsRepository $peopleContactsRepository,
         OriginsRepository $originsRepository,
         CommitteesRepository $committeesRepository,
-        CommitteeServicesRepository  $committeeServicesRepository,
+        CommitteeServicesRepository $committeeServicesRepository,
         RecordTypesRepository $recordTypesRepository,
         AreasRepository $areasRepository,
         ContactTypesRepository $contactTypesRepository,
@@ -99,22 +103,41 @@ abstract class Controller extends IlluminateController
         }
     }
 
-    public function getComboBoxMenus()
+    public function getComboBoxMenus($model = null)
     {
-        $committees = $this->committeesRepository->all();
-        $recordTypes = $this->recordTypesRepository->all();
-        $areas = $this->areasRepository->all();
-        $origins = $this->originsRepository->all();
-        $contactTypes = $this->contactTypesRepository->all();
-        $progressTypes = $this->progressTypesRepository->allOrderBy('name');
+        $progressTypes = ProgressTypeModel::active()->orderBy('name');
+        $committees = $this->committeesRepository->allOrderBy('name');
+        $recordTypes = RecordTypeModel::active()->orderBy('name');
+        $areas = AreaModel::active()->orderBy('name');
+        $origins = OriginModel::active()->orderBy('name');
+        $contactTypes = $this->contactTypesRepository->allOrderBy('name');
+
+        //Adiciona o relacionamento atual ao combobox, mesmo que não esteja ativo
+        if ($model) {
+            if (isset($model->progress_type_id)) {
+                $progressTypes->orWhere('id', $model->progress_type_id);
+            }
+
+            if (isset($model->record_type_id)) {
+                $recordTypes->orWhere('id', $model->record_type_id);
+            }
+
+            if (isset($model->origin_id)) {
+                $origins->orWhere('id', $model->origin_id);
+            }
+
+            if (isset($model->area_id)) {
+                $areas->orWhere('id', $model->area_id);
+            }
+        }
 
         return [
             'committees' => $committees,
-            'recordTypes' => $recordTypes,
-            'areas' => $areas,
-            'origins' => $origins,
+            'recordTypes' => $recordTypes->get(),
+            'areas' => $areas->get(),
+            'origins' => $origins->get(),
             'contactTypes' => $contactTypes,
-            'progressTypes' => $progressTypes,
+            'progressTypes' => $progressTypes->get()
         ];
     }
 
@@ -124,7 +147,7 @@ abstract class Controller extends IlluminateController
 
         $alerts[] = ['type' => $type, 'message' => $message];
 
-        session()->flash("alerts", $alerts);
+        session()->flash('alerts', $alerts);
     }
 
     protected function showSuccessMessage($message = null)
@@ -132,7 +155,8 @@ abstract class Controller extends IlluminateController
         $this->flashMessage($message ?? $this->messageDefault);
     }
 
-    protected function getPublicCommitteeServices(){
+    protected function getPublicCommitteeServices()
+    {
         return app(CommitteeServicesRepository::class)->getPublicServices();
     }
 }
