@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="committee_id" class="col-form-label">Departamento Responsável</label>
+                                    <label for="committee_id" class="col-form-label">Departamento</label>
                                     <select id="committee_id"
                                             class="form-control select2" name="committee_id"
                                             autofocus>

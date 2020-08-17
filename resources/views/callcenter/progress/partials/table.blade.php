@@ -9,7 +9,7 @@
                     <th>Finalizador</th>
                     <th>Notificação</th>
                     <th>Criado em</th>
-                    <th>Atendente</th>
+                    {!! (Auth::user() ? '<th>Atendente</th>' : '') !!}
                 </tr>
             </thead>
 
@@ -51,7 +51,7 @@
 
                     <td>{{ $progress->created_at_formatted ?? '' }}</td>
 
-                    <td>{{ $progress->creator->name ?? '' }}</td>
+                    {!!Auth::user() ? '<td>'.($progress->creator->name ?? '').'</td>' : ''!!}
                 </tr>
             @empty
                 <p>Nenhum andamento encontrado.</p>
