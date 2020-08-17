@@ -36,7 +36,7 @@
                 <th>Contatos</th>
                 @endif
                 <th>Solicitação</th>
-                <th>Departamento Responsável</th>
+                <th>Departamento</th>
                 <th>Tipo de Protocolo</th>
                 <th>Assunto</th>
                 <th>Situação</th>
@@ -112,7 +112,7 @@
                         </div>
                     @endif
                     <div class="contact-line" ><span class="mobile-label">Solicitação : </span>{{ $record->first_progress_original ?? '' }} </div>
-                    <div class="contact-line"><span class="mobile-label">Departamento Responsável : </span>{{ $record->committee->name ?? '' }} </div>
+                    <div class="contact-line"><span class="mobile-label">Departamento : </span>{{ $record->committee->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Tipo de Protocolo : </span>{{ $record->recordType->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Assunto : </span>{{ $record->area->name ?? '' }} </div>
                     <div class="contact-line">

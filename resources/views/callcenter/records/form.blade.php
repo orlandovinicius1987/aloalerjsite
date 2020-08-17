@@ -10,9 +10,9 @@
                 <ul class="aloalerj-breadcrumbs">
                     <li>
                         @if(isset($person))
-                        <a href="{{ route('people.show', ['id' => $person->id]) }}">
-                            {{ $person->name }}
-                        </a>
+                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                                {{ $person->name }}
+                            </a>
                         @endif
                     </li>
                     <li>
@@ -216,7 +216,7 @@
                     @endIf
 
                     <div class="col-md-4">
-                        <label for="committee_id" class="col-form-label">Departamento Responsável</label>
+                        <label for="committee_id" class="col-form-label">Departamento</label>
                         <select id="committee_id" class="form-control{{ $errors->getBag('validation')->has('committee_id') ? ' is-invalid' : '' }} select2" name="committee_id" value="{{is_null(old('committee_id')) ? $record->committee_id : old('committee_id') }}" required autofocus @include('partials.disabled',['model'=>$record])>
                             <option value="">SELECIONE</option>
                             @foreach ($committees as $key => $committe)
