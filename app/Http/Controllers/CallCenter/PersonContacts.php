@@ -33,10 +33,10 @@ class PersonContacts extends Controller
      */
     public function storeViaWorkflow(PersonContactsWorkflowRequest $request)
     {
-        $this->createPersonContact($request, 'mobile');
-        $this->createPersonContact($request, 'whatsapp');
-        $this->createPersonContact($request, 'email');
-        $this->createPersonContact($request, 'phone');
+        $this->peopleContactsRepository->createPersonContact($request, 'mobile');
+        $this->peopleContactsRepository->createPersonContact($request, 'whatsapp');
+        $this->peopleContactsRepository->createPersonContact($request, 'email');
+        $this->peopleContactsRepository->createPersonContact($request, 'phone');
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
 
@@ -73,26 +73,7 @@ class PersonContacts extends Controller
             ->with('person', $person);
     }
 
-    /**
-     * @param PersonRequest $request
-     */
-    private function createPersonContact(
-        PersonContactsWorkflowRequest $request,
-        $code
-    ) {
-        $contact = $request->get($code);
-        if ($code != 'email') {
-            $contact = only_numbers($contact);
-        }
-        if ($request->get($code)) {
-            PersonContact::create([
-                'person_id' => $request->get('person_id'),
-                'contact_type_id' =>
-                    ContactType::where('code', $code)->first()->id,
-                'contact' => $contact,
-            ]);
-        }
-    }
+
 
     public function insertContact(PersonContactsRequest $request)
     {

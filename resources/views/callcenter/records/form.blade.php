@@ -9,9 +9,11 @@
                     --}}
                 <ul class="aloalerj-breadcrumbs">
                     <li>
+                        @if(isset($person))
                         <a href="{{ route('people.show', ['id' => $person->id]) }}">
                             {{ $person->name }}
                         </a>
+                        @endif
                     </li>
                     <li>
                         <i class="fas fa-list-ol"></i>
@@ -52,20 +54,146 @@
                 <div class="form-group row">
                     <div class="col-md-4">
                         <label for="cpf_cnpj" class="col-form-label">CNPJ/CPF</label>
-                        <input id="cpf_cnpj" class="form-control{{ $errors->has('cpf_cnpj') ? ' is-invalid' : '' }}" name="cpf_cnpj" value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}" readonly="readonly">
-                        @if ($errors->has('cpf_cnpj'))
-                        <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('cpf_cnpj') }}</strong></span>
+                        <input id="cpf_cnpj" class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj')? ' is-invalid' : '' }}" name="cpf_cnpj"
+                               v-mask='["###.###.###-##", "##.###.###/####-##"]'
+                               @if(isset($person))
+                                value="{{$person->cpf_cnpj}}" readonly
+                               @else
+                                   value="{{old('cpf_cnpj')}}"
+                                @endif
+                        >
+                        @if ($errors->getBag('validation')->has('cpf_cnpj'))
+                            <span class="invalid-feedback" role="alert"><strong>{{$errors->getBag('validation')->first('cpf_cnpj') }}</strong></span>
                         @endif
                     </div>
 
                     <div class="col-md-8">
                         <label for="name" class="col-form-label">Nome Completo</label>
-                        <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}" readonly="readonly">
-                        @if ($errors->has('name'))
-                        <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name') }}</strong></span>
+                        <input id="name" class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }}" name="name"
+                               @if(isset($person))
+                               value="{{$person->name}}" readonly
+                            @else
+                               value="{{old('name')}}"
+                            @endif
+                        >
+
+
+                        @if ($errors->getBag('validation')->has('name'))
+                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('name') }}</strong></span>
                         @endif
                     </div>
                 </div>
+                @if(!isset($person))
+
+                <div class="form-group row">
+
+                    <div class="col-md-3">
+                        <label for="mobile" class="col-form-label">Celular</label>
+                        <input class="form-control{{ $errors->getBag('validation')->has('mobile') ? ' is-invalid' : '' }}"
+                               id="mobile"
+                               name="mobile"
+                               @if(isset($contact))
+                               value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}"
+                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
+                               @else
+                               value="{{old('mobile') }}"
+                               v-init:mobile="'{{old('mobile')}}'"
+                               @endif
+                               autofocus
+                               v-mask='["(##)####-####", "(##)#####-####"]'
+                            {{--                               v-model='form.mobile'--}}
+                        >
+
+                        @if ($errors->getBag('validation')->has('mobile'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->getBag('validation')->first('mobile') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                        <label for="whatsapp" class="col-form-label">Whatsapp</label>
+                        <input class="form-control{{ $errors->getBag('validation')->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
+                               id="whatsapp"
+                               @if(isset($contact))
+                               value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
+                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
+                               @else
+                               value="{{old('whatsapp') }}"
+                               v-init:whatsapp="'{{old('whatsapp')}}'"
+                               @endif
+                               autofocus
+                               v-mask='["(##)#####-####"]'
+                            {{--                               v-model='form.whatsapp'--}}
+
+                        >
+
+                        @if ($errors->getBag('validation')->has('whatsapp'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->getBag('validation')->first('whatsapp') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email" class="col-form-label">E-mail</label>
+                        <input type=email class="form-control{{ $errors->getBag('validation')->has('email') ? ' is-invalid' : '' }}" name="email"
+                               id="email"
+                               @if(isset($contact))
+                               value="{{is_null(old('email')) ? $contact->email : old('email') }}"
+                               @else
+                               value="{{old('email') }}"
+                               @endif
+                               autofocus>
+
+                        @if ($errors->getBag('validation')->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->getBag('validation')->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="phone" class="col-form-label">Telefone Fixo</label>
+                        <input class="form-control{{ $errors->getBag('validation')->has('phone') ? ' is-invalid' : '' }}" name="phone"
+                               id="phone"
+                               @if(isset($contact))
+                               value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
+                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
+                               @else
+                               value="{{old('phone') }}"
+                               v-init:phone="'{{old('phone')}}'"
+                               @endif
+                               autofocus
+                               v-mask="['(##) ####-####', '(##) #####-####']"
+                            {{--                               v-model='form.phone'--}}
+
+                        >
+
+                        @if ($errors->getBag('validation')->has('phone'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->getBag('validation')->first('phone') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                @endif
+
+                <div class="form-group row">
+                    <input type="hidden" name="is_anonymous" :value="is_anonymous" />
+                    @if(!isset($person))
+                        <div class="col-md-3">
+                             <label for="is_anonymous" class="col-form-label">Protocolo Anônimo?</label><br />
+    {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
+    {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
+    {{--                                   data-style="ios"/>--}}
+
+                            <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                    v-on:click="toggleAnonymous" :value="is_anonymous">
+                                <div class="handle"></div>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+
 
                 <div class="form-group row">
                     @if (isset($record) and is_null($record->id))
@@ -123,8 +251,6 @@
                 </div>
 
                 <div class="form-group row">
-
-
                     <div class="col-md-4">
                         <label for="area_id" class="col-form-label">Assunto</label>
                         <select id="area_id" type="area_id" class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id" value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus @include('partials.disabled',['model'=>$record])>
@@ -142,9 +268,8 @@
                         @endif
                     </div>
                     <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                    @if ($person->is_anonymous == false)
                     <div class="col-md-3">
-                        <label for="send_answer_by_email" class="col-form-label">Resposta por e-mail</label>
+                        <label for="send_answer_by_email_checkbox" class="col-form-label">Resposta por e-mail</label>
                         {{--<p class="form-twolines">--}}
                         {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>--}}
                         {{--<div class="handle"></div>--}}
@@ -153,11 +278,14 @@
 
                         <p class="checkbox">
 
-                            <input id="send_answer_by_email" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
+                            <input id="send_answer_by_email_checkbox" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
                                 || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
                         </p>
                     </div>
-                    @endif
+
+
+
+
                 </div>
 
 
@@ -166,14 +294,13 @@
                     @if (isset($record) and is_null($record->id))
                     <div class="col-md-12">
                         <label for="original" class="col-form-label">Solicitação</label>
-                        <textarea id="original" class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}" name="original" value="{{is_null(old('original')) ? $record->original : old('original') }}" required rows="15">{{$record->original}}</textarea>
+                        <textarea id="original" class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}" name="original" required rows="15">{{is_null(old('original')) ? $record->original : old('original') }}</textarea>
                         @if ($errors->getBag('validation')->has('original'))
                         <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
                         @endif
                     </div>
                     @endif
                 </div>
-
 
                 <div class="form-group row">
                     @if (!$workflow && $record->created_at_formatted)

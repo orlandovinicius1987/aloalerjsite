@@ -1,6 +1,6 @@
 <?php
 Route::group(['prefix' => 'records'], function () {
-    Route::get('/create/{person_id}', 'Records@create')->name('records.create');
+    Route::get('/create/{person_id?}', 'Records@create')->name('records.create');
 
     Route::get('/create/workflow/{person_id}', 'Records@createFromWorkflow')->name('records.create-workflow');
 
