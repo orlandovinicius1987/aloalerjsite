@@ -294,7 +294,7 @@
                     @if (isset($record) and is_null($record->id))
                     <div class="col-md-12">
                         <label for="original" class="col-form-label">Solicitação</label>
-                        <textarea id="original" class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}" name="original" value="{{is_null(old('original')) ? $record->original : old('original') }}" required rows="15">{{$record->original}}</textarea>
+                        <textarea id="original" class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}" name="original" required rows="15">{{is_null(old('original')) ? $record->original : old('original') }}</textarea>
                         @if ($errors->getBag('validation')->has('original'))
                         <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
                         @endif

@@ -83,10 +83,9 @@ class Record extends BaseModel
 
     public function getFirstProgressOriginalAttribute()
     {
-        return $this->progresses()
+        return is_null($progress = $this->progresses()
             ->orderBy('created_at', 'asc')
-            ->first()
-            ->toArray()['original'];
+            ->first())? '': $progress->toArray()['original'];
     }
 
     public function getNotifiables()
