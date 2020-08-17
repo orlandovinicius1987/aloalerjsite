@@ -25,9 +25,10 @@ class Records extends Base
      * @param PersonContactRepository $personContactRepository
      * @internal param Repository $repository
      */
-    public function __construct(PeopleRepository $personRepository,
-                                PersonContactRepository $personContactRepository)
-    {
+    public function __construct(
+        PeopleRepository $personRepository,
+        PersonContactRepository $personContactRepository
+    ) {
         $this->peopleRepository = $personRepository;
         $this->personContactRepository = $personContactRepository;
     }
@@ -56,19 +57,15 @@ class Records extends Base
 
     public function create($data)
     {
-
-        if($data->is_anonymous == 'true'){
+        if (isset($data->is_anonymous) && $data->is_anonymous == 'true') {
             $person = get_anonymous_person();
-        }else if(isset($data->person_id)) {
-
+        } elseif (isset($data->person_id)) {
             $person = $this->peopleRepository->findById($data->person_id);
-        }else if($data->cpf_cnpj){
-
+        } elseif ($data->cpf_cnpj) {
             $person = $this->peopleRepository->findByCpfCnpj($data->cpf_cnpj);
-
         }
 
-        if(is_null($person)){
+        if (is_null($person)) {
             $data->cpf_cnpj = only_numbers($data->cpf_cnpj);
             $person = $this->peopleRepository->create($data->toArray());
         }
