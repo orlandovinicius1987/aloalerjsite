@@ -306,10 +306,10 @@ class Records extends Base
                     $records->where($key, $collumn);
                 }
             }
-
-            $this->createdAtBetweenDate($data, $records);
-            $this->resolvedAtBetweenDate($data, $records);
         }
+
+        $this->createdAtBetweenDate($data, $records);
+        $this->resolvedAtBetweenDate($data, $records);
 
         $records->orderBy('records.created_at', 'desc');
 
