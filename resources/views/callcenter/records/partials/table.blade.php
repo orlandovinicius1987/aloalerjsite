@@ -68,7 +68,7 @@
                             <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
                         </td>
                         <td style="width: 10%">
-                            @foreach($record->person->contacts as $contact)
+                            @foreach($record->person->contacts()->limit(10)->get() as $contact)
                                 <p>
                                     {{ $contact->contact }}
                                 </p>
@@ -119,8 +119,7 @@
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                         <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a> </div>
                         <div class="contact-line"><span class="mobile-label">Contatos : </span>
-                            @foreach($record->person->contacts as $contact)
-
+                            @foreach($record->person->contacts()->limit(10)->get() as $contact)
                                     {{ $contact->contact }}
                                 <br/>
                             @endForEach
