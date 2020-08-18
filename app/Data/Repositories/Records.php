@@ -229,6 +229,7 @@ class Records extends Base
     public function isSearchColumn($term)
     {
         $notSearchingTerms = collect([
+            'per_page',
             'page',
             '_token',
             'created_at_start',
@@ -291,7 +292,7 @@ class Records extends Base
         return $query;
     }
 
-    public function advancedSearch($data, $paginate)
+    public function advancedSearch($data)
     {
         $records = (new Record())->newQuery();
 
@@ -312,11 +313,15 @@ class Records extends Base
 
         $records->orderBy('records.created_at', 'desc');
 
-        if($paginate == 'all') {
-            $all = $records->count();
-            return $records->paginate($all);
+        if ($data['per_page'] == 'all') {
+            return $records->paginate($records->count());
+        } else {
+            return $records->paginate(
+                $data['per_page'],
+                ['*'],
+                'page',
+                $data['page']
+            );
         }
-        else
-            return $records->paginate($paginate);
     }
 }
