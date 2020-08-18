@@ -281,6 +281,7 @@ class Records extends Controller
             ->with('records', $records)
             ->with($this->getRecordsData())
             ->with($data)
+            ->with('mode', 'advanced-search')
             ->with('pageSizes', [
                 ['label' => '5', 'value' => '5'],
                 ['label' => '10', 'value' => '10'],
