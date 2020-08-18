@@ -12,17 +12,19 @@
                 </h3>
             </div>
 
-            <div class="col-5 col-md-8 text-right d-print-none">
-                <strong>
-                    Resultados por página:
-                </strong>
-                <select @change="changePerPage" id="paginate">
-                    @foreach($pageSizes as $pageSize)
-                        <option value="{{$pageSize['value']}}" @if ($per_page == $pageSize['value']) selected @endif>{{$pageSize['label']}}</option>
-                    @endforeach
-                </select>
+            @if(isset($mode) && $mode == 'advanced-search')
+                <div class="col-5 col-md-8 text-right d-print-none">
+                    <strong>
+                        Resultados por página:
+                    </strong>
+                    <select @change="changePerPage" id="paginate">
+                        @foreach($pageSizes as $pageSize)
+                            <option value="{{$pageSize['value']}}" @if ($per_page == $pageSize['value']) selected @endif>{{$pageSize['label']}}</option>
+                        @endforeach
+                    </select>
 
-            </div>
+                </div>
+            @endIf
 
             <div class="col-5 col-md-8 text-right">
                 @if(isset($person))
