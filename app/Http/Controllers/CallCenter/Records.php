@@ -255,11 +255,20 @@ class Records extends Controller
 
     public function advancedSearch(AdvancedSearchRequest $request)
     {
+
         $data = $request->all();
-        $records = app(RecordsRepository::class)->advancedSearch($data);
+        if (isset($data["paginate"])) {
+            $paginate = $data["paginate"];
+            unset($data['paginate']);
+        } else {
+            $paginate = 5;
+        }
+
+        $records = app(RecordsRepository::class)->advancedSearch($data, $paginate);
         return view('callcenter.records.advanced-search')
             ->with('records', $records)
             ->with($this->getRecordsData())
-            ->with($data);
+            ->with($data)
+            ->with('paginate', $paginate);
     }
 }

@@ -11,6 +11,40 @@
                     ({{$records->total()}} encontrados)
                 </h3>
             </div>
+
+            <div class="col-5 col-md-8 text-right">
+                <font size="5">
+                    Resultados por página:
+                </font>
+                <select id="paginate">
+                    <option value="5" @if ($paginate == 5) selected @endif>5</option>
+                    <option value="10"@if ($paginate == 10) selected @endif>10</option>
+                    <option value="15"@if ($paginate == 15) selected @endif>15</option>
+                    <option value="25"@if ($paginate == 25) selected @endif>25</option>
+                    <option value="50"@if ($paginate == 50) selected @endif>50</option>
+                    <option value="100"@if ($paginate == 100) selected @endif>100</option>
+                    <option value="250"@if ($paginate == 250) selected @endif>250</option>
+                    <option value="all"@if ($paginate == 'all') selected @endif>TODOS</option>
+                </select>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+                    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+            </script>
+
+            <script>
+                $(document).ready(function(){
+                    $('#paginate').on('change',function (){
+                        $('#formRecords').submit(function(eventObj) {
+                            var qtdpages = document.getElementById("paginate").value;
+                            $(this).append('<input id="paginate" type="hidden" name="paginate" value='+qtdpages+' /> ');
+                            return true;
+                        });
+                        $("#search_button").click()
+                    })
+                })
+            </script>
+
             <div class="col-5 col-md-8 text-right">
                 @if(isset($person))
                     <a id="button-novo-protocolo"

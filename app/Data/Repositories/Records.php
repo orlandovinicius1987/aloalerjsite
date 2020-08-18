@@ -291,7 +291,7 @@ class Records extends Base
         return $query;
     }
 
-    public function advancedSearch($data)
+    public function advancedSearch($data, $paginate)
     {
         $records = (new Record())->newQuery();
 
@@ -312,6 +312,11 @@ class Records extends Base
 
         $records->orderBy('records.created_at', 'desc');
 
-        return $records->paginate(10);
+        if($paginate == 'all') {
+            $all = $records->count();
+            return $records->paginate($all);
+        }
+        else
+            return $records->paginate($paginate);
     }
 }
