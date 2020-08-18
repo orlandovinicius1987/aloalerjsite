@@ -32,7 +32,7 @@ class Records extends Controller
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
-            ->with('anonymous_id',get_anonymous_person()->id)
+            ->with('anonymous_id', get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -73,14 +73,28 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
-
         $record = $this->recordsRepository->create(coollect($request->all()));
 
-        $this->peopleContactsRepository->createContact($request->get('mobile'), $record->person_id,'mobile');
-        $this->peopleContactsRepository->createContact($request->get('whatsapp'),$record->person_id, 'whatsapp');
-        $this->peopleContactsRepository->createContact($request->get('email'),$record->person_id, 'email');
-        $this->peopleContactsRepository->createContact($request->get('phone'),$record->person_id, 'phone');
-
+        $this->peopleContactsRepository->createContact(
+            $request->get('mobile'),
+            $record->person_id,
+            'mobile'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('whatsapp'),
+            $record->person_id,
+            'whatsapp'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('email'),
+            $record->person_id,
+            'email'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('phone'),
+            $record->person_id,
+            'phone'
+        );
 
         $record->sendNotifications();
 
@@ -106,13 +120,15 @@ class Records extends Controller
          * não é o nome cadastrado, será iniciado uma nova tela para acerto do cadastro.
          *
          */
-        if(($request->get('is_anonymous') == 'false') &&
-            $request->get('name') != $record->person->name){
-         return view('callcenter.people.diverge')->with(
-            ['newName'=>$request->get('name'),
-                'record'=>$record]);
+        if (
+            $request->get('is_anonymous') == 'false' &&
+            $request->get('name') != $record->person->name
+        ) {
+            return view('callcenter.people.diverge')->with([
+                'newName' => $request->get('name'),
+                'record' => $record
+            ]);
         }
-
 
         return redirect()->to(
             route(
@@ -256,10 +272,25 @@ class Records extends Controller
     public function advancedSearch(AdvancedSearchRequest $request)
     {
         $data = $request->all();
+
+        $data['per_page'] = $data['per_page'] ?? 5;
+        $data['page'] = $data['page'] ?? 1;
+
         $records = app(RecordsRepository::class)->advancedSearch($data);
         return view('callcenter.records.advanced-search')
             ->with('records', $records)
             ->with($this->getRecordsData())
-            ->with($data);
+            ->with($data)
+            ->with('pageSizes', [
+                ['label' => '5', 'value' => '5'],
+                ['label' => '10', 'value' => '10'],
+                ['label' => '15', 'value' => '15'],
+                ['label' => '25', 'value' => '25'],
+                ['label' => '50', 'value' => '50'],
+                ['label' => '100', 'value' => '100'],
+                ['label' => '250', 'value' => '250'],
+                ['label' => 'TODOS', 'value' => 'all']
+            ])
+            ->with('per_page', $data['per_page']);
     }
 }

@@ -1,4 +1,4 @@
-<div class="card mt-4"  id="vue-record">
+<div class="card mt-4"  id="vue-advanced-search">
     <div class="card-header">
         <div class="row align-items-center">
             <div class="col-7 col-md-4">
@@ -11,6 +11,19 @@
                     ({{$records->total()}} encontrados)
                 </h3>
             </div>
+
+            <div class="col-5 col-md-8 text-right d-print-none">
+                <strong>
+                    Resultados por página:
+                </strong>
+                <select @change="changePerPage" id="paginate">
+                    @foreach($pageSizes as $pageSize)
+                        <option value="{{$pageSize['value']}}" @if ($per_page == $pageSize['value']) selected @endif>{{$pageSize['label']}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+
             <div class="col-5 col-md-8 text-right">
                 @if(isset($person))
                     <a id="button-novo-protocolo"
@@ -134,7 +147,7 @@
 
     <!-------------------- END of MOBILE VERSION -------------------->
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center d-print-none">
         {{ $records->appends(Request::except('page'))->links() }}
     </div>
 

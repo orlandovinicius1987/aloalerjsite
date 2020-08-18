@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('./bootstrap')
 
 require('./apps/search.js')
 
@@ -14,11 +14,12 @@ require('./apps/committees-search.js')
 require('./apps/committees-search.js')
 require('./apps/phones.js')
 require('./apps/chat.js')
+require('./apps/advanced-search.js')
 
 $(document).ready(function() {
     $('.select2').select2({
-        theme: "bootstrap",
+        theme: 'bootstrap',
         tags: false,
-        width: "100%",
-    });
-});
+        width: '100%',
+    })
+})
