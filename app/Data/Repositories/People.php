@@ -131,7 +131,19 @@ class People extends Base
             );
         }
 
-        return $this->response($string, $query->get(), $query->count());
+        /**
+         *  O Perfil anônimo do legado possui 47 mil contatos, e 110 mil protocolos,
+         * para evitar problemas na busca, foi inserido um limite para retornar os dados de contato e numero
+         * de protocolo.
+         */
+        return $this->response($string,
+
+            $query->get()->map(function($people) {
+            $people->setRelation('records', $people->records->take(50));
+                return $people; })->map(function($people) {
+                $people->setRelation('contacts', $people->contacts->take(10));
+                return $people; })
+            , $query->count());
     }
 
     public function searchByEverything($search)
