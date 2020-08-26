@@ -65,10 +65,10 @@
 
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
                         <td style="width: 5%">
-                            <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
+                            <a href="{{ route('people.show',['id' => $record->Person->id]) }}" >{{ $record->Person->name }}</a>
                         </td>
                         <td style="width: 10%">
-                            @foreach($record->person->contacts()->limit(10)->get() as $contact)
+                            @foreach($record->Person->contacts()->limit(10)->get() as $contact)
                                 <p>
                                     {{ $contact->contact }}
                                 </p>
@@ -117,9 +117,10 @@
                 <div class="mobile-tables " v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer; border: 1px solid rgba(0, 0, 0, .2);"  >
                     <div class="contact-line"><span class="mobile-label">Protocolo Nº</span>{{ $record->protocol }}</div>
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                        <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['id' => $record->person->id]) }}" >{{ $record->person->name }}</a> </div>
+                        <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['id' => $record->Person->id]) }}" >{{ $record->Person->name }}</a> </div>
                         <div class="contact-line"><span class="mobile-label">Contatos : </span>
-                            @foreach($record->person->contacts()->limit(10)->get() as $contact)
+                            @foreach($record->Person->contacts as $contact)
+
                                     {{ $contact->contact }}
                                 <br/>
                             @endForEach

@@ -299,9 +299,11 @@ class Records extends Base
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
                 if ($key == 'person_name') {
-                    $records
-                        ->join('people', 'people.id', '=', 'records.person_id')
-                        ->where('people.name', 'ilike', '%' . $collumn . '%');
+                    $records->with(['person'=> function($query) use ($collumn){
+                       $query->where('name', 'ilike', '%' . $collumn . '%');
+                    }]);
+                        //->join('people', 'people.id', '=', 'records.person_id')
+//                        ->where('people.name', 'ilike', '%' . $collumn . '%');
                 } else {
                     $records->where($key, $collumn);
                 }
