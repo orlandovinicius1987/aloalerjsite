@@ -27,7 +27,7 @@ class Record extends BaseModel
         'record_action_id'
     ];
 
-    protected $with = ['committee','person'];
+    protected $with = ['committee'];
 
     protected $appends = ['first_progress_original'];
 
