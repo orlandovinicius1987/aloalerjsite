@@ -299,9 +299,9 @@ class Records extends Base
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
                 if ($key == 'person_name') {
-                    $records
-                        ->join('people', 'people.id', '=', 'records.person_id')
-                        ->where('people.name', 'ilike', '%' . $collumn . '%');
+
+                   $records->join('people', 'people.id', '=', 'records.person_id')
+                        ->where('people.name', 'ilike', '%' . $collumn . '%')->select('records.*');
                 } else {
                     $records->where($key, $collumn);
                 }
@@ -311,7 +311,7 @@ class Records extends Base
         $this->createdAtBetweenDate($data, $records);
         $this->resolvedAtBetweenDate($data, $records);
 
-        $records->orderBy('records.created_at', 'desc');
+       $records->orderBy('records.created_at', 'desc');
 
         if ($data['per_page'] == 'all') {
             return $records->paginate($records->count());
