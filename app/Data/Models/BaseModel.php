@@ -16,6 +16,7 @@ abstract class BaseModel extends Model implements
 
     protected $controlCreatedBy = false;
     protected $controlUpdatedBy = false;
+    protected $controlCreatedByCommittee = false;
 
     /**
      * @var bool
@@ -122,6 +123,12 @@ abstract class BaseModel extends Model implements
                 $model->created_by_id = ($user = auth()->user())
                     ? $user->id
                     : 1;
+            }
+
+            if ($model->controlCreatedByCommittee) {
+                $model->created_by_committee_id = ($user = auth()->user())
+                    ? $user->originCommittee()->id
+                    : null;
             }
         });
     }

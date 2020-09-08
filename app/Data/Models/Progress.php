@@ -11,6 +11,7 @@ class Progress extends BaseModel
     use Notifiable;
 
     protected $controlCreatedBy = true;
+    protected $controlCreatedByCommittee = true;
 
     /**
      * @var array
@@ -29,7 +30,8 @@ class Progress extends BaseModel
         'area_id',
         'created_at',
         'updated_at',
-        'original_history_id'
+        'original_history_id',
+        'created_by_committee_id'
     ];
 
     protected $presenters = ['link', 'finalize'];
@@ -84,5 +86,10 @@ class Progress extends BaseModel
     public function getNotifiables()
     {
         return $this->record->person->emails;
+    }
+
+    public function originCommittee()
+    {
+        return $this->belongsTo(Committee::class, 'created_by_committee_id');
     }
 }

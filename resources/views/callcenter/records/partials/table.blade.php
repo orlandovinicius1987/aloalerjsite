@@ -51,6 +51,7 @@
                 <th>Contatos</th>
                 @endif
                 <th>Solicitação</th>
+                <th>Departamento de Origem</th>
                 <th>Departamento</th>
                 <th>Tipo de Protocolo</th>
                 <th>Assunto</th>
@@ -78,7 +79,9 @@
 
                     <td style="word-wrap: break-word; width: 40%; max-width: 20px;">{{ $record->first_progress_original ?? '' }}</td>
 
-                    <td style="width: 10%">{{ $record->committee->name ?? '' }}</td>
+                    <td style="width: 7.5%">{{ $record->origin_committee->name ?? '' }}</td>
+
+                    <td style="width: 7.5%">{{ $record->committee->name ?? '' }}</td>
 
                     <td style="width: 5%">{{ $record->recordType->name ?? '' }}</td>
 
@@ -127,6 +130,7 @@
                         </div>
                     @endif
                     <div class="contact-line" ><span class="mobile-label">Solicitação : </span>{{ $record->first_progress_original ?? '' }} </div>
+                    <div class="contact-line"><span class="mobile-label">Departamento de Origem: </span>{{ $record->origin_committee->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Departamento : </span>{{ $record->committee->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Tipo de Protocolo : </span>{{ $record->recordType->name ?? '' }} </div>
                     <div class="contact-line"><span class="mobile-label">Assunto : </span>{{ $record->area->name ?? '' }} </div>
