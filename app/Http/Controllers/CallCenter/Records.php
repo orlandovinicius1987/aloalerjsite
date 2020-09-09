@@ -183,7 +183,7 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-                'Protocolo finalizado sem observações em ' . now() . '.',
+                'Protocolo reaberto sem observações em ' . now() . '.',
             'progress_type_id' => app(
                 ProgressTypesRepository::class
             )->findByName('Reabertura')->id,
