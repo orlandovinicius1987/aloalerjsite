@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\CallCenter;
 
+use App\Data\Models\Progress;
 use App\Data\Repositories\Areas;
 use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
@@ -153,10 +154,10 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-                'Protocolo finalizado sem observações em ' .
-                now() .
-                ' pelo usuário ' .
-                Auth::user()->name,
+                'Protocolo finalizado sem observações em ' . now() . '.',
+            'progress_type_id' => app(
+                ProgressTypesRepository::class
+            )->findByName('Finalização')->id,
             'record_id' => $record->id
         ]);
 
@@ -179,6 +180,19 @@ class Records extends Controller
     public function reopen($id)
     {
         $record = $this->recordsRepository->findById($id)->reopen();
+
+        $progress = $this->progressesRepository->create([
+            'original' =>
+                'Protocolo finalizado sem observações em ' . now() . '.',
+            'progress_type_id' => app(
+                ProgressTypesRepository::class
+            )->findByName('Reabertura')->id,
+            'record_id' => $record->id
+        ]);
+
+        $this->recordsRepository->markAsNotResolved($record->id);
+
+        $record->sendNotifications();
 
         $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 

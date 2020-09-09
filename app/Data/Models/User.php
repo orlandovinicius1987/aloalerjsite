@@ -15,12 +15,7 @@ class User extends Authenticatable implements AuditableContract
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'last_login_at',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'last_login_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -46,5 +41,14 @@ class User extends Authenticatable implements AuditableContract
     public function routeNotificationForSlack()
     {
         return config('services.slack.webhook_url');
+    }
+
+    public function originCommittee()
+    {
+        if ($this->userType->name == 'Comissao') {
+            return $this->committees()->first();
+        } else {
+            return Committee::where('slug', 'alo-alerj')->first();
+        }
     }
 }

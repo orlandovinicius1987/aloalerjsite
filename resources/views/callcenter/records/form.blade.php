@@ -213,6 +213,23 @@
                         <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('origin_id') }}</strong></span>
                         @endif
                     </div>
+                    @else
+                        <div class="col-md-4">
+                            <label for="created_by_committee_id" class="col-form-label">Departamento de Origem</label>
+                            <select id="created_by_committee_id" class="form-control{{ $errors->getBag('validation')->has('created_by_committee_id') ? ' is-invalid' : '' }} select2" name="created_by_committee_id" value="{{is_null(old('created_by_committee_id')) ? $record->originCommittee->id : old('created_by_committee_id') }}" required autofocus disabled>
+                                <option value="">SELECIONE</option>
+                                @foreach ($committees as $key => $committe)
+                                    @if(((!is_null($record->id)) && (!is_null($record->originCommittee) && $record->originCommittee->id === $committe->id) || (!is_null(old('created_by_committee_id'))) && old('created_by_committee_id') == $committe->id))
+                                        <option value="{{ $committe->id }}" selected="selected">{{ $committe->name }}</option>
+                                    @else
+                                        <option value="{{ $committe->id }}">{{ $committe->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @if ($errors->getBag('validation')->has('created_by_committee_id'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('created_by_committee_id') }}</strong></span>
+                            @endif
+                        </div>
                     @endIf
 
                     <div class="col-md-4">

@@ -12,7 +12,7 @@
                             </h2>
 
                             <div class="form-group row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="protocol" class="col-form-label">Protocolo</label>
                                     <input id="protocol"
                                            class="form-control{{ $errors->has('protocol') ? ' is-invalid' : '' }}" name="protocol"
@@ -25,7 +25,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="person_name" class="col-form-label">Cidadão</label>
                                     <input id="person_name"
                                            class="form-control{{ $errors->has('person_name') ? ' is-invalid' : '' }}" name="person_name"
@@ -38,7 +38,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="committee_id" class="col-form-label">Departamento</label>
                                     <select id="committee_id"
                                             class="form-control select2" name="committee_id"
@@ -46,6 +46,22 @@
                                         <option value="">SELECIONE</option>
                                         @foreach ($committees as $key => $committee)
                                             @if(isset($committee_id) && $committee_id == $committee->id)
+                                                <option value="{{ $committee->id }}" selected="selected">{{ $committee->name }}</option>
+                                            @else
+                                                <option value="{{ $committee->id }}">{{ $committee->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="created_by_committee_id" class="col-form-label">Departamento de Origem</label>
+                                    <select id="created_by_committee_id"
+                                            class="form-control select2" name="created_by_committee_id"
+                                            autofocus>
+                                        <option value="">SELECIONE</option>
+                                        @foreach ($committees as $key => $committee)
+                                            @if(isset($created_by_committee_id) && $created_by_committee_id == $committee->id)
                                                 <option value="{{ $committee->id }}" selected="selected">{{ $committee->name }}</option>
                                             @else
                                                 <option value="{{ $committee->id }}">{{ $committee->name }}</option>
