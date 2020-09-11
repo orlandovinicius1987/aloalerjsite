@@ -56,6 +56,10 @@ Route::get('/protocolo/{protocolo}', 'CallCenter\Records@showPublic')->name(
     'records.show-public'
 );
 
+Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name(
+    'records.search-show-public'
+);
+
 Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name(
     'records.search'
 );

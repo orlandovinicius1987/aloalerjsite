@@ -7,6 +7,7 @@ use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Services\Workflow;
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchProtocolRequest;
 use App\Http\Requests\ViaRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RecordRequest;
@@ -35,6 +36,11 @@ class Records extends Controller
             ->with('anonymous_id', get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
+    }
+
+    public function searchShowPublic(SearchProtocolRequest $request)
+    {
+        return redirect()->route('records.show-public', ['protocolo' => $request->protocolo]);
     }
 
     public function createFromWorkflow($person_id)
