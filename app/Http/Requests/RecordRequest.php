@@ -44,7 +44,20 @@ class RecordRequest extends Request
                 $this->is_anonymous_protocol()
                     ? ''
                     : 'required_without_all:mobile,whatsapp,person_id'
-            ]
+            ],
+            'neighbourhood'=>[
+                $this->create_address() ?
+            'required' : ''
+            ],
+            'city'=>[
+                $this->create_address() ?
+                    'required' : ''
+            ],
+            'state'=>[
+                $this->create_address() ?
+                    'required' : ''
+            ],
+
         ];
     }
 
@@ -56,6 +69,10 @@ class RecordRequest extends Request
     private function is_anonymous_protocol()
     {
         return $this->is_anonymous == 'true';
+    }
+
+    private function create_address(){
+        return $this->create_address == 'true';
     }
 
     public function sanitize()
