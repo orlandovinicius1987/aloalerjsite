@@ -9,29 +9,24 @@ class SearchProtocolRequest extends Request
     public function rules()
     {
         return [
-            'protocolo' => 
-                'required|exists:records,protocol',
+            'protocolo' => 'required|exists:records,protocol'
         ];
     }
-    
 
     /**
      * @return array
      */
-    
+
     public function sanitize()
     {
-        
-        if (!empty($this->get('protocol'))) {
+        if (!empty($this->get('protocolo'))) {
             $input = $this->all();
-            $input['protocol'] = only_numbers($input['protocol']);
+            $input['protocolo'] = only_numbers($input['protocolo']);
             $this->replace($input);
         }
+
         return $this->all();
     }
-
-
-
 }
- 
+
 ?>

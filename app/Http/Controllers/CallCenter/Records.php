@@ -40,7 +40,9 @@ class Records extends Controller
 
     public function searchShowPublic(SearchProtocolRequest $request)
     {
-        return redirect()->route('records.show-public', ['protocolo' => $request->protocolo]);
+        return redirect()->route('records.show-public', [
+            'protocolo' => $request->protocolo
+        ]);
     }
 
     public function createFromWorkflow($person_id)
