@@ -1878,6 +1878,9 @@ i.icone {
         display: inline-block;
         margin: 15px 0 10px 0;
         padding: 20px 15px 20px 15px ;
+        min-width: 294px;
+        min-height: 296px;
+        max-height: 300px;
     }
 
 

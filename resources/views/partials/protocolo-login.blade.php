@@ -1,4 +1,4 @@
-<div class="hidden-xs hidden-sm boxshadow">
+<div  class="hidden-xs hidden-md boxshadow">
     <div class="protocolo-bloco text-center">
         {{--<i class="fa fa-ticket icone" aria-hidden="true"> </i>--}}
         <h3>Acompanhamento <br>de Protocolo </h3>
@@ -23,33 +23,34 @@
                 </div>
             </div>
         </div>--}}
-        <form class="form-horizontal" method="post" action="#">
-
-            <div class="form-group">
-                {{--<label for="name" class="cols-sm-2 control-label">Seu Nome</label>--}}
-                <div class="cols-sm-10">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="name" id="name"  placeholder="Nome"/>
-                    </div>
-                </div>
-            </div>
-
-
+        <hr>
+        <form class="form-horizontal" method="post" action="{{ route('records.search-show-public') }}">
+            @csrf
+          
             <div class="form-group">
                 {{--<label for="username" class="cols-sm-2 control-label">Número de Protocolo</label>--}}
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-ticket fa" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="username" id="username"  placeholder="Número de protocolo"/>
+                        <input type="text" class="form-control" name="protocolo" id="protocolo"  placeholder="Número de protocolo" required/>
                     </div>
                 </div>
             </div>
 
 
+            @if ($errors->has('protocolo'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('protocolo') }}</strong>
+                </span>
+            @endif
+
+
             <div class="form-group ">
-                <button type="button" class="btn btn-primary btn-lg btn-block protocolo-button">Consultar</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block protocolo-button">Consultar</button>
             </div>
+            
+           
+           
 
         </form>
     </div>
