@@ -1,7 +1,10 @@
 @extends('layouts.app')
+
+@section('vue-app-name', 'vue-record')
+
 @section('heading')
 @parent
-<div class="mt-4" id="vue-record">
+<div class="mt-4">
     <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center">
             <div class="section-title">
@@ -94,10 +97,10 @@
                                name="mobile"
                                @if(isset($contact))
                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}"
-                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
+{{--                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"--}}
                                @else
                                value="{{old('mobile') }}"
-                               v-init:mobile="'{{old('mobile')}}'"
+{{--                               v-init:mobile="'{{old('mobile')}}'"--}}
                                @endif
                                autofocus
                                v-mask='["(##)####-####", "(##)#####-####"]'
@@ -116,10 +119,10 @@
                                id="whatsapp"
                                @if(isset($contact))
                                value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
-                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
+{{--                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"--}}
                                @else
                                value="{{old('whatsapp') }}"
-                               v-init:whatsapp="'{{old('whatsapp')}}'"
+{{--                               v-init:whatsapp="'{{old('whatsapp')}}'"--}}
                                @endif
                                autofocus
                                v-mask='["(##)#####-####"]'
@@ -157,10 +160,10 @@
                                id="phone"
                                @if(isset($contact))
                                value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
-                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
+{{--                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"--}}
                                @else
                                value="{{old('phone') }}"
-                               v-init:phone="'{{old('phone')}}'"
+{{--                               v-init:phone="'{{old('phone')}}'"--}}
                                @endif
                                autofocus
                                v-mask="['(##) ####-####', '(##) #####-####']"
@@ -504,6 +507,7 @@
                     </div>
                 </div>
 
+                <input name="files_array" type="hidden" v-model="filesJsonString">
             </form>
         </div>
     </div>
@@ -512,6 +516,8 @@
 @endsection
 @section('content')
 @if (isset($progresses))
-@include('callcenter.progress.index')
+    @include('callcenter.progress.index')
+@else
+    @include('callcenter.progress_files.index')
 @endif
 @endsection
