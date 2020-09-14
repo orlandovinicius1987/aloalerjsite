@@ -332,16 +332,17 @@
                     @endif
                 </div>
                 @if(!isset($person))
+{{--                    <div id="vue-addresses">--}}
                 <div class="form-group row">
                     <div class="col-md-2">
                         <label for="zipcode" class="col-form-label">CEP</label>
                         <input id="zipcode"
                                name="zipcode"
-{{--                               v-model="form.zipcode"--}}
+                               v-model="form.zipcode"
 {{--                               v-init:zipcode="'{{is_null(old('zipcode')) ? '' : old('zipcode') }}'"--}}
                                value="{{is_null(old('zipcode')) ? '' : old('zipcode') }}"
                                class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }}"
-{{--                               @keyup="typeKeyUp"--}}
+                               @keyup="typeKeyUp"
                                :disabled="!create_address"
                                v-mask='["##.###-###"]'
 
@@ -355,8 +356,8 @@
                         <label for="street" class="col-form-label">Endereço</label>
                         <input id="street"
                                name="street"
-{{--                               v-model="form.street"--}}
-{{--                               v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"--}}
+                               v-model="form.street"
+                               v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"
                                value="{{is_null(old('street')) ? '' : old('street') }}"
                                class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
                                :disabled="!create_address"
@@ -403,7 +404,7 @@
                         <label for="neighbourhood" class="col-form-label">Bairro</label>
                         <input id="neighbourhood"
                                name="neighbourhood"
-{{--                               v-model="form.neighbourhood"--}}
+                               v-model="form.neighbourhood"
 {{--                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}'"--}}
                                value="{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}"
                                class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
@@ -419,7 +420,7 @@
                         <label for="city" class="col-form-label">Cidade</label>
                         <input id="city"
                                name="city"
-{{--                               v-model="form.city"--}}
+                               v-model="form.city"
 {{--                               v-init:city="'{{is_null(old('city')) ? '' : old('city') }}'"--}}
                                value="{{is_null(old('city')) ? '' : old('city') }}"
                                class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
@@ -435,7 +436,7 @@
                         <label for="state" class="col-form-label text-md-right">Estado</label>
                         <input id="state"
                                name="state"
-{{--                               v-model="form.state"--}}
+                               v-model="form.state"
 {{--                               v-init:state="'{{is_null(old('state')) ? '' : old('state') }}'"--}}
                                value="{{is_null(old('state')) ? '' : old('state') }}"
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
@@ -447,6 +448,7 @@
                             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('state') }}</strong></span>
                         @endif
                     </div>
+{{--                </div>--}}
                 @endif
 
                 <div class="form-group row mb-4 mt-5">
