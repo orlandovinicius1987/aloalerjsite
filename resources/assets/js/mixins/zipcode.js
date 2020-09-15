@@ -26,7 +26,6 @@ export default {
 
             $this.refreshing = true
 
-            console.log('form.zipcode: '+ this.form.zipcode)
             axios
                 .get('/api/v1/zipcode/' + this.form.zipcode, {
                     params: {
@@ -35,7 +34,7 @@ export default {
                 })
                 .then(function(response) {
                     $this.tables.addresses = response.data
-                    console.log(response.data)
+
                     if (response.data.addresses[0].street_name) {
                         $this.form.zipcode = response.data.addresses[0].zip
                         $this.form.street =
@@ -83,17 +82,15 @@ export default {
                 return true
             }
         },
+
+        clearForm(){
+            this.form.zipcode = ''
+                this.form.street = '',
+                this.form.neighbourhood = '',
+                this.form.city = '',
+                this.form.state = ''
+        }
     },
 
-    computed: {
-        isShowing() {
-            return this.mode === 'show'
-        },
-        isEditing() {
-            return this.mode === 'edit'
-        },
-        isCreating() {
-            return this.mode === 'create'
-        },
-      }
+
 }

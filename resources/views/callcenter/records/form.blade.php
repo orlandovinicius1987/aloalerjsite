@@ -208,9 +208,127 @@
                         <input type="hidden" name="create_address" value="0" />
                     @endif
 
-
                 </div>
 
+                @if(!isset($person))
+                    {{--                    <div id="vue-addresses">--}}
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="zipcode" class="col-form-label">CEP</label>
+                            <input id="zipcode"
+                                   name="zipcode"
+                                   v-model="form.zipcode"
+                                   {{--                               v-init:zipcode="'{{is_null(old('zipcode')) ? '' : old('zipcode') }}'"--}}
+                                   value="{{is_null(old('zipcode')) ? '' : old('zipcode') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }} address-disabled"
+                                   @keyup="typeKeyUp"
+                                   :disabled="!create_address"
+                                   v-mask='["##.###-###"]'
+
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('zipcode'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('zipcode') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="col-md-6">
+                            <label for="street" class="col-form-label">Endereço</label>
+                            <input id="street"
+                                   name="street"
+                                   v-model="form.street"
+                                   v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"
+                                   value="{{is_null(old('street')) ? '' : old('street') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }} address-disabled"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('street'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('street') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="col-md-2">
+                            <label for="number" class="col-form-label">Número</label>
+                            <input id="number"
+                                   name="number"
+                                   {{--v-on:keypress="isNumber(event)"--}}
+                                   value="{{is_null(old('number')) ? '' : old('number') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('number') ? ' is-invalid' : '' }} address-disabled"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('number'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('number') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="col-md-2">
+                            <label for="complement" class="col-form-label text-md-right">Complemento</label>
+                            <input id="complement"
+                                   name="complement"
+                                   value="{{is_null(old('complement')) ? '' : old('complement') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('complement') ? ' is-invalid' : '' }} address-disabled"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('complement'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('complement') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="neighbourhood" class="col-form-label">Bairro</label>
+                            <input id="neighbourhood"
+                                   name="neighbourhood"
+                                   v-model="form.neighbourhood"
+                                   {{--                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}'"--}}
+                                   value="{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }} address-disabled"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('neighbourhood'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('neighbourhood') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="col-md-4">
+                            <label for="city" class="col-form-label">Cidade</label>
+                            <input id="city"
+                                   name="city"
+                                   v-model="form.city"
+                                   {{--                               v-init:city="'{{is_null(old('city')) ? '' : old('city') }}'"--}}
+                                   value="{{is_null(old('city')) ? '' : old('city') }}"
+                                   class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }} address-disabled"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('city'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('city') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="col-md-2">
+                            <label for="state" class="col-form-label text-md-right">Estado</label>
+                            <input id="state"
+                                   name="state"
+                                   v-model="form.state"
+                                   {{--                               v-init:state="'{{is_null(old('state')) ? '' : old('state') }}'"--}}
+                                   value="{{is_null(old('state')) ? '' : old('state') }}"
+                                   class="address-disabled form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
+                                   :disabled="!create_address"
+                                   autofocus
+                                {{--                            @include('partials.disabled',['model'=>address-disabled$address])--}}
+                            >
+                            @if ($errors->getBag('validation')->has('state'))
+                                <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('state') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                @endif
 
                 <div class="form-group row">
                     @if (isset($record) and is_null($record->id))
@@ -299,13 +417,7 @@
                                 || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
                         </p>
                     </div>
-
-
-
-
                 </div>
-
-
 
                 <div class="form-group row">
                     @if (isset($record) and is_null($record->id))
@@ -331,125 +443,7 @@
                     </div>
                     @endif
                 </div>
-                @if(!isset($person))
-{{--                    <div id="vue-addresses">--}}
-                <div class="form-group row">
-                    <div class="col-md-2">
-                        <label for="zipcode" class="col-form-label">CEP</label>
-                        <input id="zipcode"
-                               name="zipcode"
-                               v-model="form.zipcode"
-{{--                               v-init:zipcode="'{{is_null(old('zipcode')) ? '' : old('zipcode') }}'"--}}
-                               value="{{is_null(old('zipcode')) ? '' : old('zipcode') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }}"
-                               @keyup="typeKeyUp"
-                               :disabled="!create_address"
-                               v-mask='["##.###-###"]'
 
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('zipcode'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('zipcode') }}</strong></span>
-                        @endif
-                    </div>
-                    <div class="col-md-6">
-                        <label for="street" class="col-form-label">Endereço</label>
-                        <input id="street"
-                               name="street"
-                               v-model="form.street"
-                               v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"
-                               value="{{is_null(old('street')) ? '' : old('street') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('street'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('street') }}</strong></span>
-                        @endif
-                    </div>
-                    <div class="col-md-2">
-                        <label for="number" class="col-form-label">Número</label>
-                        <input id="number"
-                               name="number"
-                               {{--v-on:keypress="isNumber(event)"--}}
-                               value="{{is_null(old('number')) ? '' : old('number') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('number'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('number') }}</strong></span>
-                        @endif
-                    </div>
-                    <div class="col-md-2">
-                        <label for="complement" class="col-form-label text-md-right">Complemento</label>
-                        <input id="complement"
-                               name="complement"
-                               value="{{is_null(old('complement')) ? '' : old('complement') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('complement') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('complement'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('complement') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-md-4">
-                        <label for="neighbourhood" class="col-form-label">Bairro</label>
-                        <input id="neighbourhood"
-                               name="neighbourhood"
-                               v-model="form.neighbourhood"
-{{--                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}'"--}}
-                               value="{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('neighbourhood'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('neighbourhood') }}</strong></span>
-                        @endif
-                    </div>
-                    <div class="col-md-4">
-                        <label for="city" class="col-form-label">Cidade</label>
-                        <input id="city"
-                               name="city"
-                               v-model="form.city"
-{{--                               v-init:city="'{{is_null(old('city')) ? '' : old('city') }}'"--}}
-                               value="{{is_null(old('city')) ? '' : old('city') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('city'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('city') }}</strong></span>
-                        @endif
-                    </div>
-                    <div class="col-md-2">
-                        <label for="state" class="col-form-label text-md-right">Estado</label>
-                        <input id="state"
-                               name="state"
-                               v-model="form.state"
-{{--                               v-init:state="'{{is_null(old('state')) ? '' : old('state') }}'"--}}
-                               value="{{is_null(old('state')) ? '' : old('state') }}"
-                               class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
-                               :disabled="!create_address"
-                               autofocus
-{{--                            @include('partials.disabled',['model'=>$address])--}}
-                        >
-                        @if ($errors->getBag('validation')->has('state'))
-                            <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('state') }}</strong></span>
-                        @endif
-                    </div>
-{{--                </div>--}}
-                @endif
 
                 <div class="form-group row mb-4 mt-5">
                     <div class="col-md-12 text-center">
