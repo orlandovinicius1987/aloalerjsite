@@ -125,6 +125,6 @@ class Record extends BaseModel
 
     public function getOriginCommitteeAttribute()
     {
-        return $this->firstProgress()->originCommittee;
+        return $this->firstProgress()->originCommittee ?? null;
     }
 }
