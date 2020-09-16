@@ -55,6 +55,25 @@
                 @endif
 
                 <div class="form-group row">
+                    @if(!isset($person))
+                        <input type="hidden" name="is_anonymous" :value="is_anonymous" />
+                        <div class="col-md-3">
+                            <label for="is_anonymous" class="col-form-label">Protocolo Anônimo?</label><br />
+                            {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
+                            {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
+                            {{--                                   data-style="ios"/>--}}
+
+                            <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                    v-on:click="toggleAnonymous" :value="is_anonymous">
+                                <div class="handle"></div>
+                            </button>
+                        </div>
+                    @endIf
+                </div>
+
+                <transition name="fade">
+                    <div v-if="!is_anonymous">
+                <div class="form-group row">
                     <div class="col-md-4">
                         <label for="cpf_cnpj" class="col-form-label">CNPJ/CPF</label>
                         <input id="cpf_cnpj" class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj')? ' is-invalid' : '' }} non-anonymous" name="cpf_cnpj"
@@ -178,24 +197,19 @@
                         @endif
                     </div>
                 </div>
+                            <hr/>
                 @endif
 
+
+                    </div>
+                </transition>
+
+
+
                 <div class="form-group row">
-
                     @if(!isset($person))
-                        <input type="hidden" name="is_anonymous" :value="is_anonymous" />
-                        <div class="col-md-3">
-                             <label for="is_anonymous" class="col-form-label">Protocolo Anônimo?</label><br />
-    {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
-    {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
-    {{--                                   data-style="ios"/>--}}
-
-                            <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
-                                    v-on:click="toggleAnonymous" :value="is_anonymous">
-                                <div class="handle"></div>
-                            </button>
-                        </div>
-                        <div class="col-md-3">
+                    <transition>
+                        <div v-if="!is_anonymous" class="col-md-3">
                             <label for="create_address" class="col-form-label">Cadastrar Endereço?</label><br />
                             {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
                             {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
@@ -207,12 +221,16 @@
                                 <input type="hidden" name="create_address" :value="create_address" />
                             </button>
                         </div>
+                    </transition>
                     @else
                         <input type="hidden" name="create_address" value="0" />
                     @endif
 
+
                 </div>
 
+                <transition name="fade">
+                    <div v-if="create_address">
                 @if(!isset($person))
                     {{--                    <div id="vue-addresses">--}}
                     <div class="form-group row">
@@ -331,7 +349,12 @@
                             @endif
                         </div>
                     </div>
+                            <hr/>
                 @endif
+                    </div>
+                </transition>
+
+
 
                 <div class="form-group row">
                     @if (isset($record) and is_null($record->id))
@@ -508,7 +531,9 @@
                 </div>
 
                 <input name="files_array" type="hidden" v-model="filesJsonString">
+
             </form>
+        </div>
         </div>
     </div>
 </div>
