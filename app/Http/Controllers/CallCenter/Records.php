@@ -34,6 +34,7 @@ class Records extends Controller
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('anonymous_id', get_anonymous_person()->id)
+            ->with('progressFiles', [])
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -113,7 +114,14 @@ class Records extends Controller
                     ProgressTypesRepository::class
                 )->findByName('Entrada')->id
             ]);
-            $this->progressesRepository->createFromRequest($request);
+            $progress = $this->progressesRepository->createFromRequest(
+                $request
+            );
+
+            $this->progressesRepository->attachFilesFromRequest(
+                $request,
+                $progress->id
+            );
         }
 
         $this->showSuccessMessage(

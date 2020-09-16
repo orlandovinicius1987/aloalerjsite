@@ -14,12 +14,10 @@ if (jQuery('#' + appName).length > 0) {
     const app = new Vue({
         el: '#' + appName,
 
-        mixins: [editMixin, helpersMixin,zipcodeMixin],
+        mixins: [editMixin, helpersMixin, zipcodeMixin],
 
         data: {
-
             pesquisa: '',
-
         },
 
         mounted() {

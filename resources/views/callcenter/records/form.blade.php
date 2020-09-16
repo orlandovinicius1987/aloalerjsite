@@ -1,7 +1,10 @@
 @extends('layouts.app')
+
+@section('vue-app-name', 'vue-record')
+
 @section('heading')
 @parent
-<div class="mt-4" id="vue-record">
+<div class="mt-4">
     <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center">
             <div class="section-title">
@@ -52,6 +55,25 @@
                 @endif
 
                 <div class="form-group row">
+                    @if(!isset($person))
+                        <input type="hidden" name="is_anonymous" :value="is_anonymous" />
+                        <div class="col-md-3">
+                            <label for="is_anonymous" class="col-form-label">Protocolo Anônimo?</label><br />
+                            {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
+                            {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
+                            {{--                                   data-style="ios"/>--}}
+
+                            <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                    v-on:click="toggleAnonymous" :value="is_anonymous">
+                                <div class="handle"></div>
+                            </button>
+                        </div>
+                    @endIf
+                </div>
+
+                <transition name="fade">
+                    <div v-if="!is_anonymous">
+                <div class="form-group row">
                     <div class="col-md-4">
                         <label for="cpf_cnpj" class="col-form-label">CNPJ/CPF</label>
                         <input id="cpf_cnpj" class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj')? ' is-invalid' : '' }} non-anonymous" name="cpf_cnpj"
@@ -94,10 +116,10 @@
                                name="mobile"
                                @if(isset($contact))
                                value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}"
-                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
+{{--                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"--}}
                                @else
                                value="{{old('mobile') }}"
-                               v-init:mobile="'{{old('mobile')}}'"
+{{--                               v-init:mobile="'{{old('mobile')}}'"--}}
                                @endif
                                autofocus
                                v-mask='["(##)####-####", "(##)#####-####"]'
@@ -116,10 +138,10 @@
                                id="whatsapp"
                                @if(isset($contact))
                                value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
-                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
+{{--                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"--}}
                                @else
                                value="{{old('whatsapp') }}"
-                               v-init:whatsapp="'{{old('whatsapp')}}'"
+{{--                               v-init:whatsapp="'{{old('whatsapp')}}'"--}}
                                @endif
                                autofocus
                                v-mask='["(##)#####-####"]'
@@ -157,10 +179,10 @@
                                id="phone"
                                @if(isset($contact))
                                value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
-                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
+{{--                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"--}}
                                @else
                                value="{{old('phone') }}"
-                               v-init:phone="'{{old('phone')}}'"
+{{--                               v-init:phone="'{{old('phone')}}'"--}}
                                @endif
                                autofocus
                                v-mask="['(##) ####-####', '(##) #####-####']"
@@ -175,24 +197,19 @@
                         @endif
                     </div>
                 </div>
+                            <hr/>
                 @endif
 
+
+                    </div>
+                </transition>
+
+
+
                 <div class="form-group row">
-
                     @if(!isset($person))
-                        <input type="hidden" name="is_anonymous" :value="is_anonymous" />
-                        <div class="col-md-3">
-                             <label for="is_anonymous" class="col-form-label">Protocolo Anônimo?</label><br />
-    {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
-    {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
-    {{--                                   data-style="ios"/>--}}
-
-                            <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
-                                    v-on:click="toggleAnonymous" :value="is_anonymous">
-                                <div class="handle"></div>
-                            </button>
-                        </div>
-                        <div class="col-md-3">
+                    <transition>
+                        <div v-if="!is_anonymous" class="col-md-3">
                             <label for="create_address" class="col-form-label">Cadastrar Endereço?</label><br />
                             {{--                            <input id="is_anonymous" type="checkbox" name="is_anonymous" v-on:change="toggleAnonymous"--}}
                             {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
@@ -204,12 +221,16 @@
                                 <input type="hidden" name="create_address" :value="create_address" />
                             </button>
                         </div>
+                    </transition>
                     @else
                         <input type="hidden" name="create_address" value="0" />
                     @endif
 
+
                 </div>
 
+                <transition name="fade">
+                    <div v-if="create_address">
                 @if(!isset($person))
                     {{--                    <div id="vue-addresses">--}}
                     <div class="form-group row">
@@ -217,7 +238,7 @@
                             <label for="zipcode" class="col-form-label">CEP</label>
                             <input id="zipcode"
                                    name="zipcode"
-                                   v-model="form.zipcode"
+                                   v-model="address.zipcode"
                                    {{--                               v-init:zipcode="'{{is_null(old('zipcode')) ? '' : old('zipcode') }}'"--}}
                                    value="{{is_null(old('zipcode')) ? '' : old('zipcode') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }} address-disabled"
@@ -235,7 +256,7 @@
                             <label for="street" class="col-form-label">Endereço</label>
                             <input id="street"
                                    name="street"
-                                   v-model="form.street"
+                                   v-model="address.street"
                                    v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"
                                    value="{{is_null(old('street')) ? '' : old('street') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }} address-disabled"
@@ -283,7 +304,7 @@
                             <label for="neighbourhood" class="col-form-label">Bairro</label>
                             <input id="neighbourhood"
                                    name="neighbourhood"
-                                   v-model="form.neighbourhood"
+                                   v-model="address.neighbourhood"
                                    {{--                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}'"--}}
                                    value="{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }} address-disabled"
@@ -299,7 +320,7 @@
                             <label for="city" class="col-form-label">Cidade</label>
                             <input id="city"
                                    name="city"
-                                   v-model="form.city"
+                                   v-model="address.city"
                                    {{--                               v-init:city="'{{is_null(old('city')) ? '' : old('city') }}'"--}}
                                    value="{{is_null(old('city')) ? '' : old('city') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }} address-disabled"
@@ -315,7 +336,7 @@
                             <label for="state" class="col-form-label text-md-right">Estado</label>
                             <input id="state"
                                    name="state"
-                                   v-model="form.state"
+                                   v-model="address.state"
                                    {{--                               v-init:state="'{{is_null(old('state')) ? '' : old('state') }}'"--}}
                                    value="{{is_null(old('state')) ? '' : old('state') }}"
                                    class="address-disabled form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
@@ -328,7 +349,12 @@
                             @endif
                         </div>
                     </div>
+                            <hr/>
                 @endif
+                    </div>
+                </transition>
+
+
 
                 <div class="form-group row">
                     @if (isset($record) and is_null($record->id))
@@ -351,7 +377,7 @@
                     @else
                         <div class="col-md-4">
                             <label for="created_by_committee_id" class="col-form-label">Departamento de Origem</label>
-                            <select id="created_by_committee_id" class="form-control{{ $errors->getBag('validation')->has('created_by_committee_id') ? ' is-invalid' : '' }} select2" name="created_by_committee_id" value="{{is_null(old('created_by_committee_id')) ? $record->originCommittee->id : old('created_by_committee_id') }}" required autofocus disabled>
+                            <select id="created_by_committee_id" class="form-control{{ $errors->getBag('validation')->has('created_by_committee_id') ? ' is-invalid' : '' }} select2" name="created_by_committee_id" value="{{is_null(old('created_by_committee_id')) ? ($record->originCommittee->id ?? null) : old('created_by_committee_id') }}" required autofocus disabled>
                                 <option value="">SELECIONE</option>
                                 @foreach ($committees as $key => $committe)
                                     @if(((!is_null($record->id)) && (!is_null($record->originCommittee) && $record->originCommittee->id === $committe->id) || (!is_null(old('created_by_committee_id'))) && old('created_by_committee_id') == $committe->id))
@@ -483,7 +509,7 @@
                             <i class="fas fa-redo"></i> Reabrir
                         </button>
 
-                        <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
+                        <button href="#" id="finishButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
                             :disabled="isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}"
                             @else
                             disabled
@@ -504,6 +530,8 @@
                     </div>
                 </div>
 
+                <input name="files_array" type="hidden" v-model="filesJsonString">
+
             </form>
         </div>
     </div>
@@ -512,6 +540,8 @@
 @endsection
 @section('content')
 @if (isset($progresses))
-@include('callcenter.progress.index')
+    @include('callcenter.progress.index')
+@else
+    @include('callcenter.progress_files.index')
 @endif
 @endsection

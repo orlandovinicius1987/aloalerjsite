@@ -6,12 +6,11 @@ export default {
 
         typeTimeout: null,
 
-
         tables: {
             addresses: [],
         },
 
-        form: {
+        address: {
             zipcode: null,
             street: null,
             neighbourhood: null,
@@ -27,7 +26,7 @@ export default {
             $this.refreshing = true
 
             axios
-                .get('/api/v1/zipcode/' + this.form.zipcode, {
+                .get('/api/v1/zipcode/' + this.address.zipcode, {
                     params: {
                         api_token: laravel.api_token,
                     },
@@ -36,15 +35,15 @@ export default {
                     $this.tables.addresses = response.data
 
                     if (response.data.addresses[0].street_name) {
-                        $this.form.zipcode = response.data.addresses[0].zip
-                        $this.form.street =
+                        $this.address.zipcode = response.data.addresses[0].zip
+                        $this.address.street =
                             response.data.addresses[0].street_name
-                        $this.form.neighbourhood =
+                        $this.address.neighbourhood =
                             response.data.addresses[0].neighborhood
-                        $this.form.city = response.data.addresses[0].city
-                        $this.form.state =
+                        $this.address.city = response.data.addresses[0].city
+                        $this.address.state =
                             response.data.addresses[0].state_id
-                        $this.form.country = 'Brasil'
+                        $this.address.country = 'Brasil'
                         document.getElementById('number').focus()
                     }
 
@@ -83,14 +82,12 @@ export default {
             }
         },
 
-        clearForm(){
-            this.form.zipcode = ''
-                this.form.street = '',
-                this.form.neighbourhood = '',
-                this.form.city = '',
-                this.form.state = ''
-        }
+        clearAddress() {
+            this.address.zipcode = ''
+            ;(this.address.street = ''),
+                (this.address.neighbourhood = ''),
+                (this.address.city = ''),
+                (this.address.state = '')
+        },
     },
-
-
 }

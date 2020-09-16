@@ -1,3 +1,5 @@
+require('./support/helpers')
+
 require('./bootstrap')
 
 require('./apps/search.js')
