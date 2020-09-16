@@ -220,7 +220,7 @@
                             <label for="zipcode" class="col-form-label">CEP</label>
                             <input id="zipcode"
                                    name="zipcode"
-                                   v-model="form.zipcode"
+                                   v-model="address.zipcode"
                                    {{--                               v-init:zipcode="'{{is_null(old('zipcode')) ? '' : old('zipcode') }}'"--}}
                                    value="{{is_null(old('zipcode')) ? '' : old('zipcode') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }} address-disabled"
@@ -238,7 +238,7 @@
                             <label for="street" class="col-form-label">Endereço</label>
                             <input id="street"
                                    name="street"
-                                   v-model="form.street"
+                                   v-model="address.street"
                                    v-init:street="'{{is_null(old('street')) ? '' : old('street') }}'"
                                    value="{{is_null(old('street')) ? '' : old('street') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }} address-disabled"
@@ -286,7 +286,7 @@
                             <label for="neighbourhood" class="col-form-label">Bairro</label>
                             <input id="neighbourhood"
                                    name="neighbourhood"
-                                   v-model="form.neighbourhood"
+                                   v-model="address.neighbourhood"
                                    {{--                               v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}'"--}}
                                    value="{{is_null(old('neighbourhood')) ? '': old('neighbourhood') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }} address-disabled"
@@ -302,7 +302,7 @@
                             <label for="city" class="col-form-label">Cidade</label>
                             <input id="city"
                                    name="city"
-                                   v-model="form.city"
+                                   v-model="address.city"
                                    {{--                               v-init:city="'{{is_null(old('city')) ? '' : old('city') }}'"--}}
                                    value="{{is_null(old('city')) ? '' : old('city') }}"
                                    class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }} address-disabled"
@@ -318,7 +318,7 @@
                             <label for="state" class="col-form-label text-md-right">Estado</label>
                             <input id="state"
                                    name="state"
-                                   v-model="form.state"
+                                   v-model="address.state"
                                    {{--                               v-init:state="'{{is_null(old('state')) ? '' : old('state') }}'"--}}
                                    value="{{is_null(old('state')) ? '' : old('state') }}"
                                    class="address-disabled form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"
@@ -486,7 +486,7 @@
                             <i class="fas fa-redo"></i> Reabrir
                         </button>
 
-                        <button href="#" id="finishButton" onclick="return false;" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
+                        <button href="#" id="finishButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
                             :disabled="isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}"
                             @else
                             disabled
