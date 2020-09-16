@@ -2,7 +2,12 @@
 Route::group(['prefix' => 'records'], function () {
     Route::get('/create/{person_id?}', 'Records@create')->name('records.create');
 
+
+    Route::get('/create-from-search', 'Records@createFromSearch')->name('records.create-search');
+
     Route::get('/create/workflow/{person_id}', 'Records@createFromWorkflow')->name('records.create-workflow');
+
+    Route::post('/store-from-search', 'Records@storeFromSearch')->name('records.store-from-search');
 
     Route::post('/', 'Records@store')->name('records.store');
 
