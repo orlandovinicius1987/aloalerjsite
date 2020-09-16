@@ -47,9 +47,8 @@
 
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords" class="form-with-labels">
                 @csrf
-                @if (isset($person))
                 <input name="person_id" type="hidden" value="{{ $person->id }}">
-                @endif
+
                 @if (isset($record))
                 <input name="record_id" type="hidden" value="{{ $record->id }}">
                 @endif
@@ -78,11 +77,7 @@
                         <label for="cpf_cnpj" class="col-form-label">CNPJ/CPF</label>
                         <input id="cpf_cnpj" class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj')? ' is-invalid' : '' }} non-anonymous" name="cpf_cnpj"
                                v-mask='["###.###.###-##", "##.###.###/####-##"]'
-                               @if(isset($person))
                                 value="{{$person->cpf_cnpj}}" readonly
-                               @else
-                                   value="{{old('cpf_cnpj')}}"
-                                @endif
                         >
                         @if ($errors->getBag('validation')->has('cpf_cnpj'))
                             <span class="invalid-feedback" role="alert"><strong>{{$errors->getBag('validation')->first('cpf_cnpj') }}</strong></span>
@@ -92,12 +87,7 @@
                     <div class="col-md-8">
                         <label for="name" class="col-form-label">Nome Completo</label>
                         <input id="name" class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }} non-anonymous" name="name"
-                               @if(isset($person))
-                               value="{{$person->name}}" readonly
-                            @else
-                               value="{{old('name')}}"
-                            @endif
-                        >
+                               value="{{$person->name}}" readonly >
 
 
                         @if ($errors->getBag('validation')->has('name'))
@@ -105,6 +95,7 @@
                         @endif
                     </div>
                 </div>
+<<<<<<< HEAD
                 @if(!isset($person))
 
                 <div class="form-group row">
@@ -427,52 +418,10 @@
                             @endif
                     </div>
                 </div>
+=======
+>>>>>>> issues: #690 e #688
 
-                <div class="form-group row">
-                    <div class="col-md-4">
-                        <label for="area_id" class="col-form-label">Assunto</label>
-                        <select id="area_id" type="area_id" class="form-control{{ $errors->getBag('validation')->has('area_id') ? ' is-invalid' : '' }} select2" name="area_id" value="{{is_null(old('area_id')) ? $record->area_id : old('area_id') }}" required autofocus @include('partials.disabled',['model'=>$record])>
-                            <option value="">SELECIONE</option>
-                            @foreach ($areas as $key => $area)
-                            @if(((!is_null($record->id)) && (!is_null($record->area_id) && $record->area_id === $area->id) || (!is_null(old('area_id'))) && old('area_id') == $area->id))
-                            <option value="{{ $area->id }}" selected="selected">{{ $area->name }}</option>
-                            @else
-                            <option value="{{ $area->id }}">{{ $area->name }}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                        @if ($errors->getBag('validation')->has('area_id'))
-                        <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('area_id') }}</strong></span>
-                        @endif
-                    </div>
-                    <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                    <div class="col-md-3">
-                        <label for="send_answer_by_email_checkbox" class="col-form-label">Resposta por e-mail</label>
-                        {{--<p class="form-twolines">--}}
-                        {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>--}}
-                        {{--<div class="handle"></div>--}}
-                        {{--</button>--}}
-                        {{--</p>--}}
-
-                        <p class="checkbox">
-
-                            <input id="send_answer_by_email_checkbox" class="non-anonymous" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                                || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    @if (isset($record) and is_null($record->id))
-                    <div class="col-md-12">
-                        <label for="original" class="col-form-label">Solicitação</label>
-                        <textarea id="original" class="form-control{{ $errors->getBag('validation')->has('original') ? ' is-invalid' : '' }}" name="original" required rows="15">{{is_null(old('original')) ? $record->original : old('original') }}</textarea>
-                        @if ($errors->getBag('validation')->has('original'))
-                        <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('original') }}</strong></span>
-                        @endif
-                    </div>
-                    @endif
-                </div>
+                @include('callcenter.records.partials.form-basic',['person'=>$person,'record'=>$record])
 
                 <div class="form-group row">
                     @if (!$workflow && $record->created_at_formatted)
@@ -536,7 +485,7 @@
         </div>
     </div>
 </div>
-
+a
 @endsection
 @section('content')
 @if (isset($progresses))
