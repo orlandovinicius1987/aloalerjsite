@@ -25,6 +25,7 @@
                                        name="cpf_cnpj"
                                        value="{{is_null(old('cpf_cnpj')) ? $person->cpf_cnpj : old('cpf_cnpj') }}"
                                        required
+                                       {{($person && $person->is_anonymous) ? 'disabled' : '' }}
                                        v-mask='["###.###.###-##", "##.###.###/####-##"]'
                                         @cannot('committee-canEdit','')
                                             {{$person->id ? 'disabled="disabled"' : '' }}
@@ -44,6 +45,7 @@
                                        class="form-control{{ $errors->getBag('validation')->has('identification') ? ' is-invalid' : '' }}"
                                        name="identification"
                                        value="{{is_null(old('identification')) ? $person->identification : old('identification') }}"
+                                       {{($person && $person->is_anonymous) ? 'disabled' : '' }}
                                        required
                                 >
 
@@ -60,6 +62,7 @@
                                 <input id="name" placeholder="Nome Completo"
                                        class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }}"
                                        name="name" value="{{is_null(old('name')) ? $person->name : old('name') }}"
+                                       {{($person && $person->is_anonymous) ? 'disabled' : '' }}
                                        required
                                 >
 
@@ -96,7 +99,7 @@
 
                         <div class="form-group text-center row">
                             <div class="col-12 text-center">
-                                <button id="saveButton" type="submit" class="btn btn-danger">
+                                <button id="saveButton" type="submit" class="btn btn-danger" {{($person && $person->is_anonymous) ? 'disabled' : '' }}>
                                     @if ($workflow)
                                         Próximo passo  <i class="fas fa-forward"></i>
                                     @else

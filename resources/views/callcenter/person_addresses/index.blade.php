@@ -6,14 +6,17 @@
                     <i class="fas fa-map-marked-alt"></i> Endereços
                 </h3>
             </div>
-            <div class="col-5 col-md-8 text-right">
-                <a id="button-novo-endereco"
-                   href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
-                   class="btn btn-primary btn-sm pull-right"
-                >
-                    <i class="fa fa-plus"></i> Novo Endereço
-                </a>
-            </div>
+            @if(($person && !$person->is_anonymous))
+                <div class="col-5 col-md-8 text-right">
+                    <a id="button-novo-endereco"
+                       href="{{ route('people_addresses.create',['person_id' => $person->id]) }}"
+                       class="btn btn-primary btn-sm pull-right"
+                        {{($person && $person->is_anonymous) ? 'disabled' : '' }}
+                    >
+                        <i class="fa fa-plus"></i> Novo Endereço
+                    </a>
+                </div>
+            @endIf
         </div>
     </div>
 
