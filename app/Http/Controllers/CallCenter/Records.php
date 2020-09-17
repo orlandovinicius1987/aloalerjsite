@@ -60,21 +60,18 @@ class Records extends Controller
         }
 
         if(request()->has('name')){
-            if(!is_null(request()->get('name'))) {
-                $person = $this->peopleRepository->findByName(request()->get('name'));
-            }
-
             $name = request()->get('name');
         }
+        request()
+            ->session()
+            ->forget('workflow');
+
         /**
          * Se encontrou o $person, significa q não precisa cadastrar o endereço e não vai ser anônimo
          */
         if($person) {
             return redirect()->to(route('records.create', [$person->id]));
         }
-        request()
-            ->session()
-            ->forget('workflow');
 
         return view('callcenter.records.form-search')
             ->with('laravel', ['mode' => 'create'])
