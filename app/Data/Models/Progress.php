@@ -83,6 +83,8 @@ class Progress extends BaseModel
 
     public function getNotifiables()
     {
-        return $this->record->person->emails;
+        return $this->record->send_answer_by_email
+            ? $this->record->person->emails
+            : collect([]);
     }
 }
