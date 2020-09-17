@@ -24,6 +24,7 @@ if (jQuery('#' + appName).length > 0) {
                     'disabled',
                     this.is_anonymous,
                 )
+                $('#send_answer_by_email_checkbox').prop('checked', false)
             },
         },
     })

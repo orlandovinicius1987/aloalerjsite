@@ -90,7 +90,9 @@ class Record extends BaseModel
 
     public function getNotifiables()
     {
-        return $this->person->emails;
+        return $this->send_answer_by_email
+            ? $this->person->emails
+            : collect([]);
     }
 
     public function sendNotifications()

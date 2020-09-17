@@ -268,24 +268,23 @@
                         @endif
                     </div>
                     <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
-                    <div class="col-md-3">
-                        <label for="send_answer_by_email_checkbox" class="col-form-label">Resposta por e-mail</label>
-                        {{--<p class="form-twolines">--}}
-                        {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>--}}
-                        {{--<div class="handle"></div>--}}
-                        {{--</button>--}}
-                        {{--</p>--}}
 
-                        <p class="checkbox">
+                    @if(!$person || !$person->is_anonymous)
+                        <div class="col-md-3">
+                            <label for="send_answer_by_email_checkbox" class="col-form-label">Resposta por e-mail</label>
+                            {{--<p class="form-twolines">--}}
+                            {{--<button type="button" class="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="não" @include('partials.disabled',['model'=>$record])>--}}
+                            {{--<div class="handle"></div>--}}
+                            {{--</button>--}}
+                            {{--</p>--}}
 
-                            <input id="send_answer_by_email_checkbox" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
-                                || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
-                        </p>
-                    </div>
+                            <p class="checkbox">
 
-
-
-
+                                <input id="send_answer_by_email_checkbox" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
+                                    || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
+                            </p>
+                        </div>
+                    @endIf
                 </div>
 
 
