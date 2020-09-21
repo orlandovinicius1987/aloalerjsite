@@ -79,7 +79,6 @@ class Records extends Controller
             ->with('name',$name)
             ->with('cpf_cnpj',$cpf_cnpj)
             ->with('anonymous_id', get_anonymous_person()->id)
-            ->with('progressFiles', [])
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -206,8 +205,8 @@ class Records extends Controller
                 Workflow::started()
                     ? 'people_addresses.create'
                     : ($record->wasRecentlyCreated
-                    ? 'records.show-protocol'
-                    : 'records.show'),
+                        ? 'records.show-protocol'
+                        : 'records.show'),
 
                 Workflow::started() ? $record->person->id : $record->id
             )
