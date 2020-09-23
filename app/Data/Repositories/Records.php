@@ -57,23 +57,12 @@ class Records extends Base
 
     public function create($data)
     {
-        if (isset($data->is_anonymous) && $data->is_anonymous == 'true') {
-            $person = get_anonymous_person();
-        } elseif (isset($data->person_id)) {
-            $person = $this->peopleRepository->findById($data->person_id);
-        } elseif ($data->cpf_cnpj) {
-            $person = $this->peopleRepository->findByCpfCnpj($data->cpf_cnpj);
-        }
-
-        if (is_null($person)) {
-            $data->cpf_cnpj = only_numbers($data->cpf_cnpj);
-            $person = $this->peopleRepository->create($data->toArray());
-        }
-        $data = $data->merge(['person_id' => $person->id]);
+        $person = $this->peopleRepository->findOrCreate($data);
 
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
         }
+        $data = $data->merge(['person_id' => $person->id]);
 
         $record = $this->createFromRequest($data);
 

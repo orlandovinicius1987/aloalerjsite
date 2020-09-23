@@ -116,6 +116,23 @@ class People extends Base
         );
     }
 
+    public function findOrCreate($data)
+    {
+        if (isset($data->is_anonymous) && $data->is_anonymous == 'true') {
+            $person = get_anonymous_person();
+        } elseif (isset($data->person_id)) {
+            $person = $this->findById($data->person_id);
+        } elseif ($data->cpf_cnpj) {
+            $person = $this->findByCpfCnpj($data->cpf_cnpj);
+        }
+
+        if (is_null($person)) {
+            $data->cpf_cnpj = only_numbers($data->cpf_cnpj);
+            $person = $this->create($data->toArray());
+        }
+        return $person;
+    }
+
     protected function searchByName($string)
     {
         $query = $this->getBaseQuery()->whereRaw(

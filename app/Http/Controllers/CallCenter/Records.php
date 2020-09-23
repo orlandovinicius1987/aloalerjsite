@@ -45,7 +45,7 @@ class Records extends Controller
      * @param $person_id
      */
 
-    public function createFromSearch()
+    public function createPersonAndRecord()
     {
 
         $person = null;
@@ -73,7 +73,7 @@ class Records extends Controller
             return redirect()->to(route('records.create', [$person->id]));
         }
 
-        return view('callcenter.records.form-search')
+        return view('callcenter.records.form-create-person-record')
             ->with('laravel', ['mode' => 'create'])
             ->with('name',$name)
             ->with('cpf_cnpj',$cpf_cnpj)
@@ -139,7 +139,7 @@ class Records extends Controller
         );
     }
 
-    public function storeFromSearch(RecordRequest $request)
+    public function storePersonRecord(RecordRequest $request)
     {
 
         $record = $this->storeRecord($request);
@@ -375,17 +375,6 @@ class Records extends Controller
         $record = $this->recordsRepository->create(coollect($request->all()));
 
         $record->sendNotifications();
-
-        if (is_null($request->get('record_id'))) {
-            //Se é um protocolo novo
-            $request->merge(['record_id' => $record->id]);
-            $request->merge([
-                'progress_type_id' => app(
-                    ProgressTypesRepository::class
-                )->findByName('Entrada')->id
-            ]);
-            $this->progressesRepository->createFromRequest($request);
-        }
 
         if (is_null($request->get('record_id'))) {
             //Se é um protocolo novo

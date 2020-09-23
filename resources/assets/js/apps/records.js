@@ -28,6 +28,10 @@ if (jQuery('#' + appName).length > 0) {
                 $('#btn_create_address').prop('disabled', this.is_anonymous)
                 if (this.is_anonymous) {
                     $('#btn_create_address').prop('checked', !this.is_anonymous)
+                    $('#send_answer_by_email_checkbox').prop(
+                        'checked',
+                        !this.is_anonymous,
+                    )
                     this.create_address = !this.is_anonymous
                     this.toggle_create_address_status =
                         'btn btn-sm btn-toggle inactive'
