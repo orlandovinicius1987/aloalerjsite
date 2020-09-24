@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row">
             <div class="col-lg-8 offset-lg-2 form-bigger">
 
@@ -55,8 +55,11 @@
                                     <input id="cpf_cnpj" class="form-control{{ $errors->getBag('validation')->has('cpf_cnpj')? ' is-invalid' : '' }} non-anonymous" name="cpf_cnpj"
                                            v-mask='["###.###.###-##", "##.###.###/####-##"]'
                                            @if(isset($cpf_cnpj))
-                                                value="{{$cpf_cnpj}}"
-                                           else
+                                                @if(!is_null($cpf_cnpj))
+                                                    value="{{$cpf_cnpj}}"
+                                                @endif
+                                           @else
+
                                                 value="{{old('cpf_cnpj')}}"
                                            @endif
 
@@ -71,7 +74,7 @@
                                     <input id="name" class="form-control{{ $errors->getBag('validation')->has('name') ? ' is-invalid' : '' }} non-anonymous" name="name"
                                            @if(isset($name))
                                            value="{{$name}}"
-                                           else
+                                           @else
                                            value="{{old('name')}}"
                                         @endif
                                     >
