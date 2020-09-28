@@ -35,13 +35,15 @@
                 </h3>
             </div>
 
-            <div class="col-5 col-md-8 text-right">
-                <a id="button-novo-contato" href="#" data-toggle="modal" data-target="#contactsModal"
-                   class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-plus"></i>
-                    Novo Contato
-                </a>
-            </div>
+            @if(($person && !$person->is_anonymous))
+                <div class="col-5 col-md-8 text-right">
+                    <a id="button-novo-contato" href="#" data-toggle="modal" data-target="#contactsModal"
+                       class="btn btn-primary btn-sm pull-right">
+                        <i class="fa fa-plus"></i>
+                        Novo Contato
+                    </a>
+                </div>
+            @endIf
         </div>
 
         @include('callcenter.person_contacts.partials.form-modal')

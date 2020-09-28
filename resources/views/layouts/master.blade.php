@@ -37,6 +37,8 @@
     <body id="vue-app">
         @include('partials.header')
 
+        @include('partials.main-alerts')
+
         <!-- Content -->
         <div class="container">
             <div class="row">
