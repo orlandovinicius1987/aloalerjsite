@@ -29,7 +29,7 @@ class Record extends BaseModel
 
     protected $with = ['committee'];
 
-    protected $appends = ['first_progress_original'];
+    protected $appends = ['first_progress_original', 'origin_committee'];
 
     public function progresses()
     {
@@ -83,9 +83,9 @@ class Record extends BaseModel
 
     public function getFirstProgressOriginalAttribute()
     {
-        return is_null($progress = $this->progresses()
-            ->orderBy('created_at', 'asc')
-            ->first())? '': $progress->toArray()['original'];
+        return is_null($progress = $this->firstProgress())
+            ? ''
+            : $progress->toArray()['original'];
     }
 
     public function getNotifiables()
@@ -116,5 +116,17 @@ class Record extends BaseModel
         parent::boot();
 
         static::addGlobalScope(new RecordScope());
+    }
+
+    public function firstProgress()
+    {
+        return $this->progresses()
+            ->orderBy('created_at', 'asc')
+            ->first();
+    }
+
+    public function getOriginCommitteeAttribute()
+    {
+        return $this->firstProgress()->originCommittee ?? null;
     }
 }

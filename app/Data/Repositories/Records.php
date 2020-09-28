@@ -298,12 +298,29 @@ class Records extends Base
 
         foreach ($data as $key => $collumn) {
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
-                if ($key == 'person_name') {
-
-                   $records->join('people', 'people.id', '=', 'records.person_id')
-                        ->where('people.name', 'ilike', '%' . $collumn . '%')->select('records.*');
-                } else {
-                    $records->where($key, $collumn);
+                switch ($key) {
+                    case 'person_name':
+                        $records
+                            ->join(
+                                'people',
+                                'people.id',
+                                '=',
+                                'records.person_id'
+                            )
+                            ->where(
+                                'people.name',
+                                'ilike',
+                                '%' . $collumn . '%'
+                            )
+                            ->select('records.*');
+                        break;
+                    case 'created_by_committee_id':
+                        $records->whereRaw(
+                            "(select progresses.created_by_committee_id from progresses where progresses.record_id=records.id order by progresses.created_at limit 1)={$collumn}"
+                        );
+                        break;
+                    default:
+                        $records->where($key, $collumn);
                 }
             }
         }
@@ -311,7 +328,7 @@ class Records extends Base
         $this->createdAtBetweenDate($data, $records);
         $this->resolvedAtBetweenDate($data, $records);
 
-       $records->orderBy('records.created_at', 'desc');
+        $records->orderBy('records.created_at', 'desc');
 
         if ($data['per_page'] == 'all') {
             return $records->paginate($records->count());

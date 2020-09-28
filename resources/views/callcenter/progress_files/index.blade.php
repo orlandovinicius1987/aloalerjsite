@@ -19,7 +19,9 @@
         @include('callcenter.progress_files.partials.form-modal')
 
     </div>
-    <div class="card-body">
+
+    @if($record->id)
         @include('callcenter.progress_files.partials.table')
-    </div>
+    @endIf
+        @include('callcenter.progress_files.partials.pending-table')
 </div>

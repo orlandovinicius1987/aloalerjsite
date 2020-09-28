@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\CallCenter;
 
+use App\Data\Models\Progress;
 use App\Data\Repositories\Areas;
 use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
@@ -34,6 +35,7 @@ class Records extends Controller
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
             ->with('anonymous_id', get_anonymous_person()->id)
+            ->with('progressFiles', [])
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -104,6 +106,12 @@ class Records extends Controller
             'phone'
         );
 
+
+        if( $request->get('create_address') == 'true') {
+            $data = array_merge($request->toArray(),['person_id' => $record->person_id]);
+            $this->peopleAddressesRepository->create($data);
+        }
+
         $record->sendNotifications();
 
         if (is_null($request->get('record_id'))) {
@@ -114,7 +122,14 @@ class Records extends Controller
                     ProgressTypesRepository::class
                 )->findByName('Entrada')->id
             ]);
-            $this->progressesRepository->createFromRequest($request);
+            $progress = $this->progressesRepository->createFromRequest(
+                $request
+            );
+
+            $this->progressesRepository->attachFilesFromRequest(
+                $request,
+                $progress->id
+            );
         }
 
         $this->showSuccessMessage(
@@ -161,10 +176,10 @@ class Records extends Controller
 
         $progress = $this->progressesRepository->create([
             'original' =>
-                'Protocolo finalizado sem observações em ' .
-                now() .
-                ' pelo usuário ' .
-                Auth::user()->name,
+                'Protocolo finalizado sem observações em ' . now() . '.',
+            'progress_type_id' => app(
+                ProgressTypesRepository::class
+            )->findByName('Finalização')->id,
             'record_id' => $record->id
         ]);
 
@@ -187,6 +202,19 @@ class Records extends Controller
     public function reopen($id)
     {
         $record = $this->recordsRepository->findById($id)->reopen();
+
+        $progress = $this->progressesRepository->create([
+            'original' =>
+                'Protocolo reaberto sem observações em ' . now() . '.',
+            'progress_type_id' => app(
+                ProgressTypesRepository::class
+            )->findByName('Reabertura')->id,
+            'record_id' => $record->id
+        ]);
+
+        $this->recordsRepository->markAsNotResolved($record->id);
+
+        $record->sendNotifications();
 
         $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 

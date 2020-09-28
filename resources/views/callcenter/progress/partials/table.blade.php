@@ -1,4 +1,4 @@
-    <div class="card-body d-none d-sm-block" id="vue-progress">
+    <div class="card-body d-none d-sm-block">
 
         <table id="progressesTable" class="table table-striped table-hover table-progress" cellspacing="0" width="100%">
             <thead>

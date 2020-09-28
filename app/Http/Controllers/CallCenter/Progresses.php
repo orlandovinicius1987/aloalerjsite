@@ -9,19 +9,6 @@ use App\Data\Repositories\AttachedFiles as AttachedFilesRepository;
 
 class Progresses extends Controller
 {
-    private function attachFilesFromRequest($request, $progress_id)
-    {
-        $attachedFilesRepository = app(AttachedFilesRepository::class);
-
-        foreach ($request->get('files_array') as $file) {
-            $file = (array) $file;
-
-            $file['progress_id'] = $progress_id;
-
-            $attachedFilesRepository->createFromArray($file);
-        }
-    }
-
     /**
      * @return $this
      */
@@ -53,7 +40,10 @@ class Progresses extends Controller
 
         $progress->sendNotifications();
 
-        $this->attachFilesFromRequest($request, $progress->id);
+        $this->progressesRepository->attachFilesFromRequest(
+            $request,
+            $progress->id
+        );
 
         $this->showSuccessMessage();
 

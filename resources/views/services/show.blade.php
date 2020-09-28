@@ -13,9 +13,9 @@
         <h1 class="nome-comissao ">{{ $committeeService->committee->name ?? '' }}</h1>
     </div>
 
-    
-    <div class="comissoes-telefone visible-lg">
-        
+
+    <div class="comissoes-telefone">
+
         @include('partials.committee-telephone', [
             'title' => '',
             'telephone' => $committeeService->phone,
@@ -23,13 +23,13 @@
         ])
     </div>
 
-    
-  
+
+
     <div class="texto-comissao">
         {!! $committeeService->bio !!}
     </div>
 
-    
+
     <div class="ficha-comissao text-center">
         <div class="comissao-dados">
             <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committeeService->committee->office_phone ?? '' !!}</div>
@@ -41,4 +41,3 @@
 @stop
 
 
- 

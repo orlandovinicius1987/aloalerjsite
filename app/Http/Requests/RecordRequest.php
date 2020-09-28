@@ -44,7 +44,20 @@ class RecordRequest extends Request
                 $this->is_anonymous_protocol()
                     ? ''
                     : 'required_without_all:mobile,whatsapp,person_id'
-            ]
+            ],
+            'neighbourhood'=>[
+                $this->create_address() ?
+            'required' : ''
+            ],
+            'city'=>[
+                $this->create_address() ?
+                    'required' : ''
+            ],
+            'state'=>[
+                $this->create_address() ?
+                    'required' : ''
+            ],
+
         ];
     }
 
@@ -58,12 +71,24 @@ class RecordRequest extends Request
         return $this->is_anonymous == 'true';
     }
 
+    private function create_address(){
+        return $this->create_address == 'true';
+    }
+
     public function sanitize()
     {
         if (!empty($this->get('cpf_cnpj'))) {
             $input = $this->all();
 
             $input['cpf_cnpj'] = only_numbers($input['cpf_cnpj']);
+
+            $this->replace($input);
+        }
+
+        if (!empty($this->get('files_array'))) {
+            $input = $this->all();
+
+            $input['files_array'] = json_decode($this->get('files_array'));
 
             $this->replace($input);
         }
