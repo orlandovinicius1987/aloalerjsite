@@ -41,8 +41,9 @@
         @endforelse
     </table>
 </div>
-
-{{ $addresses->links() }}
+@if(method_exists($addresses,'links'))
+    {{ $addresses->links() }}
+@endif
 
 
 
@@ -75,7 +76,9 @@
         <p>Nenhum Endereço encontrado</p>
     @endforelse
 
+    @if(method_exists($addresses,'links'))
         {{ $addresses->links() }}
+    @endif
 </div>
 
 

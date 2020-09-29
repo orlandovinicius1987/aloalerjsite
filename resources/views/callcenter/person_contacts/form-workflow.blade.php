@@ -60,74 +60,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-
-                    <div class="col-md-3">
-                        <label for="mobile" class="col-form-label">Celular</label>
-                        <input class="form-control{{ $errors->getBag('validation')->has('mobile') ? ' is-invalid' : '' }}"
-                               id="mobile"
-                               name="mobile"
-                               value="{{is_null(old('mobile')) ? $contact->mobile : old('mobile') }}" autofocus
-                               v-mask='["(##)####-####", "(##)#####-####"]'
-                               v-model='form.mobile'
-                               v-init:mobile="'{{is_null(old('mobile')) ? $contact->mobile : old('mobile')}}'"
-                        >
-
-                        @if ($errors->getBag('validation')->has('mobile'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->getBag('validation')->first('mobile') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="col-md-3">
-                        <label for="whatsapp" class="col-form-label">Whatsapp</label>
-                        <input class="form-control{{ $errors->getBag('validation')->has('whatsapp') ? ' is-invalid' : '' }}" name="whatsapp"
-                               id="whatsapp"
-                               value="{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp') }}"
-                               autofocus
-                               v-mask='["(##)#####-####"]'
-                               v-model='form.whatsapp'
-                               v-init:whatsapp="'{{is_null(old('whatsapp')) ? $contact->whatsapp : old('whatsapp')}}'"
-                        >
-
-                        @if ($errors->getBag('validation')->has('whatsapp'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->getBag('validation')->first('whatsapp') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="col-md-3">
-                        <label for="email" class="col-form-label">E-mail</label>
-                        <input type=email class="form-control{{ $errors->getBag('validation')->has('email') ? ' is-invalid' : '' }}" name="email"
-                               id="email"
-                               value="{{is_null(old('email')) ? $contact->email : old('email') }}"
-                               autofocus>
-
-                        @if ($errors->getBag('validation')->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->getBag('validation')->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="phone" class="col-form-label">Telefone Fixo</label>
-                        <input class="form-control{{ $errors->getBag('validation')->has('phone') ? ' is-invalid' : '' }}" name="phone"
-                               id="phone"
-                               value="{{is_null(old('phone')) ? $contact->phone : old('phone') }}"
-                               autofocus
-                               v-mask="['(##) ####-####', '(##) #####-####']"
-                               v-model='form.phone'
-                               v-init:phone="'{{is_null(old('phone')) ? $contact->phone : old('phone')}}'"
-                        >
-
-                        @if ($errors->getBag('validation')->has('phone'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->getBag('validation')->first('phone') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+                @include('callcenter.person_contacts.partials.form-basic')
 
                 <div class="form-group row mb-0 mt-5 text-center">
                     <div class="col-md-12">

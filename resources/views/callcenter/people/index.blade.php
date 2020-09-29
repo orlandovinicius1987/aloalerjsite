@@ -44,7 +44,7 @@
 
                             <div class="form-group row text-center">
                                 <div class="col-12" >
-                                    <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('records.create') }}'" class="btn btn-primary ">
+                                    <a dusk="cadastrarNovoCidadaoButton" v-bind:href="'{{ route('records.create-person-record') }}?cpf_cnpj='+getCpfCnpj()+'&name='+getName()" class="btn btn-primary ">
                                         <i class="fa fa-plus"></i>
                                         Cadastrar protocolo/cidadão
                                     </a>

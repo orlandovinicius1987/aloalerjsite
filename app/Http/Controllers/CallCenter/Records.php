@@ -26,7 +26,9 @@ class Records extends Controller
 
     public function create($person_id = null)
     {
+
         $person = $this->peopleRepository->findById($person_id);
+
         request()
             ->session()
             ->forget('workflow');
@@ -34,8 +36,49 @@ class Records extends Controller
         return view('callcenter.records.form')
             ->with('laravel', ['mode' => 'create'])
             ->with('person', $person)
-            ->with('anonymous_id', get_anonymous_person()->id)
             ->with('progressFiles', [])
+            ->with('record', $this->recordsRepository->new())
+            ->with($this->getComboBoxMenus());
+    }
+
+
+    /**
+     * @param $person_id
+     */
+
+    public function createPersonAndRecord()
+    {
+
+        $person = null;
+        $cpf_cnpj = null;
+        $name = null;
+        if(request()->has('cpf_cnpj')){
+            if(!is_null(request()->get('cpf_cnpj'))) {
+                $person = $this->peopleRepository->findByCpfCnpj(request()->get('cpf_cnpj'));
+            }
+
+            $cpf_cnpj = request()->get('cpf_cnpj');
+        }
+
+        if(request()->has('name')){
+            $name = request()->get('name');
+        }
+        request()
+            ->session()
+            ->forget('workflow');
+
+        /**
+         * Se encontrou o $person, significa q não precisa cadastrar o endereço e não vai ser anônimo
+         */
+        if($person) {
+            return redirect()->to(route('records.create', [$person->id]));
+        }
+
+        return view('callcenter.records.form-create-person-record')
+            ->with('laravel', ['mode' => 'create'])
+            ->with('name',$name)
+            ->with('cpf_cnpj',$cpf_cnpj)
+            ->with('anonymous_id', get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
     }
@@ -83,7 +126,31 @@ class Records extends Controller
      */
     public function store(RecordRequest $request)
     {
-        $record = $this->recordsRepository->create(coollect($request->all()));
+        $record = $this->storeRecord($request);
+
+        $this->showSuccessMessage(
+            'Protocolo ' .
+                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
+                ' com sucesso.'
+        );
+
+        return redirect()->to(
+            route(
+                Workflow::started()
+                    ? 'people_addresses.create'
+                    : ($record->wasRecentlyCreated
+                        ? 'records.show-protocol'
+                        : 'records.show'),
+
+                Workflow::started() ? $record->person->id : $record->id
+            )
+        );
+    }
+
+    public function storePersonRecord(RecordRequest $request)
+    {
+
+        $record = $this->storeRecord($request);
 
         $this->peopleContactsRepository->createContact(
             $request->get('mobile'),
@@ -110,26 +177,6 @@ class Records extends Controller
         if( $request->get('create_address') == 'true') {
             $data = array_merge($request->toArray(),['person_id' => $record->person_id]);
             $this->peopleAddressesRepository->create($data);
-        }
-
-        $record->sendNotifications();
-
-        if (is_null($request->get('record_id'))) {
-            //Se é um protocolo novo
-            $request->merge(['record_id' => $record->id]);
-            $request->merge([
-                'progress_type_id' => app(
-                    ProgressTypesRepository::class
-                )->findByName('Entrada')->id
-            ]);
-            $progress = $this->progressesRepository->createFromRequest(
-                $request
-            );
-
-            $this->progressesRepository->attachFilesFromRequest(
-                $request,
-                $progress->id
-            );
         }
 
         $this->showSuccessMessage(
@@ -329,5 +376,32 @@ class Records extends Controller
                 ['label' => 'TODOS', 'value' => 'all']
             ])
             ->with('per_page', $data['per_page']);
+    }
+
+    private function storeRecord(RecordRequest $request)
+    {
+        $record = $this->recordsRepository->create(coollect($request->all()));
+
+        $record->sendNotifications();
+
+        if (is_null($request->get('record_id'))) {
+            //Se é um protocolo novo
+            $request->merge(['record_id' => $record->id]);
+            $request->merge([
+                'progress_type_id' => app(
+                    ProgressTypesRepository::class
+                )->findByName('Entrada')->id
+            ]);
+            $progress = $this->progressesRepository->createFromRequest(
+                $request
+            );
+
+            $this->progressesRepository->attachFilesFromRequest(
+                $request,
+                $progress->id
+            );
+        }
+
+        return $record;
     }
 }
