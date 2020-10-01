@@ -26,7 +26,6 @@ class Records extends Controller
 
     public function create($person_id = null)
     {
-
         $person = $this->peopleRepository->findById($person_id);
 
         request()
@@ -41,28 +40,30 @@ class Records extends Controller
             ->with($this->getComboBoxMenus());
     }
 
-
     /**
      * @param $person_id
      */
 
     public function createPersonAndRecord()
     {
-
         $person = null;
-        $cpf_cnpj = null;
-        $name = null;
-        if(request()->has('cpf_cnpj')){
-            if(!is_null(request()->get('cpf_cnpj'))) {
-                $person = $this->peopleRepository->findByCpfCnpj(request()->get('cpf_cnpj'));
-            }
 
-            $cpf_cnpj = request()->get('cpf_cnpj');
+        $search = request()->get('name')
+            ? request()->get('name')
+            : request()->get('cpf_cnpj');
+
+        if (validate_cpf_cnpj(remove_punctuation($search))) {
+            $cpfCnpj = $search;
+            $name = null;
+        } else {
+            $cpfCnpj = null;
+            $name = $search;
         }
 
-        if(request()->has('name')){
-            $name = request()->get('name');
+        if ($cpfCnpj) {
+            $person = $this->peopleRepository->findByCpfCnpj($cpfCnpj);
         }
+
         request()
             ->session()
             ->forget('workflow');
@@ -70,14 +71,14 @@ class Records extends Controller
         /**
          * Se encontrou o $person, significa q não precisa cadastrar o endereço e não vai ser anônimo
          */
-        if($person) {
+        if ($person) {
             return redirect()->to(route('records.create', [$person->id]));
         }
 
         return view('callcenter.records.form-create-person-record')
             ->with('laravel', ['mode' => 'create'])
-            ->with('name',$name)
-            ->with('cpf_cnpj',$cpf_cnpj)
+            ->with('name', $name)
+            ->with('cpf_cnpj', $cpfCnpj)
             ->with('anonymous_id', get_anonymous_person()->id)
             ->with('record', $this->recordsRepository->new())
             ->with($this->getComboBoxMenus());
@@ -149,7 +150,6 @@ class Records extends Controller
 
     public function storePersonRecord(RecordRequest $request)
     {
-
         $record = $this->storeRecord($request);
 
         $this->peopleContactsRepository->createContact(
