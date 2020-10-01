@@ -98,9 +98,10 @@ class Records extends Controller
             'phone'
         );
 
-
-        if( $request->get('create_address') == 'true') {
-            $data = array_merge($request->toArray(),['person_id' => $record->person_id]);
+        if ($request->get('create_address') == 'true') {
+            $data = array_merge($request->toArray(), [
+                'person_id' => $record->person_id
+            ]);
             $this->peopleAddressesRepository->create($data);
         }
 
