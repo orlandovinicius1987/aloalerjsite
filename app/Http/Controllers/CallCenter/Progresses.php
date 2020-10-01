@@ -62,7 +62,7 @@ class Progresses extends Controller
 
         $progress->sendNotifications();
 
-        $this->attachFilesFromRequest($request, $progress->id);
+        $this->progressesRepository->attachFilesFromRequest($request, $progress->id);
 
         $this->recordsRepository->markAsResolved(
             $request->get('record_id'),
@@ -86,7 +86,7 @@ class Progresses extends Controller
 
         $progress->sendNotifications();
 
-        $this->attachFilesFromRequest($request, $progress->id);
+        $this->progressesRepository->attachFilesFromRequest($request, $progress->id);
 
         $this->showSuccessMessage();
 
