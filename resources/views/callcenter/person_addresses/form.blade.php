@@ -53,7 +53,7 @@
                         <label for="zipcode" class="col-form-label">CEP</label>
                         <input id="zipcode"
                                name="zipcode"
-                               v-model="form.zipcode"
+                               v-model="address.zipcode"
                                v-init:zipcode="'{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}'"
                                value="{{is_null(old('zipcode')) ? $address->zipcode : old('zipcode') }}"
                                class="form-control{{ $errors->getBag('validation')->has('zipcode') ? ' is-invalid' : '' }}"
@@ -70,7 +70,7 @@
                         <label for="street" class="col-form-label">Endereço</label>
                         <input id="street"
                                name="street"
-                               v-model="form.street"
+                               v-model="address.street"
                                v-init:street="'{{is_null(old('street')) ? $address->street : old('street') }}'"
                                value="{{is_null(old('street')) ? $address->street : old('street') }}"
                                class="form-control{{ $errors->getBag('validation')->has('street') ? ' is-invalid' : '' }}"
@@ -117,7 +117,7 @@
                         <label for="neighbourhood" class="col-form-label">Bairro</label>
                         <input id="neighbourhood"
                                name="neighbourhood"
-                               v-model="form.neighbourhood"
+                               v-model="address.neighbourhood"
                                v-init:neighbourhood="'{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}'"
                                value="{{is_null(old('neighbourhood')) ? $address->neighbourhood : old('neighbourhood') }}"
                                class="form-control{{ $errors->getBag('validation')->has('neighbourhood') ? ' is-invalid' : '' }}"
@@ -133,7 +133,7 @@
                         <label for="city" class="col-form-label">Cidade</label>
                         <input id="city"
                                name="city"
-                               v-model="form.city"
+                               v-model="address.city"
                                v-init:city="'{{is_null(old('city')) ? $address->city : old('city') }}'"
                                value="{{is_null(old('city')) ? $address->city : old('city') }}"
                                class="form-control{{ $errors->getBag('validation')->has('city') ? ' is-invalid' : '' }}"
@@ -149,7 +149,7 @@
                         <label for="state" class="col-form-label text-md-right">Estado</label>
                         <input id="state"
                                name="state"
-                               v-model="form.state"
+                               v-model="address.state"
                                v-init:state="'{{is_null(old('state')) ? $address->state : old('state') }}'"
                                value="{{is_null(old('state')) ? $address->state : old('state') }}"
                                class="form-control{{ $errors->getBag('validation')->has('state') ? ' is-invalid' : '' }}"

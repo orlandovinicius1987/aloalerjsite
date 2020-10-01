@@ -5,8 +5,7 @@ import zipcodeMixin from '../mixins/zipcode'
 
 Vue.directive('init', {
     bind: function(el, binding, vnode) {
-        console.info(binding.arg)
-        vnode.context.form[binding.arg] = binding.value
+        vnode.context.address[binding.arg] = binding.value
     },
 })
 
