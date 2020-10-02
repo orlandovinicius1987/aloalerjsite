@@ -134,7 +134,7 @@ class Progresses extends Controller
         $this->progressesRepository->findById($id)->sendNotifications()
             ? $this->flashMessage('Cidadão foi nofificado')
             : $this->flashMessage(
-                'Este cidadão não tem nenhum endereço que possamos usar para notificá-lo',
+                'Este cidadão não tem nenhum endereço que possamos usar para notificá-lo ou o Andamento é Privado',
                 'danger'
             );
 

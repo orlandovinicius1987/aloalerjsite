@@ -31,7 +31,8 @@ class Progress extends BaseModel
         'created_at',
         'updated_at',
         'original_history_id',
-        'created_by_committee_id'
+        'created_by_committee_id',
+        'is_private',
     ];
 
     protected $presenters = ['link', 'finalize'];
@@ -86,7 +87,8 @@ class Progress extends BaseModel
     public function getNotifiables()
     {
         return $this->record->send_answer_by_email
-            ? $this->record->person->emails
+            ? (!$this->is_private) ? $this->record->person->emails
+                : collect([])
             : collect([]);
     }
 
