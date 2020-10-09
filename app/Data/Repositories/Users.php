@@ -182,7 +182,7 @@ class Users extends Base
                 $user->api_token = Str::random(60);
             }
 
-            $user->name = $name;
+            $user->name = $name ?? $user->name;
 
             $user->password = Hash::make($credentials['password']);
 
@@ -245,11 +245,13 @@ class Users extends Base
         return User::where('all_notifications', true)->get();
     }
 
-    private function updateCurrentCommitteesViaPermissions($permissions)
-    {
+    private function updateCurrentCommitteesViaPermissions(
+        $permissions,
+        $user = null
+    ) {
         $returnCommitteesPermissions = [];
 
-        $user = Auth::user();
+        $user = $user ?? Auth::user();
 
         $eventsArray = [];
 
@@ -300,9 +302,12 @@ class Users extends Base
         return $returnCommitteesPermissions;
     }
 
-    public function updateCurrentUserTypeViaPermissions($permissions)
-    {
-        $user = Auth::user();
+    public function updateCurrentUserTypeViaPermissions(
+        $permissions,
+        $user = null
+    ) {
+        $user = $user ?? Auth::user();
+
         $usersCommitteesRepository = app(UsersCommitteesRepository::class);
 
         $userTypesRepository = app(UserTypesRepository::class);
@@ -318,15 +323,17 @@ class Users extends Base
             if ($permission['nomeFuncao'] == 'Administrador') {
                 $userType = $userTypesArray['Administrador'];
                 $administrator = true;
-                $usersCommitteesRepository->syncOperatorOrAdminUser(
-                    Auth::user()->id
-                );
+                $usersCommitteesRepository->syncOperatorOrAdminUser($user->id);
             }
         }
+
         if (!$administrator) {
             if (
                 !empty(
-                    $this->updateCurrentCommitteesViaPermissions($permissions)
+                    $this->updateCurrentCommitteesViaPermissions(
+                        $permissions,
+                        $user
+                    )
                 )
             ) {
                 $userType = $userTypesArray['Comissao'];
@@ -338,7 +345,7 @@ class Users extends Base
                 }
                 if ($userType) {
                     $usersCommitteesRepository->syncOperatorOrAdminUser(
-                        Auth::user()->id
+                        $user->id
                     );
                 }
             }

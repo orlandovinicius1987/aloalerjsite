@@ -40,11 +40,16 @@ class Authorization
             $response = collect(
                 $this->remoteRequest->post(static::PERMISSIONS_URL, [
                     'username' => $username,
-                    'system' => static::SYSTEM_NAME,
+                    'system' => static::SYSTEM_NAME
                 ])
             );
             return $response;
         } catch (\Exception $exception) {
+            \Log::error(
+                'Exception ao pesquisar as permissões do usuário ' . $username
+            );
+            \Log::error($exception);
+
             //Logando com as permissões salvas
             $usersRepository = app(UsersRepository::class);
             $user = $usersRepository->findByColumn('username', $username);
@@ -75,13 +80,13 @@ class Authorization
         foreach ($user->committees as $committee) {
             $permissionsArray[] = collect([
                 'nomeFuncao' => $committee->name,
-                'evento' => $committee->slug,
+                'evento' => $committee->slug
             ]);
         }
 
         $permissionsArray[] = collect([
             'nomeFuncao' => $userTypesArray[$user->userType->id]->name,
-            'evento' => $userTypesArray[$user->userType->id]->name,
+            'evento' => $userTypesArray[$user->userType->id]->name
         ]);
 
         return collect($permissionsArray);
