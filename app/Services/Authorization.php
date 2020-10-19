@@ -32,11 +32,13 @@ class Authorization
      */
     public function getUserPermissions($username)
     {
+
         if (config('auth.authorization.mock')) {
             return $this->mockedPermissions($username);
         }
 
         try {
+
             $response = collect(
                 $this->remoteRequest->post(static::PERMISSIONS_URL, [
                     'username' => $username,

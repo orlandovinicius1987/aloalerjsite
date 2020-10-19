@@ -199,6 +199,7 @@ class Records extends Base
             'progress_type_id' => app(ProgressTypes::class)->findByName(
                 'Entrada'
             )->id,
+            'is_private'=>1,
             'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'objeto_id',

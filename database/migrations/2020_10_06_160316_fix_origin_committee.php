@@ -16,17 +16,6 @@ class FixOriginCommittee extends Migration
      */
     public function up()
     {
-        foreach (UserModel::cursor() as $user) {
-            $permissions = app(
-                App\Services\Authorization::class
-            )->getUserPermissions($user->username);
-
-            app(
-                App\Data\Repositories\Users::class
-            )->updateCurrentUserTypeViaPermissions($permissions, $user);
-
-            dump('Updating user ' . $user->username);
-        }
 
         foreach (
             ProgressModel::whereDate(
@@ -34,17 +23,22 @@ class FixOriginCommittee extends Migration
                 '>=',
                 Carbon::createFromFormat('Y-m-d', '2020-08-01')
             )
-                ->whereNull('created_by_id')
+//                ->whereNull('created_by_id')
+                ->where('progress_type_id',66)
                 ->cursor()
             as $progress
         ) {
+
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
                 ->where('auditable_type', 'App\Data\Models\Progress')
                 ->first();
+//            dump($audit);
+//            ->user_id);
 
             if ($userId = $audit->user_id) {
                 $progress->created_by_id = $userId;
+
 
                 $progress->save();
 

@@ -355,7 +355,7 @@ class Users extends Base
             $user->user_type_id = $userType->id;
             $user->save();
         } else {
-            dd('Você não está autorizado a usar o sistema');
+//            dd('Você não está autorizado a usar o sistema');
         }
     }
 }
