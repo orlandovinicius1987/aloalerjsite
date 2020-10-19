@@ -1,6 +1,7 @@
 <?php
 namespace App\Data\Models;
 
+use App\Data\Scopes\Progress as ProgressScope;
 use App\Notifications\ProgressCreated;
 use Illuminate\Notifications\Notifiable;
 use App\Data\Presenters\Progress as ProgressPresenter;
@@ -95,5 +96,12 @@ class Progress extends BaseModel
     public function originCommittee()
     {
         return $this->belongsTo(Committee::class, 'created_by_committee_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ProgressScope());
     }
 }

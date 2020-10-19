@@ -15,7 +15,6 @@
             </thead>
 
             @forelse ($progresses as $progress)
-                @if(!($progress->is_private && !Auth::user()))
                 <tr v-on:click='detail("{{$progress->link}}")' style="cursor: pointer;">
                     <td>
                         {{ $progress->progressType->name ?? '' }}
@@ -63,7 +62,6 @@
 
                     {!!Auth::user() ? '<td>'.($progress->creator->name ?? '').'</td>' : ''!!}
                 </tr>
-                @endif
             @empty
                 <p>Nenhum andamento encontrado.</p>
             @endforelse
@@ -83,7 +81,7 @@
             <div class="contact-line"><span class="mobile-label">Origem :</span> {{ $progress->origin->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Assunto :</span> {{ $progress->area->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Solicitação :</span> {{ $progress->original }}</div>
-            @if(Auth::user())
+
                 <div class="contact-line"><span class="mobile-label">Privacidade :</span>
                     @if($progress->is_private)
                         <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Privado</span>
@@ -91,7 +89,7 @@
                         <h5><span class="badge badge-success">Público</span></h5>
                     @endif
                 </div>
-            @endif
+
             <div class="contact-line"><span class="mobile-label">Finalizador :</span>
                 @if ($progress->record->resolve_progress_id == $progress->id)
                     @if($progress->finalize)
