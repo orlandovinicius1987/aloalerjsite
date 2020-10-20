@@ -66,7 +66,7 @@ class Authentication
     protected function loginRequest($request)
     {
         if (config('auth.authentication.mock')) {
-            return $this->mockedAuthentication($request);
+            return $this->mockedAuthentication(extract_credentials($request));
         }
 
         try {
@@ -76,6 +76,12 @@ class Authentication
             );
             return $response;
         } catch (\Exception $exception) {
+            \Log::error(
+                'Exception ao tentar fazer login do usuário ' .
+                    extract_credentials($request)['username']
+            );
+            \Log::error($exception);
+
             //Timeout no login
             $usersRepository = app(UsersRepository::class);
             $user = $usersRepository->findByColumn(
@@ -100,7 +106,9 @@ class Authentication
                     )
                 ) {
                     //Credenciais de login conferem com as salvas no banco
-                    return $this->mockedAuthentication($request);
+                    return $this->mockedAuthentication(
+                        extract_credentials($request)
+                    );
                 } else {
                     //Credenciais de login não conferem com as salvas no banco
                     return $this->failedAuthentication();

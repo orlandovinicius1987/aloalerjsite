@@ -393,6 +393,8 @@ class Records extends Controller
                     ProgressTypesRepository::class
                 )->findByName('Entrada')->id
             ]);
+            $request->merge([
+                'is_private'=>1]);
             $progress = $this->progressesRepository->createFromRequest(
                 $request
             );

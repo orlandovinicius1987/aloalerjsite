@@ -3,13 +3,14 @@
         <table id="progressesTable" class="table table-striped table-hover table-progress" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Tipo de Andamento</th>
-                    <th>Origem</th>
-                    <th>Solicitação</th>
-                    <th>Finalizador</th>
-                    <th>Notificação</th>
-                    <th>Criado em</th>
-                    {!! (Auth::user() ? '<th>Atendente</th>' : '') !!}
+                  <th>Tipo de Andamento</th>
+                  <th>Origem</th>
+                  <th>Solicitação</th>
+                  {!! (Auth::user() ?'<th>Privacidade</th>   ': '') !!}
+                  <th>Finalizador</th>
+                  <th>Notificação</th>
+                  <th>Criado em</th>
+                  {!! (Auth::user() ? '<th>Atendente</th>' : '') !!}
                 </tr>
             </thead>
 
@@ -23,10 +24,18 @@
                         {{ $progress->origin->name ?? '' }}
                     </td>
 
-
                     <td style="word-wrap: break-word; width: 40%; max-width: 20px;">
                         {{ $progress->original }}
                     </td>
+                    @if(Auth::user())
+                    <td>
+                        @if($progress->is_private)
+                            <span class="label-group"><span class="label label-danger">Privado</span></span>
+                        @else
+                            <h5><span class="badge badge-success">Público</span></h5>
+                        @endif
+                    </td>
+                    @endif
 
                     <td class="">
                         @if ($progress->record->resolve_progress_id == $progress->id)
@@ -72,6 +81,15 @@
             <div class="contact-line"><span class="mobile-label">Origem :</span> {{ $progress->origin->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Assunto :</span> {{ $progress->area->name ?? '' }}</div>
             <div class="contact-line"><span class="mobile-label">Solicitação :</span> {{ $progress->original }}</div>
+
+                <div class="contact-line"><span class="mobile-label">Privacidade :</span>
+                    @if($progress->is_private)
+                        <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Privado</span>
+                    @else
+                        <h5><span class="badge badge-success">Público</span></h5>
+                    @endif
+                </div>
+
             <div class="contact-line"><span class="mobile-label">Finalizador :</span>
                 @if ($progress->record->resolve_progress_id == $progress->id)
                     @if($progress->finalize)
@@ -89,7 +107,9 @@
             </div>
             <div class="contact-line"><span class="mobile-label">Criado em :</span> {{ $progress->created_at_formatted ?? '' }}</div>
 
-            <div class="contact-line"><span class="mobile-label">Atendente :</span> {{ $progress->creator->name ?? '' }}</div>
+            @if(Auth::user())
+                <div class="contact-line"><span class="mobile-label">Atendente :</span> {{ $progress->creator->name ?? '' }}</div>
+            @endif
         </div>
         @empty
             <p>Nenhum andamento encontrado.</p>
