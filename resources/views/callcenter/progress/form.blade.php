@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group row">
                         <input id="is_private_id" type="hidden" name="is_private" value="0">
-                        <div v-if="!is_anonymous" class="col-md-3">
+                        <div class="col-md-3">
                             <label for="is_private" class="col-form-label">Andamento Privado?</label>
 
                             <p class="checkbox">
