@@ -5,10 +5,7 @@ Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
-Route::get('comissoes/{id}', [
-    'as' => 'committees.show',
-    'uses' => 'Committees@show',
-]);
+
 
 Route::get('services/{id}', [
     'as' => 'services.show',
@@ -52,7 +49,7 @@ Route::group(['prefix' => 'contact'], function () {
 
 Route::get('/home', 'Home@index')->name('home');
 
-Route::get('/protocolo/{protocolo}', 'CallCenter\Records@showPublic')->name(
+Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name(
     'records.show-public'
 );
 
