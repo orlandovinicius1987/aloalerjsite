@@ -132,6 +132,11 @@
                             <i class="far fa-copy"></i> Copiar link público
                         </button>
                         @endif
+                        @if($record && $record->id)
+                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}')">
+                            <i class="fas fa-redo"></i> Recuperar código de acesso
+                        </button>
+                        @endif
                     </div>
                 </div>
 

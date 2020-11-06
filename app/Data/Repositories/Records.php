@@ -6,6 +6,7 @@ use App\Data\Models\Record;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\PersonContacts as PersonContactRepository;
+use Illuminate\Support\Str;
 
 class Records extends Base
 {
@@ -68,7 +69,15 @@ class Records extends Base
 
         $this->addProtocolNumberToRecord($person, $record);
 
+        $this->addAccessCodeToRecord($record);
+
         return $record;
+    }
+
+    public function addAccessCodeToRecord($record)
+    {
+        $record->access_code = strtoupper(Str::random(4)); 
+        $record->save();
     }
 
     private function makePersonalDataInfoFromContactData($data)
@@ -105,6 +114,7 @@ class Records extends Base
             $this->cleanProtocol($protocol)
         );
     }
+    
 
     private function cleanProtocol($protocol)
     {
@@ -207,6 +217,7 @@ class Records extends Base
         ]);
 
         $record->sendNotifications();
+        return $record;
     }
 
     public function getLastRecordFromPerson($person_id): Record

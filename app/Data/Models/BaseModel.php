@@ -94,15 +94,14 @@ abstract class BaseModel extends Model implements
     }
 
     public function sendNotificationsForClass(string $class)
-    {
+    {   
         if (($notifiables = $this->getNotifiables())->count() == 0) {
             return false;
         }
-
+        
         $notifiables->each(function ($notifiable) use ($class) {
             $notifiable->notify(new $class($this));
         });
-
         return $this;
     }
 

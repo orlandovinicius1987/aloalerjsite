@@ -35,6 +35,8 @@ export default {
             })
         },
 
+
+
         confirm(action) {
             console.log('confirm');
             this.confirmQuestion()
@@ -43,6 +45,18 @@ export default {
                         window.location = action
                     }
                 });
+        },
+
+        showAccessCode(action, formId)
+        {
+            return swal({
+                title: 'Tem certeza que quer recuperar o código de acesso?',
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                
+            })
+
         },
 
         confirmForPost(action, formId) {
@@ -69,3 +83,4 @@ export default {
         },
       }
 }
+

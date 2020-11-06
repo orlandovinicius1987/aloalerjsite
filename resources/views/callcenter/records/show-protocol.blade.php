@@ -28,6 +28,12 @@
                                 class="far fa-copy"></i> </strong>
                     </div>
                 </section>
+                <section class="personal-data mt-4">
+                    <div class="number">
+                        <small>Código de acesso</small>
+                        <strong>{{ $record->access_code }}</strong>
+                    </div>
+                </section>
                 <section class="personal-data">
                     <div class="name">
                         <small>criado para</small>

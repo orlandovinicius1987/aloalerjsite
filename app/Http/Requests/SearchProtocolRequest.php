@@ -9,8 +9,17 @@ class SearchProtocolRequest extends Request
     public function rules()
     {
         return [
-            'protocolo' => 'required|exists:records,protocol'
+            'protocol' => 'required|exists:records,protocol',
+            'access_code' => ['required', Rule::exists('records')
+                ->where('protocol', $this->get('protocol'))
+                ->where('access_code', $this->get('access_code'))]
         ];
+    }
+
+    public function messages()
+    {
+        return [ 'protocol.exists' => 'Dados inválidos',
+                 'access_code.exists' => 'Dados inválidos'];
     }
 
     /**
@@ -19,9 +28,9 @@ class SearchProtocolRequest extends Request
 
     public function sanitize()
     {
-        if (!empty($this->get('protocolo'))) {
+        if (!empty($this->get('protocol'))) {
             $input = $this->all();
-            $input['protocolo'] = only_numbers($input['protocolo']);
+            $input['protocol'] = only_numbers($input['protocol']);
             $this->replace($input);
         }
 
