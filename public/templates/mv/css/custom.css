@@ -1825,7 +1825,7 @@ i.icone {
         border-radius: 0px;
         display: inline-block;
         margin: 0x 0 0x 0;
-        padding: 0px
+        padding: 0px;
     }
 
     .comissoes-telefone .sidebar-content{
@@ -1879,7 +1879,7 @@ i.icone {
         margin: 15px 0 10px 0;
         padding: 20px 15px 20px 15px ;
         min-width: 294px;
-        min-height: 296px;
+        min-height: 0px;
         max-height: 300px;
     }
 

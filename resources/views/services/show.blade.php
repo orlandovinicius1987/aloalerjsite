@@ -12,8 +12,8 @@
     <div class="page-name">
         <h1 class="nome-comissao ">{{ $committeeService->committee->name ?? '' }}</h1>
     </div>
-
-
+    
+    
     <div class="comissoes-telefone">
 
         @include('partials.committee-telephone', [
@@ -22,7 +22,10 @@
             'site' => '',
         ])
     </div>
-
+    <div class="ficha-comissao text-center">
+        <div class="comissao_presidente"><h3>Presidente</h3>{!! $committeeService->committee->president !!} </div>
+        <div class="comissao-secretario"><h3>Vice-Presidente</h3>{!! $committeeService->committee->vice_president !!} </div>
+    </div>
 
 
     <div class="texto-comissao">
