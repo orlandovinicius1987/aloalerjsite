@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Data\Models\Area as AreaModel;
+
 
 class RemoveDuplicatedAreas extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -27,6 +30,10 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000008)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',20)
+            ->update(['is_active'=> true]);
+
         //mulheres -> defesa dos direitos da mulher
 
         DB::table('records')
@@ -40,6 +47,10 @@ class RemoveDuplicatedAreas extends Migration
         DB::table('areas')
             ->where('id',16)
             ->delete();
+
+        DB::table('areas')
+            ->where('id',1000009)
+            ->update(['is_active'=> true]);
 
         //animais e maus tratos -> defesa e direito dos animais
 
@@ -67,6 +78,10 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000039)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',1000003)
+            ->update(['is_active'=> true]);
+
         //abuso aos direitos humanos e direitos humanos e cidadania -> defesa dos direitos humanos e cidadania
 
         DB::table('records')
@@ -93,6 +108,10 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000047)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',1000012)
+            ->update(['is_active'=> true]);
+
         //idosos -> idoso
 
         DB::table('records')
@@ -106,6 +125,10 @@ class RemoveDuplicatedAreas extends Migration
         DB::table('areas')
             ->where('id',13)
             ->delete();
+
+        DB::table('areas')
+            ->where('id',1000011)
+            ->update(['is_active'=> true]);
 
         //consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor
 
@@ -145,6 +168,10 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000031)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',1000002)
+            ->update(['is_active'=> true]);
+
         //transportes (2x)
 
         DB::table('records')
@@ -158,6 +185,10 @@ class RemoveDuplicatedAreas extends Migration
         DB::table('areas')
             ->where('id',1000010)
             ->delete();
+
+        DB::table('areas')
+            ->where('id',23)
+            ->update(['is_active'=> true]);
 
         //trabalho, legislação social e seguridade social (2x)
 
@@ -173,6 +204,10 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000020)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',20)
+            ->update(['is_active'=> false]);
+
         //segurança -> segurança pública
 
         DB::table('records')
@@ -186,6 +221,10 @@ class RemoveDuplicatedAreas extends Migration
         DB::table('areas')
             ->where('id',22)
             ->delete();
+
+        DB::table('areas')
+            ->where('id',1000015)
+            ->update(['is_active'=> true]);
 
         //preconceitos -> discriminações e preconceitos
 
@@ -201,11 +240,20 @@ class RemoveDuplicatedAreas extends Migration
             ->where('id',1000016)
             ->delete();
 
+        DB::table('areas')
+            ->where('id',1000033)
+            ->update(['is_active'=> true]);
+
         //criação da área de adolescentes
 
-        \App\Data\Models\Area::insert([
-            'name' => 'Adolescentes'
-        ]);
+        AreaModel::updateOrCreate(
+            ['name' => 'Adolescentes'],
+            ['is_active' => true]);
+
+        AreaModel::updateOrCreate(
+            ['name' => 'Crianças'],
+            ['is_active' => true]);
+
 
     }
 
