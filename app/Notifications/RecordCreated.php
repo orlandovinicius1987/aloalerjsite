@@ -60,6 +60,7 @@ class RecordCreated extends Notification implements ShouldQueue
     public function toMail()
     {
         $subject = null;
+    
         $this->record->logEmailWasSent();
 
         if (!$this->record->resolved_at) {
@@ -73,8 +74,8 @@ class RecordCreated extends Notification implements ShouldQueue
             ->line($this->getMessage());
 
         $message->action(
-            'Clique para ver detalhes do protocolo',
-            route('records.show-public', $this->record->protocol)
+            'Clique para acessar seu protocolo com sua chave de acesso',
+            route('home')
         );
 
         return $message;

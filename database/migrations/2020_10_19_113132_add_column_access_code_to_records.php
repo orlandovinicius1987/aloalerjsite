@@ -16,17 +16,8 @@ class AddColumnAccessCodeToRecords extends Migration
     public function up()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->text('access_code')->nullable();
-        });
-
-        foreach(
-            Record::cursor() as $record
-            
-        ){
-            $record->access_code = strtoupper(Str::random(4));
-            dump('Atualizando o protocolo de id - '. $record->id);
-            $record->save();
-        }   
+            $table->text('access_code')->nullable()->default(null);
+        });      
     }
 
     /**

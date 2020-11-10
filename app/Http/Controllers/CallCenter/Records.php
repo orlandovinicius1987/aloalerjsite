@@ -25,7 +25,7 @@ class Records extends Controller
     {
         $record = $this->recordsRepository->findById($id);
         $record->sendAccessCode();
-        return $record;
+        return redirect()->to(route('records.show', [$record->id]));
     }
 
     /**

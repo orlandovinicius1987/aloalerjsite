@@ -127,13 +127,13 @@
                             <i class="fas fa-ban"></i> Cancelar
                         </button>
                         @endif
-                        @if($record && $record->id)
+                        @if($record && $record->id && $record->access_code == null)
                         <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="copyUrl('{{ route('records.show-public', $record->protocol) }}')" :disabled="isEditing || isCreating">
                             <i class="far fa-copy"></i> Copiar link público
                         </button>
                         @endif
-                        @if($record && $record->id)
-                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}')">
+                        @if($record && $record->id && $record->access_code)
+                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}', '{{route('records.recover-access-code' ,$record->id)}}')">
                             <i class="fas fa-redo"></i> Recuperar código de acesso
                         </button>
                         @endif

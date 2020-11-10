@@ -47,16 +47,29 @@ export default {
                 });
         },
 
-        showAccessCode(action, formId)
+        showAccessCode(accessCode, action)
         {
+           
             return swal({
                 title: 'Tem certeza que quer recuperar o código de acesso?',
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 
-            })
-
+                
+            }).then(()=>{
+                return swal({
+                    title: 'Código de acesso: ' + accessCode,
+                    icon: "success",
+                    confirmButton: true,
+                    dangerMode: false,
+                    text: 'Código enviado para o email cadastrado'
+                    })
+                }).then((confirmed) => {
+                    if (confirmed) {
+                        window.location = action
+                    }
+                });
         },
 
         confirmForPost(action, formId) {

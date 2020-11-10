@@ -2,6 +2,7 @@
 namespace App\Data\Models;
 
 use App\Notifications\RecordCreated;
+use App\Notifications\RecoverAccessCode;
 use App\Data\Scopes\Record as RecordScope;
 
 class Record extends BaseModel
