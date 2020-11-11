@@ -16,29 +16,26 @@ class FixOriginCommittee extends Migration
      */
     public function up()
     {
-
         foreach (
             ProgressModel::whereDate(
                 'created_at',
                 '>=',
                 Carbon::createFromFormat('Y-m-d', '2020-08-01')
             )
-//                ->whereNull('created_by_id')
-                ->where('progress_type_id',66)
+                //                ->whereNull('created_by_id')
+                ->where('progress_type_id', 66)
                 ->cursor()
             as $progress
         ) {
-
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
                 ->where('auditable_type', 'App\Data\Models\Progress')
                 ->first();
-//            dump($audit);
-//            ->user_id);
+            //            dump($audit);
+            //            ->user_id);
 
-            if ($userId = $audit->user_id) {
+            if ($audit && ($userId = $audit->user_id)) {
                 $progress->created_by_id = $userId;
-
 
                 $progress->save();
 
@@ -56,6 +53,12 @@ class FixOriginCommittee extends Migration
                 );
 
                 $progress->save();
+            } else {
+                dump(
+                    "Não foi possível resgatar o audit do progress {$progress->id}. Audit encontrado = " .
+                        $audit->id ??
+                        'null'
+                );
             }
         }
     }

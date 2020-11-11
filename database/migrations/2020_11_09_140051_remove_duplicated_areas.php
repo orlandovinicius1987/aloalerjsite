@@ -4,10 +4,83 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\Data\Models\Area as AreaModel;
-
+use App\Data\Models\Progress as ProgressModel;
+use App\Data\Models\Record as RecordModel;
 
 class RemoveDuplicatedAreas extends Migration
 {
+    public $changes = [
+        [
+            'name' => 'pessoa deficiente -> pessoa com deficiência',
+            'oldAreas' => [1000008],
+            'toArea' => 20,
+            'isActive' => true
+        ],
+
+        [
+            'name' => 'mulheres -> defesa dos direitos da mulher',
+            'oldAreas' => [16],
+            'toArea' => 1000009,
+            'isActive' => true
+        ],
+
+        [
+            'name' => 'animais e maus tratos -> defesa e direito dos animais',
+            'oldAreas' => [2, 1000039],
+            'toArea' => 1000003,
+            'isActive' => true
+        ],
+
+        [
+            'name' =>
+                'abuso aos direitos humanos e direitos humanos e cidadania -> defesa dos direitos humanos e cidadania',
+            'oldAreas' => [0, 1000047],
+            'toArea' => 1000012,
+            'isActive' => true
+        ],
+        [
+            'name' => 'idosos -> idoso',
+            'oldAreas' => [13],
+            'toArea' => 1000011,
+            'isActive' => true
+        ],
+
+        [
+            'name' =>
+                'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
+            'oldAreas' => [1000019, 1000021, 1000031],
+            'toArea' => 1000002,
+            'isActive' => true
+        ],
+
+        [
+            'name' => 'transportes (2x)',
+            'oldAreas' => [1000010],
+            'toArea' => 23,
+            'isActive' => true
+        ],
+
+        [
+            'name' => 'trabalho, legislação social e seguridade social (2x)',
+            'oldAreas' => [1000020],
+            'toArea' => 1000007,
+            'isActive' => false
+        ],
+
+        [
+            'name' => 'segurança -> segurança pública',
+            'oldAreas' => [22],
+            'toArea' => 1000015,
+            'isActive' => true
+        ],
+
+        [
+            'name' => 'preconceitos -> discriminações e preconceitos',
+            'oldAreas' => [1000016],
+            'toArea' => 1000033,
+            'isActive' => true
+        ]
+    ];
 
     /**
      * Run the migrations.
@@ -16,245 +89,55 @@ class RemoveDuplicatedAreas extends Migration
      */
     public function up()
     {
-        //pessoa deficiente -> pessoa com deficiência
+        collect($this->changes)->each(function ($row) {
+            dump("Updating {$row['name']}");
 
-        DB::table('records')
-            ->where('area_id', 1000008)
-            ->update(['area_id'=> 20]);
+            collect($row['oldAreas'])->each(function ($oldArea) use ($row) {
+                //Update progresses
+                ProgressModel::where('area_id', $oldArea)
+                    ->get()
+                    ->each(function ($progress) use ($row) {
+                        dump(
+                            "Updating progress {$progress->id} from area {$progress->area_id} to {$row['toArea']}"
+                        );
+                        $progress->area_id = $row['toArea'];
+                        $progress->save();
+                    });
 
-        DB::table('progresses')
-            ->where('area_id', 1000008)
-            ->update(['area_id'=> 20]);
+                //Update records
+                RecordModel::where('area_id', $oldArea)
+                    ->get()
+                    ->each(function ($record) use ($row) {
+                        dump(
+                            "Updating record {$record->id} from area {$record->area_id} to {$row['toArea']}"
+                        );
+                        $record->area_id = $row['toArea'];
+                        $record->save();
+                    });
+            });
 
-        DB::table('areas')
-            ->where('id',1000008)
-            ->delete();
+            //Delete old areas
+            collect($row['oldAreas'])->each(function ($areaId) {
+                if ($area = AreaModel::find($areaId)) {
+                    dump("Deleting area {$area->id}");
+                    $area->delete();
+                }
+            });
 
-        DB::table('areas')
-            ->where('id',20)
-            ->update(['is_active'=> true]);
-
-        //mulheres -> defesa dos direitos da mulher
-
-        DB::table('records')
-            ->where('area_id', 16)
-            ->update(['area_id'=> 1000009]);
-
-        DB::table('progresses')
-            ->where('area_id', 16)
-            ->update(['area_id'=> 1000009]);
-
-        DB::table('areas')
-            ->where('id',16)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000009)
-            ->update(['is_active'=> true]);
-
-        //animais e maus tratos -> defesa e direito dos animais
-
-        DB::table('records')
-            ->where('area_id', 2)
-            ->update(['area_id'=> 1000003]);
-
-        DB::table('records')
-            ->where('area_id', 1000039)
-            ->update(['area_id'=> 1000003]);
-
-        DB::table('progresses')
-            ->where('area_id', 2)
-            ->update(['area_id'=> 1000003]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000039)
-            ->update(['area_id'=> 1000003]);
-
-        DB::table('areas')
-            ->where('id',2)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000039)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000003)
-            ->update(['is_active'=> true]);
-
-        //abuso aos direitos humanos e direitos humanos e cidadania -> defesa dos direitos humanos e cidadania
-
-        DB::table('records')
-            ->where('area_id', 0)
-            ->update(['area_id'=> 1000012]);
-
-        DB::table('records')
-            ->where('area_id', 1000047)
-            ->update(['area_id'=> 1000012]);
-
-        DB::table('progresses')
-            ->where('area_id', 0)
-            ->update(['area_id'=> 1000012]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000047)
-            ->update(['area_id'=> 1000012]);
-
-        DB::table('areas')
-            ->where('id',0)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000047)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000012)
-            ->update(['is_active'=> true]);
-
-        //idosos -> idoso
-
-        DB::table('records')
-            ->where('area_id', 13)
-            ->update(['area_id'=> 1000011]);
-
-        DB::table('progresses')
-            ->where('area_id', 13)
-            ->update(['area_id'=> 1000011]);
-
-        DB::table('areas')
-            ->where('id',13)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000011)
-            ->update(['is_active'=> true]);
-
-        //consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor
-
-        DB::table('records')
-            ->where('area_id', 1000019)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('records')
-            ->where('area_id', 1000021)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('records')
-            ->where('area_id', 1000031)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000019)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000021)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000031)
-            ->update(['area_id'=> 1000002]);
-
-        DB::table('areas')
-            ->where('id',1000019)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000021)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000031)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000002)
-            ->update(['is_active'=> true]);
-
-        //transportes (2x)
-
-        DB::table('records')
-            ->where('area_id', 1000010)
-            ->update(['area_id'=> 23]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000010)
-            ->update(['area_id'=> 23]);
-
-        DB::table('areas')
-            ->where('id',1000010)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',23)
-            ->update(['is_active'=> true]);
-
-        //trabalho, legislação social e seguridade social (2x)
-
-        DB::table('records')
-            ->where('area_id', 1000020)
-            ->update(['area_id'=> 1000007]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000020)
-            ->update(['area_id'=> 1000007]);
-
-        DB::table('areas')
-            ->where('id',1000020)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',20)
-            ->update(['is_active'=> false]);
-
-        //segurança -> segurança pública
-
-        DB::table('records')
-            ->where('area_id', 22)
-            ->update(['area_id'=> 1000015]);
-
-        DB::table('progresses')
-            ->where('area_id', 22)
-            ->update(['area_id'=> 1000015]);
-
-        DB::table('areas')
-            ->where('id',22)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000015)
-            ->update(['is_active'=> true]);
-
-        //preconceitos -> discriminações e preconceitos
-
-        DB::table('records')
-            ->where('area_id', 1000016)
-            ->update(['area_id'=> 1000033]);
-
-        DB::table('progresses')
-            ->where('area_id', 1000016)
-            ->update(['area_id'=> 1000033]);
-
-        DB::table('areas')
-            ->where('id',1000016)
-            ->delete();
-
-        DB::table('areas')
-            ->where('id',1000033)
-            ->update(['is_active'=> true]);
+            $toArea = AreaModel::find($row['toArea']);
+            $toArea->is_active = $row['isActive'];
+        });
 
         //criação da área de adolescentes
-
         AreaModel::updateOrCreate(
             ['name' => 'Adolescentes'],
-            ['is_active' => true]);
+            ['is_active' => true]
+        );
 
         AreaModel::updateOrCreate(
             ['name' => 'Crianças'],
-            ['is_active' => true]);
-
-
+            ['is_active' => true]
+        );
     }
 
     /**
