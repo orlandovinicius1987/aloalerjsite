@@ -126,6 +126,7 @@ class RemoveDuplicatedAreas extends Migration
 
             $toArea = AreaModel::find($row['toArea']);
             $toArea->is_active = $row['isActive'];
+            $toArea->save();
         });
 
         //criação da área de adolescentes
