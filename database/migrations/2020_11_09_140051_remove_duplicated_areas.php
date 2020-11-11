@@ -94,7 +94,8 @@ class RemoveDuplicatedAreas extends Migration
 
             collect($row['oldAreas'])->each(function ($oldArea) use ($row) {
                 //Update progresses
-                ProgressModel::where('area_id', $oldArea)
+                ProgressModel::withoutGlobalScopes()
+                    ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($progress) use ($row) {
                         dump(
@@ -105,7 +106,8 @@ class RemoveDuplicatedAreas extends Migration
                     });
 
                 //Update records
-                RecordModel::where('area_id', $oldArea)
+                RecordModel::withoutGlobalScopes()
+                    ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($record) use ($row) {
                         dump(
@@ -118,13 +120,13 @@ class RemoveDuplicatedAreas extends Migration
 
             //Delete old areas
             collect($row['oldAreas'])->each(function ($areaId) {
-                if ($area = AreaModel::find($areaId)) {
+                if ($area = AreaModel::withoutGlobalScopes()->find($areaId)) {
                     dump("Deleting area {$area->id}");
                     $area->delete();
                 }
             });
 
-            $toArea = AreaModel::find($row['toArea']);
+            $toArea = AreaModel::withoutGlobalScopes()->find($row['toArea']);
             $toArea->is_active = $row['isActive'];
             $toArea->save();
         });
