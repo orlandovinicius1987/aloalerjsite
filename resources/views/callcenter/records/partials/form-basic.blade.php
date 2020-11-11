@@ -71,7 +71,7 @@
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->getBag('validation')->first('area_id') }}</strong></span>
         @endif
     </div>
-    <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+
     <div class="col-md-3">
         <label for="send_answer_by_email_checkbox" class="col-form-label">Resposta por e-mail</label>
         {{--<p class="form-twolines">--}}
@@ -81,8 +81,8 @@
         {{--</p>--}}
 
         <p class="checkbox">
-
-            <input id="send_answer_by_email_checkbox" class="non-anonymous" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
+            <input id="send_answer_by_email" type="hidden" name="send_answer_by_email" value="0">
+            <input id="send_answer_by_email_checkbox" type="checkbox" name="send_answer_by_email" {{old('send_answer_by_email')
                                 || $record->send_answer_by_email ? 'checked="checked"' : ''}}>
         </p>
     </div>

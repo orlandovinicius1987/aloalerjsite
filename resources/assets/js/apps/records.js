@@ -20,9 +20,15 @@ if (jQuery('#' + appName).length > 0) {
 
         methods: {
             toggleAnonymous(event) {
-                this.is_anonymous = !this.is_anonymous
+                this.is_anonymous = !!!this.is_anonymous
 
                 $('.non-anonymous').prop('disabled', this.is_anonymous)
+
+                $('#send_answer_by_email_checkbox').prop(
+                    'disabled',
+                    this.is_anonymous,
+                )
+
                 $('.non-anonymous').prop('value', '')
 
                 $('#btn_create_address').prop('disabled', this.is_anonymous)
