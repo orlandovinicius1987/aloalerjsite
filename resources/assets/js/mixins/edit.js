@@ -47,29 +47,39 @@ export default {
                 });
         },
 
-        showAccessCode(accessCode, action)
+        showAccessCode(accessCode, action, numberOfContats)
         {
-           
-            return swal({
-                title: 'Tem certeza que quer recuperar o código de acesso?',
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                
-                
-            }).then(()=>{
+           if(numberOfContats > 0){
                 return swal({
-                    title: 'Código de acesso: ' + accessCode,
-                    icon: "success",
-                    confirmButton: true,
-                    dangerMode: false,
-                    text: 'Código enviado para o email cadastrado'
-                    })
-                }).then((confirmed) => {
+                    title: 'Enviar o código de acesso para os e-mails cadastrados do cidadão?',
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    
+                    
+                }).then((confirmed)=>{
                     if (confirmed) {
                         window.location = action
                     }
+                    }).then(() => {
+                        return swal({
+                        title: 'Código de acesso: ' + accessCode,
+                        icon: "success",
+                        confirmButton: true,
+                        dangerMode: false,
+                        text: 'Código enviado para o(s) e-mail(s) cadastrado(s)'
+                        })
+                    });
+           }else{
+            return swal({
+                title: 'O usuário não possui e-mails válidos para envio da chave de acesso',
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                text:'A chave de acesso é: ' + accessCode,
+
                 });
+            }
         },
 
         confirmForPost(action, formId) {

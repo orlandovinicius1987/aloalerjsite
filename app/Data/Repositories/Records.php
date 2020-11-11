@@ -74,9 +74,19 @@ class Records extends Base
         return $record;
     }
 
+        function generateRandomString($length = 4) {
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+        return $randomString;
+    }
+
     public function addAccessCodeToRecord($record)
     {
-        $record->access_code = strtoupper(Str::random(4)); 
+        $record->access_code = strtoupper($this->generateRandomString(4)); 
         $record->save();
     }
 

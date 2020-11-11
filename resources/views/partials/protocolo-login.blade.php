@@ -40,7 +40,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-key fa" aria-hidden="true"></i></span>
-                        <input type="password" class="form-control" name="access_code" id="access_code"  placeholder="Código de acesso" required/>
+                        <input type="password" class="form-control" name="access_code" id="access_code"  placeholder="Código de acesso">
                     </div>
                 </div>
             </div>

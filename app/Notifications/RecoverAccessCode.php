@@ -28,7 +28,7 @@ class RecoverAccessCode extends Notification implements ShouldQueue
      */
     private function getMessage()
     {
-        return ('Seu código de acesso é  ' . $this->record->access_code);
+        return ('A chave de acesso do seu protocolo ' . $this->record->protocol  . ' é ' . $this->record->access_code);
     }
 
     /**

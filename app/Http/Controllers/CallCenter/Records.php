@@ -24,9 +24,11 @@ class Records extends Controller
     public function recoverAccessCode($id)
     {
         $record = $this->recordsRepository->findById($id);
-        $record->sendAccessCode();
-        return redirect()->to(route('records.show', [$record->id]));
-    }
+        if(($record->person->contacts->where('contact_type_id', 2)->count()) > 0){
+            $record->sendAccessCode();
+            return redirect()->to(route('records.show', [$record->id]));
+        }
+}
 
     /**
      * @param $person_id
@@ -94,7 +96,6 @@ class Records extends Controller
 
     public function searchShowPublic(SearchProtocolRequest $request)
     {
-
         return redirect()->route('records.show-public', [
             'protocol' => $request->protocol,
         ]);

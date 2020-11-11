@@ -32,7 +32,7 @@ class RecordCreated extends Notification implements ShouldQueue
             
             return (
                 'Seu protocolo foi criado no Alô Alerj, por favor guarde o número dele: ' .
-                $this->record->protocol . " e seu código de acesso é " . $this->record->access_code
+                $this->record->protocol
             );
         }else{
             return (

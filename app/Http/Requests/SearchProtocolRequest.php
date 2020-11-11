@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
+use App\Rules\ValidatePublicSearch;
 
 class SearchProtocolRequest extends Request
 {
@@ -10,9 +11,7 @@ class SearchProtocolRequest extends Request
     {
         return [
             'protocol' => 'required|exists:records,protocol',
-            'access_code' => ['required', Rule::exists('records')
-                ->where('protocol', $this->get('protocol'))
-                ->where('access_code', $this->get('access_code'))]
+            'access_code' => new ValidatePublicSearch($this->all())
         ];
     }
 
@@ -31,6 +30,11 @@ class SearchProtocolRequest extends Request
         if (!empty($this->get('protocol'))) {
             $input = $this->all();
             $input['protocol'] = only_numbers($input['protocol']);
+            $this->replace($input);
+        }
+        if (!empty($this->get('access_code'))) {
+            $input = $this->all();
+            $input['access_code'] = strtoupper($input['access_code']);
             $this->replace($input);
         }
 
