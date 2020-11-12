@@ -54,9 +54,13 @@ export default {
                 return swal({
                     title: 'Enviar o código de acesso para os e-mails cadastrados do cidadão?',
                     icon: "warning",
-                    buttons: true,
+                    buttons: {
+                        cancel: 'Cancelar',
+                        confirm: "Confirmar",
+                    },
                     dangerMode: true,
                     }).then((response)=> { 
+                        if(response){
                         axios.get(route)
                             .then((response) => {
                                 swal({
@@ -67,13 +71,16 @@ export default {
                                 text: 'Código enviado para o(s) e-mail(s) cadastrado(s)'
                                 })
                             })
-                        })
+                        }
+                    })
 
             }else{
                 swal({
                     title: 'O usuário não possui e-mails válidos para envio da chave de acesso',
                     icon: "warning",
-                    buttons: true,
+                    buttons: {
+                        confirm: "OK",
+                    },
                     dangerMode: true,
                     text:'A chave de acesso é: ' + accessCode,
 
