@@ -133,7 +133,7 @@
                         </button>
                         @endif
                         @if($record && $record->id && $record->access_code && $person->name !='Anônimo')
-                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}', '{{route('records.recover-access-code' ,$record->id)}}', '{{$record->person->contacts->where('contact_type_id', 2)->count() > 0}}')">
+                    <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}', '{{route('records.recover-access-code' ,$record->id)}}', {{$has_email}})">
                             <i class="fas fa-redo"></i> Recuperar código de acesso
                         </button>
                         @endif

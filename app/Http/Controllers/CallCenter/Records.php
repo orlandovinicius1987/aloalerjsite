@@ -24,11 +24,8 @@ class Records extends Controller
     public function recoverAccessCode($id)
     {
         $record = $this->recordsRepository->findById($id);
-        if(($record->person->contacts->where('contact_type_id', 2)->count()) > 0){
-            $record->sendAccessCode();
-            return redirect()->to(route('records.show', [$record->id]));
+            return $record->sendAccessCode();
         }
-}
 
     /**
      * @param $person_id
@@ -96,9 +93,12 @@ class Records extends Controller
 
     public function searchShowPublic(SearchProtocolRequest $request)
     {
-        return redirect()->route('records.show-public', [
-            'protocol' => $request->protocol,
-        ]);
+        
+        $record = app(RecordsRepository::class)->findByProtocol(
+            $request->protocol);
+            
+        return view('callcenter.records.show-public')
+            ->with('record', $record);
     }
 
     public function createFromWorkflow($person_id)
@@ -299,7 +299,8 @@ class Records extends Controller
                 $this->progressesRepository->allWherePaginate('record_id', $id)
             )
             ->with('record', $record)
-            ->with('person', $person);
+            ->with('person', $person)
+            ->with('has_email', $record->person->emails->count() > 0 ? true : false);
     }
 
     public function index()
@@ -320,6 +321,7 @@ class Records extends Controller
 
     public function showProtocol($record_id)
     {
+        
         return view('callcenter.records.show-protocol')->with(
             'record',
             $this->recordsRepository->findById($record_id)
@@ -328,9 +330,10 @@ class Records extends Controller
 
     public function showPublic($protocol)
     {
-        return !($record = app(RecordsRepository::class)->findByProtocol(
-            $protocol
-        ))
+        $record = app(RecordsRepository::class)->findByProtocol(
+            $protocol);
+        return (!($record
+        )) || (!Auth::user() && $record->access_code)
 
             ? abort(404)
             : view('callcenter.records.show-public')->with('record', $record);

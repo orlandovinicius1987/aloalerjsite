@@ -47,40 +47,40 @@ export default {
                 });
         },
 
-        showAccessCode(accessCode, action, numberOfContats)
-        {
-           if(numberOfContats > 0){
+        showAccessCode(accessCode, route, has_email)
+        {           
+           
+            if(has_email){
                 return swal({
                     title: 'Enviar o código de acesso para os e-mails cadastrados do cidadão?',
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
-                    
-                    
-                }).then((confirmed)=>{
-                    if (confirmed) {
-                        window.location = action
-                    }
-                    }).then(() => {
-                        return swal({
-                        title: 'Código de acesso: ' + accessCode,
-                        icon: "success",
-                        confirmButton: true,
-                        dangerMode: false,
-                        text: 'Código enviado para o(s) e-mail(s) cadastrado(s)'
+                    }).then((response)=> { 
+                        axios.get(route)
+                            .then((response) => {
+                                swal({
+                                title: 'Código de acesso:   ' + accessCode,
+                                icon: "success",
+                                confirmButton: true,
+                                dangerMode: false,
+                                text: 'Código enviado para o(s) e-mail(s) cadastrado(s)'
+                                })
+                            })
                         })
-                    });
-           }else{
-            return swal({
-                title: 'O usuário não possui e-mails válidos para envio da chave de acesso',
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                text:'A chave de acesso é: ' + accessCode,
 
-                });
+            }else{
+                swal({
+                    title: 'O usuário não possui e-mails válidos para envio da chave de acesso',
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    text:'A chave de acesso é: ' + accessCode,
+
+                })
             }
         },
+                
 
         confirmForPost(action, formId) {
             console.log('confirmForPost');
