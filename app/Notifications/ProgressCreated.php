@@ -62,8 +62,8 @@ class ProgressCreated extends Notification implements ShouldQueue
             ->line($this->getMessage());
 
         $message->action(
-            'Clique para ver detalhes do andamento',
-            route('records.show-public', $this->progress->record->protocol)
+            'Clique para acessar seu protocolo com sua chave de acesso',
+            route('home')
         );
 
         return $message;

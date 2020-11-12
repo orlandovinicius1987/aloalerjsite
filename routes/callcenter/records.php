@@ -22,6 +22,9 @@ Route::group(['prefix' => 'records'], function () {
     Route::get('/advanced-search', 'Records@advancedSearch')->name(
         'records.advanced-search'
     );
+    Route::get('/recover-access-code/{id}', 'Records@recoverAccessCode')->name(
+        'records.recover-access-code'
+    );
 
     Route::post('/advanced-search', 'Records@advancedSearch')->name(
         'records.advanced-search'

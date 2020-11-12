@@ -2,6 +2,7 @@
 namespace App\Data\Models;
 
 use App\Notifications\RecordCreated;
+use App\Notifications\RecoverAccessCode;
 use App\Data\Scopes\Record as RecordScope;
 
 class Record extends BaseModel
@@ -24,7 +25,8 @@ class Record extends BaseModel
         'send_answer_by_email',
         'resolved_at',
         'resolved_by_id',
-        'record_action_id'
+        'record_action_id',
+        'access_code'
     ];
 
     protected $with = ['committee'];
@@ -95,9 +97,18 @@ class Record extends BaseModel
             : collect([]);
     }
 
+
+
     public function sendNotifications()
     {
+        
         return $this->sendNotificationsForClass(RecordCreated::class);
+    }
+
+    public function sendAccessCode()
+    {
+        
+        return $this->sendNotificationsForClass(RecoverAccessCode::class);
     }
 
     public function reopen()

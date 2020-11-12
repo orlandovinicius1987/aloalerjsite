@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class RecordCreated extends Notification implements ShouldQueue
+class RecoverAccessCode extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -28,18 +28,7 @@ class RecordCreated extends Notification implements ShouldQueue
      */
     private function getMessage()
     {
-        if (!$this->record->resolved_at) {
-            
-            return (
-                'Seu protocolo foi criado no Alô Alerj, por favor guarde o número dele: ' .
-                $this->record->protocol
-            );
-        }else{
-            return (
-                'Seu protocolo '. $this->record->protocol. ' foi finalizado no Alô Alerj. '
-
-            );
-        }
+        return ('A chave de acesso do seu protocolo ' . $this->record->protocol  . ' é ' . $this->record->access_code);
     }
 
     /**
@@ -59,15 +48,9 @@ class RecordCreated extends Notification implements ShouldQueue
      */
     public function toMail()
     {
-        $subject = null;
     
-        $this->record->logEmailWasSent();
-
-        if (!$this->record->resolved_at) {
-            $subject = 'Novo Protocolo no Alô Alerj: ' . $this->record->protocol;
-        } else {
-            $subject = 'Finalização do protocolo ' . $this->record->protocol.' no Alô Alerj';
-        }
+        $subject = 'Recuperação do código de acesso';
+    
         $message = (new MailMessage())
             ->subject($subject)
             ->greeting('Olá!')
@@ -75,7 +58,7 @@ class RecordCreated extends Notification implements ShouldQueue
 
         $message->action(
             'Clique para acessar seu protocolo com sua chave de acesso',
-            route('home')
+             route('home')
         );
 
         return $message;

@@ -29,10 +29,11 @@ class Contact extends Controller
     {
         // $this->mailer->send($request);
 
-        app(Records::class)->absorbContactForm($request->all());
+        $record = app(Records::class)->absorbContactForm($request->all());
 
         return view('contact.mailsent')
             ->with('name', $request->get('name'))
+            ->with('record', $record)
             ->with('committeeServices', $this->getPublicCommitteeServices());
     }
 

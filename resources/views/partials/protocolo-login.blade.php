@@ -32,15 +32,23 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-ticket fa" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="protocolo" id="protocolo"  placeholder="Número de protocolo" required/>
+                        <input type="text" class="form-control" name="protocol" id="protocol"  placeholder="Número de protocolo" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key fa" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" name="access_code" id="access_code"  placeholder="Código de acesso">
                     </div>
                 </div>
             </div>
 
 
-            @if ($errors->has('protocolo'))
+            @if ($errors->first())
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('protocolo') }}</strong>
+                    <strong>{{ $errors->first() }}</strong>
                 </span>
             @endif
 
