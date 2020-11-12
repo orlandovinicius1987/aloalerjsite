@@ -132,7 +132,7 @@
                             <i class="far fa-copy"></i> Copiar link público
                         </button>
                         @endif
-                        @if($record && $record->id && $record->access_code && $person->name !='Anônimo')
+                        @if($record && $record->id && $record->access_code && !$person->is_anonymous)
                     <button id="saveButton" type="submit" class="btn btn-primary" @click.prevent="showAccessCode('{{$record->access_code}}', '{{route('records.recover-access-code' ,$record->id)}}', {{$has_email}})">
                             <i class="fas fa-redo"></i> Recuperar código de acesso
                         </button>
