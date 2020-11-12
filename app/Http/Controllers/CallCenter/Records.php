@@ -20,12 +20,11 @@ use App\Data\Repositories\RecordTypes as RecordTypesRepository;
 
 class Records extends Controller
 {
-
     public function recoverAccessCode($id)
     {
         $record = $this->recordsRepository->findById($id);
-            return $record->sendAccessCode();
-        }
+        return $record->sendAccessCode();
+    }
 
     /**
      * @param $person_id
@@ -93,12 +92,11 @@ class Records extends Controller
 
     public function searchShowPublic(SearchProtocolRequest $request)
     {
-        
         $record = app(RecordsRepository::class)->findByProtocol(
-            $request->protocol);
-            
-        return view('callcenter.records.show-public')
-            ->with('record', $record);
+            $request->protocol
+        );
+
+        return view('callcenter.records.show-public')->with('record', $record);
     }
 
     public function createFromWorkflow($person_id)
@@ -138,6 +136,8 @@ class Records extends Controller
     public function store(RecordRequest $request)
     {
         $record = $this->storeRecord($request);
+
+        $record->sendNotifications();
 
         $this->showSuccessMessage(
             'Protocolo ' .
@@ -189,6 +189,8 @@ class Records extends Controller
             ]);
             $this->peopleAddressesRepository->create($data);
         }
+
+        $record->sendNotifications();
 
         $this->showSuccessMessage(
             'Protocolo ' .
@@ -300,7 +302,10 @@ class Records extends Controller
             )
             ->with('record', $record)
             ->with('person', $person)
-            ->with('has_email', $record->person->emails->count() > 0 ? true : false);
+            ->with(
+                'has_email',
+                $record->person->emails->count() > 0 ? true : false
+            );
     }
 
     public function index()
@@ -321,7 +326,6 @@ class Records extends Controller
 
     public function showProtocol($record_id)
     {
-        
         return view('callcenter.records.show-protocol')->with(
             'record',
             $this->recordsRepository->findById($record_id)
@@ -330,11 +334,8 @@ class Records extends Controller
 
     public function showPublic($protocol)
     {
-        $record = app(RecordsRepository::class)->findByProtocol(
-            $protocol);
-        return (!($record
-        )) || (!Auth::user() && $record->access_code)
-
+        $record = app(RecordsRepository::class)->findByProtocol($protocol);
+        return !$record || (!Auth::user() && $record->access_code)
             ? abort(404)
             : view('callcenter.records.show-public')->with('record', $record);
     }
@@ -395,7 +396,6 @@ class Records extends Controller
     private function storeRecord(RecordRequest $request)
     {
         $record = $this->recordsRepository->create(coollect($request->all()));
-        $record->sendNotifications();
 
         if (is_null($request->get('record_id'))) {
             //Se é um protocolo novo
@@ -406,7 +406,8 @@ class Records extends Controller
                 )->findByName('Entrada')->id
             ]);
             $request->merge([
-                'is_private'=>1]);
+                'is_private' => 1
+            ]);
             $progress = $this->progressesRepository->createFromRequest(
                 $request
             );

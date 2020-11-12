@@ -74,19 +74,20 @@ class Records extends Base
         return $record;
     }
 
-        function generateRandomString($length = 4) {
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, $charactersLength - 1)];
-            }
+    function generateRandomString($length = 4)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
         return $randomString;
     }
 
     public function addAccessCodeToRecord($record)
     {
-        $record->access_code = strtoupper($this->generateRandomString(4)); 
+        $record->access_code = strtoupper($this->generateRandomString(4));
         $record->save();
     }
 
@@ -124,7 +125,6 @@ class Records extends Base
             $this->cleanProtocol($protocol)
         );
     }
-    
 
     private function cleanProtocol($protocol)
     {
@@ -210,7 +210,8 @@ class Records extends Base
                     'ALÔ ALERJ'
                 )->id,
                 'record_type_id' => $data['record_type_id'],
-                'person_id' => $person->id
+                'person_id' => $person->id,
+                'send_answer_by_email' => $data['email'] ? true : false
             ])
         );
 
@@ -219,7 +220,7 @@ class Records extends Base
             'progress_type_id' => app(ProgressTypes::class)->findByName(
                 'Entrada'
             )->id,
-            'is_private'=>1,
+            'is_private' => 1,
             'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'objeto_id',
@@ -227,6 +228,7 @@ class Records extends Base
         ]);
 
         $record->sendNotifications();
+
         return $record;
     }
 
