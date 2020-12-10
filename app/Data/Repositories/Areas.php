@@ -10,4 +10,9 @@ class Areas extends Base
      * @var $model
      */
     protected $model = Area::class;
+
+    public function getAreas()
+    {
+        return Areas::class;
+    }
 }

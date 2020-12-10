@@ -45,6 +45,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('areas.index') }}"><i class="fas fa-stamp"></i> Assuntos </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
                     </li>
 
