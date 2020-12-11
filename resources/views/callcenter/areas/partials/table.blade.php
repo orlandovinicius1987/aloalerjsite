@@ -8,7 +8,7 @@
 
     @foreach($areas as $area)
         <tr>
-            <td><a :href="'/areas/show/{{$area->id}}'">{{$area->name}}</a></td>
+            <td><a href="{{route('areas.details', ['id'=>$area->id])}}">{{$area->name}}</a></td>
             @if($area->is_active  == true)
                 <td>Sim</td>
             @elseif($area->is_active  == false)
