@@ -92,8 +92,12 @@ Route::group(
         require __DIR__ . '/callcenter/files.php';
 
         Route::group(['prefix' => 'areas'], function () {
-        
+
             Route::get('/', 'Areas@index')->name('areas.index');
+            Route::post('/store', 'Areas@store')->name('areas.store');
+            Route::get('/createArea', 'Areas@create')->name('areas.create');
+            Route::get('/show/{id}', 'Areas@details')->name('areas.details');
+
         });
 
         Route::group(['prefix' => 'committees'], function () {
@@ -106,7 +110,7 @@ Route::group(
             );
             Route::get('/', 'Committees@index')->name('committees.index');
 
-            
+
 
             Route::group(['prefix' => 'committee-service'], function () {
 
