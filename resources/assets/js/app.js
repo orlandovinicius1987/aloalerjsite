@@ -17,6 +17,8 @@ require('./apps/committees-search.js')
 require('./apps/phones.js')
 require('./apps/chat.js')
 require('./apps/advanced-search.js')
+require('./apps/areas-search.js')
+require('./apps/areas.js')
 
 $(document).ready(function() {
     $('.select2').select2({

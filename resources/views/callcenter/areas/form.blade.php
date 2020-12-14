@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="vue-committees">
+    <div id="vue-areas">
         <div class="row mt-4" >
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="section-title">
