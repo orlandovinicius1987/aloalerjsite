@@ -13,6 +13,10 @@ Route::group(
             'api.commiteesSearch.execute'
         );
 
+        Route::post('areas-search/', 'Api\AreasSearch@execute')->name(
+            'api.areasSearch.execute'
+        );
+
         Route::post(
             'convert-extension-to-icon/',
             'Api\File@convertExtensionToIcon'

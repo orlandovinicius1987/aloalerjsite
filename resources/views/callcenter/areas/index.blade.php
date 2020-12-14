@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="card mt-4" id="vue-committees-search">
+    <div class="card mt-4" id="vue-areas-search">
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col-7 col-md-4">
