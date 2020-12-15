@@ -66,7 +66,7 @@ if (jQuery('#' + appName).length > 0) {
 
             refreshTable(table) {
                 axios
-                    .get('/callcenter/' + table)
+                    .get('/' + table)
                     .then(function(response) {
                         $this.tables[table] = response.data
                     })
@@ -83,7 +83,7 @@ if (jQuery('#' + appName).length > 0) {
         },
 
         mounted() {
-            this.refreshTable('areas')
+            this.refresh()
 
             // this.refreshTable('people')
         },

@@ -6,14 +6,10 @@
     </tr>
     </thead>
 
-    @foreach($areas as $area)
-        <tr>
-            <td><a href="{{route('areas.details', ['id'=>$area->id])}}">{{$area->name}}</a></td>
-            @if($area->is_active  == true)
-                <td>Sim</td>
-            @elseif($area->is_active  == false)
-                <td>Não</td>
-            @endif
+        <tr v-for="area in tables.areas">
+            <td><a :href="'/callcenter/area/show/' + area.id">@{{ area.name }}</a></td>
+            <td v-if="area.is_active">Sim</td>
+            <td v-if="!area.is_active">Não</td>
         </tr>
-    @endforeach
 </table>
+
