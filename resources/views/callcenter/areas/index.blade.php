@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="card mt-4" id="vue-areas-search">
         <div class="card-header">
             <div class="row align-items-center">
