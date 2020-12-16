@@ -7,7 +7,7 @@
     </thead>
 
         <tr v-for="area in tables.areas">
-            <td><a :href="'/callcenter/area/show/' + area.id">@{{ area.name }}</a></td>
+            <td><a :href="'/callcenter/areas/show/' + area.id">@{{ area.name }}</a></td>
             <td v-if="area.is_active">Sim</td>
             <td v-if="!area.is_active">Não</td>
         </tr>
