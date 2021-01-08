@@ -15,6 +15,8 @@ php artisan route:clear
 php artisan view:clear
 ```
 
+- Dar permissionamento de owner para a pasta e todos os arquivos internos (Exemplo: sudo chown -R www-data:www-data aloalerjsite/)
+
 - Reiniciar o horizon
 
 ### Supervisor:
