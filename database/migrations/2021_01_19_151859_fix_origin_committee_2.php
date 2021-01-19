@@ -46,17 +46,17 @@ class FixOriginCommittee2 extends Migration
                 $progress->save();
 
                 if ($creator = $progress->creator) {
-                    $progress->created_by_committee_id = $creator->originCommittee()->id;
+                    $newCommitteeId = $progress->created_by_committee_id = $creator->originCommittee()->id;
                 } else {
-                    $progress->created_by_committee_id = CommitteeModel::where(
+                    $newCommitteeId = $progress->created_by_committee_id = CommitteeModel::where(
                         'slug',
                         'alo-alerj'
                     )->first()->id;
                 }
 
-                if ($oldCommitteeId != $progress->created_by_committee_id) {
+                if ($oldCommitteeId != $newCommitteeId) {
                     dump(
-                        "Alterando o progress {$progress->id} da comissão {$oldCommitteeId} para a comissão {$progress->created_by_committee_id}"
+                        "Alterando o progress {$progress->id} da comissão {$oldCommitteeId} para a comissão {$newCommitteeId}"
                     );
                 } else {
                     dump(
