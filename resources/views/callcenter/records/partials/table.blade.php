@@ -77,7 +77,11 @@
                         </td>
                     @endif
 
-                    <td style="word-wrap: break-word; width: 40%; max-width: 20px;">{{ $record->first_progress_original ?? '' }}</td>
+                    <td style="width: 40%; max-width: 20px;" >
+                        <div style="overflow-y: scroll;  max-height: 200px; height: 200px; !important;">
+                            {{ $record->first_progress_original ?? '' }}
+                        </div>
+                    </td>
 
                     <td style="width: 7.5%">{{ $record->origin_committee->name ?? '' }}</td>
 
