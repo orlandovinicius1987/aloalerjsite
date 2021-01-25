@@ -7,6 +7,21 @@ class CommitteesSeeder extends Seeder
     private function getData()
     {
         return coollect([
+            'alo-alerj' => [
+                'slug' => 'alo-alerj',
+                'name' => 'ALÔ ALERJ',
+                'link_caption' => '',
+                'short_name' => '',
+                'phone' => '',
+                'email' => '',
+                'texto' => '',
+                'president' => '',
+                'vice_president' => '',
+                'public' => false,
+                'office_phone' => '',
+                'office_address' => '',
+            ],
+
             'defesadoconsumidor' => [
                 'slug' => 'defesadoconsumidor',
                 'name' => 'Comissão de Defesa do Consumidor',
@@ -60,9 +75,8 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Pirataria',
                 'short_name' => 'Prevenção e Combate a Pirataria',
                 'phone' => '0800-282-6582',
-                'texto' =>
-                    '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
-            
+                'texto' => '<p>A Comissão para Prevenir e Combater a Pirataria investiga pontos de comercialização de produtos piratas e trabalha para combatê-los. Para isso, conta com a ajuda da população, que pode fazer denúncias anônimas por meio do Alô Alerj.  Produtos ou obras piratas são aqueles que infringem patentes, direitos autorais ou são reproduções não autorizadas.
+
             Cabe à comissão manifestar-se sobre todas as proposições pertinentes a assuntos relacionados à pirataria; fiscalizar e acompanhar os programas, projetos e ações governamentais de combate à pirataria; estimular ações da sociedade civil voltadas ao combate à pirataria no Estado; realizar discussões sobre o tema; promover campanhas de conscientização; e propor ações preventivas aos governos e estimular pesquisas sobre o assunto.</p>',
                 'president' => 'Deputado Subtenente Bernardo',
                 'vice_president' => 'Deputado Anderson Moraes',
@@ -92,32 +106,32 @@ class CommitteesSeeder extends Seeder
                 'phone' => '0800-282-8815',
                 'texto' => '
                 <p>A Comissão de Saneamento ambiental atua em ações técnicas e socioeconômicas fundamentadas na busca de melhorias da saúde pública, tendo por objetivo monitorar, fiscalizar e acompanhar níveis crescentes de salubridade ambiental no Estado do Rio de Janeiro.</p>
-                
+
                 <br>
 
                 <p>Dentre as principais atividades relacionadas ao saneamento ambiental, está o cumprimento do que estabelece os princípios fundamentais e diretrizes nacionais para o saneamento (Lei nº 11.445/2007): universalização do acesso aos serviços público de saneamento básico; abastecimento de água; esgotamento sanitário; limpeza urbana e manejo dos resíduos sólidos; disponibilidade, em todas as áreas urbanas, de serviços de drenagem e de manejo das águas pluviais; entre outros.</p>
-                
+
                 <br>
-                
-                <p>Compete à Comissão de Saneamento Ambiental opinar sobre:</p> 
-                
+
+                <p>Compete à Comissão de Saneamento Ambiental opinar sobre:</p>
+
                 <ol>
                   <li>projetos atinentes à realização de obras e serviços públicos pelo município, autarquias, entidades paraestatais e concessionárias de serviços públicos de âmbito Estadual;</li>
-                
+
                   <li>fiscalização da promoção do abastecimento de água potável, do esgotamento sanitário, da limpeza urbana, do manejo de resíduos sólidos e da drenagem e manejo das águas pluviais urbanas;</li>
-                
+
                   <li>fiscalização e auxílio na promoção da não geração, redução, reutilização, reciclagem e tratamento dos resíduos sólidos, bem como disposição final ambientalmente adequada dos rejeitos;</li>
-                
+
                   <li>fiscalização e auxílio na promoção de incentivo à indústria da reciclagem, tendo em vista fomentar o uso de matérias-primas e insumos derivados de materiais recicláveis e reciclados;</li>
-                
+
                   <li>auxílio na promoção da integração dos catadores de materiais reutilizáveis e recicláveis nas ações que envolvam a responsabilidade compartilhada pelo ciclo de vida dos produtos;</li>
-                
+
                   <li>fiscalização e auxílio na promoção de incentivo ao desenvolvimento de sistemas de gestão ambiental e empresarial voltados para a melhoria dos processos produtivos e ao reaproveitamento dos resíduos sólidos, incluídos a recuperação e o aproveitamento energético;</li>
-                
+
                   <li>promoção de adoção de padrões sustentáveis de produção e consumo de bens e serviços, do desenvolvimento e aprimoramento de tecnologias limpas como forma de minimizar impactos ambientais;</li>
-                
+
                   <li>outras matérias pertinentes à proteção do meio ambiente, como por exemplo a balneabilidade das praias fluminenses.</li>
-                
+
                   <li>A promoção da saúde por meio da integração do saneamento com os recursos hídricos.</li>
                 </ol>
             ',
@@ -162,25 +176,30 @@ class CommitteesSeeder extends Seeder
 
             'disqueidoso' => [
                 'slug' => 'disqueidoso',
-                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'name' =>
+                    'Comissão de Assuntos da Criança do Adolescente e do Idoso',
                 'link_caption' => 'Dique Idoso',
                 'short_name' => 'Dique Idoso',
                 'phone' => '0800-023-9191',
-                'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
+                'texto' =>
+                    '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
                 'president' => 'Deputada Rosane Félix',
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
-                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+                'office_address' =>
+                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
             ],
 
             'disquecrianca' => [
                 'slug' => 'disquecrianca',
-                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'name' =>
+                    'Comissão de Assuntos da Criança do Adolescente e do Idoso',
                 'link_caption' => 'Dique Criança e Adolescente',
                 'short_name' => 'Dique Criança e Adolescente',
                 'phone' => '0800-023-0007',
-                'texto' => '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
+                'texto' =>
+                    '<p>A Comissão de Assuntos da Criança, do Adolescente e do Idoso trata de proposições referentes aos assuntos especificamente relacionados à criança, ao adolescente e ao idoso, em especial os que tenham pertinência com os seus direitos, bem como exercer ação fiscalizadora diante de fatos que atentem contra estes.</p>',
                 'president' => 'Deputada Rosane Félix',
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
@@ -195,8 +214,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Direitos Humanos',
                 'short_name' => 'Defesa dos Direitos Humanos e Cidadania',
                 'phone' => '0800-025-5108',
-                'texto' =>
-                    '<p>A Comissão de Defesa dos Direitos Humanos e Cidadania tem como tarefa acompanhar e se manifestar sobre proposições e assuntos ligados aos direitos inerentes ao ser humano, tendo em vista as condições mínimas à sua sobrevivência digna e o exercício pleno das garantias individuais e coletivas. A Comissão prioriza a articulação de canais efetivos, institucionalizados ou não, para a intermediação entre sociedade e poder público, a fim de alterar a fórmula tradicional de elaboração e implementação de políticas públicas.</p>
+                'texto' => '<p>A Comissão de Defesa dos Direitos Humanos e Cidadania tem como tarefa acompanhar e se manifestar sobre proposições e assuntos ligados aos direitos inerentes ao ser humano, tendo em vista as condições mínimas à sua sobrevivência digna e o exercício pleno das garantias individuais e coletivas. A Comissão prioriza a articulação de canais efetivos, institucionalizados ou não, para a intermediação entre sociedade e poder público, a fim de alterar a fórmula tradicional de elaboração e implementação de políticas públicas.</p>
     <p>O objetivo principal é acompanhar e se manifestar sobre programas e ações relacionadas a todos os direitos humanos e, se necessário, agir em caso de violações. Dessa forma, assume uma postura de estabelecer uma arena de diálogo entre as diferentes esferas governamentais e a sociedade civil, bem como dar voz aos movimentos sociais.</p>
     <p>Diante das denúncias, solicitações de auxílio e acompanhamentos de casos, a Comissão pode tomar medidas com o intuito de esclarecer ou solucionar fatos reportados sobre violações de direitos humanos, a partir dos seguintes mecanismos: acolhimento das famílias vítimas de violações de direitos; requerimento de informações mediante ofício às instituições públicas envolvidas na denúncia; encaminhamento do usuário para órgãos responsáveis pelos diferentes setores governamentais; articulação com as demais comissões permanentes da casa com o intuito de buscar solucionar as demandas; realização de audiência pública para convocar instituições públicas a prestar esclarecimentos, promovendo a discussão sobre o tema para, assim, avançar na qualidade das políticas públicas.</p>',
                 'president' => 'Deputada Renata Souza',
@@ -213,8 +231,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Educacao',
                 'short_name' => 'Educacao',
                 'phone' => '0800-282-1559',
-                'texto' =>
-                    '<p>A Comissão de Educação cuida dos assuntos relacionados ao sistema educacional. Compete a ela opinar e dar seguimento às proposições e assuntos relativos à educação e à instrução pública e particular. A Comissão realiza semanalmente audiências públicas para debater assuntos relevantes para todas as etapas do ensino, da educação infantil à universidade. As reuniões contam com presença de entidades, sindicatos e representantes das comunidades escolares, além de representantes do Poder Executivo, criando um canal de diálogo entre as instituições e esferas de poder.</p>
+                'texto' => '<p>A Comissão de Educação cuida dos assuntos relacionados ao sistema educacional. Compete a ela opinar e dar seguimento às proposições e assuntos relativos à educação e à instrução pública e particular. A Comissão realiza semanalmente audiências públicas para debater assuntos relevantes para todas as etapas do ensino, da educação infantil à universidade. As reuniões contam com presença de entidades, sindicatos e representantes das comunidades escolares, além de representantes do Poder Executivo, criando um canal de diálogo entre as instituições e esferas de poder.</p>
             <p>Com diversas conquistas para a educação fluminense, o colegiado está sempre aberto ao diálogo. Atende também as questões mais específicas de cada um que a procura buscando orientação ou fazendo denúncias. A Comissão tem como prioridade sua ação fiscalizadora do Poder Executivo no cumprimento das políticas públicas de educação do Estado do Rio de Janeiro.<p>',
                 'president' => 'Deputado Flávio Serafini',
                 'vice_president' => 'Deputado Léo Vieira',
@@ -229,8 +246,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Seguranca Alimentar',
                 'short_name' => 'Seguranca Alimentar',
                 'phone' => '0800-282-0376',
-                'texto' =>
-                    '<p>A Comissão de Segurança Alimentar cuida para que os alimentos comercializados estejam adequados para consumo, seguindo as normas de produção, transporte e armazenamento. Compete à Comissão manifestar-se sobre a elaboração, coordenação e execução de programas e projetos ligados à segurança alimentar e combate à fome no Estado do Rio de Janeiro; políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte integrante dos direitos humanos; projetos e programas de geração de emprego e renda; e políticas públicas de assistência social.</p>
+                'texto' => '<p>A Comissão de Segurança Alimentar cuida para que os alimentos comercializados estejam adequados para consumo, seguindo as normas de produção, transporte e armazenamento. Compete à Comissão manifestar-se sobre a elaboração, coordenação e execução de programas e projetos ligados à segurança alimentar e combate à fome no Estado do Rio de Janeiro; políticas, programas e ações relacionadas ao direito à alimentação e nutrição como parte integrante dos direitos humanos; projetos e programas de geração de emprego e renda; e políticas públicas de assistência social.</p>
     <p>A Comissão atua com o objetivo de desenvolver estudos relacionados à garantia de alimentação e nutrição da população; fiscalizar e acompanhar projetos e ações governamentais na área de segurança alimentar; estudar e fiscalizar as ações das entidades da sociedade civil organizada voltadas para o combate à fome; estimular ações da sociedade civil voltadas para o combate à fome no Estado do Rio de Janeiro; e promover e coordenar campanhas de conscientização quanto ao desperdício de alimentos.</p>',
                 'president' => 'Deputada Lucinha',
                 'vice_president' => 'Deputada Mônica Francisco',
@@ -245,8 +261,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Sos Mulher',
                 'short_name' => 'Defesa dos Direitos da Mulher',
                 'phone' => '0800-282-0119',
-                'texto' =>
-                    '<p>A missão da Comissão de Defesa dos Direitos da Mulher é lutar pela igualdade entre homens e mulheres, e prestar apoio e acolhimento amigável às mulheres. A Comissão combate ideias preconceituosas, o machismo e  o patrimonialismo, que geram desigualdade nas relações de trabalho, assédio sexual e moral, além de violência à mulher, que a cada 14 minutos faz uma vítima no Brasil.</p>
+                'texto' => '<p>A missão da Comissão de Defesa dos Direitos da Mulher é lutar pela igualdade entre homens e mulheres, e prestar apoio e acolhimento amigável às mulheres. A Comissão combate ideias preconceituosas, o machismo e  o patrimonialismo, que geram desigualdade nas relações de trabalho, assédio sexual e moral, além de violência à mulher, que a cada 14 minutos faz uma vítima no Brasil.</p>
     <p>A Comissão se utiliza de redes de atendimento e serviços jurídicos voltados para a mulher, criados por políticas públicas e espaços de solidariedade conquistadas na luta por respeito e igualdade, para fazer seu trabalho.  O "SOS MULHER", como é chamado o 0800 da Comissão, funciona de segunda a sexta, das 9h às 18h, com um atendimento especializado e feito apenas por mulheres preparadas.</p>',
                 'president' => 'Deputada Enfermeira Rejane',
                 'vice_president' => 'Deputada Dani Monteiro',
@@ -263,8 +278,7 @@ class CommitteesSeeder extends Seeder
                 'link_caption' => 'Tributacao',
                 'short_name' => 'Tributação e Controle da Arrecadação',
                 'phone' => '0800-282-5888',
-                'texto' =>
-                    '<p>A Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais trata dos assuntos referentes à tributação, arrecadação e fiscalização dos tributos estaduais. Cabe à Comissão:</p>
+                'texto' => '<p>A Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais trata dos assuntos referentes à tributação, arrecadação e fiscalização dos tributos estaduais. Cabe à Comissão:</p>
                 <ul>
                 <li>Solicitar que o Tribunal de Contas do Estado promova inspeções e auditorias na arrecadação de tributos estaduais;</li>
                 <li>Efetuar a tomada de contas do Governador;</li>
