@@ -14,7 +14,7 @@ class RemoveAttendantNameFromProgresses extends Migration
      */
     public function up()
     {
-        foreach (ProgressModel::cursor() as $progress) {
+        foreach (ProgressModel::withoutGlobalScopes()->cursor() as $progress) {
             $afterRegex = preg_replace(
                 '/(Protocolo finalizado sem observações em .*?)( pelo usuário .*)/',
                 '$1',

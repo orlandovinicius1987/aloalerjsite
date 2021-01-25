@@ -23,8 +23,7 @@ class AddColumnCreatedByCommitteeIdToProgressesTable extends Migration
                 ->index();
         });
 
-        foreach(Progress::cursor() as $progress)
-        {
+        foreach (Progress::withoutGlobalScopes()->cursor() as $progress) {
             if ($creator = $progress->creator) {
                 $progress->created_by_committee_id = $creator->originCommittee()->id;
             } else {
