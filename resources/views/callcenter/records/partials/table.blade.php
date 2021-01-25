@@ -78,7 +78,7 @@
                     @endif
 
                     <td style="width: 40%; max-width: 20px;" >
-                        <div style="overflow-y: scroll;  max-height: 200px; height: 200px; !important;">
+                        <div style="overflow-y: auto;  max-height: 200px; height: 200px; !important;">
                             {{ $record->first_progress_original ?? '' }}
                         </div>
                     </td>
