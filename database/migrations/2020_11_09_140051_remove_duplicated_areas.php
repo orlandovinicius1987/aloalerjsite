@@ -14,21 +14,21 @@ class RemoveDuplicatedAreas extends Migration
             'name' => 'pessoa deficiente -> pessoa com deficiência',
             'oldAreas' => [1000008],
             'toArea' => 20,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
             'name' => 'mulheres -> defesa dos direitos da mulher',
             'oldAreas' => [16],
             'toArea' => 1000009,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
             'name' => 'animais e maus tratos -> defesa e direito dos animais',
             'oldAreas' => [2, 1000039],
             'toArea' => 1000003,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
@@ -36,13 +36,13 @@ class RemoveDuplicatedAreas extends Migration
                 'abuso aos direitos humanos e direitos humanos e cidadania -> defesa dos direitos humanos e cidadania',
             'oldAreas' => [0, 1000047],
             'toArea' => 1000012,
-            'isActive' => true
+            'isActive' => true,
         ],
         [
             'name' => 'idosos -> idoso',
             'oldAreas' => [13],
             'toArea' => 1000011,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
@@ -50,36 +50,36 @@ class RemoveDuplicatedAreas extends Migration
                 'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
             'oldAreas' => [1000019, 1000021, 1000031],
             'toArea' => 1000002,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
             'name' => 'transportes (2x)',
             'oldAreas' => [1000010],
             'toArea' => 23,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
             'name' => 'trabalho, legislação social e seguridade social (2x)',
             'oldAreas' => [1000020],
             'toArea' => 1000007,
-            'isActive' => false
+            'isActive' => false,
         ],
 
         [
             'name' => 'segurança -> segurança pública',
             'oldAreas' => [22],
             'toArea' => 1000015,
-            'isActive' => true
+            'isActive' => true,
         ],
 
         [
             'name' => 'preconceitos -> discriminações e preconceitos',
             'oldAreas' => [1000016],
             'toArea' => 1000033,
-            'isActive' => true
-        ]
+            'isActive' => true,
+        ],
     ];
 
     /**
@@ -126,9 +126,12 @@ class RemoveDuplicatedAreas extends Migration
                 }
             });
 
-            $toArea = AreaModel::withoutGlobalScopes()->find($row['toArea']);
-            $toArea->is_active = $row['isActive'];
-            $toArea->save();
+            if (
+                $toArea = AreaModel::withoutGlobalScopes()->find($row['toArea'])
+            ) {
+                $toArea->is_active = $row['isActive'];
+                $toArea->save();
+            }
         });
 
         //criação da área de adolescentes
