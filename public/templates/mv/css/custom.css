@@ -420,6 +420,7 @@ i.icone {
         text-align: center;
         margin-bottom: 50px;
     }
+
     .mobile-chat {
         border-top: 1px solid #192a55 ;
         border-bottom: 1px solid #b6bcc8 ;
@@ -427,6 +428,22 @@ i.icone {
         padding-top: 50px;
         padding-bottom: 40px;
     }
+
+
+    .mobile-chat2 {
+        padding: 15px 30px 50px 30px !important;
+        background: #F5F5F5 !important;
+    }
+    img.balao-chat.offline {
+        max-width: 75px;
+        padding-bottom: 15px;
+    }
+
+    .mobile-protocolo {
+        padding: 0 30px !important;
+        background: #F5F5F5 !important;
+    }
+
 
     .telefone {
         font-size: 25px;

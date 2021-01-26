@@ -47,12 +47,15 @@
             </div>
 --}}
 
+            <div class="col-xs-12 mobile-chat2">
+                @include('partials.form-chat-offline')
+            </div>
 
-            <div class="col-xs-12 col-sm-6 mobile-telegram">
+            <div class="col-xs-12 mobile-telegram">
                 @include('partials.telegram')
             </div>
 
-            <div class="col-xs-12 col-sm-6 mobile-protocolo">
+            <div class="col-xs-12 mobile-protocolo">
 
                 @include('partials.protocolo-login')
             </div>
