@@ -7,19 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="keywords" content="alerj, alo alerj, call center, callcenter, chat, cidadao, comissoes, whatsapp, telegram, operador, atendimento" />
         <meta name="description" content="Sistema de Atendimento via Chat do Alo Alerj e Comissoes" />
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?cache={{rand(0,5000)}}">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @if (Session::get('client') == 'app')
-            <link rel="stylesheet" href="/templates/mv/app.css?cache={{rand(0,5000)}}">
-        @endif
-
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?cache={{rand(0,5000)}}">
-
-        <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
         <script src="{{ mix('js/app.js') }}" defer></script>
 
         <script>

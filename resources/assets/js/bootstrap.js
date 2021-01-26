@@ -1,7 +1,7 @@
 window._ = require('lodash')
 
 //BEGIN BOOTSTRAP
-const bootstrap = require('bootstrap')
+import 'bootstrap'
 //END BOOTSTRAP
 
 window.Vue = require('vue')
