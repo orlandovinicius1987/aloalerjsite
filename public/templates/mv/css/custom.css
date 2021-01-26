@@ -434,7 +434,7 @@ i.icone {
         padding: 15px 30px 50px 30px !important;
         background: #F5F5F5 !important;
     }
-    img.balao-chat.offline {
+    .mobile-chat2 img.balao-chat.offline {
         max-width: 75px;
         padding-bottom: 15px;
     }
@@ -833,9 +833,9 @@ i.icone {
 
     .mobile-telegram {
         margin-top: 0px;
-        border-top: solid 2px #172b53 ;
-        border-right: solid 1px #172b53 ;
-        border-bottom: solid 2px #b6bcc7;
+        /*border-top: solid 2px #172b53 ;*/
+        /*border-right: solid 1px #172b53 ;*/
+        /*border-bottom: solid 2px #b6bcc7;*/
         padding: 30px 10px 40px 10px;
     }
     .mobile-chat {
@@ -843,6 +843,32 @@ i.icone {
         border-top: solid 2px #172b53 ;
         border-bottom: solid 2px #b6bcc7;
         padding-bottom: 36px;
+    }
+
+
+    .mobile-chat2 {
+        padding: 45px 45px 75px 45px !important;
+        background: #F5F5F5 !important;
+    }
+
+    .mobile-chat2 img.balao-chat.offline {
+        max-width: 150px;
+        padding-bottom: 15px;
+    }
+
+    .chat-horario {
+        font-size: 28px;
+        padding: 15px 30px;
+    }
+    .chat-offline-mensagem {
+        margin-top: 15px;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        padding: 15px 30px;
+    }
+    .iniciar-conversa {
+        font-size: 2em !important;
     }
 
     .mobile-content {
@@ -1096,20 +1122,30 @@ i.icone {
     }
 
     .balao-chat {
-        height: 45px;
+        height: 80px;
         /*margin-top: 20px;*/
     }
 
     img.balao-chat.offline {
         opacity: 0.4;
+        margin-top: -30px;
+        padding-bottom: 15px;
     }
 
 
 
     .chat-horario{
-        margin-top: 15px;
+        margin-top: 0px;
+        font-size: 18px;
     }
 
+
+    .chat-offline-mensagem {
+        margin-top: 0px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 18px;
+    }
     .no-svg .balao-chat {
         background-image: url(images/balao-chat.svg);
     }
@@ -1627,10 +1663,10 @@ i.icone {
         font-weight: 600;
     }
     .btn.btn-lg.btn-primary {
-        /*padding: 10px 46px;*/
+        padding: 10px 46px;
         text-transform: uppercase;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 20px !important;
     }
 
 

@@ -15,7 +15,6 @@
         @include('partials.slider-desktop')
 
         <div class="row row-eq-height blocos" id="vue-chat">
-
             <div class="col-xs-12 col-lg-4" v-show="! chatOnline">
                 <div class="row row-eq-height blocos" >
                     <div class="boxshadow">
@@ -24,11 +23,11 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-lg-4 hidden-xs hidden-sm hidden-md">
+            <div class="col-xs-12 col-lg-4 ">
                 @include('partials.telegram')
             </div>
 
-            <div :class="'col-xs-12 col-lg-'+(chatOnline ? 8: 4)+' hidden-xs hidden-sm hidden-md'">
+            <div :class="'col-xs-12 col-lg-'+(chatOnline ? 8: 4)+' '">
                 @include('partials.protocolo-login')
             </div>
 
@@ -38,15 +37,12 @@
     <div class="visible-xs visible-sm visible-md">
         <div class="row">
 
-
             @include('partials.slider')
-
 {{--
             <div class="col-xs-12 col-sm-6 mobile-chat">
                 @include('partials.form-chat')
             </div>
 --}}
-
             <div class="col-xs-12 mobile-chat2">
                 @include('partials.form-chat-offline')
             </div>
@@ -56,11 +52,8 @@
             </div>
 
             <div class="col-xs-12 mobile-protocolo">
-
                 @include('partials.protocolo-login')
             </div>
-
-
         </div>
     </div>
 @stop
