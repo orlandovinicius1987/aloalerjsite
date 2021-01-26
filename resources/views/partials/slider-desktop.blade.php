@@ -1,3 +1,5 @@
+
+
 <div id="vue-home-slide">
     <div id="slider" class="carousel slide" data-ride="carousel">
         <ul class="carousel-inner" role="listbox">

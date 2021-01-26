@@ -1,7 +1,7 @@
 <!-- Footer -->
-
 <div class="visible-xs visible-sm col-xs-12 col-sm-12 text-center footer-mobile-box">
     <div class="footer-mobile">
+
         <div class="tit-comissoes"> Comissões </div>
         <div class="col-xs-12 col-sm-6 nomes-comissoes">
             @include('partials.commitees-links-1')
