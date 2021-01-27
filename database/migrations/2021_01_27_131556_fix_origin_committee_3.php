@@ -2,6 +2,7 @@
 
 use App\Data\Models\Audit as AuditModel;
 use App\Data\Models\Committee as CommitteeModel;
+use App\Data\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use App\Data\Models\Record as RecordModel;
 use Carbon\Carbon;
@@ -16,7 +17,7 @@ class FixOriginCommittee3 extends Migration
     public function up()
     {
         foreach (
-                    RecordModel::whereDate(
+                    RecordModel::withoutGlobalScopes()->whereDate(
                         'created_at',
                         '>=',
                         Carbon::createFromFormat('Y-m-d', '2020-08-01')
@@ -24,12 +25,16 @@ class FixOriginCommittee3 extends Migration
                         ->whereDate(
                             'created_at',
                             '<=',
-                            Carbon::createFromFormat('Y-m-d', '2020-10-01')
+                            Carbon::createFromFormat('Y-m-d', '2020-12-01')
                         )
                         ->cursor()
                     as $record
                 ) {
-                    $progress = $record->firstProgress();
+                    $progress = $record->firstProgress(false);
+
+                    if(!$progress){
+                        dd($record);
+                    }
 
                     $audit = AuditModel::where('auditable_id', $progress->id)
                         ->where('event', 'created')
@@ -38,9 +43,12 @@ class FixOriginCommittee3 extends Migration
 
                     if ($audit && ($userId = $audit->user_id)) {
                         $oldCommitteeId = $progress->created_by_committee_id;
-                        
 
-                        if ($creator = $progress->creator) {
+                        $progress->created_by_id = $userId;
+
+                        $progress->save();
+
+                        if ($creator = User::find($userId)) {
                             $newCommitteeId = $progress->created_by_committee_id = $creator->originCommittee()->id;
                         } else {
                             $newCommitteeId = $progress->created_by_committee_id = CommitteeModel::where(

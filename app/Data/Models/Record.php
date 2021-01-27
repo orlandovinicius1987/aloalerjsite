@@ -101,13 +101,13 @@ class Record extends BaseModel
 
     public function sendNotifications()
     {
-        
+
         return $this->sendNotificationsForClass(RecordCreated::class);
     }
 
     public function sendAccessCode()
     {
-        
+
         return $this->sendNotificationsForClass(RecoverAccessCode::class);
     }
 
@@ -129,8 +129,13 @@ class Record extends BaseModel
         static::addGlobalScope(new RecordScope());
     }
 
-    public function firstProgress()
+    public function firstProgress($globalScopes = true)
     {
+        if(!$globalScopes){
+            return $this->progresses()
+                ->orderBy('created_at', 'asc')->withoutGlobalScopes()
+                ->first();
+        }
         return $this->progresses()
             ->orderBy('created_at', 'asc')
             ->first();
