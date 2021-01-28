@@ -32,10 +32,6 @@ class FixOriginCommittee3 extends Migration
                 ) {
                     $progress = $record->firstProgress(false);
 
-                    if(!$progress){
-                        dd($record);
-                    }
-
                     $audit = AuditModel::where('auditable_id', $progress->id)
                         ->where('event', 'created')
                         ->where('auditable_type', 'App\Data\Models\Progress')
