@@ -35,12 +35,7 @@ class Committees extends Base
             ->get();
     }
 
-    public function searchByEverything($search)
-    {
-        return ($result = $this->searchByAll($search))->count() == 0
-            ? $this->emptyResponse()
-            : $this->response($result);
-    }
+    
 
     public function searchByName($name)
     {
