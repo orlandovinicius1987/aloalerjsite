@@ -1,6 +1,8 @@
 <?php
 Auth::routes();
 
+
+
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
@@ -66,6 +68,8 @@ Route::post(
     'CallCenter\Records@showByProtocolNumber'
 )->name('records.search');
 
+
+
 Route::group(
     [
         'prefix' => 'callcenter',
@@ -87,6 +91,15 @@ Route::group(
 
         require __DIR__ . '/callcenter/files.php';
 
+        Route::group(['prefix' => 'areas'], function () {
+
+            Route::get('/', 'Areas@index')->name('areas.index');
+            Route::post('/store', 'Areas@store')->name('areas.store');
+            Route::get('/createArea', 'Areas@create')->name('areas.create');
+            Route::get('/show/{id}', 'Areas@details')->name('areas.details');
+
+        });
+
         Route::group(['prefix' => 'committees'], function () {
             Route::get('/create', 'Committees@create')->name(
                 'committees.create'
@@ -96,6 +109,8 @@ Route::group(
                 'committees.details'
             );
             Route::get('/', 'Committees@index')->name('committees.index');
+
+
 
             Route::group(['prefix' => 'committee-service'], function () {
 
