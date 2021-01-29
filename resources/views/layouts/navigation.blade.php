@@ -40,13 +40,13 @@
                         <a class="nav-link" href="{{url('/callcenter') }}"><i class="fas fa-search"></i> Pesquisar </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('committees.index') }}"><i class="fas fa-layer-group"></i> Comissões </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('areas.index') }}"><i class="fas fa-stamp"></i> Assuntos </a>
-                    </li>
+                    <div class="nav-item dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-archive" aria-hidden="true"></i>Cadastros</a>
+                    <div class="dropdown-menu">
+                            <a class="nav-link dropdown-item" href="{{route('committees.index') }}"><i class="fas fa-layer-group"></i> Comissões </a>
+                            <a class="nav-link dropdown-item" href="{{route('areas.index') }}"><i class="fas fa-stamp"></i> Assuntos </a>
+                    </div>
+                    </div>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i> Não Resolvidos </a>
