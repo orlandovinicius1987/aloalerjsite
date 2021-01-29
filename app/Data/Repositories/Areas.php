@@ -16,12 +16,7 @@ class Areas extends Base
         return Areas::class;
     }
 
-    public function searchByEverything($search)
-    {
-        return ($result = $this->searchByAll($search))->count() == 0
-            ? $this->emptyResponse()
-            : $this->response($result);
-    }
+    
 
     public function searchByAll($name)
     {

@@ -92,6 +92,13 @@ abstract class Base
         return $this->model::where('id', $id)->first();
     }
 
+    public function searchByEverything($search)
+    {
+        return ($result = $this->searchByAll($search))->count() == 0
+            ? $this->emptyResponse()
+            : $this->response($result);
+    }
+
     public function maxId()
     {
         return $this->model::max('id');
