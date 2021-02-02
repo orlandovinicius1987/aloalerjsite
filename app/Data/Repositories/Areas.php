@@ -16,12 +16,12 @@ class Areas extends Base
         return Areas::class;
     }
 
-    
+
 
     public function searchByAll($name)
     {
         return $this->model
-            ::Where('name', 'ilike', '%' . $name . '%')
+            ::where('name', 'ilike', '%' . $name . '%')->orderBy('name', 'asc')
             ->get();
     }
 

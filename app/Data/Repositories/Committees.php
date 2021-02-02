@@ -35,7 +35,7 @@ class Committees extends Base
             ->get();
     }
 
-    
+
 
     public function searchByName($name)
     {
@@ -48,6 +48,7 @@ class Committees extends Base
             ::orWhere('name', 'ilike', '%' . $name . '%')
             ->orWhere('president', 'ilike', '%' . $name . '%')
             ->orWhere('vice_president', 'ilike', '%' . $name . '%')
+            ->orderBy('name', 'asc')
             ->get();
     }
 
