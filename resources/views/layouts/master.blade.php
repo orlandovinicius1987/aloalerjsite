@@ -15,7 +15,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
 
         <script>
-            window.laravel = @json($laravel) //laravel.old
+            window.laravel =@json($laravel) //laravel.old
         </script>
     </head>
 
