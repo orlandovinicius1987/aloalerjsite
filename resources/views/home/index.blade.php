@@ -14,7 +14,6 @@
 
 @section('content-main')
 
-
     @include('partials.slider')
 
     <div class="row row-cols-1 row-cols-md-3 mt-5 mb-5 text-center">
@@ -25,12 +24,6 @@
         </div>
         <div class="col">
             <div class="card mb-4 shadow-sm">
-{{--
-                <div class="card-header">
-                    <h4 class="my-0 fw-normal">Pro</h4>
-                </div>
---}}
-
                 <div class="card-body">
                         @include('partials.telegram')
                 </div>
@@ -48,56 +41,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    {{--
-    <div class="hidden-xs hidden-sm hidden-md">
-        @include('partials.slider-desktop')
-
-        <div class="row row-eq-height blocos" id="vue-chat">
-            <div class="col-xs-12 col-lg-4" v-show="! chatOnline">
-                <div class="row row-eq-height blocos" >
-                    <div class="boxshadow">
-                        @include('partials.form-chat-offline')
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-lg-4 ">
-                @include('partials.telegram')
-            </div>
-
-            <div :class="'col-xs-12 col-lg-'+(chatOnline ? 8: 4)+' '">
-                @include('partials.protocolo-login')
-            </div>
-
-        </div>
-    </div>
-
-    <div class="visible-xs visible-sm visible-md">
-        <div class="row">
-
-            @include('partials.slider')
-
-            <div class="col-xs-12 mobile-chat2">
-                @include('partials.form-chat-offline')
-            </div>
-
-            <div class="col-xs-12 mobile-telegram">
-                @include('partials.telegram')
-            </div>
-
-            <div class="col-xs-12 mobile-protocolo">
-                @include('partials.protocolo-login')
-            </div>
-        </div>
-    </div>
---}}
-
 
 @stop
 

@@ -1,7 +1,7 @@
 
-    <div class="icones-apps text-center">
+    <div class="row icones-apps text-center">
         @include('partials.telegram-icons')
     </div>
-    <div class="texto-chat">
+    <div class="row texto-chat">
         @include('partials.telegram-text')
     </div>

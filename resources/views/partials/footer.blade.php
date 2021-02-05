@@ -36,39 +36,15 @@
                 <div class="row">
 
                     <div class="col-md-12 text-white mb-4">
-                       <h3>Comissões</h3>
+                        <h3>Comissões</h3>
                     </div>
                 </div>
 
                 <div class="row">
-
-                    <div class="col-md-6">
-                        <ul class="list-unstyled quick-links">
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/39">Defesa do Consumidor</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/12">Defesa dos Animais</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/9">Direitos Humanos</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/32">Disque Criança e Adolescente</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/37">Disque Idoso</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/34">Educacao</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/1">Meio Ambiente</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/35">Pessoa com deficiencia</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-6">
-                        <ul class="list-unstyled quick-links">
-
-
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/36">Pirataria</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/2">Preconceitos</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/40">Saneamento Ambiental</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/10">Seguranca Alimentar</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/5">Segurança Pública</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/33">SOS Mulher</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/11">Trabalho</a></li>
-                            <li><a href="https://www.aloalerj.rj.gov.br/services/38">Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais</a></li>
-
-                        </ul>
+                    <div class="comissoes col-md-12">
+                        @foreach($committeeServices as $committeService)
+                            <p><a href="{{ route('services.show', ['id'=>$committeService->id]) }}">{{$committeService->link_caption}}</a></p>
+                        @endforeach
                     </div>
                 </div>
             </div>

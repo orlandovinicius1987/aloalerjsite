@@ -6,3 +6,7 @@
 2021-01-28 15:11:20.040 -03 [7451] LOG:  database system is ready to accept connections
 2021-01-28 15:11:35.989 -03 [7477] FATAL:  database "aloalerjsite" does not exist
 2021-01-28 15:29:23.746 -03 [8425] FATAL:  database "legislaqui" does not exist
+2021-02-05 14:06:46.711 -03 [7451] LOG:  received smart shutdown request
+2021-02-05 14:06:46.714 -03 [7451] LOG:  background worker "logical replication launcher" (PID 7458) exited with exit code 1
+2021-02-05 14:06:46.714 -03 [7453] LOG:  shutting down
+2021-02-05 14:06:46.728 -03 [7451] LOG:  database system is shut down
