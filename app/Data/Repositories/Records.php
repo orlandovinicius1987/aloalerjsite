@@ -203,12 +203,12 @@ class Records extends Base
                 'contact' => $data['email']
             ]);
         }
-
+        $committed_id = app(Committees::class)->findByName(
+            'ALÔ ALERJ'
+        )->id;
         $record = $this->create(
             coollect([
-                'committee_id' => app(Committees::class)->findByName(
-                    'ALÔ ALERJ'
-                )->id,
+                'committee_id' => $committed_id,
                 'record_type_id' => $data['record_type_id'],
                 'person_id' => $person->id,
                 'send_answer_by_email' => $data['email'] ? true : false
@@ -220,12 +220,15 @@ class Records extends Base
             'progress_type_id' => app(ProgressTypes::class)->findByName(
                 'Entrada'
             )->id,
+            'created_by_committee_id' => $committed_id,
             'is_private' => 1,
             'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'objeto_id',
             'record_action_id'
         ]);
+
+//        dd($committed_id);
 
         $record->sendNotifications();
 
