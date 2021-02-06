@@ -1,5 +1,5 @@
 require('./support/helpers')
-
+window.$ = window.jQuery = require('jquery')
 require('./bootstrap')
 
 require('./apps/search.js')
