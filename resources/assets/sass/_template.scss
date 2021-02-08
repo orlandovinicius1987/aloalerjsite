@@ -52,6 +52,22 @@ section {
 
 
 
+.comissoes {
+    .list-inline {
+        li {
+            background: #003b77;
+            padding: 0.4em 0.6em;
+            margin-bottom: 0.8em;
+
+            &:hover {
+                background: #004c99;
+            }
+        }
+    }
+}
+
+
+
 
 
 .list-inline {
@@ -62,9 +78,8 @@ section {
 
     li {
         display: inline-block;
-        padding-right: 1em;
-        margin-left: 0.5em;
-        margin-right: 0.5em;
+        margin-left: 0.4em;
+        margin-right: 0.3em;
 /*        border-right: 1px solid #ffffff;*/
 
 
@@ -75,6 +90,32 @@ section {
     }
 
 }
+
+
+
+
+
+
+
+
+#footer {
+    .social {
+        li {
+            a {
+                i{
+                    font-size: 40px !important;
+                    margin-right: 15px !important;
+                    &:hover {
+                        font-size: 46px !important;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
 
 /**
  * @bugfix Prevent webkit from removing list semantics

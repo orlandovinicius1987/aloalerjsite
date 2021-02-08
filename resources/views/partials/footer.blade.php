@@ -29,13 +29,13 @@
         <div class="row">
             <div class="comissoes col-md-12 text-white mt-4">
 {{--                <hr class="mb-3">--}}
-                <h3 class="mb-3">Comissões <i class="fab fa-facebook"></i></h3>
+                <h3 class="mb-4">Comissões </h3>
                 <ul class="list-inline">
                     @foreach($committeeServices as $committeService)
                         <li><a href="{{ route('services.show', ['id'=>$committeService->id]) }}">{{$committeService->link_caption}}</a></li>
                     @endforeach
                 </ul>
-                <hr class="mt-5">
+                <hr class="mt-4">
             </div>
         </div>
 
@@ -53,10 +53,12 @@
                     </div>
                     <div class="col-6">
                         <ul class="list-unstyled list-inline social">
-                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fab fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fab fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fab fa-google-plus"></i></a></li>
+
+                            <li class="list-inline-item"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                            <li class="list-inline-item "><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></li>
+
                             <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="fab fa-envelope"></i></a></li>
                         </ul>
                     </div>
