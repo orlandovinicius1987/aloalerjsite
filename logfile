@@ -1,0 +1,12 @@
+2021-01-28 15:11:20.017 -03 [7451] LOG:  starting PostgreSQL 12.5 on x86_64-apple-darwin17.7.0, compiled by Apple LLVM version 10.0.0 (clang-1000.10.44.4), 64-bit
+2021-01-28 15:11:20.021 -03 [7451] LOG:  listening on IPv6 address "::1", port 5432
+2021-01-28 15:11:20.021 -03 [7451] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-01-28 15:11:20.022 -03 [7451] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-28 15:11:20.036 -03 [7452] LOG:  database system was shut down at 2021-01-28 15:11:03 -03
+2021-01-28 15:11:20.040 -03 [7451] LOG:  database system is ready to accept connections
+2021-01-28 15:11:35.989 -03 [7477] FATAL:  database "aloalerjsite" does not exist
+2021-01-28 15:29:23.746 -03 [8425] FATAL:  database "legislaqui" does not exist
+2021-02-05 14:06:46.711 -03 [7451] LOG:  received smart shutdown request
+2021-02-05 14:06:46.714 -03 [7451] LOG:  background worker "logical replication launcher" (PID 7458) exited with exit code 1
+2021-02-05 14:06:46.714 -03 [7453] LOG:  shutting down
+2021-02-05 14:06:46.728 -03 [7451] LOG:  database system is shut down

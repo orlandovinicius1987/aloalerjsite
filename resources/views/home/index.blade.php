@@ -1,61 +1,47 @@
 @extends('layouts.master')
 
+
 @section('page-name')
     <object type="image/svg+xml" data="/templates/mv/svg/logo-alo-alerj-branca.svg" class="alolerj-logo img-responsive">
         AloAlerj Logo
     </object>
 @stop
 
+
 @section('sidebar-name')
     @include('partials.chat-header')
 @stop
 
 @section('content-main')
-    <div class="hidden-xs hidden-sm hidden-md">
-        @include('partials.slider-desktop')
 
-        <div class="row row-eq-height blocos" id="vue-chat">
-            <div class="col-xs-12 col-lg-4" v-show="! chatOnline">
-                <div class="row row-eq-height blocos" >
-                    <div class="boxshadow">
-                        @include('partials.form-chat-offline')
-                    </div>
-                </div>
-            </div>
+    @include('partials.slider')
 
-            <div class="col-xs-12 col-lg-4 ">
-                @include('partials.telegram')
-            </div>
-
-            <div :class="'col-xs-12 col-lg-'+(chatOnline ? 8: 4)+' '">
-                @include('partials.protocolo-login')
-            </div>
-
-        </div>
-    </div>
-
-    <div class="visible-xs visible-sm visible-md">
-        <div class="row">
-
-            @include('partials.slider')
-{{--
-            <div class="col-xs-12 col-sm-6 mobile-chat">
-                @include('partials.form-chat')
-            </div>
---}}
-            <div class="col-xs-12 mobile-chat2">
+    <div class="row row-cols-1 row-cols-md-3 mt-5 mb-5 text-center">
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
                 @include('partials.form-chat-offline')
             </div>
-
-            <div class="col-xs-12 mobile-telegram">
-                @include('partials.telegram')
+        </div>
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                        @include('partials.telegram')
+                </div>
             </div>
-
-            <div class="col-xs-12 mobile-protocolo">
-                @include('partials.protocolo-login')
+        </div>
+        <div class="col">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">Acompanhamento
+                        de Protocolo</h4>
+                </div>
+                <div class="card-body">
+                    @include('partials.protocolo-login')
+                </div>
             </div>
         </div>
     </div>
+
 @stop
 
 @section('content-sidebar')
