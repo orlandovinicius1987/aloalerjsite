@@ -58336,8 +58336,8 @@ window.filled = function (value) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/breno/Projetos/aloalerjsite/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /Users/breno/Projetos/aloalerjsite/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /Users/brunomasquio/code/aloalerjsite/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /Users/brunomasquio/code/aloalerjsite/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
