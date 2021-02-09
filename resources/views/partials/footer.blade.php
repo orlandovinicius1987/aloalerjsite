@@ -39,7 +39,6 @@
             </div>
         </div>
 
-
         <div class="row mt-2">
             <div class="col-12 col-sm-4 col-md-4 ">
                 <img src="/templates/2021/images/ALERJ_NOVO_horizontal-branco.png" class="img-fluid">

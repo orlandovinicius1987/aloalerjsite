@@ -11,12 +11,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
     <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <script>
         window.laravel =@json($laravel) //laravel.old
     </script>
+
+
 </head>
 
 <body id="vue-app">

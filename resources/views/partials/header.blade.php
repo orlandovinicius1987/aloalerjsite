@@ -57,7 +57,6 @@
             <img src="/templates/2021/svg/logo-alo-alerj-branca-nova.svg">
         </a>
 
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,11 +67,27 @@
                     <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/pages/aloalerj">O Alô Alerj</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/committees">Comissões</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/telefones">Telefones Úteis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://transparencia.alerj.rj.gov.br/protocolo">Protocolo</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact" title="Contato"> <i class="fa fa-envelope-o envelopemenu" aria-hidden="true"></i> Contato</a>
+                </li>
+
+{{--
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown04">
@@ -81,14 +96,14 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
+--}}
+
             </ul>
 
 {{--
-
             <form>
                 <input class="form-control" type="text" placeholder="Search" aria-label="Search">
             </form>
-
 --}}
 
         </div>
