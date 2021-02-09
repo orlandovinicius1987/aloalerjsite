@@ -50,10 +50,10 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-primary" aria-label="Fourth navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand logo-alerj" href="#">
+        <a class="navbar-brand logo-alerj" href="//www.alerj.rj.gov.br/" target="_blank">
             <img src="/templates/2021/images/ALERJ_NOVO_vertical-branco.png">
         </a>
-        <a class="navbar-brand logo-aloalerj" href="#">
+        <a class="navbar-brand logo-aloalerj" href="/">
             <img src="/templates/2021/svg/logo-alo-alerj-branca-nova.svg">
         </a>
 
@@ -64,7 +64,7 @@
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarsExample08">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/aloalerj">O Alô Alerj</a>
