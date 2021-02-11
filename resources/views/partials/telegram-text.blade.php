@@ -4,5 +4,11 @@
         </p>
     </div>
     <div class="col-12">
-        <div class="telegram-telefone"><strong class="telefone"><a href="tel:988904742" class="telefone-link">(21) 98890 4742</a></strong></div>
+        <div class="telegram-telefone mb-3">
+            <strong class="telefone">
+                <a href="tel:988904742" class="telefone-link">
+                    (21) 98890 4742
+                </a>
+            </strong>
+        </div>
     </div>

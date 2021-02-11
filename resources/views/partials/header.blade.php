@@ -76,7 +76,7 @@
                     <a class="nav-link" href="/pages/telefones">Telefones Úteis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://transparencia.alerj.rj.gov.br/protocolo">Protocolo</a>
+                    <a class="nav-link" href="http://transparencia.alerj.rj.gov.br/protocolo" target="_blank">Protocolo</a>
                 </li>
 
                 <li class="nav-item">

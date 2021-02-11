@@ -2,10 +2,10 @@
 
 @section('content-main')
     <div class="page-name">
-        <h1 class="nome-pagina">Alô Alerj</h1>
+        <h1 class="nome-pagina mb-5 mt-5">Alô Alerj</h1>
     </div>
 
-    <div class="texto-pages">
+    <div class="texto-pages mb-5">
         <p>O Alô Alerj é o canal de comunicação entre o cidadão e a Assembléia Legislativa do Estado do Rio de Janeiro (Alerj).</p>
         <p>Possuímos operadores preparados com o intuito de esclarecer não só os temas e assuntos que são tratados nas Comissões e no Plenário, mas também o funcionamento desta Casa Legislativa.</p>
         <p>Para agilizar seu atendimento, tenha em mãos os seus dados pessoais. O registro de sua demanda gera um número de protocolo, que é fornecido por nossos atendentes. Não esqueça de anotá-lo.</p>
