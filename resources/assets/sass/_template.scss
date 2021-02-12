@@ -213,12 +213,14 @@ section {
     .social {
         li {
             a {
+                transition: all .3s ease-in-out !important;
                 i{
                     font-size: 40px !important;
-                    margin-right: 15px !important;
-                    &:hover {
-                        font-size: 46px !important;
-                    }
+                }
+
+                &:hover {
+                    transform: scale(1.2) !important;
+                    color: $secondary !important;
                 }
             }
         }

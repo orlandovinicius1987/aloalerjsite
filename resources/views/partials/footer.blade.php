@@ -53,14 +53,13 @@
                         <p>Rua Primeiro de março, s/n  |  Praça XV - Rio de Janeiro<br><span>CEP</span> 20010-090 &nbsp;&nbsp; <span>Telefone</span> +55 (21) 2588-1000 &nbsp;&nbsp; </p>
                     </div>
                     <div class="col-6">
-                        <ul class="list-unstyled list-inline social">
+                        <ul class="list-unstyled list-inline social row">
 
-                            <li class="list-inline-item"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                            <li class="list-inline-item "><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></li>
-
-                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="fab fa-envelope"></i></a></li>
+                            <li class="list-inline-item col-2"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                            <li class="list-inline-item col-2"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item col-2"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item col-2"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item col-2"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="far fa-envelope"></i></a></li>
                         </ul>
                     </div>
                 </div>
