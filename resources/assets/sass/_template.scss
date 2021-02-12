@@ -44,6 +44,13 @@ section {
     }
 
     .navbar-nav{
+
+        .nav-item.active {
+            .nav-link {
+                color: $secondary;
+            }
+        }
+
         .nav-link {
             display: inline-block;
             text-decoration: none;
@@ -62,6 +69,7 @@ section {
                 transition: width .3s;
             }
             &:hover{
+                color: #f63;
                 &:after{
                     width: 100%;
                 }
@@ -75,20 +83,6 @@ section {
 
 
 
-
-.comissoes {
-    .list-inline {
-        li {
-            background: #003b77;
-            padding: 0.4em 0.6em;
-            margin-bottom: 0.8em;
-
-            &:hover {
-                background: #004c99;
-            }
-        }
-    }
-}
 
 
 
@@ -197,6 +191,25 @@ section {
 
 
 #footer {
+
+
+
+    .comissoes {
+        .list-inline {
+            li {
+                background: #003b77;
+                padding: 0.4em 0.6em;
+                margin-bottom: 0.8em;
+                transition: 0.3s;
+                &:hover {
+                    /*background: #004c99;*/
+                    background: $secondary;
+                }
+            }
+        }
+    }
+
+
     .social {
         li {
             a {
@@ -212,6 +225,31 @@ section {
 
     }
 }
+
+
+
+
+
+
+.mailsent {
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.3);
+        .card-header {
+            background-color: rgba(255, 255, 255, 0.0);
+            border-bottom: none;
+        }
+    }
+
+    .protocolo-numero {
+        color: $secondary;
+    }
+    .codigo-acesso {
+        color: $secondary;
+    }
+}
+
+
 
 
 
