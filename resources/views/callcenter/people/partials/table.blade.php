@@ -57,19 +57,19 @@
                         </td>
 
                         <td>
-                            <p v-for="address in person.addresses.slice(0, 15)">
+                            <p v-for="address in person.addresses">
                                 @{{ address.street }}
                             </p>
                         </td>
 
                         <td>
-                            <p v-for="contact in person.contacts.slice(0, 15)">
+                            <p v-for="contact in person.contacts">
                                 @{{ contact.contact }}
                             </p>
                         </td>
 
                         <td>
-                            <p v-for="record in person.records.slice(0, 15)">
+                            <p v-for="record in person.records">
                                 <a :href="'/callcenter/records/show/' + record.id">@{{ record.protocol }}</a>
                             </p>
                         </td>
@@ -92,17 +92,17 @@
                         <a :href="'/callcenter/people/show/' + person.id">@{{ person.cpf_cnpj }}</a>
                     </div>
                     <div class="contact-line"><span class="mobile-label">Endereços :</span>
-                        <p v-for="address in person.addresses.slice(0, 15)">
+                        <p v-for="address in person.addresses">
                             @{{ address.street }}
                         </p>
                     </div>
                     <div class="contact-line"><span class="mobile-label">Contatos :</span>
-                        <p v-for="contact in person.contacts.slice(0, 15)">
+                        <p v-for="contact in person.contacts">
                             @{{ contact.contact }}
                         </p>
                     </div>
                     <div class="contact-line"><span class="mobile-label">Protocolos :</span>
-                        <p v-for="record in person.records.slice(0, 15)">
+                        <p v-for="record in person.records">
                             <a :href="'/callcenter/records/show/' + record.id">@{{ record.protocol }}</a>
                         </p>
                     </div>
