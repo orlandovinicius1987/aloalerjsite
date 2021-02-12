@@ -17,22 +17,22 @@ class People extends Base
     public function getAnonymousModel()
     {
         return Cache::remember('getAnonymousModel', 15, function () {
-            return \App\Data\Models\Person::where(
-                'is_anonymous',
-                true
-            )->first();
+            return \App\Data\Models\Person::where('is_anonymous', true)->first();
         });
     }
 
-    private function addExtraInfo($people)
+    private function addExtraInfo($people, $relations = ['records', 'contacts', 'addresses'])
     {
-        return $people;
-        return $people->map(function ($person) {
-            $person->records = $person->records->map(function ($record) {
-                $record->protocol_formatted = $record->presenter()->protocol_formatted;
-            });
+        $loadArray = [];
 
-            return $person;
+        collect($relations)->each(function ($item) use (&$loadArray, $people) {
+            $loadArray[$item] = function ($query) {
+                $query->limit(15);
+            };
+        });
+
+        return $people->each(function ($person) use ($loadArray) {
+            $person->load($loadArray);
         });
     }
 
@@ -48,9 +48,7 @@ class People extends Base
 
     protected function getBaseQuery()
     {
-        return $this->model
-            ::with(['contacts', 'addresses', 'records'])
-            ->take(static::RECORDS_COUNT_LIMIT + 1);
+        return $this->model::take(static::RECORDS_COUNT_LIMIT + 1);
     }
 
     private function isNumeric($string)
@@ -66,7 +64,7 @@ class People extends Base
             'errors' => $messages,
             'count' => $count,
             'is_cpf_cnpj' => validate_cpf_cnpj($string),
-            'is_numeric' => $this->isNumeric($string)
+            'is_numeric' => $this->isNumeric($string),
         ];
     }
 
@@ -76,16 +74,19 @@ class People extends Base
 
         if ($record) {
             $query = $this->model
-                ::with(['contacts', 'addresses'])
-                ->with([
+                ::with([
                     'records' => function ($query) use ($string) {
                         $query->where('protocol', '=', $string);
-                    }
+                    },
                 ])
                 ->take(static::RECORDS_COUNT_LIMIT + 1)
                 ->where('id', $record->person_id);
 
-            return $this->response($string, $query->get(), $query->count());
+            return $this->response(
+                $string,
+                $this->addExtraInfo($query->get(), ['addresses', 'contacts']),
+                $query->count()
+            );
         }
 
         return $this->emptyResponse();
@@ -104,16 +105,9 @@ class People extends Base
             return $this->emptyResponse($string);
         }
 
-        $query = $this->getBaseQuery()->where(
-            'cpf_cnpj',
-            only_numbers($string)
-        );
+        $query = $this->getBaseQuery()->where('cpf_cnpj', only_numbers($string));
 
-        return $this->response(
-            $string,
-            $this->addExtraInfo($query->get()),
-            $query->count()
-        );
+        return $this->response($string, $this->addExtraInfo($query->get()), $query->count());
     }
 
     public function findOrCreate($data)
@@ -136,16 +130,11 @@ class People extends Base
     protected function searchByName($string)
     {
         $query = $this->getBaseQuery()->whereRaw(
-            "unaccent(name) ILIKE '%'||unaccent('" .
-                pg_escape_string($string) .
-                "')||'%' "
+            "unaccent(name) ILIKE '%'||unaccent('" . pg_escape_string($string) . "')||'%' "
         );
 
         if ($query->count() > static::RECORDS_COUNT_LIMIT) {
-            return $this->error(
-                $query->count(),
-                'Busca resultou em mais de 20 registros'
-            );
+            return $this->error($query->count(), 'Busca resultou em mais de 20 registros');
         }
 
         /**
@@ -153,14 +142,12 @@ class People extends Base
          * para evitar problemas na busca, foi inserido um limite para retornar os dados de contato e numero
          * de protocolo.
          */
-        return $this->response($string,
+        return $this->response(
+            $string,
 
-            $query->get()->map(function($people) {
-            $people->setRelation('records', $people->records->take(50));
-                return $people; })->map(function($people) {
-                $people->setRelation('contacts', $people->contacts->take(10));
-                return $people; })
-            , $query->count());
+            $this->addExtraInfo($query->get()),
+            $query->count()
+        );
     }
 
     public function searchByEverything($search)
@@ -183,9 +170,7 @@ class People extends Base
             $response['errors'] = $response['errors'] ?: $protocol['errors'];
 
             if (!is_null($protocol['data'])) {
-                $response['data'] = coollect($response['data'])->merge(
-                    $protocol['data']
-                );
+                $response['data'] = coollect($response['data'])->merge($protocol['data']);
             }
 
             return $response;
