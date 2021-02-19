@@ -27,29 +27,29 @@
                         <p>Rua Primeiro de março, s/n  |  Praça XV - Rio de Janeiro<br><span>CEP</span> 20010-090 &nbsp;&nbsp; <span>Telefone</span> +55 (21) 2588-1000 &nbsp;&nbsp; </p>
                     </div>
                     <div class="col-lg-6">
-                        <ul class="list-unstyled list-inline social row">
+                        <div class="list-unstyled list-inline social row">
 
                             <li class="list-inline-item col-2"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></li>
                             <li class="list-inline-item col-2"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></li>
                             <li class="list-inline-item col-2"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                             <li class="list-inline-item col-2"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             <li class="list-inline-item col-2"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="far fa-envelope"></i></a></li>
-                        </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <hr class="mb-4">
-                        <p class="h6">© Todos os direitos reservados. |
-                            <a class="ml-2" href="http://www.alerj.rj.gov.br/" target="_blank">
-                                ALERJ - Assémbleia Legislativa do Estado do Rio de Janeiro
-                            </a>
-                        </p>
+            </div>
+        </div>
 
-                    </div>
-                </div>
 
+        <div class="row text-center text-white">
+            <div class="col-12">
+                <hr class="mb-4">
+                <p class="h6">© Todos os direitos reservados. |
+                    <a class="ml-2" href="http://www.alerj.rj.gov.br/" target="_blank">
+                        ALERJ - Assémbleia Legislativa do Estado do Rio de Janeiro
+                    </a>
+                </p>
             </div>
         </div>
     </div>
