@@ -63,13 +63,17 @@ class Records extends Base
         if (isset($data->record_id)) {
             $data = $data->merge(['id' => $data->record_id]);
         }
+
         $data = $data->merge(['person_id' => $person->id]);
 
         $record = $this->createFromRequest($data);
 
         $this->addProtocolNumberToRecord($person, $record);
 
-        $this->addAccessCodeToRecord($record);
+        if (!isset($data->record_id)) {
+            //Updating
+            $this->addAccessCodeToRecord($record);
+        }
 
         return $record;
     }
@@ -87,8 +91,10 @@ class Records extends Base
 
     public function addAccessCodeToRecord($record)
     {
-        $record->access_code = strtoupper($this->generateRandomString(4));
-        $record->save();
+        if (!$record->access_code) {
+            $record->access_code = strtoupper($this->generateRandomString(4));
+            $record->save();
+        }
     }
 
     private function makePersonalDataInfoFromContactData($data)
