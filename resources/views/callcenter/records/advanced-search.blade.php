@@ -12,6 +12,24 @@
                             </h2>
 
                             <div class="form-group row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <label for="progress_original" class="col-form-label">Busca por Texto</label>
+                                    <input id="progress_original"
+                                           class="form-control{{ $errors->has('progress_original') ? ' is-invalid' : '' }}" name="progress_original"
+                                           value="{{$progress_original ?? old('progress_original')}}"
+                                        >
+                                    @if ($errors->has('progress_original'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('progress_original') }}</strong>
+                                        </span>
+                                    @endif
+                                
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                
                                 <div class="col-md-3">
                                     <label for="protocol" class="col-form-label">Protocolo</label>
                                     <input id="protocol"
