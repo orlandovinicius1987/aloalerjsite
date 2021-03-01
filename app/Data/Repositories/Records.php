@@ -308,9 +308,12 @@ class Records extends Base
     public function advancedSearch($data)
     {
         $records = (new Record())->newQuery();
+        
 
         foreach ($data as $key => $collumn) {
+            
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
+              
                 switch ($key) {
                     case 'person_name':
                         $records
@@ -332,6 +335,22 @@ class Records extends Base
                             "(select progresses.created_by_committee_id from progresses where progresses.record_id=records.id order by progresses.created_at limit 1)={$collumn}"
                         );
                         break;
+                    case 'progress_original':
+                        $records
+                            ->join(
+                                'progresses',
+                                'progresses.record_id',
+                                '=',
+                                'records.id'
+                            )
+                            ->where(
+                                'progresses.original',
+                                'ilike',
+                                '%' . $collumn . '%'
+                            )
+                            ->select('records.*');
+                        break;    
+
                     default:
                         $records->where($key, $collumn);
                 }
