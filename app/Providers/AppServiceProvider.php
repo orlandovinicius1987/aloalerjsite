@@ -4,6 +4,7 @@ namespace App\Providers;
 use App\Services\Authorization;
 use App\Data\Repositories\Users;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Horizon\Horizon;
 
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.env') == 'shared') {
+            URL::forceRootUrl(config('app.shared.url'));
+        }
+
         $this->bootGates();
 
         $this->bootHorizon();
