@@ -62,4 +62,8 @@ return [
             'url' => env('AWS_URL'),
         ],
     ],
+
+    'links' => [
+        public_path('storage/app/files') => storage_path('app/files'),
+    ],
 ];

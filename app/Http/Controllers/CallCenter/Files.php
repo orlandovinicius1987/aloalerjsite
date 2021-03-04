@@ -30,17 +30,12 @@ class Files extends Controller
             $hash = hash('sha1', file_get_contents($file->getPathName()));
 
             $file->move(
-                ($path = $this->path($hash, storage_path('app/files'))),
+                $path = $this->path($hash, storage_path('app/files')),
                 $hash . '.' . $file->getClientOriginalExtension()
             );
 
             $request->merge([
-                'url' =>
-                    $path .
-                        '/' .
-                        $hash .
-                        '.' .
-                        $file->getClientOriginalExtension(),
+                'url' => $path . '/' . $hash . '.' . $file->getClientOriginalExtension(),
                 'sha1_hash' => $hash,
                 'extension' => $file->getClientOriginalExtension(),
             ]);
@@ -71,7 +66,7 @@ class Files extends Controller
         }
     }
 
-    protected function path($sha1, $directory)
+    public function path($sha1, $directory)
     {
         $parts = array_slice(str_split($sha1, 2), 0, 2);
 
