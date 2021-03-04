@@ -26,9 +26,14 @@ php artisan view:clear
 - A aplicação usa a extension `unaccent` do PostgreSQL. Portanto, antes que de executar o `php artisan migrate`, deve-se instalar a extensão, executando:
 `psql -d <nome_do_banco> -U <nome_do_superuser_de_banco> -c "CREATE EXTENSION IF NOT EXISTS unaccent;"`
 
+### Configuração
+- Executar `php artisan storage:link`
+- Executar `pa aloalerj:files:storage:link`
+
 ## Documentação
 
 ### Chave de acesso
 Funcionam conforme os diagramas a seguir.
 https://alerj.sharepoint.com/:b:/s/arquivos/Eb070g5FZcRKrzgXWCN8jY4BrxTnOjf7pIkHqcqrcT91bw?e=Tw4IPr
 https://alerj.sharepoint.com/:b:/s/arquivos/EcqVKkj_h-dCtOF6tcSJlyUB5wfVdc3WRDE-JIAGoQaa6Q?e=bvKDhD
+
