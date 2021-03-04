@@ -12,6 +12,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'mix_message_home' => env('MIX_MESSAGE_HOME', null),
 
     /*
     |--------------------------------------------------------------------------

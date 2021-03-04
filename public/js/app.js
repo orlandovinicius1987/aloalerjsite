@@ -54397,6 +54397,8 @@ __webpack_require__(/*! ./apps/phones.js */ "./resources/assets/js/apps/phones.j
 
 __webpack_require__(/*! ./apps/chat.js */ "./resources/assets/js/apps/chat.js");
 
+__webpack_require__(/*! ./apps/home.js */ "./resources/assets/js/apps/home.js");
+
 __webpack_require__(/*! ./apps/advanced-search.js */ "./resources/assets/js/apps/advanced-search.js");
 
 __webpack_require__(/*! ./apps/areas-search.js */ "./resources/assets/js/apps/areas-search.js");
@@ -55002,6 +55004,44 @@ if (jQuery("#" + appName).length > 0) {
     },
     methods: {},
     mixins: [_mixins_helpers__WEBPACK_IMPORTED_MODULE_0__["default"]]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/apps/home.js":
+/*!******************************************!*\
+  !*** ./resources/assets/js/apps/home.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var appName = 'vue-home';
+
+if (jQuery('#' + appName).length > 0) {
+  new Vue({
+    el: '#' + appName,
+    data: {},
+    methods: {
+      __showMessage: function __showMessage() {
+        var content = document.createElement('div');
+        content.innerHTML = "Alô Alerj informa: Temporariamente estamos recebendo mensagens no Whatsapp (21) 98890-4742 e através do e-mail aloalerj@alerj.rj.gov.br";
+        swal({
+          title: 'Atenção',
+          content: content,
+          icon: 'warning'
+        });
+      } // var content = document.createElement('div');
+      // content.innerHTML = 'Oi';
+      //
+      // $(window).on('load',function(){
+      //
+      // });
+
+    },
+    mounted: function mounted() {
+      this.__showMessage();
+    }
   });
 }
 

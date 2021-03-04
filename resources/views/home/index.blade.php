@@ -11,7 +11,10 @@
 @stop
 
 @section('content-main')
-    <div class="hidden-xs hidden-sm hidden-md">
+    @if(config('app.mix_message_home'))
+    <div id="vue-home"></div>
+    @endif
+    <div class="hidden-xs hidden-sm hidden-md" >
         @include('partials.slider-desktop')
 
         <div class="row row-eq-height blocos" id="vue-chat">
