@@ -16,11 +16,12 @@ require('./apps/committees-search.js')
 require('./apps/committees-search.js')
 require('./apps/phones.js')
 require('./apps/chat.js')
+require('./apps/home.js')
 require('./apps/advanced-search.js')
 require('./apps/areas-search.js')
 require('./apps/areas.js')
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('.select2').select2({
         theme: 'bootstrap',
         tags: false,
