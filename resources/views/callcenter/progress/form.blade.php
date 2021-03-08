@@ -153,8 +153,11 @@
                                 </button>
                             @endIf
 
-                            <button class="btn btn-danger" id="saveButton" name="saveButton" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
+                            <button class="btn btn-danger" id="saveButton" name="saveButton" 
+                                @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) 
+                                    @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                                 <i class="far fa-save"></i> Gravar
+                                
                             </button>
 
                             <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
