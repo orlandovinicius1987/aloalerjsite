@@ -8,11 +8,11 @@
             </div>
 
             <div class="col-8 text-right">
-                <a id="button-novo-anexo" href="#" data-toggle="modal" data-target="#ProgressFilesModal"
-                   class="btn btn-primary btn-sm pull-right btn-depth">
+                <button id="button-novo-anexo" href="#" data-toggle="modal" data-target="#ProgressFilesModal"
+                   class="btn btn-primary btn-sm pull-right btn-depth" @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) @include('partials.disabled',['model'=>$progress]) @else disabled @endcan>
                     <i class="fa fa-plus"></i>
                     Novo Anexo
-                </a>
+            </button>
             </div>
         </div>
 

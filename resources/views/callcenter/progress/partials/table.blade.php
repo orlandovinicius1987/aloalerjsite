@@ -63,7 +63,7 @@
 
                     <td>
                         @forEach($progress->progressFiles as $attach)
-                            <a href="{{$attach->file->public_url}}" download>{{$attach->description}}</a>
+                           <p> <a href="{{$attach->file->public_url}}" download>{{$attach->description}}</a></p>
                         @endForEach
                     </td>
 
