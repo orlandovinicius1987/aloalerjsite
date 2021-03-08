@@ -9,7 +9,8 @@
                   {!! (Auth::user() ?'<th>Privacidade</th>   ': '') !!}
                   <th>Finalizador</th>
                   <th>Notificação</th>
-                  <th>Criado em</th>
+                    <th>Criado em</th>
+                    <th>Anexos</th>
                   {!! (Auth::user() ? '<th>Atendente</th>' : '') !!}
                 </tr>
             </thead>
@@ -59,6 +60,12 @@
                     </td>
 
                     <td>{{ $progress->created_at_formatted ?? '' }}</td>
+
+                    <td>
+                        @forEach($progress->progressFiles as $attach)
+                           <p> <a href="{{$attach->file->public_url}}" download>{{$attach->description}}</a></p>
+                        @endForEach
+                    </td>
 
                     {!!Auth::user() ? '<td>'.($progress->creator->name ?? '').'</td>' : ''!!}
                 </tr>
