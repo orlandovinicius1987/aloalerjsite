@@ -41,7 +41,7 @@
     </div>
 
 
-    <div class="card-body d-none d-sm-block d-print-none">
+    <div class="card-body d-none d-sm-none d-md-none d-print-none d-lg-block">
         <table id="recordsTable" class="table table-striped table-hover" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -119,7 +119,8 @@
 
     <div class="card-body" >
 
-        <div class="d-print-table d-block d-sm-none" style="width: 100%">
+        <div class="d-print-table d-block d-sm-block d-md-block d-lg-none" style="width: 100%">
+            teste
             @forelse ($records as $record)
                 <div class="mobile-tables " v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer; border: 1px solid rgba(0, 0, 0, .2);"  >
                     <div class="contact-line"><span class="mobile-label">Protocolo Nº</span>{{ $record->protocol }}</div>
