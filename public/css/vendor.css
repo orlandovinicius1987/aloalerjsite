@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*! ========================================================================
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@100;
+
+200;300;400;500;600;700;800;900&display=swap);/*! ========================================================================
  * Bootstrap Toggle: bootstrap-toggle.css v2.2.0
  * http://www.bootstraptoggle.com
  * ========================================================================
@@ -415,24 +417,6 @@
 }
 
 @charset "UTF-8";
-
-/*$blue: #3490dc;*/
-
-/*
-
-$grey-light01: #f3f7f9;
-$grey-light02: #ebf1f3;
-$grey-light03: #dae4e9;
-
-*/
-
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
 :root {
   --blue: #172B53;
   --indigo: #6574cd;
@@ -460,7 +444,7 @@ $grey-light03: #dae4e9;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Proxima Nova", "Nunito", sans-serif;
+  --font-family-sans-serif: "Raleway", "Nunito", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -492,7 +476,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Proxima Nova", "Nunito", sans-serif;
+  font-family: "Raleway", "Nunito", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6571,7 +6555,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Proxima Nova", "Nunito", sans-serif;
+  font-family: "Raleway", "Nunito", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6696,7 +6680,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Proxima Nova", "Nunito", sans-serif;
+  font-family: "Raleway", "Nunito", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -13437,6 +13421,44 @@ Protocolo - Link Publico
   .new-record .strap .box {
     padding: 10px 0 15px 0;
   }
+}
+
+.titulo-bold {
+  font-size: 1rem;
+  font-weight: 900;
+  border-bottom: solid 1px;
+  padding-bottom: 3px;
+}
+
+.search-results-list .row {
+  border-radius: 1em;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.05);
+}
+
+.search-results-list .row:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-results-list .row:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.search-results-list .row .border-right {
+  border-right: 1px solid rgba(222, 226, 230, 0.3) !important;
+}
+
+.search-results-list .row .bg-info {
+  background-color: rgba(222, 226, 230, 0.2) !important;
+}
+
+.search-results-list .row .btlf-1 {
+  border-top-left-radius: 1em;
+}
+
+.search-results-list .row .btlr-1 {
+  border-top-right-radius: 1em;
 }
 
 .no-results {
