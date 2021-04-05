@@ -7,13 +7,7 @@ use App\Data\Repositories\Users as UsersRepository;
 use Illuminate\Support\Facades\Log;
 
 class Authentication
-{
-    const LOGIN_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/login';
-
-    const USER_INFO_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/user';
-
-    const PERMISSIONS_URL = 'https://apiportal.alerj.rj.gov.br/api/v1.0/adm-user/K7k8H95loFpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jOG3pd61F4d6fg584Gg5h4DSjui1k/permissions';
-
+{  
     /**
      * @var Guzzle
      */
@@ -71,7 +65,7 @@ class Authentication
 
         try {
             $response = $this->remoteRequest->post(
-                static::LOGIN_URL,
+                config('auth.remote.login.url'),
                 extract_credentials($request)
             );
             return $response;
