@@ -130,7 +130,7 @@ class Authentication
                 return false;
             }
 
-            $permissions = app(Authorization::class)->getUserPermissions(
+            $permissions = app(Authorization::class)->syncUserPermissions(
                 extract_credentials($request)['username']
             );
 

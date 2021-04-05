@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Services\Traits\RemoteRequest;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Repositories\UserTypes as UserTypesRepository;
+use Bouncer;
 
 class Authorization
 {
@@ -28,7 +29,7 @@ class Authorization
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getUserPermissions($username)
+    public function getRemoteUserPermissions($username)
     {
         if (config('auth.authorization.mock')) {
             return $this->mockedPermissions($username);
@@ -41,7 +42,7 @@ class Authorization
                     'system' => static::SYSTEM_NAME,
                 ])
             );
-
+            //dd($response);
             return $response;
         } catch (\Exception $exception) {
             \Log::error(
@@ -55,6 +56,17 @@ class Authorization
 
             return $this->storedPermissions($user);
         }
+    }
+    
+    public function syncUserPermissions($username)
+    {
+        $userPermissions = $this->getRemoteUserPermissions($username);
+
+        Bouncer::allow($userPermissions)->to("committees:store");
+        Bouncer::allow($userPermissions)->to("committees:update");
+        Bouncer::allow($userPermissions)->to("areas:store");
+        Bouncer::allow($userPermissions)->to("areas:update");
+
     }
 
     /**

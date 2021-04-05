@@ -187,7 +187,7 @@ class Users extends Base
             $user->password = Hash::make($credentials['password']);
 
             $userType = $this->getUserTypeFromPermissions(
-                app(Authorization::class)->getUserPermissions($user->username)
+                app(Authorization::class)->getRemoteUserPermissions($user->username)
             );
 
             if (is_null($userType)) {
