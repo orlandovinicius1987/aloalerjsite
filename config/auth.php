@@ -98,5 +98,19 @@ return [
             'table' => 'password_resets',
             'expire' => 60
         ]
-    ]
+    ],
+
+
+    'remote' =>[
+       'permissions' =>[ 
+            'url' => env('AUTH_PERMISSIONS_API', 'https://apiportal.alerj.rj.gov.br/api/v1.0/adm-user/K7k8H95loFpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jOG3pd61F4d6fg584Gg5h4DSjui1k/permissions')
+       ], 
+       'login' => [
+            'url' => env('AUTH_LOGIN_API', 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/login')
+       ],
+       'user_info' => [ 
+            'url' => env('AUTH_USER_INFO', 'https://apiportal.alerj.rj.gov.br/api/v1.0/ldap/0IYFFiMHuUr1sYo6wEtjUsJQ7Zicg33SMuvtrFk9yEgwrORmblNSMdpTH0ZTRKX2BhADIusjXHInHW3cspyosOoNrbd5jObK5Uoh/user')   
+       ]
+    ],
+
 ];
