@@ -45,7 +45,7 @@ class fixEverything extends Command
     public function handle()
     {
         foreach (UserModel::cursor() as $user) {
-            $permissions = app(Authorization::class)->getUserPermissions(
+            $permissions = app(Authorization::class)->getRemoteUserPermissions(
                 $user->username
             );
 

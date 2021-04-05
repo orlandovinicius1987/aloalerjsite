@@ -54,7 +54,7 @@ class fixuser extends Command
 
             dump('Updating user ' . $user->username);
 
-            $permissions = app(Authorization::class)->getUserPermissions(
+            $permissions = app(Authorization::class)->getRemoteUserPermissions(
                 $user->username
             );
 
