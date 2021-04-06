@@ -18,11 +18,13 @@
                         v-model="form.search"
                         @keyup="typeKeyUp"
                     >&nbsp;&nbsp;
-                    <a id="buttonNovoAssunto" href="{{ route('areas.create') }}"
-                       class="btn btn-primary btn-sm pull-right">
-                        <i class="fa fa-plus"></i>
-                        Novo Assunto
-                    </a>
+                    @can('areas:store')
+                        <a id="buttonNovoAssunto" href="{{ route('areas.create') }}"
+                           class="btn btn-primary btn-sm pull-right">
+                            <i class="fa fa-plus"></i>
+                            Novo Assunto
+                        </a>
+                    @endCan
                 </div>
             </div>
         </div>

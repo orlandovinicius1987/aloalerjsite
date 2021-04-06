@@ -168,7 +168,9 @@
 
                             @include('partials.edit-button',['model'=>$committee])
 
-                            <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$committee]) id="save_button">
+                            <button type="submit" class="btn btn-danger"
+                                    {{($mode == 'create') ? (Auth::user()->can('committees:store') ? '':'disabled') : (Auth::user()->can('committees:update') ? '':'disabled')}}
+                                    id="save_button">
                                 <i class="far fa-save"></i> Gravar
                             </button>
 
@@ -196,11 +198,13 @@
                     </div>
 
                     <div class="col-12 col-md-8 text-right">
-                        <a id="buttonNovaComissao" href="{{ route('committee_services.create',['id'=>$committee->id]) }}"
-                           class="btn btn-primary btn-sm pull-right">
-                            <i class="fa fa-plus"></i>
-                            Novo Serviço
-                        </a>
+                        @can('committees:update')
+                            <a id="buttonNovaComissao" href="{{ route('committee_services.create',['id'=>$committee->id]) }}"
+                               class="btn btn-primary btn-sm pull-right">
+                                <i class="fa fa-plus"></i>
+                                Novo Serviço
+                            </a>
+                        @endCan
                     </div>
                 </div>
             </div>

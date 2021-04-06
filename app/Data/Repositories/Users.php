@@ -32,10 +32,8 @@ class Users extends Base
      *
      * @param Authorization $authorization
      */
-    public function __construct(
-        Authorization $authorization,
-        UserTypes $tiposUsuarios
-    ) {
+    public function __construct(Authorization $authorization, UserTypes $tiposUsuarios)
+    {
         $this->authorization = $authorization;
 
         $this->tiposUsuarios = $tiposUsuarios;
@@ -218,10 +216,7 @@ class Users extends Base
 
         $model = $this->model;
 
-        return $this->makeResultForSelect(
-            $model::where('user_type_id', $type->id)->get(),
-            'name'
-        );
+        return $this->makeResultForSelect($model::where('user_type_id', $type->id)->get(), 'name');
     }
 
     /**
@@ -245,10 +240,8 @@ class Users extends Base
         return User::where('all_notifications', true)->get();
     }
 
-    private function updateCurrentCommitteesViaPermissions(
-        $permissions,
-        $user = null
-    ) {
+    private function updateCurrentCommitteesViaPermissions($permissions, $user = null)
+    {
         $returnCommitteesPermissions = [];
 
         $user = $user ?? Auth::user();
@@ -269,31 +262,15 @@ class Users extends Base
             if (isset($eventsArray[$committee->slug])) {
                 //O usuário tem permissão para a comissão $committee no SGUS
                 $returnCommitteesPermissions[] = $committee;
-                if (
-                    !$userCommitteesRepository->userHasCommittee(
-                        $user->id,
-                        $committee->id
-                    )
-                ) {
+                if (!$userCommitteesRepository->userHasCommittee($user->id, $committee->id)) {
                     //precisa inserir
-                    $userCommitteesRepository->insertUserCommittee(
-                        $user->id,
-                        $committee->id
-                    );
+                    $userCommitteesRepository->insertUserCommittee($user->id, $committee->id);
                 }
             } else {
                 //O usuário não tem permissão para a comissão $committee no SGUS
-                if (
-                    $userCommitteesRepository->userHasCommittee(
-                        $user->id,
-                        $committee->id
-                    )
-                ) {
+                if ($userCommitteesRepository->userHasCommittee($user->id, $committee->id)) {
                     //precisa deletar
-                    $userCommitteesRepository->deleteUserCommittee(
-                        $user->id,
-                        $committee->id
-                    );
+                    $userCommitteesRepository->deleteUserCommittee($user->id, $committee->id);
                 }
             }
         }
@@ -302,10 +279,8 @@ class Users extends Base
         return $returnCommitteesPermissions;
     }
 
-    public function updateCurrentUserTypeViaPermissions(
-        $permissions,
-        $user = null
-    ) {
+    public function updateCurrentUserTypeViaPermissions($permissions, $user = null)
+    {
         $user = $user ?? Auth::user();
 
         $usersCommitteesRepository = app(UsersCommitteesRepository::class);
@@ -328,14 +303,7 @@ class Users extends Base
         }
 
         if (!$administrator) {
-            if (
-                !empty(
-                    $this->updateCurrentCommitteesViaPermissions(
-                        $permissions,
-                        $user
-                    )
-                )
-            ) {
+            if (!empty($this->updateCurrentCommitteesViaPermissions($permissions, $user))) {
                 $userType = $userTypesArray['Comissao'];
             } else {
                 foreach ($permissions as $permission) {
@@ -344,9 +312,7 @@ class Users extends Base
                     }
                 }
                 if ($userType) {
-                    $usersCommitteesRepository->syncOperatorOrAdminUser(
-                        $user->id
-                    );
+                    $usersCommitteesRepository->syncOperatorOrAdminUser($user->id);
                 }
             }
         }
@@ -355,7 +321,7 @@ class Users extends Base
             $user->user_type_id = $userType->id;
             $user->save();
         } else {
-//            dd('Você não está autorizado a usar o sistema');
+            //            dd('Você não está autorizado a usar o sistema');
         }
     }
 }
