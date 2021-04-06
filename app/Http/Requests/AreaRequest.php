@@ -3,6 +3,15 @@ namespace App\Http\Requests;
 
 class AreaRequest extends Request
 {
+    public function authorize()
+    {
+        if ($updating = !!request()->get('id')) {
+            return \Auth::user()->can('areas:update');
+        } else {
+            return \Auth::user()->can('areas:store');
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -11,7 +20,7 @@ class AreaRequest extends Request
     public function rules()
     {
         return [
-            'name'=> 'required',
+            'name' => 'required',
         ];
     }
 
@@ -21,5 +30,4 @@ class AreaRequest extends Request
             'required_without' => 'O campo nome não pode ser vazio.',
         ];
     }
-
 }

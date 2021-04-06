@@ -67,11 +67,13 @@
 
                             @include('partials.edit-button',['model'=>$area])
 
-                            <button type="submit" class="btn btn-danger" @include('partials.disabled',['model'=>$area]) id="save_button">
+                            <button type="submit" class="btn btn-danger"
+                                    {{($mode == 'create') ? (Auth::user()->can('areas:store') ? '':'disabled') : (Auth::user()->can('areas:update') ? '':'disabled')}}
+                                    id="save_button">
                                 <i class="far fa-save"></i> Gravar
                             </button>
 
-                            <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()"  :disabled="!(isEditing || isCreating)">
+                            <button id="cancelButton" class="btn btn-danger" v-on:click.prevent="cancel()" :disabled="!(isEditing || isCreating)">
                                 Cancelar
                             </button>
 

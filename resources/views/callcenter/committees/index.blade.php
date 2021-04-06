@@ -18,11 +18,13 @@
                         v-model="form.search"
                         @keyup="typeKeyUp"
                     >&nbsp;&nbsp;
-                    <a id="buttonNovaComissao" href="{{ route('committees.create') }}"
-                       class="btn btn-primary btn-sm pull-right">
-                        <i class="fa fa-plus"></i>
-                        Nova Commissão
-                    </a>
+                    @can('committees:store')
+                        <a id="buttonNovaComissao" href="{{ route('committees.create') }}"
+                           class="btn btn-primary btn-sm pull-right">
+                            <i class="fa fa-plus"></i>
+                            Nova Commissão
+                        </a>
+                    @endCan
                 </div>
             </div>
         </div>
