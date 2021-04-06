@@ -22,14 +22,14 @@ class unifyPeope extends Command
      *
      * @var string
      */
-    protected $signature = 'aloalerj:unify-People {person_id_from} {person_id_to}';
+    protected $signature = 'aloalerj:unify-people {person_id_from} {person_id_to}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Unify two person id in one, the second person id will be deleted';
+    protected $description = 'Unify two person id in one, the first person id will be deleted';
 
     /**
      * Create a new command instance.
