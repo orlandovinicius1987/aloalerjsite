@@ -68,8 +68,9 @@ class Authorization
             Bouncer::allow($user)->to($item['evento']);
         });
         Bouncer::refresh();
-
+        //dd($userPermissions);
         return $userPermissions;
+        
     }
 
     /**
