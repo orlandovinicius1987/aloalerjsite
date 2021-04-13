@@ -29,11 +29,11 @@ class AuthorizedCommitteeUser implements Rule
      */
     public function passes($attribute, $value)
     {
+        $committee = Committee::find($value);
         $this->committeeName = Committee::find($value)->name ?? '';
 
         //Atualmente, o usuário só pode atribuir o protocolo a comissões às quais pertence
-        return $value &&
-            \Gate::allows('committee-canEdit', [$value, auth()->user()->id]);
+        return $value && \Gate::allows('committee-canEdit', [$committee, auth()->user()->id]);
     }
 
     /**
