@@ -27,7 +27,7 @@
                                        required
                                        {{($person && $person->is_anonymous) ? 'disabled' : '' }}
                                        v-mask='["###.###.###-##", "##.###.###/####-##"]'
-                                        @cannot('committee-canEdit','')
+                                        @cannot('committee-canEdit', '')
                                             {{$person->id ? 'disabled="disabled"' : '' }}
                                         @endcan
 

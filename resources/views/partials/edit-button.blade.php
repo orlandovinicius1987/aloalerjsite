@@ -5,7 +5,7 @@
         class="btn btn-danger"
         id="vue-editButton"
         @if(isset($record))
-            @can('committee-canEdit', $record->committee->id ?? '')
+            @can('committee-canEdit', $record->committee ?? '')
                 :disabled="isEditing || isCreating"
             @else
                 disabled

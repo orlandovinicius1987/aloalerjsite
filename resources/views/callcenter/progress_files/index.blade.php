@@ -9,9 +9,9 @@
 
             <div class="col-8 text-right">
                 <button id="button-novo-anexo" href="#" data-toggle="modal" data-target="#ProgressFilesModal"
-                   class="btn btn-primary btn-sm pull-right btn-depth" 
+                   class="btn btn-primary btn-sm pull-right btn-depth"
                     @if(isset($progress))
-                       @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee->id : ($record->committee->id ?? '')) 
+                       @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
                             @include('partials.disabled',['model'=>$progress]) @else disabled @endcan
                     @endif>
                     <i class="fa fa-plus"></i>
