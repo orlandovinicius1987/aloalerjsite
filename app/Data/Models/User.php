@@ -5,10 +5,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable implements AuditableContract
 {
-    use Notifiable, AuditableTrait;
+    use Notifiable, AuditableTrait, HasRolesAndAbilities;
 
     /**
      * The attributes that are mass assignable.

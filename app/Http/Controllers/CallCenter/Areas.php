@@ -17,31 +17,28 @@ class Areas extends Controller
         $this->areasRepository = $areasRepository;
     }
 
-    public function index ()
+    public function index()
     {
         return view('callcenter.areas.index')->with('areas', $this->areasRepository->all());
-
     }
 
     public function details($id)
     {
         $area = $this->areasRepository->findById($id);
-        return view('callcenter.areas.form')->with(
-            'area',
-            $area
-        );
+        return view('callcenter.areas.form')->with(['area' => $area, 'mode' => 'update']);
     }
 
     public function create()
     {
-        return view('callcenter.areas.form')->with(
-            'area',
-            $this->areasRepository->new());
+        return view('callcenter.areas.form')->with([
+            'area' => $this->areasRepository->new(),
+            'mode' => 'create',
+        ]);
     }
 
     public function store(AreaRequest $request)
     {
-        $this->areasRepository->createFromRequest( $request);
+        $this->areasRepository->createFromRequest($request);
 
         $this->showSuccessMessage('Assunto cadastrado com sucesso.');
 

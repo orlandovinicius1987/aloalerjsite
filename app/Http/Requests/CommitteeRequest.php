@@ -3,6 +3,14 @@ namespace App\Http\Requests;
 
 class CommitteeRequest extends Request
 {
+    public function authorize()
+    {
+        if ($updating = !!request()->get('id')) {
+            return \Auth::user()->can('committees:update');
+        } else {
+            return \Auth::user()->can('committees:store');
+        }
+    }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -40,8 +48,7 @@ class CommitteeRequest extends Request
     {
         $input = $this->all();
 
-        $input['public'] =
-            !empty($this->get('public')) && $input['public'] ? true : false;
+        $input['public'] = !empty($this->get('public')) && $input['public'] ? true : false;
 
         $this->replace($input);
 

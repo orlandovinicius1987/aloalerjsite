@@ -25,18 +25,18 @@ class Committees extends Controller
     public function details($id)
     {
         $committee = $this->committeeRepository->findById($id);
-        return view('callcenter.committees.form')->with(
-            'committee',
-            $committee
-        );
+        return view('callcenter.committees.form')->with([
+            'committee' => $committee,
+            'mode' => 'update',
+        ]);
     }
 
     public function create()
     {
-        return view('callcenter.committees.form')->with(
-            'committee',
-            $this->committeeRepository->new()
-        );
+        return view('callcenter.committees.form')->with([
+            'committee' => $this->committeeRepository->new(),
+            'mode' => 'create',
+        ]);
     }
 
     public function store(CommitteeRequest $request)

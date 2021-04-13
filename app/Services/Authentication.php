@@ -7,7 +7,7 @@ use App\Data\Repositories\Users as UsersRepository;
 use Illuminate\Support\Facades\Log;
 
 class Authentication
-{  
+{
     /**
      * @var Guzzle
      */
@@ -20,10 +20,8 @@ class Authentication
      */
     protected $usersRepository;
 
-    public function __construct(
-        Users $usersRepository,
-        RemoteRequest $remoteRequest
-    ) {
+    public function __construct(Users $usersRepository, RemoteRequest $remoteRequest)
+    {
         $this->usersRepository = $usersRepository;
 
         $this->remoteRequest = $remoteRequest;
@@ -31,11 +29,7 @@ class Authentication
 
     public function attempt($request, $remember)
     {
-        return $this->loginUser(
-            $request,
-            $this->loginRequest($request),
-            $remember
-        );
+        return $this->loginUser($request, $this->loginRequest($request), $remember);
     }
 
     protected function extractUsernameFromEmail($email)
@@ -93,16 +87,9 @@ class Authentication
                 abort(403);
             } else {
                 //Usuário já cadastrado
-                if (
-                    \Hash::check(
-                        extract_credentials($request)['password'],
-                        $user->password
-                    )
-                ) {
+                if (\Hash::check(extract_credentials($request)['password'], $user->password)) {
                     //Credenciais de login conferem com as salvas no banco
-                    return $this->mockedAuthentication(
-                        extract_credentials($request)
-                    );
+                    return $this->mockedAuthentication(extract_credentials($request));
                 } else {
                     //Credenciais de login não conferem com as salvas no banco
                     return $this->failedAuthentication();
@@ -130,13 +117,11 @@ class Authentication
                 return false;
             }
 
-            $permissions = app(Authorization::class)->getUserPermissions(
+            $permissions = app(Authorization::class)->syncUserPermissions(
                 extract_credentials($request)['username']
             );
 
-            $this->usersRepository->updateCurrentUserTypeViaPermissions(
-                $permissions
-            );
+            $this->usersRepository->updateCurrentUserTypeViaPermissions($permissions);
         }
 
         return $success;
@@ -158,10 +143,10 @@ class Authentication
                 'email' => [$credentials['username'] . '@alerj.rj.gov.br'],
                 'memberof' => [
                     'CN=ProjEsp,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
-                    'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br'
+                    'CN=SDGI,OU=SDGI,OU=Departamentos,OU=ALERJ,DC=alerj,DC=gov,DC=br',
                 ],
-                'description' => ['matricula: N/C']
-            ]
+                'description' => ['matricula: N/C'],
+            ],
         ];
     }
 
@@ -175,7 +160,7 @@ class Authentication
             'success' => false,
             'code' => 401,
             'message' => 'Attempt failed.',
-            'data' => []
+            'data' => [],
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Services\Traits\RemoteRequest;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Repositories\UserTypes as UserTypesRepository;
+use Bouncer;
 
 class Authorization
 {
@@ -28,7 +29,7 @@ class Authorization
      *
      * @return \Illuminate\Support\Collection
      */
-    public function getUserPermissions($username)
+    public function getRemoteUserPermissions($username)
     {
         if (config('auth.authorization.mock')) {
             return $this->mockedPermissions($username);
@@ -44,9 +45,7 @@ class Authorization
 
             return $response;
         } catch (\Exception $exception) {
-            \Log::error(
-                'Exception ao pesquisar as permissões do usuário ' . $username
-            );
+            \Log::error('Exception ao pesquisar as permissões do usuário ' . $username);
             \Log::error($exception);
 
             //Logando com as permissões salvas
@@ -57,6 +56,21 @@ class Authorization
         }
     }
 
+    public function syncUserPermissions($username)
+    {
+        $userPermissions = $this->getRemoteUserPermissions($username);
+
+        $user = \Auth::user();
+
+        Bouncer::sync($user)->abilities([]);
+
+        collect($userPermissions)->each(function ($item) use ($user) {
+            Bouncer::allow($user)->to($item['evento']);
+        });
+        Bouncer::refresh();
+        return $userPermissions;
+    }
+
     /**
      * @param $username
      *
@@ -65,6 +79,22 @@ class Authorization
     public function getUserProfiles($username)
     {
         return collect(['Administrador', 'Usuario']);
+    }
+
+    private function getStoredAbilities($user = null)
+    {
+        $user = $user ?? \Auth::user();
+
+        $abilitiesArray = [];
+
+        collect($user->getAbilities())->each(function ($item) use (&$abilitiesArray) {
+            $abilitiesArray[] = [
+                'nomeFuncao' => $item->title,
+                'evento' => $item->name,
+            ];
+        });
+
+        return $abilitiesArray;
     }
 
     private function storedPermissions($user)
@@ -95,20 +125,30 @@ class Authorization
                 return collect($permissionsArray);
 
             case 'Operador':
-                return collect([
-                    collect([
-                        'nomeFuncao' => 'Operador',
-                        'evento' => 'operar',
-                    ]),
-                ]);
+                return collect(
+                    array_merge(
+                        [
+                            [
+                                'nomeFuncao' => 'Operador',
+                                'evento' => 'operar',
+                            ],
+                        ],
+                        $this->getStoredAbilities($user)
+                    )
+                );
 
             case 'Administrador':
-                return collect([
-                    collect([
-                        'nomeFuncao' => 'Administrador',
-                        'evento' => 'Administrador',
-                    ]),
-                ]);
+                return collect(
+                    array_merge(
+                        [
+                            [
+                                'nomeFuncao' => 'Administrador',
+                                'evento' => 'Administrador',
+                            ],
+                        ],
+                        $this->getStoredAbilities($user)
+                    )
+                );
         }
     }
 
