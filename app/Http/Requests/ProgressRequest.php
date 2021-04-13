@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Requests;
 
+use App\Data\Models\Committee;
+
 class ProgressRequest extends Request
 {
     protected $errorBag = 'validation';
@@ -21,7 +23,7 @@ class ProgressRequest extends Request
     public function authorize()
     {
         return \Gate::allows('committee-canEdit', [
-            $this->request->get('committee_id'),
+            Committee::find($this->request->get('committee_id')),
             $this->user()->id,
         ]);
     }

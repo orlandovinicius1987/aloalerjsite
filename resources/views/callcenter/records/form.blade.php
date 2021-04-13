@@ -105,7 +105,7 @@
                         </button>
                         @if ($record->id)
                         @include('partials.edit-button',['model'=>$record, 'form' =>'formRecords'])
-                        <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
+                        <button href="#" id="openButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.reopen', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee ?? '')
                             :disabled="isEditing || isCreating || !{{$record->resolved_at ? 'true':'false'}}"
                             @else
                             disabled
@@ -114,7 +114,7 @@
                             <i class="fas fa-redo"></i> Reabrir
                         </button>
 
-                        <button href="#" id="finishButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee->id ?? '')
+                        <button href="#" id="finishButton" class="btn btn-danger" v-on:click.prevent="confirm('{{route('records.mark-as-resolved', $record->id) }}', 'formRecords')" @can('committee-canEdit', $record->committee ?? '')
                             :disabled="isEditing || isCreating || {{$record->resolved_at ? 'true':'false'}}"
                             @else
                             disabled

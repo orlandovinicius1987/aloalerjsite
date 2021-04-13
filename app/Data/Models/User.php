@@ -16,13 +16,7 @@ class User extends Authenticatable implements AuditableContract
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'last_login_at',
-        'user_type_id'
-    ];
+    protected $fillable = ['name', 'email', 'password', 'last_login_at', 'user_type_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -57,5 +51,10 @@ class User extends Authenticatable implements AuditableContract
         } else {
             return Committee::where('slug', 'alo-alerj')->first();
         }
+    }
+
+    public function getIsAdministratorAttribute()
+    {
+        return $this->userType->name == 'Administrador';
     }
 }

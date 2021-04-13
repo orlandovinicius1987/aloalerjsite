@@ -26,15 +26,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('committee-canEdit', function ($user, $committee_id) {
+        Gate::define('committee-canEdit', function ($user, $committee) {
             if ($user->userType->name == 'Comissao') {
-                return !$committee_id
+                //Perfil do usuário é de comissão
+                return !$committee
                     ? false
                     : app(UsersCommitteesRepostory::class)->userHasCommittee(
                         $user->id,
-                        $committee_id
+                        $committee->id
                     );
             } else {
+                //Perfil do usuário não é de comissão. Pode ser Operador, Administrador etc
                 return true;
             }
         });
