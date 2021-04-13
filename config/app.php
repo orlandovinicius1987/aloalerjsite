@@ -153,7 +153,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         geekcom\ValidatorDocs\ValidatorProvider::class,
 
         /*
