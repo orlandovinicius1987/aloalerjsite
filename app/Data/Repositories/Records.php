@@ -126,10 +126,7 @@ class Records extends Base
 
     public function findByProtocol($protocol)
     {
-        return app(Records::class)->findByColumn(
-            'protocol',
-            $this->cleanProtocol($protocol)
-        );
+        return app(Records::class)->findByColumn('protocol', $this->cleanProtocol($protocol));
     }
 
     private function cleanProtocol($protocol)
@@ -171,9 +168,7 @@ class Records extends Base
                 $data = array_merge($data, [
                     'cpf_cnpj' => $data['cpf'],
                     'name' => $data['name'],
-                    'identification' => trim(
-                        $data['identidade'] . ' ' . $data['expeditor']
-                    )
+                    'identification' => trim($data['identidade'] . ' ' . $data['expeditor']),
                 ])
             );
         }
@@ -195,46 +190,42 @@ class Records extends Base
             'state' => 'RJ',
             'is_mailable' => true,
             'validated_at' => now(),
-            'active' => true
+            'active' => true,
         ]);
 
         $person->findOrCreatePhone([
             'person_id' => $person->id,
-            'contact' => $data['telephone']
+            'contact' => $data['telephone'],
         ]);
 
         if ($data['email']) {
             $person->findOrCreateEmail([
                 'person_id' => $person->id,
-                'contact' => $data['email']
+                'contact' => $data['email'],
             ]);
         }
-        $committed_id = app(Committees::class)->findByName(
-            'ALÔ ALERJ'
-        )->id;
+        $committed_id = app(Committees::class)->findByName('ALÔ ALERJ')->id;
         $record = $this->create(
             coollect([
                 'committee_id' => $committed_id,
                 'record_type_id' => $data['record_type_id'],
                 'person_id' => $person->id,
-                'send_answer_by_email' => $data['email'] ? true : false
+                'send_answer_by_email' => $data['email'] ? true : false,
             ])
         );
 
         $progress = app(Progresses::class)->create([
             'record_id' => $record->id,
-            'progress_type_id' => app(ProgressTypes::class)->findByName(
-                'Entrada'
-            )->id,
+            'progress_type_id' => app(ProgressTypes::class)->findByName('Entrada')->id,
             'created_by_committee_id' => $committed_id,
             'is_private' => 1,
             'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'objeto_id',
-            'record_action_id'
+            'record_action_id',
         ]);
 
-//        dd($committed_id);
+        //        dd($committed_id);
 
         $record->sendNotifications();
 
@@ -257,32 +248,18 @@ class Records extends Base
             'created_at_start',
             'created_at_end',
             'resolved_at_start',
-            'resolved_at_end'
+            'resolved_at_end',
         ]);
         return !$notSearchingTerms->contains($term);
     }
 
     public function createdAtBetweenDate($data, $query)
     {
-        if (
-            isset($data['created_at_start']) &&
-            !is_null($data['created_at_start'])
-        ) {
-            $query->whereDate(
-                'records.created_at',
-                '>=',
-                $data['created_at_start']
-            );
+        if (isset($data['created_at_start']) && !is_null($data['created_at_start'])) {
+            $query->whereDate('records.created_at', '>=', $data['created_at_start']);
         }
-        if (
-            isset($data['created_at_end']) &&
-            !is_null($data['created_at_end'])
-        ) {
-            $query->whereDate(
-                'records.created_at',
-                '<=',
-                $data['created_at_end']
-            );
+        if (isset($data['created_at_end']) && !is_null($data['created_at_end'])) {
+            $query->whereDate('records.created_at', '<=', $data['created_at_end']);
         }
 
         return $query;
@@ -290,25 +267,11 @@ class Records extends Base
 
     public function resolvedAtBetweenDate($data, $query)
     {
-        if (
-            isset($data['resolved_at_start']) &&
-            !is_null($data['resolved_at_start'])
-        ) {
-            $query->whereDate(
-                'records.resolved_at',
-                '>=',
-                $data['resolved_at_start']
-            );
+        if (isset($data['resolved_at_start']) && !is_null($data['resolved_at_start'])) {
+            $query->whereDate('records.resolved_at', '>=', $data['resolved_at_start']);
         }
-        if (
-            isset($data['resolved_at_end']) &&
-            !is_null($data['resolved_at_end'])
-        ) {
-            $query->whereDate(
-                'records.resolved_at',
-                '<=',
-                $data['resolved_at_end']
-            );
+        if (isset($data['resolved_at_end']) && !is_null($data['resolved_at_end'])) {
+            $query->whereDate('records.resolved_at', '<=', $data['resolved_at_end']);
         }
 
         return $query;
@@ -317,26 +280,14 @@ class Records extends Base
     public function advancedSearch($data)
     {
         $records = (new Record())->newQuery();
-        
 
         foreach ($data as $key => $collumn) {
-            
             if (!is_null($collumn) && $this->isSearchColumn($key)) {
-              
                 switch ($key) {
                     case 'person_name':
                         $records
-                            ->join(
-                                'people',
-                                'people.id',
-                                '=',
-                                'records.person_id'
-                            )
-                            ->where(
-                                'people.name',
-                                'ilike',
-                                '%' . $collumn . '%'
-                            )
+                            ->join('people', 'people.id', '=', 'records.person_id')
+                            ->where('people.name', 'ilike', '%' . $collumn . '%')
                             ->select('records.*');
                         break;
                     case 'created_by_committee_id':
@@ -346,22 +297,13 @@ class Records extends Base
                         break;
                     case 'progress_original':
                         $records
-                            ->join(
-                                'progresses',
-                                'progresses.record_id',
-                                '=',
-                                'records.id'
-                            )
-                            ->where(
-                                'progresses.original',
-                                'ilike',
-                                '%' . $collumn . '%'
-                            )
+                            ->join('progresses', 'progresses.record_id', '=', 'records.id')
+                            ->where('progresses.original', 'ilike', '%' . $collumn . '%')
                             ->select('records.*');
-                        break;    
+                        break;
 
                     default:
-                        $records->where($key, $collumn);
+                        $records->where('records.' . $key, $collumn);
                 }
             }
         }
@@ -374,12 +316,7 @@ class Records extends Base
         if ($data['per_page'] == 'all') {
             return $records->paginate($records->count());
         } else {
-            return $records->paginate(
-                $data['per_page'],
-                ['*'],
-                'page',
-                $data['page']
-            );
+            return $records->paginate($data['per_page'], ['*'], 'page', $data['page']);
         }
     }
 }
