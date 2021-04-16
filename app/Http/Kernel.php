@@ -47,8 +47,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' =>
-            \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
@@ -56,8 +55,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'app.users' => \App\Http\Middleware\MustBeAppUser::class,
-        'app.users' => \App\Http\Middleware\MustBeAppUser::class,
-        'canAny' => \App\Http\Middleware\canAnyMiddleware::class,
-       
+        'canAny' => \App\Http\Middleware\CanAnyMiddleware::class,
     ];
 }
