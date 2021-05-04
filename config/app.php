@@ -154,7 +154,7 @@ return [
          * Package Service Providers...
          */
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
-        geekcom\ValidatorDocs\ValidatorProvider::class,
+        // geekcom\ValidatorDocs\ValidatorProvider::class,
 
         /*
          * Application Service Providers...
@@ -166,7 +166,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\FakerServiceProvider::class,
-        PragmaRX\ZipCode\Vendor\Laravel\ServiceProvider::class,
+        // PragmaRX\ZipCode\Vendor\Laravel\ServiceProvider::class,
     ],
 
     /*
@@ -214,6 +214,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'ZipCode' => PragmaRX\ZipCode\Vendor\Laravel\Facade::class,
+        //     'ZipCode' => PragmaRX\ZipCode\Vendor\Laravel\Facade::class,
     ],
 ];

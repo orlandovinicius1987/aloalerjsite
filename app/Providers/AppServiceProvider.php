@@ -38,9 +38,9 @@ class AppServiceProvider extends ServiceProvider
 
     private function bootHorizon()
     {
-        Horizon::auth(function ($request) {
-            return true;
-        });
+        //        Horizon::auth(function ($request) {
+        //            return true;
+        //        });
     }
 
     /**

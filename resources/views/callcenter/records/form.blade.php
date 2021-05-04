@@ -13,7 +13,7 @@
                 <ul class="aloalerj-breadcrumbs">
                     <li>
                         @if(isset($person))
-                            <a href="{{ route('people.show', ['id' => $person->id]) }}">
+                            <a href="{{ route('people.show', ['person_id' => $person->id]) }}">
                                 {{ $person->name }}
                             </a>
                         @endif

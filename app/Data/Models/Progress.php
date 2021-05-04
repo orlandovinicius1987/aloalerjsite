@@ -14,6 +14,7 @@ class Progress extends BaseModel
     protected $controlCreatedBy = true;
     protected $controlCreatedByCommittee = true;
 
+    protected $table = 'progresses';
     /**
      * @var array
      */
@@ -88,8 +89,9 @@ class Progress extends BaseModel
     public function getNotifiables()
     {
         return $this->record->send_answer_by_email
-            ? (!$this->is_private) ? $this->record->person->emails
-                : collect([])
+            ? (!$this->is_private
+                ? $this->record->person->emails
+                : collect([]))
             : collect([]);
     }
 
