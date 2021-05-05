@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\User;
+use App\Models\User;
 
 use App\Data\Repositories\UserTypes as UserTypesRepository;
 use App\Data\Repositories\Users as UsersRepository;
@@ -24,12 +24,8 @@ $factory->define(User::class, function (Faker $faker) {
 
     do {
         $name = strtolower($faker->unique()->firstName);
-        $name = preg_replace("/([^a-zA-Z])/", "", $name);
-    } while (
-        !is_null(
-            $usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')
-        )
-    );
+        $name = preg_replace('/([^a-zA-Z])/', '', $name);
+    } while (!is_null($usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')));
 
     return [
         'name' => $name,
@@ -42,10 +38,7 @@ $factory->define(User::class, function (Faker $faker) {
 });
 
 foreach (app(UserTypesRepository::class)->all() as $userType) {
-    $factory->defineAs(User::class, $userType->name, function ($faker) use (
-        $factory,
-        $userType
-    ) {
+    $factory->defineAs(User::class, $userType->name, function ($faker) use ($factory, $userType) {
         $issue = $factory->raw(User::class);
         $userTypesRepository = app(UserTypesRepository::class);
         $userType = $userTypesRepository->findByColumn('name', $userType->name);

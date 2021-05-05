@@ -4,11 +4,11 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;
@@ -36,13 +36,7 @@ class SearchTest extends Base
         }
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $persons,
-                $person1,
-                $person2
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $persons, $person1, $person2) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
@@ -56,15 +50,10 @@ class SearchTest extends Base
                     ->type('#search', $persons[0]->name)
                     ->waitForText('Busca resultou em mais de 20 registros')
 
-                    ->type(
-                        '#search',
-                        'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2'
-                    )
+                    ->type('#search', 'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2')
                     ->waitForText('Nenhum resultado encontrado')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
-                            $user->username .
-                            '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });
@@ -91,25 +80,16 @@ class SearchTest extends Base
         $record = factory(Record::class)->create();
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $record
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $record) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
                     ->type('#search', $record->protocol)
                     ->waitForText($record->person->name)
-                    ->type(
-                        '#search',
-                        'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2'
-                    )
+                    ->type('#search', 'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2')
                     ->waitForText('Nenhum resultado encontrado')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
-                            $user->username .
-                            '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });

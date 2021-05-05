@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\CallCenter;
 
-use App\Data\Models\Progress;
+use App\Models\Progress;
 use App\Data\Repositories\Areas;
 use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
@@ -54,9 +54,7 @@ class Records extends Controller
     {
         $person = null;
 
-        $search = request()->get('name')
-            ? request()->get('name')
-            : request()->get('cpf_cnpj');
+        $search = request()->get('name') ? request()->get('name') : request()->get('cpf_cnpj');
 
         if (validate_cpf_cnpj(remove_punctuation($search))) {
             $cpfCnpj = $search;
@@ -92,9 +90,7 @@ class Records extends Controller
 
     public function searchShowPublic(SearchProtocolRequest $request)
     {
-        $record = app(RecordsRepository::class)->findByProtocol(
-            $request->protocol
-        );
+        $record = app(RecordsRepository::class)->findByProtocol($request->protocol);
 
         return view('callcenter.records.show-public')->with('record', $record);
     }
@@ -115,16 +111,9 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' => $this->recordsRepository->allWherePaginate(
-                'person_id',
-                $record->person_id
-            ),
-            'addresses' => $this->peopleAddressesRepository->findByPerson(
-                $record->person_id
-            ),
-            'contacts' => $this->peopleContactsRepository->findByPerson(
-                $record->person_id
-            )
+            'records' => $this->recordsRepository->allWherePaginate('person_id', $record->person_id),
+            'addresses' => $this->peopleAddressesRepository->findByPerson($record->person_id),
+            'contacts' => $this->peopleContactsRepository->findByPerson($record->person_id),
         ]);
     }
 
@@ -140,9 +129,7 @@ class Records extends Controller
         $record->sendNotifications();
 
         $this->showSuccessMessage(
-            'Protocolo ' .
-                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
-                ' com sucesso.'
+            'Protocolo ' . ($record->wasRecentlyCreated ? 'criado' : 'gravado') . ' com sucesso.'
         );
 
         return redirect()->to(
@@ -162,30 +149,14 @@ class Records extends Controller
     {
         $record = $this->storeRecord($request);
 
-        $this->peopleContactsRepository->createContact(
-            $request->get('mobile'),
-            $record->person_id,
-            'mobile'
-        );
-        $this->peopleContactsRepository->createContact(
-            $request->get('whatsapp'),
-            $record->person_id,
-            'whatsapp'
-        );
-        $this->peopleContactsRepository->createContact(
-            $request->get('email'),
-            $record->person_id,
-            'email'
-        );
-        $this->peopleContactsRepository->createContact(
-            $request->get('phone'),
-            $record->person_id,
-            'phone'
-        );
+        $this->peopleContactsRepository->createContact($request->get('mobile'), $record->person_id, 'mobile');
+        $this->peopleContactsRepository->createContact($request->get('whatsapp'), $record->person_id, 'whatsapp');
+        $this->peopleContactsRepository->createContact($request->get('email'), $record->person_id, 'email');
+        $this->peopleContactsRepository->createContact($request->get('phone'), $record->person_id, 'phone');
 
         if ($request->get('create_address') == 'true') {
             $data = array_merge($request->toArray(), [
-                'person_id' => $record->person_id
+                'person_id' => $record->person_id,
             ]);
             $this->peopleAddressesRepository->create($data);
         }
@@ -193,9 +164,7 @@ class Records extends Controller
         $record->sendNotifications();
 
         $this->showSuccessMessage(
-            'Protocolo ' .
-                ($record->wasRecentlyCreated ? 'criado' : 'gravado') .
-                ' com sucesso.'
+            'Protocolo ' . ($record->wasRecentlyCreated ? 'criado' : 'gravado') . ' com sucesso.'
         );
 
         /**
@@ -203,13 +172,10 @@ class Records extends Controller
          * não é o nome cadastrado, será iniciado uma nova tela para acerto do cadastro.
          *
          */
-        if (
-            $request->get('is_anonymous') == 'false' &&
-            $request->get('name') != $record->person->name
-        ) {
+        if ($request->get('is_anonymous') == 'false' && $request->get('name') != $record->person->name) {
             return view('callcenter.people.diverge')->with([
                 'newName' => $request->get('name'),
-                'record' => $record
+                'record' => $record,
             ]);
         }
 
@@ -234,12 +200,9 @@ class Records extends Controller
     {
         $record = $this->recordsRepository->findById($id);
         $progress = $this->progressesRepository->create([
-            'original' =>
-                'Protocolo finalizado sem observações em ' . now() . '.',
-            'progress_type_id' => app(
-                ProgressTypesRepository::class
-            )->findByName('Finalização')->id,
-            'record_id' => $record->id
+            'original' => 'Protocolo finalizado sem observações em ' . now() . '.',
+            'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Finalização')->id,
+            'record_id' => $record->id,
         ]);
 
         $this->recordsRepository->markAsResolved($record->id, $progress);
@@ -248,10 +211,9 @@ class Records extends Controller
 
         $this->showSuccessMessage('Protocolo finalizado com sucesso.');
 
-        return redirect()->route(
-            Workflow::started() ? 'people_addresses.create' : 'people.show',
-            ['person_id' => $record->person->id]
-        );
+        return redirect()->route(Workflow::started() ? 'people_addresses.create' : 'people.show', [
+            'person_id' => $record->person->id,
+        ]);
     }
 
     /**
@@ -263,12 +225,9 @@ class Records extends Controller
         $record = $this->recordsRepository->findById($id)->reopen();
 
         $progress = $this->progressesRepository->create([
-            'original' =>
-                'Protocolo reaberto sem observações em ' . now() . '.',
-            'progress_type_id' => app(
-                ProgressTypesRepository::class
-            )->findByName('Reabertura')->id,
-            'record_id' => $record->id
+            'original' => 'Protocolo reaberto sem observações em ' . now() . '.',
+            'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Reabertura')->id,
+            'record_id' => $record->id,
         ]);
 
         $this->recordsRepository->markAsNotResolved($record->id);
@@ -277,10 +236,9 @@ class Records extends Controller
 
         $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 
-        return redirect()->route(
-            Workflow::started() ? 'people_addresses.create' : 'people.show',
-            ['person_id' => $record->person->id]
-        );
+        return redirect()->route(Workflow::started() ? 'people_addresses.create' : 'people.show', [
+            'person_id' => $record->person->id,
+        ]);
     }
 
     /**
@@ -296,40 +254,28 @@ class Records extends Controller
 
         return view('callcenter.records.form')
             ->with($this->getComboBoxMenus($record))
-            ->with(
-                'progresses',
-                $this->progressesRepository->allWherePaginate('record_id', $id)
-            )
+            ->with('progresses', $this->progressesRepository->allWherePaginate('record_id', $id))
             ->with('record', $record)
             ->with('person', $person)
-            ->with(
-                'has_email',
-                $record->person->emails->count() > 0 ? true : false
-            );
+            ->with('has_email', $record->person->emails->count() > 0 ? true : false);
     }
 
     public function index()
     {
-        return view('callcenter.records.index')->with(
-            'records',
-            $this->recordsRepository->allPaginate()
-        );
+        return view('callcenter.records.index')->with('records', $this->recordsRepository->allPaginate());
     }
 
     public function nonResolved()
     {
         return view('callcenter.records.index')->with([
             'records' => ($records = $this->recordsRepository->allNotResolved()),
-            'onlyNonResolved' => true
+            'onlyNonResolved' => true,
         ]);
     }
 
     public function showProtocol($record_id)
     {
-        return view('callcenter.records.show-protocol')->with(
-            'record',
-            $this->recordsRepository->findById($record_id)
-        );
+        return view('callcenter.records.show-protocol')->with('record', $this->recordsRepository->findById($record_id));
     }
 
     public function showPublic($protocol)
@@ -347,9 +293,7 @@ class Records extends Controller
 
     public function showByProtocolNumber(Request $request)
     {
-        $record = app(RecordsRepository::class)->findByProtocol(
-            $request->protocol
-        );
+        $record = app(RecordsRepository::class)->findByProtocol($request->protocol);
 
         return view('callcenter.records.search')
             ->with('record', $record)
@@ -361,9 +305,7 @@ class Records extends Controller
         return [
             'committees' => app(CommittesRepository::class)->allOrderBy('name'),
             'areas' => app(AreasRepository::class)->allOrderBy('name'),
-            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy(
-                'name'
-            )
+            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy('name'),
         ];
     }
 
@@ -388,7 +330,7 @@ class Records extends Controller
                 ['label' => '50', 'value' => '50'],
                 ['label' => '100', 'value' => '100'],
                 ['label' => '250', 'value' => '250'],
-                ['label' => 'TODOS', 'value' => 'all']
+                ['label' => 'TODOS', 'value' => 'all'],
             ])
             ->with('per_page', $data['per_page']);
     }
@@ -401,21 +343,14 @@ class Records extends Controller
             //Se é um protocolo novo
             $request->merge(['record_id' => $record->id]);
             $request->merge([
-                'progress_type_id' => app(
-                    ProgressTypesRepository::class
-                )->findByName('Entrada')->id
+                'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Entrada')->id,
             ]);
             $request->merge([
-                'is_private' => 1
+                'is_private' => 1,
             ]);
-            $progress = $this->progressesRepository->createFromRequest(
-                $request
-            );
+            $progress = $this->progressesRepository->createFromRequest($request);
 
-            $this->progressesRepository->attachFilesFromRequest(
-                $request,
-                $progress->id
-            );
+            $this->progressesRepository->attachFilesFromRequest($request, $progress->id);
         }
 
         return $record;

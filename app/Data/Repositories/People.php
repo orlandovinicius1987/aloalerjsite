@@ -2,7 +2,7 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\Person;
+use App\Models\Person;
 use Illuminate\Support\Facades\Cache;
 
 class People extends Base
@@ -17,7 +17,7 @@ class People extends Base
     public function getAnonymousModel()
     {
         return Cache::remember('getAnonymousModel', 15, function () {
-            return \App\Data\Models\Person::where('is_anonymous', true)->first();
+            return \App\Models\Person::where('is_anonymous', true)->first();
         });
     }
 

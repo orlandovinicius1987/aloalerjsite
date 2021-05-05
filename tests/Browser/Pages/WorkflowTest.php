@@ -3,11 +3,11 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 class WorkflowTest extends Base
 {
@@ -18,7 +18,7 @@ class WorkflowTest extends Base
 
         $person = (object) array_merge($person, [
             'cpf_cnpj_com_pontos' => preg_replace(
-                "/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/",
+                '/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/',
                 "$1.$2.$3-$4",
                 $person['cpf_cnpj']
             ),
@@ -30,14 +30,7 @@ class WorkflowTest extends Base
         $faker = app('Faker');
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $person,
-                $record,
-                $address,
-                $contacts
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $person, $record, $address, $contacts) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
@@ -67,11 +60,7 @@ class WorkflowTest extends Base
                 $browser
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
-                    ->waitUntil(
-                        'document.getElementById(\'street\').value == "' .
-                            $address->address .
-                            '"'
-                    )
+                    ->waitUntil('document.getElementById(\'street\').value == "' . $address->address . '"')
                     ->click('#saveButton')
                     ->waitForText('Contatos')
                     ->type('#mobile', $contacts->mobile)
@@ -81,9 +70,7 @@ class WorkflowTest extends Base
                     ->click('#saveButton')
                     ->waitForText('Anote o número do novo Protocolo')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
-                            $user->username .
-                            '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });

@@ -14,8 +14,8 @@ class AddCulturaOptionToArea extends Migration
      */
     public function up()
     {
-        \App\Data\Models\Area::insert([
-            'name' => 'Cultura'
+        \App\Models\Area::insert([
+            'name' => 'Cultura',
         ]);
     }
 

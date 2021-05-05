@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\ViaModel;
-use App\Data\Models\Committee;
+use App\Models\ViaModel;
+use App\Models\Committee;
 
 class Committees extends Base
 {
@@ -35,8 +35,6 @@ class Committees extends Base
             ->get();
     }
 
-
-
     public function searchByName($name)
     {
         return $this->model::where('name', 'ilike', '%' . $name . '%')->get();
@@ -54,16 +52,12 @@ class Committees extends Base
 
     public function searchPresident($name)
     {
-        return $this->model
-            ::where('president', 'ilike', '%' . $name . '%')
-            ->get();
+        return $this->model::where('president', 'ilike', '%' . $name . '%')->get();
     }
 
     public function searchVicePresident($name)
     {
-        return $this->model
-            ::where('vice_president', 'ilike', '%' . $name . '%')
-            ->get();
+        return $this->model::where('vice_president', 'ilike', '%' . $name . '%')->get();
     }
 
     protected function emptyResponse($search = '')

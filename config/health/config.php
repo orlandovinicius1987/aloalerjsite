@@ -41,8 +41,7 @@ return [
 
         'action-title' => 'View App Health',
 
-        'action_message' =>
-            "The '%s' service is in trouble and needs attention%s",
+        'action_message' => "The '%s' service is in trouble and needs attention%s",
 
         'from' => [
             'name' => 'Laravel Health Checker',
@@ -59,7 +58,7 @@ return [
         ],
 
         'users' => [
-            'model' => App\Data\Models\User::class,
+            'model' => App\Models\User::class,
 
             'emails' => ['admin@mydomain.com'],
         ],

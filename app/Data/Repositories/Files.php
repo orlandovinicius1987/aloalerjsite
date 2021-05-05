@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\File;
+use App\Models\File;
 
 class Files extends Base
 {

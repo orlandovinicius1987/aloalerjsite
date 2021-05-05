@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Progress as ProgressModel;
 
 class RemoveAttendantNameFromProgresses extends Migration
 {

@@ -1,5 +1,5 @@
 <?php
-use App\Data\Models\Origin;
+use App\Models\Origin;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -40,9 +40,7 @@ class CreateOriginsTable extends Migration
             ]);
         }
 
-        DB::statement(
-            "SELECT setval('public.origins_id_seq', (SELECT max(id) FROM public.origins));"
-        );
+        DB::statement("SELECT setval('public.origins_id_seq', (SELECT max(id) FROM public.origins));");
     }
 
     /**

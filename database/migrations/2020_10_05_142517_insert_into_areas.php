@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\Models\Area as Area;
+use App\Models\Area as Area;
 use App\Data\Repositories\Areas as AreasRepository;
 use Illuminate\Database\Migrations\Migration;
 
@@ -16,7 +16,7 @@ class InsertIntoAreas extends Migration
     public function up()
     {
         foreach ($this->areas as $area) {
-            $row = new Area;
+            $row = new Area();
             $row->name = $area;
             $row->is_active = true;
             $row->save();

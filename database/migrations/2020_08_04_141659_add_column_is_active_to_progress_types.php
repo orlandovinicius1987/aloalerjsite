@@ -3,17 +3,11 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\ProgressType as ProgressTypeModel;
+use App\Models\ProgressType as ProgressTypeModel;
 
 class AddColumnIsActiveToProgressTypes extends Migration
 {
-    public $activeRows = [
-        'Encaminhamento',
-        'Entrada',
-        'Finalização',
-        'Triagem',
-        'Resposta'
-    ];
+    public $activeRows = ['Encaminhamento', 'Entrada', 'Finalização', 'Triagem', 'Resposta'];
 
     /**
      * Run the migrations.
@@ -29,7 +23,7 @@ class AddColumnIsActiveToProgressTypes extends Migration
         collect($this->activeRows)->each(function ($row) {
             ProgressTypeModel::updateOrCreate(
                 [
-                    'name' => $row
+                    'name' => $row,
                 ],
                 ['is_active' => true]
             );

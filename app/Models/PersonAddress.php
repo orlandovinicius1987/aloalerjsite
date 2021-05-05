@@ -1,5 +1,5 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use App\Data\Presenters\PersonContact as PersonAddressPresenter;
 
@@ -25,11 +25,7 @@ class PersonAddress extends BaseModel
         'active',
     ];
 
-    protected $presenters = [
-        'active_string',
-        'created_at_formatted',
-        'updated_at_formatted',
-    ];
+    protected $presenters = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
 
     public function getPresenterClass()
     {

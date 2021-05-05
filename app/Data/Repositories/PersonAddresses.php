@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\PersonAddress;
+use App\Models\PersonAddress;
 
 class PersonAddresses extends Base
 {

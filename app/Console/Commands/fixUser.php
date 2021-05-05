@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use App\Data\Repositories\Users as UsersRepository;
 use Illuminate\Console\Command;
-use App\Data\Models\Audit as AuditModel;
-use App\Data\Models\Committee as CommitteeModel;
-use App\Data\Models\User as UserModel;
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Audit as AuditModel;
+use App\Models\Committee as CommitteeModel;
+use App\Models\User as UserModel;
+use App\Models\Progress as ProgressModel;
 use Carbon\Carbon;
 use App\Services\Authorization;
 
@@ -44,26 +44,18 @@ class fixuser extends Command
      */
     public function handle()
     {
-
-//        dd();
+        //        dd();
         $user_id = $this->argument('user_id');
         $user = UserModel::where('id', $user_id)->first();
 
-        if($user) {
-
-
+        if ($user) {
             dump('Updating user ' . $user->username);
 
-            $permissions = app(Authorization::class)->getRemoteUserPermissions(
-                $user->username
-            );
+            $permissions = app(Authorization::class)->getRemoteUserPermissions($user->username);
 
-            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions(
-                $permissions,
-                $user
-            );
-            dump('User '. $user->username . ' updated' );
-        }else{
+            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions($permissions, $user);
+            dump('User ' . $user->username . ' updated');
+        } else {
             dump('Informe um id válido');
         }
     }

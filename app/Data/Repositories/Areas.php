@@ -1,8 +1,8 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\Area;
-use App\Data\Models\ViaModel;
+use App\Models\Area;
+use App\Models\ViaModel;
 
 class Areas extends Base
 {
@@ -16,12 +16,11 @@ class Areas extends Base
         return Areas::class;
     }
 
-
-
     public function searchByAll($name)
     {
         return $this->model
-            ::where('name', 'ilike', '%' . $name . '%')->orderBy('name', 'asc')
+            ::where('name', 'ilike', '%' . $name . '%')
+            ->orderBy('name', 'asc')
             ->get();
     }
 
@@ -39,5 +38,4 @@ class Areas extends Base
             'count' => $count,
         ];
     }
-
 }

@@ -2,19 +2,19 @@
 
 namespace Tests\Browser\Pages;
 
-use App\Data\Models\Committee;
+use App\Models\Committee;
 use Laravel\Dusk\Browser;
 
 use App\Notifications\ProgressCreated;
 use App\Notifications\RecordCreated;
 use Illuminate\Support\Facades\Notification;
 
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\Progress;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\Progress;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 use App\Services\Phone;
 
@@ -112,31 +112,20 @@ class InsertTest extends Base
                     ->click('#button-novo-endereco')
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
-                    ->waitUntil(
-                        'document.getElementById(\'street\').value == "' .
-                            $address->address .
-                            '"'
-                    )
+                    ->waitUntil('document.getElementById(\'street\').value == "' . $address->address . '"')
                     ->click('#saveButton')
                     ->waitForText('Endereço cadastrado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
-                    $contactType = app(
-                        ContactTypesRepository::class
-                    )->findByColumn('code', $key);
+                    $contactType = app(ContactTypesRepository::class)->findByColumn('code', $key);
                     $browser
                         ->click('#button-novo-contato')
                         ->waitForText('Selecione o tipo de contato')
-                        ->waitUntil(
-                            'document.getElementById(\'contact_type_id\').options.length > 1'
-                        )
+                        ->waitUntil('document.getElementById(\'contact_type_id\').options.length > 1')
                         ->select('#contact_type_id', $contactType->id)
                         ->type('#contact', $contact)
                         ->click('#saveContactButton');
                     if (isset($contactTypesArrayIsMobile[$contactType->code])) {
-                        $contact = Phone::addPhoneMask(
-                            $contact,
-                            $contactTypesArrayIsMobile[$contactType->code]
-                        );
+                        $contact = Phone::addPhoneMask($contact, $contactTypesArrayIsMobile[$contactType->code]);
                     }
                     $browser->assertSee($contact);
                 }
@@ -219,19 +208,13 @@ class InsertTest extends Base
                     ->click('#saveButton')
                     ->waitForText('Anote o número do novo Protocolo');
 
-                $protocol = $browser
-                    ->element('#protocol-number')
-                    ->getAttribute('innerHTML');
+                $protocol = $browser->element('#protocol-number')->getAttribute('innerHTML');
 
                 $browser->clickLink($protocol);
 
-                $browser
-                    ->waitForText('PROTOCOLO EM ANDAMENTO')
-                    ->click('#button-novo-andamento');
+                $browser->waitForText('PROTOCOLO EM ANDAMENTO')->click('#button-novo-andamento');
 
-                $record_id = $browser
-                    ->element('#record_id')
-                    ->getAttribute('value');
+                $record_id = $browser->element('#record_id')->getAttribute('value');
 
                 $progress = factory(Progress::class, 'CreateDusk')->raw();
                 $progress['create_url'] = str_replace(
@@ -286,12 +269,7 @@ class InsertTest extends Base
         $faker = app('Faker');
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $person,
-                $committee
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $person, $committee) {
                 $browser
                     ->loginAs($user->id)
                     ->screenshot('01')

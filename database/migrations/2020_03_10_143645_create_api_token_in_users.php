@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Str;
-use App\Data\Models\User;
+use App\Models\User;
 
 class CreateApiTokenInUsers extends Migration
 {

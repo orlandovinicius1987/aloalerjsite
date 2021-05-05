@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use App\Data\Repositories\Users as UsersRepository;
 use Illuminate\Console\Command;
-use App\Data\Models\Audit as AuditModel;
-use App\Data\Models\Committee as CommitteeModel;
-use App\Data\Models\User as UserModel;
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Audit as AuditModel;
+use App\Models\Committee as CommitteeModel;
+use App\Models\User as UserModel;
+use App\Models\Progress as ProgressModel;
 use Carbon\Carbon;
 use App\Services\Authorization;
 
@@ -45,31 +45,22 @@ class fixEverything extends Command
     public function handle()
     {
         foreach (UserModel::cursor() as $user) {
-            $permissions = app(Authorization::class)->getRemoteUserPermissions(
-                $user->username
-            );
+            $permissions = app(Authorization::class)->getRemoteUserPermissions($user->username);
 
-            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions(
-                $permissions,
-                $user
-            );
+            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions($permissions, $user);
 
             dump('Updating user ' . $user->username);
         }
 
         foreach (
-            ProgressModel::whereDate(
-                'created_at',
-                '>=',
-                Carbon::createFromFormat('Y-m-d', '2020-08-01')
-            )
+            ProgressModel::whereDate('created_at', '>=', Carbon::createFromFormat('Y-m-d', '2020-08-01'))
                 ->whereNull('created_by_id')
                 ->cursor()
             as $progress
         ) {
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
-                ->where('auditable_type', 'App\Data\Models\Progress')
+                ->where('auditable_type', 'App\Models\Progress')
                 ->first();
 
             if ($userId = $audit->user_id) {
@@ -80,15 +71,10 @@ class fixEverything extends Command
                 if ($creator = $progress->creator) {
                     $progress->created_by_committee_id = $creator->originCommittee()->id;
                 } else {
-                    $progress->created_by_committee_id = CommitteeModel::where(
-                        'slug',
-                        'alo-alerj'
-                    )->first()->id;
+                    $progress->created_by_committee_id = CommitteeModel::where('slug', 'alo-alerj')->first()->id;
                 }
 
-                dump(
-                    "Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}"
-                );
+                dump("Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}");
 
                 $progress->save();
             }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserType;
+use App\Models\UserType;
 use Illuminate\Support\Facades\Cache;
 
 class UserTypes extends Base
@@ -18,12 +18,8 @@ class UserTypes extends Base
      */
     public function findByName($name)
     {
-        return Cache::remember(
-            'UserTypes-findByName-' . $name,
-            1000,
-            function () use ($name) {
-                return UserType::where('name', $name)->first();
-            }
-        );
+        return Cache::remember('UserTypes-findByName-' . $name, 1000, function () use ($name) {
+            return UserType::where('name', $name)->first();
+        });
     }
 }

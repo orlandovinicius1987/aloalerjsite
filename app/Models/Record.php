@@ -1,5 +1,5 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use App\Notifications\RecordCreated;
 use App\Notifications\RecoverAccessCode;
@@ -26,7 +26,7 @@ class Record extends BaseModel
         'resolved_at',
         'resolved_by_id',
         'record_action_id',
-        'access_code'
+        'access_code',
     ];
 
     protected $with = ['committee'];
@@ -61,10 +61,7 @@ class Record extends BaseModel
     public function getProtocolAttribute($protocol)
     {
         if (strlen($protocol) == 28 && is_numeric($protocol)) {
-            $protocol = $this->mask(
-                '####.####.####.####.####.####.####',
-                $protocol
-            );
+            $protocol = $this->mask('####.####.####.####.####.####.####', $protocol);
         } elseif (strlen($protocol) == 12 && is_numeric($protocol)) {
             $protocol = $this->mask('####.####.####', $protocol);
         }
@@ -85,29 +82,21 @@ class Record extends BaseModel
 
     public function getFirstProgressOriginalAttribute()
     {
-        return is_null($progress = $this->firstProgress())
-            ? ''
-            : $progress->toArray()['original'];
+        return is_null($progress = $this->firstProgress()) ? '' : $progress->toArray()['original'];
     }
 
     public function getNotifiables()
     {
-        return $this->send_answer_by_email
-            ? $this->person->emails
-            : collect([]);
+        return $this->send_answer_by_email ? $this->person->emails : collect([]);
     }
-
-
 
     public function sendNotifications()
     {
-
         return $this->sendNotificationsForClass(RecordCreated::class);
     }
 
     public function sendAccessCode()
     {
-
         return $this->sendNotificationsForClass(RecoverAccessCode::class);
     }
 
@@ -131,9 +120,10 @@ class Record extends BaseModel
 
     public function firstProgress($globalScopes = true)
     {
-        if(!$globalScopes){
+        if (!$globalScopes) {
             return $this->progresses()
-                ->orderBy('created_at', 'asc')->withoutGlobalScopes()
+                ->orderBy('created_at', 'asc')
+                ->withoutGlobalScopes()
                 ->first();
         }
         return $this->progresses()

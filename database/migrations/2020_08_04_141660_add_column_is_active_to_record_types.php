@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\RecordType as RecordTypeModel;
+use App\Models\RecordType as RecordTypeModel;
 
 class AddColumnIsActiveToRecordTypes extends Migration
 {
@@ -18,7 +18,7 @@ class AddColumnIsActiveToRecordTypes extends Migration
         'Queda de Ligação',
         'Reclamação',
         'Reenvio de protocolo',
-        'Sugestão'
+        'Sugestão',
     ];
 
     /**
@@ -35,7 +35,7 @@ class AddColumnIsActiveToRecordTypes extends Migration
         collect($this->activeRows)->each(function ($row) {
             RecordTypeModel::updateOrCreate(
                 [
-                    'name' => $row
+                    'name' => $row,
                 ],
                 ['is_active' => true]
             );

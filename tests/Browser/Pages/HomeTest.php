@@ -2,7 +2,7 @@
 
 namespace Tests\Browser\Pages;
 
-use App\Data\Models\User;
+use App\Models\User;
 use Laravel\Dusk\Browser;
 
 class HomeTest extends Base
@@ -29,11 +29,7 @@ class HomeTest extends Base
                 ->type('#email', $user->username)
                 ->type('#password', 'secret')
                 ->click('#loginButton')
-                ->waitUntil(
-                    'document.getElementById(\'navbarDropdown\').text.includes(\'' .
-                        $user->username .
-                        '\')'
-                )
+                ->waitUntil('document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')')
                 ->assertPresent('#navbarDropdown');
         });
     }

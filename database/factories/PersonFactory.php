@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\Person;
+use App\Models\Person;
 
 use App\Data\Repositories\Persons as PersonsRepository;
 
@@ -33,9 +33,7 @@ $factory->define(Person::class, function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(Person::class, 'massInsert', function ($faker) use (
-    $factory
-) {
+$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
     $issue = $factory->raw(Person::class);
     $issue['name'] = 'massInsert';
     return $issue;

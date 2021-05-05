@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\Record;
+use App\Models\Record;
 
 use App\Data\Repositories\Records as RecordsRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
@@ -43,9 +43,7 @@ $factory->define(Record::class, function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use (
-    $factory
-) {
+$factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use ($factory) {
     $issue = $factory->raw(Record::class);
 
     $origin = app(OriginsRepository::class)->randomElement();

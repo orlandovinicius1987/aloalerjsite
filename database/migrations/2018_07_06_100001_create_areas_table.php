@@ -1,5 +1,5 @@
 <?php
-use App\Data\Models\Area;
+use App\Models\Area;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -58,9 +58,7 @@ class CreateAreasTable extends Migration
             ]);
         }
 
-        DB::statement(
-            "SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));"
-        );
+        DB::statement("SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));");
     }
 
     /**

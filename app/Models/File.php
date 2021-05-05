@@ -1,8 +1,8 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use App\Data\Models\AttachedFile as ProgressFileModel;
+use App\Models\AttachedFile as ProgressFileModel;
 use App\Data\Presenters\File as FilePresenter;
 use App\Http\Controllers\CallCenter\Files as FilesController;
 

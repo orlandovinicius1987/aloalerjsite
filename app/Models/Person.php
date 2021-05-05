@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\Models;
+namespace App\Models;
 
 use App\Data\Repositories\ContactTypes;
 use App\Support\Constants;
@@ -23,7 +23,7 @@ class Person extends BaseModel
         'income',
         'person_type_id',
         'created_by_id',
-        'updated_by_id'
+        'updated_by_id',
     ];
 
     protected $presenters = ['created_at_formatted', 'updated_at_formatted'];
@@ -52,7 +52,6 @@ class Person extends BaseModel
 
     public function emails()
     {
-
         $type = app(ContactTypes::class)->findByName('E-mail');
 
         return $this->contacts()
@@ -74,8 +73,8 @@ class Person extends BaseModel
     {
         if (
             $address = $this->addresses()
-            ->where('zipcode', only_numbers($data['zipcode']))
-            ->first()
+                ->where('zipcode', only_numbers($data['zipcode']))
+                ->first()
         ) {
             return $address;
         }
@@ -90,7 +89,7 @@ class Person extends BaseModel
             'state' => $data['state'],
             'is_mailable' => true,
             'validated_at' => now(),
-            'active' => true
+            'active' => true,
         ]);
     }
 
@@ -98,18 +97,17 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-            ->where('contact', $contact = only_numbers($data['contact']))
-            ->first()
+                ->where('contact', $contact = only_numbers($data['contact']))
+                ->first()
         ) {
             return $contact;
         }
 
         return $this->contacts()->create([
-            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')
-                ->id,
+            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')->id,
             'contact' => only_numbers($data['contact']),
             'from' => 'personal',
-            'active' => true
+            'active' => true,
         ]);
     }
 
@@ -117,17 +115,16 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-            ->where('contact', $contact = $data['contact'])
-            ->first()
+                ->where('contact', $contact = $data['contact'])
+                ->first()
         ) {
             return $contact;
         }
         return $this->contacts()->create([
-            'contact_type_id' => app(ContactTypes::class)->findByName('E-mail')
-                ->id,
+            'contact_type_id' => app(ContactTypes::class)->findByName('E-mail')->id,
             'contact' => $data['contact'],
             'from' => 'personal',
-            'active' => true
+            'active' => true,
         ]);
     }
 }

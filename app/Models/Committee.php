@@ -1,5 +1,5 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +20,6 @@ class Committee extends Model
         'office_address',
         'email',
     ];
-
 
     public function users()
     {
@@ -43,5 +42,4 @@ class Committee extends Model
 
         return $query->whereIn('id', $idsArray);
     }
-
 }

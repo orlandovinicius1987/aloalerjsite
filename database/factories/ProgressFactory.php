@@ -1,7 +1,7 @@
 <?php
 use Faker\Generator as Faker;
 
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Progress as ProgressModel;
 
 use App\Data\Repositories\Origins as OriginsRepository;
 use App\Data\Repositories\Records as RecordsRepository;
@@ -26,9 +26,7 @@ $factory->define(ProgressModel::class, function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(ProgressModel::class, 'CreateDusk', function (
-    Faker $faker
-) use ($factory) {
+$factory->defineAs(ProgressModel::class, 'CreateDusk', function (Faker $faker) use ($factory) {
     $issue = $factory->raw(ProgressModel::class);
 
     $origin = app(OriginsRepository::class)->randomElement();

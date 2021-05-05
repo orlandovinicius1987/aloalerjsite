@@ -14,10 +14,10 @@ class AddDeputadosOptionToArea extends Migration
      */
     public function up()
     {
-        \App\Data\Models\Area::insert([
+        \App\Models\Area::insert([
             'name' => 'Deputados',
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now(),
         ]);
     }
 

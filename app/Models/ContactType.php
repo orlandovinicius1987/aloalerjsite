@@ -1,8 +1,7 @@
 <?php
+namespace App\Models;
 
-namespace App\Data\Models;
-
-class RecordAction extends BaseModel
+class ContactType extends BaseModel
 {
     /**
      * @var array

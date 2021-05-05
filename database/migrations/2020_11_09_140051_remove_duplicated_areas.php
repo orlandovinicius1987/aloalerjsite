@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Area as AreaModel;
-use App\Data\Models\Progress as ProgressModel;
-use App\Data\Models\Record as RecordModel;
+use App\Models\Area as AreaModel;
+use App\Models\Progress as ProgressModel;
+use App\Models\Record as RecordModel;
 
 class RemoveDuplicatedAreas extends Migration
 {
@@ -46,8 +46,7 @@ class RemoveDuplicatedAreas extends Migration
         ],
 
         [
-            'name' =>
-                'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
+            'name' => 'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
             'oldAreas' => [1000019, 1000021, 1000031],
             'toArea' => 1000002,
             'isActive' => true,
@@ -98,9 +97,7 @@ class RemoveDuplicatedAreas extends Migration
                     ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($progress) use ($row) {
-                        dump(
-                            "Updating progress {$progress->id} from area {$progress->area_id} to {$row['toArea']}"
-                        );
+                        dump("Updating progress {$progress->id} from area {$progress->area_id} to {$row['toArea']}");
                         $progress->area_id = $row['toArea'];
                         $progress->save();
                     });
@@ -110,9 +107,7 @@ class RemoveDuplicatedAreas extends Migration
                     ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($record) use ($row) {
-                        dump(
-                            "Updating record {$record->id} from area {$record->area_id} to {$row['toArea']}"
-                        );
+                        dump("Updating record {$record->id} from area {$record->area_id} to {$row['toArea']}");
                         $record->area_id = $row['toArea'];
                         $record->save();
                     });
@@ -126,24 +121,16 @@ class RemoveDuplicatedAreas extends Migration
                 }
             });
 
-            if (
-                $toArea = AreaModel::withoutGlobalScopes()->find($row['toArea'])
-            ) {
+            if ($toArea = AreaModel::withoutGlobalScopes()->find($row['toArea'])) {
                 $toArea->is_active = $row['isActive'];
                 $toArea->save();
             }
         });
 
         //criação da área de adolescentes
-        AreaModel::updateOrCreate(
-            ['name' => 'Adolescentes'],
-            ['is_active' => true]
-        );
+        AreaModel::updateOrCreate(['name' => 'Adolescentes'], ['is_active' => true]);
 
-        AreaModel::updateOrCreate(
-            ['name' => 'Crianças'],
-            ['is_active' => true]
-        );
+        AreaModel::updateOrCreate(['name' => 'Crianças'], ['is_active' => true]);
     }
 
     /**

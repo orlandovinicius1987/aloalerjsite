@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\ProgressType;
+use App\Models\ProgressType;
 
 class ProgressTypes extends Base
 {

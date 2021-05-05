@@ -1,11 +1,11 @@
 <?php
 
-use App\Data\Models\Area;
-use App\Data\Models\ContactType;
-use App\Data\Models\Origin;
-use App\Data\Models\PersonContact;
-use App\Data\Models\ProgressType;
-use App\Data\Models\Record;
+use App\Models\Area;
+use App\Models\ContactType;
+use App\Models\Origin;
+use App\Models\PersonContact;
+use App\Models\ProgressType;
+use App\Models\Record;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Progress as ProgressModel;
 
 class ProgressesTableSeeder extends Seeder
 {

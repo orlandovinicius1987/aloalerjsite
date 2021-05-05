@@ -1,22 +1,22 @@
 <?php
 namespace App\Services;
 
-use App\Data\Models\Area;
-use App\Data\Models\Committee;
-use App\Data\Models\Origin;
-use App\Data\Models\RecordAction;
-use App\Data\Models\RecordType;
+use App\Models\Area;
+use App\Models\Committee;
+use App\Models\Origin;
+use App\Models\RecordAction;
+use App\Models\RecordType;
 use App\Data\Repositories\Records;
 use Carbon\Carbon;
-use App\Data\Models\User;
-use App\Data\Models\Record;
-use App\Data\Models\Person;
-use App\Data\Models\Progress;
-use App\Data\Models\UserType;
-use App\Data\Models\ContactType;
-use App\Data\Models\ProgressType;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Record;
+use App\Models\Person;
+use App\Models\Progress;
+use App\Models\UserType;
+use App\Models\ContactType;
+use App\Models\ProgressType;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 
@@ -26,11 +26,8 @@ class ImportCercred
 
     protected $counters = [];
 
-    private function allHistoryIdsExceptForPerson(
-        $person_id,
-        $firstHistory,
-        $lastHistory
-    ) {
+    private function allHistoryIdsExceptForPerson($person_id, $firstHistory, $lastHistory)
+    {
         $exclude = array_filter([$firstHistory, $lastHistory]);
 
         if (count($exclude) == 0) {
@@ -44,7 +41,7 @@ class ImportCercred
         from historico
         where imported = false and historico.pessoa_id = {$person_id} and historico.historico_id not in (" .
                     implode(',', $exclude) .
-                    ");"
+                    ');'
             )
         );
     }
@@ -67,8 +64,7 @@ from historico
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
 where  historico_propriedade_tipo.descricao is not null
-and historico.historico_id = ' .
-                    $historico_id
+and historico.historico_id = ' . $historico_id
             )
         );
 
@@ -113,43 +109,28 @@ and historico.historico_id = ' .
     private function inferAndFillMissinData()
     {
         Record::all()->each(function ($record) {
-            $history = $record->progresses->where(
-                'original_history_id',
-                $record->historico_id
-            )->first();
+            $history = $record->progresses->where('original_history_id', $record->historico_id)->first();
 
             if ($history) {
                 $history = json_decode(json_encode($history->toArray()));
 
-                $action = $this->findActionByHistoryId(
-                    $history->original_history_id
-                );
+                $action = $this->findActionByHistoryId($history->original_history_id);
 
                 $history->history_data[] = coollect([
-                    'history_fields' => coollect(
-                        json_decode($history->history_fields, true)
-                    ),
+                    'history_fields' => coollect(json_decode($history->history_fields, true)),
                 ])->merge(json_decode(json_encode($action, true)));
 
-                $record->area_id = $this->inferAreaFromProtocol($history)
-                    ?: 999999;
+                $record->area_id = $this->inferAreaFromProtocol($history) ?: 999999;
 
-                $record->record_type_id = $this->inferRecordTypeFromProtocol(
-                    $history
-                );
+                $record->record_type_id = $this->inferRecordTypeFromProtocol($history);
 
-                $record->record_action_id = $this->inferActionFromProtocol(
-                    $history
-                );
+                $record->record_action_id = $this->inferActionFromProtocol($history);
 
                 $historico = coollect(
-                    $this->db()->select(
-                        "select * from historico where historico_id = {$history->original_history_id}"
-                    )
+                    $this->db()->select("select * from historico where historico_id = {$history->original_history_id}")
                 )->first();
 
-                $record->created_at = $historico->data_inicio_atendimento
-                    ?: $record->created_at;
+                $record->created_at = $historico->data_inicio_atendimento ?: $record->created_at;
 
                 $record->save();
 
@@ -255,10 +236,9 @@ and historico.historico_id = ' .
                 $this->sanitize([
                     'original_history_id' => $history->historico_id,
                     'record_id' => $record->id,
-                    'progress_type_id' =>
-                        ProgressType::firstOrCreate([
-                            'name' => $history->historico_tipo_descricao,
-                        ])->id,
+                    'progress_type_id' => ProgressType::firstOrCreate([
+                        'name' => $history->historico_tipo_descricao,
+                    ])->id,
                     'created_by_id' => $history->historico_usuario_id_alteracao,
                     'original' => $history->historico_complemento,
                     'created_at' => $history->historico_data_inicio_atendimento,
@@ -280,16 +260,12 @@ and historico.historico_id = ' .
                 'person_id' => $protocol->pessoa_id,
                 'objeto_id' => $protocol->objeto_id,
                 'historico_id' => $protocol->historico_id,
-                'historico_id_finalizador' =>
-                    $protocol->historico_id_finalizador,
-                'person_first_record' => $this->personDoesNotHaveAnyOtherProtocols(
-                    $protocol->pessoa_id
-                ),
+                'historico_id_finalizador' => $protocol->historico_id_finalizador,
+                'person_first_record' => $this->personDoesNotHaveAnyOtherProtocols($protocol->pessoa_id),
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
-                'created_at' =>
-                    ($date = $this->inferDateFromProtocol($protocol)),
+                'created_at' => ($date = $this->inferDateFromProtocol($protocol)),
                 'updated_at' => $date,
             ])
         );
@@ -301,10 +277,7 @@ and historico.historico_id = ' .
      */
     private function findRecordActionByName($history)
     {
-        $action = RecordAction::where(
-            'name',
-            $history->action_description
-        )->first();
+        $action = RecordAction::where('name', $history->action_description)->first();
 
         return $action;
     }
@@ -315,10 +288,7 @@ and historico.historico_id = ' .
      */
     private function findRecordTypeByName($history)
     {
-        $action = RecordType::where(
-            'name',
-            $history->action_description
-        )->first();
+        $action = RecordType::where('name', $history->action_description)->first();
 
         return $action;
     }
@@ -378,8 +348,7 @@ and historico.historico_id = ' .
     private function inferDateFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            return $protocol->history_data[0]
-                ->historico_data_inicio_atendimento;
+            return $protocol->history_data[0]->historico_data_inicio_atendimento;
         }
 
         return null;
@@ -389,16 +358,10 @@ and historico.historico_id = ' .
     {
         if (isset($protocol->history_data[0])) {
             $data = coollect($protocol->history_data[0]->history_fields)
-                ->where(
-                    'historico_propriedade_tipo_descricao',
-                    'Comissão Responsável'
-                )
+                ->where('historico_propriedade_tipo_descricao', 'Comissão Responsável')
                 ->first();
 
-            if (
-                $data instanceof \stdClass ||
-                isset($data['historico_propriedade_valor'])
-            ) {
+            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Area::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
@@ -414,14 +377,9 @@ and historico.historico_id = ' .
             return null;
         }
 
-        $origin = $history
-            ->where('historico_propriedade_tipo_descricao', 'Origem')
-            ->first();
+        $origin = $history->where('historico_propriedade_tipo_descricao', 'Origem')->first();
 
-        if (
-            $origin instanceof \stdClass ||
-            isset($origin['historico_propriedade_valor'])
-        ) {
+        if ($origin instanceof \stdClass || isset($origin['historico_propriedade_valor'])) {
             return Origin::firstOrCreate([
                 'name' => $origin->historico_propriedade_valor,
             ])->id;
@@ -433,15 +391,11 @@ and historico.historico_id = ' .
     private function inferOriginFromProtocol($protocol)
     {
         if (isset($protocol->history_data[0])) {
-            $data = $protocol->history_data[0]->history_fields->where(
-                'historico_propriedade_tipo_descricao',
-                'Origem'
-            )->first();
+            $data = $protocol->history_data[0]->history_fields
+                ->where('historico_propriedade_tipo_descricao', 'Origem')
+                ->first();
 
-            if (
-                $data instanceof \stdClass ||
-                isset($data['historico_propriedade_valor'])
-            ) {
+            if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Origin::firstOrCreate([
                     'name' => $data->historico_propriedade_valor,
                 ])->id;
@@ -464,32 +418,22 @@ and historico.historico_id = ' .
         //        });
 
         Record::all()->each(function ($record) {
-            $this->increment(
-                'RECORD FOR HISTORY',
-                100,
-                "record {$record->id} - person {$record->person_id}"
-            );
+            $this->increment('RECORD FOR HISTORY', 100, "record {$record->id} - person {$record->person_id}");
 
             $ids = [];
 
-            $firstHistory = !empty($record->historico_id)
-                ? $record->historico_id
-                : null;
+            $firstHistory = !empty($record->historico_id) ? $record->historico_id : null;
 
-            $lastHistory = !empty($record->historico_id_finalizador)
-                ? $record->historico_id_finalizador
-                : null;
+            $lastHistory = !empty($record->historico_id_finalizador) ? $record->historico_id_finalizador : null;
 
             if ($firstHistory) {
                 $ids[] = $record->historico_id;
             }
 
             if ($record->person_first_record) {
-                $this->allHistoryIdsExceptForPerson(
-                    $record->person_id,
-                    $firstHistory,
-                    $lastHistory
-                )->each(function ($history) use (&$ids) {
+                $this->allHistoryIdsExceptForPerson($record->person_id, $firstHistory, $lastHistory)->each(function (
+                    $history
+                ) use (&$ids) {
                     $ids[] = $history->historico_id;
                 });
             }
@@ -506,9 +450,7 @@ and historico.historico_id = ' .
 
             $allHistory->each(function ($history) use ($record, $allHistory) {
                 if ($history->historico_id) {
-                    $history->history_fields = $this->getHistoryFields(
-                        $history->historico_id
-                    );
+                    $history->history_fields = $this->getHistoryFields($history->historico_id);
 
                     $this->increment(
                         'PROGRESS',
@@ -517,9 +459,7 @@ and historico.historico_id = ' .
                     );
 
                     $this->db()->statement(
-                        'update historico set imported = true where historico_id = ' .
-                            $history->historico_id .
-                            ';'
+                        'update historico set imported = true where historico_id = ' . $history->historico_id . ';'
                     );
 
                     return $this->createProgress($history, $record);
@@ -533,14 +473,10 @@ and historico.historico_id = ' .
 
     public function importHistory($history, $record)
     {
-        $history->history_fields = $this->getHistoryFields(
-            $history->historico_id
-        );
+        $history->history_fields = $this->getHistoryFields($history->historico_id);
 
         $this->db()->statement(
-            'update historico set imported = true where historico_id = ' .
-                $history->historico_id .
-                ';'
+            'update historico set imported = true where historico_id = ' . $history->historico_id . ';'
         );
 
         $progress = $this->createProgress($history, $record);
@@ -554,9 +490,7 @@ and historico.historico_id = ' .
     protected function records()
     {
         $this->info('Deleting old records...');
-        DB::statement(
-            'update cercred.historico set imported = false where imported = true'
-        );
+        DB::statement('update cercred.historico set imported = false where imported = true');
 
         $this->info('Deleting old records...');
         DB::table('public.records')
@@ -577,38 +511,26 @@ and historico.historico_id = ' .
         Person::all()->each(function ($person) {
             $personProtocols = $this->getProtocolsForPerson($person);
 
-            $personProtocols->each(function ($protocol) use (
-                $personProtocols,
-                $person
-            ) {
+            $personProtocols->each(function ($protocol) use ($personProtocols, $person) {
                 $record = $this->importProtocol($protocol);
 
                 //PEGAR OS PRIMEIROS DA TABELA PROTOCOLO DA CERCRED
                 $history =
                     $personProtocols->count() > 1
-                        ? $this->getHistoryFromProtocol([
-                            $record->historico_id,
-                            $record->historico_id_finalizador,
-                        ])
+                        ? $this->getHistoryFromProtocol([$record->historico_id, $record->historico_id_finalizador])
                         : $this->getHistory($person->id, 'pessoa_id');
 
                 $history->each(function ($history) use ($record) {
                     $this->importHistory($history, $record);
                 });
 
-                $this->increment(
-                    'RECORDS',
-                    100,
-                    "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record"
-                );
+                $this->increment('RECORDS', 100, "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record");
             });
 
             if ($personProtocols->count() > 1) {
                 $record = false;
 
-                $this->getHistory($person->id, 'pessoa_id')->each(function (
-                    $history
-                ) use ($record, $person) {
+                $this->getHistory($person->id, 'pessoa_id')->each(function ($history) use ($record, $person) {
                     if (!$record) {
                         $record = $this->createFixRecord($person);
                     }
@@ -640,34 +562,20 @@ and historico.historico_id = ' .
         $record = Record::create(
             $this->sanitize([
                 'person_id' => $person->id,
-                'record_type_id' =>
-                    RecordType::where('name', 'Outros')->first()->id,
+                'record_type_id' => RecordType::where('name', 'Outros')->first()->id,
                 'area_id' => Area::where('name', 'ALÔ ALERJ')->first()->id,
-                'committee_id' =>
-                    Committee::where('name', 'ALÔ ALERJ')->first()->id,
+                'committee_id' => Committee::where('name', 'ALÔ ALERJ')->first()->id,
             ])
         );
-        $record->protocol = app(Records::class)->makeProtocolNumber(
-            $person,
-            $record
-        );
+        $record->protocol = app(Records::class)->makeProtocolNumber($person, $record);
         $record->save();
         return $record;
     }
-    public function createProgressFromHistory(
-        $history,
-        $newProtocol,
-        $protocol
-    ) {
-        $history->history_fields = $this->getHistoryFields(
-            $history->historico_id
-        );
+    public function createProgressFromHistory($history, $newProtocol, $protocol)
+    {
+        $history->history_fields = $this->getHistoryFields($history->historico_id);
         $this->createProgress($history, $newProtocol);
-        $this->increment(
-            'HISTORY',
-            10,
-            "{$protocol->pessoa_nome} ({$protocol->pessoa_id})"
-        );
+        $this->increment('HISTORY', 10, "{$protocol->pessoa_nome} ({$protocol->pessoa_id})");
     }
     public function getHistoryFromProtocol($ids)
     {
@@ -721,9 +629,7 @@ and historico.historico_id = ' .
                 ]);
             });
 
-        DB::statement(
-            "SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));"
-        );
+        DB::statement("SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));");
     }
 
     protected function progressTypes()
@@ -742,9 +648,7 @@ and historico.historico_id = ' .
                 ]);
             });
 
-        DB::statement(
-            "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
-        );
+        DB::statement("SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));");
     }
 
     protected function users()
@@ -763,8 +667,7 @@ and historico.historico_id = ' .
                         'name' => $row->nome,
                         'email' => $row->nome . '@cercred.com.br',
                         'username' => $row->nome,
-                        'user_type_id' =>
-                            UserType::where('name', 'Usuario')->first()->id,
+                        'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
                         'password' => bcrypt($row->nome . $row->usuario_id),
                     ])
                 );
@@ -806,17 +709,9 @@ and historico.historico_id = ' .
             ->table('endereco')
             ->get()
             ->each(function ($endereco) use ($statuses, $types) {
-                $type = lower(
-                    $types
-                        ->where('endereco_tipo', $endereco->endereco_tipo)
-                        ->first()->descricao
-                );
+                $type = lower($types->where('endereco_tipo', $endereco->endereco_tipo)->first()->descricao);
 
-                $status = lower(
-                    $statuses
-                        ->where('endereco_status', $endereco->endereco_status)
-                        ->first()->descricao
-                );
+                $status = lower($statuses->where('endereco_status', $endereco->endereco_status)->first()->descricao);
 
                 PersonAddress::create(
                     $this->sanitize(
@@ -852,10 +747,7 @@ and historico.historico_id = ' .
         $mobileId = ContactType::where('code', 'mobile')->first()->id;
 
         if (
-            PersonContact::whereIn('contact_type_id', [
-                $phoneId,
-                $mobileId,
-            ])->count() ==
+            PersonContact::whereIn('contact_type_id', [$phoneId, $mobileId])->count() ==
             $this->db()
                 ->table('telefone')
                 ->count()
@@ -867,10 +759,7 @@ and historico.historico_id = ' .
 
         $this->info('Importing PHONES...');
 
-        PersonContact::whereIn('contact_type_id', [
-            $phoneId,
-            $mobileId,
-        ])->delete();
+        PersonContact::whereIn('contact_type_id', [$phoneId, $mobileId])->delete();
 
         $statuses = $this->db()
             ->table('telefone_status')
@@ -883,12 +772,7 @@ and historico.historico_id = ' .
         $this->db()
             ->table('telefone')
             ->get()
-            ->each(function ($telefone) use (
-                $phoneId,
-                $mobileId,
-                $statuses,
-                $types
-            ) {
+            ->each(function ($telefone) use ($phoneId, $mobileId, $statuses, $types) {
                 $type = lower(
                     coollect($types)
                         ->where('telefone_tipo', $telefone->telefone_tipo)
@@ -904,14 +788,11 @@ and historico.historico_id = ' .
                 PersonContact::create(
                     $this->sanitize([
                         'person_id' => $telefone->pessoa_id,
-                        'contact_type_id' => $type == 'celular'
-                            ? $mobileId
-                            : $phoneId,
+                        'contact_type_id' => $type == 'celular' ? $mobileId : $phoneId,
                         'contact' => $telefone->ddd . $telefone->telefone,
                         'from' => $type == 'celular' ? 'pessoal' : $type,
                         'status' => $status,
-                        'provider_enrichment_id' =>
-                            $telefone->enriquecimento_provedor_id,
+                        'provider_enrichment_id' => $telefone->enriquecimento_provedor_id,
                         'telefone_id' => $telefone->telefone_id,
                         'created_at' => Carbon::parse($telefone->inclusao),
                     ])
@@ -920,9 +801,7 @@ and historico.historico_id = ' .
                 $this->increment('PHONES', 100, $telefone->telefone);
             });
 
-        DB::statement(
-            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
-        );
+        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
     }
 
     protected function emails()
@@ -974,22 +853,15 @@ and historico.historico_id = ' .
                         'contact' => $email->email,
                         'from' => lower($type),
                         'status' => lower($status),
-                        'provider_enrichment_id' =>
-                            $email->enriquecimento_provedor_id,
+                        'provider_enrichment_id' => $email->enriquecimento_provedor_id,
                         'email_id' => $email->email_id,
                     ])
                 );
 
-                $this->increment(
-                    'EMAILS',
-                    100,
-                    "{$email->email} - {$email->email_id}"
-                );
+                $this->increment('EMAILS', 100, "{$email->email} - {$email->email_id}");
             });
 
-        DB::statement(
-            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
-        );
+        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
     }
 
     protected function people()
@@ -1028,24 +900,17 @@ and historico.historico_id = ' .
                         'spouse_name' => $person->nome_conjuge,
                         'main_occupation_id' => $person->ocupacao_principal,
                         'scholarship_id' => $person->escolaridade_id,
-                        'income' =>
-                            (float) str_replace('$', '', $person->renda),
+                        'income' => (float) str_replace('$', '', $person->renda),
                         'person_type_id' => $person->tipo_pessoa,
                         'created_at' => $person->inclusao,
                         'updated_by_id' => $person->usuario_id_alteracao,
                     ])
                 );
 
-                $this->increment(
-                    'PEOPLE',
-                    100,
-                    "{$person->pessoa_id} - {$person->nome}"
-                );
+                $this->increment('PEOPLE', 100, "{$person->pessoa_id} - {$person->nome}");
             });
 
-        DB::statement(
-            "SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));"
-        );
+        DB::statement("SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));");
     }
 
     protected function info($message)
@@ -1088,7 +953,7 @@ order by protocolo.protocolo_id
         }
         return coollect(
             $this->db()->select(
-                "select 
+                "select
   DISTINCT
   historico.historico_id,
   historico.complemento historico_complemento,
@@ -1108,10 +973,10 @@ from historico
   left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
-where historico.imported = false 
+where historico.imported = false
 and historico.{$field} in (" .
                     implode(',', $objetoId) .
-                    ");"
+                    ');'
             )
         );
     }
@@ -1179,27 +1044,12 @@ where historico_id = {$historyId}"
         }
 
         $this->counter[$counterName]++;
-        if (
-            $this->counter[$counterName] == 1 ||
-            $this->counter[$counterName] % $mod === 0
-        ) {
-            $counter = str_pad(
-                $this->counter[$counterName],
-                8,
-                ' ',
-                STR_PAD_LEFT
-            );
+        if ($this->counter[$counterName] == 1 || $this->counter[$counterName] % $mod === 0) {
+            $counter = str_pad($this->counter[$counterName], 8, ' ', STR_PAD_LEFT);
 
-            $memory = str_pad(
-                number_format(memory_get_peak_usage()),
-                13,
-                ' ',
-                STR_PAD_LEFT
-            );
+            $memory = str_pad(number_format(memory_get_peak_usage()), 13, ' ', STR_PAD_LEFT);
 
-            $this->info(
-                "{$counterName} - {$counter} records {$memory} bytes = {$message}"
-            );
+            $this->info("{$counterName} - {$counter} records {$memory} bytes = {$message}");
         }
     }
 
@@ -1210,13 +1060,9 @@ where historico_id = {$historyId}"
     function fixAccent($string)
     {
         return preg_replace_callback(
-            "/(.*)(&#[0-9]+)(.*)/",
+            '/(.*)(&#[0-9]+)(.*)/',
             function ($m) {
-                return (
-                    $m[1] .
-                    mb_convert_encoding($m[2] . ';', "UTF-8", "HTML-ENTITIES") .
-                    $m[3]
-                );
+                return $m[1] . mb_convert_encoding($m[2] . ';', 'UTF-8', 'HTML-ENTITIES') . $m[3];
             },
             $string
         );

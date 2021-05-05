@@ -3,7 +3,7 @@
 namespace Tests\Browser\Pages;
 
 use Tests\DuskTestCase;
-use App\Data\Models\User;
+use App\Models\User;
 use Faker\Factory as Faker;
 
 class Base extends DuskTestCase

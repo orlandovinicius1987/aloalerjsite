@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Data\Models\Record;
+use App\Models\Record;
 use App\Data\Repositories\Records;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -28,7 +28,7 @@ class RecoverAccessCode extends Notification implements ShouldQueue
      */
     private function getMessage()
     {
-        return ('A chave de acesso do seu protocolo ' . $this->record->protocol  . ' é ' . $this->record->access_code);
+        return 'A chave de acesso do seu protocolo ' . $this->record->protocol . ' é ' . $this->record->access_code;
     }
 
     /**
@@ -48,18 +48,14 @@ class RecoverAccessCode extends Notification implements ShouldQueue
      */
     public function toMail()
     {
-    
         $subject = 'Recuperação do código de acesso';
-    
+
         $message = (new MailMessage())
             ->subject($subject)
             ->greeting('Olá!')
             ->line($this->getMessage());
 
-        $message->action(
-            'Clique para acessar seu protocolo com sua chave de acesso',
-             route('home')
-        );
+        $message->action('Clique para acessar seu protocolo com sua chave de acesso', route('home'));
 
         return $message;
     }

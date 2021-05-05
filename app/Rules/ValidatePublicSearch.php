@@ -3,11 +3,10 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Data\Models\Record as Record;
+use App\Models\Record as Record;
 
 class ValidatePublicSearch implements Rule
 {
-
     public $array;
 
     /**
@@ -17,7 +16,7 @@ class ValidatePublicSearch implements Rule
      */
     public function __construct($array)
     {
-        $this->array = $array; 
+        $this->array = $array;
     }
 
     /**
@@ -29,18 +28,15 @@ class ValidatePublicSearch implements Rule
      */
     public function passes($attribute, $value)
     {
-        
         $record = Record::where('protocol', $this->array['protocol'])->first();
 
-        if($record){
-            if(is_null($record->access_code)){
-              return true;  
-
-            }else{
-                 return $record->access_code == $this->array['access_code'];
-            } 
-
-        }else{
+        if ($record) {
+            if (is_null($record->access_code)) {
+                return true;
+            } else {
+                return $record->access_code == $this->array['access_code'];
+            }
+        } else {
             return false;
         }
     }

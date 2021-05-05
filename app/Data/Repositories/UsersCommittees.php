@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserCommittee;
+use App\Models\UserCommittee;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 
@@ -14,14 +14,13 @@ class UsersCommittees extends Base
 
     public function userHasCommittee($user_id, $committee_id)
     {
-        return !is_null(
-            $this->searchByUserAndCommittee($user_id, $committee_id)
-        );
+        return !is_null($this->searchByUserAndCommittee($user_id, $committee_id));
     }
 
     public function searchByUserAndCommittee($user_id, $committee_id)
     {
-        return $this->model::where('user_id', $user_id)
+        return $this->model
+            ::where('user_id', $user_id)
             ->where('committee_id', $committee_id)
             ->first();
     }

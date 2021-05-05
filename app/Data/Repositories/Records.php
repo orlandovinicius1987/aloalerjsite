@@ -2,7 +2,7 @@
 namespace App\Data\Repositories;
 
 use Carbon\Carbon;
-use App\Data\Models\Record;
+use App\Models\Record;
 use Illuminate\Support\Facades\Auth;
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\PersonContacts as PersonContactRepository;
@@ -26,10 +26,8 @@ class Records extends Base
      * @param PersonContactRepository $personContactRepository
      * @internal param Repository $repository
      */
-    public function __construct(
-        PeopleRepository $personRepository,
-        PersonContactRepository $personContactRepository
-    ) {
+    public function __construct(PeopleRepository $personRepository, PersonContactRepository $personContactRepository)
+    {
         $this->peopleRepository = $personRepository;
         $this->personContactRepository = $personContactRepository;
     }

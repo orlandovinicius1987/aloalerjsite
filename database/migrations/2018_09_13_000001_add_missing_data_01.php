@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\Models\Area;
-use App\Data\Models\Origin;
-use App\Data\Models\ProgressType;
+use App\Models\Area;
+use App\Models\Origin;
+use App\Models\ProgressType;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

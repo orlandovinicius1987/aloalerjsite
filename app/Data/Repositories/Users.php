@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserType;
-use App\Data\Models\User;
+use App\Models\UserType;
+use App\Models\User;
 use App\Services\Authorization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -87,10 +87,7 @@ class Users extends Base
         $committeeBool = false;
 
         $userTypesRepository = app(UserTypesRepository::class);
-        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
-            $userTypesRepository->all(),
-            'name'
-        );
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey($userTypesRepository->all(), 'name');
 
         foreach ($permissions as $permission) {
             if (isset($userTypesArray[$permission['nomeFuncao']])) {
@@ -162,13 +159,7 @@ class Users extends Base
             $name = $request->get('name');
             $credentials = extract_credentials($request);
 
-            if (
-                is_null(
-                    $user = $this->findUserByEmail(
-                        $email = "{$credentials['username']}@alerj.rj.gov.br"
-                    )
-                )
-            ) {
+            if (is_null($user = $this->findUserByEmail($email = "{$credentials['username']}@alerj.rj.gov.br"))) {
                 $user = new User();
 
                 $user->username = $credentials['username'];
@@ -286,10 +277,7 @@ class Users extends Base
         $usersCommitteesRepository = app(UsersCommitteesRepository::class);
 
         $userTypesRepository = app(UserTypesRepository::class);
-        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
-            $userTypesRepository->all(),
-            'name'
-        );
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey($userTypesRepository->all(), 'name');
 
         $administrator = false;
         $userType = null;

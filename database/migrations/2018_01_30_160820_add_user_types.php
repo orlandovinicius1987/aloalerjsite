@@ -1,5 +1,5 @@
 <?php
-use App\Data\Models\UserType as UserTypeModel;
+use App\Models\UserType as UserTypeModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 

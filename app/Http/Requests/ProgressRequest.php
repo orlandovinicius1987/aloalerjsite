@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests;
 
-use App\Data\Models\Committee;
+use App\Models\Committee;
 
 class ProgressRequest extends Request
 {

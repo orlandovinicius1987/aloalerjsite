@@ -1,11 +1,11 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use App\Data\Scopes\Progress as ProgressScope;
 use App\Notifications\ProgressCreated;
 use Illuminate\Notifications\Notifiable;
 use App\Data\Presenters\Progress as ProgressPresenter;
-use App\Data\Models\AttachedFile as AttachedFileModel;
+use App\Models\AttachedFile as AttachedFileModel;
 
 class Progress extends BaseModel
 {

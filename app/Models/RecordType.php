@@ -1,9 +1,9 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use App\Data\Traits\Activable;
 
-class Origin extends BaseModel
+class RecordType extends BaseModel
 {
     use Activable;
 

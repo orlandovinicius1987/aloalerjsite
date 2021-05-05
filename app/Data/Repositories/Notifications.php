@@ -2,7 +2,7 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\Notification;
+use App\Models\Notification;
 
 class Notifications extends Base
 {
@@ -16,9 +16,7 @@ class Notifications extends Base
         return Notification::create([
             'hash' => $this->createHash($notifiable, $subject),
             'via' => $via,
-            'to' => is_object($notifiable)
-                ? $notifiable->preferredEmail
-                : $notifiable,
+            'to' => is_object($notifiable) ? $notifiable->preferredEmail : $notifiable,
             'subject_id' => $subject->id,
             'subject' => get_class($subject),
         ]);
@@ -26,10 +24,7 @@ class Notifications extends Base
 
     public function findByHash($notifiable, $subject)
     {
-        return Notification::where(
-            'hash',
-            $this->createHash($notifiable, $subject)
-        )->first();
+        return Notification::where('hash', $this->createHash($notifiable, $subject))->first();
     }
 
     private function toString($subject)

@@ -1,9 +1,9 @@
 <?php
-namespace App\Data\Models;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use App\Data\Models\Progress as ProgressModel;
-use App\Data\Models\File as FileModel;
+use App\Models\Progress as ProgressModel;
+use App\Models\File as FileModel;
 
 class AttachedFile extends BaseModel
 {

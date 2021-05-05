@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Area as AreaModel;
+use App\Models\Area as AreaModel;
 
 class AddColumnIsActiveToAreas extends Migration
 {
@@ -46,7 +46,7 @@ class AddColumnIsActiveToAreas extends Migration
         'Serviços Privados',
         'Serviços Públicos',
         'Transportes',
-        'Turismo'
+        'Turismo',
     ];
 
     /**
@@ -63,7 +63,7 @@ class AddColumnIsActiveToAreas extends Migration
         collect($this->activeRows)->each(function ($row) {
             AreaModel::updateOrCreate(
                 [
-                    'name' => $row
+                    'name' => $row,
                 ],
                 ['is_active' => true]
             );

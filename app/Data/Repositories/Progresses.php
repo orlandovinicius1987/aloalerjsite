@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\Progress;
+use App\Models\Progress;
 use App\Data\Repositories\AttachedFiles as AttachedFilesRepository;
 
 class Progresses extends Base

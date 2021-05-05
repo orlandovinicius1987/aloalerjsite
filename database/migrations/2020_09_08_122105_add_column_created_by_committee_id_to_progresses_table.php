@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Progress;
-use App\Data\Models\Committee;
+use App\Models\Progress;
+use App\Models\Committee;
 
 class AddColumnCreatedByCommitteeIdToProgressesTable extends Migration
 {
@@ -27,14 +27,9 @@ class AddColumnCreatedByCommitteeIdToProgressesTable extends Migration
             if ($creator = $progress->creator) {
                 $progress->created_by_committee_id = $creator->originCommittee()->id;
             } else {
-                $progress->created_by_committee_id = Committee::where(
-                    'slug',
-                    'alo-alerj'
-                )->first()->id;
+                $progress->created_by_committee_id = Committee::where('slug', 'alo-alerj')->first()->id;
             }
-            dump(
-                "Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}"
-            );
+            dump("Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}");
             $progress->save();
         }
     }
