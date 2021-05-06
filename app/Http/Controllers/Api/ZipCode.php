@@ -8,15 +8,17 @@ use Canducci\ZipCode\Contracts\ZipCodeContract;
 
 class ZipCode extends Controller
 {
-    protected $zipcode;
+    protected $zipcodeContract;
 
-    public function __construct(ZipCodeContract $zipcode)
+    public function __construct(ZipCodeContract $zipcodeContract)
     {
-        $this->zipcode = $zipcode;
+        $this->zipcodeContract = $zipcodeContract;
     }
 
     public function get($zipCode)
     {
-        return $this->zipcode->find($zipCode)->getArray();
+        if (strlen(only_numbers($zipCode)) >= 8) {
+            return $this->zipcodeContract->find($zipCode, true)->getArray();
+        }
     }
 }
