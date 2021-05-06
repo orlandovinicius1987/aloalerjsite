@@ -3,7 +3,8 @@ namespace App\Http\Controllers\Api;
 
 use Auth;
 use App\Http\Controllers\Controller;
-use PragmaRX\ZipCode\Contracts\ZipCode as ZipCodeContract;
+//use PragmaRX\ZipCode\Contracts\ZipCode as ZipCodeContract;
+use Canducci\ZipCode\Contracts\ZipCodeContract;
 
 class ZipCode extends Controller
 {
@@ -16,6 +17,6 @@ class ZipCode extends Controller
 
     public function get($zipCode)
     {
-        return $this->zipcode->find($zipCode);
+        return $this->zipcode->find($zipCode)->getArray();
     }
 }

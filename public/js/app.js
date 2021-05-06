@@ -55947,14 +55947,15 @@ __webpack_require__.r(__webpack_exports__);
           api_token: laravel.api_token
         }
       }).then(function (response) {
+        console.log(response.data);
         $this.tables.addresses = response.data;
 
-        if (response.data.addresses[0].street_name) {
-          $this.address.zipcode = response.data.addresses[0].zip;
-          $this.address.street = response.data.addresses[0].street_name;
-          $this.address.neighbourhood = response.data.addresses[0].neighborhood;
-          $this.address.city = response.data.addresses[0].city;
-          $this.address.state = response.data.addresses[0].state_id;
+        if (response.data.logradouro) {
+          $this.address.zipcode = response.data.cep;
+          $this.address.street = response.data.logradouro;
+          $this.address.neighbourhood = response.data.bairro;
+          $this.address.city = response.data.localidade;
+          $this.address.state = response.data.uf;
           $this.address.country = 'Brasil';
           document.getElementById('number').focus();
         }
