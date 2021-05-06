@@ -11,9 +11,8 @@
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
-        "@popperjs/core": "^2.6.0",
         "axios": "^0.21.1",
-        "bootstrap": "^5.0.0-beta1",
+        "bootstrap": "^4.6.0",
         "copy-text-to-clipboard": "^1.0.4",
         "cross-env": "^5.2.1",
         "jquery": "^3.5.1",
@@ -35,6 +34,7 @@
     },
     "dependencies": {
         "fibers": "^5.0.0",
-        "node-sass": "^4.14.1"
+        "node-sass": "^4.14.1",
+        "popper.js": "^1.16.1"
     }
 }

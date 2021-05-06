@@ -54,7 +54,7 @@
             <img src="/templates/2021/images/ALERJ_NOVO_vertical-branco.png">
         </a>
         <a class="navbar-brand logo-aloalerj" href="/">
-            <img src="/templates/2021/svg/logo-alo-alerj-branca-nova.svg">
+            <img src="/templates/2021/svg/logo-alo-alerj-branca-nova-sem0800.svg">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,10 +75,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/telefones">Telefones Úteis</a>
                 </li>
+
+{{--
+
                 <li class="nav-item">
                     <a class="nav-link" href="http://transparencia.alerj.rj.gov.br/protocolo" target="_blank">Protocolo</a>
                 </li>
-
+--}}
                 <li class="nav-item">
                     <a class="nav-link" href="/contact" title="Contato"> <i class="fa fa-envelope-o envelopemenu" aria-hidden="true"></i> Contato</a>
                 </li>

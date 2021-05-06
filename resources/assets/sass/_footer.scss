@@ -12,6 +12,24 @@ section .section-title {
 }
 #footer {
     background: $primary !important;
+
+    hr {
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .social i {
+        font-size: 36px;
+
+        @media (min-width: 768px) {
+            font-size: 38px;
+        }
+
+        @media (min-width: 1200px) {
+            font-size: 46px;
+        }
+    }
+
+
 }
 #footer h5{
     padding-left: 10px;
@@ -73,3 +91,6 @@ section .section-title {
         margin-bottom: 10px;
     }
 }
+
+
+

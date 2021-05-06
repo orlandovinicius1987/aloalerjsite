@@ -1,6 +1,6 @@
 <!-- Footer -->
 <section id="footer">
-    <div class="container text-center text-lg-start">
+    <div class="container text-lg-start">
 
         <div class="row">
             <div class="comissoes col-md-12 text-white mt-4">
@@ -16,13 +16,19 @@
 
 
         <div class="row d-flex align-items-center bd-highlight mb-3 text-white">
-            <div class="col-12 col-sm-4 col-md-4 ">
+
+            <div class="col-12 col-sm-4 col-md-3">
+                <img src="/templates/2021/svg/logo-alo-alerj-branca-nova-sem0800.svg" class="img-fluid">
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-3">
                 <a href="//www.alerj.rj.gov.br/" target="_blank">
                     <img src="/templates/2021/images/ALERJ_NOVO_horizontal-branco.png" class="img-fluid">
                 </a>
             </div>
-            <div class="col-12 col-sm-4 col-md-8 text-white ">
-                <div class="row mt-4">
+
+            <div class="col-12 col-sm-4 col-md-6 text-white ">
+                <div class="row mt-4 text-center">
                     <div class="col-lg-6">
                         <p>Rua Primeiro de março, s/n<br>
                             Praça XV - Rio de Janeiro<br>
@@ -30,12 +36,11 @@
                         </p>
                     </div>
                     <div class="col-lg-6">
-                        <div class="social row">
-                            <div class="col-2"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></div>
-                            <div class="col-2"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></div>
-                            <div class="col-2"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></div>
-                            <div class="col-2"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></div>
-                            <div class="col-2"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="far fa-envelope"></i></a></div>
+                        <div class="social row mt-4">
+                            <div class="col-3"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></div>
+                            <div class="col-3"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></div>
+                            <div class="col-3"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                            <div class="col-3"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></div>
                         </div>
                     </div>
                 </div>

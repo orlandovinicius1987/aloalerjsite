@@ -9,37 +9,92 @@
 
 
 @section('content-main')
-    <div class="page-name">
+
+    <div class="page-name text-center">
         <h1 class="nome-comissao ">{{ $committeeService->committee->name ?? '' }}</h1>
     </div>
-        
-    <div class="comissoes-telefone">
 
+    <h1 class="display-5 text-center comissoes-telefone mb-5 mt-4">
+        @include('partials.committee-telephone', [
+        'title' => '',
+        'telephone' => $committeeService->phone,
+        'site' => '',
+    ])
+    </h1>
+
+
+{{--
+
+    <div class="comissoes-telefone text-center">
         @include('partials.committee-telephone', [
             'title' => '',
             'telephone' => $committeeService->phone,
             'site' => '',
         ])
     </div>
-    <div class="ficha-comissao text-center">
-        <div class="comissao_presidente"><h3>Presidente</h3>{!! $committeeService->committee->president !!} </div>
-        <div class="comissao-secretario"><h3>Vice-Presidente</h3>{!! $committeeService->committee->vice_president !!} </div>
-    </div>
+--}}
 
+    <div class="ficha-comissao text-center row mb-4 mt-4">
+        <div class="comissao_presidente mb-4 col-lg-6 ">
+            <div class="card pt-5 pb-5 ">
+                <h5>
+                    Presidente
+                </h5>
 
-    <div class="texto-comissao">
-        {!! $committeeService->bio !!}
-    </div>
+                <h3>
+                {!! $committeeService->committee->president !!}
+                </h3>
 
-
-    <div class="ficha-comissao text-center">
-        <div class="comissao-dados">
-            <div class="comissao-telefones"><span class="comissao-outrostelefones">Outros telefones:</span>{!! $committeeService->committee->office_phone ?? '' !!}</div>
-            @if($committeeService->email)
-                <b><div class="comissao-email"><span class="emails">E-mail:</span>{!! $committeeService->email !!}</div></b>
-            @endif
+            </div>
         </div>
+
+        <div class="comissao-secretario mb-4 col-lg-6">
+            <div class="card pt-5 pb-5">
+                <h5>
+                    Vice-Presidente
+                </h5>
+                <h3>
+                    {!! $committeeService->committee->vice_president !!}
+                </h3>
+
+            </div>
+        </div>
+
     </div>
+
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="texto-comissao">
+                {!! $committeeService->bio !!}
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card ficha-comissao text-center  pt-5 pb-5">
+                <div class="comissao-dados">
+                    <div class="comissao-telefones mb-4">
+                        <span class="comissao-outrostelefones">Outros telefones:</span><br>
+                        {!! $committeeService->committee->office_phone ?? '' !!}
+                    </div>
+
+                    @if($committeeService->email)
+                        <b>
+                            <div class="comissao-email">{{--<span class="emails">E-mail:</span><br>--}}
+                                {!! $committeeService->email !!}
+                            </div>
+                        </b>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
 @stop
 
 
