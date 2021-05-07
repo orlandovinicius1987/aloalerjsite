@@ -56,6 +56,9 @@
                                 @canany(['areas:store','areas:update'])
                                     <a class="nav-link dropdown-item" href="{{route('areas.index') }}"><i class="fas fa-stamp"></i> Assuntos </a>
                                 @endcanany
+                                @canany(['origins:store','origins:update'])
+                                    <a class="nav-link dropdown-item" href="{{route('origins.index') }}"><i class="fas fa-globe-americas"></i> Origem </a>
+                                @endcanany
                             </div>
                         </div>
                     @endcanany

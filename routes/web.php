@@ -1,17 +1,13 @@
 <?php
 Auth::routes();
 
-
-
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
-
-
 Route::get('services/{id}', [
     'as' => 'services.show',
-    'uses' => 'Services@show'
+    'uses' => 'Services@show',
 ]);
 
 Route::group(['prefix' => 'pages'], function () {
@@ -30,7 +26,6 @@ Route::group(['prefix' => 'chat'], function () {
         'uses' => 'Chat@terminated',
     ]);
 });
-
 
 Route::group(['prefix' => 'tv'], function () {
     Route::get('/', ['as' => 'tv.index', 'uses' => 'Tv@index']);
@@ -51,24 +46,13 @@ Route::group(['prefix' => 'contact'], function () {
 
 Route::get('/home', 'Home@index')->name('home');
 
-Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name(
-    'records.show-public'
-);
+Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name('records.show-public');
 
-Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name(
-    'records.search-show-public'
-);
+Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name('records.search-show-public');
 
-Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name(
-    'records.search'
-);
+Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name('records.search');
 
-Route::post(
-    '/pesquisa/protocolo',
-    'CallCenter\Records@showByProtocolNumber'
-)->name('records.search');
-
-
+Route::post('/pesquisa/protocolo', 'CallCenter\Records@showByProtocolNumber')->name('records.search');
 
 Route::group(
     [
@@ -92,31 +76,49 @@ Route::group(
         require __DIR__ . '/callcenter/files.php';
 
         Route::group(['prefix' => 'areas'], function () {
-
-            Route::get('/', 'Areas@index')->name('areas.index')->middleware('canAny:areas:store, areas:update');
+            Route::get('/', 'Areas@index')
+                ->name('areas.index')
+                ->middleware('canAny:areas:store, areas:update');
             Route::post('/store', 'Areas@store')->name('areas.store');
-            Route::get('/createArea', 'Areas@create')->name('areas.create')->middleware('can:areas:store');
-            Route::get('/show/{id}', 'Areas@details')->name('areas.details')->middleware('canAny:areas:store, areas:update');
+            Route::get('/createArea', 'Areas@create')
+                ->name('areas.create')
+                ->middleware('can:areas:store');
+            Route::get('/show/{id}', 'Areas@details')
+                ->name('areas.details')
+                ->middleware('canAny:areas:store, areas:update');
+        });
 
+        Route::group(['prefix' => 'origins'], function () {
+            Route::get('/', 'Origins@index')
+                ->name('origins.index')
+                ->middleware('canAny:areas:store, origins:update');
+            Route::post('/store', 'Origins@store')->name('origins.store');
+            Route::get('/createOrigin', 'Origins@create')
+                ->name('origins.create')
+                ->middleware('can:origins:store');
+            Route::get('/show/{id}', 'Origins@details')
+                ->name('origins.details')
+                ->middleware('canAny:origins:store, areas:update');
         });
 
         Route::group(['prefix' => 'committees'], function () {
-            Route::get('/create', 'Committees@create')->name('committees.create')->middleware('can:committees:store');
+            Route::get('/create', 'Committees@create')
+                ->name('committees.create')
+                ->middleware('can:committees:store');
             Route::post('/store', 'Committees@store')->name('committees.store');
-            Route::get('/show/{id}', 'Committees@details')->name('committees.details')->middleware('canAny:committees:update, committees:store');
-            Route::get('/', 'Committees@index')->name('committees.index')->middleware('canAny:committees:store,committees:update');
+            Route::get('/show/{id}', 'Committees@details')
+                ->name('committees.details')
+                ->middleware('canAny:committees:update, committees:store');
+            Route::get('/', 'Committees@index')
+                ->name('committees.index')
+                ->middleware('canAny:committees:store,committees:update');
 
             Route::group(['prefix' => 'committee-service'], function () {
-
-                Route::get('/create/{id}', 'CommitteeServices@create')->name(
-                    'committee_services.create'
-                );
+                Route::get('/create/{id}', 'CommitteeServices@create')->name('committee_services.create');
 
                 Route::post('/', 'CommitteeServices@store')->name('committee_services.store');
 
-                Route::get('/show/{id}', 'CommitteeServices@details')->name(
-                    'committee_services.details'
-                );
+                Route::get('/show/{id}', 'CommitteeServices@details')->name('committee_services.details');
             });
         });
     }
