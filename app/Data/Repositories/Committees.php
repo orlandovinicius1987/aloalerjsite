@@ -35,8 +35,6 @@ class Committees extends Base
             ->get();
     }
 
-
-
     public function searchByName($name)
     {
         return $this->model::where('name', 'ilike', '%' . $name . '%')->get();
@@ -54,16 +52,12 @@ class Committees extends Base
 
     public function searchPresident($name)
     {
-        return $this->model
-            ::where('president', 'ilike', '%' . $name . '%')
-            ->get();
+        return $this->model::where('president', 'ilike', '%' . $name . '%')->get();
     }
 
     public function searchVicePresident($name)
     {
-        return $this->model
-            ::where('vice_president', 'ilike', '%' . $name . '%')
-            ->get();
+        return $this->model::where('vice_president', 'ilike', '%' . $name . '%')->get();
     }
 
     protected function emptyResponse($search = '')
@@ -77,7 +71,7 @@ class Committees extends Base
             'data' => $data,
             'success' => is_null($messages),
             'errors' => $messages,
-            'count' => $count,
+            'count' => $count
         ];
     }
 

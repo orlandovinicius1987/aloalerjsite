@@ -10,6 +10,6 @@ return [
 
         'id' => env('CHAT_CLIENT_ID'),
 
-        'layout' => env('CHAT_LAYOUT'),
-    ],
+        'layout' => env('CHAT_LAYOUT')
+    ]
 ];

@@ -16,12 +16,11 @@ class Areas extends Base
         return Areas::class;
     }
 
-
-
     public function searchByAll($name)
     {
         return $this->model
-            ::where('name', 'ilike', '%' . $name . '%')->orderBy('name', 'asc')
+            ::where('name', 'ilike', '%' . $name . '%')
+            ->orderBy('name', 'asc')
             ->get();
     }
 
@@ -36,8 +35,7 @@ class Areas extends Base
             'data' => $data,
             'success' => is_null($messages),
             'errors' => $messages,
-            'count' => $count,
+            'count' => $count
         ];
     }
-
 }

@@ -12,19 +12,10 @@ class PersonContactsWorkflowRequest extends Request
     {
         return [
             //'contact_type_id' => 'required',
-            'mobile' => [
-                'required_without_all:whatsapp,phone',
-                new ContactWorkflow(),
-            ],
-            'whatsapp' => [
-                'required_without_all:mobile,phone',
-                new ContactWorkflow(),
-            ],
+            'mobile' => ['required_without_all:whatsapp,phone', new ContactWorkflow()],
+            'whatsapp' => ['required_without_all:mobile,phone', new ContactWorkflow()],
             'email' => [new ContactWorkflow()],
-            'phone' => [
-                'required_without_all:mobile,whatsapp',
-                new ContactWorkflow(),
-            ],
+            'phone' => ['required_without_all:mobile,whatsapp', new ContactWorkflow()]
         ];
     }
 }

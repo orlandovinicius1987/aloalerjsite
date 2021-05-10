@@ -18,7 +18,7 @@ class AlterCommitteesTableDropCollumns extends Migration
         //
         $committees = Committee::all();
 
-        foreach($committees as $committee){
+        foreach ($committees as $committee) {
             $committeeservice = new CommitteeService();
             $committeeservice->committee_id = $committee->id;
             $committeeservice->short_name = $committee->short_name;
@@ -26,8 +26,6 @@ class AlterCommitteesTableDropCollumns extends Migration
             $committeeservice->bio = $committee->bio;
             $committeeservice->public = $committee->public;
             $committeeservice->save();
-
-
         }
         Schema::table('committees', function (Blueprint $table) {
             $table->dropColumn('short_name');
@@ -46,6 +44,5 @@ class AlterCommitteesTableDropCollumns extends Migration
             $table->string('short_name');
             $table->string('link_caption');
         });
-
     }
 }

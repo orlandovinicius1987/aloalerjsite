@@ -13,14 +13,14 @@ class CommitteeServiceRequest extends Request
         return [
             'short_name' => 'required',
             'bio' => 'required',
-            'link_caption' => 'required',
+            'link_caption' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'required_without' => 'O campo solicitação não pode ser vazio.',
+            'required_without' => 'O campo solicitação não pode ser vazio.'
         ];
     }
 
@@ -31,8 +31,7 @@ class CommitteeServiceRequest extends Request
     {
         $input = $this->all();
 
-        $input['public'] =
-            !empty($this->get('public')) && $input['public'] ? true : false;
+        $input['public'] = !empty($this->get('public')) && $input['public'] ? true : false;
 
         $this->replace($input);
 

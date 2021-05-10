@@ -1,13 +1,9 @@
 <?php
 Auth::routes();
 
-
-
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
 
 Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
-
-
 
 Route::get('services/{id}', [
     'as' => 'services.show',
@@ -27,10 +23,9 @@ Route::group(['prefix' => 'chat'], function () {
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
     Route::get('terminated', [
         'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated',
+        'uses' => 'Chat@terminated'
     ]);
 });
-
 
 Route::group(['prefix' => 'tv'], function () {
     Route::get('/', ['as' => 'tv.index', 'uses' => 'Tv@index']);
@@ -44,37 +39,30 @@ Route::group(['prefix' => 'contact'], function () {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
     Route::get('pretend', [
         'as' => 'contact.index',
-        'uses' => 'Contact@pretend',
+        'uses' => 'Contact@pretend'
     ]);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
 
 Route::get('/home', 'Home@index')->name('home');
 
-Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name(
-    'records.show-public'
-);
+Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name('records.show-public');
 
 Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name(
     'records.search-show-public'
 );
 
-Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name(
+Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name('records.search');
+
+Route::post('/pesquisa/protocolo', 'CallCenter\Records@showByProtocolNumber')->name(
     'records.search'
 );
-
-Route::post(
-    '/pesquisa/protocolo',
-    'CallCenter\Records@showByProtocolNumber'
-)->name('records.search');
-
-
 
 Route::group(
     [
         'prefix' => 'callcenter',
         'middleware' => ['auth', 'app.users'],
-        'namespace' => 'CallCenter',
+        'namespace' => 'CallCenter'
     ],
     function () {
         require __DIR__ . '/callcenter/contact_types.php';
@@ -92,22 +80,31 @@ Route::group(
         require __DIR__ . '/callcenter/files.php';
 
         Route::group(['prefix' => 'areas'], function () {
-
-            Route::get('/', 'Areas@index')->name('areas.index')->middleware('canAny:areas:store, areas:update');
+            Route::get('/', 'Areas@index')
+                ->name('areas.index')
+                ->middleware('canAny:areas:store, areas:update');
             Route::post('/store', 'Areas@store')->name('areas.store');
-            Route::get('/createArea', 'Areas@create')->name('areas.create')->middleware('can:areas:store');
-            Route::get('/show/{id}', 'Areas@details')->name('areas.details')->middleware('canAny:areas:store, areas:update');
-
+            Route::get('/createArea', 'Areas@create')
+                ->name('areas.create')
+                ->middleware('can:areas:store');
+            Route::get('/show/{id}', 'Areas@details')
+                ->name('areas.details')
+                ->middleware('canAny:areas:store, areas:update');
         });
 
         Route::group(['prefix' => 'committees'], function () {
-            Route::get('/create', 'Committees@create')->name('committees.create')->middleware('can:committees:store');
+            Route::get('/create', 'Committees@create')
+                ->name('committees.create')
+                ->middleware('can:committees:store');
             Route::post('/store', 'Committees@store')->name('committees.store');
-            Route::get('/show/{id}', 'Committees@details')->name('committees.details')->middleware('canAny:committees:update, committees:store');
-            Route::get('/', 'Committees@index')->name('committees.index')->middleware('canAny:committees:store,committees:update');
+            Route::get('/show/{id}', 'Committees@details')
+                ->name('committees.details')
+                ->middleware('canAny:committees:update, committees:store');
+            Route::get('/', 'Committees@index')
+                ->name('committees.index')
+                ->middleware('canAny:committees:store,committees:update');
 
             Route::group(['prefix' => 'committee-service'], function () {
-
                 Route::get('/create/{id}', 'CommitteeServices@create')->name(
                     'committee_services.create'
                 );

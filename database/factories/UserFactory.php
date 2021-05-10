@@ -24,12 +24,8 @@ $factory->define(User::class, function (Faker $faker) {
 
     do {
         $name = strtolower($faker->unique()->firstName);
-        $name = preg_replace("/([^a-zA-Z])/", "", $name);
-    } while (
-        !is_null(
-            $usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')
-        )
-    );
+        $name = preg_replace('/([^a-zA-Z])/', '', $name);
+    } while (!is_null($usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')));
 
     return [
         'name' => $name,
@@ -37,15 +33,12 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $name . '@alerj.rj.gov.br',
         'password' => bcrypt('secret'),
         'remember_token' => str_random(10),
-        'user_type_id' => app(UserTypesRepository::class)->randomElement(),
+        'user_type_id' => app(UserTypesRepository::class)->randomElement()
     ];
 });
 
 foreach (app(UserTypesRepository::class)->all() as $userType) {
-    $factory->defineAs(User::class, $userType->name, function ($faker) use (
-        $factory,
-        $userType
-    ) {
+    $factory->defineAs(User::class, $userType->name, function ($faker) use ($factory, $userType) {
         $issue = $factory->raw(User::class);
         $userTypesRepository = app(UserTypesRepository::class);
         $userType = $userTypesRepository->findByColumn('name', $userType->name);

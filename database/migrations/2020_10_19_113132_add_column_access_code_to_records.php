@@ -16,8 +16,11 @@ class AddColumnAccessCodeToRecords extends Migration
     public function up()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->text('access_code')->nullable()->default(null);
-        });      
+            $table
+                ->text('access_code')
+                ->nullable()
+                ->default(null);
+        });
     }
 
     /**

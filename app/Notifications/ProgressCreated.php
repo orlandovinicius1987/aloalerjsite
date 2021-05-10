@@ -28,10 +28,8 @@ class ProgressCreated extends Notification implements ShouldQueue
      */
     private function getMessage()
     {
-        return (
-            'Um ou mais andamentos foram atualizados ao protocolo ' .
-            $this->progress->record->protocol
-        );
+        return 'Um ou mais andamentos foram atualizados ao protocolo ' .
+            $this->progress->record->protocol;
     }
 
     /**
@@ -54,10 +52,7 @@ class ProgressCreated extends Notification implements ShouldQueue
         $this->progress->logEmailWasSent();
 
         $message = (new MailMessage())
-            ->subject(
-                'O seu protocolo ' .
-                    $this->progress->record->protocol .' foi atualizado'
-            )
+            ->subject('O seu protocolo ' . $this->progress->record->protocol . ' foi atualizado')
             ->greeting('Olá!')
             ->line($this->getMessage());
 

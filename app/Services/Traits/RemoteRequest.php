@@ -36,7 +36,7 @@ class RemoteRequest
                 'debug' => false,
                 RequestOptions::JSON => $data,
                 'allow_redirects' => true,
-                'timeout' => config('auth.timeout'),
+                'timeout' => config('auth.timeout')
             ]);
         } catch (ClientException $exception) {
             report($exception);
@@ -46,9 +46,7 @@ class RemoteRequest
             //timeout
             throw $exception;
         }
-        if (
-            is_null($array = json_decode((string) $response->getBody(), true))
-        ) {
+        if (is_null($array = json_decode((string) $response->getBody(), true))) {
             abort('Invalid response');
         }
 

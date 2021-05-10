@@ -7,13 +7,7 @@ use App\Data\Models\ProgressType as ProgressTypeModel;
 
 class AddColumnIsActiveToProgressTypes extends Migration
 {
-    public $activeRows = [
-        'Encaminhamento',
-        'Entrada',
-        'Finalização',
-        'Triagem',
-        'Resposta'
-    ];
+    public $activeRows = ['Encaminhamento', 'Entrada', 'Finalização', 'Triagem', 'Resposta'];
 
     /**
      * Run the migrations.

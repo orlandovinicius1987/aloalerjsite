@@ -16,20 +16,15 @@ class Notifications extends Base
         return Notification::create([
             'hash' => $this->createHash($notifiable, $subject),
             'via' => $via,
-            'to' => is_object($notifiable)
-                ? $notifiable->preferredEmail
-                : $notifiable,
+            'to' => is_object($notifiable) ? $notifiable->preferredEmail : $notifiable,
             'subject_id' => $subject->id,
-            'subject' => get_class($subject),
+            'subject' => get_class($subject)
         ]);
     }
 
     public function findByHash($notifiable, $subject)
     {
-        return Notification::where(
-            'hash',
-            $this->createHash($notifiable, $subject)
-        )->first();
+        return Notification::where('hash', $this->createHash($notifiable, $subject))->first();
     }
 
     private function toString($subject)

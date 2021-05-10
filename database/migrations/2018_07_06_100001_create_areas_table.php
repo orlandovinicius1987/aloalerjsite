@@ -46,7 +46,7 @@ class CreateAreasTable extends Migration
             [20, 'Pessoa com deficiência'],
             [21, 'Saúde'],
             [22, 'Segurança'],
-            [23, 'Transportes'],
+            [23, 'Transportes']
         ];
 
         foreach ($array as $item) {
@@ -54,13 +54,11 @@ class CreateAreasTable extends Migration
                 'id' => $item[0],
                 'name' => $item[1],
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]);
         }
 
-        DB::statement(
-            "SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));"
-        );
+        DB::statement("SELECT setval('public.areas_id_seq', (SELECT max(id) FROM public.areas));");
     }
 
     /**

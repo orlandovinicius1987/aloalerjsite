@@ -15,7 +15,7 @@ class PersonRequest extends Request
         return [
             'cpf_cnpj' => 'required_if:person_id,null|cpf_cnpj',
             'name' => 'required',
-            'identification' => 'required',
+            'identification' => 'required'
         ];
     }
 

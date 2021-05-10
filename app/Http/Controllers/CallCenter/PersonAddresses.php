@@ -56,9 +56,7 @@ class PersonAddresses extends Controller
 
         $person = $this->peopleRepository->findById($request->get('person_id'));
         $records = $this->recordsRepository->findByPerson($person->id);
-        $addresses = $this->peopleAddressesRepository->findByPerson(
-            $person->id
-        );
+        $addresses = $this->peopleAddressesRepository->findByPerson($person->id);
         $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
         $with = [];

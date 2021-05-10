@@ -48,7 +48,7 @@ class PersonContacts extends Controller
         Workflow::end();
 
         return redirect()->route('records.show-protocol', [
-            'id' => $record->id,
+            'id' => $record->id
         ]);
     }
 
@@ -67,13 +67,11 @@ class PersonContacts extends Controller
             ->with('laravel', [
                 'contact' => $contact->toArray(),
                 'person' => $person->toArray(),
-                'old' => old(),
+                'old' => old()
             ])
             ->with('contact', $contact)
             ->with('person', $person);
     }
-
-
 
     public function insertContact(PersonContactsRequest $request)
     {
@@ -94,7 +92,7 @@ class PersonContacts extends Controller
         $this->peopleContactsRepository->createFromRequest($request);
 
         return redirect()->route('people.show', [
-            'person_id' => $request->get('person_id'),
+            'person_id' => $request->get('person_id')
         ]);
     }
 }

@@ -67,7 +67,10 @@ class RecordCreated extends Notification implements ShouldQueue
             ->greeting('Olá!')
             ->line($this->getMessage());
 
-        $message->action('Clique para acessar seu protocolo com sua chave de acesso', route('home'));
+        $message->action(
+            'Clique para acessar seu protocolo com sua chave de acesso',
+            route('home')
+        );
 
         return $message;
     }

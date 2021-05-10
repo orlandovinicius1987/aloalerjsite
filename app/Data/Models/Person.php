@@ -52,7 +52,6 @@ class Person extends BaseModel
 
     public function emails()
     {
-
         $type = app(ContactTypes::class)->findByName('E-mail');
 
         return $this->contacts()
@@ -74,8 +73,8 @@ class Person extends BaseModel
     {
         if (
             $address = $this->addresses()
-            ->where('zipcode', only_numbers($data['zipcode']))
-            ->first()
+                ->where('zipcode', only_numbers($data['zipcode']))
+                ->first()
         ) {
             return $address;
         }
@@ -98,15 +97,14 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-            ->where('contact', $contact = only_numbers($data['contact']))
-            ->first()
+                ->where('contact', $contact = only_numbers($data['contact']))
+                ->first()
         ) {
             return $contact;
         }
 
         return $this->contacts()->create([
-            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')
-                ->id,
+            'contact_type_id' => app(ContactTypes::class)->findByName('Celular')->id,
             'contact' => only_numbers($data['contact']),
             'from' => 'personal',
             'active' => true
@@ -117,14 +115,13 @@ class Person extends BaseModel
     {
         if (
             $contact = $this->contacts()
-            ->where('contact', $contact = $data['contact'])
-            ->first()
+                ->where('contact', $contact = $data['contact'])
+                ->first()
         ) {
             return $contact;
         }
         return $this->contacts()->create([
-            'contact_type_id' => app(ContactTypes::class)->findByName('E-mail')
-                ->id,
+            'contact_type_id' => app(ContactTypes::class)->findByName('E-mail')->id,
             'contact' => $data['contact'],
             'from' => 'personal',
             'active' => true

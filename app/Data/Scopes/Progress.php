@@ -10,10 +10,9 @@ class Progress extends Scope
 {
     public function apply(Builder $builder, Model $model)
     {
-
         //Se não estiver logado
         if (is_null(auth()->user())) {
-            $builder->where('is_private', '=','0');
+            $builder->where('is_private', '=', '0');
         }
     }
 }

@@ -29,7 +29,7 @@ class CreateContactTypesTable extends Migration
             [3, 'Telefone Fixo', 'phone'],
             [4, 'Facebook', 'facebook'],
             [5, 'Twitter', 'twitter'],
-            [6, 'Instagram', 'instagram'],
+            [6, 'Instagram', 'instagram']
         ];
 
         foreach ($array as $item) {
@@ -38,7 +38,7 @@ class CreateContactTypesTable extends Migration
                 'name' => $item[1],
                 'code' => $item[2],
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]);
         }
     }

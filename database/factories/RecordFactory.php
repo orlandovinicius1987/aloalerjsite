@@ -39,13 +39,11 @@ $factory->define(Record::class, function (Faker $faker) {
         'committee_id' => $committee->id,
         'record_type_id' => $recordType->id,
         'area_id' => $area->id,
-        'person_id' => $person->id,
+        'person_id' => $person->id
     ];
 });
 
-$factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use (
-    $factory
-) {
+$factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use ($factory) {
     $issue = $factory->raw(Record::class);
 
     $origin = app(OriginsRepository::class)->randomElement();
@@ -55,7 +53,7 @@ $factory->defineAs(Record::class, 'Workflow', function (Faker $faker) use (
     $issue = array_merge($issue, [
         'progress_type_id' => $progressType->id,
         'origin_id' => $origin->id,
-        'original' => $faker->realText($faker->numberBetween(200, 800)),
+        'original' => $faker->realText($faker->numberBetween(200, 800))
     ]);
 
     return $issue;

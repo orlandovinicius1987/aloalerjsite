@@ -29,13 +29,11 @@ $factory->define(Person::class, function (Faker $faker) {
         'name' => $faker->name_without_special_character,
         'identification' => $faker->unique()->randomNumber(8),
         'birthdate' => $faker->date,
-        'is_anonymous' => false,
+        'is_anonymous' => false
     ];
 });
 
-$factory->defineAs(Person::class, 'massInsert', function ($faker) use (
-    $factory
-) {
+$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
     $issue = $factory->raw(Person::class);
     $issue['name'] = 'massInsert';
     return $issue;

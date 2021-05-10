@@ -17,8 +17,7 @@ class SearchProtocolRequest extends Request
 
     public function messages()
     {
-        return [ 'protocol.exists' => 'Dados inválidos',
-                 'access_code.exists' => 'Dados inválidos'];
+        return ['protocol.exists' => 'Dados inválidos', 'access_code.exists' => 'Dados inválidos'];
     }
 
     /**

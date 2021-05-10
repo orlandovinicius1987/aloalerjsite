@@ -44,7 +44,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 
@@ -53,7 +53,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('records.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $record = (object) $record;
@@ -63,7 +63,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people_addresses.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $address = (object) $address;
@@ -113,16 +113,12 @@ class InsertTest extends Base
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(
-                        'document.getElementById(\'street\').value == "' .
-                            $address->address .
-                            '"'
+                        'document.getElementById(\'street\').value == "' . $address->address . '"'
                     )
                     ->click('#saveButton')
                     ->waitForText('Endereço cadastrado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
-                    $contactType = app(
-                        ContactTypesRepository::class
-                    )->findByColumn('code', $key);
+                    $contactType = app(ContactTypesRepository::class)->findByColumn('code', $key);
                     $browser
                         ->click('#button-novo-contato')
                         ->waitForText('Selecione o tipo de contato')
@@ -164,7 +160,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 
@@ -173,7 +169,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('records.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $record = (object) $record;
@@ -183,7 +179,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people_addresses.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $address = (object) $address;
@@ -219,26 +215,20 @@ class InsertTest extends Base
                     ->click('#saveButton')
                     ->waitForText('Anote o número do novo Protocolo');
 
-                $protocol = $browser
-                    ->element('#protocol-number')
-                    ->getAttribute('innerHTML');
+                $protocol = $browser->element('#protocol-number')->getAttribute('innerHTML');
 
                 $browser->clickLink($protocol);
 
-                $browser
-                    ->waitForText('PROTOCOLO EM ANDAMENTO')
-                    ->click('#button-novo-andamento');
+                $browser->waitForText('PROTOCOLO EM ANDAMENTO')->click('#button-novo-andamento');
 
-                $record_id = $browser
-                    ->element('#record_id')
-                    ->getAttribute('value');
+                $record_id = $browser->element('#record_id')->getAttribute('value');
 
                 $progress = factory(Progress::class, 'CreateDusk')->raw();
                 $progress['create_url'] = str_replace(
                     \URL::to('/'),
                     '',
                     route('progresses.create', [
-                        'record_id' => $record_id,
+                        'record_id' => $record_id
                     ])
                 );
                 $progress = (object) $progress;
@@ -275,7 +265,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 
@@ -286,12 +276,7 @@ class InsertTest extends Base
         $faker = app('Faker');
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $person,
-                $committee
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $person, $committee) {
                 $browser
                     ->loginAs($user->id)
                     ->screenshot('01')

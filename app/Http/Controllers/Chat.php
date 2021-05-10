@@ -16,7 +16,7 @@ class Chat extends Controller
     public function terminated()
     {
         return view('chat.client.terminated')->with([
-            'layout' => 'alerj-aloalerj',
+            'layout' => 'alerj-aloalerj'
         ]);
     }
 }

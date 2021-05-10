@@ -9,8 +9,6 @@ class Search extends Controller
 {
     public function execute()
     {
-        return app(PeopleRepository::class)->searchByEverything(
-            request()->get('search')
-        );
+        return app(PeopleRepository::class)->searchByEverything(request()->get('search'));
     }
 }

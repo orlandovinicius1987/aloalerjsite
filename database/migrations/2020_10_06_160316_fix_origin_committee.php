@@ -60,7 +60,7 @@ class FixOriginCommittee extends Migration
                         'null'
                 );
             }
-        } 
+        }
     }
 
     /**

@@ -22,13 +22,11 @@ $factory->define(ProgressModel::class, function (Faker $faker) {
     return [
         'origin_id' => app(OriginsRepository::class)->randomElement()->id,
         'record_id' => app(RecordsRepository::class)->randomElement()->id,
-        'original' => $faker->name,
+        'original' => $faker->name
     ];
 });
 
-$factory->defineAs(ProgressModel::class, 'CreateDusk', function (
-    Faker $faker
-) use ($factory) {
+$factory->defineAs(ProgressModel::class, 'CreateDusk', function (Faker $faker) use ($factory) {
     $issue = $factory->raw(ProgressModel::class);
 
     $origin = app(OriginsRepository::class)->randomElement();
@@ -44,7 +42,7 @@ $factory->defineAs(ProgressModel::class, 'CreateDusk', function (
         'origin_id' => $origin->id,
         'original' => $faker->realText($faker->numberBetween(200, 800)),
         'record_type_id' => $recordType->id,
-        'area_id' => $area->id,
+        'area_id' => $area->id
     ]);
 
     return $issue;
