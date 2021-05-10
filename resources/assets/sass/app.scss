@@ -1,4 +1,9 @@
 // Variables
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import 'variables';
 
 
@@ -85,4 +90,37 @@ $fa-font-path: "../webfonts";
 //@import '~vue2-dropzone/dist/vue2Dropzone.min.css';
 
 // Custom
-//@import 'custom';
+@import 'custom';
+
+
+
+
+
+
+
+
+
+
+.no-results {
+  margin-top: 50px;
+}
+
+
+/*
+.search-spinner{
+  margin-top: 50px;
+
+  i {
+    .fa-spinner{
+      font-size: 250%;
+
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+
+  }
+}
+*/
+
+
