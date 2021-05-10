@@ -18,7 +18,7 @@ class Committee extends Model
         'vice_president',
         'office_phone',
         'office_address',
-        'email',
+        'email'
     ];
 
     public function users()

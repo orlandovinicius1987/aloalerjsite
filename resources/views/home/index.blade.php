@@ -13,7 +13,9 @@
 @stop
 
 @section('content-main')
-
+    @if(config('app.mix_message_home'))
+        <div id="vue-home"></div>
+    @endif
     @include('partials.slider')
 
     <div class="row mt-5 mb-5 text-center home-squares">

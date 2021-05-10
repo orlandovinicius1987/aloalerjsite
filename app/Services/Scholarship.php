@@ -17,7 +17,7 @@ class Scholarship
         '8' => '3° Grau - Superior Completo',
         '9' => 'Especialização',
         '10' => 'Mestrado',
-        '11' => 'Doutorado',
+        '11' => 'Doutorado'
     ];
 
     public static function all()

@@ -29,7 +29,7 @@ $factory->define(Person::class, function (Faker $faker) {
         'name' => $faker->name_without_special_character,
         'identification' => $faker->unique()->randomNumber(8),
         'birthdate' => $faker->date,
-        'is_anonymous' => false,
+        'is_anonymous' => false
     ];
 });
 

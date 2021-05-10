@@ -30,14 +30,14 @@ class CommitteeRequest extends Request
             'public' => 'required',
             'email' => 'sometimes|nullable|email',
             //'link_caption' => 'required',
-            'slug' => 'required',
+            'slug' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'required_without' => 'O campo solicitação não pode ser vazio.',
+            'required_without' => 'O campo solicitação não pode ser vazio.'
         ];
     }
 

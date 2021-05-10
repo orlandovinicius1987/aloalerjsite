@@ -13,7 +13,7 @@ class PersonContactsRequest extends Request
         return [
             'person_id' => 'required',
             'contact_type_id' => 'required',
-            'contact' => ['required', new Contact()],
+            'contact' => ['required', new Contact()]
         ];
     }
 

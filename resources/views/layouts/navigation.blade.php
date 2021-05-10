@@ -46,6 +46,8 @@
                         'committees:update',
                         'areas:store',
                         'areas:update',
+                        'origins:store',
+                        'origins:update',
                     ])
                         <div class="nav-item dropdown show">
                             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-archive" aria-hidden="true"></i>Cadastros</a>

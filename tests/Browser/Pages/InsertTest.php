@@ -44,7 +44,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 
@@ -53,7 +53,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('records.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $record = (object) $record;
@@ -63,7 +63,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people_addresses.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $address = (object) $address;
@@ -160,7 +160,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 
@@ -169,7 +169,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('records.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $record = (object) $record;
@@ -179,7 +179,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people_addresses.create', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
         $address = (object) $address;
@@ -228,7 +228,7 @@ class InsertTest extends Base
                     \URL::to('/'),
                     '',
                     route('progresses.create', [
-                        'record_id' => $record_id,
+                        'record_id' => $record_id
                     ])
                 );
                 $progress = (object) $progress;
@@ -265,7 +265,7 @@ class InsertTest extends Base
             \URL::to('/'),
             '',
             route('people.show', [
-                'person_id' => $person->id,
+                'person_id' => $person->id
             ])
         );
 

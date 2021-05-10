@@ -28,7 +28,7 @@ class CreateOriginsTable extends Migration
             [2, 'Whatsapp'],
             [3, 'E-mail'],
             [4, 'Carteirada do Bem'],
-            [5, 'Telegram'],
+            [5, 'Telegram']
         ];
 
         foreach ($array as $item) {
@@ -36,7 +36,7 @@ class CreateOriginsTable extends Migration
                 'id' => $item[0],
                 'name' => $item[1],
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]);
         }
 

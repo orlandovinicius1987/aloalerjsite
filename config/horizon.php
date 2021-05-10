@@ -39,7 +39,7 @@ return [
     */
 
     'waits' => [
-        'redis:default' => 60,
+        'redis:default' => 60
     ],
 
     /*
@@ -55,7 +55,7 @@ return [
 
     'trim' => [
         'recent' => 60,
-        'failed' => 10080,
+        'failed' => 10080
     ],
 
     /*
@@ -76,8 +76,8 @@ return [
                 'queue' => [env('HORIZON_QUEUE', 'default')],
                 'balance' => 'simple',
                 'processes' => 10,
-                'tries' => 3,
-            ],
+                'tries' => 3
+            ]
         ],
 
         'local' => [
@@ -86,8 +86,8 @@ return [
                 'queue' => [env('HORIZON_QUEUE', 'default')],
                 'balance' => 'simple',
                 'processes' => 3,
-                'tries' => 3,
-            ],
-        ],
-    ],
+                'tries' => 3
+            ]
+        ]
+    ]
 ];

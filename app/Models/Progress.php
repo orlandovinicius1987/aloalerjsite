@@ -34,7 +34,7 @@ class Progress extends BaseModel
         'updated_at',
         'original_history_id',
         'created_by_committee_id',
-        'is_private',
+        'is_private'
     ];
 
     protected $presenters = ['link', 'finalize'];

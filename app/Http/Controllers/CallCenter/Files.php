@@ -37,7 +37,7 @@ class Files extends Controller
             $request->merge([
                 'url' => $path . '/' . $hash . '.' . $file->getClientOriginalExtension(),
                 'sha1_hash' => $hash,
-                'extension' => $file->getClientOriginalExtension(),
+                'extension' => $file->getClientOriginalExtension()
             ]);
 
             $row = $filesRepository->findByColumn('sha1_hash', $hash);
@@ -52,14 +52,14 @@ class Files extends Controller
                     'url' => $row->url,
                     'file_id' => $row->id,
                     'hashContent' => $row->sha1_hash,
-                    'extension' => $file->getClientOriginalExtension(),
+                    'extension' => $file->getClientOriginalExtension()
                 ],
                 200
             );
         } catch (Exception $e) {
             return Response::json(
                 [
-                    'message' => 'Exception',
+                    'message' => 'Exception'
                 ],
                 500
             );

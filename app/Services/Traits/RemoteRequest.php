@@ -36,7 +36,7 @@ class RemoteRequest
                 'debug' => false,
                 RequestOptions::JSON => $data,
                 'allow_redirects' => true,
-                'timeout' => config('auth.timeout'),
+                'timeout' => config('auth.timeout')
             ]);
         } catch (ClientException $exception) {
             report($exception);

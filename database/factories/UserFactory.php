@@ -33,7 +33,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $name . '@alerj.rj.gov.br',
         'password' => bcrypt('secret'),
         'remember_token' => str_random(10),
-        'user_type_id' => app(UserTypesRepository::class)->randomElement(),
+        'user_type_id' => app(UserTypesRepository::class)->randomElement()
     ];
 });
 

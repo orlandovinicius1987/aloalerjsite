@@ -18,7 +18,7 @@ class Notifications extends Base
             'via' => $via,
             'to' => is_object($notifiable) ? $notifiable->preferredEmail : $notifiable,
             'subject_id' => $subject->id,
-            'subject' => get_class($subject),
+            'subject' => get_class($subject)
         ]);
     }
 

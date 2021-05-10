@@ -26,7 +26,7 @@ class File extends Controller
             'errors' => $messages,
             'extension' => $extension,
             'mime' => $mime,
-            'iconClass' => $icon,
+            'iconClass' => $icon
         ];
     }
 }

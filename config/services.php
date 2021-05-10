@@ -15,26 +15,26 @@ return [
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'secret' => env('MAILGUN_SECRET')
     ],
 
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
-        'region' => env('SES_REGION', 'us-east-1'),
+        'region' => env('SES_REGION', 'us-east-1')
     ],
 
     'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+        'secret' => env('SPARKPOST_SECRET')
     ],
 
     'stripe' => [
         'model' => App\Models\User::class,
         'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'secret' => env('STRIPE_SECRET')
     ],
 
     'slack' => [
-        'webhook_url' => env('SLACK_WEBHOOK_URL'),
-    ],
+        'webhook_url' => env('SLACK_WEBHOOK_URL')
+    ]
 ];

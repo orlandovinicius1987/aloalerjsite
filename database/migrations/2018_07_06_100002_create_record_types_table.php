@@ -31,7 +31,7 @@ class CreateRecordTypesTable extends Migration
             [93, 'Queda de Ligação'],
             [45, 'Reclamação'],
             [97, 'Reenvio de protocolo'],
-            [46, 'Sugestão'],
+            [46, 'Sugestão']
         ];
 
         foreach ($array as $item) {
@@ -39,7 +39,7 @@ class CreateRecordTypesTable extends Migration
                 'id' => $item[0],
                 'name' => $item[1],
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]);
         }
 

@@ -57,7 +57,7 @@ function validate_cpf_cnpj($string)
     return Validator::make(
         ['string' => $string],
         [
-            'string' => 'required|cpf_cnpj',
+            'string' => 'required|cpf_cnpj'
         ]
     )->passes();
 }
