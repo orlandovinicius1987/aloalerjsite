@@ -40,10 +40,7 @@ class Progresses extends Controller
 
         $progress->sendNotifications();
 
-        $this->progressesRepository->attachFilesFromRequest(
-            $request,
-            $progress->id
-        );
+        $this->progressesRepository->attachFilesFromRequest($request, $progress->id);
 
         $this->showSuccessMessage();
 
@@ -64,10 +61,7 @@ class Progresses extends Controller
 
         $this->progressesRepository->attachFilesFromRequest($request, $progress->id);
 
-        $this->recordsRepository->markAsResolved(
-            $request->get('record_id'),
-            $progress
-        );
+        $this->recordsRepository->markAsResolved($request->get('record_id'), $progress);
 
         $this->showSuccessMessage();
 
@@ -120,9 +114,7 @@ class Progresses extends Controller
         return view('callcenter.progress.form')
             ->with([
                 'progress' => $progress,
-                'record' => $this->recordsRepository->findById(
-                    $progress->record_id
-                ),
+                'record' => $this->recordsRepository->findById($progress->record_id),
                 'progressFiles' => $progress->progressFiles
             ])
             ->with($this->getComboBoxMenus($progress))

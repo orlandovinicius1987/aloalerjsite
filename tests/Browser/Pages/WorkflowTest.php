@@ -18,10 +18,10 @@ class WorkflowTest extends Base
 
         $person = (object) array_merge($person, [
             'cpf_cnpj_com_pontos' => preg_replace(
-                "/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/",
-                "$1.$2.$3-$4",
+                '/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/',
+                '$1.$2.$3-$4',
                 $person['cpf_cnpj']
-            ),
+            )
         ]);
         $record = (object) factory(Record::class, 'Workflow')->raw();
         $address = (object) factory(PersonAddress::class, 'Workflow')->raw();
@@ -68,9 +68,7 @@ class WorkflowTest extends Base
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
                     ->waitUntil(
-                        'document.getElementById(\'street\').value == "' .
-                            $address->address .
-                            '"'
+                        'document.getElementById(\'street\').value == "' . $address->address . '"'
                     )
                     ->click('#saveButton')
                     ->waitForText('Contatos')

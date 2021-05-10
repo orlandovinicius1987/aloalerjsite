@@ -14,9 +14,7 @@ class Cercred
         $records = 0;
 
         $tables = coollect(
-            DB::select(
-                'SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE=\'BASE TABLE\''
-            )
+            DB::select('SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE=\'BASE TABLE\'')
         )
             ->reject(function ($table) {
                 return $table->table_schema !== 'cercred';
@@ -40,17 +38,16 @@ class Cercred
                 }
 
                 coollect(
-                    DB::connection('sqlsrv')->select(
-                        'SELECT * FROM ' . $table->table_name
-                    )
+                    DB::connection('sqlsrv')->select('SELECT * FROM ' . $table->table_name)
                 )->each(function ($row) use (&$records, $table) {
                     $cercred = new CercredModel();
 
                     $cercred->setTable($table->table_name);
 
-                    $row = coollect(
-                        json_decode(json_encode($row), true)
-                    )->mapWithKeys(function ($value, $key) {
+                    $row = coollect(json_decode(json_encode($row), true))->mapWithKeys(function (
+                        $value,
+                        $key
+                    ) {
                         return [lower($key) => $value];
                     });
 

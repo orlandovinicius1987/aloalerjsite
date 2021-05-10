@@ -19,7 +19,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '',
                 'public' => false,
                 'office_phone' => '',
-                'office_address' => '',
+                'office_address' => ''
             ],
 
             'defesadoconsumidor' => [
@@ -35,7 +35,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '0800 282-7060',
                 'office_address' =>
-                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.',
+                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.'
             ],
             'meioambiente' => [
                 'slug' => 'meioambiente',
@@ -50,7 +50,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office-phone' => '(21) 2588-1360',
                 'office_address' =>
-                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
+                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes'
             ],
             'preconceitos' => [
                 'slug' => 'preconceitos',
@@ -65,8 +65,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Rua da Assembleia, s/nº – gabinete 308 – Centro.',
+                'office_address' => 'Rua da Assembleia, s/nº – gabinete 308 – Centro.'
             ],
             'pirataria' => [
                 'slug' => 'pirataria',
@@ -82,7 +81,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Anderson Moraes',
                 'public' => true,
                 'office_phone' => '(21) 2588-1732',
-                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01',
+                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01'
             ],
             'pessoadeficiente' => [
                 'slug' => 'pessoadeficiente',
@@ -96,7 +95,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Franciane Motta',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 112',
+                'office_address' => 'Palácio Tiradentes, sala 112'
             ],
             'saneamentoambiental' => [
                 'slug' => 'saneamentoambiental',
@@ -139,7 +138,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Lucinha',
                 'public' => true,
                 'office_phone' => '(21) 2588-1309',
-                'office_address' => 'Palácio Tiradentes, sala 130',
+                'office_address' => 'Palácio Tiradentes, sala 130'
             ],
             'segurancapublica' => [
                 'slug' => 'segurancapublica',
@@ -153,16 +152,13 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Coronel Salema',
                 'public' => true,
                 'office_phone' => '(21) 2588-1219',
-                'office_address' =>
-                    'Palácio Tiradentes, Prédio Anexo, gabinete 407',
+                'office_address' => 'Palácio Tiradentes, Prédio Anexo, gabinete 407'
             ],
             'trabalho' => [
                 'slug' => 'trabalho',
-                'name' =>
-                    'Comissão de Trabalho Legislação Social e Seguridade Social',
+                'name' => 'Comissão de Trabalho Legislação Social e Seguridade Social',
                 'link_caption' => 'Trabalho',
-                'short_name' =>
-                    'Trabalho, Legislação Social e Seguridade Social',
+                'short_name' => 'Trabalho, Legislação Social e Seguridade Social',
                 'phone' => '0800-282-3596',
                 'texto' =>
                     '<p>A Comissão de Trabalho, Legislação Social e Seguridade Social zela para que os direitos trabalhistas sejam respeitados. Trata de proposições e projetos de lei relacionados às questões do trabalho, da previdência e da assistência social. Compete à Comissão promover estudos, pesquisas e integrações relacionados à atividade parlamentar e se manifestar em matérias relacionadas às políticas públicas de assistência social e aos projetos e programas de geração de emprego.</p>',
@@ -170,14 +166,12 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Bruno Dauaire',
                 'public' => true,
                 'office_phone' => '(21) 2588-1298',
-                'office_address' =>
-                    'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro'
             ],
 
             'disqueidoso' => [
                 'slug' => 'disqueidoso',
-                'name' =>
-                    'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
                 'link_caption' => 'Dique Idoso',
                 'short_name' => 'Dique Idoso',
                 'phone' => '0800-023-9191',
@@ -187,14 +181,12 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
-                'office_address' =>
-                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
             ],
 
             'disquecrianca' => [
                 'slug' => 'disquecrianca',
-                'name' =>
-                    'Comissão de Assuntos da Criança do Adolescente e do Idoso',
+                'name' => 'Comissão de Assuntos da Criança do Adolescente e do Idoso',
                 'link_caption' => 'Dique Criança e Adolescente',
                 'short_name' => 'Dique Criança e Adolescente',
                 'phone' => '0800-023-0007',
@@ -204,8 +196,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
-                'office_address' =>
-                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
             ],
 
             'direitoshumanos' => [
@@ -221,8 +212,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Márcio Gualberto',
                 'public' => true,
                 'office_phone' => '(21) 2588-1555',
-                'office_address' =>
-                    'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
+                'office_address' => 'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.'
             ],
 
             'educacao' => [
@@ -237,7 +227,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Léo Vieira',
                 'public' => true,
                 'office_phone' => '(21) 2588-1356',
-                'office_address' => 'Gabinete T 02 Anexo',
+                'office_address' => 'Gabinete T 02 Anexo'
             ],
 
             'segurancaalimentar' => [
@@ -252,7 +242,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 317',
+                'office_address' => 'Palácio Tiradentes, sala 317'
             ],
 
             'sosmulher' => [
@@ -267,8 +257,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Dani Monteiro',
                 'public' => true,
                 'office_phone' => '0800 282-0119',
-                'office_address' =>
-                    'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409'
             ],
 
             'tributacao' => [
@@ -295,8 +284,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Alexandre Freitas',
                 'public' => true,
                 'office_phone' => '(21) 2588-1259',
-                'office_address' =>
-                    'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo',
+                'office_address' => 'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo'
             ],
 
             'animais' => [
@@ -311,8 +299,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Alana Passos',
                 'public' => true,
                 'office_phone' => '(21) 2588-1206',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'defesa-civil' => [
@@ -327,8 +314,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Mauro S Scarabelli',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308/1309',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'ciencia-tecnologia' => [
@@ -343,8 +329,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Marcelo Lima',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'constituicao-justica' => [
@@ -359,8 +344,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Tatiana G Costa',
                 'public' => true,
                 'office_phone' => '(21) 2588-1530',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'cultura' => [
@@ -375,8 +359,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Haroldo Aquino',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'meio-ambiente' => [
@@ -391,8 +374,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Jefferson Franca',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'economia' => [
@@ -407,8 +389,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '',
                 'public' => true,
                 'office_phone' => '',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'esporte-lazer' => [
@@ -423,8 +404,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '	Sandra J Ferreira',
                 'public' => true,
                 'office_phone' => '(21) 2588-1391',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'indicacoes-legislativas' => [
@@ -439,18 +419,14 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Luiz C Faustino',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'orcamento-financas' => [
                 'slug' => 'orcamento-financas',
-                'name' =>
-                    '	Comissão de Orçamento Finanças Fiscalização Financeira e Controle',
-                'link_caption' =>
-                    'Orçamento Finanças Fiscalização Financeira e Controle',
-                'short_name' =>
-                    'Orçamento Finanças Fiscalização Financeira e Controle',
+                'name' => '	Comissão de Orçamento Finanças Fiscalização Financeira e Controle',
+                'link_caption' => 'Orçamento Finanças Fiscalização Financeira e Controle',
+                'short_name' => 'Orçamento Finanças Fiscalização Financeira e Controle',
                 'phone' => '2588-1400',
                 'email' => 'apaiva@alerj.rj.gov.br',
                 'texto' => '',
@@ -458,18 +434,14 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Ada Paiva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1400',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'politica-urbana' => [
                 'slug' => 'politica-urbana',
-                'name' =>
-                    'Comissão de Política Urbana Habitação e Assuntos Fundiários',
-                'link_caption' =>
-                    'Política Urbana Habitação e Assuntos Fundiários',
-                'short_name' =>
-                    'Política Urbana Habitação e Assuntos Fundiários',
+                'name' => 'Comissão de Política Urbana Habitação e Assuntos Fundiários',
+                'link_caption' => 'Política Urbana Habitação e Assuntos Fundiários',
+                'short_name' => 'Política Urbana Habitação e Assuntos Fundiários',
                 'phone' => '2588-1308',
                 'email' => 'rmoura@alerj.rj.gov.br',
                 'texto' => '',
@@ -477,18 +449,14 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Romulo Moura',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'drogas' => [
                 'slug' => 'drogas',
-                'name' =>
-                    'Comissão de Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
-                'link_caption' =>
-                    'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
-                'short_name' =>
-                    'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'name' => 'Comissão de Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'link_caption' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
+                'short_name' => 'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
                 'phone' => '2588-1308',
                 'email' => 'calmeida@alerj.rj.gov.br',
                 'texto' => '',
@@ -496,8 +464,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Carla Almeida',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'turismo' => [
@@ -513,18 +480,14 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Fabio Costa',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
             ],
 
             'agricultura' => [
                 'slug' => 'agricultura',
-                'name' =>
-                    '	Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
-                'link_caption' =>
-                    'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
-                'short_name' =>
-                    'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'name' => '	Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'link_caption' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
+                'short_name' => 'Agricultura Pecuária e Políticas Rural Agraria e Pesqueira',
                 'phone' => '2588-1308',
                 'email' => 'rcastro@alerj.rj.gov.br',
                 'texto' => '',
@@ -532,9 +495,8 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Rogerio V. Castro',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' =>
-                    'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
-            ],
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+            ]
         ]);
     }
 
@@ -559,7 +521,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => $this->sanitize($committee->vice_president),
                 'public' => true,
                 'office_phone' => $this->sanitize($committee->office_phone),
-                'office_address' => $this->sanitize($committee->office_address),
+                'office_address' => $this->sanitize($committee->office_address)
             ]);
         });
     }

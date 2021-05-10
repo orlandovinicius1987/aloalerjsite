@@ -44,11 +44,8 @@ class fixRecordCommittee extends Command
      */
     public function handle()
     {
-
-
-
-        if($this->argument('created_at')){
-            $creation_start_at =$this->argument('created_at');
+        if ($this->argument('created_at')) {
+            $creation_start_at = $this->argument('created_at');
         }
 
         $progresses = ProgressModel::whereDate(
@@ -57,23 +54,22 @@ class fixRecordCommittee extends Command
             Carbon::createFromFormat('Y-m-d', $creation_start_at)
         );
 
-        if($this->argument('record_id')) {
-            $progresses->where('record_id',$this->argument('record_id'));
+        if ($this->argument('record_id')) {
+            $progresses->where('record_id', $this->argument('record_id'));
         }
 
-//        dd($progresses->toSql());
+        //        dd($progresses->toSql());
 
-        foreach ($progresses->cursor() as $progress){
+        foreach ($progresses->cursor() as $progress) {
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
                 ->where('auditable_type', 'App\Data\Models\Progress')
                 ->first();
-//            dump($audit);
-//            ->user_id);
+            //            dump($audit);
+            //            ->user_id);
 
             if ($userId = $audit->user_id) {
                 $progress->created_by_id = $userId;
-
 
                 $progress->save();
 
@@ -93,6 +89,5 @@ class fixRecordCommittee extends Command
                 $progress->save();
             }
         }
-
     }
 }

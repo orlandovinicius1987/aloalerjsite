@@ -12,7 +12,7 @@ class AttachedFileRequest extends Request
     {
         return [
             'file_id' => 'required|exists:files,id',
-            'progress_id' => 'required|exists:progresses,id',
+            'progress_id' => 'required|exists:progresses,id'
         ];
     }
 }

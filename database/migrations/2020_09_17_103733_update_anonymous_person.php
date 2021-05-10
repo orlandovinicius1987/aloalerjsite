@@ -13,10 +13,7 @@ class UpdateAnonymousPerson extends Migration
      */
     public function up()
     {
-        $anonymous = \App\Data\Models\Person::where(
-            'is_anonymous',
-            true
-        )->first();
+        $anonymous = \App\Data\Models\Person::where('is_anonymous', true)->first();
 
         $anonymous->cpf_cnpj = 'Não se aplica';
         $anonymous->name = 'Anônimo';

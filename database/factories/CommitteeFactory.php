@@ -44,13 +44,11 @@ $factory->defineAs(Committee::class, 'dusk', function (Faker $faker) {
         'president' => $president,
         'vicePresident' => $vicePresident,
         'office_address' => $office_address,
-        'bio' => $faker->realText($faker->numberBetween(200, 800)),
+        'bio' => $faker->realText($faker->numberBetween(200, 800))
     ];
 });
 
-$factory->defineAs(Person::class, 'massInsert', function ($faker) use (
-    $factory
-) {
+$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
     $issue = $factory->raw(Person::class);
     $issue['name'] = 'massInsert';
     return $issue;

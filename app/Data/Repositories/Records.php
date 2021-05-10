@@ -168,7 +168,7 @@ class Records extends Base
                 $data = array_merge($data, [
                     'cpf_cnpj' => $data['cpf'],
                     'name' => $data['name'],
-                    'identification' => trim($data['identidade'] . ' ' . $data['expeditor']),
+                    'identification' => trim($data['identidade'] . ' ' . $data['expeditor'])
                 ])
             );
         }
@@ -190,18 +190,18 @@ class Records extends Base
             'state' => 'RJ',
             'is_mailable' => true,
             'validated_at' => now(),
-            'active' => true,
+            'active' => true
         ]);
 
         $person->findOrCreatePhone([
             'person_id' => $person->id,
-            'contact' => $data['telephone'],
+            'contact' => $data['telephone']
         ]);
 
         if ($data['email']) {
             $person->findOrCreateEmail([
                 'person_id' => $person->id,
-                'contact' => $data['email'],
+                'contact' => $data['email']
             ]);
         }
         $committed_id = app(Committees::class)->findByName('ALÔ ALERJ')->id;
@@ -210,7 +210,7 @@ class Records extends Base
                 'committee_id' => $committed_id,
                 'record_type_id' => $data['record_type_id'],
                 'person_id' => $person->id,
-                'send_answer_by_email' => $data['email'] ? true : false,
+                'send_answer_by_email' => $data['email'] ? true : false
             ])
         );
 
@@ -222,7 +222,7 @@ class Records extends Base
             'original' => $data['message'],
             'origin_id' => app(Origins::class)->findByName('E-mail')->id,
             'objeto_id',
-            'record_action_id',
+            'record_action_id'
         ]);
 
         //        dd($committed_id);
@@ -248,7 +248,7 @@ class Records extends Base
             'created_at_start',
             'created_at_end',
             'resolved_at_start',
-            'resolved_at_end',
+            'resolved_at_end'
         ]);
         return !$notSearchingTerms->contains($term);
     }

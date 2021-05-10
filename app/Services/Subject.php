@@ -12,7 +12,7 @@ class Subject
         'S' => 'Sugestão',
         'E' => 'Elogio',
         'D' => 'Denúncia',
-        'R' => 'Reclamação',
+        'R' => 'Reclamação'
     ];
 
     public static function all()

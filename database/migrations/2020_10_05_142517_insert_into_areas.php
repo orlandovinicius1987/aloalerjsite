@@ -16,7 +16,7 @@ class InsertIntoAreas extends Migration
     public function up()
     {
         foreach ($this->areas as $area) {
-            $row = new Area;
+            $row = new Area();
             $row->name = $area;
             $row->is_active = true;
             $row->save();

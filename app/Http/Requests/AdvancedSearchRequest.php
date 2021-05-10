@@ -18,15 +18,15 @@ class AdvancedSearchRequest extends Request
                     $this->get('resolved_at_start'),
                     $this->get('resolved_at_end'),
                     'Fechamento'
-                ),
+                )
             ],
             'created_at_start' => [
                 new DateBetween(
                     $this->get('created_at_start'),
                     $this->get('created_at_end'),
                     'Abertura'
-                ),
-            ],
+                )
+            ]
         ];
     }
 }

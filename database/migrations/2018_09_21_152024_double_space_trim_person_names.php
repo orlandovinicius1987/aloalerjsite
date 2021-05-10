@@ -21,9 +21,7 @@ class DoubleSpaceTrimPersonNames extends Migration
         $people = PersonModel::all();
 
         foreach ($people as $person) {
-            $person->name = app(TrimStrings::class)->doubleSpaceTrim(
-                $person->name
-            );
+            $person->name = app(TrimStrings::class)->doubleSpaceTrim($person->name);
             $person->save();
         }
     }

@@ -12,8 +12,6 @@ class Audit extends BaseModel
 
     public function getFormattedCreatedAtAttribute()
     {
-        return $this->created_at
-            ? $this->created_at->format('d/m/Y H:i:s')
-            : null;
+        return $this->created_at ? $this->created_at->format('d/m/Y H:i:s') : null;
     }
 }

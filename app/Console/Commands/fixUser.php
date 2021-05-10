@@ -44,26 +44,18 @@ class fixuser extends Command
      */
     public function handle()
     {
-
-//        dd();
+        //        dd();
         $user_id = $this->argument('user_id');
         $user = UserModel::where('id', $user_id)->first();
 
-        if($user) {
-
-
+        if ($user) {
             dump('Updating user ' . $user->username);
 
-            $permissions = app(Authorization::class)->getRemoteUserPermissions(
-                $user->username
-            );
+            $permissions = app(Authorization::class)->getRemoteUserPermissions($user->username);
 
-            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions(
-                $permissions,
-                $user
-            );
-            dump('User '. $user->username . ' updated' );
-        }else{
+            app(UsersRepository::class)->updateCurrentUserTypeViaPermissions($permissions, $user);
+            dump('User ' . $user->username . ' updated');
+        } else {
             dump('Informe um id válido');
         }
     }

@@ -23,11 +23,7 @@ class FixOriginCommittee2 extends Migration
                 '>=',
                 Carbon::createFromFormat('Y-m-d', '2020-08-01')
             )
-                ->whereDate(
-                    'created_at',
-                    '<=',
-                    Carbon::createFromFormat('Y-m-d', '2020-10-01')
-                )
+                ->whereDate('created_at', '<=', Carbon::createFromFormat('Y-m-d', '2020-10-01'))
                 ->cursor()
             as $record
         ) {

@@ -9,8 +9,6 @@ class AreasSearch extends Controller
 {
     public function execute()
     {
-        return app(Areas::class)->searchByEverything(
-            request()->get('search')
-        );
+        return app(Areas::class)->searchByEverything(request()->get('search'));
     }
 }

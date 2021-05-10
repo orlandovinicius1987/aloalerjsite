@@ -45,9 +45,7 @@ Artisan::command('aloalerj:cercred:index', function () {
         $table->index('codigo');
     });
 
-    Schema::connection('cercred')->table('historico_propriedade', function (
-        $table
-    ) {
+    Schema::connection('cercred')->table('historico_propriedade', function ($table) {
         $table->index('historico_id');
         $table->index('historico_propriedade_tipo');
     });
@@ -92,7 +90,7 @@ Artisan::command('aloalerj:update-sequences', function () {
         'record_types',
         'records',
         'user_types',
-        'users',
+        'users'
     ];
 
     coollect($tables)->each(function ($table) {
@@ -122,7 +120,7 @@ Artisan::command('aloalerj:fix-created-at-1', function () {
 
             $record->save();
 
-            increment('RECORDS', 100, "record", $current);
+            increment('RECORDS', 100, 'record', $current);
         });
 })->describe('fixdata');
 
@@ -136,22 +134,16 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
             ->where(function ($query) {
                 $query
                     ->where('created_at', '<', '2018-08-28')
-                    ->orWhereBetween('created_at', [
-                        '2018-09-15 00:00:00',
-                        '2018-09-15 23:59:59',
-                    ]);
+                    ->orWhereBetween('created_at', ['2018-09-15 00:00:00', '2018-09-15 23:59:59']);
             })
             ->cursor()
         as $record
     ) {
-        $progress = $record->progresses->where(
-            'historico_id',
-            $record->historico_id_finalizador
-        )->first();
+        $progress = $record->progresses
+            ->where('historico_id', $record->historico_id_finalizador)
+            ->first();
 
-        $record->resolved_at = $progress
-            ? $progress->created_at
-            : $record->created_at;
+        $record->resolved_at = $progress ? $progress->created_at : $record->created_at;
 
         $record->resolved_by_id = 0;
 
@@ -161,7 +153,7 @@ Artisan::command('aloalerj:fix-resolved-at', function () {
 
         $record->save();
 
-        increment('RECORDS', 100, "record", $current);
+        increment('RECORDS', 100, 'record', $current);
     }
 })->describe('fixdata');
 
@@ -174,18 +166,10 @@ if (!function_exists('increment')) {
 
         $counter[$counterName]++;
 
-        if (
-            $counter[$counterName] == 1 ||
-            $counter[$counterName] % $mod === 0
-        ) {
+        if ($counter[$counterName] == 1 || $counter[$counterName] % $mod === 0) {
             $counterX = str_pad($counter[$counterName], 8, ' ', STR_PAD_LEFT);
 
-            $memory = str_pad(
-                number_format(memory_get_peak_usage()),
-                13,
-                ' ',
-                STR_PAD_LEFT
-            );
+            $memory = str_pad(number_format(memory_get_peak_usage()), 13, ' ', STR_PAD_LEFT);
 
             echo "{$counterName} - {$counterX} records {$memory} bytes = {$message} \n";
         }
@@ -233,7 +217,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
         'Comissão de Redação;Redação;Coronel Jairo;SDD;;MDB;Tatiana;316',
         'Comissão de Servidores Públicos;Servidores Públicos;Nivaldo Mulim;PR;;MDB;Alexandre;316',
         'Comissão de Transportes;Transportes;Marcelo Simão;PP;Dionísio Lins;PP;Viviane;316',
-        'ALÔ ALERJ;ALÔ ALERJ;;;;;;',
+        'ALÔ ALERJ;ALÔ ALERJ;;;;;;'
     ];
 
     collect($current)->each(function ($committee) {
@@ -243,7 +227,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
             return;
         }
 
-        $this->info("adding " . trim($columns[0]));
+        $this->info('adding ' . trim($columns[0]));
 
         Committee::create([
             'name' => trim($columns[0]),
@@ -255,7 +239,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
             'president' => trim($columns[2]),
             'vice_president' => trim($columns[3]),
             'office_phone' => trim(''),
-            'office_address' => trim(''),
+            'office_address' => trim('')
         ]);
     });
 })->describe('fix committee_id');
@@ -283,56 +267,43 @@ Artisan::command('aloalerj:fix-committee-names', function () {
         'name',
         'Comissão de Para Prevenir e Combater Pirataria no Estado do Rio de Janeiro'
     )->update([
-        'name' =>
-            'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro',
+        'name' => 'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro'
     ]);
-    Committee::where(
-        'name',
-        'Comissão de Trabalho Legislação Social e Seguridade Social'
-    )->update([
-        'name' => 'Comissão de Trabalho, Legislação Social e Seguridade Social',
+    Committee::where('name', 'Comissão de Trabalho Legislação Social e Seguridade Social')->update([
+        'name' => 'Comissão de Trabalho, Legislação Social e Seguridade Social'
     ]);
-    Committee::where(
-        'name',
-        'Comissão de Assuntos da Criança do Adolescente e do Idoso'
-    )->update([
-        'name' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
+    Committee::where('name', 'Comissão de Assuntos da Criança do Adolescente e do Idoso')->update([
+        'name' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso'
     ]);
     Committee::where(
         'name',
         'Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira'
     )->update([
-        'name' =>
-            'Comissão de Agricultura, Pecuária e Políticas Rural, Agrária e Pesqueira',
+        'name' => 'Comissão de Agricultura, Pecuária e Políticas Rural, Agrária e Pesqueira'
     ]);
-    Committee::where(
-        'name',
-        'Comissão de Política Urbana Habitação e Assuntos Fundiários'
-    )->update([
-        'name' =>
-            'Comissão de Política Urbana, Habitação e Assuntos Fundiários',
-    ]);
+    Committee::where('name', 'Comissão de Política Urbana Habitação e Assuntos Fundiários')->update(
+        [
+            'name' => 'Comissão de Política Urbana, Habitação e Assuntos Fundiários'
+        ]
+    );
     Committee::where(
         'name',
         'Comissão de Orçamento Finanças Fiscalização Financeira e Controle'
     )->update([
-        'name' =>
-            'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
+        'name' => 'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle'
     ]);
-    Committee::where(
-        'name',
-        'Comissão de Economia Indústria e Comércio'
-    )->update(['name' => 'Comissão de Economia, Indústria e Comércio']);
-    Committee::where(
-        'name',
-        'Comissão de Comissão de Ciência e Tecnologia'
-    )->update(['name' => 'Comissão de Ciência e Tecnologia']);
+    Committee::where('name', 'Comissão de Economia Indústria e Comércio')->update([
+        'name' => 'Comissão de Economia, Indústria e Comércio'
+    ]);
+    Committee::where('name', 'Comissão de Comissão de Ciência e Tecnologia')->update([
+        'name' => 'Comissão de Ciência e Tecnologia'
+    ]);
     Committee::where(
         'name',
         'Comissão de Tributação Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais'
     )->update([
         'name' =>
-            'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
+            'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais'
     ]);
 })->describe('fix committee_id');
 
@@ -342,65 +313,52 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
     $current = [];
 
     $commitees = [
-        'Abuso aos direitos humanos' =>
-            'Comissão de Defesa dos Direitos Humanos e Cidadania',
+        'Abuso aos direitos humanos' => 'Comissão de Defesa dos Direitos Humanos e Cidadania',
         'Animais' => 'Comissão de Proteção ao Direito dos Animais',
-        'Assuntos trabalhistas' =>
-            'Comissão de Trabalho, Legislação Social e Seguridade Social',
-        'Crianças' =>
-            'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
+        'Assuntos trabalhistas' => 'Comissão de Trabalho, Legislação Social e Seguridade Social',
+        'Crianças' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
         'Crianças e Adolescentes Desaparecidos' =>
             'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
         'Educação' => 'Comissão de Educação',
         'Esporte e Lazer' => 'Comissão de Esporte e Lazer',
         'Estudantes' => 'Comissão de Educação',
-        'Habitação' =>
-            'Comissão de Política Urbana Habitação e Assuntos Fundiários',
-        'Idosos' =>
-            'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
+        'Habitação' => 'Comissão de Política Urbana Habitação e Assuntos Fundiários',
+        'Idosos' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
         'Mulheres' => 'Comissão de Defesa dos Direitos da Mulher',
         'Pessoa com deficiência' => 'Comissão de Pessoa com Deficiência',
         'Segurança' => 'Comissão de Segurança Pública e Assuntos de Polícia',
         'Defesa do Consumidor' => 'Comissão de Defesa do Consumidor',
-        'Defesa dos Direitos dos Animais' =>
-            'Comissão de Proteção ao Direito dos Animais',
+        'Defesa dos Direitos dos Animais' => 'Comissão de Proteção ao Direito dos Animais',
         'Saneamento Ambiental' => 'Comissão de Saneamento Ambiental',
         'Meio ambiente' => 'Comissão de Defesa do Meio Ambiente',
         'Trabalho Legislação Social e Seguridade Social' =>
             'Comissão de Trabalho, Legislação Social e Seguridade Social',
         'Pessoa Deficiente' => 'Comissão de Pessoa com Deficiência',
-        'Defesa dos Direitos da Mulher' =>
-            'Comissão de Defesa dos Direitos da Mulher',
+        'Defesa dos Direitos da Mulher' => 'Comissão de Defesa dos Direitos da Mulher',
         'Idoso' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
         'Defesa dos Direitos Humanos e Cidadania' =>
             'Comissão de Defesa dos Direitos Humanos e Cidadania',
         'Assuntos da Criança e do Adolescente' =>
             'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
         'Segurança Alimentar' => 'Comissão de Segurança Alimentar',
-        'Segurança Pública' =>
-            'Comissão de Segurança Pública e Assuntos de Polícia',
+        'Segurança Pública' => 'Comissão de Segurança Pública e Assuntos de Polícia',
         'Preconceitos' =>
             'Comissão de Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional',
-        'Pirataria' =>
-            'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro',
+        'Pirataria' => 'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro',
         'Defesa do consumidor' => 'Comissão de Defesa do Consumidor',
         'Trabalho Legislação Social e Seguridade Social' =>
             'Comissão de Trabalho, Legislação Social e Seguridade Social',
-        'Contribuinte,Defesa do consumidor' =>
-            'Comissão de Defesa do Consumidor',
+        'Contribuinte,Defesa do consumidor' => 'Comissão de Defesa do Consumidor',
         'Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais' =>
             'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
-        'Ação social' =>
-            'Comissão de Trabalho, Legislação Social e Seguridade Social',
+        'Ação social' => 'Comissão de Trabalho, Legislação Social e Seguridade Social',
         'Orçamento participativo' =>
             'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
         'Saúde' => 'Comissão de Saúde',
         'Transportes' => 'Comissão de Transportes',
-        'Empresa Privada' =>
-            'Comissão de Defesa dos Direitos Humanos e Cidadania',
+        'Empresa Privada' => 'Comissão de Defesa dos Direitos Humanos e Cidadania',
         'Desconhecido' => 'ALÔ ALERJ',
-        'Empresa Pública' =>
-            'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
+        'Empresa Pública' => 'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
         'Infra-estrutura' => 'Comissão de Obras Públicas',
         'Concursos públicos' => 'Comissão de Servidores Públicos',
         'Leis' => 'Comissão de Constituição e Justiça',
@@ -410,7 +368,7 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
         'Outros' => 'ALÔ ALERJ',
         'ALÔ-ALERJ' => 'ALÔ ALERJ',
         'ALÔ ALERJ' => 'ALÔ ALERJ',
-        'Nenhum' => 'ALÔ ALERJ',
+        'Nenhum' => 'ALÔ ALERJ'
     ];
 
     foreach (
@@ -426,10 +384,7 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
             continue;
         }
 
-        $new = Cache::remember($record->area->name, 10, function () use (
-            $old,
-            $commitees
-        ) {
+        $new = Cache::remember($record->area->name, 10, function () use ($old, $commitees) {
             $this->info("find for {$old} = {$commitees[$old]}");
 
             return Committee::where('name', $commitees[$old])->first();
@@ -442,7 +397,7 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
         $record->committee_id = $new->id;
         $record->save();
 
-        increment('RECORDS', 100, "record", $current);
+        increment('RECORDS', 100, 'record', $current);
     }
 })->describe('fixdata');
 

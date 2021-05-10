@@ -15,18 +15,16 @@ class UpdateProtocolsSetOldsProtocolsToAloalerj extends Migration
      */
     public function up()
     {
+        $committee = app(Committee::class)
+            ->where('slug', 'alo-alerj')
+            ->first();
 
-
-        $committee = app(Committee::class)->where('slug','alo-alerj')->first();
-
-        if(!is_null($committee)) {
-
-           $var =  DB::update('update records set committee_id = ? where id=id',[$committee->id]);
-           dump('Atualizado ' . $var . ' protocolos.');
-        }else{
+        if (!is_null($committee)) {
+            $var = DB::update('update records set committee_id = ? where id=id', [$committee->id]);
+            dump('Atualizado ' . $var . ' protocolos.');
+        } else {
             dump('Não foi Encontrada a comissão do alo-alerj');
         }
-
     }
 
     /**
@@ -36,6 +34,5 @@ class UpdateProtocolsSetOldsProtocolsToAloalerj extends Migration
      */
     public function down()
     {
-
     }
 }

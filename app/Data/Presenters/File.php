@@ -12,7 +12,7 @@ class File extends Base
         $id = $this->wrappedObject->id;
 
         return route('files.download', [
-            'id' => $id,
+            'id' => $id
         ]);
     }
 

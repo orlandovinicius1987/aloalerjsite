@@ -22,14 +22,10 @@ class PersonAddress extends BaseModel
         'validated_at',
         'validated_by_id',
         'address_id',
-        'active',
+        'active'
     ];
 
-    protected $presenters = [
-        'active_string',
-        'created_at_formatted',
-        'updated_at_formatted',
-    ];
+    protected $presenters = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
 
     public function getPresenterClass()
     {

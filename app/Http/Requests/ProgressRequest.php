@@ -16,7 +16,7 @@ class ProgressRequest extends Request
         return [
             'origin_id' => 'required',
             'original' => 'required',
-            'progress_type_id' => 'required',
+            'progress_type_id' => 'required'
         ];
     }
 
@@ -24,7 +24,7 @@ class ProgressRequest extends Request
     {
         return \Gate::allows('committee-canEdit', [
             Committee::find($this->request->get('committee_id')),
-            $this->user()->id,
+            $this->user()->id
         ]);
     }
 

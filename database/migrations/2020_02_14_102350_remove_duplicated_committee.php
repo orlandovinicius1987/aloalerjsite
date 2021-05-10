@@ -14,31 +14,29 @@ class RemoveDuplicatedCommittee extends Migration
 
     public function up()
     {
+        DB::table('records')
+            ->where('committee_id', 40)
+            ->update(['committee_id' => 9]);
 
         DB::table('records')
-                    ->where('committee_id',40)
-                    ->update(['committee_id'=> 9]);
-
-        DB::table('records')
-            ->where('committee_id',20)
-            ->update(['committee_id'=> 2]);
-
+            ->where('committee_id', 20)
+            ->update(['committee_id' => 2]);
 
         DB::table('user_committees')
-            ->where('committee_id',40)
+            ->where('committee_id', 40)
             ->delete();
 
         DB::table('committees')
-            ->where('id',40)
+            ->where('id', 40)
             ->delete();
 
         DB::table('committees')
-            ->where('id',20)
+            ->where('id', 20)
             ->delete();
 
         DB::table('committee_services')
-            ->where('committee_id',40)
-            ->update(['committee_id'=> 9]);
+            ->where('committee_id', 40)
+            ->update(['committee_id' => 9]);
     }
 
     /**

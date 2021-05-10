@@ -37,7 +37,7 @@ class CreateHowsTable extends Migration
             [62, 'Rádio'],
             [80, 'Redes Sociais'],
             [64, 'Site da Alerj'],
-            [66, 'Televisão'],
+            [66, 'Televisão']
         ];
 
         foreach ($array as $item) {
@@ -45,7 +45,7 @@ class CreateHowsTable extends Migration
                 'id' => $item[0],
                 'name' => $item[1],
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
             ]);
         }
     }

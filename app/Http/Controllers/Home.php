@@ -32,10 +32,7 @@ class Home extends Controller
             ->with('css', 'home')
             ->with('home', true)
             ->with('offline', $this->checkOffline())
-            ->with(
-                'committeeServices',
-                $this->getPublicCommitteeServices()
-            );;
+            ->with('committeeServices', $this->getPublicCommitteeServices());
     }
 
     public function offline()

@@ -27,7 +27,7 @@ class Committees extends Controller
         $committee = $this->committeeRepository->findById($id);
         return view('callcenter.committees.form')->with([
             'committee' => $committee,
-            'mode' => 'update',
+            'mode' => 'update'
         ]);
     }
 
@@ -35,7 +35,7 @@ class Committees extends Controller
     {
         return view('callcenter.committees.form')->with([
             'committee' => $this->committeeRepository->new(),
-            'mode' => 'create',
+            'mode' => 'create'
         ]);
     }
 

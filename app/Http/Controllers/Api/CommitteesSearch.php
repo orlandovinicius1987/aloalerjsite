@@ -9,8 +9,6 @@ class CommitteesSearch extends Controller
 {
     public function execute()
     {
-        return app(Committees::class)->searchByEverything(
-            request()->get('search')
-        );
+        return app(Committees::class)->searchByEverything(request()->get('search'));
     }
 }

@@ -14,7 +14,7 @@ class PersonAddressesRequest extends Request
             'neighbourhood' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'number' => 'required',
+            'number' => 'required'
         ];
     }
 }

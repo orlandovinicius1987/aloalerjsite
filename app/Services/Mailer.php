@@ -15,12 +15,7 @@ class Mailer
 
         $bcc = $this->toArray($bcc);
 
-        Mail::send($view, ['data' => $input], function ($m) use (
-            $input,
-            $to,
-            $bcc,
-            $subject
-        ) {
+        Mail::send($view, ['data' => $input], function ($m) use ($input, $to, $bcc, $subject) {
             $m->from(env('MAIL_FROM_EMAIL'), env('MAIL_FROM_NAME'));
 
             if ($to) {
@@ -51,12 +46,7 @@ class Mailer
             $adminEmails
         );
 
-        $this->dispatch(
-            'emails.contact',
-            $input,
-            $input['email'],
-            'Sua mensagem para o Alô Alerj'
-        );
+        $this->dispatch('emails.contact', $input, $input['email'], 'Sua mensagem para o Alô Alerj');
     }
 
     /**

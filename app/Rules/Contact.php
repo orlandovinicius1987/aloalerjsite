@@ -13,7 +13,7 @@ class Contact implements Rule
         'phone' => 'Telefone Fixo',
         'facebook' => 'Facebook',
         'twitter' => 'Twitter',
-        'instagram' => 'Instagram',
+        'instagram' => 'Instagram'
     ];
 
     /**
@@ -35,9 +35,7 @@ class Contact implements Rule
      */
     public function passes($attribute, $value)
     {
-        $contactTypeCode = app(ContactType::class)->find(
-            request('contact_type_id')
-        )->code;
+        $contactTypeCode = app(ContactType::class)->find(request('contact_type_id'))->code;
 
         return $this->regexRules($contactTypeCode, request('contact'));
     }
@@ -50,15 +48,9 @@ class Contact implements Rule
     public function message()
     {
         $contactTypeRepository = app(ContactType::class);
-        $contactTypeCode = $contactTypeRepository->find(
-            request('contact_type_id')
-        )->code;
+        $contactTypeCode = $contactTypeRepository->find(request('contact_type_id'))->code;
 
-        return (
-            'O campo contato não é um ' .
-            $this->fieldNamesArray[$contactTypeCode] .
-            ' válido.'
-        );
+        return 'O campo contato não é um ' . $this->fieldNamesArray[$contactTypeCode] . ' válido.';
     }
 
     private function validatePhone($phone, $type)
@@ -99,7 +91,7 @@ class Contact implements Rule
                         $contact,
                         $match
                     );
-                    $pass = (sizeof($match[0]) == 1);
+                    $pass = sizeof($match[0]) == 1;
                     break;
                 case 'phone':
                     $pass = $this->validatePhone($contact, 'phone');

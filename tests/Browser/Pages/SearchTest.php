@@ -91,11 +91,7 @@ class SearchTest extends Base
         $record = factory(Record::class)->create();
 
         try {
-            $this->browse(function (Browser $browser) use (
-                $user,
-                $faker,
-                $record
-            ) {
+            $this->browse(function (Browser $browser) use ($user, $faker, $record) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')

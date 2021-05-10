@@ -32,7 +32,7 @@ class Areas extends Controller
     {
         return view('callcenter.areas.form')->with([
             'area' => $this->areasRepository->new(),
-            'mode' => 'create',
+            'mode' => 'create'
         ]);
     }
 

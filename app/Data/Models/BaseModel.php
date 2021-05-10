@@ -8,9 +8,7 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-abstract class BaseModel extends Model implements
-    HasPresenter,
-    AuditableContract
+abstract class BaseModel extends Model implements HasPresenter, AuditableContract
 {
     use AuditableTrait;
 
@@ -94,11 +92,11 @@ abstract class BaseModel extends Model implements
     }
 
     public function sendNotificationsForClass(string $class)
-    {   
+    {
         if (($notifiables = $this->getNotifiables())->count() == 0) {
             return false;
         }
-        
+
         $notifiables->each(function ($notifiable) use ($class) {
             $notifiable->notify(new $class($this));
         });
@@ -111,17 +109,13 @@ abstract class BaseModel extends Model implements
 
         static::updating(function ($model) {
             if ($model->controlUpdatedBy) {
-                $model->updated_by_id = ($user = auth()->user())
-                    ? $user->id
-                    : 1;
+                $model->updated_by_id = ($user = auth()->user()) ? $user->id : 1;
             }
         });
 
         static::creating(function ($model) {
             if ($model->controlCreatedBy) {
-                $model->created_by_id = ($user = auth()->user())
-                    ? $user->id
-                    : 1;
+                $model->created_by_id = ($user = auth()->user()) ? $user->id : 1;
             }
 
             if ($model->controlCreatedByCommittee) {

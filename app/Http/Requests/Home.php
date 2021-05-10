@@ -22,7 +22,7 @@ class Home extends Request
     public function rules()
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 }

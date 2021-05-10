@@ -23,14 +23,10 @@ class PersonContact extends BaseModel
         'validated_by_id',
         'provider_enrichment_id',
         'created_at',
-        'active',
+        'active'
     ];
 
-    protected $presenters = [
-        'active_string',
-        'created_at_formatted',
-        'updated_at_formatted',
-    ];
+    protected $presenters = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
 
     public function getPresenterClass()
     {
@@ -65,10 +61,10 @@ class PersonContact extends BaseModel
 
     public function mask($mask, $str)
     {
-        $str = str_replace(" ", "", $str);
+        $str = str_replace(' ', '', $str);
 
         for ($i = 0; $i < strlen($str); $i++) {
-            if (($pos = strpos($mask, "#")) !== false) {
+            if (($pos = strpos($mask, '#')) !== false) {
                 $mask[$pos] = $str[$i];
             }
         }

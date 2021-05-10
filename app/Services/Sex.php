@@ -8,7 +8,7 @@ class Sex
 {
     public static $sex_1 = [
         'Masculino' => 'Masculino',
-        'Feminino' => 'Feminino',
+        'Feminino' => 'Feminino'
     ];
 
     public static $sex_2 = [
@@ -32,7 +32,7 @@ class Sex
         'Pangênero' => 'Pangênero',
         'Transgênero' => 'Transgênero',
         'Transexual' => 'Transexual',
-        'Outro' => 'Outro',
+        'Outro' => 'Outro'
     ];
 
     public static function all($kind = 1)

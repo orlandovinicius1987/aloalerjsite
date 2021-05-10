@@ -23,9 +23,6 @@ class CreateCommitteeServicesTable extends Migration
 
             $table->timestamps();
         });
-
-
-
     }
 
     /**

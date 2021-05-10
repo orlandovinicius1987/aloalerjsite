@@ -90,10 +90,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->authentication->attempt(
-            $request,
-            $request->filled('remember')
-        );
+        return $this->authentication->attempt($request, $request->filled('remember'));
     }
 
     private function sendDisabledResponse()
@@ -107,6 +104,5 @@ class LoginController extends Controller
     {
         $user->last_login_at = Carbon::now();
         $user->save();
-
     }
 }

@@ -18,12 +18,8 @@ class UserTypes extends Base
      */
     public function findByName($name)
     {
-        return Cache::remember(
-            'UserTypes-findByName-' . $name,
-            1000,
-            function () use ($name) {
-                return UserType::where('name', $name)->first();
-            }
-        );
+        return Cache::remember('UserTypes-findByName-' . $name, 1000, function () use ($name) {
+            return UserType::where('name', $name)->first();
+        });
     }
 }

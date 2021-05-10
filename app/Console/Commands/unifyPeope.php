@@ -62,7 +62,9 @@ class unifyPeope extends Command
                 ->where('person_id', $personFrom->id)
                 ->get()
                 ->each(function ($record) use ($personFrom, $personTo) {
-                    dump("Updating record {$record->protocol} from {$personFrom->name} to {$personTo->name}");
+                    dump(
+                        "Updating record {$record->protocol} from {$personFrom->name} to {$personTo->name}"
+                    );
                     $record->person_id = $personTo->id;
                     $record->save();
                 });
@@ -75,7 +77,9 @@ class unifyPeope extends Command
                             ->where('contact', $personContact->contact)
                             ->first()
                     ) {
-                        dump("Já existe o contato {$personContact->contact} para {$personTo->name} ");
+                        dump(
+                            "Já existe o contato {$personContact->contact} para {$personTo->name} "
+                        );
                         $personContactTo->status = $personFrom->status;
                         $personContactTo->save();
 
