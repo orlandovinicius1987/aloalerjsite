@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\PersonAddress;
+use App\Models\PersonAddress;
 
 /*
 |--------------------------------------------------------------------------

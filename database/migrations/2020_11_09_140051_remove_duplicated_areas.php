@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Area as AreaModel;
-use App\Data\Models\Progress as ProgressModel;
-use App\Data\Models\Record as RecordModel;
+use App\Models\Area as AreaModel;
+use App\Models\Progress as ProgressModel;
+use App\Models\Record as RecordModel;
 
 class RemoveDuplicatedAreas extends Migration
 {

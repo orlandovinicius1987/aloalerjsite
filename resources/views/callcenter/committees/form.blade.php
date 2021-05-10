@@ -199,11 +199,14 @@
 
                     <div class="col-12 col-md-8 text-right">
                         @can('committees:update')
+                            @isset($committee->id)
+
                             <a id="buttonNovaComissao" href="{{ route('committee_services.create',['id'=>$committee->id]) }}"
                                class="btn btn-primary btn-sm pull-right">
                                 <i class="fa fa-plus"></i>
                                 Novo Serviço
                             </a>
+                            @endisset
                         @endCan
                     </div>
                 </div>

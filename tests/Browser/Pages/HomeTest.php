@@ -2,7 +2,7 @@
 
 namespace Tests\Browser\Pages;
 
-use App\Data\Models\User;
+use App\Models\User;
 use Laravel\Dusk\Browser;
 
 class HomeTest extends Base

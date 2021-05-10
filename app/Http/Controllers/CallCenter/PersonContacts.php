@@ -3,8 +3,8 @@ namespace App\Http\Controllers\CallCenter;
 
 use App\Services\Workflow;
 use Illuminate\Http\Request;
-use App\Data\Models\ContactType;
-use App\Data\Models\PersonContact;
+use App\Models\ContactType;
+use App\Models\PersonContact;
 use App\Data\Repositories\Records as RecordsRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PersonRequest;

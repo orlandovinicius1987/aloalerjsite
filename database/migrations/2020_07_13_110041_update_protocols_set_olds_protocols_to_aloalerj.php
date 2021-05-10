@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\Models\Committee;
-use App\Data\Models\Record;
+use App\Models\Committee;
+use App\Models\Record;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

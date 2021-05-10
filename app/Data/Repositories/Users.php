@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserType;
-use App\Data\Models\User;
+use App\Models\UserType;
+use App\Models\User;
 use App\Services\Authorization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

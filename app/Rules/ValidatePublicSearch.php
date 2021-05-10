@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Data\Models\Record as Record;
+use App\Models\Record as Record;
 
 class ValidatePublicSearch implements Rule
 {

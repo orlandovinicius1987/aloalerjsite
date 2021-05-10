@@ -1,22 +1,22 @@
 <?php
 namespace App\Services;
 
-use App\Data\Models\Area;
-use App\Data\Models\Committee;
-use App\Data\Models\Origin;
-use App\Data\Models\RecordAction;
-use App\Data\Models\RecordType;
+use App\Models\Area;
+use App\Models\Committee;
+use App\Models\Origin;
+use App\Models\RecordAction;
+use App\Models\RecordType;
 use App\Data\Repositories\Records;
 use Carbon\Carbon;
-use App\Data\Models\User;
-use App\Data\Models\Record;
-use App\Data\Models\Person;
-use App\Data\Models\Progress;
-use App\Data\Models\UserType;
-use App\Data\Models\ContactType;
-use App\Data\Models\ProgressType;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Record;
+use App\Models\Person;
+use App\Models\Progress;
+use App\Models\UserType;
+use App\Models\ContactType;
+use App\Models\ProgressType;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 
@@ -119,7 +119,7 @@ and historico.historico_id = ' . $historico_id
                 $action = $this->findActionByHistoryId($history->original_history_id);
 
                 $history->history_data[] = coollect([
-                    'history_fields' => coollect(json_decode($history->history_fields, true))
+                    'history_fields' => coollect(json_decode($history->history_fields, true)),
                 ])->merge(json_decode(json_encode($action, true)));
 
                 $record->area_id = $this->inferAreaFromProtocol($history) ?: 999999;
@@ -219,7 +219,7 @@ and historico.historico_id = ' . $historico_id
             'Discador - Mensagem Operadora',
             'Discador - Silêncio',
             'Discador - Falha na Operadora',
-            'Discador - Congestionamento'
+            'Discador - Congestionamento',
         ];
 
         ProgressType::truncate();
@@ -228,7 +228,7 @@ and historico.historico_id = ' . $historico_id
             $this->info('Inserting ' . $element);
             ProgressType::insert([
                 'id' => $key,
-                'name' => $element
+                'name' => $element,
             ]);
         }
     }
@@ -241,14 +241,14 @@ and historico.historico_id = ' . $historico_id
                     'original_history_id' => $history->historico_id,
                     'record_id' => $record->id,
                     'progress_type_id' => ProgressType::firstOrCreate([
-                        'name' => $history->historico_tipo_descricao
+                        'name' => $history->historico_tipo_descricao,
                     ])->id,
                     'created_by_id' => $history->historico_usuario_id_alteracao,
                     'original' => $history->historico_complemento,
                     'created_at' => $history->historico_data_inicio_atendimento,
                     'updated_at' => $history->historico_data_inicio_atendimento,
                     'history_fields' => $history->history_fields->toJson(),
-                    'origin_id' => $this->inferOriginFromHistory($history)
+                    'origin_id' => $this->inferOriginFromHistory($history),
                 ])
             );
         }
@@ -272,7 +272,7 @@ and historico.historico_id = ' . $historico_id
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
                 'created_at' => ($date = $this->inferDateFromProtocol($protocol)),
-                'updated_at' => $date
+                'updated_at' => $date,
             ])
         );
     }
@@ -311,7 +311,7 @@ and historico.historico_id = ' . $historico_id
             if (!$type && $history->action_id) {
                 RecordType::insert([
                     'id' => $history->action_id,
-                    'name' => $history->action_description
+                    'name' => $history->action_description,
                 ]);
 
                 $type = $this->findRecordTypeByName($history);
@@ -337,7 +337,7 @@ and historico.historico_id = ' . $historico_id
             if (!$action && $history->action_id) {
                 RecordAction::insert([
                     'id' => $history->action_id,
-                    'name' => $history->action_description
+                    'name' => $history->action_description,
                 ]);
 
                 $action = $this->findRecordActionByName($history);
@@ -369,7 +369,7 @@ and historico.historico_id = ' . $historico_id
 
             if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Area::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor
+                    'name' => $data->historico_propriedade_valor,
                 ])->id;
             }
         }
@@ -387,7 +387,7 @@ and historico.historico_id = ' . $historico_id
 
         if ($origin instanceof \stdClass || isset($origin['historico_propriedade_valor'])) {
             return Origin::firstOrCreate([
-                'name' => $origin->historico_propriedade_valor
+                'name' => $origin->historico_propriedade_valor,
             ])->id;
         }
 
@@ -403,7 +403,7 @@ and historico.historico_id = ' . $historico_id
 
             if ($data instanceof \stdClass || isset($data['historico_propriedade_valor'])) {
                 return Origin::firstOrCreate([
-                    'name' => $data->historico_propriedade_valor
+                    'name' => $data->historico_propriedade_valor,
                 ])->id;
             }
         }
@@ -537,7 +537,7 @@ and historico.historico_id = ' . $historico_id
                     $personProtocols->count() > 1
                         ? $this->getHistoryFromProtocol([
                             $record->historico_id,
-                            $record->historico_id_finalizador
+                            $record->historico_id_finalizador,
                         ])
                         : $this->getHistory($person->id, 'pessoa_id');
 
@@ -592,7 +592,7 @@ and historico.historico_id = ' . $historico_id
                 'person_id' => $person->id,
                 'record_type_id' => RecordType::where('name', 'Outros')->first()->id,
                 'area_id' => Area::where('name', 'ALÔ ALERJ')->first()->id,
-                'committee_id' => Committee::where('name', 'ALÔ ALERJ')->first()->id
+                'committee_id' => Committee::where('name', 'ALÔ ALERJ')->first()->id,
             ])
         );
         $record->protocol = app(Records::class)->makeProtocolNumber($person, $record);
@@ -653,7 +653,7 @@ and historico.historico_id = ' . $historico_id
             ->each(function ($row) {
                 RecordAction::insert([
                     'id' => $row->action_id,
-                    'name' => $row->description
+                    'name' => $row->description,
                 ]);
             });
 
@@ -674,7 +674,7 @@ and historico.historico_id = ' . $historico_id
             ->each(function ($row) {
                 ProgressType::insert([
                     'id' => $row->historico_tipo,
-                    'name' => $row->descricao
+                    'name' => $row->descricao,
                 ]);
             });
 
@@ -700,7 +700,7 @@ and historico.historico_id = ' . $historico_id
                         'email' => $row->nome . '@cercred.com.br',
                         'username' => $row->nome,
                         'user_type_id' => UserType::where('name', 'Usuario')->first()->id,
-                        'password' => bcrypt($row->nome . $row->usuario_id)
+                        'password' => bcrypt($row->nome . $row->usuario_id),
                     ])
                 );
             });
@@ -763,7 +763,7 @@ and historico.historico_id = ' . $historico_id
                             'is_mailable' => true,
                             'from' => $type,
                             'status' => $status,
-                            'address_id' => $endereco->endereco_id
+                            'address_id' => $endereco->endereco_id,
                         ])
                     )
                 );
@@ -831,7 +831,7 @@ and historico.historico_id = ' . $historico_id
                         'status' => $status,
                         'provider_enrichment_id' => $telefone->enriquecimento_provedor_id,
                         'telefone_id' => $telefone->telefone_id,
-                        'created_at' => Carbon::parse($telefone->inclusao)
+                        'created_at' => Carbon::parse($telefone->inclusao),
                     ])
                 );
 
@@ -893,7 +893,7 @@ and historico.historico_id = ' . $historico_id
                         'from' => lower($type),
                         'status' => lower($status),
                         'provider_enrichment_id' => $email->enriquecimento_provedor_id,
-                        'email_id' => $email->email_id
+                        'email_id' => $email->email_id,
                     ])
                 );
 
@@ -944,7 +944,7 @@ and historico.historico_id = ' . $historico_id
                         'income' => (float) str_replace('$', '', $person->renda),
                         'person_type_id' => $person->tipo_pessoa,
                         'created_at' => $person->inclusao,
-                        'updated_by_id' => $person->usuario_id_alteracao
+                        'updated_by_id' => $person->usuario_id_alteracao,
                     ])
                 );
 
@@ -996,7 +996,7 @@ order by protocolo.protocolo_id
         }
         return coollect(
             $this->db()->select(
-                "select 
+                "select
   DISTINCT
   historico.historico_id,
   historico.complemento historico_complemento,
@@ -1016,7 +1016,7 @@ from historico
   left join action_historico on historico_tipo.historico_tipo = action_historico.historico_tipo
   left join action on action.action_id = action_historico.action_id
   left join action_type on action_type.action_type = action.action_type
-where historico.imported = false 
+where historico.imported = false
 and historico.{$field} in (" .
                     implode(',', $objetoId) .
                     ');'

@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Data\Models\Progress;
+use App\Models\Progress;
 use App\Data\Repositories\Progresses;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

@@ -4,7 +4,7 @@ import helpersMixin from '../mixins/helpers'
 import zipcodeMixin from '../mixins/zipcode'
 
 Vue.directive('init', {
-    bind: function(el, binding, vnode) {
+    bind: function (el, binding, vnode) {
         vnode.context.address[binding.arg] = binding.value
     },
 })

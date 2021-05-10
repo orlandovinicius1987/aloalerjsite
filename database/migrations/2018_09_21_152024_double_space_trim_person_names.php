@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use App\Data\Repositories\People as PeopleRepository;
-use App\Data\Models\Person as PersonModel;
+use App\Models\Person as PersonModel;
 
 use App\Http\Middleware\TrimStrings;
 

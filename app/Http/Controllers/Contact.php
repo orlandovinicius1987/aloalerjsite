@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\RecordType;
+use App\Models\RecordType;
 use App\Data\Repositories\Records;
 use App\Http\Requests\Contact as ContactRequest;
 use App\Services\Mailer;

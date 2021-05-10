@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Faker\Generator as Faker;
-use App\Data\Models\Person;
+use App\Models\Person;
 
 use App\Data\Repositories\Persons as PersonsRepository;
 

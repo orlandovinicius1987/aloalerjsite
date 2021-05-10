@@ -1,8 +1,8 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\Area;
-use App\Data\Models\ViaModel;
+use App\Models\Area;
+use App\Models\ViaModel;
 
 class Areas extends Base
 {
@@ -35,7 +35,7 @@ class Areas extends Base
             'data' => $data,
             'success' => is_null($messages),
             'errors' => $messages,
-            'count' => $count
+            'count' => $count,
         ];
     }
 }

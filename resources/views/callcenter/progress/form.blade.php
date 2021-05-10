@@ -11,7 +11,7 @@
                 <div class="section-title">
                     <ul class="aloalerj-breadcrumbs">
                         <li>
-                            <a href="{{ route('people.show', ['id' => $record->person->id]) }}">{{ $record->person->name }}</a>
+                            <a href="{{ route('people.show', ['person_id' => $record->person->id]) }}">{{ $record->person->name }}</a>
                         </li>
 
                         <br>

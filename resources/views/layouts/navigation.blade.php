@@ -46,6 +46,8 @@
                         'committees:update',
                         'areas:store',
                         'areas:update',
+                        'origins:store',
+                        'origins:update',
                     ])
                         <div class="nav-item dropdown show">
                             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-archive" aria-hidden="true"></i>Cadastros</a>
@@ -55,6 +57,9 @@
                                 @endcanany
                                 @canany(['areas:store','areas:update'])
                                     <a class="nav-link dropdown-item" href="{{route('areas.index') }}"><i class="fas fa-stamp"></i> Assuntos </a>
+                                @endcanany
+                                @canany(['origins:store','origins:update'])
+                                    <a class="nav-link dropdown-item" href="{{route('origins.index') }}"><i class="fas fa-globe-americas"></i> Origem </a>
                                 @endcanany
                             </div>
                         </div>

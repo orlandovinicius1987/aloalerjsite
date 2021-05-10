@@ -7,7 +7,7 @@ class ConversionMimeIcon
     public static function mimeToClass($mime_type)
     {
         // List of official MIME Types: http://www.iana.org/assignments/media-types/media-types.xhtml
-        $icon_classes = array(
+        $icon_classes = [
             // Media
             'image' => 'fas fa-file-image',
             'audio' => 'fas fa-file-audio',
@@ -30,8 +30,8 @@ class ConversionMimeIcon
             'application/json' => 'fas fa-file-code',
             // Archives
             'application/gzip' => 'fas fa-file-archive',
-            'application/zip' => 'fas fa-file-archive'
-        );
+            'application/zip' => 'fas fa-file-archive',
+        ];
         foreach ($icon_classes as $text => $icon) {
             if (strpos($mime_type, $text) === 0) {
                 return $icon;

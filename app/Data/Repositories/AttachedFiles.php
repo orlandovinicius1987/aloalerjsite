@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\AttachedFile;
+use App\Models\AttachedFile;
 use App\Http\Requests\AttachedFileRequest;
 
 class AttachedFiles extends Base

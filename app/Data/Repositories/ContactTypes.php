@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\ContactType;
+use App\Models\ContactType;
 
 class ContactTypes extends Base
 {

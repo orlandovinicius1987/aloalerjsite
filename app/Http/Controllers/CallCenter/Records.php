@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\CallCenter;
 
-use App\Data\Models\Progress;
+use App\Models\Progress;
 use App\Data\Repositories\Areas;
 use App\Data\Repositories\ProgressTypes as ProgressTypesRepository;
 use App\Http\Requests\AdvancedSearchRequest;
@@ -116,7 +116,7 @@ class Records extends Controller
                 $record->person_id
             ),
             'addresses' => $this->peopleAddressesRepository->findByPerson($record->person_id),
-            'contacts' => $this->peopleContactsRepository->findByPerson($record->person_id)
+            'contacts' => $this->peopleContactsRepository->findByPerson($record->person_id),
         ]);
     }
 
@@ -175,7 +175,7 @@ class Records extends Controller
 
         if ($request->get('create_address') == 'true') {
             $data = array_merge($request->toArray(), [
-                'person_id' => $record->person_id
+                'person_id' => $record->person_id,
             ]);
             $this->peopleAddressesRepository->create($data);
         }
@@ -197,7 +197,7 @@ class Records extends Controller
         ) {
             return view('callcenter.people.diverge')->with([
                 'newName' => $request->get('name'),
-                'record' => $record
+                'record' => $record,
             ]);
         }
 
@@ -225,7 +225,7 @@ class Records extends Controller
             'original' => 'Protocolo finalizado sem observações em ' . now() . '.',
             'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Finalização')
                 ->id,
-            'record_id' => $record->id
+            'record_id' => $record->id,
         ]);
 
         $this->recordsRepository->markAsResolved($record->id, $progress);
@@ -235,7 +235,7 @@ class Records extends Controller
         $this->showSuccessMessage('Protocolo finalizado com sucesso.');
 
         return redirect()->route(Workflow::started() ? 'people_addresses.create' : 'people.show', [
-            'person_id' => $record->person->id
+            'person_id' => $record->person->id,
         ]);
     }
 
@@ -250,7 +250,7 @@ class Records extends Controller
         $progress = $this->progressesRepository->create([
             'original' => 'Protocolo reaberto sem observações em ' . now() . '.',
             'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Reabertura')->id,
-            'record_id' => $record->id
+            'record_id' => $record->id,
         ]);
 
         $this->recordsRepository->markAsNotResolved($record->id);
@@ -260,7 +260,7 @@ class Records extends Controller
         $this->showSuccessMessage('Protocolo reaberto com sucesso.');
 
         return redirect()->route(Workflow::started() ? 'people_addresses.create' : 'people.show', [
-            'person_id' => $record->person->id
+            'person_id' => $record->person->id,
         ]);
     }
 
@@ -295,7 +295,7 @@ class Records extends Controller
     {
         return view('callcenter.records.index')->with([
             'records' => ($records = $this->recordsRepository->allNotResolved()),
-            'onlyNonResolved' => true
+            'onlyNonResolved' => true,
         ]);
     }
 
@@ -334,7 +334,7 @@ class Records extends Controller
         return [
             'committees' => app(CommittesRepository::class)->allOrderBy('name'),
             'areas' => app(AreasRepository::class)->allOrderBy('name'),
-            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy('name')
+            'recordTypes' => app(RecordTypesRepository::class)->allOrderBy('name'),
         ];
     }
 
@@ -359,7 +359,7 @@ class Records extends Controller
                 ['label' => '50', 'value' => '50'],
                 ['label' => '100', 'value' => '100'],
                 ['label' => '250', 'value' => '250'],
-                ['label' => 'TODOS', 'value' => 'all']
+                ['label' => 'TODOS', 'value' => 'all'],
             ])
             ->with('per_page', $data['per_page']);
     }
@@ -372,10 +372,11 @@ class Records extends Controller
             //Se é um protocolo novo
             $request->merge(['record_id' => $record->id]);
             $request->merge([
-                'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Entrada')->id
+                'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Entrada')
+                    ->id,
             ]);
             $request->merge([
-                'is_private' => 1
+                'is_private' => 1,
             ]);
             $progress = $this->progressesRepository->createFromRequest($request);
 

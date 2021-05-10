@@ -42,7 +42,7 @@ return [
     'debug' => env('APP_DEBUG', false),
 
     'ping' => [
-        'bin' => env('PING_BIN', '/bin/ping')
+        'bin' => env('PING_BIN', '/bin/ping'),
     ],
 
     /*
@@ -166,7 +166,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\FakerServiceProvider::class,
-        PragmaRX\ZipCode\Vendor\Laravel\ServiceProvider::class
+        Canducci\ZipCode\Providers\ZipCodeServiceProvider::class,
+        Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider::class,
     ],
 
     /*
@@ -214,6 +215,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'ZipCode' => PragmaRX\ZipCode\Vendor\Laravel\Facade::class
-    ]
+        'ZipCode' => Canducci\ZipCode\Facades\ZipCode::class,
+        'Address' => Canducci\ZipCode\Facades\ZipCodeAddress::class,
+    ],
 ];

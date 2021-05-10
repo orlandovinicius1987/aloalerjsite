@@ -17,7 +17,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\TrustProxies::class
+        \App\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -33,9 +33,9 @@ class Kernel extends HttpKernel
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        'api' => ['throttle:60,1', 'bindings']
+        'api' => ['throttle:60,1', 'bindings'],
     ];
 
     /**
@@ -55,6 +55,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'app.users' => \App\Http\Middleware\MustBeAppUser::class,
-        'canAny' => \App\Http\Middleware\CanAnyMiddleware::class
+        'canAny' => \App\Http\Middleware\CanAnyMiddleware::class,
     ];
 }

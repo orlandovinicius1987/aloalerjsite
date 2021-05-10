@@ -2,7 +2,7 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\Person;
+use App\Models\Person;
 use Illuminate\Support\Facades\Cache;
 
 class People extends Base
@@ -17,7 +17,7 @@ class People extends Base
     public function getAnonymousModel()
     {
         return Cache::remember('getAnonymousModel', 15, function () {
-            return \App\Data\Models\Person::where('is_anonymous', true)->first();
+            return \App\Models\Person::where('is_anonymous', true)->first();
         });
     }
 
@@ -36,7 +36,7 @@ class People extends Base
         });
     }
 
-    private function emptyResponse($search = '')
+    protected function emptyResponse($search = '')
     {
         return $this->response($search, [], 0, null);
     }
@@ -64,7 +64,7 @@ class People extends Base
             'errors' => $messages,
             'count' => $count,
             'is_cpf_cnpj' => validate_cpf_cnpj($string),
-            'is_numeric' => $this->isNumeric($string)
+            'is_numeric' => $this->isNumeric($string),
         ];
     }
 
@@ -77,7 +77,7 @@ class People extends Base
                 ::with([
                     'records' => function ($query) use ($string) {
                         $query->where('protocol', '=', $string);
-                    }
+                    },
                 ])
                 ->take(static::RECORDS_COUNT_LIMIT + 1)
                 ->where('id', $record->person_id);

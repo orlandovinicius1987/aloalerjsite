@@ -37,7 +37,7 @@
                 <section class="personal-data">
                     <div class="name">
                         <small>criado para</small>
-                        <strong><a href="{{ route('people.show', ['id' => $record->person->id]) }}">
+                        <strong><a href="{{ route('people.show', ['person_id' => $record->person->id]) }}">
                                 {{ $record->person->name }}
                             </a>
                         </strong>

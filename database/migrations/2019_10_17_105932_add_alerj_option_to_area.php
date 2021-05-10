@@ -13,7 +13,7 @@ class AddAlerjOptionToArea extends Migration
      */
     public function up()
     {
-        \App\Data\Models\Area::insert(['name' => 'ALERJ', 'created_at' => Carbon::now()]);
+        \App\Models\Area::insert(['name' => 'ALERJ', 'created_at' => Carbon::now()]);
     }
 
     /**

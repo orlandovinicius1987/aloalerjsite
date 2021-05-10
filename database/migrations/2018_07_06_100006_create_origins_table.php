@@ -1,5 +1,5 @@
 <?php
-use App\Data\Models\Origin;
+use App\Models\Origin;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

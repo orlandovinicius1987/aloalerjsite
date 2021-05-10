@@ -3,11 +3,11 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 class WorkflowTest extends Base
 {
@@ -19,9 +19,9 @@ class WorkflowTest extends Base
         $person = (object) array_merge($person, [
             'cpf_cnpj_com_pontos' => preg_replace(
                 '/(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/',
-                '$1.$2.$3-$4',
+                "$1.$2.$3-$4",
                 $person['cpf_cnpj']
-            )
+            ),
         ]);
         $record = (object) factory(Record::class, 'Workflow')->raw();
         $address = (object) factory(PersonAddress::class, 'Workflow')->raw();

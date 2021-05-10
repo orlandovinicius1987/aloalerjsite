@@ -2,7 +2,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Data\Models\ContactType;
+use App\Models\ContactType;
 
 class ContactWorkflow extends Contact
 {

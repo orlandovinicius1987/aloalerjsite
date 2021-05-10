@@ -19,7 +19,7 @@ class Progresses extends Controller
             ->with([
                 'progress' => $this->progressesRepository->new(),
                 'record' => $this->recordsRepository->findById($record_id),
-                'progressFiles' => []
+                'progressFiles' => [],
             ])
             ->with($this->getComboBoxMenus())
             ->with('formDisabled', false);
@@ -115,7 +115,7 @@ class Progresses extends Controller
             ->with([
                 'progress' => $progress,
                 'record' => $this->recordsRepository->findById($progress->record_id),
-                'progressFiles' => $progress->progressFiles
+                'progressFiles' => $progress->progressFiles,
             ])
             ->with($this->getComboBoxMenus($progress))
             ->with('formDisabled', $formDisabled);

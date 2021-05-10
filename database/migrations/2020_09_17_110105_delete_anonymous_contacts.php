@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\PersonContact as PersonContactModel;
+use App\Models\PersonContact as PersonContactModel;
 
 class DeleteAnonymousContacts extends Migration
 {

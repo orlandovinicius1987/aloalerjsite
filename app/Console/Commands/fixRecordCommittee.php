@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use App\Data\Repositories\Users as UsersRepository;
 use Illuminate\Console\Command;
-use App\Data\Models\Audit as AuditModel;
-use App\Data\Models\Committee as CommitteeModel;
-use App\Data\Models\User as UserModel;
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Audit as AuditModel;
+use App\Models\Committee as CommitteeModel;
+use App\Models\User as UserModel;
+use App\Models\Progress as ProgressModel;
 use Carbon\Carbon;
 use App\Services\Authorization;
 
@@ -63,7 +63,7 @@ class fixRecordCommittee extends Command
         foreach ($progresses->cursor() as $progress) {
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
-                ->where('auditable_type', 'App\Data\Models\Progress')
+                ->where('auditable_type', 'App\Models\Progress')
                 ->first();
             //            dump($audit);
             //            ->user_id);

@@ -34,7 +34,7 @@ class CommitteeServices extends Controller
         $committee = $this->committeesRepository->findById($committeeService->committee_id);
         return view('callcenter.committee_services.form')->with([
             'committeeService' => $committeeService,
-            'committee' => $committee
+            'committee' => $committee,
         ]);
     }
 
@@ -43,7 +43,7 @@ class CommitteeServices extends Controller
         $committee = $this->committeesRepository->findById($committee_id);
         return view('callcenter.committee_services.form')->with([
             'committeeService' => $this->committeeServicesRepository->new(),
-            'committee' => $committee
+            'committee' => $committee,
         ]);
     }
 

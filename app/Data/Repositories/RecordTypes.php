@@ -1,8 +1,8 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\RecordType;
-use App\Data\Models\ViaModel;
+use App\Models\RecordType;
+use App\Models\ViaModel;
 
 class RecordTypes extends Base
 {

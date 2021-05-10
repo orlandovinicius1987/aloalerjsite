@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\CommitteeService;
-use App\Data\Models\ViaModel;
+use App\Models\CommitteeService;
+use App\Models\ViaModel;
 
 class CommitteeServices extends Base
 {

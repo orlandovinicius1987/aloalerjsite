@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Data\Models\Committee;
+use App\Models\Committee;
 use Illuminate\Contracts\Validation\Rule;
 
 //Esta regra dita se o usuário autenticado está permitido a marcar uma comissão como responsável pelo protocolo, a partir do campo "Comissão"

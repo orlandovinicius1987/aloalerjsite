@@ -4,11 +4,11 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 use App\Data\Repositories\People as PeopleRepository;
 use App\Data\Repositories\ContactTypes as ContactTypesRepository;

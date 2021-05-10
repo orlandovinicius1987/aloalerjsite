@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\Models\Area as Area;
+use App\Models\Area as Area;
 use App\Data\Repositories\Areas as AreasRepository;
 use Illuminate\Database\Migrations\Migration;
 

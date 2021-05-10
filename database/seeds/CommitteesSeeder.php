@@ -1,5 +1,7 @@
 <?php
-use App\Data\Models\Committee;
+namespace Database\Seeders;
+
+use App\Models\Committee;
 use Illuminate\Database\Seeder;
 
 class CommitteesSeeder extends Seeder
@@ -19,7 +21,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '',
                 'public' => false,
                 'office_phone' => '',
-                'office_address' => ''
+                'office_address' => '',
             ],
 
             'defesadoconsumidor' => [
@@ -35,7 +37,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office_phone' => '0800 282-7060',
                 'office_address' =>
-                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.'
+                    'Rua da Alfândega, nº 8, Centro. Atendimento presencial nesse endereço, no térreo, de 9h às 18h.',
             ],
             'meioambiente' => [
                 'slug' => 'meioambiente',
@@ -50,7 +52,7 @@ class CommitteesSeeder extends Seeder
                 'public' => true,
                 'office-phone' => '(21) 2588-1360',
                 'office_address' =>
-                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes'
+                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
             ],
             'preconceitos' => [
                 'slug' => 'preconceitos',
@@ -65,7 +67,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Rua da Assembleia, s/nº – gabinete 308 – Centro.'
+                'office_address' => 'Rua da Assembleia, s/nº – gabinete 308 – Centro.',
             ],
             'pirataria' => [
                 'slug' => 'pirataria',
@@ -81,7 +83,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Anderson Moraes',
                 'public' => true,
                 'office_phone' => '(21) 2588-1732',
-                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01'
+                'office_address' => 'Palácio 23 de Julho, térreo, gabinete 01',
             ],
             'pessoadeficiente' => [
                 'slug' => 'pessoadeficiente',
@@ -95,7 +97,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Franciane Motta',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 112'
+                'office_address' => 'Palácio Tiradentes, sala 112',
             ],
             'saneamentoambiental' => [
                 'slug' => 'saneamentoambiental',
@@ -138,7 +140,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Lucinha',
                 'public' => true,
                 'office_phone' => '(21) 2588-1309',
-                'office_address' => 'Palácio Tiradentes, sala 130'
+                'office_address' => 'Palácio Tiradentes, sala 130',
             ],
             'segurancapublica' => [
                 'slug' => 'segurancapublica',
@@ -152,7 +154,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Coronel Salema',
                 'public' => true,
                 'office_phone' => '(21) 2588-1219',
-                'office_address' => 'Palácio Tiradentes, Prédio Anexo, gabinete 407'
+                'office_address' => 'Palácio Tiradentes, Prédio Anexo, gabinete 407',
             ],
             'trabalho' => [
                 'slug' => 'trabalho',
@@ -166,7 +168,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Bruno Dauaire',
                 'public' => true,
                 'office_phone' => '(21) 2588-1298',
-                'office_address' => 'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de Julho - Gabinete 508 - Praça XV, s/nº - Centro',
             ],
 
             'disqueidoso' => [
@@ -181,7 +183,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
-                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
             ],
 
             'disquecrianca' => [
@@ -196,7 +198,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Fábio Silva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1243 / (21) 2588-1669',
-                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106'
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 106',
             ],
 
             'direitoshumanos' => [
@@ -212,7 +214,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Márcio Gualberto',
                 'public' => true,
                 'office_phone' => '(21) 2588-1555',
-                'office_address' => 'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.'
+                'office_address' => 'Rua 1º de Março s/nº, Palácio Tiradentes, sala 307.',
             ],
 
             'educacao' => [
@@ -227,7 +229,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputado Léo Vieira',
                 'public' => true,
                 'office_phone' => '(21) 2588-1356',
-                'office_address' => 'Gabinete T 02 Anexo'
+                'office_address' => 'Gabinete T 02 Anexo',
             ],
 
             'segurancaalimentar' => [
@@ -242,7 +244,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Mônica Francisco',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio Tiradentes, sala 317'
+                'office_address' => 'Palácio Tiradentes, sala 317',
             ],
 
             'sosmulher' => [
@@ -257,7 +259,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Dani Monteiro',
                 'public' => true,
                 'office_phone' => '0800 282-0119',
-                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409'
+                'office_address' => 'Rua Dom Manoel, s/nº, Centro, Rio de Janeiro. Gabinete 409',
             ],
 
             'tributacao' => [
@@ -284,7 +286,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Alexandre Freitas',
                 'public' => true,
                 'office_phone' => '(21) 2588-1259',
-                'office_address' => 'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo'
+                'office_address' => 'Rua Dom Manoel, s/n°, gabinete 403 - Prédio Anexo',
             ],
 
             'animais' => [
@@ -299,7 +301,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Deputada Alana Passos',
                 'public' => true,
                 'office_phone' => '(21) 2588-1206',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'defesa-civil' => [
@@ -314,7 +316,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Mauro S Scarabelli',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308/1309',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'ciencia-tecnologia' => [
@@ -329,7 +331,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Marcelo Lima',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'constituicao-justica' => [
@@ -344,7 +346,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Tatiana G Costa',
                 'public' => true,
                 'office_phone' => '(21) 2588-1530',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'cultura' => [
@@ -359,7 +361,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Haroldo Aquino',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'meio-ambiente' => [
@@ -374,7 +376,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Jefferson Franca',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'economia' => [
@@ -389,7 +391,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '',
                 'public' => true,
                 'office_phone' => '',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'esporte-lazer' => [
@@ -404,7 +406,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => '	Sandra J Ferreira',
                 'public' => true,
                 'office_phone' => '(21) 2588-1391',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'indicacoes-legislativas' => [
@@ -419,7 +421,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Luiz C Faustino',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'orcamento-financas' => [
@@ -434,7 +436,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Ada Paiva',
                 'public' => true,
                 'office_phone' => '(21) 2588-1400',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'politica-urbana' => [
@@ -449,7 +451,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Romulo Moura',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'drogas' => [
@@ -464,7 +466,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Carla Almeida',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'turismo' => [
@@ -480,7 +482,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Fabio Costa',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
             ],
 
             'agricultura' => [
@@ -495,8 +497,8 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => 'Rogerio V. Castro',
                 'public' => true,
                 'office_phone' => '(21) 2588-1308',
-                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro'
-            ]
+                'office_address' => 'Palácio 23 de julho, sala 104 - Praça XV, s/nº - Centro',
+            ],
         ]);
     }
 
@@ -521,7 +523,7 @@ class CommitteesSeeder extends Seeder
                 'vice_president' => $this->sanitize($committee->vice_president),
                 'public' => true,
                 'office_phone' => $this->sanitize($committee->office_phone),
-                'office_address' => $this->sanitize($committee->office_address)
+                'office_address' => $this->sanitize($committee->office_address),
             ]);
         });
     }

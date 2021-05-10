@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserCommittee;
+use App\Models\UserCommittee;
 use App\Data\Repositories\Users as UsersRepository;
 use App\Data\Repositories\Committees as CommitteesRepository;
 

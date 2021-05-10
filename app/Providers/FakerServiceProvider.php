@@ -26,7 +26,7 @@ class FakerServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Faker', function ($app) {
             $faker = \Faker\Factory::create();
-            $newClass = new class($faker) extends \Faker\Provider\Base {
+            $newClass = new class ($faker) extends \Faker\Provider\Base {
                 public function name_without_special_character()
                 {
                     $faker = app(Faker::class);

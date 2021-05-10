@@ -28,20 +28,20 @@ class RecordRequest extends Request
             'mobile' => [
                 $this->is_anonymous_protocol()
                     ? ''
-                    : 'required_without_all:whatsapp,phone,person_id'
+                    : 'required_without_all:whatsapp,phone,person_id',
             ],
             'whatsapp' => [
-                $this->is_anonymous_protocol() ? '' : 'required_without_all:mobile,phone,person_id'
+                $this->is_anonymous_protocol() ? '' : 'required_without_all:mobile,phone,person_id',
             ],
             'email' => [$this->has_person() ? 'required_if:send_answer_by_email,==,on' : ''],
             'phone' => [
                 $this->is_anonymous_protocol()
                     ? ''
-                    : 'required_without_all:mobile,whatsapp,person_id'
+                    : 'required_without_all:mobile,whatsapp,person_id',
             ],
             'neighbourhood' => [$this->create_address() ? 'required' : ''],
             'city' => [$this->create_address() ? 'required' : ''],
-            'state' => [$this->create_address() ? 'required' : '']
+            'state' => [$this->create_address() ? 'required' : ''],
         ];
     }
 

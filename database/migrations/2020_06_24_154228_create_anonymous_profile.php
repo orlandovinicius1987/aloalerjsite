@@ -13,11 +13,11 @@ class CreateAnonymousProfile extends Migration
      */
     public function up()
     {
-        \App\Data\Models\Person::insert([
+        \App\Models\Person::insert([
             'cpf_cnpj' => 'Não se aplica',
             'name' => 'Anônimo',
             'identification' => 'Não se aplica',
-            'is_anonymous' => true
+            'is_anonymous' => true,
         ]);
     }
 
@@ -28,7 +28,7 @@ class CreateAnonymousProfile extends Migration
      */
     public function down()
     {
-        \App\Data\Models\Person::where('is_anonymous', true)
+        \App\Models\Person::where('is_anonymous', true)
             ->first()
             ->delete();
     }

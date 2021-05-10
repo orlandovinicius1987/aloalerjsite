@@ -1,5 +1,5 @@
 <?php
-use App\Data\Models\RecordType;
+use App\Models\RecordType;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

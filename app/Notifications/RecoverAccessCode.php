@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Data\Models\Record;
+use App\Models\Record;
 use App\Data\Repositories\Records;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

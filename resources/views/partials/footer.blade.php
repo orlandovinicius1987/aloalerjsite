@@ -1,68 +1,95 @@
 <!-- Footer -->
-<div class="visible-xs visible-sm col-xs-12 col-sm-12 text-center footer-mobile-box">
-    <div class="footer-mobile">
+<section id="footer">
+    <div class="container text-lg-start">
 
-        <div class="tit-comissoes"> Comissões </div>
-        <div class="col-xs-12 col-sm-6 nomes-comissoes">
-            @include('partials.commitees-links-1')
-            @include('partials.commitees-links-2')
-        </div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8 col-sm-4 footer-logo-alerj">
-            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="img-responsive" alt="Alerj">
-        </div>
-        <div class="col-xs-2"></div>
-    </div>
-</div>
-
-<div class="panel-group hidden-xs hidden-sm"   >
-    <div class="panel panel-default">
-        <div class="container">
-            <div class="panel-heading btn-group dropup">
-                <h4 class="panel-title corpo-comissoes">
-                    <span>
-                        Comissões
-                    </span>
-                </h4>
+        <div class="row">
+            <div class="comissoes col-md-12 text-white mt-4">
+                <h3 class="mb-4">Comissões </h3>
+                <ul class="list-inline">
+                    @foreach($committeeServices as $committeService)
+                        <li><a href="{{ route('services.show', ['id'=>$committeService->id]) }}">{{$committeService->link_caption}}</a></li>
+                    @endforeach
+                </ul>
+                <hr class="mt-4">
             </div>
         </div>
-        {{--<!-- Single button -->--}}
-        {{--<div class="btn-group dropup">--}}
-            {{--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                {{--Comissões --}}
-            {{--</button>--}}
-            {{--<ul class="dropdown-menu">--}}
-                {{--<li><a href="#">Action</a></li>--}}
-                {{--<li><a href="#">Another action</a></li>--}}
-                {{--<li><a href="#">Something else here</a></li>--}}
-                {{--<li role="separator" class="divider"></li>--}}
-                {{--<li><a href="#">Separated link</a></li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-        <div >
-            <div class="panel-body ">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6  comissoes-footer">
-                            @include('partials.commitees-links-1')
-                        </div>
-{{--
-                        <div class="col-md-3 comissoes-footer">
-                            @include('partials.commitees-links-2')
-                        </div>
-                        <div class="col-md-3 comissoes-footer">
-                            @include('partials.commitees-links-3')
-                        </div>
---}}
 
-{{--                        <div class="col-md-1"></div>--}}
-                        <div class="col-md-offset-3 col-md-3">
-                            <img src="/templates/mv/svg/logo-alerj-rodape.svg" class="logo-alerj-rodape img-responsive" alt="Alerj">
+
+        <div class="row d-flex align-items-center bd-highlight mb-3 text-white">
+
+            <div class="col-12 col-sm-4 col-md-3">
+                <img src="/templates/2021/svg/logo-alo-alerj-branca-nova-sem0800.svg" class="img-fluid">
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-3">
+                <a href="//www.alerj.rj.gov.br/" target="_blank">
+                    <img src="/templates/2021/images/ALERJ_NOVO_horizontal-branco.png" class="img-fluid">
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-6 text-white ">
+                <div class="row mt-4 text-center">
+                    <div class="col-lg-6">
+                        <p>Rua Primeiro de março, s/n<br>
+                            Praça XV - Rio de Janeiro<br>
+                            <span>CEP</span> 20010-090 &nbsp;&nbsp; <span class="telefone">+55 (21) 2588-1000</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social row mt-4">
+                            <div class="col-3"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></div>
+                            <div class="col-3"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></div>
+                            <div class="col-3"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                            <div class="col-3"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
+{{--
+        <div class="row mt-2">
+            <div class="col-12 col-sm-4 col-md-4 ">
+                <a href="//www.alerj.rj.gov.br/" target="_blank">
+                    <img src="/templates/2021/images/ALERJ_NOVO_horizontal-branco.png" class="img-fluid">
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-8 text-white ">
+                <div class="row mt-4">
+                    <div class="col-lg-6">
+                        <p>Rua Primeiro de março, s/n  |  Praça XV - Rio de Janeiro<br><span>CEP</span> 20010-090 &nbsp;&nbsp; <span>Telefone</span> +55 (21) 2588-1000 &nbsp;&nbsp; </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="social row">
+                            <div class="col-2"><a href="https://www.facebook.com/assembleiaRJ" target="_blank"><i class="fab fa-facebook"></i></a></div>
+                            <div class="col-2"><a href="https://twitter.com/alerj" target="_blank"><i class="fab fa-twitter"></i></a></div>
+                            <div class="col-2"><a href="https://instagram.com/instalerj/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                            <div class="col-2"><a href="https://www.youtube.com/user/dcsalerj" target="_blank"><i class="fab fa-youtube"></i></a></div>
+                            <div class="col-2"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="far fa-envelope"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+--}}
+
+
+        <div class="row text-center text-white">
+            <div class="col-12">
+                <hr class="mb-4">
+                <p class="h6">© Todos os direitos reservados. |
+                    <a class="ml-2" href="http://www.alerj.rj.gov.br/" target="_blank">
+                        ALERJ - Assémbleia Legislativa do Estado do Rio de Janeiro
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-<!-- End Footer -->
+</section>
+<!-- ./Footer -->

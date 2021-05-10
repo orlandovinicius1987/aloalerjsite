@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Data\Models\ProgressType as ProgressTypeModel;
-use App\Data\Models\RecordType as RecordTypeModel;
-use App\Data\Models\Origin as OriginModel;
-use App\Data\Models\Area as AreaModel;
+use App\Models\ProgressType as ProgressTypeModel;
+use App\Models\RecordType as RecordTypeModel;
+use App\Models\Origin as OriginModel;
+use App\Models\Area as AreaModel;
 use App\Services\Workflow;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Data\Repositories\Areas as AreasRepository;
@@ -137,7 +137,7 @@ abstract class Controller extends IlluminateController
             'areas' => $areas->get(),
             'origins' => $origins->get(),
             'contactTypes' => $contactTypes,
-            'progressTypes' => $progressTypes->get()
+            'progressTypes' => $progressTypes->get(),
         ];
     }
 

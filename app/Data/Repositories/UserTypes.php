@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Data\Models\UserType;
+use App\Models\UserType;
 use Illuminate\Support\Facades\Cache;
 
 class UserTypes extends Base

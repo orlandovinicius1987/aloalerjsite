@@ -2,19 +2,19 @@
 
 namespace Tests\Browser\Pages;
 
-use App\Data\Models\Committee;
+use App\Models\Committee;
 use Laravel\Dusk\Browser;
 
 use App\Notifications\ProgressCreated;
 use App\Notifications\RecordCreated;
 use Illuminate\Support\Facades\Notification;
 
-use App\Data\Models\User;
-use App\Data\Models\Person;
-use App\Data\Models\Record;
-use App\Data\Models\Progress;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
+use App\Models\User;
+use App\Models\Person;
+use App\Models\Record;
+use App\Models\Progress;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
 
 use App\Services\Phone;
 

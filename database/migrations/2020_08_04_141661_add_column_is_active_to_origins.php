@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Origin as OriginModel;
+use App\Models\Origin as OriginModel;
 
 class AddColumnIsActiveToOrigins extends Migration
 {
@@ -13,7 +13,7 @@ class AddColumnIsActiveToOrigins extends Migration
         'Chat',
         'Whatsapp',
         'E-mail',
-        'Telegram'
+        'Telegram',
     ];
 
     /**
@@ -30,7 +30,7 @@ class AddColumnIsActiveToOrigins extends Migration
         collect($this->activeRows)->each(function ($row) {
             OriginModel::updateOrCreate(
                 [
-                    'name' => $row
+                    'name' => $row,
                 ],
                 ['is_active' => true]
             );

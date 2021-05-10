@@ -1,9 +1,9 @@
 <?php
 
-use App\Data\Models\Area;
-use App\Data\Models\Record;
-use App\Data\Models\Progress;
-use App\Data\Models\Committee;
+use App\Models\Area;
+use App\Models\Record;
+use App\Models\Progress;
+use App\Models\Committee;
 use Illuminate\Support\Carbon;
 use App\Services\ImportCercred;
 
@@ -90,7 +90,7 @@ Artisan::command('aloalerj:update-sequences', function () {
         'record_types',
         'records',
         'user_types',
-        'users'
+        'users',
     ];
 
     coollect($tables)->each(function ($table) {
@@ -217,7 +217,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
         'Comissão de Redação;Redação;Coronel Jairo;SDD;;MDB;Tatiana;316',
         'Comissão de Servidores Públicos;Servidores Públicos;Nivaldo Mulim;PR;;MDB;Alexandre;316',
         'Comissão de Transportes;Transportes;Marcelo Simão;PP;Dionísio Lins;PP;Viviane;316',
-        'ALÔ ALERJ;ALÔ ALERJ;;;;;;'
+        'ALÔ ALERJ;ALÔ ALERJ;;;;;;',
     ];
 
     collect($current)->each(function ($committee) {
@@ -239,7 +239,7 @@ Artisan::command('aloalerj:add-new-committees', function () {
             'president' => trim($columns[2]),
             'vice_president' => trim($columns[3]),
             'office_phone' => trim(''),
-            'office_address' => trim('')
+            'office_address' => trim(''),
         ]);
     });
 })->describe('fix committee_id');
@@ -267,43 +267,43 @@ Artisan::command('aloalerj:fix-committee-names', function () {
         'name',
         'Comissão de Para Prevenir e Combater Pirataria no Estado do Rio de Janeiro'
     )->update([
-        'name' => 'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro'
+        'name' => 'Comissão para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro',
     ]);
     Committee::where('name', 'Comissão de Trabalho Legislação Social e Seguridade Social')->update([
-        'name' => 'Comissão de Trabalho, Legislação Social e Seguridade Social'
+        'name' => 'Comissão de Trabalho, Legislação Social e Seguridade Social',
     ]);
     Committee::where('name', 'Comissão de Assuntos da Criança do Adolescente e do Idoso')->update([
-        'name' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso'
+        'name' => 'Comissão de Assuntos da Criança, do Adolescente e do Idoso',
     ]);
     Committee::where(
         'name',
         'Comissão de Agricultura Pecuária e Políticas Rural Agraria e Pesqueira'
     )->update([
-        'name' => 'Comissão de Agricultura, Pecuária e Políticas Rural, Agrária e Pesqueira'
+        'name' => 'Comissão de Agricultura, Pecuária e Políticas Rural, Agrária e Pesqueira',
     ]);
     Committee::where('name', 'Comissão de Política Urbana Habitação e Assuntos Fundiários')->update(
         [
-            'name' => 'Comissão de Política Urbana, Habitação e Assuntos Fundiários'
+            'name' => 'Comissão de Política Urbana, Habitação e Assuntos Fundiários',
         ]
     );
     Committee::where(
         'name',
         'Comissão de Orçamento Finanças Fiscalização Financeira e Controle'
     )->update([
-        'name' => 'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle'
+        'name' => 'Comissão de Orçamento, Finanças, Fiscalização Financeira e Controle',
     ]);
     Committee::where('name', 'Comissão de Economia Indústria e Comércio')->update([
-        'name' => 'Comissão de Economia, Indústria e Comércio'
+        'name' => 'Comissão de Economia, Indústria e Comércio',
     ]);
     Committee::where('name', 'Comissão de Comissão de Ciência e Tecnologia')->update([
-        'name' => 'Comissão de Ciência e Tecnologia'
+        'name' => 'Comissão de Ciência e Tecnologia',
     ]);
     Committee::where(
         'name',
         'Comissão de Tributação Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais'
     )->update([
         'name' =>
-            'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais'
+            'Comissão de Tributação, Controle da Arrecadação Estadual e de Fiscalização dos Tributos Estaduais',
     ]);
 })->describe('fix committee_id');
 
@@ -368,7 +368,7 @@ Artisan::command('aloalerj:fix-null-commitees', function () {
         'Outros' => 'ALÔ ALERJ',
         'ALÔ-ALERJ' => 'ALÔ ALERJ',
         'ALÔ ALERJ' => 'ALÔ ALERJ',
-        'Nenhum' => 'ALÔ ALERJ'
+        'Nenhum' => 'ALÔ ALERJ',
     ];
 
     foreach (

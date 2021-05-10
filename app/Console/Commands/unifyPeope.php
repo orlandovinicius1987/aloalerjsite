@@ -2,18 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Data\Models\Person;
-use App\Data\Models\PersonAddress;
-use App\Data\Models\PersonContact;
-use App\Data\Models\Record as RecordModel;
-use App\Data\Repositories\Users as UsersRepository;
+use App\Models\Person;
+use App\Models\PersonAddress;
+use App\Models\PersonContact;
+use App\Models\Record as RecordModel;
 use Illuminate\Console\Command;
-use App\Data\Models\Audit as AuditModel;
-use App\Data\Models\Committee as CommitteeModel;
-use App\Data\Models\User as UserModel;
-use App\Data\Models\Progress as ProgressModel;
-use Carbon\Carbon;
-use App\Services\Authorization;
 
 class unifyPeope extends Command
 {

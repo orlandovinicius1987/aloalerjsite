@@ -20,14 +20,14 @@ class AreaRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'required_without' => 'O campo nome não pode ser vazio.'
+            'required_without' => 'O campo nome não pode ser vazio.',
         ];
     }
 }

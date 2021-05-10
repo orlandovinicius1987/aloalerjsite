@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Data\Models\Cercred as CercredModel;
+use App\Models\Cercred as CercredModel;
 use Illuminate\Support\Facades\DB;
 
 class Cercred

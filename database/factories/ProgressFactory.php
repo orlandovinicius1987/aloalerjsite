@@ -1,7 +1,7 @@
 <?php
 use Faker\Generator as Faker;
 
-use App\Data\Models\Progress as ProgressModel;
+use App\Models\Progress as ProgressModel;
 
 use App\Data\Repositories\Origins as OriginsRepository;
 use App\Data\Repositories\Records as RecordsRepository;

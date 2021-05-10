@@ -7,7 +7,7 @@ Route::get('/offline', ['as' => 'home', 'uses' => 'Home@offline']);
 
 Route::get('services/{id}', [
     'as' => 'services.show',
-    'uses' => 'Services@show'
+    'uses' => 'Services@show',
 ]);
 
 Route::group(['prefix' => 'pages'], function () {
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'chat'], function () {
     Route::get('create', ['as' => 'chat.create', 'uses' => 'Chat@create']);
     Route::get('terminated', [
         'as' => 'chat.terminated',
-        'uses' => 'Chat@terminated'
+        'uses' => 'Chat@terminated',
     ]);
 });
 
@@ -39,7 +39,7 @@ Route::group(['prefix' => 'contact'], function () {
     Route::get('/', ['as' => 'contact.index', 'uses' => 'Contact@index']);
     Route::get('pretend', [
         'as' => 'contact.index',
-        'uses' => 'Contact@pretend'
+        'uses' => 'Contact@pretend',
     ]);
     Route::post('/', ['as' => 'contact.post', 'uses' => 'Contact@post']);
 });
@@ -62,7 +62,7 @@ Route::group(
     [
         'prefix' => 'callcenter',
         'middleware' => ['auth', 'app.users'],
-        'namespace' => 'CallCenter'
+        'namespace' => 'CallCenter',
     ],
     function () {
         require __DIR__ . '/callcenter/contact_types.php';
@@ -90,6 +90,19 @@ Route::group(
             Route::get('/show/{id}', 'Areas@details')
                 ->name('areas.details')
                 ->middleware('canAny:areas:store, areas:update');
+        });
+
+        Route::group(['prefix' => 'origins'], function () {
+            Route::get('/', 'Origins@index')
+                ->name('origins.index')
+                ->middleware('canAny:areas:store, origins:update');
+            Route::post('/store', 'Origins@store')->name('origins.store');
+            Route::get('/createOrigin', 'Origins@create')
+                ->name('origins.create')
+                ->middleware('can:origins:store');
+            Route::get('/show/{id}', 'Origins@details')
+                ->name('origins.details')
+                ->middleware('canAny:origins:store, areas:update');
         });
 
         Route::group(['prefix' => 'committees'], function () {

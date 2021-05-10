@@ -2,8 +2,8 @@
 
 namespace App\Data\Repositories;
 
-use App\Data\Models\ViaModel;
-use App\Data\Models\RecordAction;
+use App\Models\ViaModel;
+use App\Models\RecordAction;
 
 class RecordActions extends Base
 {

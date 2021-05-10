@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <meta name="keywords" content="alerj, alo alerj, call center, callcenter, chat, cidadao, comissoes, whatsapp, telegram, operador, atendimento" />
-        <meta name="description" content="Sistema de Atendimento via Chat do Alo Alerj e Comissoes" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <link href="//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900" rel="stylesheet" type="text/css">
-        <link href="//fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
-        <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="/templates/mv/css/carousel.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/custom.css?cache={{rand(0,5000)}}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="alerj, alo alerj, call center, callcenter, chat, cidadao, comissoes, whatsapp, telegram, operador, atendimento" />
+    <meta name="description" content="Sistema de Atendimento via Chat do Alo Alerj e Comissoes" />
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="/templates/2021/images/favicon.ico">
 
-        @if (Session::get('client') == 'app')
-            <link rel="stylesheet" href="/templates/mv/app.css?cache={{rand(0,5000)}}">
-        @endif
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
-        <link rel="stylesheet" type="text/css" href="/templates/mv/css/navbar.css?cache={{rand(0,5000)}}">
+    <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
-        <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+        window.laravel =@json($laravel) //laravel.old
+    </script>
 
-        <script src="{{ mix('js/app.js') }}" defer></script>
 
-        <script>
-            window.laravel = @json($laravel) //laravel.old
-        </script>
-    </head>
+</head>
 
-    <body id="vue-app">
-        @include('partials.header')
+<body id="vue-app">
+@include('partials.header')
 
-        @include('partials.main-alerts')
+@include('partials.main-alerts')
 
-        <!-- Content -->
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    @yield('content-main')
+<!-- Content -->
+<section>
+    <div class="container mb-5">
+        <div class="row mb-5">
+            <div class="col-12">
+                @yield('content-main')
+            </div>
+
+{{--
+            <div class="col-3 pt-5">
+                <div class="list-group mt-5">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        O Alô Alerj
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Comissões</a>
+                    <a href="#" class="list-group-item list-group-item-action">Telefones Úteis</a>
+                    <a href="#" class="list-group-item list-group-item-action">Protocolo</a>
+                    <a href="#" class="list-group-item list-group-item-action">Contato</a>
                 </div>
             </div>
+--}}
+
         </div>
+    </div>
+</section>
+<!-- END Content -->
 
-        @include('partials.footer')
+@include('partials.footer')
 
-        <script src="/templates/mv/js/classie.js"></script>
-        <script src="/templates/mv/js/cbpAnimatedHeader.js"></script>
-
-        @include('tv.video-player-script')
-        @include('partials.google-analytics')
-    </body>
+@include('partials.google-analytics')
+</body>
 </html>

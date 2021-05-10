@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Record;
+use App\Models\Record;
 
 class AlterUserAgentAuditsColumn extends Migration
 {

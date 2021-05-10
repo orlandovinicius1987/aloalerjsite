@@ -39,7 +39,7 @@ class Authorization
             $response = collect(
                 $this->remoteRequest->post(config('auth.remote.permissions.url'), [
                     'username' => $username,
-                    'system' => static::SYSTEM_NAME
+                    'system' => static::SYSTEM_NAME,
                 ])
             );
 
@@ -90,7 +90,7 @@ class Authorization
         collect($user->getAbilities())->each(function ($item) use (&$abilitiesArray) {
             $abilitiesArray[] = [
                 'nomeFuncao' => $item->title,
-                'evento' => $item->name
+                'evento' => $item->name,
             ];
         });
 
@@ -113,13 +113,13 @@ class Authorization
                 foreach ($user->committees as $committee) {
                     $permissionsArray[] = collect([
                         'nomeFuncao' => $committee->name,
-                        'evento' => $committee->slug
+                        'evento' => $committee->slug,
                     ]);
                 }
 
                 $permissionsArray[] = collect([
                     'nomeFuncao' => $userTypesArray[$user->userType->id]->name,
-                    'evento' => $userTypesArray[$user->userType->id]->name
+                    'evento' => $userTypesArray[$user->userType->id]->name,
                 ]);
 
                 return collect($permissionsArray);
@@ -130,8 +130,8 @@ class Authorization
                         [
                             [
                                 'nomeFuncao' => 'Operador',
-                                'evento' => 'operar'
-                            ]
+                                'evento' => 'operar',
+                            ],
                         ],
                         $this->getStoredAbilities($user)
                     )
@@ -143,8 +143,8 @@ class Authorization
                         [
                             [
                                 'nomeFuncao' => 'Administrador',
-                                'evento' => 'Administrador'
-                            ]
+                                'evento' => 'Administrador',
+                            ],
                         ],
                         $this->getStoredAbilities($user)
                     )

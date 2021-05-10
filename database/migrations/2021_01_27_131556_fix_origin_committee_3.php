@@ -1,10 +1,10 @@
 <?php
 
-use App\Data\Models\Audit as AuditModel;
-use App\Data\Models\Committee as CommitteeModel;
-use App\Data\Models\User;
+use App\Models\Audit as AuditModel;
+use App\Models\Committee as CommitteeModel;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
-use App\Data\Models\Record as RecordModel;
+use App\Models\Record as RecordModel;
 use Carbon\Carbon;
 
 class FixOriginCommittee3 extends Migration
@@ -27,7 +27,7 @@ class FixOriginCommittee3 extends Migration
 
             $audit = AuditModel::where('auditable_id', $progress->id)
                 ->where('event', 'created')
-                ->where('auditable_type', 'App\Data\Models\Progress')
+                ->where('auditable_type', 'App\Models\Progress')
                 ->first();
 
             if ($audit && ($userId = $audit->user_id)) {

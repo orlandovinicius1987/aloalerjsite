@@ -31,25 +31,22 @@ export default {
                         api_token: laravel.api_token,
                     },
                 })
-                .then(function(response) {
+                .then(function (response) {
                     $this.tables.addresses = response.data
 
-                    if (response.data.addresses[0].street_name) {
-                        $this.address.zipcode = response.data.addresses[0].zip
-                        $this.address.street =
-                            response.data.addresses[0].street_name
-                        $this.address.neighbourhood =
-                            response.data.addresses[0].neighborhood
-                        $this.address.city = response.data.addresses[0].city
-                        $this.address.state =
-                            response.data.addresses[0].state_id
+                    if (response.data.logradouro) {
+                        $this.address.zipcode = response.data.cep
+                        $this.address.street = response.data.logradouro
+                        $this.address.neighbourhood = response.data.bairro
+                        $this.address.city = response.data.localidade
+                        $this.address.state = response.data.uf
                         $this.address.country = 'Brasil'
                         document.getElementById('number').focus()
                     }
 
                     $this.refreshing = false
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.log(error)
 
                     $this.tables.addresses = []
@@ -63,19 +60,15 @@ export default {
 
             const $this = this
 
-            this.timeout = setTimeout(function() {
+            this.timeout = setTimeout(function () {
                 $this.refresh()
             }, 500)
         },
 
-        isNumber: function(evt) {
+        isNumber: function (evt) {
             evt = evt ? evt : window.event
             charCode = evt.which ? evt.which : evt.keyCode
-            if (
-                charCode > 31 &&
-                (charCode < 48 || charCode > 57) &&
-                charCode !== 46
-            ) {
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
                 evt.preventDefault()
             } else {
                 return true
