@@ -24,12 +24,12 @@
                                             <strong>{{ $errors->first('progress_original') }}</strong>
                                         </span>
                                     @endif
-                                
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                
+
                                 <div class="col-md-3">
                                     <label for="protocol" class="col-form-label">Protocolo</label>
                                     <input id="protocol"

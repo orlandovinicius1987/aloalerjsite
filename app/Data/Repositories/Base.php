@@ -33,8 +33,8 @@ abstract class Base
         }
 
         !$data->has('id') || is_null($data->id)
-            ? $model = new $this->model()
-            : $model = $this->model::find($data->id);
+            ? ($model = new $this->model())
+            : ($model = $this->model::find($data->id));
 
         $model->fill($data->toArray());
 
@@ -50,9 +50,7 @@ abstract class Base
      */
     public function create($data)
     {
-        $model = is_null($id = isset($data['id']) ? $data['id'] : null)
-            ? new $this->model()
-            : $this->model::find($id);
+        $model = is_null($id = isset($data['id']) ? $data['id'] : null) ? new $this->model() : $this->model::find($id);
 
         $model->fill($data);
 
@@ -134,7 +132,7 @@ abstract class Base
 
     public function allOrderBy($field)
     {
-        return ($this->model::orderBy($field))->get();
+        return $this->model::orderBy($field)->get();
     }
 
     /**
@@ -190,16 +188,15 @@ abstract class Base
 
     public function allWherePaginate($field, $value, $sizeOfPage = 15)
     {
-        return (
-            $this->model::where($field, $value)
-                ->orderBy('created_at', 'desc')
-                ->paginate($sizeOfPage)
-        );
+        return $this->model
+            ::where($field, $value)
+            ->orderBy('created_at', 'desc')
+            ->paginate($sizeOfPage);
     }
 
     public function whereIsNullPaginate($field, $sizeOfPage = 15)
     {
-        return ($this->model::whereNull($field)->paginate($sizeOfPage));
+        return $this->model::whereNull($field)->paginate($sizeOfPage);
     }
 
     /**
@@ -209,11 +206,8 @@ abstract class Base
      *
      * @return mixed
      */
-    protected function makeResultForSelect(
-        $result,
-        $label = 'name',
-        $value = 'id'
-    ) {
+    protected function makeResultForSelect($result, $label = 'name', $value = 'id')
+    {
         return $result->map(function ($row) use ($value, $label) {
             $row['text'] = empty($row->text) ? $row[$label] : $row->text;
 
@@ -243,11 +237,7 @@ abstract class Base
         $search->each(function ($item) use ($columns, $query) {
             $columns->each(function ($type, $column) use ($query, $item) {
                 if ($type === 'string') {
-                    $query->orWhere(
-                        DB::raw("lower({$column})"),
-                        'like',
-                        '%' . $item . '%'
-                    );
+                    $query->orWhere(DB::raw("lower({$column})"), 'like', '%' . $item . '%');
                 } else {
                     if ($this->isDate($item)) {
                         $query->orWhere($column, '=', $item);

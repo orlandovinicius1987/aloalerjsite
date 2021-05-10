@@ -36,7 +36,7 @@ class People extends Base
         });
     }
 
-    private function emptyResponse($search = '')
+    protected function emptyResponse($search = '')
     {
         return $this->response($search, [], 0, null);
     }

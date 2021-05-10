@@ -23,10 +23,4 @@ require('./apps/areas.js')
 require('./apps/origins-search.js')
 require('./apps/origins.js')
 
-$(document).ready(function () {
-    $('.select2').select2({
-        theme: 'bootstrap',
-        tags: false,
-        width: '100%',
-    })
-})
+require('./components/select2.js')

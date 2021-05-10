@@ -22,7 +22,6 @@
         "sass": "^1.32.5",
         "sass-loader": "^8.0.2",
         "select2": "^4.0.13",
-        "select2-bootstrap-theme": "0.1.0-beta.10",
         "sweetalert": "^2.1.2",
         "vue": "^2.6.12",
         "vue-select": "^2.6.4",
@@ -35,6 +34,8 @@
     "dependencies": {
         "fibers": "^5.0.0",
         "node-sass": "^4.14.1",
-        "popper.js": "^1.16.1"
+        "popper.js": "^1.16.1",
+        "select2-bootstrap4-theme": "^1.0.0",
+        "select2-theme-bootstrap4": "^1.0.0"
     }
 }
