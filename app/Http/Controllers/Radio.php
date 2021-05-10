@@ -6,9 +6,6 @@ class Radio extends Controller
 {
     public function index()
     {
-        return view('radio.index')->with(
-            'committeeServices',
-            $this->getPublicCommitteeServices()
-        );;
+        return view('radio.index')->with('committeeServices', $this->getPublicCommitteeServices());
     }
 }

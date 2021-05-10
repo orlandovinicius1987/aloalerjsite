@@ -36,7 +36,13 @@ class SearchTest extends Base
         }
 
         try {
-            $this->browse(function (Browser $browser) use ($user, $faker, $persons, $person1, $person2) {
+            $this->browse(function (Browser $browser) use (
+                $user,
+                $faker,
+                $persons,
+                $person1,
+                $person2
+            ) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
@@ -50,10 +56,15 @@ class SearchTest extends Base
                     ->type('#search', $persons[0]->name)
                     ->waitForText('Busca resultou em mais de 20 registros')
 
-                    ->type('#search', 'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2')
+                    ->type(
+                        '#search',
+                        'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2'
+                    )
                     ->waitForText('Nenhum resultado encontrado')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                            $user->username .
+                            '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });
@@ -86,10 +97,15 @@ class SearchTest extends Base
                     ->visit('/callcenter/')
                     ->type('#search', $record->protocol)
                     ->waitForText($record->person->name)
-                    ->type('#search', 'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2')
+                    ->type(
+                        '#search',
+                        'AEHER89W4RJT89Q3JGSOIERGJWE9804TJERIOGSNE9PT8H3Q4TOIJQ4958W34H5OIWQ4TJESA98HQ2'
+                    )
                     ->waitForText('Nenhum resultado encontrado')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                            $user->username .
+                            '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });

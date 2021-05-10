@@ -119,7 +119,9 @@ abstract class BaseModel extends Model implements HasPresenter, AuditableContrac
             }
 
             if ($model->controlCreatedByCommittee) {
-                $model->created_by_committee_id = ($user = auth()->user()) ? $user->originCommittee()->id : null;
+                $model->created_by_committee_id = ($user = auth()->user())
+                    ? $user->originCommittee()->id
+                    : null;
             }
         });
     }

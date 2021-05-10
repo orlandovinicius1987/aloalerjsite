@@ -46,7 +46,8 @@ class RemoveDuplicatedAreas extends Migration
         ],
 
         [
-            'name' => 'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
+            'name' =>
+                'consumidor , Defesa do consumidor , contribuinte defesa do consumidor -> Defesa do Consumidor',
             'oldAreas' => [1000019, 1000021, 1000031],
             'toArea' => 1000002,
             'isActive' => true,
@@ -97,7 +98,9 @@ class RemoveDuplicatedAreas extends Migration
                     ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($progress) use ($row) {
-                        dump("Updating progress {$progress->id} from area {$progress->area_id} to {$row['toArea']}");
+                        dump(
+                            "Updating progress {$progress->id} from area {$progress->area_id} to {$row['toArea']}"
+                        );
                         $progress->area_id = $row['toArea'];
                         $progress->save();
                     });
@@ -107,7 +110,9 @@ class RemoveDuplicatedAreas extends Migration
                     ->where('area_id', $oldArea)
                     ->get()
                     ->each(function ($record) use ($row) {
-                        dump("Updating record {$record->id} from area {$record->area_id} to {$row['toArea']}");
+                        dump(
+                            "Updating record {$record->id} from area {$record->area_id} to {$row['toArea']}"
+                        );
                         $record->area_id = $row['toArea'];
                         $record->save();
                     });

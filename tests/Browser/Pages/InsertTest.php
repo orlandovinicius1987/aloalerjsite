@@ -112,7 +112,9 @@ class InsertTest extends Base
                     ->click('#button-novo-endereco')
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
-                    ->waitUntil('document.getElementById(\'street\').value == "' . $address->address . '"')
+                    ->waitUntil(
+                        'document.getElementById(\'street\').value == "' . $address->address . '"'
+                    )
                     ->click('#saveButton')
                     ->waitForText('Endereço cadastrado com sucesso');
                 foreach ($contactsArray as $key => $contact) {
@@ -120,12 +122,17 @@ class InsertTest extends Base
                     $browser
                         ->click('#button-novo-contato')
                         ->waitForText('Selecione o tipo de contato')
-                        ->waitUntil('document.getElementById(\'contact_type_id\').options.length > 1')
+                        ->waitUntil(
+                            'document.getElementById(\'contact_type_id\').options.length > 1'
+                        )
                         ->select('#contact_type_id', $contactType->id)
                         ->type('#contact', $contact)
                         ->click('#saveContactButton');
                     if (isset($contactTypesArrayIsMobile[$contactType->code])) {
-                        $contact = Phone::addPhoneMask($contact, $contactTypesArrayIsMobile[$contactType->code]);
+                        $contact = Phone::addPhoneMask(
+                            $contact,
+                            $contactTypesArrayIsMobile[$contactType->code]
+                        );
                     }
                     $browser->assertSee($contact);
                 }

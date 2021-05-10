@@ -25,7 +25,7 @@ class Contact extends Request
             'name' => 'required', //ok
             'telephone' => 'required', //ok
             'cpf' => 'required|cpf_cnpj', //ok
-            'message' => 'required' //ok
+            'message' => 'required', //ok
         ];
     }
 

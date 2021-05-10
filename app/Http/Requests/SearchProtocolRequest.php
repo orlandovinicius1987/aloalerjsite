@@ -11,14 +11,13 @@ class SearchProtocolRequest extends Request
     {
         return [
             'protocol' => 'required|exists:records,protocol',
-            'access_code' => new ValidatePublicSearch($this->all())
+            'access_code' => new ValidatePublicSearch($this->all()),
         ];
     }
 
     public function messages()
     {
-        return [ 'protocol.exists' => 'Dados inválidos',
-                 'access_code.exists' => 'Dados inválidos'];
+        return ['protocol.exists' => 'Dados inválidos', 'access_code.exists' => 'Dados inválidos'];
     }
 
     /**

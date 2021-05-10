@@ -20,19 +20,12 @@ class People extends Controller
         $pesquisa = $request->get('pesquisa');
 
         if ($pesquisa) {
-            $person = $this->peopleRepository->findByColumn(
-                'cpf_cnpj',
-                $pesquisa
-            );
+            $person = $this->peopleRepository->findByColumn('cpf_cnpj', $pesquisa);
             if ($person) {
                 $records = $this->recordsRepository->findByPerson($person->id);
 
-                $addresses = $this->peopleAddressesRepository->findByPerson(
-                    $person->id
-                );
-                $contacts = $this->peopleContactsRepository->findByPerson(
-                    $person->id
-                );
+                $addresses = $this->peopleAddressesRepository->findByPerson($person->id);
+                $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
                 return view('callcenter.people.form')
                     ->with('person', $person)
@@ -42,8 +35,10 @@ class People extends Controller
                     ->with(['origins' => $this->originsRepository->all()]);
             }
         } else {
-            return view('callcenter.people.index')
-                ->with('anonymous_id', get_anonymous_person()->id);
+            return view('callcenter.people.index')->with(
+                'anonymous_id',
+                get_anonymous_person()->id
+            );
         }
     }
 
@@ -86,12 +81,8 @@ class People extends Controller
         if ($person_id) {
             $person = $this->peopleRepository->findById($person_id);
             $records = $this->recordsRepository->findByPerson($person->id);
-            $addresses = $this->peopleAddressesRepository->findByPerson(
-                $person->id
-            );
-            $contacts = $this->peopleContactsRepository->findByPerson(
-                $person->id
-            );
+            $addresses = $this->peopleAddressesRepository->findByPerson($person->id);
+            $contacts = $this->peopleContactsRepository->findByPerson($person->id);
 
             $with['records'] = $records;
             $with['addresses'] = $addresses;
@@ -130,11 +121,7 @@ class People extends Controller
             return $view;
         } else {
             $person = $this->peopleRepository->findById($person_id);
-            $records = ($this->recordsRepository->allWherePaginate(
-                'person_id',
-                $person_id,
-                15
-            ));
+            $records = $this->recordsRepository->allWherePaginate('person_id', $person_id, 15);
 
             Workflow::end();
 
@@ -155,8 +142,7 @@ class People extends Controller
 
         $record = $this->recordsRepository->findById($request->get('record_id'));
 
-
-        return redirect()->to(route('records.show-protocol',$record->id));
+        return redirect()->to(route('records.show-protocol', $record->id));
     }
 
     /**
@@ -167,10 +153,7 @@ class People extends Controller
     {
         $person = null;
         if (!$request->get('$person_id') and $request->get('cpf_cnpj')) {
-            $person = $this->peopleRepository->findByColumn(
-                'cpf_cnpj',
-                $request->get('cpf_cnpj')
-            );
+            $person = $this->peopleRepository->findByColumn('cpf_cnpj', $request->get('cpf_cnpj'));
         }
         return $person ? $person->id : $request->get('person_id');
     }

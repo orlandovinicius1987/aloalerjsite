@@ -27,9 +27,14 @@ class AddColumnCreatedByCommitteeIdToProgressesTable extends Migration
             if ($creator = $progress->creator) {
                 $progress->created_by_committee_id = $creator->originCommittee()->id;
             } else {
-                $progress->created_by_committee_id = Committee::where('slug', 'alo-alerj')->first()->id;
+                $progress->created_by_committee_id = Committee::where(
+                    'slug',
+                    'alo-alerj'
+                )->first()->id;
             }
-            dump("Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}");
+            dump(
+                "Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}"
+            );
             $progress->save();
         }
     }

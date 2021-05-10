@@ -40,7 +40,9 @@ class CreateOriginsTable extends Migration
             ]);
         }
 
-        DB::statement("SELECT setval('public.origins_id_seq', (SELECT max(id) FROM public.origins));");
+        DB::statement(
+            "SELECT setval('public.origins_id_seq', (SELECT max(id) FROM public.origins));"
+        );
     }
 
     /**

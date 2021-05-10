@@ -48,11 +48,15 @@ Route::get('/home', 'Home@index')->name('home');
 
 Route::get('/protocolo/{protocol}', 'CallCenter\Records@showPublic')->name('records.show-public');
 
-Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name('records.search-show-public');
+Route::post('/protocolo', 'CallCenter\Records@searchShowPublic')->name(
+    'records.search-show-public'
+);
 
 Route::get('/pesquisa/protocolo', 'CallCenter\Records@searchProtocol')->name('records.search');
 
-Route::post('/pesquisa/protocolo', 'CallCenter\Records@showByProtocolNumber')->name('records.search');
+Route::post('/pesquisa/protocolo', 'CallCenter\Records@showByProtocolNumber')->name(
+    'records.search'
+);
 
 Route::group(
     [
@@ -114,11 +118,15 @@ Route::group(
                 ->middleware('canAny:committees:store,committees:update');
 
             Route::group(['prefix' => 'committee-service'], function () {
-                Route::get('/create/{id}', 'CommitteeServices@create')->name('committee_services.create');
+                Route::get('/create/{id}', 'CommitteeServices@create')->name(
+                    'committee_services.create'
+                );
 
                 Route::post('/', 'CommitteeServices@store')->name('committee_services.store');
 
-                Route::get('/show/{id}', 'CommitteeServices@details')->name('committee_services.details');
+                Route::get('/show/{id}', 'CommitteeServices@details')->name(
+                    'committee_services.details'
+                );
             });
         });
     }

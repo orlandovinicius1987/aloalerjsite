@@ -17,20 +17,15 @@ class Committees extends Controller
 
     public function view($pageName)
     {
-        return view("committees.$pageName")->with('css', 'comissoes/comissao')
-            ->with(
-                'committeeServices',
-                $this->getPublicCommitteeServices()
-            );;
+        return view("committees.$pageName")
+            ->with('css', 'comissoes/comissao')
+            ->with('committeeServices', $this->getPublicCommitteeServices());
     }
 
     public function show($id)
     {
-        return view('committees.show')->with(
-            'committee',$this->committeeRepository->findById($id))
-                ->with(
-            'committeeServices',
-                $this->getPublicCommitteeServices()
-        );
+        return view('committees.show')
+            ->with('committee', $this->committeeRepository->findById($id))
+            ->with('committeeServices', $this->getPublicCommitteeServices());
     }
 }

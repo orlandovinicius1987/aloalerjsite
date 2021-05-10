@@ -111,7 +111,10 @@ class Records extends Controller
         return array_merge($this->getComboBoxMenus(), [
             'person' => $record->person,
             'record' => $record,
-            'records' => $this->recordsRepository->allWherePaginate('person_id', $record->person_id),
+            'records' => $this->recordsRepository->allWherePaginate(
+                'person_id',
+                $record->person_id
+            ),
             'addresses' => $this->peopleAddressesRepository->findByPerson($record->person_id),
             'contacts' => $this->peopleContactsRepository->findByPerson($record->person_id),
         ]);
@@ -149,10 +152,26 @@ class Records extends Controller
     {
         $record = $this->storeRecord($request);
 
-        $this->peopleContactsRepository->createContact($request->get('mobile'), $record->person_id, 'mobile');
-        $this->peopleContactsRepository->createContact($request->get('whatsapp'), $record->person_id, 'whatsapp');
-        $this->peopleContactsRepository->createContact($request->get('email'), $record->person_id, 'email');
-        $this->peopleContactsRepository->createContact($request->get('phone'), $record->person_id, 'phone');
+        $this->peopleContactsRepository->createContact(
+            $request->get('mobile'),
+            $record->person_id,
+            'mobile'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('whatsapp'),
+            $record->person_id,
+            'whatsapp'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('email'),
+            $record->person_id,
+            'email'
+        );
+        $this->peopleContactsRepository->createContact(
+            $request->get('phone'),
+            $record->person_id,
+            'phone'
+        );
 
         if ($request->get('create_address') == 'true') {
             $data = array_merge($request->toArray(), [
@@ -172,7 +191,10 @@ class Records extends Controller
          * não é o nome cadastrado, será iniciado uma nova tela para acerto do cadastro.
          *
          */
-        if ($request->get('is_anonymous') == 'false' && $request->get('name') != $record->person->name) {
+        if (
+            $request->get('is_anonymous') == 'false' &&
+            $request->get('name') != $record->person->name
+        ) {
             return view('callcenter.people.diverge')->with([
                 'newName' => $request->get('name'),
                 'record' => $record,
@@ -201,7 +223,8 @@ class Records extends Controller
         $record = $this->recordsRepository->findById($id);
         $progress = $this->progressesRepository->create([
             'original' => 'Protocolo finalizado sem observações em ' . now() . '.',
-            'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Finalização')->id,
+            'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Finalização')
+                ->id,
             'record_id' => $record->id,
         ]);
 
@@ -262,7 +285,10 @@ class Records extends Controller
 
     public function index()
     {
-        return view('callcenter.records.index')->with('records', $this->recordsRepository->allPaginate());
+        return view('callcenter.records.index')->with(
+            'records',
+            $this->recordsRepository->allPaginate()
+        );
     }
 
     public function nonResolved()
@@ -275,7 +301,10 @@ class Records extends Controller
 
     public function showProtocol($record_id)
     {
-        return view('callcenter.records.show-protocol')->with('record', $this->recordsRepository->findById($record_id));
+        return view('callcenter.records.show-protocol')->with(
+            'record',
+            $this->recordsRepository->findById($record_id)
+        );
     }
 
     public function showPublic($protocol)
@@ -343,7 +372,8 @@ class Records extends Controller
             //Se é um protocolo novo
             $request->merge(['record_id' => $record->id]);
             $request->merge([
-                'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Entrada')->id,
+                'progress_type_id' => app(ProgressTypesRepository::class)->findByName('Entrada')
+                    ->id,
             ]);
             $request->merge([
                 'is_private' => 1,

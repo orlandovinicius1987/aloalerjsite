@@ -109,7 +109,9 @@ and historico.historico_id = ' . $historico_id
     private function inferAndFillMissinData()
     {
         Record::all()->each(function ($record) {
-            $history = $record->progresses->where('original_history_id', $record->historico_id)->first();
+            $history = $record->progresses
+                ->where('original_history_id', $record->historico_id)
+                ->first();
 
             if ($history) {
                 $history = json_decode(json_encode($history->toArray()));
@@ -127,7 +129,9 @@ and historico.historico_id = ' . $historico_id
                 $record->record_action_id = $this->inferActionFromProtocol($history);
 
                 $historico = coollect(
-                    $this->db()->select("select * from historico where historico_id = {$history->original_history_id}")
+                    $this->db()->select(
+                        "select * from historico where historico_id = {$history->original_history_id}"
+                    )
                 )->first();
 
                 $record->created_at = $historico->data_inicio_atendimento ?: $record->created_at;
@@ -261,7 +265,9 @@ and historico.historico_id = ' . $historico_id
                 'objeto_id' => $protocol->objeto_id,
                 'historico_id' => $protocol->historico_id,
                 'historico_id_finalizador' => $protocol->historico_id_finalizador,
-                'person_first_record' => $this->personDoesNotHaveAnyOtherProtocols($protocol->pessoa_id),
+                'person_first_record' => $this->personDoesNotHaveAnyOtherProtocols(
+                    $protocol->pessoa_id
+                ),
                 'record_type_id' => $protocol->pessoa_id,
                 'area_id' => $this->inferAreaFromProtocol($protocol) ?: 999999,
                 'record_action_id' => $this->inferActionFromProtocol($protocol),
@@ -418,22 +424,30 @@ and historico.historico_id = ' . $historico_id
         //        });
 
         Record::all()->each(function ($record) {
-            $this->increment('RECORD FOR HISTORY', 100, "record {$record->id} - person {$record->person_id}");
+            $this->increment(
+                'RECORD FOR HISTORY',
+                100,
+                "record {$record->id} - person {$record->person_id}"
+            );
 
             $ids = [];
 
             $firstHistory = !empty($record->historico_id) ? $record->historico_id : null;
 
-            $lastHistory = !empty($record->historico_id_finalizador) ? $record->historico_id_finalizador : null;
+            $lastHistory = !empty($record->historico_id_finalizador)
+                ? $record->historico_id_finalizador
+                : null;
 
             if ($firstHistory) {
                 $ids[] = $record->historico_id;
             }
 
             if ($record->person_first_record) {
-                $this->allHistoryIdsExceptForPerson($record->person_id, $firstHistory, $lastHistory)->each(function (
-                    $history
-                ) use (&$ids) {
+                $this->allHistoryIdsExceptForPerson(
+                    $record->person_id,
+                    $firstHistory,
+                    $lastHistory
+                )->each(function ($history) use (&$ids) {
                     $ids[] = $history->historico_id;
                 });
             }
@@ -459,7 +473,9 @@ and historico.historico_id = ' . $historico_id
                     );
 
                     $this->db()->statement(
-                        'update historico set imported = true where historico_id = ' . $history->historico_id . ';'
+                        'update historico set imported = true where historico_id = ' .
+                            $history->historico_id .
+                            ';'
                     );
 
                     return $this->createProgress($history, $record);
@@ -476,7 +492,9 @@ and historico.historico_id = ' . $historico_id
         $history->history_fields = $this->getHistoryFields($history->historico_id);
 
         $this->db()->statement(
-            'update historico set imported = true where historico_id = ' . $history->historico_id . ';'
+            'update historico set imported = true where historico_id = ' .
+                $history->historico_id .
+                ';'
         );
 
         $progress = $this->createProgress($history, $record);
@@ -517,20 +535,30 @@ and historico.historico_id = ' . $historico_id
                 //PEGAR OS PRIMEIROS DA TABELA PROTOCOLO DA CERCRED
                 $history =
                     $personProtocols->count() > 1
-                        ? $this->getHistoryFromProtocol([$record->historico_id, $record->historico_id_finalizador])
+                        ? $this->getHistoryFromProtocol([
+                            $record->historico_id,
+                            $record->historico_id_finalizador,
+                        ])
                         : $this->getHistory($person->id, 'pessoa_id');
 
                 $history->each(function ($history) use ($record) {
                     $this->importHistory($history, $record);
                 });
 
-                $this->increment('RECORDS', 100, "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record");
+                $this->increment(
+                    'RECORDS',
+                    100,
+                    "{$protocol->pessoa_nome} ({$protocol->pessoa_id}) - record"
+                );
             });
 
             if ($personProtocols->count() > 1) {
                 $record = false;
 
-                $this->getHistory($person->id, 'pessoa_id')->each(function ($history) use ($record, $person) {
+                $this->getHistory($person->id, 'pessoa_id')->each(function ($history) use (
+                    $record,
+                    $person
+                ) {
                     if (!$record) {
                         $record = $this->createFixRecord($person);
                     }
@@ -629,7 +657,9 @@ and historico.historico_id = ' . $historico_id
                 ]);
             });
 
-        DB::statement("SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));");
+        DB::statement(
+            "SELECT setval('public.record_actions_id_seq', (SELECT max(id) FROM public.record_actions));"
+        );
     }
 
     protected function progressTypes()
@@ -648,7 +678,9 @@ and historico.historico_id = ' . $historico_id
                 ]);
             });
 
-        DB::statement("SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));");
+        DB::statement(
+            "SELECT setval('public.progress_types_id_seq', (SELECT max(id) FROM public.progress_types));"
+        );
     }
 
     protected function users()
@@ -709,9 +741,14 @@ and historico.historico_id = ' . $historico_id
             ->table('endereco')
             ->get()
             ->each(function ($endereco) use ($statuses, $types) {
-                $type = lower($types->where('endereco_tipo', $endereco->endereco_tipo)->first()->descricao);
+                $type = lower(
+                    $types->where('endereco_tipo', $endereco->endereco_tipo)->first()->descricao
+                );
 
-                $status = lower($statuses->where('endereco_status', $endereco->endereco_status)->first()->descricao);
+                $status = lower(
+                    $statuses->where('endereco_status', $endereco->endereco_status)->first()
+                        ->descricao
+                );
 
                 PersonAddress::create(
                     $this->sanitize(
@@ -801,7 +838,9 @@ and historico.historico_id = ' . $historico_id
                 $this->increment('PHONES', 100, $telefone->telefone);
             });
 
-        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
+        DB::statement(
+            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
+        );
     }
 
     protected function emails()
@@ -861,7 +900,9 @@ and historico.historico_id = ' . $historico_id
                 $this->increment('EMAILS', 100, "{$email->email} - {$email->email_id}");
             });
 
-        DB::statement("SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));");
+        DB::statement(
+            "SELECT setval('public.person_contacts_id_seq', (SELECT max(id) FROM public.person_contacts));"
+        );
     }
 
     protected function people()
@@ -910,7 +951,9 @@ and historico.historico_id = ' . $historico_id
                 $this->increment('PEOPLE', 100, "{$person->pessoa_id} - {$person->nome}");
             });
 
-        DB::statement("SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));");
+        DB::statement(
+            "SELECT setval('public.people_id_seq', (SELECT max(id) FROM public.people));"
+        );
     }
 
     protected function info($message)

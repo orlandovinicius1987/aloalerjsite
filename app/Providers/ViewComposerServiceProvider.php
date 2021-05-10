@@ -21,7 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'csrf_token' => csrf_token(),
                 'api_token' => \Auth::user()->api_token ?? '',
                 'chat' => config('chat'),
-                'mode' => 'show'
+                'mode' => 'show',
             ]);
 
             if (!isset($view->workflow)) {

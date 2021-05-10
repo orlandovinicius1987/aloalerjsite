@@ -43,7 +43,9 @@ class CreateRecordTypesTable extends Migration
             ]);
         }
 
-        DB::statement("SELECT setval('public.record_types_id_seq', (SELECT max(id) FROM public.record_types));");
+        DB::statement(
+            "SELECT setval('public.record_types_id_seq', (SELECT max(id) FROM public.record_types));"
+        );
     }
 
     /**

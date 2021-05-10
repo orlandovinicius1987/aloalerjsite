@@ -30,7 +30,14 @@ class WorkflowTest extends Base
         $faker = app('Faker');
 
         try {
-            $this->browse(function (Browser $browser) use ($user, $faker, $person, $record, $address, $contacts) {
+            $this->browse(function (Browser $browser) use (
+                $user,
+                $faker,
+                $person,
+                $record,
+                $address,
+                $contacts
+            ) {
                 $browser
                     ->loginAs($user->id)
                     ->visit('/callcenter/')
@@ -60,7 +67,9 @@ class WorkflowTest extends Base
                 $browser
                     ->type('#zipcode', $address->zipcode)
                     ->type('#number', $address->number)
-                    ->waitUntil('document.getElementById(\'street\').value == "' . $address->address . '"')
+                    ->waitUntil(
+                        'document.getElementById(\'street\').value == "' . $address->address . '"'
+                    )
                     ->click('#saveButton')
                     ->waitForText('Contatos')
                     ->type('#mobile', $contacts->mobile)
@@ -70,7 +79,9 @@ class WorkflowTest extends Base
                     ->click('#saveButton')
                     ->waitForText('Anote o número do novo Protocolo')
                     ->waitUntil(
-                        'document.getElementById(\'navbarDropdown\').text.includes(\'' . $user->username . '\')'
+                        'document.getElementById(\'navbarDropdown\').text.includes(\'' .
+                            $user->username .
+                            '\')'
                     )
                     ->assertPresent('#navbarDropdown');
             });

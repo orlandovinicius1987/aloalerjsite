@@ -51,7 +51,8 @@ class CommitteesSeeder extends Seeder
                 'vice-president' => 'Deputado Jorge Felippe Neto',
                 'public' => true,
                 'office-phone' => '(21) 2588-1360',
-                'office_address' => 'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
+                'office_address' =>
+                    'Departamento de Apoio às Comissões Permanentes - sala 316 do Palácio Tiradentes',
             ],
             'preconceitos' => [
                 'slug' => 'preconceitos',
@@ -70,7 +71,8 @@ class CommitteesSeeder extends Seeder
             ],
             'pirataria' => [
                 'slug' => 'pirataria',
-                'name' => 'Comissão de Para Prevenir e Combater Pirataria no Estado do Rio de Janeiro',
+                'name' =>
+                    'Comissão de Para Prevenir e Combater Pirataria no Estado do Rio de Janeiro',
                 'link_caption' => 'Pirataria',
                 'short_name' => 'Prevenção e Combate a Pirataria',
                 'phone' => '0800-282-6582',

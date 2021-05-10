@@ -26,17 +26,15 @@ class FakerServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Faker', function ($app) {
             $faker = \Faker\Factory::create();
-            $newClass = new class($faker) extends \Faker\Provider\Base {
+            $newClass = new class ($faker) extends \Faker\Provider\Base {
                 public function name_without_special_character()
                 {
                     $faker = app(Faker::class);
-                    return preg_replace("/([^a-zA-Z])/", "", $faker->name);
+                    return preg_replace('/([^a-zA-Z])/', '', $faker->name);
                 }
                 private function mod($dividendo, $divisor)
                 {
-                    return round(
-                        $dividendo - floor($dividendo / $divisor) * $divisor
-                    );
+                    return round($dividendo - floor($dividendo / $divisor) * $divisor);
                 }
 
                 public function cpf_com_pontos()
@@ -96,31 +94,20 @@ class FakerServiceProvider extends ServiceProvider
                             $n1 .
                             $n2 .
                             $n3 .
-                            "." .
+                            '.' .
                             $n4 .
                             $n5 .
                             $n6 .
-                            "." .
+                            '.' .
                             $n7 .
                             $n8 .
                             $n9 .
-                            "-" .
+                            '-' .
                             $d1 .
                             $d2;
                     } else {
                         $retorno =
-                            '' .
-                            $n1 .
-                            $n2 .
-                            $n3 .
-                            $n4 .
-                            $n5 .
-                            $n6 .
-                            $n7 .
-                            $n8 .
-                            $n9 .
-                            $d1 .
-                            $d2;
+                            '' . $n1 . $n2 . $n3 . $n4 . $n5 . $n6 . $n7 . $n8 . $n9 . $d1 . $d2;
                     }
                     return $retorno;
                 }
@@ -181,20 +168,20 @@ class FakerServiceProvider extends ServiceProvider
                             '' .
                             $n1 .
                             $n2 .
-                            "." .
+                            '.' .
                             $n3 .
                             $n4 .
                             $n5 .
-                            "." .
+                            '.' .
                             $n6 .
                             $n7 .
                             $n8 .
-                            "/" .
+                            '/' .
                             $n9 .
                             $n10 .
                             $n11 .
                             $n12 .
-                            "-" .
+                            '-' .
                             $d1 .
                             $d2;
                     } else {

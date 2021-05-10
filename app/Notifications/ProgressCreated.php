@@ -28,7 +28,8 @@ class ProgressCreated extends Notification implements ShouldQueue
      */
     private function getMessage()
     {
-        return 'Um ou mais andamentos foram atualizados ao protocolo ' . $this->progress->record->protocol;
+        return 'Um ou mais andamentos foram atualizados ao protocolo ' .
+            $this->progress->record->protocol;
     }
 
     /**
@@ -55,7 +56,10 @@ class ProgressCreated extends Notification implements ShouldQueue
             ->greeting('Olá!')
             ->line($this->getMessage());
 
-        $message->action('Clique para acessar seu protocolo com sua chave de acesso', route('home'));
+        $message->action(
+            'Clique para acessar seu protocolo com sua chave de acesso',
+            route('home')
+        );
 
         return $message;
     }

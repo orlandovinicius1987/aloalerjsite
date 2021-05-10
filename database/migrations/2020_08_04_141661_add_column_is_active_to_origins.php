@@ -7,7 +7,14 @@ use App\Models\Origin as OriginModel;
 
 class AddColumnIsActiveToOrigins extends Migration
 {
-    public $activeRows = ['Lei de Acesso a Informação', '0800', 'Chat', 'Whatsapp', 'E-mail', 'Telegram'];
+    public $activeRows = [
+        'Lei de Acesso a Informação',
+        '0800',
+        'Chat',
+        'Whatsapp',
+        'E-mail',
+        'Telegram',
+    ];
 
     /**
      * Run the migrations.

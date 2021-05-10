@@ -17,7 +17,7 @@ class TrimStrings extends Middleware
     {
         $count = 0;
         do {
-            $string = preg_replace("/\s\s/", " ", $string, -1, $count);
+            $string = preg_replace('/\s\s/', ' ', $string, -1, $count);
         } while ($count > 0);
         return $string;
     }

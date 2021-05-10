@@ -26,8 +26,10 @@ class Records extends Base
      * @param PersonContactRepository $personContactRepository
      * @internal param Repository $repository
      */
-    public function __construct(PeopleRepository $personRepository, PersonContactRepository $personContactRepository)
-    {
+    public function __construct(
+        PeopleRepository $personRepository,
+        PersonContactRepository $personContactRepository
+    ) {
         $this->peopleRepository = $personRepository;
         $this->personContactRepository = $personContactRepository;
     }

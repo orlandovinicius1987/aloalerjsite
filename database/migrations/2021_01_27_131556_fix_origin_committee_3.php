@@ -51,13 +51,16 @@ class FixOriginCommittee3 extends Migration
                         "Alterando o progress {$progress->id} da comissão {$oldCommitteeId} para a comissão {$newCommitteeId}"
                     );
                 } else {
-                    dump("Mantendo o progress {$progress->id} na comissão {$progress->created_by_committee_id}");
+                    dump(
+                        "Mantendo o progress {$progress->id} na comissão {$progress->created_by_committee_id}"
+                    );
                 }
 
                 $progress->save();
             } else {
                 dump(
-                    "Não foi possível resgatar o audit do progress {$progress->id}. Audit encontrado = " . $audit->id ??
+                    "Não foi possível resgatar o audit do progress {$progress->id}. Audit encontrado = " .
+                        $audit->id ??
                         'null'
                 );
             }

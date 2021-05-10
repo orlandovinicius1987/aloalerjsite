@@ -53,7 +53,11 @@ class fixEverything extends Command
         }
 
         foreach (
-            ProgressModel::whereDate('created_at', '>=', Carbon::createFromFormat('Y-m-d', '2020-08-01'))
+            ProgressModel::whereDate(
+                'created_at',
+                '>=',
+                Carbon::createFromFormat('Y-m-d', '2020-08-01')
+            )
                 ->whereNull('created_by_id')
                 ->cursor()
             as $progress
@@ -71,10 +75,15 @@ class fixEverything extends Command
                 if ($creator = $progress->creator) {
                     $progress->created_by_committee_id = $creator->originCommittee()->id;
                 } else {
-                    $progress->created_by_committee_id = CommitteeModel::where('slug', 'alo-alerj')->first()->id;
+                    $progress->created_by_committee_id = CommitteeModel::where(
+                        'slug',
+                        'alo-alerj'
+                    )->first()->id;
                 }
 
-                dump("Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}");
+                dump(
+                    "Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}"
+                );
 
                 $progress->save();
             }

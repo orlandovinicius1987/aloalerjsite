@@ -87,7 +87,10 @@ class Users extends Base
         $committeeBool = false;
 
         $userTypesRepository = app(UserTypesRepository::class);
-        $userTypesArray = $userTypesRepository->toArrayWithColumnKey($userTypesRepository->all(), 'name');
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
+            $userTypesRepository->all(),
+            'name'
+        );
 
         foreach ($permissions as $permission) {
             if (isset($userTypesArray[$permission['nomeFuncao']])) {
@@ -159,7 +162,13 @@ class Users extends Base
             $name = $request->get('name');
             $credentials = extract_credentials($request);
 
-            if (is_null($user = $this->findUserByEmail($email = "{$credentials['username']}@alerj.rj.gov.br"))) {
+            if (
+                is_null(
+                    $user = $this->findUserByEmail(
+                        $email = "{$credentials['username']}@alerj.rj.gov.br"
+                    )
+                )
+            ) {
                 $user = new User();
 
                 $user->username = $credentials['username'];
@@ -277,7 +286,10 @@ class Users extends Base
         $usersCommitteesRepository = app(UsersCommitteesRepository::class);
 
         $userTypesRepository = app(UserTypesRepository::class);
-        $userTypesArray = $userTypesRepository->toArrayWithColumnKey($userTypesRepository->all(), 'name');
+        $userTypesArray = $userTypesRepository->toArrayWithColumnKey(
+            $userTypesRepository->all(),
+            'name'
+        );
 
         $administrator = false;
         $userType = null;

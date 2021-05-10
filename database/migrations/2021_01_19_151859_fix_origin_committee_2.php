@@ -18,7 +18,11 @@ class FixOriginCommittee2 extends Migration
     public function up()
     {
         foreach (
-            RecordModel::whereDate('created_at', '>=', Carbon::createFromFormat('Y-m-d', '2020-08-01'))
+            RecordModel::whereDate(
+                'created_at',
+                '>=',
+                Carbon::createFromFormat('Y-m-d', '2020-08-01')
+            )
                 ->whereDate('created_at', '<=', Carbon::createFromFormat('Y-m-d', '2020-10-01'))
                 ->cursor()
             as $record
@@ -51,13 +55,16 @@ class FixOriginCommittee2 extends Migration
                         "Alterando o progress {$progress->id} da comissão {$oldCommitteeId} para a comissão {$newCommitteeId}"
                     );
                 } else {
-                    dump("Mantendo o progress {$progress->id} na comissão {$progress->created_by_committee_id}");
+                    dump(
+                        "Mantendo o progress {$progress->id} na comissão {$progress->created_by_committee_id}"
+                    );
                 }
 
                 $progress->save();
             } else {
                 dump(
-                    "Não foi possível resgatar o audit do progress {$progress->id}. Audit encontrado = " . $audit->id ??
+                    "Não foi possível resgatar o audit do progress {$progress->id}. Audit encontrado = " .
+                        $audit->id ??
                         'null'
                 );
             }

@@ -5,7 +5,9 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:api', 'app.users']], func
 
     Route::post('search', 'Api\Search@execute')->name('api.search.execute');
 
-    Route::post('committees-search/', 'Api\CommitteesSearch@execute')->name('api.commiteesSearch.execute');
+    Route::post('committees-search/', 'Api\CommitteesSearch@execute')->name(
+        'api.commiteesSearch.execute'
+    );
 
     Route::post('areas-search/', 'Api\AreasSearch@execute')->name('api.areasSearch.execute');
 

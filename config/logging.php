@@ -34,7 +34,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily','bugsnag'],
+            'channels' => ['daily', 'bugsnag'],
         ],
 
         'single' => [
@@ -47,7 +47,6 @@ return [
         'bugsnag' => [
             'driver' => 'bugsnag',
         ],
-
 
         'daily' => [
             'driver' => 'daily',

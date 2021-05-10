@@ -16,10 +16,7 @@ function endTimer()
 
 function toBoolean($boolean)
 {
-    return ($boolean === 'true' ||
-        $boolean === '1' ||
-        $boolean === 1 ||
-        $boolean === true);
+    return $boolean === 'true' || $boolean === '1' || $boolean === 1 || $boolean === true;
 }
 
 function extract_credentials($request)
@@ -67,7 +64,8 @@ function validate_cpf_cnpj($string)
 
 function is_committee_user()
 {
-    return auth()->user() && auth()->user()->userType &&
+    return auth()->user() &&
+        auth()->user()->userType &&
         auth()->user()->userType->name == 'Comissao';
 }
 
@@ -82,7 +80,6 @@ function get_user_committee_ids()
 
 function get_anonymous_person()
 {
-
     return app(\App\Data\Repositories\People::class)->getAnonymousModel();
 }
 

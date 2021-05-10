@@ -76,10 +76,15 @@ class fixRecordCommittee extends Command
                 if ($creator = $progress->creator) {
                     $progress->created_by_committee_id = $creator->originCommittee()->id;
                 } else {
-                    $progress->created_by_committee_id = CommitteeModel::where('slug', 'alo-alerj')->first()->id;
+                    $progress->created_by_committee_id = CommitteeModel::where(
+                        'slug',
+                        'alo-alerj'
+                    )->first()->id;
                 }
 
-                dump("Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}");
+                dump(
+                    "Alterando o progress {$progress->id} para a comissão {$progress->created_by_committee_id}"
+                );
 
                 $progress->save();
             }
