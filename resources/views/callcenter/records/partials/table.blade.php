@@ -76,9 +76,10 @@
                             {{ $contact->contact }} <br>
                         @endForEach
                     </p>
-
+                    @endif
                 </div>
-                @endif
+
+
 
                 <div class="col-lg-7 py-4 px-4 border-right ">
                     <div style="overflow-y: auto;  !important;">
@@ -128,9 +129,9 @@
                 <div class="mobile-tables " v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer; border: 1px solid rgba(0, 0, 0, .2);"  >
                     <div class="contact-line"><span class="mobile-label">Protocolo Nº</span>{{ $record->protocol }}</div>
                     @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                        <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['person_id' => $record->person->id]) }}" >{{ $record->person->name }}</a> </div>
-                        <div class="contact-line"><span class="mobile-label">Contatos : </span>
-                            @foreach($record->person->contacts()->limit(10)->get() as $contact)
+                    <div class="contact-line"><span class="mobile-label">Nome : </span> <a href="{{ route('people.show',['person_id' => $record->person->id]) }}" >{{ $record->person->name }}</a> </div>
+                    <div class="contact-line"><span class="mobile-label">Contatos : </span>
+                        @foreach($record->person->contacts()->limit(10)->get() as $contact)
 
                             {{ $contact->contact }}
                             <br/>
