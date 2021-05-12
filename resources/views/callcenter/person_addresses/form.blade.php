@@ -8,7 +8,7 @@
             <div class="section-title">
                 <ul class="aloalerj-breadcrumbs">
                     <li>
-                        <a href="{{ route('people.show', ['id' => $person->id]) }}">{{ $person->name }}</a>
+                        <a href="{{ route('people.show', ['person_id' => $person->id]) }}">{{ $person->name }}</a>
                     </li>
                     <li>
                         Endereços
