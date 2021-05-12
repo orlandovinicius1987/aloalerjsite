@@ -4,7 +4,7 @@
 
     <div class="mailsent mt-5">
 
-        <div class="card my-5 py-3  col-lg-8 offset-lg-2 text-center">
+        <div class="card my-5 py-3  col-lg-10 offset-lg-1 text-center">
             <div class="card-header pt-5">
                 <div class="mensagem-enviada">
                     <h2>

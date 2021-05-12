@@ -4,7 +4,7 @@
 
     <div id="vue-committee-services">
         <div class="row mt-4" >
-            <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="col-lg-10 offset-lg-1 text-center">
                 <div class="section-title">
 
                     <ul class="aloalerj-breadcrumbs">
@@ -24,7 +24,7 @@
 
 
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 form-bigger">
+            <div class="col-lg-10 offset-lg-1 form-bigger">
 
                 <form method="POST" action="{{ route('committee_services.store') }}" aria-label="Serviços" name="formCommitteeService" id="formCommitteeService" class="form-with-labels">
                     @csrf
@@ -120,7 +120,7 @@
                         </span>
                             @endif
                         </div>
-                    </div>    
+                    </div>
 
                     <div class="form-group row">
                         <div class="col-md-12">

@@ -6,7 +6,7 @@
 @parent
 <div class="mt-4">
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="col-lg-10 offset-lg-1 text-center">
             <div class="section-title">
                 {{--<i class="fas fa-plus-circle"></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais <br>
                     --}}
@@ -29,7 +29,7 @@
             </div>
 
             @if ($record->id)
-            <div class="offset-md-4 col-4 mb-4">
+            <div class="col-12 mb-4">
                 <h4>
                     @if ($record->resolved_at)
                     <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">PROTOCOLO FINALIZADO</span>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 form-bigger">
+        <div class="col-lg-10 offset-lg-1 form-bigger">
 
             <form method="POST" action="{{ route('records.store') }}" aria-label="Protocolos" id="formRecords" class="form-with-labels">
                 @csrf
