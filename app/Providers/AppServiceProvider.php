@@ -3,6 +3,7 @@ namespace App\Providers;
 
 use App\Services\Authorization;
 use App\Data\Repositories\Users;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         $this->bootGates();
 
         $this->bootHorizon();
+
+        Paginator::useBootstrap();
     }
 
     private function bootHorizon()
