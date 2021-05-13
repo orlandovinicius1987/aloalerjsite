@@ -49,46 +49,55 @@
 
         @forelse ($records as $record)
 
-            <div class="row ml-4 mr-4 mb-2" v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer;">
+            <div class="row linha-item ml-4 mr-4 mb-2" v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer;">
 
-                <div class="col-lg-2 px-0 border-right">
-                    <p class="pl-4 py-4 bg-info btlf-1">
-                        <span class="titulo-bold">Protocolo:</span><br>
-                        {{ $record->protocol }} <br>
+                <div class="col-lg-9 px-0 border-right">
 
-                        @if($record->resolved_at)
-                            <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Finalizado</span>
+                    <div class="row bg-info m-0 btlf-1">
+
+                        <div class="col-4 py-4">
+                            <p class="pl-4 ">
+                                <span class="titulo-bold">Protocolo:</span><br>
+                                {{ $record->protocol }} <br>
+
+                                @if($record->resolved_at)
+                                    <span class="label-group"><span class="label label-danger"><i class="fas fa-times-circle"></i></span><span class="label label-danger ng-binding">Finalizado</span>
                             @else
-                                    {{--<span class="badge badge-success">Em aberto</span>--}}
-                                    <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">Em Aberto</span></span></span>
-                        @endIf
-                    </p>
-
-                    @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
-                    <p class="pl-3">
-                        <span class="titulo-bold">Nome:</span><br>
-                        <a href="{{ route('people.show',['person_id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
-                    </p>
-
-                    <p class="pl-3">
-                        <span class="titulo-bold">Contatos:</span><br>
-                        @foreach($record->person->contacts()->limit(10)->get() as $contact)
-                            {{ $contact->contact }} <br>
-                        @endForEach
-                    </p>
-                    @endif
-                </div>
-
-
-
-                <div class="col-lg-7 py-4 px-4 border-right ">
-                    <div style="overflow-y: auto;  !important;">
-                        {{ $record->first_progress_original ?? '' }}
+                                            {{--<span class="badge badge-success">Em aberto</span>--}}
+                                            <span class="label-group"><span class="label label-primary"><i class="fas fa-folder-open"></i></span><span class="label label-primary ng-binding">Em Aberto</span></span></span>
+                                @endIf
+                            </p>
+                            @if(!isset($person)) {{-- Apenas para Protocolos não resolvidos:: http://aloalerj.com/callcenter/records/non-resolved  --}}
+                        </div>
+                        <div class="col-4 py-4">
+                            <p class="pl-3">
+                                <span class="titulo-bold">Nome:</span><br>
+                                <a href="{{ route('people.show',['person_id' => $record->person->id]) }}" >{{ $record->person->name }}</a>
+                            </p>
+                        </div>
+                        <div class="col-4 py-4">
+                            <p class="pl-3">
+                                <span class="titulo-bold">Contatos:</span><br>
+                                @foreach($record->person->contacts()->limit(10)->get() as $contact)
+                                    {{ $contact->contact }} <br>
+                                @endForEach
+                            </p>
+                            @endif
+                        </div>
                     </div>
+
+                    <div class="row m-0">
+                        <div class="col-lg-12 py-4 px-4 border-right ">
+                            <div style="overflow-y: auto;  !important;">
+                                {{ $record->first_progress_original ?? '' }}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="col-lg-3 p-0">
-                    <p class="py-4 pl-3 pr-4 bg-info btlr-1">
+                <div class="col-lg-3 p-0 bg-info">
+                    <p class="py-4 pl-3 pr-4 btlr-1">
                         <span class="titulo-bold">Assunto:</span><br>
                         {{ $record->area->name ?? '' }}
                     </p>
