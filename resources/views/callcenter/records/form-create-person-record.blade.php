@@ -39,7 +39,7 @@
                                 {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
                                 {{--                                   data-style="ios"/>--}}
 
-                                <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                <button type="button" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off"
                                         v-on:click="toggleAnonymous" :value="is_anonymous">
                                     <div class="handle"></div>
                                 </button>
@@ -97,7 +97,7 @@
                             <div v-if="!is_anonymous" class="col-md-3">
                                 <label for="create_address" class="col-form-label">Cadastrar Novo Endereço?</label><br />
 
-                                <button type="button" type="button" id="btn_create_address" :class="toggle_create_address_status" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                <button type="button" type="button" id="btn_create_address" :class="toggle_create_address_status" data-toggle="button" aria-pressed="false" autocomplete="off"
                                         v-on:click="toggleCreateAddress" :value="create_address">
                                     <div class="handle"></div>
                                     <input type="hidden" name="create_address" :value="create_address" />

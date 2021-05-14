@@ -67,4 +67,19 @@ class Committees extends Base
             ->orderBy('link_caption', 'asc')
             ->get();
     }
+
+    protected function emptyResponse($search = '')
+    {
+        return $this->response($search, 0, null);
+    }
+
+    protected function response($data, $count = 0, $messages = null)
+    {
+        return [
+            'data' => $data,
+            'success' => is_null($messages),
+            'errors' => $messages,
+            'count' => $count,
+        ];
+    }
 }
