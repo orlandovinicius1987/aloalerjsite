@@ -46,7 +46,7 @@
                 <a class="nav-link" href="{{route('records.nonResolved') }}"><i class="fas fa-times-circle"></i>Não resolvidos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-headphones-alt"></i>Site do alô alerj</a>
+                <a class="nav-link" href="/"><i class="fas fa-headphones-alt"></i>Site do alô alerj</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
