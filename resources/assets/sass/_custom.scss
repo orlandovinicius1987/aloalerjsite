@@ -43,7 +43,13 @@
     }
  }
 
+.dropdown-item {
+    font-size: 16px;
+    font-family: 'proxima_nova_altbold';
+    text-transform: uppercase;
+    color: #5f86d3;
+}
 
-
-
-
+.dropdown-item:hover {
+    color: #305BB0;
+}
