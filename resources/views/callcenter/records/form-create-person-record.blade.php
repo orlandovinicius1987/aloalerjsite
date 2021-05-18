@@ -4,7 +4,7 @@
 @parent
 <div class="mt-4" id="vue-record">
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="col-lg-10 offset-lg-1 text-center">
             <div class="section-title">
                 {{--<i class="fas fa-plus-circle"></i> Adicionar / <i class="far fa-address-card"></i> Dados Pessoais <br>
                     --}}
@@ -19,7 +19,7 @@
     </div>
 
     <div class="row">
-            <div class="col-lg-8 offset-lg-2 form-bigger">
+            <div class="col-lg-10 offset-lg-1 form-bigger">
 
                 <form method="POST" action="{{ route('records.store-person-record') }}" aria-label="Protocolos" id="formRecords" class="form-with-labels">
                     @csrf
@@ -39,7 +39,7 @@
                                 {{--                               :value="is_anonymous"  data-toggle="toggle"--}}
                                 {{--                                   data-style="ios"/>--}}
 
-                                <button type="button" type="button" class="btn btn-sm btn-toggle inactive" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                <button type="button" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off"
                                         v-on:click="toggleAnonymous" :value="is_anonymous">
                                     <div class="handle"></div>
                                 </button>
@@ -97,7 +97,7 @@
                             <div v-if="!is_anonymous" class="col-md-3">
                                 <label for="create_address" class="col-form-label">Cadastrar Novo Endereço?</label><br />
 
-                                <button type="button" type="button" id="btn_create_address" :class="toggle_create_address_status" data-toggle="button" aria-pressed="true" autocomplete="não"
+                                <button type="button" type="button" id="btn_create_address" :class="toggle_create_address_status" data-toggle="button" aria-pressed="false" autocomplete="off"
                                         v-on:click="toggleCreateAddress" :value="create_address">
                                     <div class="handle"></div>
                                     <input type="hidden" name="create_address" :value="create_address" />

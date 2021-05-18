@@ -4,7 +4,7 @@
 
     <div id="vue-origins">
         <div class="row mt-4" >
-            <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="col-lg-10 offset-lg-1 text-center">
                 <div class="section-title">
 
                     <ul class="aloalerj-breadcrumbs">
@@ -24,7 +24,7 @@
 
 
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 form-bigger">
+            <div class="col-lg-10 offset-lg-1 form-bigger">
 
                 <form method="POST" action="{{ route('origins.store') }}" aria-label="Assuntos" name="formOrigin" id="formOrigin" class="form-with-labels">
                     @csrf

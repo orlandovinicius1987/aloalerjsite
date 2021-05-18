@@ -134,10 +134,10 @@
                     </div>
                     <div class="mb-3 col-md-12 col-lg-6">
                         <label class="form-label" for="nome">Nome Social *  </label>
-                        <input id="name" placeholder="Digite seu nome social - campo opcional"
+                        <input id="name-social" placeholder="Digite seu nome social - campo opcional"
                                class="form-control{{ $errors->has('name-social') ? ' is-invalid' : '' }} input-md"
                                name="name-social" value="{{is_null(old('name-social')) ? '' : old('name-social') }}"
-                               required
+                               
                         >
                     </div>
 

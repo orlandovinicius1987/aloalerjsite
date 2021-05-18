@@ -7,7 +7,7 @@
 
     <div class="mt-4" id="vue-personal-info">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 form-bigger">
+            <div class="col-lg-10 offset-lg-1 form-bigger">
                 <div class="text-center">
                     <div class="section-title"><i class="fas fa-user-times"></i> Divergência / <i class="far fa-address-card"></i> Dados Pessoais </div>
                     <h5>Já Existe uma pessoa com o CPF/CNPJ {{$record->person->cpf_cnpj}} Cadastrado</h5>
