@@ -22,10 +22,11 @@ class ProgressRequest extends Request
 
     public function authorize()
     {
-        return \Gate::allows('committee-canEdit', [
-            Committee::find($this->request->get('committee_id')),
-            $this->user()->id,
-        ]);
+        if ($committee = Committee::find($this->request->get('committee_id'))) {
+            return \Gate::allows('committee-can-edit', $committee);
+        } else {
+            return true;
+        }
     }
 
     /**

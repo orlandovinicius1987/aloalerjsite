@@ -42,7 +42,7 @@
 
                     <div class="mb-3 col-md-6 col-lg-3">
                         <label class="form-label" for="email">E-mail</label>
-                        <input type=email class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                        <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                id="email"
                                value="{{is_null(old('email')) ? '' : old('email') }}"
                                placeholder = 'Digite seu e-mail'
@@ -137,7 +137,7 @@
                         <input id="name-social" placeholder="Digite seu nome social - campo opcional"
                                class="form-control{{ $errors->has('name-social') ? ' is-invalid' : '' }} input-md"
                                name="name-social" value="{{is_null(old('name-social')) ? '' : old('name-social') }}"
-                               
+
                         >
                     </div>
 
