@@ -59,7 +59,8 @@ section {
             font-style: normal;
             text-transform: uppercase;
 
-            &:after{
+            /* Inicio -- Mudanças no menu callcenter -- Marcos */
+         /*  &:after{
                 margin-top: 5px;
                 content: '';
                 display: block;
@@ -67,12 +68,17 @@ section {
                 height: 2px;
                 background: rgba(255, 255, 255, 0.55);
                 transition: width .3s;
-            }
+            } */
+            /* Final - Mudanças no menu callcenter - Marcos */
+
             &:hover{
                 color: #f63;
-                &:after{
+
+                /* Inicio - Mudanças no menu callcenter - Marcos */
+                /*  &:after{
                     width: 100%;
-                }
+                }*/
+                /* Final - Mudanças no menu callcenter - Marcos */
             }
         }
     }
