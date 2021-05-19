@@ -42,3 +42,26 @@
 
     }
  }
+
+
+
+
+
+
+/* Início -- Novas mudanças para o menu callcenter -- Marcos */
+
+.dropdown-item {
+    font-size: 16px;
+    font-family: 'proxima_nova_altbold';
+    text-transform: uppercase;
+    color: $blue-lighter50;
+    &:hover {
+        color: $blue-lighter70;
+    }
+}
+
+.aloalerj-logo-home {
+    width: 150px !important;
+}
+
+/* Final - Novas mudanças para o menu callcenter - Marcos */
