@@ -50,7 +50,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Fourth navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand logo-alerj" href="//www.alerj.rj.gov.br/" target="_blank">
+        <a class="navbar-brand logo-alerj" href="http://www.alerj.rj.gov.br/" target="_blank">
             <img src="/templates/2021/images/ALERJ_NOVO_vertical-branco.png">
         </a>
         <a class="navbar-brand logo-aloalerj" href="/">

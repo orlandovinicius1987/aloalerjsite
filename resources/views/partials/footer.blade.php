@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-12 col-sm-4 col-md-3">
-                <a href="//www.alerj.rj.gov.br/" target="_blank">
+                <a href="http://www.alerj.rj.gov.br/" target="_blank">
                     <img src="/templates/2021/images/ALERJ_NOVO_horizontal-branco.png" class="img-fluid">
                 </a>
             </div>
