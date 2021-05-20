@@ -19,7 +19,7 @@ class Progress extends BaseModel
      * @var array
      */
 
-    protected $appends = ['link', 'finalize'];
+    protected $appends = ['link'];
 
     protected $fillable = [
         'record_id',
