@@ -26,7 +26,7 @@ class Person extends BaseModel
         'updated_by_id',
     ];
 
-    protected $presenters = ['created_at_formatted', 'updated_at_formatted'];
+    protected $appends = ['created_at_formatted', 'updated_at_formatted'];
 
     public function getPresenterClass()
     {

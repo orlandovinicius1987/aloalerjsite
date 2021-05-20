@@ -20,9 +20,8 @@ class RecordRequest extends Request
             'origin_id' => 'required_without:record_id', // Origem → Workflow
             'committee_id' => ['required', new AuthorizedCommitteeUser()], // Comissão
             'record_type_id' => 'required', //Tipo
-            //'progress_type_id' => 'required_without:record_id', // Assunto → Workflow
             'area_id' => 'required', //Area
-            'cpf_cnpj' => 'required_if:is_anonymous,==,false',
+            'cpf_cnpj' => 'sometimes|required_if:is_anonymous,==,false|cpf_cnpj',
             'name' => 'required_if:is_anonymous,==,false',
             'original' => 'required_without:record_id', // Solicitação  → Workflow
             'mobile' => [
@@ -33,11 +32,17 @@ class RecordRequest extends Request
             'whatsapp' => [
                 $this->is_anonymous_protocol() ? '' : 'required_without_all:mobile,phone,person_id',
             ],
-            'email' => [$this->has_person() ? 'required_if:send_answer_by_email,==,on' : ''],
             'phone' => [
                 $this->is_anonymous_protocol()
                     ? ''
                     : 'required_without_all:mobile,whatsapp,person_id',
+            ],
+            'email' => [
+                $this->is_anonymous_protocol()
+                    ? ''
+                    : ($this->has_send_answer_by_email_on()
+                        ? 'email'
+                        : ''),
             ],
             'neighbourhood' => [$this->create_address() ? 'required' : ''],
             'city' => [$this->create_address() ? 'required' : ''],
@@ -45,9 +50,9 @@ class RecordRequest extends Request
         ];
     }
 
-    private function has_person()
+    private function has_send_answer_by_email_on()
     {
-        return is_null($this->person_id);
+        return !is_null($this->send_answer_by_email) && $this->send_answer_by_email == 'on';
     }
 
     private function is_anonymous_protocol()

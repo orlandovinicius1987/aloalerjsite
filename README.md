@@ -28,7 +28,7 @@ php artisan view:clear
 
 ### Configuração
 - Executar `php artisan storage:link`
-- Executar `pa aloalerj:files:storage:link`
+- Executar `php artisan aloalerj:files:storage:link`
 
 ## Documentação
 

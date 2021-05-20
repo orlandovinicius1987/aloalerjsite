@@ -4,11 +4,12 @@ namespace App\Models;
 use Illuminate\Support\Facades\Cache;
 use App\Data\Presenters\Base;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 use McCool\LaravelAutoPresenter\HasPresenter;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
-abstract class BaseModel extends Model implements HasPresenter, AuditableContract
+abstract class BaseModel extends Model implements AuditableContract
 {
     use AuditableTrait;
 
@@ -34,7 +35,7 @@ abstract class BaseModel extends Model implements HasPresenter, AuditableContrac
     /**
      * @var array
      */
-    protected $presenters = [];
+    protected $appends = ['created_at_formatted', 'updated_at_formatted'];
 
     /**
      * Cache keys to be flushed when a model is saved.
@@ -124,5 +125,31 @@ abstract class BaseModel extends Model implements HasPresenter, AuditableContrac
                     : null;
             }
         });
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return $this->formatDate($this->created_at);
+    }
+
+    public function formatDate($date)
+    {
+        if (!$date) {
+            return '';
+        }
+
+        Date::setLocale('pt_BR');
+
+        return Date::parse($date)->format($this->getFormattedDateFormat());
+    }
+
+    public function getFormattedDateFormat()
+    {
+        return 'j F Y - H\hi';
+    }
+
+    public function getUpdatedAtFormattedAttribute()
+    {
+        return $this->created_at == $this->updated_at ? '' : $this->formatDate($this->updated_at);
     }
 }

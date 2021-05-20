@@ -23,10 +23,10 @@ class PersonContact extends BaseModel
         'validated_by_id',
         'provider_enrichment_id',
         'created_at',
-        'active'
+        'active',
     ];
 
-    protected $presenters = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
+    protected $appends = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
 
     public function getPresenterClass()
     {
@@ -70,5 +70,14 @@ class PersonContact extends BaseModel
         }
 
         return $mask;
+    }
+
+    public function getActiveStringAttribute()
+    {
+        if ($this->active) {
+            return 'Ativo';
+        } else {
+            return 'Inativo';
+        }
     }
 }

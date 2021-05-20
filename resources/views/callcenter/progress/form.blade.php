@@ -149,7 +149,7 @@
 
                             @if(isset($progress) && ! is_null($progress->id))
                                 <button  type="button" v-on:click="editButton" class="btn btn-danger" id="vue-editButton"
-                                    @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
+                                    @can('progress-can-edit', $progress)
                                         :disabled="isEditing || isCreating"
                                     @else
                                          disabled
@@ -159,7 +159,7 @@
                             @endIf
 
                             <button class="btn btn-danger" id="saveButton" name="saveButton"
-                                @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
+                                @can('progress-can-edit', $progress)
                                     @include('partials.disabled',['model'=>$progress])
                                 @else
                                     disabled
@@ -174,7 +174,7 @@
 
                             @if ($record->resolved_at)
                                 <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-reopen') }}', 'formProgress')" class="btn btn-danger btn-depth"
-                                        @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
+                                        @can('progress-can-edit', $progress)
                                             @include('partials.disabled',['model'=>$progress])
                                         @else
                                             disabled
@@ -183,7 +183,7 @@
                                 </button>
                             @else
                                 <button onclick="return false;" v-on:click="confirmForPost('{{route('progresses.store-and-mark-as-resolved') }}', 'formProgress')" class="btn btn-danger"
-                                        @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
+                                        @can('progress-can-edit', $progress)
                                             @include('partials.disabled',['model'=>$progress])
                                         @else
                                             disabled
@@ -194,7 +194,7 @@
 
                             @if ($progress && $progress->id)
                                 <a href="{{ route('progresses.notify', $progress->id) }}" class="btn btn-primary btn-depth"
-                                   @can('committee-canEdit', !is_null($progress->committee) ? $progress->record->committee : ($record->committee ?? ''))
+                                   @can('progress-can-edit', $progress)
                                         @include('partials.disabled',['model'=>$progress])
                                    @else
                                     disabled

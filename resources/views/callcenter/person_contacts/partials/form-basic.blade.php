@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-3">
         <label for="email" class="col-form-label">E-mail</label>
-        <input type=email class="form-control{{ $errors->getBag('validation')->has('email') ? ' is-invalid' : '' }} non-anonymous" name="email"
+        <input type="email" class="form-control{{ $errors->getBag('validation')->has('email') ? ' is-invalid' : '' }} non-anonymous" name="email"
                id="email"
                @if(isset($contact))
                value="{{is_null(old('email')) ? $contact->email : old('email') }}"

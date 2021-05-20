@@ -22,13 +22,22 @@ class PersonAddress extends BaseModel
         'validated_at',
         'validated_by_id',
         'address_id',
-        'active'
+        'active',
     ];
 
-    protected $presenters = ['active_string', 'created_at_formatted', 'updated_at_formatted'];
+    protected $appends = ['created_at_formatted', 'updated_at_formatted', 'active_string'];
 
     public function getPresenterClass()
     {
         return PersonAddressPresenter::class;
+    }
+
+    public function getActiveStringAttribute()
+    {
+        if ($this->active) {
+            return 'Ativo';
+        } else {
+            return 'Inativo';
+        }
     }
 }

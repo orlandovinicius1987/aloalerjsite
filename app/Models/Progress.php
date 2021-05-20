@@ -18,6 +18,9 @@ class Progress extends BaseModel
     /**
      * @var array
      */
+
+    protected $appends = ['link'];
+
     protected $fillable = [
         'record_id',
         'progress_type_id',
@@ -34,10 +37,8 @@ class Progress extends BaseModel
         'updated_at',
         'original_history_id',
         'created_by_committee_id',
-        'is_private'
+        'is_private',
     ];
-
-    protected $presenters = ['link', 'finalize'];
 
     protected $with = ['creator'];
 
@@ -105,5 +106,18 @@ class Progress extends BaseModel
         parent::boot();
 
         static::addGlobalScope(new ProgressScope());
+    }
+
+    public function getLinkAttribute()
+    {
+        $id = $this->id;
+
+        return route('progresses.show', ['id' => $id]);
+    }
+
+    public function getFinalizeAttribute()
+    {
+        $finalize = $this->record->resolve_progress_id;
+        return $finalize ? true : false;
     }
 }
