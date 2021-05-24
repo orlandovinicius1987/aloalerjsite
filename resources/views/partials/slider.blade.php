@@ -6,7 +6,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/templates/mv/img/slides-desktop/slide000.jpg" class="d-block w-100" alt="...">
+            <img src="/templates/2021/images/plano_de_fundo_Alo-Alerj.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
             <img src="/templates/mv/img/slides-desktop/slide002.jpg" class="d-block w-100" alt="...">
