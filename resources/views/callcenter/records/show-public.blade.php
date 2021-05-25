@@ -38,10 +38,10 @@
 
                     <section class="infos text-left">
                         <div class="record-data01">
-                            <div class="box">
+                            {{--<div class="box">
                                 <small>Origem</small>
                                 <strong>{{ $record->origin->name ?? '' }}</strong>
-                            </div>
+                            </div>--}}
                             <div class="box">
                                 <small>Departamento</small>
                                 <strong>{{ $record->committee->name  ?? '' }}</strong>
@@ -65,14 +65,14 @@
                                 <small>Criado em</small>
                                 <strong>{{ $record->created_at_formatted ?? '' }}</strong>
                             </div>
-                            <div class="date02">
+                            {{--<div class="date02">
                                 <small>Alterado em</small>
                                 <strong>{{ $record->updated_at_formatted ?? '' }}</strong>
-                            </div>
+                            </div>--}}
                         </div>
-                        <svg class="qrcode">
+                        {{--<svg class="qrcode">
                             <use xlink:href="#qrcode"></use>
-                        </svg>
+                        </svg>--}}
                     </section>
                 </div>
 

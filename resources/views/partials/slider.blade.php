@@ -1,3 +1,11 @@
+<div class="mt-4">
+    <img src="/templates/2021/images/plano_de_fundo_Alo-Alerj.jpg" class="d-block w-100" alt="...">
+</div>
+
+{{--
+
+
+
 <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
     <ol class="carousel-indicators">
         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -6,19 +14,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/templates/mv/img/slides-desktop/slide000.jpg" class="d-block w-100" alt="...">
+            <img src="/templates/2021/images/plano_de_fundo_Alo-Alerj.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
             <img src="/templates/mv/img/slides-desktop/slide002.jpg" class="d-block w-100" alt="...">
         </div>
 
     </div>
-
-
-
-
-
-
 
 
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -30,3 +32,4 @@
         <span class="visually-hidden">Next</span>
     </a>
 </div>
+--}}

@@ -2,7 +2,7 @@
 
 
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-7 col-md-4 pl-5">
+        <div class="col-12 col-md-8 pl-5">
             <h3>
                 <i class="fas fa-list-ol"></i> Protocolos
 
@@ -14,7 +14,7 @@
         </div>
 
         @if(isset($mode) && $mode == 'advanced-search')
-            <div class="col-5 col-md-8 pr-5 text-right d-print-none">
+            <div class="col-12 col-md-8 pr-5 text-right d-print-none">
                 <strong>
                     Resultados por página:
                 </strong>
@@ -27,11 +27,11 @@
             </div>
         @endIf
 
-        <div class="col-5 col-md-8 text-right">
+        <div class="col-10 offset-1 offset-md-0 col-md-4 text-right">
             @if(isset($person))
                 <a id="button-novo-protocolo"
                    href="{{ route('records.create',['person_id'=>$person->id]) }}"
-                   class="btn btn-primary btn-sm pull-right"
+                   class="btn btn-primary btn-sm btn-block pull-right"
                 >
                     <i class="fa fa-plus"></i>
                     Novo Protocolo
@@ -133,7 +133,6 @@
     <div class="card-body" >
 
         <div class="d-print-table d-block d-sm-block d-md-block d-lg-none" style="width: 100%">
-            teste
             @forelse ($records as $record)
                 <div class="mobile-tables " v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer; border: 1px solid rgba(0, 0, 0, .2);"  >
                     <div class="contact-line"><span class="mobile-label">Protocolo Nº</span>{{ $record->protocol }}</div>

@@ -16,7 +16,7 @@
                         <input name="person_id" type="hidden" value="{{ $person->id }}">
 
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <p>Selecione o tipo de contato</p>
                                 <select v-model="currentContactType" name="contact_type_id" class="select form-control select2" id="contact_type_id">
                                     <option value="" selected>SELECIONE</option>
@@ -26,7 +26,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <p>Contato</p>
 
                                 <the-mask

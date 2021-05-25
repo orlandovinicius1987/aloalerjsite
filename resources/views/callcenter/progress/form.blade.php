@@ -20,8 +20,6 @@
                             <a href="{{ route('records.show', ['id' => $record->id]) }}">Protocolo {{ $record->protocol }}</a>
                         </li>
 
-                        <br>
-
                         <li>Andamentos</li>
                     </ul>
                 </div>
