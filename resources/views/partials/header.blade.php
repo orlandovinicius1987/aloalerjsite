@@ -112,6 +112,17 @@
         </div>
     </div>
 </nav>
+@if($errors = session('errors'))
+    @if (isset($errors) && $errors->any())
+
+        <div class="alert alert-danger">
+            <ul>
+                <li>{{ $errors->first() }}</li>
+            </ul>
+        </div>
+
+    @endif
+@endif
 
 
 

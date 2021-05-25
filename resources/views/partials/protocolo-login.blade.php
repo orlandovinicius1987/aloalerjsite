@@ -31,13 +31,6 @@
                     </div>
                 </div>
             </div>
-
-            @if ($errors->first())
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first() }}</strong>
-                </span>
-            @endif
-
             <div class="form-group mt-5">
                 <button type="submit" class="btn btn-primary btn-lg btn-block protocolo-button">Consultar</button>
             </div>
