@@ -13,28 +13,28 @@
                         <strong>{{ $record->protocol }}</strong>
                     </div>
                 </header>
-                <section class="records-progress mt-5">
+                <section class="records-progress mt-4">
                     <h4>
                         <span class="label-group"><span class="label label-primary"><i
                                     class="fas fa-check"></i></span><span class="label label-primary ng-binding">O
                                 protocolo foi criado com sucesso</span></span>
                     </h4>
                 </section>
-                <section class="personal-data mt-4">
+                <div class="personal-data">
                     <div class="number">
                         <small>anote o número do novo protocolo</small>
                         <strong><a dusk="protocol-number" id="protocol-number"
                                 href="{{ route('records.show',['id' => $record->id]) }}">{{ $record->protocol }}</a> <i
                                 class="far fa-copy"></i> </strong>
                     </div>
-                </section>
-                <section class="personal-data mt-4">
+                </div>
+                <div class="personal-data ">
                     <div class="number">
                         <small>Código de acesso</small>
                         <strong>{{ $record->access_code }}</strong>
                     </div>
-                </section>
-                <section class="personal-data">
+                </div>
+                <div class="personal-data">
                     <div class="name">
                         <small>criado para</small>
                         <strong><a href="{{ route('people.show', ['person_id' => $record->person->id]) }}">
@@ -42,7 +42,7 @@
                             </a>
                         </strong>
                     </div>
-                </section>
+                </div>
                 <section class="strap">
                     <div class="box">
                         <div class="date01">
