@@ -1,3 +1,11 @@
+<div class="mt-4">
+    <img src="/templates/2021/images/plano_de_fundo_Alo-Alerj.jpg" class="d-block w-100" alt="...">
+</div>
+
+{{--
+
+
+
 <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
     <ol class="carousel-indicators">
         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -15,12 +23,6 @@
     </div>
 
 
-
-
-
-
-
-
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -30,3 +32,4 @@
         <span class="visually-hidden">Next</span>
     </a>
 </div>
+--}}
