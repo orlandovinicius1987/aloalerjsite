@@ -14,8 +14,6 @@
 
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarsExample08">
             <ul class="navbar-nav">
-                {{Route::currentRouteName()}}
-
                 <li class="nav-item {{Route::currentRouteName() == 'home' ? 'active' : ''}}" >
                     <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
                 </li>
