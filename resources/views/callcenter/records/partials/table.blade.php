@@ -49,7 +49,7 @@
 
         @forelse ($records as $record)
 
-            <div class="row linha-item ml-4 mr-4 mb-2" v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer;">
+            <div class="row linha-item ml-4 mr-4 mb-2" v-on:click='detail("{{route('records.show', ['id' => $record->id])}}")' style="cursor: pointer; border: 1px solid rgba(0, 0, 0, .2);">
 
                 <div class="col-lg-9 px-0 border-right">
 
