@@ -2,7 +2,7 @@
 
 
     <div class="row mt-5 mb-4 align-items-center">
-        <div class="col-12 col-md-8 pl-5">
+        <div class="col-7 col-md-4 pl-5">
             <h3>
                 <i class="fas fa-list-ol"></i> Protocolos
 
@@ -14,7 +14,7 @@
         </div>
 
         @if(isset($mode) && $mode == 'advanced-search')
-            <div class="col-12 col-md-8 pr-5 text-right d-print-none">
+            <div class="col-5 col-md-8 pr-5 text-right d-print-none">
                 <strong>
                     Resultados por página:
                 </strong>
