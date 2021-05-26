@@ -142,6 +142,11 @@ section {
         background-clip: border-box;
         border: 0px solid rgba(0, 0, 0, 0.125);
         border-radius: 0.25rem;
+        height: 100%;
+
+        .card-body {
+            padding: 0px 50px 0px 50px;
+        }
     }
 
 
@@ -160,7 +165,7 @@ section {
 
         .icones-apps {
             img {
-                max-width: 75%;
+                max-width: 50%;
             }
         }
     }
