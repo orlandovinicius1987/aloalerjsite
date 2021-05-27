@@ -20,7 +20,7 @@ class Base extends DuskTestCase
         $this->faker = Faker::create();
     }
 
-    public function user($type = 'Operador')
+    public function user($type = 'Administrador')
     {
         if ($this->user) {
             return $this->user;
@@ -29,12 +29,12 @@ class Base extends DuskTestCase
         return $this->user = $this->newUser($type);
     }
 
-    public function newUser($type = 'Operador')
+    public function newUser($type = 'Administrador')
     {
         $faker = app('Faker');
         return $faker->randomElement(User::
-        where('user_type_id',UserType::where('name','=','Administrador')
+        where('user_type_id',UserType::where('name','=',$type)
             ->first()->id)
-            ->get()->where('username','=','ovalenca'));
+            ->get());
     }
 }

@@ -40,12 +40,6 @@ class CommitteesTest extends Base
         $contactTypesArrayIsMobile['whatsapp'] = true;
         $contactTypesArrayIsMobile['phone'] = false;
 
-        $faker = app('Faker');
-
-        $user = $faker->randomElement(User::
-        where('user_type_id',UserType::where('name','=','Administrador')
-            ->first()->id)
-            ->get());
         $person = Person::factory()->make();
 
 
@@ -63,10 +57,10 @@ class CommitteesTest extends Base
 
 
         try {
-            $this->browse(function (Browser $browser) use ($user, $faker, $person, $committee) {
-                dump('Logando com o user:' . $user->name . ' ' . $user->id);
-//                $browser
-//                    ->loginAs($user->id);
+            $this->browse(function (Browser $browser) use ($person, $committee) {
+
+                $browser
+                    ->loginAs($this->user());
 
                 $browser
                     ->visit('/callcenter/committees')

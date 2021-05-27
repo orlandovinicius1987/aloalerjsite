@@ -17,7 +17,6 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/callcenter')
-                ->screenshot('aaaa')
                     ->assertSee('Login Alerj');
         });
     }
