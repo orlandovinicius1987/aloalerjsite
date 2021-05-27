@@ -22,6 +22,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'api_token' => \Auth::user()->api_token ?? '',
                 'chat' => config('chat'),
                 'mode' => 'show',
+                'config' => ['mix_message_home' => config('app.mix_message_home')],
             ]);
 
             if (!isset($view->workflow)) {
