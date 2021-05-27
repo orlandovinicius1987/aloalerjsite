@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Committee extends Model
 {
@@ -18,8 +19,10 @@ class Committee extends Model
         'vice_president',
         'office_phone',
         'office_address',
-        'email'
+        'email',
     ];
+
+    protected $appends = ['created_at_formatted', 'updated_at_formatted'];
 
     public function users()
     {
@@ -41,5 +44,31 @@ class Committee extends Model
         }
 
         return $query->whereIn('id', $idsArray);
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return $this->formatDate($this->created_at);
+    }
+
+    public function formatDate($date)
+    {
+        if (!$date) {
+            return '';
+        }
+
+        Date::setLocale('pt_BR');
+
+        return Date::parse($date)->format($this->getFormattedDateFormat());
+    }
+
+    public function getFormattedDateFormat()
+    {
+        return 'j F Y - H\hi';
+    }
+
+    public function getUpdatedAtFormattedAttribute()
+    {
+        return $this->created_at == $this->updated_at ? '' : $this->formatDate($this->updated_at);
     }
 }
