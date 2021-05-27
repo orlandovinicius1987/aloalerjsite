@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Data\Repositories\ContactTypes;
 use App\Support\Constants;
 use App\Data\Presenters\Person as PersonPresenter;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Person extends BaseModel
 {
+
+    use HasFactory;
     /**
      * @var array
      */

@@ -6,6 +6,7 @@ use Faker\Generator as Faker;
 use App\Models\Person;
 
 use App\Data\Repositories\Persons as PersonsRepository;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +18,32 @@ use App\Data\Repositories\Persons as PersonsRepository;
 | model instances for testing / seeding your application's database.
 |
 */
+class PersonFactory extends Factory{
 
-$factory->define(Person::class, function (Faker $faker) {
-    $faker = app('Faker');
+    protected $model = Person::class;
 
-    $cpf = $faker->unique()->cpf_sem_pontos;
+    public function definition()
+    {
+        $faker = app('Faker');
 
-    return [
-        'code' => $cpf,
-        'cpf_cnpj' => $cpf,
-        'name' => $faker->name_without_special_character,
-        'identification' => $faker->unique()->randomNumber(8),
-        'birthdate' => $faker->date,
-        'is_anonymous' => false
-    ];
-});
+        $cpf = $faker->unique()->cpf_sem_pontos;
 
-$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
-    $issue = $factory->raw(Person::class);
-    $issue['name'] = 'massInsert';
-    return $issue;
-});
+        return [
+            'code' => $cpf,
+            'cpf_cnpj' => $cpf,
+            'name' => $faker->name_without_special_character,
+            'identification' => $faker->unique()->randomNumber(8),
+            'birthdate' => $faker->date,
+            'is_anonymous' => false
+        ];
+    }
+}
+//$factory->define(Person::class, function (Faker $faker) {
+//
+//});
+//
+//$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
+//    $issue = $factory->raw(Person::class);
+//    $issue['name'] = 'massInsert';
+//    return $issue;
+//});

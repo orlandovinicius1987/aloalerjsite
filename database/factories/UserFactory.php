@@ -2,11 +2,7 @@
 
 namespace Database\Factories;
 
-use Faker\Generator as Faker;
-use App\Models\User;
 
-use App\Data\Repositories\UserTypes as UserTypesRepository;
-use App\Data\Repositories\Users as UsersRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,33 +14,67 @@ use App\Data\Repositories\Users as UsersRepository;
 | model instances for testing / seeding your application's database.
 |
 */
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-$factory->define(User::class, function (Faker $faker) {
-    $usersRepository = app(UsersRepository::class);
+use App\Data\Repositories\UserTypes as UserTypesRepository;
 
-    do {
-        $name = strtolower($faker->unique()->firstName);
-        $name = preg_replace('/([^a-zA-Z])/', '', $name);
-    } while (!is_null($usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')));
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
 
-    return [
-        'name' => $name,
-        'username' => $name,
-        'email' => $name . '@alerj.rj.gov.br',
-        'password' => bcrypt('secret'),
-        'remember_token' => str_random(10),
-        'user_type_id' => app(UserTypesRepository::class)->randomElement()
-    ];
-});
 
-foreach (app(UserTypesRepository::class)->all() as $userType) {
-    $factory->defineAs(User::class, $userType->name, function ($faker) use ($factory, $userType) {
-        $issue = $factory->raw(User::class);
-        $userTypesRepository = app(UserTypesRepository::class);
-        $userType = $userTypesRepository->findByColumn('name', $userType->name);
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $name = $this->faker->name();
+        return [
+            'name' => $name,
+            'username' => $name,
+            'email' => $name . '@alerj.rj.gov.br',
+            'password' => bcrypt('secret'),
+            'remember_token' => str_random(10),
+            'user_type_id' => app(UserTypesRepository::class)->randomElement()
+        ];
+    }
 
-        $issue['user_type_id'] = $userType->id;
-
-        return $issue;
-    });
 }
+//$factory->define(User::class, function (Faker $faker) {
+//    $usersRepository = app(UsersRepository::class);
+//
+//    do {
+//        $name = strtolower($faker->unique()->firstName);
+//        $name = preg_replace('/([^a-zA-Z])/', '', $name);
+//    } while (!is_null($usersRepository->findByColumn('email', $name . '@alerj.rj.gov.br')));
+//
+//    return [
+//        'name' => $name,
+//        'username' => $name,
+//        'email' => $name . '@alerj.rj.gov.br',
+//        'password' => bcrypt('secret'),
+//        'remember_token' => str_random(10),
+//        'user_type_id' => app(UserTypesRepository::class)->randomElement()
+//    ];
+//});
+//
+//foreach (app(UserTypesRepository::class)->all() as $userType) {
+//    $factory->defineAs(User::class, $userType->name, function ($faker) use ($factory, $userType) {
+//        $issue = $factory->raw(User::class);
+//        $userTypesRepository = app(UserTypesRepository::class);
+//        $userType = $userTypesRepository->findByColumn('name', $userType->name);
+//
+//        $issue['user_type_id'] = $userType->id;
+//
+//        return $issue;
+//    });
+//}

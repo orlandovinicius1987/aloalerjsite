@@ -1,6 +1,10 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'middleware' => ['auth:api', 'app.users']], function () {
+use App\Services\Routes;
+
+Route::group(['prefix' => 'v1',
+    'middleware' => app(Routes::class)->makeAppRootRouteMiddlewaresApi(),],
+    function () {
     Route::get('zipcode/{zipcode}', 'Api\ZipCode@get')->name('api.zipcode.get');
 
     Route::post('search', 'Api\Search@execute')->name('api.search.execute');

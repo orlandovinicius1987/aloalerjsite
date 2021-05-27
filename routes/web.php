@@ -1,4 +1,7 @@
 <?php
+
+use App\Services\Routes;
+
 Auth::routes();
 
 Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
@@ -61,7 +64,7 @@ Route::post('/pesquisa/protocolo', 'CallCenter\Records@showByProtocolNumber')->n
 Route::group(
     [
         'prefix' => 'callcenter',
-        'middleware' => ['auth', 'app.users'],
+        'middleware' => app(Routes::class)->makeAppRootRouteMiddlewares(),
         'namespace' => 'CallCenter',
     ],
     function () {

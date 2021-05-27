@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
@@ -9,7 +10,7 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable implements AuditableContract
 {
-    use Notifiable, AuditableTrait, HasRolesAndAbilities;
+    use Notifiable, AuditableTrait, HasRolesAndAbilities, HasFactory;
 
     /**
      * The attributes that are mass assignable.

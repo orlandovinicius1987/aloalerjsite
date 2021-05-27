@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Faker\Generator as Faker;
 use App\Models\Committee;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,40 +17,78 @@ use App\Models\Committee;
 |
 */
 
-$factory->defineAs(Committee::class, 'dusk', function (Faker $faker) {
-    $faker = app('Faker');
+class CommitteeFactory extends Factory{
 
-    $name = $faker->name_without_special_character;
+    protected $model = Committee::class;
 
-    $short_name = $faker->name_without_special_character;
+    public function definition()
+    {
+        $faker = app('Faker');
 
-    $phone = $faker->numberBetween(1000000000, 9999999999);
+        $name = $faker->name_without_special_character;
 
-    $office_phone = $faker->numberBetween(1000000000, 9999999999);
+        $short_name = $faker->name_without_special_character;
 
-    $email = $name . '@alerj.rj.gov.br';
+        $phone = $faker->numberBetween(1000000000, 9999999999);
 
-    $president = $faker->name_without_special_character;
+        $office_phone = $faker->numberBetween(1000000000, 9999999999);
 
-    $vicePresident = $faker->name_without_special_character;
+        $email = $name . '@alerj.rj.gov.br';
 
-    $office_address = $faker->name_without_special_character;
+        $president = $faker->name_without_special_character;
 
-    return [
-        'name' => $name,
-        'short_name' => $short_name,
-        'phone' => $phone,
-        'office_phone' => $office_phone,
-        'email' => $email,
-        'president' => $president,
-        'vicePresident' => $vicePresident,
-        'office_address' => $office_address,
-        'bio' => $faker->realText($faker->numberBetween(200, 800))
-    ];
-});
+        $vicePresident = $faker->name_without_special_character;
 
-$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
-    $issue = $factory->raw(Person::class);
-    $issue['name'] = 'massInsert';
-    return $issue;
-});
+        $office_address = $faker->name_without_special_character;
+
+        return [
+            'name' => $name,
+            'short_name' => $short_name,
+            'phone' => $phone,
+            'office_phone' => $office_phone,
+            'email' => $email,
+            'president' => $president,
+            'vicePresident' => $vicePresident,
+            'office_address' => $office_address,
+            'bio' => $faker->realText($faker->numberBetween(200, 800))
+        ];
+    }
+}
+
+//$factory->defineAs(Committee::class, 'dusk', function (Faker $faker) {
+//    $faker = app('Faker');
+//
+//    $name = $faker->name_without_special_character;
+//
+//    $short_name = $faker->name_without_special_character;
+//
+//    $phone = $faker->numberBetween(1000000000, 9999999999);
+//
+//    $office_phone = $faker->numberBetween(1000000000, 9999999999);
+//
+//    $email = $name . '@alerj.rj.gov.br';
+//
+//    $president = $faker->name_without_special_character;
+//
+//    $vicePresident = $faker->name_without_special_character;
+//
+//    $office_address = $faker->name_without_special_character;
+//
+//    return [
+//        'name' => $name,
+//        'short_name' => $short_name,
+//        'phone' => $phone,
+//        'office_phone' => $office_phone,
+//        'email' => $email,
+//        'president' => $president,
+//        'vicePresident' => $vicePresident,
+//        'office_address' => $office_address,
+//        'bio' => $faker->realText($faker->numberBetween(200, 800))
+//    ];
+//});
+
+//$factory->defineAs(Person::class, 'massInsert', function ($faker) use ($factory) {
+//    $issue = $factory->raw(Person::class);
+//    $issue['name'] = 'massInsert';
+//    return $issue;
+//});

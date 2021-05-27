@@ -27,14 +27,7 @@ abstract class DuskTestCase extends BaseTestCase
             return $this;
         });
     }
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->bootMacros();
-    }
-
+    
     /**
      * Prepare for Dusk test execution.
      *

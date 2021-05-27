@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\Pages;
 
+use App\Models\UserType;
 use Tests\DuskTestCase;
 use App\Models\User;
 use Faker\Factory as Faker;
@@ -30,6 +31,10 @@ class Base extends DuskTestCase
 
     public function newUser($type = 'Operador')
     {
-        return factory(User::class, $type)->create();
+        $faker = app('Faker');
+        return $faker->randomElement(User::
+        where('user_type_id',UserType::where('name','=','Administrador')
+            ->first()->id)
+            ->get()->where('username','=','ovalenca'));
     }
 }

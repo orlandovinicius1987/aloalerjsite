@@ -58,17 +58,26 @@ class AppServiceProvider extends ServiceProvider
 
     private function bootGates()
     {
+
         Gate::define('use-app', function ($user) {
-            if ($user->userType->name == 'Comissao') {
-                if ($user->committees->count() == 0) {
-                    //Se for de comissão e não tem nenhuma comissão. Usuário não autorizado
-                    return false;
+
+
+            if (config('auth.authorization.enabled')) {
+
+                if ($user->userType->name == 'Comissao') {
+                    if ($user->committees->count() == 0) {
+                        //Se for de comissão e não tem nenhuma comissão. Usuário não autorizado
+                        return false;
+                    } else {
+                        //Se for de comissão e tiver alguma comissão
+                        return true;
+                    }
                 } else {
-                    //Se for de comissão e tiver alguma comissão
+                    //Se não for de comissão, aceita
                     return true;
                 }
-            } else {
-                //Se não for de comissão, aceita
+            }else{
+
                 return true;
             }
         });

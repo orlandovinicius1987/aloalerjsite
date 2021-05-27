@@ -8,11 +8,17 @@ class CanAnyMiddleware
 {
     public function handle($request, Closure $next, ...$permissions)
     {
-        foreach ($permissions as $permission) {
-            if ($request->user()->can($permission)) {
-                return $next($request);
+
+        if(config('auth.authorization.enabled')) {
+            foreach ($permissions as $permission) {
+                if ($request->user()->can($permission)) {
+
+                    return $next($request);
+                }
             }
+            return abort(403);
+        }else{
+            return $next($request);
         }
-        return abort(403);
     }
 }

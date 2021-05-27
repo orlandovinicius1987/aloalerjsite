@@ -22,7 +22,7 @@
                         <a id="buttonNovaComissao" href="{{ route('committees.create') }}"
                            class="btn btn-primary btn-sm pull-right">
                             <i class="fa fa-plus"></i>
-                            Nova Commissão
+                            Nova Comissão
                         </a>
                     @endCan
                 </div>

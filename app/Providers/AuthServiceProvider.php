@@ -26,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        if(!config('auth.authorization.enabled')){
+
+            return true;
+
+        }
         Gate::define('committee-can-edit', function ($user, $committee) {
             if ($user->userType->name == 'Comissao') {
                 //Perfil do usuário é de comissão
