@@ -9,7 +9,7 @@ if (jQuery('#' + appName).length > 0) {
         methods: {
             __showMessage: function () {
                 let content = document.createElement('div')
-                content.innerHTML = process.env.MIX_MESSAGE_HOME
+                content.innerHTML = laravel.config.mix_message_home
                 swal({
                     title: 'Atenção',
                     content: content,
