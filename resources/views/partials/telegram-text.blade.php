@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="telegram-telefone mb-3">
             <strong class="telefone">
-                <a href="tel:988904742" class="telefone-link">
+                <a href="//api.whatsapp.com/send?phone=55%2021%2098890%204742" class="telefone-link" target="_blank">
                     (21) 98890 4742
                 </a>
             </strong>

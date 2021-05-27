@@ -18,11 +18,13 @@
     @endif
     @include('partials.slider')
 
-    <div class="row mt-5 mb-5 text-center home-squares">
+
+
+    <div class="row row-eq-height mt-5 mb-5 text-center home-squares">
 
         <div class="col-12 col-md">
-            <div class="card mb-4 shadow-sm telegram-whatsapp">
-                <div class="card-body">
+            <div class="card shadow-sm telegram-whatsapp">
+                <div class="card-body pr-6 pl-6">
                     @include('partials.telegram')
                 </div>
             </div>
