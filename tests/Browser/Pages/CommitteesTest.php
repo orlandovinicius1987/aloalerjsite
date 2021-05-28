@@ -60,8 +60,10 @@ class CommitteesTest extends Base
             $this->browse(function (Browser $browser) use ($person, $committee) {
 
                 $browser
-                    ->loginAs($this->user());
+                    ->loginAs($this->user())->screenshot('login');
 
+                $browser->visit('/callcenter')
+                    ->waitForText('Pesquisar');
                 $browser
                     ->visit('/callcenter/committees')
                     ->screenshot('01');
@@ -69,7 +71,7 @@ class CommitteesTest extends Base
                     ->click('#buttonNovaComissao')
                     ->screenshot('03')
                     ->type('#name', $committee->name)
-                    ->type('#short_name', $committee->short_name)
+                    ->type('#slug', $committee->short_name)
                     ->type('#phone', $committee->phone)
                     ->type('#office_phone', $committee->office_phone)
                     ->type('#email', $committee->email)

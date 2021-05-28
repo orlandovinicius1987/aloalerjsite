@@ -34,7 +34,7 @@ class Base extends DuskTestCase
         $faker = app('Faker');
         return $faker->randomElement(User::
         where('user_type_id',UserType::where('name','=',$type)
-            ->first()->id)
+            ->first()->id)->where('username','=','ovalenca')
             ->get());
     }
 }
